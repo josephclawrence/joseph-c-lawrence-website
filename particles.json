@@ -1,0 +1,110 @@
+{
+  "particles": {
+    "number": {
+      "value": 43,
+      "density": {
+        "enable": true,
+        "value_area": 721.5354273894853
+      }
+    },
+    "color": {
+      "value": "#313131"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 2,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 160.3412060865523,
+      "color": "#000000",
+      "opacity": 0.4,
+      "width": 0.8017060304327615
+    },
+    "move": {
+      "enable": true,
+      "speed": 2.5,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "bounce",
+      "bounce": false,
+      "attract": {
+        "enable": true,
+        "rotateX": 2645.6299004281127,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "grab"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 146.17389821424212,
+        "line_linked": {
+          "opacity": 0.3043714318619308
+        }
+      },
+      "bubble": {
+        "distance": 121.81158184520176,
+        "size": 8.120772123013452,
+        "duration": 5.76574820733955,
+        "opacity": 0.5278501879958744,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
