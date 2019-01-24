@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product Visual Builder</title>
+
+    <!-- Bootstrap -->
+	
+	<link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+	<link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+	
+	<link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
+	<link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+
+	<link href="css/UX_CSS_forms.css" rel="stylesheet" />
+	<script>
+		window.MSPointerEvent = null;
+
+		window.PointerEvent = null;
+
+	</script>
+	<script type="text/javascript">
+	  WebFontConfig = {
+	    google: { families: [ 'Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin' ] }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })(); 
+	</script>
+	<script src="js/UX_JS_jquery.min.js"></script>
+	<script src="js/UX_JS_velocity.min.js"></script>
+<script src="js/kendo.all.min.js"></script>  
+	<script src="js/UX_JS_immutable.min.js"></script>
+	
+  	</head>
+  	<body data-column-layout="3col" style="padding-top:0px;">
+
+		
+		<div id="invisibleNode" style="display: none;"></div><div id="invisibleToolbarNode" style="display: none;"></div>
+		
+		<div id="dialog"></div>
+		
+		<div id="wrapper" class="toggled">
+			
+	        <!-- /#sidebar-wrapper -->
+		    <div class="container-fluid" id="main-container">
+				
+				<!-- Error Notification empty element -->
+				<span id="errorNotification" style="display:none;"></span>
+				
+	
+				
+			    <div class="row sys-mg-t-5">
+
+				    <div class="col-sm-12">
+					    <button type="button" class=" offcanvas-toggle btn btn-default" data-toggle="offcanvas" data-target="#offcanvas-1">Off canvas 1</button>
+					    <button type="button" class=" offcanvas-toggle btn btn-default" data-toggle="offcanvas" data-target="#offcanvas-2">Off canvas 2</button>
+					    <button type="button" class=" offcanvas-toggle btn btn-default" data-toggle="offcanvas" data-target="#offcanvas-3">Off canvas bottom</button>
+					    <button type="button" class="btn btn-default" id="dialog-1">Dialog 1</button>
+					    <button type="button" class="btn btn-default" id="dialog-2">Dialog 2</button>
+					    <button type="button" class="btn btn-default" id="dialog-3">Dialog 3</button>
+					    <button type="button" class="btn btn-default" id="dialog-4">Dialog 4</button>
+				    </div>
+
+				    
+				    <div class="col-sm-12">
+					    
+					    <div id="grid"></div>
+					    
+				    </div>
+				    
+				</div>
+				<div class="row sys-mg-t-5">
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_0" data-column="0">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+<!-- 							    	<div class="initial-target text-center mt-10 draggable-row-section"><h3 class="text-muted mt-10 mb-10">Drag layout sections here</h3></div> -->
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_1" data-column="1">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+<!-- 							    	<div class="initial-target text-center mt-10 draggable-row-section"><h3 class="text-muted mt-10 mb-10">Drag layout sections here</h3></div> -->
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_2" data-column="2">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+<!-- 							    	<div class="initial-target text-center mt-10 draggable-row-section"><h3 class="text-muted mt-10 mb-10">Drag layout sections here</h3></div> -->
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+			    </div>
+
+			    
+		    </div>
+	    
+		</div>
+	    
+		
+		<!-- Off Canvas menus -->
+<!-- 		<nav class="navbar navbar-default" role="navigation"> -->
+<!--
+		    <div class="navbar-offcanvas-right navbar-offcanvas navbar-offcanvas-touch" id="offcanvas-1">
+			    <header class="offcanvas-header">
+				    <h4 class="pull-left sys-mg-t-10 sys-mg-b-5">The header of the Off canvas panel</h4>
+				    <span class="pull-right offcanvas-toggle sys-pd-t-10" data-toggle="offcanvas" data-target="#offcanvas-1"><i class="material-icons">close</i></span>
+			    </header>
+		        <div class="row offcanvas-body">
+				    <div class="col-sm-12 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column sys-pd-off" id="main_column_1" data-column="1">
+						    	<div class="sortable-list"> 	
+							    	
+							    	<div class="draggable-row-section row widget layout-widget">
+									    <div class="col-sm-12">
+								            <h4 class="sys-mg-off-t sys-mg-b-5"></h4>
+								            <div class="panel sys-widget sys-box-shadow-off sys-bd-light-gray ">
+										        <div class="panel-body sys-pd-off">
+												    
+												    <div class="row sys-tbl" data-row="0">
+											            
+											            <div class="col-sm-6 sys-bg-white sys-pd-off">
+										                    <div class="panel sys-widget sys-box-shadow-off  sys-mg-off add-data-widget">
+										                        <div class="panel-body sys-fg-primary">
+										                        	<form class="form-horizontal">
+											                        	<div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<a href="#">A link to something</a>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-warning">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-success">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																		  	<div class="col-md-9">
+																	        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																	        </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																		  	<div class="col-md-9">
+																	        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																	        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																		    <div class="col-md-9">
+																			    <input type="number" class="form-control" id="222">
+																			    <p class="help-block error-message">Please enter a number</p>
+																		    </div>
+																		</div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																		    <div class="col-md-9">
+																			<div class="input-group ">
+																			    
+																			    <input type="text" id="addon3a" class="form-control">
+																			    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																			    <span class="input-group-btn">
+																			      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																			        	<i class="material-icons">search</i>
+																					</button>
+																			    </span>
+																			</div>
+																		    </div>
+																		</div>
+																		<div class="form-group">
+																	      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																	
+																	      <div class="col-md-9">
+																	        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																	        <input type="file" id="inputFile" multiple="">
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																	
+																	      <div class="col-md-9">
+																	        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																	        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																		    <div class="col-md-9">
+																		        <div class="checkbox sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																		    <div class="col-md-9">
+																		        <div class="togglebutton sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox" checked="">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    
+																	    <div class="form-group">
+																	      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																	
+																	      <div class="col-md-9">
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																	            Option one is this
+																	          </label>
+																	        </div>
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																	            Option two can be something else
+																	          </label>
+																	        </div>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select111" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select222" multiple="" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																	
+																	      <div class="col-md-9">
+																	    	<select class="combobox form-control dropdown-toggle" id="something">
+																			  <option></option>
+																			  <option value="PA">Pennsylvania</option>
+																			  <option value="CT">Connecticut</option>
+																			  <option value="NY">New York</option>
+																			  <option value="MD">Maryland</option>
+																			  <option value="VA">Virginia</option>
+																			</select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	    	<label for="slider" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																	    	<div class="col-md-9">
+																	    		<div id="slider" class="slider shor slider-material-orange"></div>
+																	    		<input type="number" min="0" max="60" step="1" id="input-number" value="30" class="hidden">
+																	    	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																	      	</div>
+																	    </div>
+																	</form>   
+										                        </div>
+										                    </div>
+											            </div>
+											            
+											            
+											            <div class="col-sm-6 sys-bg-white sys-pd-off">
+										                    <div class="panel sys-widget sys-box-shadow-off  sys-mg-off add-data-widget">
+										                        <div class="panel-body sys-fg-primary">
+										                        	<form class="form-horizontal">
+											                        	<div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<a href="#">A link to something</a>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-warning">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-success">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																		  	<div class="col-md-9">
+																	        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																	        </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																		  	<div class="col-md-9">
+																	        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																	        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																		    <div class="col-md-9">
+																			    <input type="number" class="form-control" id="222">
+																			    <p class="help-block error-message">Please enter a number</p>
+																		    </div>
+																		</div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																		    <div class="col-md-9">
+																			<div class="input-group ">
+																			    
+																			    <input type="text" id="addon3a" class="form-control">
+																			    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																			    <span class="input-group-btn">
+																			      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																			        	<i class="material-icons">search</i>
+																					</button>
+																			    </span>
+																			</div>
+																		    </div>
+																		</div>
+																		<div class="form-group">
+																	      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																	
+																	      <div class="col-md-9">
+																	        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																	        <input type="file" id="inputFile" multiple="">
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																	
+																	      <div class="col-md-9">
+																	        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																	        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																		    <div class="col-md-9">
+																		        <div class="checkbox sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																		    <div class="col-md-9">
+																		        <div class="togglebutton sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox" checked="">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    
+																	    <div class="form-group">
+																	      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																	
+																	      <div class="col-md-9">
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																	            Option one is this
+																	          </label>
+																	        </div>
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																	            Option two can be something else
+																	          </label>
+																	        </div>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select111" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select222" multiple="" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																	
+																	      <div class="col-md-9">
+																	    	<select class="combobox form-control dropdown-toggle" id="something">
+																			  <option></option>
+																			  <option value="PA">Pennsylvania</option>
+																			  <option value="CT">Connecticut</option>
+																			  <option value="NY">New York</option>
+																			  <option value="MD">Maryland</option>
+																			  <option value="VA">Virginia</option>
+																			</select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	    	<label for="slider" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																	    	<div class="col-md-9">
+																	    		<div id="slider" class="slider shor slider-material-orange"></div>
+																	    		<input type="number" min="0" max="60" step="1" id="input-number" value="30" class="hidden">
+																	    	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																	      	</div>
+																	    </div>
+																	</form>   
+										                        </div>
+										                    </div>
+											            </div>
+												    </div>
+									            </div>
+									        </div>
+									    </div>
+									</div>
+					    		</div>
+					    	</div>
+					    </div>
+				    </div>
+				    
+			    </div>
+		    </div>
+-->
+<!-- 		</nav> -->
+
+<!--         <nav class="navbar navbar-default" role="navigation"> -->
+<!--
+		    <div class="navbar-offcanvas-right navbar-offcanvas navbar-offcanvas-touch" id="offcanvas-2">
+		        <div class="row sys-mg-t-5">
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_0" data-column="0">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Off canvas 2</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_1" data-column="1">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_2" data-column="2">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+-->
+		    
+		    
+<!--
+		    <div class="navbar-offcanvas-bottom navbar-offcanvas navbar-offcanvas-touch" id="offcanvas-3">
+			    <header class="offcanvas-header">
+				    <h4 class="pull-left sys-mg-t-10 sys-mg-b-5">The header of the Off canvas panel</h4>
+				    <span class="pull-right offcanvas-toggle sys-pd-t-10" data-toggle="offcanvas" data-target="#offcanvas-3"><i class="material-icons">close</i></span>
+			    </header>
+		        <div class="row sys-mg-t-5">
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_0" data-column="0">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Off canvas 2</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_1" data-column="1">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_2" data-column="2">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+-->
+<!-- 		</nav> -->
+        		
+	    <script src="js/UX_JS_bootstrap.js"></script>
+
+		<script src="js/UX_JS_forms.js"></script>
+		<script src="js/UX_JS_ripples.min.js"></script>
+		<script src="js/bootstrap.offcanvas.js"></script>
+		<script src="../products.js"></script>
+	     
+	    <script>
+            $(document).ready(function() {
+	            
+	            $.material.init();
+	            
+                $("#grid").kendoGrid({
+                    dataSource: {
+                        data: products,
+                        schema: {
+                            model: {
+                                fields: {
+                                    ProductName: { type: "string" },
+                                    UnitPrice: { type: "number" },
+                                    UnitsInStock: { type: "number" },
+                                    Discontinued: { type: "boolean" }
+                                }
+                            }
+                        },
+                        pageSize: 20
+                    },
+                    height: 550,
+                    scrollable: true,
+                    sortable: true,
+                    filterable: true,
+                    columnMenu: true,
+                    resizable: true,
+                    reorderable: true,
+                    selectable: "multiple",
+                    pageable: {
+                        input: true,
+                        numeric: false
+                    },
+                    columns: [
+                        { field: "ProductName", title: "Product Name"},
+                        { field: "ProductID", title: "Product ID"},
+                        { field: "SupplierID", title: "Supplier ID"},
+                        { field: "UnitPrice", title: "Unit Price", format: "{0:c}"},
+                        { field: "UnitsInStock", title: "Units In Stock"},
+                        { field: "ReorderLevel", title: "Reorder Level"},
+                        { field: "Discontinued"}
+                    ]
+                });
+                
+                var gridWidget = $("#grid").data("kendoGrid");
+                
+                $(window).on("resize", function() {
+			    	gridWidget.resize(true);
+			    });
+			    
+/*
+			    var dialog1 = {
+				    title: "Create New View",
+				    header: null,
+				    content: "Select the template to be used as the basis for your view:",
+				    mainIcon: "warning",
+				    actions: [
+					    {
+						    text: "Cancel", 
+						    primary: true,
+						    action: function(e) {
+							    console.log('Cancel action');
+							    return true;
+						    }
+						    
+						}
+				    ],
+				    options: {
+					    type: 'link',
+					    values: [
+						    { 
+								caption: "Use blank template",
+								value: "http://google.com"
+							},
+							{
+								caption: "Use application template",
+								value: "http://google.com"
+							}
+					    ]
+				    },
+				    footer: null,
+				    footerIcon: null
+			    }
+			    
+			    var dialog2 = {
+				    title: "Delete Web View",
+				    header: null,
+				    content: "Are you sure you want to delete this Web View?",
+				    mainIcon: "warning",
+				    actions: [
+					    {
+						    text: "Yes", 
+						    primary: true,
+						    action: function(e) {
+							    console.log('Yes action');
+							    return true;
+						    }
+						},
+					    {
+						    text: "No",
+						    action: function(e) {
+							    console.log('No action');
+							    return true;
+						    }
+						}
+				    ],
+				    options: null,
+				    footer: null,
+				    footerIcon: null
+			    }
+*/
+			    
+/*
+			    var dialog3 = {
+				    title: "Reset Form",
+				    header: "Do you want to reset this form?",
+				    content: "Resetting the form will restore all captions, restore any properties assigned to fields, remove all form actions, and remove any standard fields added to the form.",
+				    mainIcon: "warning",
+				    actions: [
+					    {
+						    text: "OK", 
+						    primary: true,
+						    action: function(e) {
+							    console.log('OK action');
+							    return true;
+						    }
+						},
+					    {
+						    text: "Cancel",
+						    action: function(e) {
+							    console.log('Cancel action');
+							    return true;
+						    }
+						}
+				    ],
+				    options: {
+					    type: 'radio',
+					    values: [
+						    { 
+								caption: "Restore captions only",
+								value: "restore"
+							},
+							{
+								caption: "Reset the form",
+								value: "reset"
+							}
+					    ]
+				    },
+				    footer: "This will not remove any custom form fields, multimedia objects or user-defined groups for this form.",
+				    footerIcon: "info"
+			    }
+*/
+			    
+/*
+			    
+			    function createDialog(dialogObject) {
+				    
+				    content = $('<div class="row dialog-wrapper"></div>');
+				    
+				    if ( dialogObject.mainIcon ) {
+					    content.html('<div class="col-xs-2"><i class="material-icons text-warning fa-3x">' + dialogObject.mainIcon + '</i></div><div class="col-xs-10 dialogBody"></div>');
+				    } else {
+					    content.html('<div class="col-xs-12 dialogBody"></div>');
+				    }
+				    
+				    if ( dialogObject.header ) {
+					    content.find(".dialogBody").html('<h3 class="sys-mg-t-5">' + dialogObject.header + '</h3>');
+				    }
+				    
+				    content.find(".dialogBody").append('<p>' + dialogObject.content + '</p>');
+				    
+				    if ( dialogObject.options ) {
+					    
+					    optionsHtml = "";
+					    
+					    switch ( dialogObject.options.type ) {
+				            case "link":
+				                for (var i = 0, len = dialogObject.options.values.length; i < len; i++) {
+									optionsHtml += '<a class="dialoglink sys-mg-t-5" href="' + dialogObject.options.values[i].value + '">' + dialogObject.options.values[i].caption + '<i class="material-icons">keyboard_arrow_right</i></a>';
+								}
+				                break;
+				            case "radio":
+				            	
+				            	optionsHtml += '<div class="form-group">';
+				            	
+				            	for (var i = 0, len = dialogObject.options.values.length; i < len; i++) {
+									optionsHtml += '<div class="radio radio primary"><label><input type="radio" name="dialogOptions" id="dialogOptions" value="' + dialogObject.options.values[i].value + '">' + dialogObject.options.values[i].caption + '</label></div>';
+								}
+								
+								optionsHtml += '</div>';
+				        }
+				        
+				        content.find(".dialogBody").append(optionsHtml);
+				        
+				    }
+				    if ( dialogObject.footer ) {
+					    
+					    var footerContent = '<div class="col-xs-12 dialogFooter sys-pd-t-5"><div class="row">';
+					    
+					    
+					    if ( dialogObject.footerIcon ) {
+						    footerContent += '<div class="col-xs-2 text-right"><i class="material-icons text-info">' + dialogObject.footerIcon + '</i></div><div class="col-xs-10">' + dialogObject.footer + '</div>';
+					    } else {
+						    footerContent += '<div class="col-xs-12">' + dialogObject.footer + '</div>';
+					    }
+					    
+					    footerContent += '</div></div>';
+					    
+					    content.append(footerContent);
+					    
+				    }
+					
+					var kendoDialog = $("#dialog").kendoDialog({
+			            width: "400px",
+			            title: dialogObject.title,
+			            closable: true,
+			            modal: true,
+			            content: content,
+			            actions: dialogObject.actions,
+			            open: function() {
+				            $.material.init();
+			            }
+			            //close: 
+			        });
+			        
+			        return kendoDialog;
+				    
+			    }
+			    
+*/
+			    
+		
+/*
+		        $("#dialog-1").click(function (e) {
+			        var dialog = createDialog(dialog1);
+		            dialog.data("kendoDialog").open();
+		        });
+		        
+		        $("#dialog-2").click(function (e) {
+			        var dialog = createDialog(dialog2);
+		            dialog.data("kendoDialog").open();
+		        });
+		        
+		        $("#dialog-3").click(function (e) {
+			        var dialog = createDialog(dialog3);
+		            dialog.data("kendoDialog").open();
+		        });
+*/
+
+            });
+        </script>
+        <script>
+        
+    </script>
+	</body>
+</html>

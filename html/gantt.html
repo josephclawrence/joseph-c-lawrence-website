@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product HTML Kitchen Sink</title>
+
+    <!-- Bootstrap -->
+    <!--
+    <link href="css/syspro.min.css" rel="stylesheet">
+    <link href="css/bootkit.css" rel="stylesheet">
+-->
+    <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+    <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+    <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+    <!--     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic'
+        rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .filler_bg {
+            width: 100%;
+            height: 100px;
+            background: #dfdfdf;
+            border-radius: 4px;
+        }
+
+        .fontawesome-icon-list .fa-hover a {
+            display: block;
+            color: #222222;
+            line-height: 32px;
+            height: 32px;
+            padding-left: 10px;
+            border-radius: 4px;
+        }
+
+        .fontawesome-icon-list .fa-hover a .fa {
+            width: 32px;
+            font-size: 14px;
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .fontawesome-icon-list .fa-hover a:hover {
+            background-color: #016699;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .fontawesome-icon-list .fa-hover a:hover .fa {
+            font-size: 28px;
+            vertical-align: -6px;
+        }
+
+        .fontawesome-icon-list .fa-hover a .fa {
+            width: 32px;
+            font-size: 14px;
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        * {
+            word-wrap: break-word;
+        }
+
+        .preview {
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .show-code {
+            color: #101010;
+        }
+
+        .code-preview {
+            display: none;
+        }
+
+        .icons {
+            /* 		    font-size: 18px; */
+            padding-right: 10px;
+        }
+
+        .clear-both {
+            clear: both;
+        }
+
+        .clear-right {
+            clear: right;
+        }
+
+
+        /** GANTT OVERRIDES **/
+
+        .k-task-single {
+            background-color: #1abc9c;
+            border-color: #1abc9c;
+            color: #fff;
+            border-width: 0px;
+        }
+
+        .k-event,
+        .k-task-complete {
+            border-color: #16a085;
+            background: #16a085 0 -257px none repeat-x;
+            color: #fff;
+            border-width: 0px;
+            border-radius: 1px;
+        }
+
+        .k-task-summary {
+            border-color: #3498db;
+            background: #3498db;
+        }
+
+        .k-task-milestone,
+        .k-task-summary-complete {
+            border-color: #2980b9;
+            background: #2980b9;
+        }
+
+        .k-gantt .k-treelist .k-alt {
+            background-color: #ecf0f1;
+        }
+
+        .k-gantt-layout .k-grid-header:first-child,
+        .k-grid-toolbar:first-child,
+        .k-scheduler>.k-scheduler-toolbar:first-child {
+            border-radius: 0px;
+        }
+
+        .k-gantt-layout div.k-grid-header {
+            padding-right: 0px;
+        }
+
+        .k-gantt-layout .k-grid-header-wrap {
+            border-top-width: 0px;
+        }
+
+        .k-gantt-layout .k-grid-header:first-child th.k-header:first-child,
+        .k-gantt-layout .k-grid-header:last-child th.k-header:last-child {
+            border-radius: 0px;
+        }
+
+        .k-line {
+            background-color: #34495e;
+            color: #34495e;
+        }
+
+        .k-popup.k-list-container,
+        ,
+        .k-popup.k-calendar-container {
+            padding: 0;
+            border-width: 0px !important;
+        }
+
+        .k-calendar-container.k-state-border-up {
+            border-radius: 0px 0px 2px 2px;
+        }
+
+        .k-panelbar .k-state-focused.k-state-selected,
+        td.k-state-focused.k-state-selected,
+        .k-state-selected td.k-state-focused,
+        .k-listview>.k-state-focused.k-state-selected {
+            box-shadow: none !important;
+        }
+
+        .k-i-arrow-60-down {
+            background-position-y: -37px;
+        }
+
+        .k-numerictextbox .k-link {
+            height: 1em;
+        }
+
+        :root *>.k-icon.k-i-arrow-60-up {
+            vertical-align: baseline;
+        }
+
+        :root *>.k-icon.k-i-arrow-60-down {
+            vertical-align: middle;
+        }
+
+        .k-list-container.k-state-border-down {
+            border-radius: 2px 2px 0px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row" id="cards">
+
+            <h2>Gantt</h2>
+            <div class="col-sm-12">
+                <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel sys-widget sys-rd sys-bd-off">
+
+                                    <div class="panel-body sys-pd-b-10 text-center sys-pd-off sys-rd">
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div id="gantt" class="sys-bd-off"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-12">
+                <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel sys-widget sys-rd sys-bd-off">
+
+                                    <div class="panel-body sys-pd-b-10 text-center sys-pd-off sys-rd">
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div id="gantt2" class="sys-bd-off"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+
+    <script>
+        $(".fittext").fitText(0.8);
+
+
+
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            var serviceRoot = "https://demos.telerik.com/kendo-ui/service";
+            var tasksDataSource = new kendo.data.GanttDataSource({
+                transport: {
+                    read: {
+                        url: serviceRoot + "/GanttTasks",
+                        dataType: "jsonp"
+                    },
+                    update: {
+                        url: serviceRoot + "/GanttTasks/Update",
+                        dataType: "jsonp"
+                    },
+                    destroy: {
+                        url: serviceRoot + "/GanttTasks/Destroy",
+                        dataType: "jsonp"
+                    },
+                    create: {
+                        url: serviceRoot + "/GanttTasks/Create",
+                        dataType: "jsonp"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read") {
+                            return { models: kendo.stringify(options.models || [options]) };
+                        }
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { from: "ID", type: "number" },
+                            orderId: { from: "OrderID", type: "number", validation: { required: true } },
+                            parentId: { from: "ParentID", type: "number", defaultValue: null, validation: { required: true } },
+                            start: { from: "Start", type: "date" },
+                            end: { from: "End", type: "date" },
+                            title: { from: "Title", defaultValue: "", type: "string" },
+                            percentComplete: { from: "PercentComplete", type: "number" },
+                            summary: { from: "Summary", type: "boolean" },
+                            expanded: { from: "Expanded", type: "boolean", defaultValue: true }
+                        }
+                    }
+                }
+            });
+
+            var dependenciesDataSource = new kendo.data.GanttDependencyDataSource({
+                transport: {
+                    read: {
+                        url: serviceRoot + "/GanttDependencies",
+                        dataType: "jsonp"
+                    },
+                    update: {
+                        url: serviceRoot + "/GanttDependencies/Update",
+                        dataType: "jsonp"
+                    },
+                    destroy: {
+                        url: serviceRoot + "/GanttDependencies/Destroy",
+                        dataType: "jsonp"
+                    },
+                    create: {
+                        url: serviceRoot + "/GanttDependencies/Create",
+                        dataType: "jsonp"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read") {
+                            return { models: kendo.stringify(options.models || [options]) };
+                        }
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { from: "ID", type: "number" },
+                            predecessorId: { from: "PredecessorID", type: "number" },
+                            successorId: { from: "SuccessorID", type: "number" },
+                            type: { from: "Type", type: "number" }
+                        }
+                    }
+                }
+            });
+
+            var gantt = $("#gantt").kendoGantt({
+                dataSource: tasksDataSource,
+                dependencies: dependenciesDataSource,
+                views: [
+                    "day",
+                    { type: "week", selected: true },
+                    "month"
+                ],
+                columns: [
+                    { field: "id", title: "ID", width: 60 },
+                    { field: "title", title: "Title", editable: true, sortable: true },
+                    { field: "start", title: "Start Time", format: "{0:MM/dd/yyyy}", width: 100, editable: true, sortable: true },
+                    { field: "end", title: "End Time", format: "{0:MM/dd/yyyy}", width: 100, editable: true, sortable: true }
+                ],
+                height: 700,
+                editable: false,
+                showWorkHours: false,
+                showWorkDays: false,
+                resizable: true,
+                snap: false
+            }).data("kendoGantt");
+
+            var gantt2 = $("#gantt2").kendoGantt({
+                dataSource: tasksDataSource,
+                dependencies: dependenciesDataSource,
+                views: [
+                    "day",
+                    { type: "week", selected: true },
+                    "month"
+                ],
+                columns: [
+                    { field: "id", title: "ID", width: 60 },
+                    { field: "title", title: "Title", editable: true, sortable: true },
+                    { field: "start", title: "Start Time", format: "{0:MM/dd/yyyy}", width: 100, editable: true, sortable: true },
+                    { field: "end", title: "End Time", format: "{0:MM/dd/yyyy}", width: 100, editable: true, sortable: true }
+                ],
+                height: 700,
+                showWorkHours: false,
+                showWorkDays: false,
+                resizable: true,
+                snap: false
+            }).data("kendoGantt");
+
+        });
+    </script>
+</body>
+
+</html>

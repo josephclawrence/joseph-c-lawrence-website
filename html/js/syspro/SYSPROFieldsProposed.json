@@ -1,0 +1,63 @@
+{
+	//The VB Script safe name of the field which matches Field Path
+	"Name":	{
+			//The category in the Field Chooser in which this field would fall.
+			"Category": "Master Fields",
+			//The VB Script safe name of the field
+			"FieldPath": "Name",
+			//User visible caption (Would be translated)
+			"Caption": "Name",
+			//A: Alpha, N: Numeric, B: Boolean, "L": "List", "C": Chart List (Could change this to int's to conform better but not huge)
+			"DataType": "A",
+			//0: Data, 1: Link
+			"FieldType": 0,
+			//EventCode direct from SYSPRO
+			"EventCode": "",
+			//Value to bind with
+			"Value": "Bayside Bikes"
+		},
+	"CustomerCode":	{
+			"Category": "Master Fields",
+			"FieldPath": "CustomerCode",
+			"Caption": "Customer Code",
+			"DataType": "A",
+			"FieldType": 1,
+			"EventCode": "C",
+			"Value": "0000001"
+		},
+	"OnHold":	{
+			"Category": "Master Fields",
+			"FieldPath": "OnHold",
+			"Caption": "On Hold",
+			"DataType": "B",
+			"FieldType": 0,
+			"EventCode": "",
+			//Should boolean values be Y/N or true/false. true/false coforms much nicer for JS
+			"Value": "N"
+		},	
+	"Importance":	{
+			"Category": "Custom Forms",
+			"FieldPath": "Importance",
+			"Caption": "Importance",
+			"DataType": "N",
+			"FieldType": 0,
+			"EventCode": "",
+			"Value": "7"
+		},
+	"InvoiceAgeing":	{
+			"Category": "Charts",
+			"FieldPath": "InvoiceAgeing",
+			"Caption": "Invoice ageing value",
+			"DataType": "C",
+			"FieldType": 2,
+			"EventCode": "",
+			"Value": [
+				{"Caption":"Current", "Value":24000.25},
+				{"Caption":"30", "Value":14000.25},
+				{"Caption":"60", "Value":4000.25},
+				{"Caption":"90", "Value":0.00},
+				{"Caption":"120", "Value":0.00}
+			]
+		}		
+ }
+

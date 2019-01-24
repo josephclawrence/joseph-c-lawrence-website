@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product HTML Kitchen Sink</title>
+
+    <!-- Bootstrap -->
+<!--
+    <link href="css/syspro.min.css" rel="stylesheet">
+    <link href="css/bootkit.css" rel="stylesheet">
+-->
+	<link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+	<link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+	
+	<link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/sysprostyle.css" rel="stylesheet">
+	<link href="css/simple-line-icons.css" rel="stylesheet">
+<!--     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800' rel='stylesheet' type='text/css'> -->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	  	.filler_bg {
+		  	width:100%;
+		  	height: 100px;
+		  	background: #dfdfdf;
+		  	border-radius: 4px;
+	  	}  
+	  	.fontawesome-icon-list .fa-hover a {
+		  display: block;
+		  color: #222222;
+		  line-height: 32px;
+		  height: 32px;
+		  padding-left: 10px;
+		  border-radius: 4px;
+		}
+		.fontawesome-icon-list .fa-hover a .fa {
+		  width: 32px;
+		  font-size: 14px;
+		  display: inline-block;
+		  text-align: right;
+		  margin-right: 10px;
+		}
+		.fontawesome-icon-list .fa-hover a:hover {
+		  background-color: #016699;
+		  color: #ffffff;
+		  text-decoration: none;
+		}
+		.fontawesome-icon-list .fa-hover a:hover .fa {
+		  font-size: 28px;
+		  vertical-align: -6px;
+		}
+		.fontawesome-icon-list .fa-hover a .fa {
+		  width: 32px;
+		  font-size: 14px;
+		  display: inline-block;
+		  text-align: right;
+		  margin-right: 10px;
+		}
+		* {
+			word-wrap: break-word;
+		}
+		.preview {
+		    padding: 20px 0;
+		    position: relative;
+		}
+		.show-code {
+		    color: #101010;
+		}
+		.code-preview {
+			display: none;
+		}
+		.icons {
+/* 		    font-size: 18px; */
+		    padding-right: 10px;
+		}
+		.clear-both {
+			clear:both;
+		}
+		.clear-right {
+			clear:right;
+		}
+	</style>
+  </head>
+  <body>
+    <div class="container">
+	    
+	    <div class="row" id="cards">
+		    
+		    <h2>Diagram</h2>
+		    <div class="col-sm-4">
+			    <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+					<div class="panel-body">			
+						
+						<div class="row">
+						    <div class="col-sm-12">
+							    <div class="panel sys-widget sys-rd">
+								    
+								    <div class="panel-body sys-pd-b-10 text-center sys-pd-off sys-rd">
+								        
+								        <div class="row">
+											<div class="col-xs-12">
+												<div id="diagram" class="sys-bd-off"></div>
+											</div>
+								        </div>
+								        
+								    </div>
+								</div>
+						    </div>
+					    </div>
+
+
+					</div>
+			    </div>
+
+		    </div>
+		    
+		    <div class="col-sm-8">
+			    <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+					<div class="panel-body">
+						
+					    <div class="row">
+						    <div class="col-sm-12">
+							    <div class="panel sys-widget sys-rd">
+								    
+								    <div class="panel-body sys-pd-b-10 text-center sys-pd-off sys-rd">
+								        
+								        <div class="row">
+											<div class="col-xs-12">
+												<div id="diagram2" class="sys-bd-off"></div>
+											</div>
+								        </div>
+								        
+								    </div>
+								</div>
+						    </div>
+					    </div>
+					    
+					</div>
+			    </div>
+		    </div>
+
+	    </div>
+
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+
+    <script>
+		$(".fittext").fitText(0.8);
+		
+
+		
+		
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		});
+		$(function () {
+		  $('[data-toggle="popover"]').popover()
+		});
+		
+
+	</script>
+	<script>
+        var data = [{
+            firstName: "Antonio",
+            lastName: "Moreno",
+            title: "Team Lead",
+            colorScheme: "#1abc9c",
+            items: [{
+                firstName: "Elizabeth",
+                lastName: "Brown",
+                title: "Design Lead",
+                colorScheme: "#e67e22",
+                items: [{
+                    firstName: "Ann",
+                    lastName: "Devon",
+                    title: "UI Designer",
+                    colorScheme: "#e67e22"
+                }]
+            }, {
+                firstName: "Diego",
+                lastName: "Roel",
+                title: "QA Engineer",
+                colorScheme: "#ee587b",
+                items: [{
+                    firstName: "Fran",
+                    lastName: "Wilson",
+                    title: "QA Intern",
+                    colorScheme: "#ee587b"
+                }]
+            }, {
+                firstName: "Felipe",
+                lastName: "Izquiedro",
+                title: "Senior Developer",
+                colorScheme: "#27ae60",
+                items: [{
+                    firstName: "Daniel",
+                    lastName: "Tonini",
+                    title: "Developer",
+                    colorScheme: "#27ae60"
+                }]
+            }]
+        }];
+
+        function visualTemplate(options) {
+            var dataviz = kendo.dataviz;
+            var g = new dataviz.diagram.Group();
+            var dataItem = options.dataItem;
+
+            g.append(new dataviz.diagram.Rectangle({
+                width: 180,
+                height: 75,
+                stroke: {
+                    width: 0
+                },
+                fill: {
+	                color: dataItem.colorScheme
+                }
+            }));
+
+            g.append(new dataviz.diagram.TextBlock({
+                text: dataItem.firstName + " " + dataItem.lastName,
+                x: 35,
+                y: 20,
+                fill: "#fff"
+            }));
+
+            g.append(new dataviz.diagram.TextBlock({
+                text: dataItem.title,
+                x: 35,
+                y: 40,
+                fill: "#fff"
+            }));
+
+
+            return g;
+        }
+
+        function createDiagram() {
+            $("#diagram").kendoDiagram({
+                dataSource: new kendo.data.HierarchicalDataSource({
+                    data: data,
+                    schema: {
+                        model: {
+                            children: "items"
+                        }
+                    }
+                }),
+                layout: {
+                    type: "tree",
+                    subtype: "mindmapVertical"
+                },
+                shapeDefaults: {
+                    visual: visualTemplate
+                },
+
+                connectionDefaults: {
+			       stroke: {
+			           color: "#34495e",
+			           width: 2
+			       },
+			       type:"cascading",
+			       startCap: "FilledCircle",
+			       endCap: "ArrowEnd"
+			   },
+			   zoom: 0.7,
+			   zoomRate: 0.05,
+			   editable: false,
+            });
+
+            var diagram = $("#diagram").getKendoDiagram();
+            diagram.bringIntoView(diagram.shapes);
+            
+            
+/*
+            $("#diagram2").kendoDiagram({
+                dataSource: new kendo.data.HierarchicalDataSource({
+                    data: data,
+                    schema: {
+                        model: {
+                            children: "items"
+                        }
+                    }
+                }),
+                layout: {
+                    type: "layered",
+                    subtype: "horizontal"
+                },
+                
+                shapeDefaults: {
+                    visual: visualTemplate
+                },
+
+                connectionDefaults: {
+			       stroke: {
+			           color: "#34495e",
+			           width: 2
+			       },
+			       type:"cascading",
+			       startCap: "FilledCircle",
+			       endCap: "ArrowEnd"
+			   },
+			   zoom: 0.8,
+			   zoomRate: 0.05,
+			   editable: false,
+            });
+*/
+
+/*
+            var diagram2 = $("#diagram2").getKendoDiagram();
+            diagram2.bringIntoView(diagram2.shapes);
+*/
+        }
+
+        $(document).ready(createDiagram);
+    </script>
+    
+    <script>
+        function visualTemplate2(options) {
+            var dataviz = kendo.dataviz;
+            var g = new dataviz.diagram.Group();
+            var dataItem = options.dataItem;
+
+            if (dataItem.JobTitle === "President") {
+                g.append(new dataviz.diagram.Circle({
+                    radius: 60,
+                    stroke: {
+                        width: 2,
+                        color: dataItem.Color || "#586477"
+                    },
+                    fill: "#e8eff7"
+                }));
+            } else {
+                g.append(new dataviz.diagram.Rectangle({
+                    width: 240,
+                    height: 67,
+                    stroke: {
+                        width: 0
+                    },
+                    fill: "#e8eff7"
+                }));
+
+                g.append(new dataviz.diagram.Rectangle({
+                    width: 8,
+                    height: 67,
+                    fill: dataItem.Color,
+                    stroke: {
+                        width: 0
+                    }
+                }));
+            }
+
+            return g;
+        }
+
+        function onDataBound(e) {
+            var that = this;
+            setTimeout(function () {
+                that.bringIntoView(that.shapes);
+            }, 0);
+        }
+
+        function createDiagram2() {
+            var serviceRoot = "https://demos.telerik.com/kendo-ui/service";
+
+            var shapesDataSource = {
+                batch: false,
+                transport: {
+                    read: {
+                        url: serviceRoot + "/DiagramShapes",
+                        dataType: "jsonp"
+                    },
+                    update: {
+                        url: serviceRoot + "/DiagramShapes/Update",
+                        dataType: "jsonp"
+                    },
+                    destroy: {
+                        url: serviceRoot + "/DiagramShapes/Destroy",
+                        dataType: "jsonp"
+                    },
+                    create: {
+                        url: serviceRoot + "/DiagramShapes/Create",
+                        dataType: "jsonp"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read") {
+                            return { models: kendo.stringify(options.models || [options]) };
+                        }
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { from: "Id", type: "number", editable: false },
+                            JobTitle: { type: "string" },
+                            Color: { type: "string" }
+                        }
+                    }
+                }
+            };
+
+            var connectionsDataSource = {
+                batch: false,
+                transport: {
+                    read: {
+                        url: serviceRoot + "/DiagramConnections",
+                        dataType: "jsonp"
+                    },
+                    update: {
+                        url: serviceRoot + "/DiagramConnections/Update",
+                        dataType: "jsonp"
+                    },
+                    destroy: {
+                        url: serviceRoot + "/DiagramConnections/Destroy",
+                        dataType: "jsonp"
+                    },
+                    create: {
+                        url: serviceRoot + "/DiagramConnections/Create",
+                        dataType: "jsonp"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read") {
+                            return { models: kendo.stringify(options.models || [options]) };
+                        }
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { from: "Id", type: "number", editable: false },
+                            from: { from: "FromShapeId", type: "number" },
+                            to: { from: "ToShapeId", type: "number" },
+                            fromX: { from: "FromPointX", type: "number" },
+                            fromY: { from: "FromPointY", type: "number" },
+                            toX: { from: "ToPointX", type: "number" },
+                            toY: { from: "ToPointY", type: "number" }
+                        }
+                    }
+                }
+            };
+
+            $("#diagram2").kendoDiagram({
+                dataSource: shapesDataSource,
+                connectionsDataSource: connectionsDataSource,
+                layout: {
+                    type: "tree",
+                    subtype: "tipover",
+                    underneathHorizontalOffset: 140
+                },
+                shapeDefaults: {
+                    visual: visualTemplate2,
+                    content: {
+                        template: "#= dataItem.JobTitle #",
+                        fontSize: 17
+                    },
+                    editable: {
+		                tools: [{
+			        		name: "edit"
+			      		}, {
+			        		name: "delete"
+			      		}]
+	                }
+                },
+                connectionDefaults: {
+                    stroke: {
+			           color: "#34495e",
+			           width: 2
+			       },
+			       type:"cascading",
+// 			       startCap: "FilledCircle",
+			       endCap: "ArrowEnd",
+			       editable: {
+		            	tools: [{
+			            	name: "delete"
+		            	}]
+	            	}
+                },
+                shapes: {
+	                editable: {
+		                tools: [{
+			        		name: "edit"
+			      		}, {
+			        		name: "delete"
+			      		}]
+	                }
+                },
+                connections: {
+	            	editable: {
+		            	tools: [{
+			            	name: "delete"
+		            	}]
+	            	}  
+                },
+                editable: {
+	                resize: false,
+	                rotate: false,
+	                tools: [{
+			        	name: "createShape"
+			      	}, {
+			        	name: "undo"
+			      	}, {
+			        	name: "redo"
+			      	}]
+                },
+                theme: "bootstrap",
+                dataBound: onDataBound
+            });
+        }
+
+        $(document).ready(createDiagram2);
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,133 @@
+{
+Columns: [
+	{
+		Index: 0,
+		//Style list from Joe (.col-xs-4 .col-sm-6)
+		ResponsiveStyle: "4",
+		Widgets:
+		[
+			//Can contain a layout widget, Card or Spark Line?
+			{   
+				Index: 0,
+				Title: "Customer Stuff", 
+				Type: "LayoutWidget",
+				//Joined, Seperated
+				SubType: "Joined",
+				//Can be Collapsible/Inline/Etc.
+				DisplayType: "Inline",
+				//List view, Marque, Inline
+				RowStyle: "Inline",
+				//1-4 options
+				Borders: "4",
+				//Background color of collapsible or other
+				SecondaryStyle: "2",
+				Rows: [
+					{
+						//There would be only one column for a RowStyle: ListView.
+						Columns: [
+									{
+										Index: 0,
+										//Style list from Joe (.col-xs-4 .col-sm-6)
+										ResponsiveStyle: "4",
+										//Based on background color
+										VisualStyle: 4,
+										Widget:
+										{ 
+												Index: 0,
+												Type: "DataWidget",
+												//Joined, Seperated
+												SubType: "Joined",
+												//If the Field name has a matching Card name then add a card popup.
+												FieldName: "Customer",
+												//We assume this will contain fields: "Name", "Value" 
+												FieldPath: "ARSPEN.Header.Customer.Name",
+												Caption:
+												{
+													Color: 0,
+													Size: 10,
+													Alignment: "Left",
+													Visible: false
+												},
+												Value:
+												{
+													Color: 0,
+													Size: 10,
+													Alignment: "Left",
+													Weight: 2
+												},
+												Icon: {
+													Name: "HappyFace",
+													Color: 0,
+													Size: 10,
+													Alignment: "Left",
+													Tooltip: "Happy Days"
+												}
+										}
+										
+									},
+									Widget:
+										{ 
+												Index: 0,
+												Type: "LinkWidget",
+												//Joined, Seperated
+												SubType: "Joined",
+												//We assume this will contain fields: "Name", "Value" 
+												FieldName: "ARSPEN.Header.Customer.Name",
+												Caption:
+												{
+													Color: 0,
+													Size: 10,
+													Alignment: "Left",
+													Visible: false
+												},
+												Value:
+												{
+													Color: 0,
+													Size: 10,
+													Alignment: "Left",
+													Weight: 2
+												},
+												Icon: {
+													Name: "HappyFace",
+													Color: 0,
+													Size: 10,
+													Alignment: "Left"
+												}
+										}
+										
+									},
+									{
+										Index: 1,
+										Type: "Card",
+										SubType: "Mini",
+										CardType: "Salesperson"
+										//of defined list of colors
+										Color: "2" 
+									}
+					}
+				]
+			},
+			{
+				Index: 1,
+				Type: "Card",
+				SubType: "Maxi",
+				CardType: "StockCode"
+				//of defined list of colors
+				Color: "2" 
+			},
+			{
+				Index: 2,
+				Type: "Sparkline",
+				SubType: "Line",
+				CardType: "StockCode"
+				//of defined list of colors
+				Color: "2" 
+			},
+		]
+		
+	},
+	{
+	}
+
+]
+}

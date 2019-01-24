@@ -1,0 +1,231 @@
+/* Contains all readily available classes to make our lives easier when setting up layouts in HTML.
+   Can be used anywhere in the project, are not bound to the .bk-widget class unlike the classes in widget.less
+   These values are just defaults and can easily be adjusted to your needs.
+*/
+
+// remove overflow
+.@{bootkit-prefix}-overflow-off {
+  overflow: hidden !important;
+}
+
+// add overflow
+.@{bootkit-prefix}-overflow {
+  overflow: visible !important;
+}
+
+// nowrap
+.@{bootkit-prefix}-wrap-off {
+  white-space: nowrap;
+}
+
+// no outline
+.@{bootkit-prefix}-outline-off {
+  outline: none !important;
+}
+
+// no box shadow
+.@{bootkit-prefix}-box-shadow-off {
+  box-shadow: none !important;
+}
+
+// position relative to tell child elements which parent to use (child elements which are also positioned relatively or absolutely)
+.@{bootkit-prefix}-wrapper {
+  position: relative;
+}
+
+// chrome fix or something ... what's in a name; it's just a temp fix for annoying webkit bugs
+.@{bootkit-prefix}-chrome-fix {
+  backface-visibility: hidden; // fix for chrome image moving bug - http://stackoverflow.com/questions/12980153/image-moves-on-hover-chrome-opacity-issue
+  transform-style: preserve-3d; // fix for backface-visibility chrome bug - http://stackoverflow.com/questions/10355564/backface-visibility-broken-in-chrome-certain-platforms-versions
+}
+
+// elevate element to block level
+.@{bootkit-prefix}-block {
+  display: block;
+}
+
+// small
+.@{bootkit-prefix}-sml {
+  font-size: 80%;
+}
+
+// font weights
+.bk-300 { font-weight: 300; }
+.bk-400 { font-weight: 400; }
+.bk-500 { font-weight: 500; }
+.bk-600 { font-weight: 600; }
+.bk-700 { font-weight: 700; }
+.bk-800 { font-weight: 800; }
+.bk-900 { font-weight: 900; }
+
+
+// border radius ---------------------------------------
+.@{bootkit-prefix}-round {
+  border-radius: 50% !important;
+}
+
+.@{bootkit-prefix}-rd {
+  border-radius: @panel-border-radius;
+}
+
+// remove
+.@{bootkit-prefix}-rd-off {
+  border-radius: 0 !important;
+}
+
+.@{bootkit-prefix}-rd-off-t {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.@{bootkit-prefix}-rd-off-b {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.@{bootkit-prefix}-rd-off-l {
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.@{bootkit-prefix}-rd-off-r {
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+// add
+.@{bootkit-prefix}-rd-t {
+  border-top-right-radius: @panel-border-radius;
+  border-top-left-radius: @panel-border-radius;
+}
+
+.@{bootkit-prefix}-rd-t-l {
+  border-top-left-radius: @panel-border-radius;
+}
+
+.@{bootkit-prefix}-rd-t-r {
+  border-top-right-radius: @panel-border-radius;
+}
+
+.@{bootkit-prefix}-rd-b {
+  border-bottom-right-radius: @panel-border-radius;
+  border-bottom-left-radius: @panel-border-radius;
+}
+
+.@{bootkit-prefix}-rd-b-l {
+  border-bottom-left-radius: @panel-border-radius;
+}
+
+.@{bootkit-prefix}-rd-b-r {
+  border-bottom-right-radius: @panel-border-radius;
+}
+
+.@{bootkit-prefix}-rd-r {
+  border-top-right-radius: @panel-border-radius;
+  border-bottom-right-radius: @panel-border-radius;
+}
+
+.@{bootkit-prefix}-rd-l {
+  border-bottom-left-radius: @panel-border-radius;
+  border-top-left-radius: @panel-border-radius;
+}
+
+
+// remove IE snap-mode (http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/ + http://stackoverflow.com/questions/17045132/scrollbar-overlay-in-ie10-how-do-you-stop-that)
+@-ms-viewport{ width: auto !important; }
+
+
+//==> PADDING AND MARGINS ----------------------------------------------------------------------------------------------
+@bk-margin:       50px;
+@bk-padding:      @bk-margin;
+
+//-> down/up pushing
+// calculated margins (u = up; d = down)
+.@{bootkit-prefix}-d-mg {margin-top: @bk-margin !important;}
+.@{bootkit-prefix}-u-mg {margin-bottom: @bk-margin !important;}
+.@{bootkit-prefix}-d-mg-sm {margin-top: ceil(@bk-margin/2) !important;}
+.@{bootkit-prefix}-u-mg-sm {margin-bottom: ceil(@bk-margin/2) !important;}
+.@{bootkit-prefix}-d-mg-xs {margin-top: ceil(@bk-margin/4) !important;}
+.@{bootkit-prefix}-u-mg-xs {margin-bottom: ceil(@bk-margin/4) !important;}
+
+// calculated padding (u = up; d = down)
+.@{bootkit-prefix}-d-pd {padding-top: @bk-padding !important;}
+.@{bootkit-prefix}-u-pd {padding-bottom: @bk-padding !important;}
+.@{bootkit-prefix}-d-pd-sm {padding-top: ceil(@bk-padding/2) !important;}
+.@{bootkit-prefix}-u-pd-sm {padding-bottom: ceil(@bk-padding/2) !important;}
+.@{bootkit-prefix}-d-pd-xs {padding-top: ceil(@bk-padding/4) !important;}
+.@{bootkit-prefix}-u-pd-xs {padding-bottom: ceil(@bk-padding/4) !important;}
+
+
+//-> Margins
+.@{bootkit-prefix}-mg-5 {margin: 5px !important;}
+.@{bootkit-prefix}-mg-10 {margin: 10px !important;}
+.@{bootkit-prefix}-mg-15 {margin: 15px !important;}
+
+.@{bootkit-prefix}-mg-t-5 { margin-top: 5px !important; }
+.@{bootkit-prefix}-mg-b-5 { margin-bottom: 5px !important; }
+.@{bootkit-prefix}-mg-r-5 { margin-right: 5px !important; }
+.@{bootkit-prefix}-mg-l-5 { margin-left: 5px !important; }
+
+.@{bootkit-prefix}-mg-t-10 {margin-top: 10px !important;}
+.@{bootkit-prefix}-mg-b-10 {margin-bottom: 10px !important;}
+.@{bootkit-prefix}-mg-r-10 {margin-right: 10px !important;}
+.@{bootkit-prefix}-mg-l-10 {margin-left: 10px !important;}
+
+.@{bootkit-prefix}-mg-t-15 {margin-top: 15px !important;}
+.@{bootkit-prefix}-mg-b-15 {margin-bottom: 15px !important;}
+.@{bootkit-prefix}-mg-r-15 {margin-right: 15px !important;}
+.@{bootkit-prefix}-mg-l-15 {margin-left: 15px !important;}
+
+.@{bootkit-prefix}-mg-off {margin: 0 !important;}
+
+.@{bootkit-prefix}-mg-off-t {margin-top: 0 !important;}
+.@{bootkit-prefix}-mg-off-b {margin-bottom: 0 !important;}
+.@{bootkit-prefix}-mg-off-r {margin-right: 0 !important;}
+.@{bootkit-prefix}-mg-off-l {margin-left: 0 !important;}
+
+
+//-> Padding
+.@{bootkit-prefix}-pd-5 {padding: 5px !important;}
+.@{bootkit-prefix}-pd-10 {padding: 10px !important;}
+.@{bootkit-prefix}-pd-15 {padding: 15px !important;}
+.@{bootkit-prefix}-pd-20 {padding: 20px !important;}
+.@{bootkit-prefix}-pd-30 {padding: 30px !important;}
+.@{bootkit-prefix}-pd-40 {padding: 40px !important;}
+
+.@{bootkit-prefix}-pd-t-5 {padding-top: 5px !important;}
+.@{bootkit-prefix}-pd-b-5 {padding-bottom: 5px !important;}
+.@{bootkit-prefix}-pd-r-5 {padding-right: 5px !important;}
+.@{bootkit-prefix}-pd-l-5 {padding-left: 5px !important;}
+
+.@{bootkit-prefix}-pd-t-10 {padding-top: 10px !important;}
+.@{bootkit-prefix}-pd-b-10 {padding-bottom: 10px !important;}
+.@{bootkit-prefix}-pd-r-10 {padding-right: 10px !important;}
+.@{bootkit-prefix}-pd-l-10 {padding-left: 10px !important;}
+
+.@{bootkit-prefix}-pd-t-15 {padding-top: 15px !important;}
+.@{bootkit-prefix}-pd-b-15 {padding-bottom: 15px !important;}
+.@{bootkit-prefix}-pd-r-15 {padding-right: 15px !important;}
+.@{bootkit-prefix}-pd-l-15 {padding-left: 15px !important;}
+
+.@{bootkit-prefix}-pd-t-20 {padding-top: 20px !important;}
+.@{bootkit-prefix}-pd-b-20 {padding-bottom: 20px !important;}
+.@{bootkit-prefix}-pd-r-20 {padding-right: 20px !important;}
+.@{bootkit-prefix}-pd-l-20 {padding-left: 20px !important;}
+
+.@{bootkit-prefix}-pd-t-30 {padding-top: 30px !important;}
+.@{bootkit-prefix}-pd-b-30 {padding-bottom: 30px !important;}
+.@{bootkit-prefix}-pd-r-30 {padding-right: 30px !important;}
+.@{bootkit-prefix}-pd-l-30 {padding-left: 30px !important;}
+
+.@{bootkit-prefix}-pd-t-40 {padding-top: 40px !important;}
+.@{bootkit-prefix}-pd-b-40 {padding-bottom: 40px !important;}
+.@{bootkit-prefix}-pd-r-40 {padding-right: 40px !important;}
+.@{bootkit-prefix}-pd-l-40 {padding-left: 40px !important;}
+
+.@{bootkit-prefix}-pd-off {padding: 0 !important;}
+
+.@{bootkit-prefix}-pd-off-t {padding-top: 0 !important;}
+.@{bootkit-prefix}-pd-off-b {padding-bottom: 0 !important;}
+.@{bootkit-prefix}-pd-off-r {padding-right: 0 !important;}
+.@{bootkit-prefix}-pd-off-l {padding-left: 0 !important;}

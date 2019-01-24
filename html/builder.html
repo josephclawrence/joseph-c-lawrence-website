@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product Visual Builder</title>
+
+    <!-- Bootstrap -->
+<!--
+    <link href="css/syspro.min.css" rel="stylesheet">
+    <link href="css/bootkit.css" rel="stylesheet">
+-->
+	<link href="css/sysprostyle.css" rel="stylesheet" />
+	<link href="css/kendo.common-bootstrap.min.css" rel="stylesheet" />
+	<link href="css/kendo.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/kendo.dataviz.min.css" rel="stylesheet" />
+<!-- 	<link href="css/jquery-ui.min.css" rel="stylesheet"> -->
+	
+	<link href="css/hopscotch.min.css" rel="stylesheet" />
+	<link href="css/kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/simple-line-icons.css" rel="stylesheet" />
+	<link href="bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet" />
+<!-- 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css"> -->
+	<script>
+		window.MSPointerEvent = null;
+
+		window.PointerEvent = null;
+
+	</script>
+	<script type="text/javascript">
+	  WebFontConfig = {
+	    google: { families: [ 'Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin' ] }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })(); 
+	</script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/kendo.js"></script>  
+	<script src="bower_components/immutable/dist/immutable.min.js"></script>
+  	</head>
+  	<body data-column-layout="3col">
+
+	  	<nav class="navbar navbar-default navbar-fixed-top">
+		  	<div class="container-fluid">
+			  	
+			  	<div class="pull-left" >
+				  	<ul class="nav nav-pills mt-5" id="sidebar-tab-controls">
+					  <li data-tooltip="tooltip" data-placement="bottom" title="Column Layouts" role="presentation" id="changeLayoutTourStop">
+					  	<a class="menu-toggle-tab " href="#column-manager" aria-controls="column-manager" role="tab" data-toggle="tab"><i class="material-icons">view_column</i></a>
+					  </li>
+					  <li data-tooltip="tooltip" data-placement="bottom" title="Quick Add layout section" role="presentation" id="quickAddLayoutTourStop">
+					  	<a class="menu-toggle-tab" href="#quick-add-layout" aria-controls="quick-add-layout" role="tab" data-toggle="tab"><i class="material-icons">add_to_photos</i></a>
+					  </li>
+					  <li data-tooltip="tooltip" data-placement="bottom" title="Quick add data widget" role="presentation" id="quickAddDataTourStop">
+					  	<a class="menu-toggle-tab" href="#quick-add-data" aria-controls="quick-add-data" role="tab" data-toggle="tab"><i class="material-icons">note_add</i></a>
+					  </li>
+					</ul>
+
+			  	</div>  
+				<a href="#" onclick="hopscotch.startTour(tour, 0)" class="btn btn-small navbar-btn pull-right" data-tooltip="tooltip" data-placement="bottom" title="View the tour" id="tour_starter"><i class="material-icons">help</i></a>	
+<!-- 				<a href="#" id="exportTotalJSON" class="btn btn-small navbar-btn pull-right" data-tooltip="tooltip" data-placement="bottom" title="Save template"><i class="material-icons">save</i></a> -->
+<!-- 				<a href="#" class="btn btn-small navbar-btn pull-right" data-tooltip="tooltip" data-placement="bottom" title="Load template"><i class="material-icons">open_in_browser</i></a> -->
+<!-- 				<a href="#" onclick="SYSPRO_VB.deleteAll()" class="btn btn-small navbar-btn pull-right" data-tooltip="tooltip" data-placement="bottom" title="Delete and start again"><i class="material-icons">delete</i></a> -->
+				<a href="#" id="redo-button" onclick="SYSPRO_VB.redo()" class="btn btn-small navbar-btn pull-right disabled" data-tooltip="tooltip" data-placement="bottom" title="Redo last action"><i class="material-icons">redo</i></a>
+				<a href="#" id="undo-button" onclick="SYSPRO_VB.undo()" class="btn btn-small navbar-btn pull-right disabled" data-tooltip="tooltip" data-placement="bottom" title="Undo last action"><i class="material-icons">undo</i></a>
+		  	</div>
+		</nav>
+		
+		<div id="invisibleNode" style="display: none;"></div>
+		
+		<div id="wrapper" class="toggled">
+			<!-- Sidebar -->
+	        <div id="sidebar-wrapper">
+		        
+		        <a href="#" class="menu-toggle pull-right text-muted"><i class="material-icons">close</i></a>
+		        
+		        <div id="draggableCover" class="text-center text-primary">
+			        <i class="material-icons">redo</i>
+			        <h3>Drag and drop to your layout</h3>
+		        </div>
+				
+				<!-- Tab panes -->
+				<div class="tab-content">
+				   	<div role="tabpanel" class="tab-pane active fade" id="column-manager">
+					    <h4 class="mt-off">Change column layout:</h4>
+					    <div class="pull-left" data-toggle="buttons">
+						    
+							<!-- 		Column layout:  -->
+							<label class="btn btn-radio navbar-btn" data-tooltip="tooltip" data-placement="bottom" title="1 column">
+							    <input type="radio" name="column-layout" id="1col" value="1col" autocomplete="off"><img src="img/1_col.gif" alt="" width="30" />
+							</label>
+							<label class="btn btn-radio navbar-btn" data-tooltip="tooltip" data-placement="bottom" title="2 equal columns">
+							    <input type="radio" name="column-layout" id="2colequal" value="2colequal" autocomplete="off"><img src="img/2_col.gif" alt=""  width="30" />
+							</label>
+							<label class="btn btn-radio navbar-btn" data-tooltip="tooltip" data-placement="bottom" title="2 columns, left bigger">
+							    <input type="radio" name="column-layout" id="2colleft" value="2colleft" autocomplete="off"><img src="img/2_col_r.gif" alt=""  width="30" />
+							</label>
+							<label class="btn btn-radio navbar-btn" data-tooltip="tooltip" data-placement="bottom" title="2 columns, right bigger">
+							    <input type="radio" name="column-layout" id="2colright" value="2colright" autocomplete="off"><img src="img/2_col_l.gif" alt=""  width="30" />
+							</label>
+							<label class="btn btn-radio navbar-btn active" data-tooltip="tooltip" data-placement="bottom" title="3 columns">
+							    <input type="radio" name="column-layout" id="3col" value="3col" autocomplete="off" checked><img src="img/3_col.gif" alt=""  width="30" />
+							</label>
+							
+						</div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane fade" id="quick-add-layout">
+					    <h4 class="mt-off mb-20">Quick add layout:</h4>
+					    <div id="" class="layout-radio-options">
+						    <div class="quick-sortable-list row">
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_1_col" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0">
+									<div class="draggableLayoutWidget">
+										
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-layout-width-full"></i>
+								    	
+								    </div>
+							    </div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_2_col" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-layout-column2"></i>
+								    </div>
+								</div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_3_col" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-layout-column3"></i>
+								    </div>
+								</div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_4_col" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-layout-column4"></i>
+								    </div>
+								</div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_4_block" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-layout-grid2"></i>
+								    </div>
+								</div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_6_block" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-layout-grid3"></i>
+								    </div>
+								</div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_list_view" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="1">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-list"></i>
+								    </div>
+								</div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_link_list" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="3">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-link"></i>
+								    </div>
+								</div>
+								<div class="col-xs-4 mb-10 draggable quickAddWidget" id="row_carousel" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="2">
+									<div class="draggableLayoutWidget">
+								    	<i class="material-icons text-primary quickAddDragHandle">open_with</i> <i class="ti-layout-slider"></i>
+								    </div>
+							    </div>
+						    </div>
+				    	</div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane fade" id="quick-add-data">
+					    <h4 class="mt-off">Quick add data</h4>
+					    
+					    <div id="draggableDataCover" class="text-center text-primary">
+					        <i class="material-icons text-warning">warning</i>
+					        <h3>No available spaces for data - add a new layout section.</h3>
+				        </div>
+		        
+					    <div class="" id="quick-add-data-fields">
+<!-- 						    <input class="search form-control mb-15" placeholder="Search for field..."/> -->
+						    <span class="pull-left">Drag field from the list below:</span>
+<!-- 							<a class="sort  pull-right" data-sort="field-name">Sort by name</a> -->
+							<div class="fields-wrapper mt-5" id="initial-fields-list-wrapper">
+								<ul id="initial-fields-list" class="fieldsPanelBar"></ul>
+
+							</div>
+							
+					    </div>
+				    </div>
+				  </div>
+  
+	        </div>
+	        <!-- /#sidebar-wrapper -->
+		    <div class="container-fluid" id="main-container">
+				
+				<!-- Error Notification empty element -->
+				<span id="errorNotification" style="display:none;"></span>
+				
+				<div id="loading-cover">
+					<div class="loader">
+						  <div class="square" ></div>
+						  <div class="square"></div>
+						  <div class="square last"></div>
+						  <div class="square clear"></div>
+						  <div class="square"></div>
+						  <div class="square last"></div>
+						  <div class="square clear"></div>
+						  <div class="square "></div>
+						  <div class="square last"></div>
+					</div>
+				</div>	
+				
+			    <div class="row sys-mg-t-15">
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_0" data-column="0">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+<!-- 							    	<div class="initial-target text-center mt-10 draggable-row-section"><h3 class="text-muted mt-10 mb-10">Drag layout sections here</h3></div> -->
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_1" data-column="1">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+<!-- 							    	<div class="initial-target text-center mt-10 draggable-row-section"><h3 class="text-muted mt-10 mb-10">Drag layout sections here</h3></div> -->
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-sm-4 column-parent">
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_2" data-column="2">
+							    <a class="add-row-section btn btn-block btn-default btn-lg" href="#" data-row-button="0" >
+
+									<h4 class="text-primary sys-mg-t-5 sys-mg-b-5"><i class="material-icons text-primary">add_to_photos</i> Add layout section</h4>
+						    	</a>
+
+						    	<div class="sortable-list mt-10"> 	
+<!-- 							    	<div class="initial-target text-center mt-10 draggable-row-section"><h3 class="text-muted mt-10 mb-10">Drag layout sections here</h3></div> -->
+					    		</div>
+						    	
+					    	</div>
+					    </div>
+				    </div>
+			    </div>
+			    <div class="" id="initial-instruction">
+				    <div class=" text-center">
+				    	<h1><i class="material-icons text-primary">arrow_upward</i></h1>
+					    <h2 class="text-muted">Add or drag layout sections to any of the columns above to start</h2>
+				    </div>
+			    </div>
+			    
+		    </div>
+	    
+		</div>
+	    <!-- Kendo Window -->
+	    <div id="rowWindow">
+		    <div class="container-fluid window-container">
+
+				  	<div class="row window-content data-section-pane-1">
+					  	<div class="col-sm-6">
+						  	<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> What would you like to add?</p>
+						  	<ul class="nav nav-pills sys-mg-b-15" role="tablist" id="row-tabs">
+							    <li role="presentation" class=""><a href="#LayoutWidget" class="widget-option-tab" aria-controls="LayoutWidget" role="tab" data-toggle="tab" id="tour_layout_widget">Layout section</a></li>
+							    <li role="presentation" class=""><a href="#TileWidget" class="widget-option-tab" aria-controls="TileWidget" role="tab" data-toggle="tab" id="tile_layout_section">Tile section</a></li>
+							    <li role="presentation"><a href="#AvailableCards" class="widget-option-tab" aria-controls="AvailableCards" role="tab" data-toggle="tab">Card</a></li>
+							    <li role="presentation"><a href="#Sparkline" class="widget-option-tab" aria-controls="Sparkline" role="tab" data-toggle="tab">Chart</a></li>
+							</ul>
+							
+							<div class="tab-content">
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="LayoutWidget">
+							  		<p><span class="step-number">2</span> Select a layout section</p>
+							    	<div id="" class="layout-radio-options radio-btn-group" data-toggle="buttons">
+								    	<span class="" data-toggle="tab" href="#empty-tab" ></span>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="right" title="1 column">
+										    <input type="radio" name="row_options" id="row_1_col" value="row_1_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0" required="required"> <i class="ti-layout-width-full"></i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="2 columns" id="tour_2_col">
+										    <input type="radio" name="row_options" id="row_2_col" value="row_2_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0" required="required"> <i class="ti-layout-column2"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="3 columns">
+										    <input type="radio" name="row_options" id="row_3_col" value="row_3_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0" required="required"> <i class="ti-layout-column3"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="4 columns">
+										    <input type="radio" name="row_options" id="row_4_col" value="row_4_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0" required="required"> <i class="ti-layout-column4"></i>
+									    </label>
+									    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="4 block group">
+										    <input type="radio" name="row_options" id="row_4_block" value="row_4_block" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0" required="required"> <i class="ti-layout-grid2"></i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="6 block group">
+										    <input type="radio" name="row_options" id="row_6_block" value="row_6_block" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0" required="required"> <i class="ti-layout-grid3"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="List view">
+										    <input type="radio" name="row_options" id="row_list_view" value="row_list_view" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="1" required="required"> <i class="ti-list"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Link list section">
+										    <input type="radio" name="row_options" id="row_link_list" value="row_link_list" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="3" required="required"> <i class="ti-link"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Carousel">
+										    <input type="radio" name="row_options" id="row_carousel" value="row_carousel" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="2" required="required"> <i class="ti-layout-slider"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="right" title="Separator line">
+										    <input type="radio" name="row_options" id="row_separator" value="row_separator" autocomplete="off" data-layout-widget-type="StaticElement" data-layout-widget-subtype="Seperator" data-layout-widget-displaystyle="0" required="required"> <i class="ti-layout-line-solid"></i>
+										</label>
+							    	</div>
+								</div>
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="TileWidget">
+									
+									<input type="radio" name="row_options" id="tiles_section" value="tiles_section" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="4" style="display:none;">									
+								</div>
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="AvailableCards">
+									<p class="sys-mg-b-10"><span class="step-number">2</span> Select card type:</p>
+									<div id="" class="layout-radio-options radio-btn-group" data-toggle="buttons">
+
+									</div>
+								</div>
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="Sparkline">	
+									<p><span class="step-number">2</span> Select chart type:</p>
+<!-- 									<small><em>Only limited data can be displayed in chart layout</em></small> -->
+									<div id="" class="layout-radio-options radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio col-sm-5 text-left no-sunken" data-tooltip="tooltip" data-placement="top" title="Line chart">
+										    <input type="radio" name="row_options" id="line_chart_widget" value="line_chart_widget" autocomplete="off" data-layout-widget-type="Sparkline" data-layout-widget-subtype="LineChart" data-layout-widget-displaystyle="0" required="required"><i class="ti-stats-up"></i> Line chart
+									    </label>
+								   	    <label class="btn btn-radio col-sm-5 col-sm-offset-1 text-left no-sunken" data-tooltip="tooltip" data-placement="top" title="Column chart">
+										    <input type="radio" name="row_options" id="column_chart_widget" value="column_chart_widget" autocomplete="off" data-layout-widget-type="Sparkline" data-layout-widget-subtype="ColumnChart" data-layout-widget-displaystyle="0" required="required"><i class="ti-bar-chart"></i> Column chart
+										</label>
+									</div>
+									
+								</div>
+							</div>
+							<div class="row">
+								<!--
+<br>
+								<br>
+-->
+								<div class="col-sm-11 layout-widget-preview-wrapper sys-mg-t-10">
+									<h5 class="layout-widget-preview-title text-center">Layout section preview</h5>
+									<div class="layout-widget-preview">
+										
+									</div>
+								</div>
+							</div>
+					  	</div>
+					  	<div class="col-sm-6">
+						  	<div class="row widget_chart_options" style="display:none;">
+							  	
+							  	<div class="fields-wrapper col-sm-12 sys-mg-b-10">
+									<ul id="chart-fields-list" class="fieldsPanelBar"></ul>
+								</div>
+									
+						  	</div>
+						  	<p class="sys-mg-t-5 sys-mg-b-10 layout-section-styling-title"><span class="step-number">3</span> Style the section</p>
+						  	
+						  	<div class="row widget_title_options" id="widget_title_options" style="display:none;">
+								<div class="col-sm-6">	
+									<p>Section title (not required)</p>
+									<div class="form-group">
+									    <input type="text" class="form-control" name="layout_widget_title" id="layout_widget_title" placeholder="Widget title">
+									    <p id="addTitleIcon" class="icon-option sys-mg-t-5"><a href="#" class="select-icon">Add an icon <i class="material-icons">arrow_forward</i></a></p>
+									</div>
+									
+								</div>
+								<div class="col-sm-6">
+									<div class="btn-group sys-pd-t-20" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken" data-toggle="collapse" data-target="#collapsible_title_styles" aria-expanded="false" aria-controls="collapsible-title-styles">
+										    <input type="checkbox" name="widget_collapsible" id="widget_collapsible" value="false" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Section collapsible
+									    </label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row collapse" id="collapsible_title_styles">
+							  	<div class="col-sm-12">
+								  	<p>Section title text colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input type="radio" name="widget_title_text_colour" value="0" id="widget_title_text_colour_0" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input type="radio" name="widget_title_text_colour" value="1" id="widget_title_text_colour_1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input type="radio" name="widget_title_text_colour" value="2" id="widget_title_text_colour_2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input type="radio" name="widget_title_text_colour" value="3" id="widget_title_text_colour_3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input type="radio" name="widget_title_text_colour" value="4" id="widget_title_text_colour_4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse active">
+										    <input type="radio" name="widget_title_text_colour" value="8" id="widget_title_text_colour_8" autocomplete="off" required="required" checked="checked">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input type="radio" name="widget_title_text_colour" value="7" id="widget_title_text_colour_7" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input type="radio" name="widget_title_text_colour" value="6" id="widget_title_text_colour_6" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input type="radio" name="widget_title_text_colour" value="5" id="widget_title_text_colour_5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input type="radio" name="widget_title_text_colour" value="9" id="widget_title_text_colour_9" autocomplete="off" required="required">
+										</label>
+									</div>
+
+									
+									<p>Section title background colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input type="radio" name="widget_title_background_colour" value="0" id="widget_title_background_colour_0" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input type="radio" name="widget_title_background_colour" value="1" id="widget_title_background_colour_1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input type="radio" name="widget_title_background_colour" value="2" id="widget_title_background_colour_2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input type="radio" name="widget_title_background_colour" value="3" id="widget_title_background_colour_3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input type="radio" name="widget_title_background_colour" value="4" id="widget_title_background_colour_4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input type="radio" name="widget_title_background_colour" value="8" id="widget_title_background_colour_8" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input type="radio" name="widget_title_background_colour" value="7" id="widget_title_background_colour_7" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input type="radio" name="widget_title_background_colour" value="6" id="widget_title_background_colour_6" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input type="radio" name="widget_title_background_colour" value="5" id="widget_title_background_colour_5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white active">
+										    <input type="radio" name="widget_title_background_colour" value="9" id="widget_title_background_colour_9" autocomplete="off" required="required" checked="checked">
+										</label>
+									</div>
+							  	</div>
+						  	</div>
+						  	
+						  	<div class="row widget_joined_options" style="display:none;">
+								<div class="col-sm-12">
+									<p>Section blocks style</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio active" data-tooltip="tooltip" data-placement="top" title="Blocks joined">
+										    <input type="radio" name="blocks_joined" value="Joined" id="blocks_joined_joined" autocomplete="off" checked="checked" required="required"><i class="material-icons">grid_on</i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Blocks seperate">
+										    <input type="radio" name="blocks_joined" value="Seperate" id="blocks_joined_seperate" autocomplete="off" required="required"><i class="material-icons">apps</i>
+										</label>
+									</div>
+								</div>
+						  	</div>
+							
+							<div class="row widget_border_options" style="display:none;">
+								<div class="col-sm-12">
+								    <p>Border style</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="All borders" id="all_borders">
+										    <input type="radio" name="border_options" value="3" id="border_options_3" autocomplete="off" required="required"><i class="material-icons">border_all</i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Outer borders" id="outer_borders">
+										    <input type="radio" name="border_options" value="1" id="border_options_1" autocomplete="off" required="required"><i class="material-icons">border_outer</i>
+										</label>
+										<label class="btn btn-radio active" data-tooltip="tooltip" data-placement="top" title="Inner borders" id="inner_borders">
+										    <input type="radio" name="border_options" value="2" id="border_options_2" autocomplete="off" required="required" checked="checked"><i class="material-icons">border_inner</i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="No borders" id="no_borders">
+										    <input type="radio" name="border_options" value="0" id="border_options_0" autocomplete="off" required="required"><i class="material-icons">border_clear</i>						
+										</label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row tile_section_options" style="display:none;">
+								<div class="col-sm-12">
+								    <p>Tile section border colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input type="radio" name="tile_border_colour" value="0" id="tile_border_colour_0" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input type="radio" name="tile_border_colour" value="1" id="tile_border_colour_1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input type="radio" name="tile_border_colour" value="2" id="tile_border_colour_2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input type="radio" name="tile_border_colour" value="3" id="tile_border_colour_3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input type="radio" name="tile_border_colour" value="4" id="tile_border_colour_4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input type="radio" name="tile_border_colour" value="8" id="tile_border_colour_8" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input type="radio" name="tile_border_colour" value="7" id="tile_border_colour_7" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray active">
+										    <input type="radio" name="tile_border_colour" value="6" id="tile_border_colour_6" autocomplete="off" required="required" checked="checked">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input type="radio" name="tile_border_colour" value="5" id="tile_border_colour_5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input type="radio" name="tile_border_colour" value="9" id="tile_border_colour_9" autocomplete="off" required="required">
+										</label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row widget_listview_options" style="display:none;">
+							  	<div class="col-sm-12">
+						  			<p>Striped rows</p>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken">
+										    <input type="checkbox" name="listview_striped_rows" id="listview_striped_rows" value="Striped" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Use alternating striped rows
+									    </label>
+									</div>
+							  	</div>
+						  	</div>
+						  	
+						  	<div class="row widget_linklist_options" style="display:none;">
+							  	<div class="col-sm-12">
+								  	<p>Compact link list</p>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken">
+										    <input type="checkbox" name="linklist_compact" id="linklist_compact" value="Compact" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Use compact style
+									    </label>
+									</div>
+							  	</div>
+						  	</div>
+						  	
+						  	<div class="row widget_card_options" style="display:none;">
+							  	<div class="col-sm-12">
+								  	<p>Card primary colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary active">
+										    <input type="radio" name="card_colour" value="0" id="card_colour_0" autocomplete="off" required="required" checked="checked">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input type="radio" name="card_colour" value="1" id="card_colour_1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input type="radio" name="card_colour" value="2" id="card_colour_2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input type="radio" name="card_colour" value="3" id="card_colour_3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input type="radio" name="card_colour" value="4" id="card_colour_4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input type="radio" name="card_colour" value="8" id="card_colour_8" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input type="radio" name="card_colour" value="7" id="card_colour_7" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input type="radio" name="card_colour" value="6" id="card_colour_6" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input type="radio" name="card_colour" value="5" id="card_colour_5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input type="radio" name="card_colour" value="9" id="card_colour_9" autocomplete="off" required="required">
+										</label>
+									</div>
+							  	</div>
+						  	</div>
+						  	
+						  	<div class="row widget_chart_options" style="display:none;">
+							  										
+							  	<div class="col-sm-12" id="charts-colour-options">
+								  	<p>Chart primary colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary active">
+										    <input type="radio" name="chart_colour" value="0" id="chart_colour_0" autocomplete="off" required="required" checked="checked">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input type="radio" name="chart_colour" value="1" id="chart_colour_1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input type="radio" name="chart_colour" value="2" id="chart_colour_2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input type="radio" name="chart_colour" value="3" id="chart_colour_3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input type="radio" name="chart_colour" value="4" id="chart_colour_4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input type="radio" name="chart_colour" value="8" id="chart_colour_8" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input type="radio" name="chart_colour" value="7" id="chart_colour_7" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input type="radio" name="chart_colour" value="6" id="chart_colour_6" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input type="radio" name="chart_colour" value="5" id="chart_colour_5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input type="radio" name="chart_colour" value="9" id="chart_colour_9" autocomplete="off" required="required">
+										</label>
+									</div>
+									
+							  	</div>
+							  	
+							  	<div class="col-sm-12">
+								  	<p>Chart display options</p>
+							  	</div>
+							  	<div class="col-sm-6">
+									<div class="btn-group sys-pd-off-t" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken sys-pd-off-l sys-pd-off-t">
+										    <input type="checkbox" name="chart_title" id="chart_title" value="false" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Show title
+									    </label>
+									</div>
+								</div>
+								
+								<div class="col-sm-6">
+									<div class="btn-group sys-pd-off-t" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken sys-pd-off-t">
+										    <input type="checkbox" name="chart_legend" id="chart_legend" value="false" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Show legend
+									    </label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row widget_separator_options" style="display:none;">
+							  	<div class="col-sm-12">
+								  	<p>Separator colour</p>
+									
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input type="radio" name="separator_colour" value="0" id="separator_colour_0" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input type="radio" name="separator_colour" value="1" id="separator_colour_1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input type="radio" name="separator_colour" value="2" id="separator_colour_2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input type="radio" name="separator_colour" value="3" id="separator_colour_3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input type="radio" name="separator_colour" value="4" id="separator_colour_4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input type="radio" name="separator_colour" value="8" id="separator_colour_8" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray active">
+										    <input type="radio" name="separator_colour" value="7" id="separator_colour_7" autocomplete="off" required="required" checked="checked">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input type="radio" name="separator_colour" value="6" id="separator_colour_6" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input type="radio" name="separator_colour" value="5" id="separator_colour_5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input type="radio" name="separator_colour" value="9" id="separator_colour_9" autocomplete="off" required="required">
+										</label>
+									</div>
+							  	</div>
+						  	</div>
+						  							  	
+					  	</div>
+				  	</div>
+				  	
+				  	<div class="row window-content data-section-pane-2">
+				  		<div class="col-sm-12">
+					  		<p class="sys-mg-b-10"><a href="#" class="back-to-data-section"> <i class="material-icons">arrow_back</i> Go back</a></p>
+					  		<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Select an icon</p>
+							<div class="icon-field-container">
+								<div class="radio-btn-group" id="rowWindowIconList">
+									
+	  
+								</div>
+							</div>
+				  		</div>
+			  		</div>
+				  	<div class="row window-footer">
+					  	<div class="col-sm-12">
+						  	<span id="addLayoutButtonPopoverWrap" class="pull-right">
+						  		<button type="button" id="addLayoutWidgetButton" class="btn btn-primary pull-right ml-5 disabled" disabled>Add section</button>
+						  	</span>
+						  	<button type="button" class="btn btn-default pull-right">Cancel</button>
+					  	</div>
+				  	</div>
+				  	
+			    </div>
+		</div>
+		
+		
+		<!-- Kendo Window -->
+	    <div id="rowEditWindow">
+		    <div class="container-fluid window-container">
+
+				  	<div class="row window-content data-section-pane-1">
+					  	<div class="col-sm-6 hidden-xs hidden-sm hidden-md hidden-lg">
+						  	
+						  	<ul class="nav nav-pills sys-mg-b-15" role="tablist" id="row-tabs">
+							    <li role="presentation" class=""><a href="#editLayoutWidget" data-bind="layoutWidgetType: selected.TypeName" data-widget-type="LayoutWidget" class="widget-option-tab" aria-controls="LayoutWidget" role="tab" data-toggle="tab">Add layout section</a></li>
+								    <li role="presentation" class=""><a href="#editTile" data-bind="layoutWidgetType: selected.DisplayStyle" data-widget-type="4" class="widget-option-tab" aria-controls="Tile" role="tab" data-toggle="tab">Tile section</a></li>
+							    <li role="presentation"><a href="#editCard" data-bind="layoutWidgetType: selected.TypeName" data-widget-type="Card" class="widget-option-tab" aria-controls="Card" role="tab" data-toggle="tab">Add card</a></li>
+							    <li role="presentation"><a href="#editSparkline" data-bind="layoutWidgetType: selected.TypeName" data-widget-type="Sparkline" class="widget-option-tab" aria-controls="Sparkline" role="tab" data-toggle="tab">Add chart</a></li>
+							</ul>
+							
+							<div class="tab-content">
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="editLayoutWidget">
+							  		<p>Select row layout</p>
+							    	<div id="" class="layout-radio-options radio-btn-group" data-toggle="buttons">
+								    	<span class="" data-toggle="tab" href="#empty-tab" ></span>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="1 column">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_1_col" value="row_1_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0"> <i class="ti-layout-width-full"></i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="2 columns">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_2_col" value="row_2_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0"> <i class="ti-layout-column2"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="3 columns">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_3_col" value="row_3_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0"> <i class="ti-layout-column3"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="4 columns">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_4_col" value="row_4_col" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0"> <i class="ti-layout-column4"></i>
+									    </label>
+									    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="4 block group">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_4_block" value="row_4_block" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0"> <i class="ti-layout-grid2"></i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="6 block group">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_6_block" value="row_6_block" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="0"> <i class="ti-layout-grid3"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="List view">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_list_view" value="row_list_view" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="1"> <i class="ti-list"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Link list section">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_link_list" value="row_link_list" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="3"> <i class="ti-link"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Carousel">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_carousel" value="row_carousel" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="2"> <i class="ti-layout-slider"></i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Separator line">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="row_separator" value="row_separator" autocomplete="off" data-layout-widget-type="StaticElement" data-layout-widget-subtype="Seperator" data-layout-widget-displaystyle="0"> <i class="ti-layout-line-solid"></i>
+										</label>
+							    	</div>
+								</div>
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="editTile">
+									<input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="tiles_section" value="tiles_section" autocomplete="off" data-layout-widget-type="LayoutWidget" data-layout-widget-subtype="" data-layout-widget-displaystyle="4">
+								</div>
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="editCard">
+									<div id="" class="layout-radio-options radio-btn-group" data-toggle="buttons">
+
+									</div>
+								</div>
+								<div role="tabpanel" class="layout-widget-type-tab tab-pane fade" id="editSparkline">	
+									<p>Select chart type:</p>
+									<div id="" class="layout-radio-options radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio col-sm-5 text-left no-sunken" data-tooltip="tooltip" data-placement="top" title="Line chart">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="line_chart_widget" value="line_chart_widget" autocomplete="off" data-layout-widget-type="Sparkline" data-layout-widget-subtype="LineChart" data-layout-widget-displaystyle="0"><i class="ti-stats-up"></i> Line chart
+									    </label>
+								   	    <label class="btn btn-radio col-sm-5 col-sm-offset-1 text-left no-sunken" data-tooltip="tooltip" data-placement="top" title="Column chart">
+										    <input data-bind="checked: selected.WidgetName" type="radio" name="row_options" id="column_chart_widget" value="column_chart_widget" autocomplete="off" data-layout-widget-type="Sparkline" data-layout-widget-subtype="ColumnChart" data-layout-widget-displaystyle="0"><i class="ti-bar-chart"></i> Column chart
+										</label>
+									</div>
+								</div>
+							</div>
+					  	</div>
+					  	<div class="col-sm-6">
+						  	<div class="row">
+								<!--
+<br>
+								<br>
+-->
+								<div class="col-sm-11 layout-widget-preview-wrapper sys-mg-t-10">
+									<h5 class="layout-widget-preview-title text-center">Layout section preview</h5>
+									<div class="layout-widget-preview">
+										
+									</div>
+								</div>
+							</div>
+					  	</div>
+					  	<div class="col-sm-6">
+						  	
+						  	<div class="row widget_title_options" style="display:none;">
+								<div class="col-sm-6">	
+									<p>Section title (not required)</p>
+									<div class="form-group">
+									    <input data-bind="value: selected.Title" type="text" class="form-control" id="layout_widget_title" name="layout_widget_title" placeholder="Widget title">
+									    <p id="editTitleIcon" class="icon-option sys-mg-t-5"><a href="#" class="select-icon">Edit icon <i class="material-icons">arrow_forward</i></a></p>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="btn-group sys-pd-t-20" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken" data-toggle="collapse" data-target="#edit_collapsible_title_styles" aria-expanded="false" aria-controls="collapsible-title-styles">
+										    <input data-bind="checked: selected.Collapsible" type="checkbox" name="widget_collapsible" id="widget_collapsible" value="false" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Collapsible section
+									    </label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row collapse" id="edit_collapsible_title_styles">
+							  	<div class="col-sm-12">
+								  	<p>Section title text colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="0" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="1" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="2" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="3" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="4" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="8" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="7" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="6" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="5" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input data-bind="checked: selected.TitleForeground" type="radio" name="widget_title_text_colour" value="9" id="" autocomplete="off">
+										</label>
+									</div>
+
+									
+									<p>Section title background colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="0" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="1" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="2" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="3" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="4" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="8" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="7" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="6" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="5" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input data-bind="checked: selected.TitleBackground" type="radio" name="widget_title_background_colour" value="9" id="" autocomplete="off">
+										</label>
+									</div>
+							  	</div>
+						  	</div>
+						  	
+						  	<div class="row widget_joined_options" style="display:none;">
+								<div class="col-sm-12">
+									<p>Section blocks style</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Blocks joined">
+										    <input data-bind="checked: selected.SubType" type="radio" name="blocks_joined" value="Joined" id="edit_blocks_joined" autocomplete="off"><i class="material-icons">grid_on</i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Blocks seperate">
+										    <input data-bind="checked: selected.SubType" type="radio" name="blocks_joined" value="Seperate" id="edit_blocks_seperate" autocomplete="off"><i class="material-icons">apps</i>
+										</label>
+									</div>
+								</div>
+						  	</div>
+							
+							<div class="row widget_border_options" style="display:none;">
+								<div class="col-sm-12">
+								    <p>Border style</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="All borders" id="all_borders">
+										    <input data-bind="checked: selected.Border" type="radio" name="border_options" value="3" id="" autocomplete="off"><i class="material-icons">border_all</i>
+									    </label>
+								   	    <label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Outer borders" id="outer_borders">
+										    <input data-bind="checked: selected.Border" type="radio" name="border_options" value="1" id="" autocomplete="off"><i class="material-icons">border_outer</i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="Inner borders" id="inner_borders">
+										    <input data-bind="checked: selected.Border" type="radio" name="border_options" value="2" id="" autocomplete="off"><i class="material-icons">border_inner</i>
+										</label>
+										<label class="btn btn-radio" data-tooltip="tooltip" data-placement="top" title="No borders" id="no_borders">
+										    <input data-bind="checked: selected.Border" type="radio" name="border_options" value="0" id="" autocomplete="off"><i class="material-icons">border_clear</i>						
+										</label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row tile_section_options" style="display:none;">
+								<div class="col-sm-12">
+								    <p>Tile section border colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="0" id="tile_border_colour_0" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="1" id="tile_border_colour_1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="2" id="tile_border_colour_2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="3" id="tile_border_colour_3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="4" id="tile_border_colour_4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="8" id="tile_border_colour_8" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="7" id="tile_border_colour_7" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="6" id="tile_border_colour_6" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="5" id="tile_border_colour_5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="tile_border_colour" value="9" id="tile_border_colour_9" autocomplete="off" required="required">
+										</label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row widget_listview_options" style="display:none;">
+							  	<div class="col-sm-12">
+						  			<p>Striped rows</p>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken">
+										    <input data-bind="checked: selected.SubType" type="checkbox" name="listview_striped_rows" id="listview_striped_rows" value="Striped" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Use alternating striped rows
+									    </label>
+									</div>
+							  	</div>
+						  	</div>
+						  	
+						  	<div class="row widget_linklist_options" style="display:none;">
+							  	<div class="col-sm-12">
+								  	<p>Compact link list</p>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken">
+										    <input data-bind="checked: selected.SubType" type="checkbox" name="linklist_compact" id="linklist_compact" value="Compact" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Use compact style
+									    </label>
+									</div>
+							  	</div>
+						  	</div>
+						  							  	
+						  	<div class="row widget_card_options" style="display:none;">
+							  	<div class="col-sm-12">
+								  	<p>Card primary colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="0" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="1" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="2" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="3" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="4" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="8" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="7" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="6" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="5" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="card_colour" value="9" id="" autocomplete="off">
+										</label>
+									</div>
+							  	</div>
+						  	</div>
+						  	
+						  	<div class="row widget_chart_options" style="display:none;">
+							  	
+							  	<div class="fields-wrapper col-sm-12 sys-mg-b-10">
+									<ul id="chart-fields-list-edit-window" class="fieldsPanelBar"></ul>
+								</div>
+								
+							  	<div class="col-sm-12">
+								  	<p>Chart primary colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="0" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="1" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="2" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="3" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="4" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="8" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="7" id="" autocomplete="off">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="6" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="5" id="" autocomplete="off">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input data-bind="checked: selected.Details.Color" type="radio" name="chart_colour" value="9" id="" autocomplete="off">
+										</label>
+									</div>
+							  	</div>
+							  	<div class="col-sm-12">
+								  	<p>Chart display options</p>
+							  	</div>
+							  	<div class="col-sm-6">
+									<div class="btn-group sys-pd-off-t" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken sys-pd-off-l sys-pd-off-t">
+										    <input data-bind="checked: selected.ShowTitle" type="checkbox" name="chart_title" id="chart_title" value="false" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Show title
+									    </label>
+									</div>
+								</div>
+								
+								<div class="col-sm-6">
+									<div class="btn-group sys-pd-off-t" data-toggle="buttons">
+										<label class="btn btn-checkbox text-left no-sunken sys-pd-off-t">
+										    <input data-bind="checked: selected.ShowLegend" type="checkbox" name="chart_legend" id="chart_legend" value="false" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Show legend
+									    </label>
+									</div>
+								</div>
+						  	</div>
+						  	
+						  	<div class="row widget_separator_options" style="display:none;">
+							  	<div class="col-sm-12">
+								  	<p>Separator colour</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio btn-colour sys-bg-primary">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="0" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-info">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="1" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-success">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="2" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-warning">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="3" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="4" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-inverse">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="8" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="7" autocomplete="off" required="required">
+									    </label>
+								   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="6" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="5" autocomplete="off" required="required">
+										</label>
+										<label class="btn btn-radio btn-colour sys-bg-white">
+										    <input data-bind="checked: selected.BackgroundColor" type="radio" name="separator_colour" value="9" autocomplete="off" required="required">
+										</label>
+									</div>
+							  	</div>
+						  	</div>
+						  							  	
+					  	</div>
+				  	</div>
+				  	<div class="row window-content data-section-pane-2">
+				  		<div class="col-sm-12">
+					  		<p class="sys-mg-b-10"><a href="#" class="back-to-data-section"> <i class="material-icons">arrow_back</i> Go back</a></p>
+					  		<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Select an icon</p>
+							<div class="icon-field-container">
+								<div class="radio-btn-group" id="editRowWindowIconList">
+									
+	  
+								</div>
+							</div>
+				  		</div>
+			  		</div>
+				  	<div class="row window-footer">
+					  	<div class="col-sm-12">
+						  	<button type="button" id="editLayoutWidgetButton" class="btn btn-primary pull-right ml-5">Save changes</button>
+						  	<button type="button" class="btn btn-default pull-right">Cancel</button>
+					  	</div>
+				  	</div>
+				  	
+			    </div>
+		</div>
+		
+		
+		<!-- Kendo Window -->
+	    <div id="dataWindow">
+			<div class="container-fluid window-container">
+				
+		  		<div class="row window-content data-section-pane-1">
+				    <div class="col-sm-6" id="data-fields">
+					    <p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Search for or select a field below</p>
+					    
+					    <input class="search form-control mb-5 typeahead-fields" data-provide="typeahead" placeholder="Search for a field..." autocomplete="off" type="text" />
+						<div class="fields-wrapper mt-5" id="initial-fields-list-data-window-wrapper">
+							<div id="initial-fields-list-data-window" class="fieldsPanelBar"></div>
+							<div id="links-fields-list-data-window" class="fieldsPanelBar"></div>
+							
+						</div>
+						
+				    </div>
+					<div class="col-sm-6" id="fieldStylingOptions">
+						<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">2</span> Field styling options</p>
+						
+						<div class="field-caption-option">						
+							<div class="btn-group sys-mg-b-10" data-toggle="buttons">
+								<label class="btn btn-checkbox text-left active no-sunken sys-pd-off-l">
+								    <input type="checkbox" name="data_show_caption" id="data_show_caption" value="true" checked="checked" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Show field caption
+							    </label>
+							</div>
+						</div>
+						<div class="linklist-text-option">						
+							<p>Link text</p>
+							<div class="form-group">
+								<input type="text" class="form-control" name="linklist_link_text" id="linklist_link_text" autocomplete="off" placeholder="Enter link text...">
+							</div>
+						</div>
+						<div class="text-alignment-options">
+							<p>Text alignment</p>
+							<div class="radio-btn-group" data-toggle="buttons">
+								<label class="btn btn-radio active">
+								    <input type="radio" name="data_text_alignment" value="0" id="data_text_alignment_0" autocomplete="off" checked="checked"><i class="material-icons">format_align_left</i>
+							    </label>
+						   	    <label class="btn btn-radio">
+								    <input type="radio" name="data_text_alignment" value="2" id="data_text_alignment_2" autocomplete="off"><i class="material-icons">format_align_center</i>
+								</label>
+								<label class="btn btn-radio">
+								    <input type="radio" name="data_text_alignment" value="1" id="data_text_alignment_1" autocomplete="off"><i class="material-icons">format_align_right</i>
+								</label>
+							</div>
+						</div>
+						<div class="text-colour-weight-options">
+							<p>Main text colour</p>
+							<div class="radio-btn-group data-text-colour-options" data-toggle="buttons">
+								<label class="btn btn-radio btn-colour sys-bg-primary ">
+								    <input type="radio" name="data_text_colour" value="0" id="data_text_colour_0" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-info">
+								    <input type="radio" name="data_text_colour" value="1" id="data_text_colour_1" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-success">
+								    <input type="radio" name="data_text_colour" value="2" id="data_text_colour_2" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-warning">
+								    <input type="radio" name="data_text_colour" value="3" id="data_text_colour_3" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+								    <input type="radio" name="data_text_colour" value="4" id="data_text_colour_4" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-inverse active">
+								    <input type="radio" name="data_text_colour" value="8" id="data_text_colour_8" autocomplete="off" checked="checked">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-gray">
+								    <input type="radio" name="data_text_colour" value="7" id="data_text_colour_7" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+								    <input type="radio" name="data_text_colour" value="6" id="data_text_colour_6" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+								    <input type="radio" name="data_text_colour" value="5" id="data_text_colour_5" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-white">
+								    <input type="radio" name="data_text_colour" value="9" id="data_text_colour_9" autocomplete="off">
+								</label>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-6">
+									<p>Text size</p>
+									
+									<div class="radio-btn-group text-size-options" data-toggle="buttons">
+										<label class="btn btn-radio ">
+										    <input type="radio" name="data_text_size" id="data_text_size_0" value="0" autocomplete="off"><p class="sys-txt-sm sys-mg-off-t sys-mg-off-b sys-500">S</p>
+									    </label>
+								   	    <label class="btn btn-radio active">
+										    <input type="radio" name="data_text_size" id="data_text_size_1" value="1" autocomplete="off" checked="checked"><p class="sys-txt-md sys-mg-off-t sys-mg-off-b sys-500">M</p>
+										</label>
+										<label class="btn btn-radio">
+										    <input type="radio" name="data_text_size" id="data_text_size_2" value="2" autocomplete="off"><p class="sys-txt-lg sys-mg-off-t sys-mg-off-b sys-500">L</p>
+										</label>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<p>Text weight</p>
+									<div class="radio-btn-group text-weight-options" data-toggle="buttons">
+										<label class="btn btn-radio ">
+										    <input type="radio" name="data_text_weight" value="0" id="data_text_weight_0" autocomplete="off"><p class="sys-300">T</p>
+									    </label>
+								   	    <label class="btn btn-radio active">
+										    <input type="radio" name="data_text_weight" value="1" id="data_text_weight_1" autocomplete="off" checked="checked"><p class="sys-500">N</p>
+										</label>
+										<label class="btn btn-radio">
+										    <input type="radio" name="data_text_weight" value="2" id="data_text_weight_2" autocomplete="off"><p class="sys-700">B</p>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fieldBackgroundColorOption">
+							<p>Field background colour</p>
+							<div class="radio-btn-group data-background-colour-options" data-toggle="buttons">
+								<label class="btn btn-radio btn-colour sys-bg-primary">
+								    <input type="radio" name="data_background_colour" value="0" id="data_background_colour_0" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-info">
+								    <input type="radio" name="data_background_colour" value="1" id="data_background_colour_1" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-success">
+								    <input type="radio" name="data_background_colour" value="2" id="data_background_colour_2" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-warning">
+								    <input type="radio" name="data_background_colour" value="3" id="data_background_colour_3" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+								    <input type="radio" name="data_background_colour" value="4" id="data_background_colour_4" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-inverse">
+								    <input type="radio" name="data_background_colour" value="8" id="data_background_colour_8" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-gray">
+								    <input type="radio" name="data_background_colour" value="7" id="data_background_colour_7" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+								    <input type="radio" name="data_background_colour" value="6" id="data_background_colour_6" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+								    <input type="radio" name="data_background_colour" value="5" id="data_background_colour_5" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-white active">
+								    <input type="radio" name="data_background_colour" value="9" id="data_background_colour_9" autocomplete="off" checked="checked">
+								</label>
+							</div>
+						</div>
+						
+						<p id="addIconOption" class="icon-option"><a href="#" class="select-icon">Add an icon <i class="material-icons">arrow_forward</i></a></p>
+					</div>
+		  		</div>
+		  		<div class="row window-content data-section-pane-2">
+			  		<div class="col-sm-6">
+				  		<p class="sys-mg-b-10"><a href="#" class="back-to-data-section"> <i class="material-icons">arrow_back</i> Go back</a></p>
+				  		<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Select an icon</p>
+						<div class="icon-field-container">
+							<div class="radio-btn-group" id="dataWindowIconList">
+								
+  
+							</div>
+						</div>
+			  		</div>
+			  		<div class="col-sm-6">
+						<p class="sys-pd-t-30 sys-mg-t-5 sys-mg-b-10"><span class="step-number">2</span> Style the icon</p>
+<!--
+						
+						<p>Icon vertical alignment</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							
+						</div>
+-->
+						<p>Icon alignment</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio active">
+							    <input type="radio" name="icon_alignment" value="0" id="icon_alignment_0" autocomplete="off" checked="checked"><i class="material-icons">format_align_left</i>
+						    </label>
+					   	    <label class="btn btn-radio">
+							    <input type="radio" name="icon_alignment" value="4" id="icon_alignment_4" autocomplete="off"><i class="material-icons">vertical_align_bottom</i>
+						    </label>
+					   	    <label class="btn btn-radio">
+							    <input type="radio" name="icon_alignment" value="3" id="icon_alignment_5" autocomplete="off"><i class="material-icons">vertical_align_top</i>
+							</label>					
+							<label class="btn btn-radio">
+							    <input type="radio" name="icon_alignment" value="1" id="icon_alignment_2" autocomplete="off"><i class="material-icons">format_align_right</i>
+							</label>
+						</div>
+						
+						<p>Icon colour</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio btn-colour sys-bg-primary active">
+							    <input type="radio" name="icon_colour" value="0" id="icon_colour_0" autocomplete="off" checked="checked">
+						    </label>
+					   	    <label class="btn btn-radio btn-colour sys-bg-info">
+							    <input type="radio" name="icon_colour" value="1" id="icon_colour_1" autocomplete="off">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-success">
+							    <input type="radio" name="icon_colour" value="2" id="icon_colour_2" autocomplete="off">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-warning">
+							    <input type="radio" name="icon_colour" value="3" id="icon_colour_3" autocomplete="off">
+						    </label>
+					   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+							    <input type="radio" name="icon_colour" value="4" id="icon_colour_4" autocomplete="off">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-inverse">
+							    <input type="radio" name="icon_colour" value="8" id="icon_colour_8" autocomplete="off">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-gray">
+							    <input type="radio" name="icon_colour" value="7" id="icon_colour_7" autocomplete="off">
+						    </label>
+					   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+							    <input type="radio" name="icon_colour" value="6" id="icon_colour_6" autocomplete="off">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+							    <input type="radio" name="icon_colour" value="5" id="icon_colour_5" autocomplete="off">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-white">
+							    <input type="radio" name="icon_colour" value="9" id="icon_colour_9" autocomplete="off">
+							</label>
+						</div>
+						
+						<p>Icon size</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio ">
+							    <input type="radio" name="icon_size" value="0" id="icon_size_0" autocomplete="off"><p class="sys-txt-sm sys-mg-off-t sys-mg-off-b sys-500">S</p>
+						    </label>
+					   	    <label class="btn btn-radio active">
+							    <input type="radio" name="icon_size" value="1" id="icon_size_1" autocomplete="off" checked="checked"><p class="sys-txt-md sys-mg-off-t sys-mg-off-b sys-500">M</p>
+							</label>
+							<label class="btn btn-radio">
+							    <input type="radio" name="icon_size" value="2" id="icon_size_2" autocomplete="off"><p class="sys-txt-lg sys-mg-off-t sys-mg-off-b sys-500">L</p>
+							</label>
+						</div>
+						
+						
+					</div>
+		  		</div>
+		  		
+		  		<div class="row window-footer">
+			  		<div class="col-sm-12">
+				  		<span id="addDataButtonPopoverWrap" class="pull-right">
+				  			<button type="button" id="addDataWidgetButton" class="btn btn-primary pull-right ml-5 disabled" disabled>Add field</button>
+				  		</span>
+				  		<button type="button" class="btn btn-default pull-right">Cancel</button>
+			  		</div>
+		  		</div>
+		    </div>
+	    </div>
+		
+		
+		<!-- Kendo Window -->
+	    <div id="dataEditWindow">
+			<div class="container-fluid window-container">
+		  		<div class="row window-content data-section-pane-1">
+				    <div class="col-sm-6" id="edit-data-fields">
+					    <p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Search for or select a field below</p>
+					    <input class="search form-control mb-5 typeahead-fields" data-provide="typeahead" placeholder="Search for a field..." autocomplete="off"/>
+						<div class="fields-wrapper mt-5" id="initial-fields-list-data-edit-window-wrapper">
+							
+							<div id="initial-fields-list-data-edit-window" class="fieldsPanelBar"></div>
+							<div id="links-fields-list-data-edit-window" class="fieldsPanelBar"></div>
+						</div>
+						
+				    </div>
+					<div class="col-sm-6">
+						<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">2</span> Field styling options</p>
+
+						<div class="field-caption-option">
+							<div class="btn-group sys-mg-b-10" data-toggle="buttons">
+								<label class="btn btn-checkbox text-left no-sunken sys-pd-off-l">
+								    <input type="checkbox" name="data_show_caption" id="data_show_caption" value="false" data-bind="checked: selected.Caption.Visibility" autocomplete="off"><i class="material-icons text-muted">check_box_outline_blank</i><i class="material-icons text-success">check_box</i> Show field caption
+							    </label>
+							</div>
+						</div>
+						<div class="linklist-text-option">						
+							<p>Link text</p>
+							<div class="form-group">
+								<input data-bind="value: selected.Title" type="text" class="form-control" name="linklist_link_text" id="linklist_link_text" autocomplete="off" placeholder="Enter link text...">
+							</div>
+						</div>
+						<div class="text-alignment-options">
+							<p>Text alignment</p>
+							<div class="radio-btn-group" data-toggle="buttons">
+								<label class="btn btn-radio active">
+								    <input type="radio" name="data_text_alignment_edit" value="0" id="data_text_alignment_edit_0" data-bind="checked: selected.Value.Alignment" autocomplete="off" checked><i class="material-icons">format_align_left</i>
+							    </label>
+						   	    <label class="btn btn-radio">
+								    <input type="radio" name="data_text_alignment_edit" value="2" id="data_text_alignment_edit_2" data-bind="checked: selected.Value.Alignment" autocomplete="off"><i class="material-icons">format_align_center</i>
+								</label>
+								<label class="btn btn-radio">
+								    <input type="radio" name="data_text_alignment_edit" value="1" id="data_text_alignment_edit_1" data-bind="checked: selected.Value.Alignment" autocomplete="off"><i class="material-icons">format_align_right</i>
+								</label>
+							</div>
+						</div>
+						<div class="text-colour-weight-options">
+							<p>Main text colour</p>
+							<div class="radio-btn-group" data-toggle="buttons">
+								<label class="btn btn-radio btn-colour sys-bg-primary active">
+								    <input type="radio" name="data_text_colour_edit" value="0" id="data_text_colour_edit_0" data-bind="checked: selected.Value.Color" autocomplete="off" checked="checked">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-info">
+								    <input type="radio" name="data_text_colour_edit" value="1" id="data_text_colour_edit_1" data-bind="checked: selected.Value.Color" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-success">
+								    <input type="radio" name="data_text_colour_edit" value="2" id="data_text_colour_edit_2" data-bind="checked: selected.Value.Color" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-warning">
+								    <input type="radio" name="data_text_colour_edit" value="3" id="data_text_colour_edit_3" data-bind="checked: selected.Value.Color" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+								    <input type="radio" name="data_text_colour_edit" value="4" id="data_text_colour_edit_4" data-bind="checked: selected.Value.Color" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-inverse">
+								    <input type="radio" name="data_text_colour_edit" value="8" id="data_text_colour_edit_8" data-bind="checked: selected.Value.Color" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-gray">
+								    <input type="radio" name="data_text_colour_edit" value="7" id="data_text_colour_edit_7" data-bind="checked: selected.Value.Color" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+								    <input type="radio" name="data_text_colour_edit" value="6" id="data_text_colour_edit_6" data-bind="checked: selected.Value.Color" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+								    <input type="radio" name="data_text_colour_edit" value="5" id="data_text_colour_edit_5" data-bind="checked: selected.Value.Color" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-white">
+								    <input type="radio" name="data_text_colour_edit" value="9" id="data_text_colour_edit_9" data-bind="checked: selected.Value.Color" autocomplete="off">
+								</label>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-6">
+									<p>Text size</p>
+									
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio ">
+										    <input type="radio" name="data_text_size_edit" id="data_text_size_edit_0" value="0" data-bind="checked: selected.Value.Size" autocomplete="off"><p class="sys-txt-sm sys-mg-off-t sys-mg-off-b sys-500">S</p>
+									    </label>
+								   	    <label class="btn btn-radio active">
+										    <input type="radio" name="data_text_size_edit" id="data_text_size_edit_1" value="1" data-bind="checked: selected.Value.Size" autocomplete="off" checked="checked"><p class="sys-mg-off-t sys-txt-md sys-mg-off-b sys-500">M</p>
+										</label>
+										<label class="btn btn-radio">
+										    <input type="radio" name="data_text_size_edit" id="data_text_size_edit_2" value="2" data-bind="checked: selected.Value.Size" autocomplete="off"><p class="sys-txt-lg sys-mg-off-t sys-mg-off-b sys-500">L</p>
+										</label>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<p>Text weight</p>
+									<div class="radio-btn-group" data-toggle="buttons">
+										<label class="btn btn-radio ">
+										    <input type="radio" name="data_text_weight_edit" value="0" id="data_text_weight_edit_0" data-bind="checked: selected.Value.Weight" autocomplete="off"><p class="sys-300">T</p>
+									    </label>
+								   	    <label class="btn btn-radio active">
+										    <input type="radio" name="data_text_weight_edit" value="1" id="data_text_weight_edit_1" data-bind="checked: selected.Value.Weight" autocomplete="off" checked="checked"><p class="sys-500">N</p>
+										</label>
+										<label class="btn btn-radio">
+										    <input type="radio" name="data_text_weight_edit" value="2" id="data_text_weight_edit_2" data-bind="checked: selected.Value.Weight" autocomplete="off"><p class="sys-700">B</p>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fieldBackgroundColorOption">
+							<p>Field background colour</p>
+							<div class="radio-btn-group" data-toggle="buttons">
+								<label class="btn btn-radio btn-colour sys-bg-primary active">
+								    <input type="radio" name="data_background_colour_edit" value="0" id="data_background_colour_edit_0" data-bind="checked: selected.BackgroundColor" autocomplete="off" checked="checked">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-info">
+								    <input type="radio" name="data_background_colour_edit" value="1" id="data_background_colour_edit_1" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-success">
+								    <input type="radio" name="data_background_colour_edit" value="2" id="data_background_colour_edit_2" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-warning">
+								    <input type="radio" name="data_background_colour_edit" value="3" id="data_background_colour_edit_3" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+								    <input type="radio" name="data_background_colour_edit" value="4" id="data_background_colour_edit_4" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-inverse">
+								    <input type="radio" name="data_background_colour_edit" value="8" id="data_background_colour_edit_8" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-gray">
+								    <input type="radio" name="data_background_colour_edit" value="7" id="data_background_colour_edit_7" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+							    </label>
+						   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+								    <input type="radio" name="data_background_colour_edit" value="6" id="data_background_colour_edit_6" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+								    <input type="radio" name="data_background_colour_edit" value="5" id="data_background_colour_edit_5" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+								</label>
+								<label class="btn btn-radio btn-colour sys-bg-white">
+								    <input type="radio" name="data_background_colour_edit" value="9" id="data_background_colour_edit_9" data-bind="checked: selected.BackgroundColor" autocomplete="off">
+								</label>
+							</div>
+						</div>
+							
+						<p class="icon-option"><a href="#" class="select-icon">Edit icon <i class="material-icons">arrow_forward</i></a></p>
+					</div>
+		  		</div>
+		  		<div class="row window-content data-section-pane-2">
+			  		<div class="col-sm-6">
+				  		<p class="sys-mg-b-10"><a href="#" class="back-to-data-section"> <i class="material-icons">arrow_back</i> Back</a></p>
+				  		<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Select an icon</p>
+						<div class="icon-field-container">
+							<div class="radio-btn-group" id="editDataWindowIconList">
+								
+
+							</div>
+						</div>
+			  		</div>
+			  		<div class="col-sm-6">
+						<p class="sys-pd-t-30 sys-mg-t-5 sys-mg-b-10"><span class="step-number">2</span> Style the icon</p>
+<!--
+						
+						<p>Icon vertical alignment</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							
+						</div>
+-->
+						<p>Icon alignment</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio active">
+							    <input type="radio" name="icon_alignment_edit" value="0" id="icon_alignment_edit_0" autocomplete="off" checked="checked" data-bind="checked: selected.Icon.Alignment"><i class="material-icons">format_align_left</i>
+						    </label>
+					   	    <label class="btn btn-radio">
+							    <input type="radio" name="icon_alignment_edit" value="4" id="icon_alignment_edit_4" autocomplete="off" data-bind="checked: selected.Icon.Alignment"><i class="material-icons">vertical_align_bottom</i>
+						    </label>
+					   	    <label class="btn btn-radio">
+							    <input type="radio" name="icon_alignment_edit" value="3" id="icon_alignment_edit_5" autocomplete="off" data-bind="checked: selected.Icon.Alignment"><i class="material-icons">vertical_align_top</i>
+							</label>					
+							<label class="btn btn-radio">
+							    <input type="radio" name="icon_alignment_edit" value="1" id="icon_alignment_edit_1" autocomplete="off" data-bind="checked: selected.Icon.Alignment"><i class="material-icons">format_align_right</i>
+							</label>
+						</div>
+						
+						<p>Icon colour</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio btn-colour sys-bg-primary active">
+							    <input type="radio" name="icon_colour_edit" value="0" id="icon_colour_edit_0" autocomplete="off" checked="checked" data-bind="checked: selected.Icon.Color">
+						    </label>
+					   	    <label class="btn btn-radio btn-colour sys-bg-info">
+							    <input type="radio" name="icon_colour_edit" value="1" id="icon_colour_edit_1" autocomplete="off" data-bind="checked: selected.Icon.Color">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-success">
+							    <input type="radio" name="icon_colour_edit" value="2" id="icon_colour_edit_2" autocomplete="off" data-bind="checked: selected.Icon.Color">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-warning">
+							    <input type="radio" name="icon_colour_edit" value="3" id="icon_colour_edit_3" autocomplete="off" data-bind="checked: selected.Icon.Color">
+						    </label>
+					   	    <label class="btn btn-radio btn-colour sys-bg-danger">
+							    <input type="radio" name="icon_colour_edit" value="4" id="icon_colour_edit_4" autocomplete="off" data-bind="checked: selected.Icon.Color">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-inverse">
+							    <input type="radio" name="icon_colour_edit" value="8" id="icon_colour_edit_8" autocomplete="off" data-bind="checked: selected.Icon.Color">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-gray">
+							    <input type="radio" name="icon_colour_edit" value="7" id="icon_colour_edit_7" autocomplete="off" data-bind="checked: selected.Icon.Color">
+						    </label>
+					   	    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+							    <input type="radio" name="icon_colour_edit" value="6" id="icon_colour_edit_6" autocomplete="off" data-bind="checked: selected.Icon.Color">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+							    <input type="radio" name="icon_colour_edit" value="5" id="icon_colour_edit_5" autocomplete="off" data-bind="checked: selected.Icon.Color">
+							</label>
+							<label class="btn btn-radio btn-colour sys-bg-white">
+							    <input type="radio" name="icon_colour_edit" value="9" id="icon_colour_edit_9" autocomplete="off" data-bind="checked: selected.Icon.Color">
+							</label>
+						</div>
+						
+						<p>Icon size</p>
+						<div class="radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio ">
+							    <input type="radio" name="icon_size_edit" value="0" id="icon_size_edit_0" autocomplete="off" data-bind="checked: selected.Icon.Size"><p class="sys-txt-sm sys-mg-off-t sys-mg-off-b sys-500">S</p>
+						    </label>
+					   	    <label class="btn btn-radio active">
+							    <input type="radio" name="icon_size_edit" value="1" id="icon_size_edit_1" autocomplete="off" data-bind="checked: selected.Icon.Size"><p class="sys-txt-md sys-mg-off-t sys-mg-off-b sys-500">M</p>
+							</label>
+							<label class="btn btn-radio">
+							    <input type="radio" name="icon_size_edit" value="2" id="icon_size_edit_2" autocomplete="off" data-bind="checked: selected.Icon.Size"><p class="sys-txt-lg sys-mg-off-t sys-mg-off-b sys-500">L</p>
+							</label>
+						</div>
+						
+					</div>
+		  		</div>
+		  		
+		  		<div class="row window-footer">
+			  		<div class="col-sm-12">
+				  		<button type="button" id="editDataWidgetSaveButton" class="btn btn-primary pull-right ml-5">Save changes</button>
+				  		<button type="button" class="btn btn-default pull-right">Cancel</button>
+			  		</div>
+		  		</div>
+		    </div>
+	    </div>
+		
+		
+		<!-- Tile Window -->
+		<div id="tileWindow">
+			<div class="container-fluid window-container">
+				<div class="row window-content" id="tiles-addition">
+					<div class="col-xs-6" id="tiles-list-wrapper">
+						<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Select tile to add:</p>
+						<div id="tiles-list" class=" sys-mg-b-5">
+						</div>
+					</div>
+					<div class="col-xs-6" id="tiles-parameters-wrapper">
+						<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">2</span> Configure tile:</p>
+						
+						<p>Tile width</p>
+						<div id="" class="tile-width-radio-options radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio col-sm-5 text-left no-sunken active">
+								<input type="radio" name="tile_width" id="" value="7" autocomplete="off" data-tile-width="7" required="required" checked><i class="material-icons text-muted">panorama_fish_eye</i><i class="material-icons text-success">check_circle</i> Small
+							</label>
+							<label class="btn btn-radio col-sm-5 text-left no-sunken">
+								<input type="radio" name="tile_width" id="" value="2" autocomplete="off" data-tile-width="2" required="required"><i class="material-icons text-muted">panorama_fish_eye</i><i class="material-icons text-success">check_circle</i> Large
+							</label>
+						</div>
+						
+					</div>
+
+				</div>
+						  		
+		  		<div class="row window-footer">
+			  		<div class="col-sm-12">
+				  		<span id="addTileButtonPopoverWrap" class="pull-right">
+				  			<button type="button" id="addTileButton" class="btn btn-primary pull-right ml-5 disabled" disabled>Add tile</button>
+				  		</span>
+				  		<button type="button" class="btn btn-default pull-right">Cancel</button>
+			  		</div>
+		  		</div>
+		    </div>
+	    </div>
+	    
+	    
+	    <!-- Tile Edit Window -->
+		<div id="tileEditWindow">
+			<div class="container-fluid window-container">
+				<div class="row window-content" id="tile-edit">
+					<div class="col-xs-6" id="tiles-edit-list-wrapper">
+						<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">1</span> Change tile:</p>
+						<div id="tiles-edit-list" class=" sys-mg-b-5">
+						</div>
+					</div>
+					<div class="col-xs-6" id="tiles-edit-parameters-wrapper">
+						<p class="sys-mg-t-5 sys-mg-b-10"><span class="step-number">2</span> Configure tile:</p>
+						
+						<p>Tile width</p>
+						<div id="" class="tile-width-radio-options radio-btn-group" data-toggle="buttons">
+							<label class="btn btn-radio col-sm-5 text-left no-sunken active">
+								<input data-bind="checked: selected.Widgets[0].TileWidth" type="radio" name="tile_width" id="" value="7" autocomplete="off" data-tile-width="7" required="required" checked><i class="material-icons text-muted">panorama_fish_eye</i><i class="material-icons text-success">check_circle</i> Small
+							</label>
+							<label class="btn btn-radio col-sm-5 text-left no-sunken">
+								<input data-bind="checked: selected.Widgets[0].TileWidth" type="radio" name="tile_width" id="" value="2" autocomplete="off" data-tile-width="2" required="required"><i class="material-icons text-muted">panorama_fish_eye</i><i class="material-icons text-success">check_circle</i> Large
+							</label>
+						</div>
+						
+					</div>
+
+				</div>
+						  		
+		  		<div class="row window-footer">
+			  		<div class="col-sm-12">
+<!-- 				  		<span id="addTileButtonPopoverWrap" class="pull-right"> -->
+				  		<button type="button" id="editTileButton" class="btn btn-primary pull-right ml-5">Save changes</button>
+<!-- 				  		</span> -->
+				  		<button type="button" class="btn btn-default pull-right">Cancel</button>
+			  		</div>
+		  		</div>
+		    </div>
+	    </div>
+		
+		<!-- Error Notification Kendo Template -->
+		<script id="errorTemplate" type="text/x-kendo-template">
+            <div class="error-template">
+	            <i class="material-icons close-error-notification">close</i>
+                <i class="material-icons">error</i>
+                <h3>#= title #</h3>
+                <p>#= message #</p>
+            </div>
+        </script>
+	    
+	    <!-- Tile Template -->
+	    <script type="text/x-kendo-template" id="tileTemplate">
+	        #if(Widgets[0].TileWidth == 7){#
+	            <div data-guid="#: Id #" class="col-sm-3 col-xs-3 tile">
+	        #}else if(Widgets[0].TileWidth == 2){#
+	            <div data-guid="#: Id #" class="col-sm-6 col-xs-6 tile">
+	        #}#
+	        		<div class="data-widget-options text-center">
+			            <div class="row sys-tbl">
+			                <div class="col-xs-6 sys-bd-very-light-gray-right">
+			                    <i class="material-icons text-primary drag-row-section">open_with</i>
+			                </div>
+			                <div class="col-xs-6">
+			                    <i class="material-icons text-primary" data-original-title="" title="">more_vert</i>
+			                </div>
+			            </div>
+			        </div>
+            		<div class="tile-inner">
+						#= Widgets[0].HTMLContent() #
+            		</div>
+								         
+	            </div>
+        </script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+		
+	    <script src="js/bootstrap.js"></script>
+	    <script src="js/jQuery.hoverForMore.js"></script>
+	    <script src="js/list.min.js"></script>
+	    <script src="js/listgroup.min.js"></script>
+<!-- 	    <script src="js/jquery-ui.min.js"></script> -->
+		<script src="js/hopscotch.min.js"></script>
+		<script src="js/helptour.js"></script>
+		<script src="js/bootstrap-3-typeahead.js"></script>
+<!-- 		<script src="fonts/iconsJSON.js"></script> -->
+		<script src="bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+		<script src="js/syspro/SYSPROInterop.js"></script> 
+	    <script src="js/sysproscript.js"></script>
+	     
+	</body>
+</html>

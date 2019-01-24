@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>SYSPRO Product Visual Builder</title>
+
+  <!-- Bootstrap -->
+
+  <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+  <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+  <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+  <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+  <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
+  <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+
+  <link href="css/UX_CSS_forms.css" rel="stylesheet" />
+  <script>
+    window.MSPointerEvent = null;
+
+    window.PointerEvent = null;
+
+  </script>
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: { families: ['Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin'] }
+    };
+    (function () {
+      var wf = document.createElement('script');
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })(); 
+  </script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/UX_JS_jquery.min.js"></script>
+  <script src="js/UX_JS_velocity.min.js"></script>
+  <!-- 	<script src="js/UX_JS_kendo.js"></script>  -->
+  <script src="js/kendo.all.min.js"></script>
+  <script src="js/UX_JS_immutable.min.js"></script>
+  <style>
+    td:nth-child(2):hover,
+    td:nth-child(3):hover,
+    td:nth-child(4):hover {
+      cursor: text;
+      background: #dfe7ea;
+    }
+  </style>
+</head>
+
+<body data-column-layout="3col" style="padding-top:0px;">
+
+
+  <div id="invisibleNode" style="display: none;"></div>
+  <div id="invisibleToolbarNode" style="display: none;"></div>
+
+  <div id="dialog"></div>
+
+  <div id="wrapper" class="toggled">
+
+    <!-- /#sidebar-wrapper -->
+    <div class="container-fluid" id="main-container">
+
+      <!-- Error Notification empty element -->
+      <span id="errorNotification" style="display:none;"></span>
+
+
+
+      <div class="row sys-mg-t-5">
+
+
+        <div class="col-sm-12">
+
+          <div id="grid" data-role="grid" class="k-grid k-widget k-display-block k-reorderable" style="height: 315px;">
+            <div class="k-grid-header" style="padding-right: 0px;">
+              <div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable">
+                <table role="grid">
+                  <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                  </colgroup>
+                  <thead role="rowgroup">
+                    <tr role="row">
+                      <th colspan="7" scope="col" role="columnheader" data-field="" class="k-header k-with-icon">
+                        <span class="pull-left">Drag a column header and drop it here to group by that column</span>
+                        <span class="pull-right">
+                          <a class="k-link" data-toggle="popover" data-trigger="hover" title="Editable fields" data-container="body" data-placement="left"
+                            data-content="Editable cells are indicated when hovering the mouse cursor over them. Click to edit.">Editable
+                            <i class="material-icons sys-txt-sm">help</i>
+                          </a>
+                        </span>
+                      </th>
+
+
+                    </tr>
+                    <tr role="row">
+                      <th scope="col" role="columnheader" data-field="ProductName" aria-haspopup="true" rowspan="1" data-title="Product Name" data-index="0"
+                        id="ce80178c-41b9-4aed-8c9a-c828b15aa38d" class="k-header k-with-icon" data-role="columnsorter">
+                        <a class="k-header-column-menu" href="#" title="Column Settings" aria-label="Column Settings" tabindex="-1">
+                          <span class="k-icon k-i-more-vertical"></span>
+                        </a>
+                        <a class="k-link" href="#">Actions</a>
+                      </th>
+                      <th scope="col" role="columnheader" data-field="ProductID" aria-haspopup="true" rowspan="1" data-title="Product ID" data-index="1"
+                        id="456629a2-235c-451b-8838-330fea314e01" class="k-header k-with-icon" data-role="columnsorter">
+                        <a class="k-header-column-menu" href="#" title="Column Settings" aria-label="Column Settings" tabindex="-1">
+                          <span class="k-icon k-i-more-vertical"></span>
+                        </a>
+                        <a class="k-link" href="#">Product ID</a>
+                      </th>
+                      <th scope="col" role="columnheader" data-field="SupplierID" aria-haspopup="true" rowspan="1" data-title="Supplier ID" data-index="2"
+                        id="f63fdd03-614f-40a9-84b1-18613e5bbea2" class="k-header k-with-icon" data-role="columnsorter">
+                        <a class="k-header-column-menu" href="#" title="Column Settings" aria-label="Column Settings" tabindex="-1">
+                          <span class="k-icon k-i-more-vertical"></span>
+                        </a>
+                        <a class="k-link" href="#">Supplier ID</a>
+                      </th>
+                      <th scope="col" role="columnheader" data-field="UnitPrice" aria-haspopup="true" rowspan="1" data-title="Unit Price" data-index="3"
+                        id="c8c6f8cf-12ad-4fda-a951-68e388f9b674" class="k-header k-with-icon" data-role="columnsorter">
+                        <a class="k-header-column-menu" href="#" title="Column Settings" aria-label="Column Settings" tabindex="-1">
+                          <span class="k-icon k-i-more-vertical"></span>
+                        </a>
+                        <a class="k-link" href="#">Unit Price</a>
+                      </th>
+                      <th scope="col" role="columnheader" data-field="UnitsInStock" aria-haspopup="true" rowspan="1" data-title="Units In Stock"
+                        data-index="4" id="126855e9-29dc-41ca-a70b-8a7ea3387e9c" class="k-header k-with-icon" data-role="columnsorter">
+                        <a class="k-header-column-menu" href="#" title="Column Settings" aria-label="Column Settings" tabindex="-1">
+                          <span class="k-icon k-i-more-vertical"></span>
+                        </a>
+                        <a class="k-link" href="#">Units In Stock</a>
+                      </th>
+                      <th scope="col" role="columnheader" data-field="ReorderLevel" aria-haspopup="true" rowspan="1" data-title="Reorder Level"
+                        data-index="5" id="920e9047-dc1a-40a0-a351-8cd78418e6a2" class="k-header k-with-icon" data-role="columnsorter">
+                        <a class="k-header-column-menu" href="#" title="Column Settings" aria-label="Column Settings" tabindex="-1">
+                          <span class="k-icon k-i-more-vertical"></span>
+                        </a>
+                        <a class="k-link" href="#">Reorder Level</a>
+                      </th>
+                      <th scope="col" role="columnheader" data-field="Discontinued" aria-haspopup="true" rowspan="1" data-index="6" id="b8d63cc1-26fc-40e2-991c-6d720043eaa4"
+                        class="k-header k-with-icon" data-role="columnsorter">
+                        <a class="k-header-column-menu" href="#" title="Column Settings" aria-label="Column Settings" tabindex="-1">
+                          <span class="k-icon k-i-more-vertical"></span>
+                        </a>
+                        <a class="k-link" href="#">Discontinued</a>
+                      </th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+            <div class="k-grid-content k-auto-scrollable" style="height: 234px;">
+              <table role="grid" style="height: auto;" data-role="selectable" class="k-selectable" aria-multiselectable="true">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <tbody role="rowgroup">
+                  <tr data-uid="4cf50a73-4f1c-4f83-9bc7-ccb1656914c4" role="row">
+                    <td role="gridcell">
+                      <div class="btn-group btn-group-xs pull-right sys-mg-off" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i class="material-icons text-primary sys-txt-sm">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <i class="material-icons sys-txt-sm">delete_forever</i>
+                        </button>
+                      </div>
+                    </td>
+                    <td role="gridcell">1</td>
+                    <td role="gridcell">1</td>
+                    <td role="gridcell">$18.00</td>
+                    <td role="gridcell">39</td>
+                    <td role="gridcell">10</td>
+                    <td role="gridcell">false</td>
+                  </tr>
+                  <tr class="k-alt" data-uid="4f2ada0b-7846-4aa5-9801-76f9cb429ec3" role="row">
+                    <td role="gridcell">
+                      <div class="btn-group btn-group-xs pull-right sys-mg-off" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i class="material-icons text-primary sys-txt-sm">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <i class="material-icons sys-txt-sm">delete_forever</i>
+                        </button>
+                      </div>
+                    </td>
+                    <td role="gridcell">2</td>
+                    <td role="gridcell">1</td>
+                    <td role="gridcell">$19.00</td>
+                    <td role="gridcell">17</td>
+                    <td role="gridcell">25</td>
+                    <td role="gridcell">false</td>
+                  </tr>
+                  <tr data-uid="af12e2f2-20e5-400b-b9e1-817e1d783aa9" role="row">
+                    <td role="gridcell">
+                      <div class="btn-group btn-group-xs pull-right sys-mg-off" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i class="material-icons text-primary sys-txt-sm">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <i class="material-icons sys-txt-sm">delete_forever</i>
+                        </button>
+                      </div>
+                    </td>
+                    <td role="gridcell">3</td>
+                    <td role="gridcell">1</td>
+                    <td role="gridcell">$10.00</td>
+                    <td role="gridcell">13</td>
+                    <td role="gridcell">25</td>
+                    <td role="gridcell">false</td>
+                  </tr>
+                  <tr class="k-alt" data-uid="ff92aef8-9e7b-4e91-8db8-09463f84c14c" role="row">
+                    <td role="gridcell">
+                      <div class="btn-group btn-group-xs pull-right sys-mg-off" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i class="material-icons text-primary sys-txt-sm">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <i class="material-icons text-danger sys-txt-sm">delete_forever</i>
+                        </button>
+                      </div>
+                    </td>
+                    <td role="gridcell">4</td>
+                    <td role="gridcell">2</td>
+                    <td role="gridcell">$22.00</td>
+                    <td role="gridcell">53</td>
+                    <td role="gridcell">0</td>
+                    <td role="gridcell">false</td>
+                  </tr>
+                  <tr data-uid="1c07090c-6181-4586-9fc4-dce8f13ff44f" role="row">
+                    <td role="gridcell">
+                      <div class="btn-group btn-group-xs pull-right sys-mg-off" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i class="material-icons text-primary sys-txt-sm">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <i class="material-icons text-danger sys-txt-sm">delete_forever</i>
+                        </button>
+                      </div>
+                    </td>
+                    <td role="gridcell">5</td>
+                    <td role="gridcell">2</td>
+                    <td role="gridcell">$21.35</td>
+                    <td role="gridcell">0</td>
+                    <td role="gridcell">0</td>
+                    <td role="gridcell">true</td>
+                  </tr>
+                  <tr class="k-alt" data-uid="c4bdef90-caee-4ac0-ba92-9d65edb3efb8" role="row">
+                    <td role="gridcell">
+                      <div class="btn-group btn-group-xs pull-right sys-mg-off" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i class="material-icons text-primary sys-txt-sm">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <i class="material-icons text-danger sys-txt-sm">delete_forever</i>
+                        </button>
+                      </div>
+                    </td>
+                    <td role="gridcell">6</td>
+                    <td role="gridcell">3</td>
+                    <td role="gridcell">$25.00</td>
+                    <td role="gridcell">120</td>
+                    <td role="gridcell">25</td>
+                    <td role="gridcell">false</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <div class="k-pager-wrap k-grid-pager k-widget k-floatwrap" data-role="pager">
+              <a href="#" aria-label="Go to the first page" title="Go to the first page" class="k-link k-pager-nav k-pager-first k-state-disabled"
+                data-page="1" tabindex="-1">
+                <span class="k-icon k-i-seek-w"></span>
+              </a>
+              <a href="#" aria-label="Go to the previous page" title="Go to the previous page" class="k-link k-pager-nav  k-state-disabled"
+                data-page="1" tabindex="-1">
+                <span class="k-icon k-i-arrow-w"></span>
+              </a>
+              <span class="k-pager-input k-label">Page
+                <input class="k-textbox" aria-label="1">of 4</span>
+              <a href="#" aria-label="Go to the next page" title="Go to the next page" class="k-link k-pager-nav" data-page="2" tabindex="-1">
+                <span class="k-icon k-i-arrow-e"></span>
+              </a>
+              <a href="#" aria-label="Go to the last page" title="Go to the last page" class="k-link k-pager-nav k-pager-last" data-page="4"
+                tabindex="-1">
+                <span class="k-icon k-i-seek-e"></span>
+              </a>
+              <span class="k-pager-info k-label">1 - 20 of 77 items</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <script src="js/UX_JS_bootstrap.js"></script>
+
+  <script src="js/UX_JS_ripples.min.js"></script>
+
+  <script>
+    $(document).on('ready', function () {
+      $("[data-toggle='popover']").popover();
+    })
+  </script>
+
+</body>
+
+</html>

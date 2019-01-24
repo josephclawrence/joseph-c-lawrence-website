@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product HTML Kitchen Sink</title>
+
+    <!-- Bootstrap -->
+<!--
+    <link href="css/syspro.min.css" rel="stylesheet">
+    <link href="css/bootkit.css" rel="stylesheet">
+-->
+	<link href="css/sysprostyle.css" rel="stylesheet">
+	<link href="css/simple-line-icons.css" rel="stylesheet">
+	<link href="css/jquery.treegrid.css" rel="stylesheet">
+	
+	<!-- menu styles -->
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	
+<!--     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800' rel='stylesheet' type='text/css'> -->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      
+    <![endif]-->
+    <script src="js/modernizr-custom.js"></script>
+    <style>
+	  	.filler_bg {
+		  	width:100%;
+		  	height: 100px;
+		  	background: #dfdfdf;
+		  	border-radius: 4px;
+	  	}  
+	  	.fontawesome-icon-list .fa-hover a {
+		  display: block;
+		  color: #222222;
+		  line-height: 32px;
+		  height: 32px;
+		  padding-left: 10px;
+		  border-radius: 4px;
+		}
+		.fontawesome-icon-list .fa-hover a .fa {
+		  width: 32px;
+		  font-size: 14px;
+		  display: inline-block;
+		  text-align: right;
+		  margin-right: 10px;
+		}
+		.fontawesome-icon-list .fa-hover a:hover {
+		  background-color: #016699;
+		  color: #ffffff;
+		  text-decoration: none;
+		}
+		.fontawesome-icon-list .fa-hover a:hover .fa {
+		  font-size: 28px;
+		  vertical-align: -6px;
+		}
+		.fontawesome-icon-list .fa-hover a .fa {
+		  width: 32px;
+		  font-size: 14px;
+		  display: inline-block;
+		  text-align: right;
+		  margin-right: 10px;
+		}
+		* {
+			word-wrap: break-word;
+		}
+		.preview {
+		    padding: 20px 0;
+		    position: relative;
+		}
+		.show-code {
+		    color: #101010;
+		}
+		.code-preview {
+			display: none;
+		}
+		.icons {
+/* 		    font-size: 18px; */
+		    padding-right: 10px;
+		}
+		.clear-both {
+			clear:both;
+		}
+		.clear-right {
+			clear:right;
+		}
+	</style>
+  </head>
+  <body>
+    <div class="container">
+
+	    <div class="row" id="layoutoptions">
+			
+			<div class="col-sm-6">
+				<div class="panel sys-bd-very-light-gray sys-box-shadow-off">	
+			    	<div class="panel-body">
+				    	
+				    	<h3 class="sys-mg-off-t">HTML</h3>
+				    	
+				    	
+				    	<div class="row">
+					    	<div class="col-sm-12">
+							    <h4 class="sys-mg-off-t">Separate blocks with background colours</h4>
+							    <div class="panel sys-widget sys-bd-off sys-box-shadow-off">
+								    <div class="panel-body sys-pd-off">
+									    <div class="row">
+										    <div class="col-xs-6">
+											    <div class="panel sys-widget sys-bd-off sys-box-shadow-off sys-mg-off">
+												    <div class="panel-body sys-bg-primary sys-fg-white text-center ">
+												        <h1 class="sys-mg-off sys-300">Field value</h1>
+														<small>Field caption</small>
+												    </div>
+												</div>
+										    </div>
+										    <div class="col-xs-6">
+											    <div class="panel sys-widget sys-bd-off sys-box-shadow-off sys-mg-off">
+												    <div class="panel-body sys-bg-warning sys-fg-white text-left ">
+												        <h1 class="sys-mg-off sys-300">Field value</h1>
+														<small>Field caption</small>
+												    </div>
+												</div>
+										    </div>
+									    </div>
+								    </div>
+							    </div>
+					    	</div>
+					    </div>
+					    
+					    <div class="row">
+						    <div class="col-sm-12">
+								<pre>
+&lt;div class="row">
+&lt;div class="col-sm-12">
+&lt;div class="panel sys-widget sys-bd-off sys-box-shadow-off">
+&lt;div class="panel-body sys-pd-off">
+&lt;div class="row">
+&lt;div class="col-xs-6">
+&lt;div class="panel sys-widget sys-bd-off sys-box-shadow-off sys-mg-off">
+&lt;div class="panel-body sys-bg-primary sys-fg-white text-center ">
+&lt;h1 class="sys-mg-off sys-300">Field value&lt;/h1>
+&lt;small>Field caption&lt;/small>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="col-xs-6">
+&lt;div class="panel sys-widget sys-bd-off sys-box-shadow-off sys-mg-off">
+&lt;div class="panel-body sys-bg-warning sys-fg-white text-left ">
+&lt;h1 class="sys-mg-off sys-300">Field value&lt;/h1>
+&lt;small>Field caption&lt;/small>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+								</pre>  
+						    </div>
+					    </div>
+			    	</div>
+				</div>
+			</div>
+			
+		    <div class="col-sm-6">
+			    <div class="panel sys-bd-very-light-gray sys-box-shadow-off">	
+			    	<div class="panel-body">
+
+						<h3 class="sys-mg-off-t">JSON</h3>
+						
+						<div class="row">
+						    <div class="col-xs-12">
+<pre>
+{
+Columns: [
+	{
+		Index: 0,
+		ResponsiveStyle: "4",
+		Widgets:
+		[
+			{   
+				Index: 0,
+				Title: "Customer Stuff", 
+				Type: "LayoutWidget",
+				SubType: "Seperated",
+				DisplayType: "Inline",
+				RowStyle: "Inline",
+				Borders: "0",
+				SecondaryStyle: "2",
+				Rows: 
+				[
+					{
+						Index: 0,
+						Columns: 
+						[
+							{
+								Index: 0,
+								ResponsiveStyle: "6",
+								BackgoundColor: 4,
+								Widget:
+								{ 
+										Index: 0,
+										Type: "DataWidget",
+										SubType: "Joined",
+										FieldName: "Customer",
+										FieldPath: "ARSPEN.Header.Customer.Name",
+										Caption:
+										{
+											Color: 0,
+											Size: 10,
+											Alignment: "Left",
+											Visible: false
+										},
+										Value:
+										{
+											Color: 0,
+											Size: 10,
+											Alignment: "Left",
+											Weight: 2
+										},
+										Icon: {
+											Name: "HappyFace",
+											Color: 0,
+											Size: 10,
+											Alignment: "Left",
+											Tooltip: "Happy Days"
+										}
+								}
+								
+							},
+
+							{
+								Index: 1,
+								ResponsiveStyle: "6",
+								BackgoundColor: 5,
+								Widget:
+								{ 
+										Index: 0,
+										Type: "LinkWidget",
+										SubType: "Joined",
+										FieldName: "ARSPEN.Header.Customer.Name",
+										Caption:
+										{
+											Color: 0,
+											Size: 10,
+											Alignment: "Left",
+											Visible: false
+										},
+										Value:
+										{
+											Color: 0,
+											Size: 10,
+											Alignment: "Left",
+											Weight: 2
+										},
+										Icon: {
+											Name: "HappyFace",
+											Color: 0,
+											Size: 10,
+											Alignment: "Left"
+										}
+								}
+							},
+							{
+								Index: 2,
+								ResponsiveStyle: "4",
+								VisualStyle: 4,	
+								Widget:
+								{
+									Index: 1,
+									Type: "Card",
+									SubType: "Mini",
+									CardType: "Salesperson"
+									Color: "2" 
+								}
+							}
+						]
+						
+					}
+				]
+			},
+			{
+				Index: 1,
+				Type: "Card",
+				SubType: "Maxi",
+				CardType: "StockCode"
+				Color: "2" 
+			},
+			{
+				Index: 2,
+				Type: "Sparkline",
+				SubType: "Line",
+				CardType: "StockCode"
+				Color: "2" 
+			},
+		]
+		
+	},
+
+]
+}
+</pre>
+						    </div>
+						</div>
+			    	</div>
+			    </div>
+		    </div>
+	    </div>
+
+	    
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script src="js/classie.js"></script>
+	<script src="js/dummydata.js"></script>
+	<script src="js/main.js"></script>
+
+    <script type="text/javascript" src="js/jquery.treegrid.js"></script>
+    <script type="text/javascript" src="js/jquery.treegrid.bootstrap3.js"></script>
+    <script>
+		
+		$(document).ready(function() {
+            $('.tree').treegrid({
+                expanderExpandedClass: 'fa fa-angle-down text-primary',
+                expanderCollapsedClass: 'fa fa-angle-right text-primary'
+            });
+            $('.tree2').treegrid({
+                expanderExpandedClass: 'fa fa-angle-down text-primary',
+                expanderCollapsedClass: 'fa fa-angle-right text-primary',
+                initialState: 'collapsed'
+            });
+            /*
+$('.tree-2').treegrid({
+                expanderExpandedClass: 'glyphicon glyphicon-minus',
+                expanderCollapsedClass: 'glyphicon glyphicon-plus'
+            });
+*/
+
+        });
+		
+
+	</script>	
+	<script>
+	(function() {
+		var menuEl = document.getElementById('ml-menu'),
+			mlmenu = new MLMenu(menuEl, {
+				// breadcrumbsCtrl : true, // show breadcrumbs
+				// initialBreadcrumb : 'all', // initial breadcrumb text
+				backCtrl : false, // show back button
+				// itemsDelayInterval : 60, // delay between each menu item sliding animation
+				//onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
+			});
+
+		// mobile menu toggle
+/*
+		var openMenuCtrl = document.querySelector('.action--open'),
+			closeMenuCtrl = document.querySelector('.action--close');
+
+		openMenuCtrl.addEventListener('click', openMenu);
+		closeMenuCtrl.addEventListener('click', closeMenu);
+
+		function openMenu() {
+			classie.add(menuEl, 'menu--open');
+		}
+
+		function closeMenu() {
+			classie.remove(menuEl, 'menu--open');
+		}
+*/
+
+		// simulate grid content loading
+		//var gridWrapper = document.querySelector('.content');
+
+		function loadDummyData(ev, itemName) {
+			ev.preventDefault();
+
+			closeMenu();
+			//gridWrapper.innerHTML = '';
+			//classie.add(gridWrapper, 'content--loading');
+			/*
+setTimeout(function() {
+				classie.remove(gridWrapper, 'content--loading');
+				gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
+			}, 700);
+*/
+		}
+	})();
+	</script>
+  </body>
+</html>

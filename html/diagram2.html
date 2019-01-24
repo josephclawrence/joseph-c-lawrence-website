@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product HTML Kitchen Sink</title>
+
+    <!-- Bootstrap -->
+    <!--
+    <link href="css/syspro.min.css" rel="stylesheet">
+    <link href="css/bootkit.css" rel="stylesheet">
+-->
+    <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+    <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+    <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+    <!--     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic'
+        rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .filler_bg {
+            width: 100%;
+            height: 100px;
+            background: #dfdfdf;
+            border-radius: 4px;
+        }
+
+        .fontawesome-icon-list .fa-hover a {
+            display: block;
+            color: #222222;
+            line-height: 32px;
+            height: 32px;
+            padding-left: 10px;
+            border-radius: 4px;
+        }
+
+        .fontawesome-icon-list .fa-hover a .fa {
+            width: 32px;
+            font-size: 14px;
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .fontawesome-icon-list .fa-hover a:hover {
+            background-color: #016699;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .fontawesome-icon-list .fa-hover a:hover .fa {
+            font-size: 28px;
+            vertical-align: -6px;
+        }
+
+        .fontawesome-icon-list .fa-hover a .fa {
+            width: 32px;
+            font-size: 14px;
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        * {
+            word-wrap: break-word;
+        }
+
+        .preview {
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .show-code {
+            color: #101010;
+        }
+
+        .code-preview {
+            display: none;
+        }
+
+        .icons {
+            /* 		    font-size: 18px; */
+            padding-right: 10px;
+        }
+
+        .clear-both {
+            clear: both;
+        }
+
+        .clear-right {
+            clear: right;
+        }
+
+
+
+        /*
+.pane-content
+{
+    scrollable: false;
+}
+*/
+
+        .configurationButtons {
+            padding: 4px;
+            background: #ffffff;
+            border: 1px solid #dadada;
+            margin: 0 -1px 0 0;
+        }
+
+        .configurationButtons span {
+            width: 16px;
+            height: 16px;
+            -webkit-transform: translatez(0);
+            display: block;
+        }
+
+        #panelBar div {
+            background: #f4f4f4;
+        }
+
+        .alignLeft {
+            background-position: -144px 0;
+        }
+
+        .alignRight {
+            background-position: -160px 0;
+        }
+
+        .alignTop {
+            background-position: -112px 0;
+        }
+
+        .alignBottom {
+            background-position: -128px 0;
+        }
+
+        .toFront {
+            background-position: -176px 0;
+        }
+
+        .toBack {
+            background-position: -192px 0;
+        }
+
+        .new-item {
+            background-position: 0 0;
+        }
+
+        /*
+.blank-item
+{
+    background-position: 0 0;
+}
+
+.open-item
+{
+    background-position: -32px 0;
+}
+
+.save-item
+{
+    background-position: -16px 0;
+}
+*/
+
+        .undo-item {
+            background-position: -48px 0;
+        }
+
+        .redo-item {
+            background-position: -64px 0;
+        }
+
+        /*
+.copy-item
+{
+    background-position: -80px 0;
+}
+
+.paste-item
+{
+    background-position: -96px 0;
+}
+*/
+
+        .k-slider {
+            vertical-align: middle;
+        }
+
+        .k-numerictextbox {
+            width: 60px;
+        }
+
+
+        #splitter {
+            /* position: absolute;
+    left: 0;
+    right: 0;
+    height: auto;
+    top: 92px;
+    bottom: 35px; */
+            border-width: 1px 0px 0px;
+        }
+
+        .k-splitter .k-ghost-splitbar-horizontal,
+        .k-splitter .k-splitbar-horizontal {
+            top: 0;
+            width: 7px;
+        }
+
+        .k-splitbar-horizontal .k-icon {
+            left: 0px;
+        }
+
+        #bottom-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3px;
+            text-align: right;
+        }
+
+        #diagram2 {
+            border: 0;
+            width: 100%;
+        }
+
+        #diagram2,
+        #center-pane .pane-content {
+            height: 100%;
+        }
+
+        .k-panelbar .k-content ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .k-panelbar .k-content li {
+            text-align: right;
+            position: relative;
+            list-style: none;
+            padding: 5px 5px 0 0;
+        }
+
+        .k-panelbar .k-content {
+            padding-bottom: 5px;
+        }
+
+        .k-panelbar .k-content li>span {
+            position: absolute;
+            display: block;
+            left: 5px;
+            top: 10px;
+            font-size: 13px;
+        }
+
+        .k-panelbar .k-content li>.k-widget {
+            width: 60%;
+            display: inline-block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            text-align: left;
+            position: static;
+        }
+
+        .k-panelbar .k-content .k-selected-color {
+            width: 100%;
+        }
+
+        .k-panelbar {
+            border-width: 0;
+        }
+
+        .k-panelbar,
+        .k-panelbar .k-panel,
+        .k-panelbar li.k-item {
+            background: transparent;
+        }
+
+        .k-panelbar .k-panel,
+        .k-panelbar .k-content {
+            background: #f0f0f0;
+        }
+
+        .k-dropdown-wrap {
+            border-radius: 2px;
+        }
+
+        .k-dropdown-wrap .k-select {
+            min-height: 1.74em;
+            line-height: 1.77em;
+            vertical-align: middle;
+            text-align: center;
+            width: 1.6em;
+        }
+
+        .k-dropdown-wrap .k-input,
+        .k-selectbox .k-input {
+            height: 1.74em;
+            line-height: 1.6em;
+            padding: .157em 0;
+            text-indent: .4em;
+        }
+
+        #shapesPanelBar .k-panel .k-item {
+            /*
+    display: inline-block;
+    width: 50%;
+*/
+        }
+
+        #shapesPanelBar .k-panel .k-state-hover,
+        #shapesPanelBar .k-panel .k-state-selected {
+            color: inherit;
+            background: #fff;
+        }
+
+        .shapeItem {
+            margin-right: 5px;
+            margin-bottom: -2px;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-image: url("img/diagram-toolbox.png");
+            background-size: auto 100%;
+        }
+
+        #shapesPanelBar span {
+            text-align: left;
+            /*     display: block; */
+        }
+
+        #shapesPanelBar .shapeItem {
+            display: inline-block;
+        }
+
+        #diagramMenu>.k-menu {
+            height: 30px;
+            border-radius: 2px 2px 0px 0px;
+            border: none;
+        }
+
+        #diagramMenu .k-item>.k-link {
+            padding: .2em 0.5em;
+        }
+
+        .header {
+            color: #fff;
+            background: #000;
+            font-size: 16px;
+            font-weight: bold;
+            padding-left: 20px;
+            height: 50px;
+            line-height: 50px;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        .header a {
+            cursor: pointer;
+            font-weight: normal;
+            font-size: 14px;
+            text-decoration: none;
+            color: #fff;
+            display: inline-block;
+            margin-right: 30px;
+            float: right;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .k-popup-edit-form input.k-textbox {
+            width: 12em;
+        }
+
+        .radio-btn-group .btn.configurationButtons:not(.btn-colour) {
+            min-width: 30px;
+            min-height: 30px;
+            text-overflow: clip;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row" id="cards">
+
+            <h2>Diagram</h2>
+            <div class="col-sm-4">
+                <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel sys-widget sys-rd">
+
+                                    <div class="panel-body sys-pd-b-10 text-center sys-pd-off sys-rd">
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div id="diagram" class="sys-bd-off"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-8">
+                <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel sys-widget sys-rd">
+
+                                    <div class="panel-body sys-pd-b-10 text-center sys-pd-off sys-rd">
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div id="diagramMenu">
+                                                    <ul></ul>
+                                                </div>
+
+                                                <div id="splitter">
+                                                    <div id="left-pane">
+                                                        <div class="pane-content">
+                                                            <ul id="shapesPanelBar">
+                                                                <li>
+                                                                    Basic Shapes
+                                                                    <ul>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"width":120,"height":120,"type":"rectangle"}' style="background-position: 0 0"></span>
+                                                                            <span>Square</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"type":"circle","width":120,"height":120}' style="background-position: -15px 0"></span>
+                                                                            <span>Circle</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"width":120,"height":80,"type":"rectangle"}' style="background-position: -30px 0"></span>
+                                                                            <span>Rectangle</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"type":"circle","width":120,"height":80}' style="background-position: -45px 0"></span>
+                                                                            <span>Ellipse</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li>
+                                                                    Polygons
+                                                                    <ul>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"path":"M 60,0 L120,44 L97,114 L23,114 L0,44 z"}' style="background-position: -60px 0"></span>
+                                                                            <span>Pentagon</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"path":"m30,0 L90,0 L120,52 L90,104 L30,104 L0,52 z"}' style="background-position: -75px 0"></span>
+                                                                            <span>Hexagon</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"path":"m60,0 L108.12,23.17 L120,75.24 L86.7,116.99 L33.3,116.99 L0,75.24 L11.88,23.17 z"}'
+                                                                                style="background-position: -90px 0"></span>
+                                                                            <span>Heptagon</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="shapeItem" data-shape='{"path":"m35.15,0 L84.85,0 L120,35.15 L120,84.85 L84.85,120 L35.15,120 L0,84.85 L0,35.15 z"}'
+                                                                                style="background-position: -105px 0"></span>
+                                                                            <span>Octagon</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div id="center-pane">
+                                                        <div class="pane-content">
+                                                            <div id="diagram2"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="right-pane">
+                                                        <div class="pane-content">
+                                                            <ul id="configurationPanelBar">
+                                                                <li>
+                                                                    Diagram options
+                                                                    <div id="canvasProperties">
+                                                                        <ul>
+                                                                            <!--
+											                            <li>
+											                                <span>Background Color:</span>
+											                                <input id="canvasBackgroundColorPicker" class="colorPicker" />
+											                            </li>
+-->
+                                                                            <li>
+                                                                                <span>Layout:</span>
+                                                                                <input id="canvasLayout" />
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    Shape options
+                                                                    <div id="shapeProperties">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <span>Colour:</span>
+                                                                                <input id="shapeBackgroundColorPicker" class="colorPicker" />
+                                                                            </li>
+                                                                            <!--
+											                            <li>
+											                                <span>Stroke Color:</span>
+											                                <input id="shapeStrokeColorPicker" class="colorPicker" />
+											                            </li>
+											                            <li>
+											                                <span>Stroke Width:</span>
+											                                <input type="text" id="shapeStrokeWidth" class="numeric" />
+											                            </li>
+-->
+                                                                            <!--
+											                            <li>
+											                                <span>Width:</span>
+											                                <input type="text" id="shapeWidth" class="numeric" />
+											                            </li>
+											                            <li>
+											                                <span>Height:</span>
+											                                <input type="text" id="shapeHeight" class="numeric" />
+											                            </li>
+											                            <li>
+											                                <span>Position X:</span>
+											                                <input type="text" id="shapePositionX" class="numeric" />
+											                            </li>
+											                            <li>
+											                                <span>Position Y:</span>
+											                                <input type="text" id="shapePositionY" class="numeric" />
+											                            </li>
+-->
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    Connection options
+                                                                    <div id="connectionProperties">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <span>Start Cap:</span>
+                                                                                <input id="connectionStartCap" />
+                                                                            </li>
+                                                                            <li>
+                                                                                <span>End Cap:</span>
+                                                                                <input id="connectionEndCap" />
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    Align
+                                                                    <!-- <div id="alignConfiguration" style="width: 100%; padding: 10px; box-sizing: border-box; text-align: left;">
+                                                                        <button class="configurationButtons" data-position="top">
+                                                                            <i class="material-icons">arrow_upward</i>
+                                                                        </button>
+                                                                        <button class="configurationButtons" data-position="bottom">
+                                                                            <i class="material-icons">arrow_downward</i>
+                                                                        </button>
+                                                                        <button class="configurationButtons" data-position="left">
+                                                                            <i class="material-icons">arrow_backward</i>
+                                                                        </button>
+                                                                        <button class="configurationButtons" data-position="right">
+                                                                            <i class="material-icons">arrow_forward</i>
+                                                                        </button>
+                                                                    </div> -->
+                                                                    <div class="radio-btn-group" id="alignConfiguration" style="width: 100%; padding: 10px; box-sizing: border-box; text-align: left;">
+                                                                        <button class="btn btn-radio configurationButtons" data-position="top">
+                                                                            <i class="material-icons">arrow_upward</i>
+                                                                        </button>
+                                                                        <button class="btn btn-radio configurationButtons" data-position="bottom">
+                                                                            <i class="material-icons">arrow_downward</i>
+                                                                        </button>
+                                                                        <button class="btn btn-radio configurationButtons" data-position="left">
+                                                                            <i class="material-icons">arrow_backward</i>
+                                                                        </button>
+                                                                        <button class="btn btn-radio configurationButtons" data-position="right">
+                                                                            <i class="material-icons">arrow_forward</i>
+                                                                        </button>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    Arrange
+                                                                    <!-- <div class="radio-btn-group" id="arrangeConfiguration"> -->
+                                                                    <div class="radio-btn-group" id="arrangeConfiguration" style="width: 100%; padding: 10px; box-sizing: border-box; text-align: left;">
+                                                                        <button class="btn btn-radio configurationButtons" data-action="toFront">
+                                                                            <i class="material-icons">flip_to_front</i>
+                                                                        </button>
+                                                                        <button class="btn btn-radio configurationButtons" data-action="toBack">
+                                                                            <i class="material-icons">flip_to_back</i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <!-- </div> -->
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script id="programEditTemplate" type="text/kendo">
+        <p>
+            Title
+            <input type="text" class="k-textbox" name="Title"/>
+        </p>   
+        <p>     
+            Program
+            <select name="Program" id="">
+                <option value="Program_1">Program 1</option>
+                <option value="Program_2">Program 2</option>
+                <option value="Program_3">Program 3</option>
+                <option value="Program_4">Program 4</option>
+            </select>
+        </p>
+        <p>
+            Color
+            <input type="text" class="k-textbox" name="Color"/>
+        </p>
+    </script>
+    <script id="VPEditTemplate" type="text/kendo">
+        custom template for VP
+      <input type="text" class="k-textbox" name="cusomVPProperty"/>
+    </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+
+    <script>
+        $(".fittext").fitText(0.8);
+
+
+
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+
+
+    </script>
+    <script>
+
+        var dataSource1 = new kendo.data.DataSource({
+            data: [{
+                id: 0,
+                Title: "Customer Report",
+                Program: "INVPEN",
+                Color: "#333300"
+            }, {
+                id: 1,
+                Title: "Sales report",
+                Program: "SSDD001",
+                Color: "#cc4400"
+            }, {
+                id: 2,
+                Title: "Inventory query",
+                Program: "INVQUER",
+                Color: "orange"
+            }, {
+                id: 3,
+                Title: "Quarterly profit",
+                Program: "QPROF",
+                Color: "orange"
+            }, {
+                id: 4,
+                Title: "New sales order",
+                Program: "SALEORDR",
+                Color: "blue"
+            }, {
+                id: 5,
+                Title: "Play bingo",
+                Program: "BINGO",
+                Color: "green"
+            }, {
+                id: 6,
+                Title: "Terminate all",
+                Program: "TRMN8",
+                Color: "green"
+            }],
+            schema: {
+                model: {
+                    id: "id",
+                    fields: {
+                        // this field will not be editable (default value is true)
+                        id: { type: "number", editable: false },
+                        Program: { type: "string" },
+                        Title: { type: "string" },
+                        Color: { type: "string" }
+                    }
+                }
+            }
+        });
+
+        var connectionsDataSource = new kendo.data.DataSource({
+            data: [{
+                id: 0,
+                from: 0,
+                to: 1
+            }, {
+                id: 1,
+                from: 1,
+                to: 2,
+            }, {
+                id: 2,
+                from: 0,
+                to: 3,
+            }, {
+                id: 3,
+                from: 3,
+                to: 4,
+            }, {
+                id: 4,
+                from: 0,
+                to: 5,
+            }, {
+                id: 5,
+                from: 5,
+                to: 6,
+            }]
+        });
+
+        function visualTemplate(options) {
+            var dataviz = kendo.dataviz;
+            var g = new dataviz.diagram.Group();
+            var dataItem = options.dataItem;
+
+            if (dataItem.type === "circle") {
+                g.append(new dataviz.diagram.Circle({
+                    width: dataItem.width || 120,
+                    height: dataItem.height || 120,
+                    stroke: {
+                        width: 0
+                    },
+                    fill: {
+                        color: dataItem.Color
+                    }
+                }));
+            } else if (dataItem.path !== null && dataItem.path !== undefined) {
+                g.append(new kendo.dataviz.diagram.Path({
+                    data: dataItem.path,
+                    stroke: {
+                        width: 0
+                    },
+                    fill: dataItem.Color
+                }));
+            } else {
+                g.append(new dataviz.diagram.Rectangle({
+                    width: dataItem.width || 200,
+                    height: dataItem.height || 100,
+                    stroke: {
+                        width: 0
+                    },
+                    fill: dataItem.Color
+                }));
+            }
+
+            g.append(new dataviz.diagram.TextBlock({
+                text: dataItem.Title,
+                x: 15,
+                y: 15,
+                fill: "#fff"
+            }));
+
+            g.append(new dataviz.diagram.TextBlock({
+                text: dataItem.Program,
+                x: 15,
+                y: 35,
+                fill: "#fff"
+            }));
+
+            return g;
+        }
+
+        function createDiagram() {
+            $("#diagram").kendoDiagram({
+                dataSource: dataSource1,
+                connectionsDataSource: connectionsDataSource,
+                layout: {
+                    type: "tree",
+                    subtype: "mindmapVertical"
+                },
+                shapeDefaults: {
+                    visual: visualTemplate,
+                    editable: false
+                },
+
+                connectionDefaults: {
+                    stroke: {
+                        color: "#2c3e50",
+                        width: 2
+                    },
+                    type: "cascading",
+                    endCap: "ArrowEnd",
+                    editable: false
+                },
+                selectable: false,
+                click: function (e) {
+                    if (e.item instanceof kendo.dataviz.diagram.Shape) {
+                        console.log(`You just clicked the: ${e.item.dataItem.Program} element`);
+                        alert(`You just clicked the: ${e.item.dataItem.Program} element`);
+                    } else {
+                        console.log("Clicked a connection.");
+                    }
+                },
+                zoom: 0.6,
+                zoomRate: 0.05,
+                editable: false,
+            });
+
+            var diagram = $("#diagram").getKendoDiagram();
+            diagram.bringIntoView(diagram.shapes);
+
+        }
+
+        $(document).ready(createDiagram);
+    </script>
+
+    <script>
+        //$(function() {
+        var Shape = kendo.dataviz.diagram.Shape,
+            Connection = kendo.dataviz.diagram.Connection,
+            Rect = kendo.dataviz.diagram.Rect,
+            Point = kendo.dataviz.diagram.Point,
+            selected;
+
+        $("#canvasProperties").on("change", canvasPropertiesChange);
+
+        var layoutMapping = {
+            "TreeDown": {
+                type: "tree",
+                subtype: "down"
+            },
+            "TreeUp": {
+                type: "tree",
+                subtype: "up"
+            },
+            "TreeLeft": {
+                type: "tree",
+                subtype: "left"
+            },
+            "TreeRight": {
+                type: "tree",
+                subtype: "right"
+            },
+            "RadialTree": {
+                type: "tree",
+                subtype: "radial"
+            },
+            "TipOverTree": {
+                type: "tree",
+                subtype: "typeover"
+            },
+            "LayeredHorizontal": {
+                type: "layered",
+                subtype: "horizontal"
+            },
+            "LayeredVertical": {
+                type: "layered",
+                subtype: "vertial"
+            },
+            "ForceDirected": {
+                type: "force",
+                subtype: "directed"
+            },
+            "MindmapVertical": {
+                type: "tree",
+                subtype: "mindmapvertical"
+            },
+            "MindmapHorizontal": {
+                type: "tree",
+                subtype: "mindmaphorizontal"
+            }
+        };
+
+        function canvasPropertiesChange() {
+            /*
+diagram2.element.css(
+                 "background-color",
+                 $("#canvasBackgroundColorPicker").getKendoColorPicker().value());
+*/
+
+            var layout = layoutMapping[$("#canvasLayout").getKendoDropDownList().value()];
+
+            diagram2.layout({
+                type: layout.type,
+                subtype: layout.subtype,
+                animation: true
+            });
+        }
+
+        $("#shapeProperties").on("change", shapePropertiesChange);
+
+        function shapePropertiesChange() {
+            var elements = selected || [],
+                newColor = $("#shapeBackgroundColorPicker").getKendoColorPicker().value(),
+                options = {
+                    fill: newColor
+                    /*
+stroke: {
+                        color: $("#shapeStrokeColorPicker").getKendoColorPicker().value(),
+                        width: $("#shapeStrokeWidth").getKendoNumericTextBox().value()
+                    }
+*/
+                },
+                /*
+bounds = new Rect(
+                    $("#shapePositionX").getKendoNumericTextBox().value(),
+                    $("#shapePositionY").getKendoNumericTextBox().value(),
+                    $("#shapeWidth").getKendoNumericTextBox().value(),
+                    $("#shapeHeight").getKendoNumericTextBox().value()
+                ),
+*/
+                element, i;
+
+            for (i = 0; i < elements.length; i++) {
+                element = elements[i];
+
+                if (element instanceof Shape) {
+                    element.dataItem.Color = newColor;
+                    element.dataItem.set('Color', newColor)
+                    element.redraw(options);
+                    element.redrawVisual();
+                    //element.bounds(bounds);
+                }
+            }
+        }
+
+        function connectionPropertiesChange() {
+            var elements = selected || [],
+                options = {
+                    startCap: $("#connectionStartCap").getKendoDropDownList().value(),
+                    endCap: $("#connectionEndCap").getKendoDropDownList().value()
+                },
+                element;
+
+            for (i = 0; i < elements.length; i++) {
+                element = elements[i];
+                if (element instanceof Connection) {
+                    element.redraw(options);
+                }
+            }
+        }
+
+        $("#connectionProperties").on("change", connectionPropertiesChange);
+
+        $("#alignConfiguration .configurationButtons").on('click', function () {
+            console.log(this);
+
+            var value = $(this).data("position");
+            diagram2.alignShapes(value);
+        }
+        );
+
+        $("#arrangeConfiguration .configurationButtons").on('click', function () {
+            var methodName = $(this).data("action");
+            diagram2[methodName]();
+        }
+        );
+
+        function undo() {
+            diagram2.undo();
+        }
+
+        function redo() {
+            diagram2.redo();
+        }
+
+        var actions = {
+            undo: undo,
+            redo: redo,
+        };
+
+        $("#diagramMenu ul").kendoMenu({
+            dataSource: [
+                { text: "<i class='material-icons'>undo</i> Undo", encoded: false, cssClass: "active" },
+                { text: "<i class='material-icons'>redo</i> Redo", encoded: false, cssClass: "active" }
+            ],
+            select: function (e) {
+                var item = $(e.item),
+                    itemTextClone = item.children(".k-link").clone();
+                itemTextClone.find("i").remove();
+                var itemTextCloneText = itemTextClone.text();
+
+                if (!item.hasClass("active")) {
+                    return;
+                }
+
+                actions[itemTextCloneText.trim().toLowerCase()]();
+            }
+        });
+
+
+        $("#splitter").kendoSplitter({
+            panes: [
+                { collapsible: true, size: "130px" },
+                { collapsible: false, scrollable: false },
+                { collapsible: true, size: "180px" }
+            ]
+        });
+
+
+        function localDataSource(options) {
+            var id = options.schema.model.id;
+            var data = options.data;
+            var newId = -1;
+            var created, updated, deleted;
+
+            var dataSource = new kendo.data.DataSource($.extend(true, {
+                transport: {
+                    read: function (e) {
+                        created = {};
+                        updated = {};
+                        deleted = {};
+
+                        e.success(data || []);
+                    },
+
+                    update: function (e) {
+                        var item = e.data;
+                        if (!created[item[id]]) {
+                            updated[item[id]] = item;
+                        }
+                        e.success();
+                    },
+
+                    destroy: function (e) {
+                        var idValue = e.data[id];
+                        if (!created[idValue]) {
+                            deleted[idValue] = e.data;
+                        } else {
+                            delete created[idValue];
+                        }
+                        e.success();
+                    },
+                    create: function (e) {
+                        var item = e.data;
+                        item[id] = newId--;
+                        created[item[id]] = $.extend(true, {}, item);
+
+                        e.success(item);
+                    }
+                },
+            }, options));
+
+            dataSource.getChanges = function () {
+                return {
+                    deleted: toArray(deleted),
+                    created: toArray(created),
+                    updated: toArray(updated)
+                }
+            };
+
+            return dataSource;
+        }
+
+        function toArray(changes) {
+            var result = [];
+            for (var id in changes) {
+                result.push(changes[id]);
+            }
+            return result;
+        }
+
+        function myFunction(e) {
+            console.log(e);
+        }
+
+        function createDiagram2() {
+            var shapesDataSource = localDataSource({
+                data: [{
+                    Id: 1,
+                    Title: "Some title",
+                    Program: "Some Program",
+                    Color: "#333300"
+                }, {
+                    Id: 2,
+                    Title: "Some other title",
+                    Program: "Some other program",
+                    Color: "#cc4400"
+                }],
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { type: "number", editable: false },
+                            Title: { type: "string" },
+                            Program: { type: "string" },
+                            Color: { type: "string" }
+                        }
+                    }
+                }
+            });
+
+            var connectionsDataSource = localDataSource({
+                data: [],
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { type: "number", editable: false },
+                            from: { from: "FromShapeId", type: "number" },
+                            to: { from: "ToShapeId", type: "number" },
+                            fromX: { from: "FromPointX", type: "number" },
+                            fromY: { from: "FromPointY", type: "number" },
+                            toX: { from: "ToPointX", type: "number" },
+                            toY: { from: "ToPointY", type: "number" }
+                        }
+                    }
+                }
+            });
+
+
+
+            $("#diagram2").kendoDiagram({
+                theme: "default",
+                dataSource: shapesDataSource,
+                connectionsDataSource: connectionsDataSource,
+                shapeDefaults: {
+                    visual: visualTemplate2,
+                    width: 120,
+                    height: 120,
+                    fill: "#0078d7",
+                    editable: {
+                        tools: [{
+                            name: "edit",
+                            icon: "pencil"
+                        }, {
+                            name: "delete",
+                            icon: "trash"
+                        }, {
+                            template: '<a href="" data-action="edit" class="k-button k-button-icon" onclick="myFunction()"><i class="material-icons">edit</i></a>',
+                            id: "theButtonId",
+                            click: function (e) {
+                                console.log(e);
+                            }
+                        }]
+                    }
+                },
+                connectionDefaults: {
+                    stroke: {
+                        color: "#2c3e50",
+                        width: 2
+                    },
+                    type: "cascading",
+                    endCap: "ArrowEnd",
+                    editable: {
+                        tools: [{
+                            name: "delete"
+                        }]
+                    }
+                },
+                layout: {
+                    type: "tree",
+                    subtype: "right"
+                },
+                editable: {
+                    resize: false,
+                    rotate: false,
+                    tools: [{}],
+                    shapeTemplate: function (dataItem) {
+                        return kendo.template($("#programEditTemplate").html())(dataItem);
+                    }
+                },
+                select: function (e) {
+                    if (e.selected.length) {
+                        selected = e.selected;
+                        var element = e.selected[0];
+                        if (element instanceof Shape) {
+                            console.log(element);
+                            updateShapeProperties(element);
+                        } else {
+                            updateConnectionProperties(element.options);
+                        }
+                    }
+                },
+                toolBarClick: function (e) {
+                    console.log(e);
+                },
+                zoom: 0.8,
+                dataBound: onDataBound
+            });
+        }
+
+        $(document).ready(function () {
+            createDiagram2();
+            diagram2 = $("#diagram2").data("kendoDiagram");
+
+            $("#diagram2").kendoDropTarget({
+                drop: function (e) {
+                    console.log(e);
+
+                    var item, pos, transformed;
+                    if (e.draggable.hint) {
+                        item = e.draggable.hint.data("shape");
+                        pos = e.draggable.hintOffset;
+                        pos = new Point(pos.left, pos.top);
+                        var transformed = diagram2.documentToModel(pos);
+                        item.x = transformed.x;
+                        item.y = transformed.y;
+                        console.log(item);
+
+                        var node = dataNode('Select program', 'Choose title', '#0078d7', transformed.x, transformed.y, item.width, item.height, item.path, item.type);
+
+                        diagram2.dataSource.add(node);
+                        diagram2.dataSource.sync();
+                        diagram2.bringIntoView(diagram2.shapes);
+
+                        console.log(diagram2);
+                    }
+                }
+            });
+        });
+
+
+        function visualTemplate2(options) {
+
+            var dataviz = kendo.dataviz;
+            var g = new dataviz.diagram.Group();
+            var dataItem = options.dataItem;
+
+            if (dataItem.type === "circle") {
+                g.append(new dataviz.diagram.Circle({
+                    width: dataItem.width || 120,
+                    height: dataItem.height || 120,
+                    stroke: {
+                        width: 0
+                    },
+                    fill: {
+                        color: dataItem.Color
+                    }
+                }));
+            } else if (dataItem.path !== null && dataItem.path !== undefined) {
+                g.append(new kendo.dataviz.diagram.Path({
+                    data: dataItem.path,
+                    stroke: {
+                        width: 0
+                    },
+                    fill: dataItem.Color
+                }));
+            } else {
+                g.append(new dataviz.diagram.Rectangle({
+                    width: dataItem.width || 200,
+                    height: dataItem.height || 100,
+                    stroke: {
+                        width: 0
+                    },
+                    fill: dataItem.Color
+                }));
+            }
+
+            g.append(new dataviz.diagram.TextBlock({
+                text: dataItem.Title,
+                x: 15,
+                y: 15,
+                fill: "#fff"
+            }));
+
+            g.append(new dataviz.diagram.TextBlock({
+                text: dataItem.Program,
+                x: 15,
+                y: 35,
+                fill: "#fff"
+            }));
+
+            return g;
+        }
+
+        function dataNode(program, title, color, x, y, width, height, path, type) {
+            var node = {};
+            node.x = x;
+            node.y = y;
+            node.width = width;
+            node.height = height;
+            node.Title = title;
+            node.Program = program;
+            node.Color = color;
+            node.path = path;
+            node.type = type;
+            node.visual = visualTemplate2;
+            return node;
+        }
+
+        function updateShapeProperties(shape) {
+            console.log(shape);
+
+            $("#shapeBackgroundColorPicker").getKendoColorPicker().value(kendo.parseColor(shape.dataItem.Color));
+            /*
+                            $("#shapeStrokeColorPicker").getKendoColorPicker().value(kendo.parseColor(shape.stroke.color));
+                            $("#shapeStrokeWidth").getKendoNumericTextBox().value(shape.stroke.width);
+            */
+            /*
+                            $("#shapeWidth").getKendoNumericTextBox().value(shape.width);
+                            $("#shapeHeight").getKendoNumericTextBox().value(shape.height);
+                            $("#shapePositionX").getKendoNumericTextBox().value(shape.x);
+                            $("#shapePositionY").getKendoNumericTextBox().value(shape.y);
+            */
+        }
+
+        function updateConnectionProperties(shape) {
+            $("#connectionStartCap").getKendoDropDownList().value(shape.startCap);
+            $("#connectionEndCap").getKendoDropDownList().value(shape.endCap);
+        }
+
+        $("#shapesPanelBar").kendoPanelBar({
+            expandMode: "multiple"
+        }).getKendoPanelBar().expand(">li", false);
+
+        $("#configurationPanelBar").kendoPanelBar({
+            expandMode: "multiple"
+        }).getKendoPanelBar().expand(">li", false);
+
+        $(".colorPicker").kendoColorPicker({
+            value: "#ffffff",
+            buttons: false
+        });
+
+        $("#canvasLayout").kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: [
+                { value: "TreeDown", text: "Tree Down" },
+                { value: "TreeUp", text: "Tree Up" },
+                { value: "TreeLeft", text: "Tree Left" },
+                { value: "TreeRight", text: "Tree Right" },
+                { value: "RadialTree", text: "Radial Tree" },
+                { value: "TipOverTree", text: "Tip-Over Tree" },
+                { value: "LayeredHorizontal", text: "Layered Horizontal" },
+                { value: "LayeredVertical", text: "Layered Vertical" },
+                { value: "ForceDirected", text: "Force directed" },
+                { value: "MindmapVertical", text: "Mindmap Vertical" },
+                { value: "MindmapHorizontal", text: "Mindmap Horizontal" }
+            ]
+        });
+
+        $("#connectionStartCap").kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: [
+                { value: "None", text: "None" },
+                { value: "ArrowStart", text: "Arrow Start" },
+                { value: "ArrowEnd", text: "Arrow End" },
+                { value: "FilledCircle", text: "Filed Circle" }
+            ]
+        });
+
+        $("#connectionEndCap").kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: [
+                { value: "None", text: "None" },
+                { value: "ArrowStart", text: "Arrow Start" },
+                { value: "ArrowEnd", text: "Arrow End" },
+                { value: "FilledCircle", text: "Filed Circle" }
+            ]
+        });
+
+        $(".numeric").kendoNumericTextBox();
+
+        $("#shapesPanelBar .k-link:not(.k-header)").kendoDraggable({
+            hint: function () {
+                return this.element.find('.shapeItem').clone().css('transform', 'scale(5)');
+            }
+        });
+
+        function onDataBound(e) {
+            this.bringIntoView(this.shapes);
+        }
+
+        //});
+    </script>
+
+
+</body>
+
+</html>

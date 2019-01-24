@@ -1,0 +1,123 @@
+//-> Image handling --------------------------------------------------------------------------------------------------
+.@{bootkit-prefix}-avatar {
+  position: relative;
+}
+
+img {
+  // define fixed image widths for avatars
+  &.@{bootkit-prefix}-img-40 {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.@{bootkit-prefix}-img-60 {
+    width: 60px;
+    height: 60px;
+  }
+
+  &.@{bootkit-prefix}-img-80 {
+    width: 80px;
+    height: 80px;
+  }
+
+  &.@{bootkit-prefix}-img-100 {
+    width: 100px;
+    height: 100px;
+  }
+
+  &.@{bootkit-prefix}-img-120 {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+// define horizontal centering for avatars
+&.@{bootkit-prefix}-avatar40-hcenter,
+&.@{bootkit-prefix}-avatar60-hcenter,
+&.@{bootkit-prefix}-avatar80-hcenter,
+&.@{bootkit-prefix}-avatar100-hcenter,
+&.@{bootkit-prefix}-avatar120-hcenter {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+}
+
+&.@{bootkit-prefix}-avatar40-hcenter {
+  margin-left: -20px;
+}
+
+&.@{bootkit-prefix}-avatar60-hcenter {
+  margin-left: -30px;
+}
+
+&.@{bootkit-prefix}-avatar80-hcenter {
+  margin-left: -40px;
+}
+
+&.@{bootkit-prefix}-avatar100-hcenter {
+  margin-left: -50px;
+}
+
+&.@{bootkit-prefix}-avatar120-hcenter {
+  margin-left: -60px;
+}
+
+// half down images for combinations with image panels
+&.@{bootkit-prefix}-avatar120-halfdown,
+&.@{bootkit-prefix}-avatar100-halfdown,
+&.@{bootkit-prefix}-avatar80-halfdown {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+}
+
+&.@{bootkit-prefix}-avatar120-halfdown {
+  margin-left: -60px;
+  bottom: -60px;
+}
+
+&.@{bootkit-prefix}-avatar100-halfdown {
+  margin-left: -50px;
+  bottom: -50px;
+}
+
+&.@{bootkit-prefix}-avatar80-halfdown {
+  margin-left: -40px;
+  bottom: -40px;
+}
+
+// set panel top margins for half images - this helps with centering
+.panel-body {
+  &.@{bootkit-prefix}-avatar120-halfdown-after {
+    padding-top: 70px;
+  }
+  &.@{bootkit-prefix}-avatar100-halfdown-after {
+    padding-top: 56px;
+  }
+  &.@{bootkit-prefix}-avatar80-halfdown-after {
+    padding-top: 44px;
+  }
+}
+
+// shadows
+&.@{bootkit-prefix}-box-shadow {
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.25);
+}
+
+&.@{bootkit-prefix}-box-shadow-b {
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.25);
+}
+
+&.@{bootkit-prefix}-box-shadow-t {
+  box-shadow: 0 -1px 1px 0 rgba(0,0,0,0.25);
+}
+
+&.@{bootkit-prefix}-box-shadow-r {
+  box-shadow: 1px 0 1px 0 rgba(0,0,0,0.25);
+}
+
+&.@{bootkit-prefix}-box-shadow-l {
+  box-shadow: -1px 0 1px 0 rgba(0,0,0,0.25);
+}

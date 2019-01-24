@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product HTML Kitchen Sink</title>
+
+    <!-- Bootstrap -->
+<!--
+    <link href="css/syspro.min.css" rel="stylesheet">
+    <link href="css/bootkit.css" rel="stylesheet">
+-->
+	<link href="css/sysprostyle.css" rel="stylesheet">
+	<link href="css/simple-line-icons.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	  	.filler_bg {
+		  	width:100%;
+		  	height: 100px;
+		  	background: #dfdfdf;
+		  	border-radius: 4px;
+	  	}  
+	  	.fontawesome-icon-list .fa-hover a {
+		  display: block;
+		  color: #222222;
+		  line-height: 32px;
+		  height: 32px;
+		  padding-left: 10px;
+		  border-radius: 4px;
+		}
+		.fontawesome-icon-list .fa-hover a .fa {
+		  width: 32px;
+		  font-size: 14px;
+		  display: inline-block;
+		  text-align: right;
+		  margin-right: 10px;
+		}
+		.fontawesome-icon-list .fa-hover a:hover {
+		  background-color: #016699;
+		  color: #ffffff;
+		  text-decoration: none;
+		}
+		.fontawesome-icon-list .fa-hover a:hover .fa {
+		  font-size: 28px;
+		  vertical-align: -6px;
+		}
+		.fontawesome-icon-list .fa-hover a .fa {
+		  width: 32px;
+		  font-size: 14px;
+		  display: inline-block;
+		  text-align: right;
+		  margin-right: 10px;
+		}
+		* {
+			word-wrap: break-word;
+		}
+		.preview {
+		    padding: 20px 0;
+		    position: relative;
+		}
+		.show-code {
+		    color: #101010;
+		}
+		.code-preview {
+			display: none;
+		}
+		.icons {
+/* 		    font-size: 18px; */
+		    padding-right: 10px;
+		}
+/*
+		.panel-with-popover {
+			overflow: visible !important;
+		}
+		.popover {
+			z-index: 9999;
+		}
+*/
+	</style>
+  </head>
+  <body>
+    <div class="container-fluid" id="thehtml">
+<!--
+	    <h1>SYSPRO Product HTML Customer Query prototype</h1>
+	    
+	    <hr class="sys-hr-light-gray sys-mg-t-5 sys-mg-b-20">
+-->
+	    
+	    <div class="row" id="">
+		    <div class="col-sm-4">
+			    <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+			    	<div class="panel-body">
+				    	
+				    	<div class="panel sys-widget sys-box-shadow-off">
+						    <div class="panel-body text-center sys-pd-off sys-wrapper sys-bg-primary sys-rd-t" style="height: 75px;">
+						        <div class="sys-avatar sys-avatar120-halfdown">
+						            <div class="sys-vcenter"></div>
+						            <a href="javascript:" class="sys-fg-danger sys-fg-darken">
+						                <img src="https://stampington.com/image/cache/data/shoppeImages/M4651-Rollerblade-Small-600x600.jpg" alt="" class="img-rounded sys-img-120 sys-bd-white sys-bd-darken sys-bd-3x" width="200">
+						            </a>
+						        </div>
+						    </div>
+						    <div class="panel-body sys-pd-b-10 sys-avatar100-halfdown-after text-center sys-bg-very-light-gray sys-rd-b">
+						        <h2 data-bind="testbindname" class="">Bikes & Blades, North</h2>
+						        <small>Customer No.: 0000002</small>
+		                
+								<div class="panel sys-widget sys-bd-off sys-box-shadow-off sys-mg-t-10 panel-with-popover">
+								    <div class="panel-body sys-bg-white sys-pd-10">
+								        <div class="row sys-tbl">
+								            <div class="col-xs-6 sys-bd-light-gray-right sys-pd-5 text-center sys-vcenter">
+								                <a tabindex="0" data-container="body" role="button" data-html="true" data-toggle="popover" data-trigger="focus" data-content='<div class="panel sys-widget sys-bd-off"><div class="panel-body sys-bg-white text-left"><h4 class="sys-mg-off sys-pd-t-10">Receivables - North</h4><small>Customer branch</small><hr class="sys-hr-very-light-gray sys-mg-t-5 sys-mg-b-5"><div class="text-left">
+			                        <div class="row">
+				                        <div class="col-xs-12">
+					                        <h4 class="sys-mg-off-b"><small>ADDRESS</small></h4>
+								            <address>
+											  795 Folsom Ave, Suite 600<br>
+											  San Francisco, CA 94107<br>
+											  <i class="fa fa-phone"></i> (123) 456-7890
+											</address>
+				                        </div>
+			                        </div>
+			                        
+		                        </div>
+		                    </div>
+		                </div>'><h4 class="sys-mg-off">Receivables - North</h4></a>
+								                <small class="text-muted">Customer branch</small>
+								            </div>
+								            <div class="col-xs-6 sys-pd-5 text-center sys-vcenter">
+								                <h4 class="sys-mg-off">Master Accounts</h4>
+								                <small class="text-muted">Customer class</small>
+								            </div>
+								        </div>
+								        <hr class="sys-hr-light-gray sys-mg-off">
+								        <div class="row sys-tbl">
+								            <div class="col-xs-6 sys-bd-light-gray-right sys-pd-5 text-center sys-vcenter">
+								                <h4 class="sys-mg-off">Northern Region</h4>
+								                <small class="text-muted">Area</small>
+								            </div>
+								            <div class="col-xs-6 sys-pd-5 text-center sys-vcenter">
+								                <a tabindex="0" data-container="body" role="button" data-html="true" data-toggle="popover" data-trigger="focus" data-content='<div class="panel sys-widget sys-bd-off"><div class="panel-body sys-bg-white text-center"><div class="sys-avatar"><img src="img/face/chelsea-128.jpg" alt="" class="img-circle sys-img-80 sys-bd-gray sys-bd-3x"></div><h4 class="sys-mg-off sys-pd-t-10">Tony Dean</h4><small>HR Consultant</small><hr class="sys-hr-very-light-gray sys-mg-t-5 sys-mg-b-5"><div class="text-left">
+			                        <div class="row">
+				                        <div class="col-xs-2">
+					                        <i class="fa fa-envelope-o"></i>
+				                        </div>
+				                        <div class="col-xs-10">
+					                        <a href="#">chelsea@internet.com</a>
+				                        </div>
+			                        </div>
+			                        <div class="row">
+				                        <div class="col-xs-2">
+					                        <i class="fa fa-phone"></i>
+				                        </div>
+				                        <div class="col-xs-10">
+					                        <a href="#">0861 263 2244</a>
+				                        </div>
+			                        </div>
+			                        <div class="row">
+				                        <div class="col-xs-2">
+					                        <i class="fa fa-level-up"></i>
+				                        </div>
+				                        <div class="col-xs-10">
+					                        <a href="#">Sarah Pancake</a>
+				                        </div>
+			                        </div>
+		                        </div>
+		                    </div>
+		                </div>'><h4 class="sys-mg-off">Tony Dean</h4></a>
+								                <small class="text-muted">Sales person</small>
+								            </div>
+								        </div>
+								    </div>
+								</div>
+								
+								<div class="panel sys-widget sys-bd-off sys-chrome-fix text-left">
+		
+								    <div id="countries" class="carousel slide" data-ride="carousel" data-interval="false">
+								        <div class="carousel-inner">
+								            <div class="item active">
+								                <div class="panel-body sys-bg-white">
+								                    <h4 class="sys-mg-off"><i class="icon-pointer"></i> Main Contact details</h4>
+								                </div>
+								                <hr class="sys-mg-off">
+								                <div class="panel-body sys-bg-very-light-gray text-left">
+								                    <h4 class="sys-mg-off-b"><small>ADDRESS</small></h4>
+										            <address>
+													  795 Folsom Ave, Suite 600<br>
+													  San Francisco, CA 94107<br>
+													  <i class="fa fa-phone"></i> (123) 456-7890
+													</address>
+													
+													<h4 class="sys-mg-off-b"><small>CONTACT</small></h4>
+													<address>
+													  <strong>Full Name</strong><br>
+													  <a href="mailto:#">first.last@example.com</a>
+													</address>
+								                </div>
+								            </div>
+								            <div class="item">
+								                <div class="panel-body sys-bg-white">
+								                    <h4 class="sys-mg-off"><i class="icon-pointer"></i> Secondary address</h4>
+								                </div>
+								                <hr class="sys-mg-off">
+								                <div class="panel-body sys-bg-very-light-gray text-left">
+								                    <h4 class="sys-mg-off-b"><small>ADDRESS</small></h4>
+										            <address>
+													  795 Folsom Ave, Suite 600<br>
+													  San Francisco, CA 94107<br>
+													  <i class="fa fa-phone"></i> (123) 456-7890
+													</address>
+													
+													<h4 class="sys-mg-off-b"><small>CONTACT</small></h4>
+													<address>
+													  <strong>Full Name</strong><br>
+													  <a href="mailto:#">first.last@example.com</a>
+													</address>
+								                </div>
+								            </div>
+								            <div class="item">
+								                <div class="panel-body sys-bg-white">
+								                    <h4 class="sys-mg-off"><i class="icon-pointer"></i> Sold to address</h4>
+								                </div>
+								                <hr class="sys-mg-off">
+								                <div class="panel-body sys-bg-very-light-gray text-left">
+								                    <h4 class="sys-mg-off-b"><small>ADDRESS</small></h4>
+										            <address>
+													  795 Folsom Ave, Suite 600<br>
+													  San Francisco, CA 94107<br>
+													  <i class="fa fa-phone"></i> (123) 456-7890
+													</address>
+													
+													<h4 class="sys-mg-off-b"><small>CONTACT</small></h4>
+													<address>
+													  <strong>Full Name</strong><br>
+													  <a href="mailto:#">first.last@example.com</a>
+													</address>
+								                </div>
+								            </div>
+								            <div class="item">
+								                <div class="panel-body sys-bg-white">
+								                    <h4 class="sys-mg-off"><i class="icon-pointer"></i> Ship to address</h4>
+								                </div>
+								                <hr class="sys-mg-off">
+								                <div class="panel-body sys-bg-very-light-gray text-left">
+								                    <h4 class="sys-mg-off-b"><small>ADDRESS</small></h4>
+										            <address>
+													  795 Folsom Ave, Suite 600<br>
+													  San Francisco, CA 94107<br>
+													  <i class="fa fa-phone"></i> (123) 456-7890
+													</address>
+													
+													<h4 class="sys-mg-off-b"><small>CONTACT</small></h4>
+													<address>
+													  <strong>Full Name</strong><br>
+													  <a href="mailto:#">first.last@example.com</a>
+													</address>
+								                </div>
+								            </div>
+								            
+								            <div class="item">
+								                <div class="panel-body sys-bg-white">
+								                    <h4 class="sys-mg-off"><i class="icon-pointer"></i> Documents fax</h4>
+								                </div>
+								                <hr class="sys-mg-off">
+								                <div class="panel-body sys-bg-very-light-gray text-left">
+													
+													<h4 class="sys-mg-off-b"><small>CONTACT</small></h4>
+													<address>
+													  <strong>Full Name</strong><br>
+													  <abbr title="Fax">P:</abbr> (123) 456-7890
+													</address>
+								                </div>
+								            </div>
+								        </div>
+								    </div>
+								
+								    <hr class="sys-mg-off">
+								
+								    <div class="panel-body sys-pd-off">
+								        <div class="row">
+								            <a href="#countries" class="col-xs-6 pull-left sys-bg-white sys-bg-darken sys-fg-textcolor sys-pd-t-10 sys-pd-b-10 text-center" data-slide="prev">
+								                <small><i class="fa fa-angle-left"></i> PREVIOUS</small>
+								            </a>
+								            <a href="#countries" class="col-xs-6 pull-left sys-bg-white sys-bg-darken sys-fg-textcolor sys-pd-t-10 sys-pd-b-10 text-center" data-slide="next">
+								                <small>NEXT <i class="fa fa-angle-right"></i></small>
+								            </a>
+								        </div>
+								    </div>
+								</div>
+						
+						    </div>
+						</div>
+				    	
+			    	</div>
+			    </div>
+		    </div>
+
+		    <div class="col-sm-4">
+			    <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+			    	<div class="panel-body">
+				    	<div class="row">
+					    	<div class="col-sm-12">
+						    	<h4 class="sys-mg-t-5 sys-mg-b-5  pull-left">Current status </h4>
+						    	<span class="sys-mg-t-10 sys-mg-b-5 pull-right">
+						    		<i data-toggle="tooltip" data-placement="top" title="Currency: US Dollar" class="text-primary fa fa-dollar sys-mg-r-15"></i> 
+						    		<i data-toggle="tooltip" data-placement="top" title="On Hold" class="fa fa-pause sys-mg-r-15 text-muted"></i> 
+						    		<i data-toggle="tooltip" data-placement="top" title="Credit rating: good" class="icon-credit-card"></i> <i data-toggle="tooltip" data-placement="top" title="Credit rating: good" class="text-success icon-check"></i></span>
+					    	</div>
+				    	</div>
+<!--
+				    	<div class="row sys-tbl sys-mg-b-10">
+				            <div class="col-xs-4 sys-pd-off text-center" data-toggle="tooltip" data-placement="top" title="Currency: US Dollar">
+				                <i class="text-primary fa fa-dollar"></i>
+				            </div>
+				            <div class="col-xs-4 sys-pd-off text-center" data-toggle="tooltip" data-placement="top" title="On Hold">
+				                <i class="fa fa-pause"></i>
+				            </div>
+				            <div class="col-xs-4 sys-pd-off text-center" data-toggle="tooltip" data-placement="top" title="Credit rating: good">
+				                <i class="icon-credit-card"></i> <i class="text-success icon-check"></i>
+				            </div>
+				        </div> 
+-->
+				    	<div class="panel sys-widget sys-bd-off sys-box-shadow-off sys-mg-b-10">
+						    <div class="panel-body sys-bg-white text-left sys-pd-off">
+						        <div class="row sys-tbl">
+						            <div class="col-xs-6 sys-bd-light-gray-right sys-pd-off sys-vcenter">
+						                <h4 class="sys-mg-off text-danger">$45,000.00</h4>
+									    <small class="text-muted">Over limit</small>
+						            </div>
+						            <div class="col-xs-6 sys-pd-off text-right">
+						                <h4 class="sys-mg-off">$200,000.00</h4>
+									    <small class="text-muted">Credit limit</small>
+						            </div>
+						        </div>                                                
+		                    </div>
+				    	</div>
+				    	
+				    	<div class="panel sys-widget sys-bd-off  sys-box-shadow-off sys-mg-b-10">
+		                    <div class="panel-body sys-bg-white sys-pd-off">
+		                        <table class="table sys-mg-b-5">
+		                            <tbody>
+			                            <tr class="">
+			                                <td class="sys-pd-off-l">AR invoice terms</td>
+			                                <td class="sys-700 text-right">1 - 30 days - 2.5%</td>
+			                            </tr>
+			                            <tr class="">
+			                                <td class="sys-pd-off-l">Credit checking</td>
+			                                <td class="sys-700 text-right">None</td>
+			                            </tr>
+
+		                            </tbody>
+		                        </table>
+		                    </div>
+		                </div>
+				    	
+				    	<h4 class="sys-mg-t-10 sys-mg-b-5  text-left">Orders</h4>
+				    	<div class="row sys-tbl">
+				            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-10 sys-500 text-left">
+				                4
+				                <small class="text-muted clearfix">Number</small>
+				            </div>
+				            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-10 sys-500 text-center">
+					            $4,600.23
+				                <small class="text-muted clearfix">Value</small>
+				            </div>
+				            <div class="col-xs-4 sys-pd-10 sys-500 text-right">
+				                $2,415.00
+				                <small class="text-muted clearfix">Value released</small>
+				            </div>
+				        </div>
+				        <hr class="sys-hr-light-gray sys-mg-off">
+				        <div class="row sys-tbl">
+				            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-10 sys-500 text-left">
+				                23/06/2015
+				                <small class="text-muted clearfix">Last payment</small>
+				            </div>
+				            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-10 sys-500 text-center">
+					            20/07/2015
+				                <small class="text-muted clearfix">Last sale</small>
+				            </div>
+				            <div class="col-xs-4 sys-pd-10 sys-500 text-right">
+				                43
+				                <small class="text-muted clearfix">Avg. days to pay</small>
+				            </div>
+				        </div>
+						
+						<h4 class="sys-mg-t-10 sys-mg-b-5  text-left">Invoice Ageing (days)</h4>
+						<div class="panel sys-widget sys-bd-off sys-mg-t-10">
+						    <div class="panel-body sys-bg-primary sys-fg-white sys-pd-off">
+						        <div class="row sys-pd-15 sys-pd-b-5 sys-pd-t-10">
+						            <div class="col-xs-8">
+						                <h5 class="sys-mg-off">Value of invoices</h5>
+						            </div>
+<!--
+						            <div class="col-xs-4 text-right">
+						                <i class="icon-basket fa-2x"></i>
+						            </div>
+-->
+						        </div>
+						        <div class="row">
+							        <div class="col-xs-8 col-xs-offset-2">
+						            	<span class="sparkline-widget-white" values="125009.00,65000.98,20300.12,1040.33,100.00"></span>
+							        </div>
+						        </div>
+						        <div class="row text-center sys-mg-b-5">
+							        <div class="col-xs-2 col-xs-offset-1">
+								        <small>Current</small>
+							        </div>
+							        <div class="col-xs-2">
+								        <small>30</small>
+							        </div>
+							        <div class="col-xs-2">
+								       <small>60</small>
+							        </div>
+							        <div class="col-xs-2">
+								        <small>90</small>
+							        </div>
+							        <div class="col-xs-2">
+								        <small>120</small>
+							        </div>
+						        </div>
+
+						        <div class="panel sys-widget sys-box-shadow-off sys-mg-l-15 sys-mg-r-15 sys-mg-b-10">
+				                    <div class="panel-body sys-pd-off">
+				                        <div class="row sys-tbl sys-fg-textcolor">
+				                            <div class="col-xs-4 sys-bg-white sys-pd-off-t sys-pd-off-b sys-pd-l-15 sys-pd-r-15 sys-rd-l sys-bd-light-gray-right sys-vcenter text-left">
+				                                $0.00
+												<small class=" clearfix">Credits</small>
+				                            </div>
+				                            <div class="col-xs-4 sys-bg-white sys-pd-off-t sys-pd-off-b sys-pd-l-15 sys-pd-r-15 sys-bd-light-gray-right sys-vcenter text-center">
+				                                $16,040.56
+												<small class=" clearfix">Future</small>
+				                            </div>
+				                            <div class="col-xs-4 sys-bg-white sys-pd-off-t sys-pd-off-b sys-pd-l-15 sys-pd-r-15 sys-fg-gray sys-rd-r sys-vcenter text-right">
+				                                <span class="text-danger">$30,240.32</span>
+												<small class=" clearfix">Balance</small>	
+				                            </div>
+				                        </div>
+				                    </div>
+				                </div>
+						        <hr class="sys-hr-white sys-mg-off sys-opacity-5">
+		                        
+		                        <div class="sys-mg-off panel panel-default sys-widget sys-bd-off sys-box-shadow-off sys-pd-l-15 sys-pd-r-15 sys-pd-t-5 sys-pd-b-5 sys-sml">
+							        <span class="sys-mg-off" role="tab" id="headingOneb">
+							            <a data-toggle="collapse" href="#collapseOnedataage" aria-expanded="false" aria-controls="collapseOneb" class="sys-block sys-bg-primary sys-fg-white">
+							                View data
+							                <i class="fa fa-angle-down pull-right"></i>
+							            </a>
+							            
+							        </span>
+							
+							        <div id="collapseOnedataage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneb">
+							            <div class="panel-body sys-block sys-fg-gray sys-box-shadow-off">
+							                <table class="table table-bordered sys-mg-off-b sys-bg-white">
+					                            <tbody>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">Current (value)</td>
+					                                <td class="sys-700 text-right">$24,000.25</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">30 days (value)</td>
+					                                <td class="sys-700 text-right">$14,000.25</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">60 days (value)</td>
+					                                <td class="sys-700 text-right">$4,000.25</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">90 days (value)</td>
+					                                <td class="sys-700 text-right">$0.00</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">120 days (value)</td>
+					                                <td class="sys-700 text-right">$0.00</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">Current (number)</td>
+					                                <td class="sys-700 text-right">64</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">30 days (number)</td>
+					                                <td class="sys-700 text-right">32</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">60 days (number)</td>
+					                                <td class="sys-700 text-right">5</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">90 days (number)</td>
+					                                <td class="sys-700 text-right">0</td>
+					                            </tr>
+					                            <tr class="sys-fg-textcolor">
+					                                <td class="sys-pd-5-l">120 days (number)</td>
+					                                <td class="sys-700 text-right">0</td>
+					                            </tr>
+					                            </tbody>
+					                        </table>
+							            </div>
+							        </div>
+							    </div>
+						    </div>
+						</div>
+								       
+	                    <div class="panel-group sys-mg-t-10" id="accordionnotes" role="tablist" aria-multiselectable="true">
+						    <div class="panel panel-default sys-widget sys-bd-off sys-box-shadow-off">
+						        <h4 class="sys-mg-off" role="tab" id="headingOneb">
+						            <a data-toggle="collapse" data-parent="#accordionnotes" href="#collapseOnenotes" aria-expanded="false" aria-controls="collapseOneb"
+						               class="panel-heading sys-block sys-bg-primary sys-fg-white">
+						                Notes
+						                <i class="fa fa-angle-down pull-right"></i>
+						            </a>
+						            
+						        </h4>
+						
+						        <div id="collapseOnenotes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneb">
+						            <div href="javascript:" class="panel-body sys-block sys-bg-very-light-gray sys-fg-gray sys-box-shadow-off">
+						                <h5><strong>Customer notes</strong> <a href="#" class="pull-right"><i class="icon-note"></i></a></h5>
+						                <p class="">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>
+						                <hr>
+						                <h5><strong>Management notes</strong> <a href="#" class="pull-right"><i class="icon-note"></i></a></h5>
+						                <p class="">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+				    	
+			    	</div>
+			    </div>
+		    </div>
+
+		    <div class="col-sm-4">
+			    <div class="panel sys-bd-very-light-gray sys-box-shadow-off">
+			    	<div class="panel-body">
+				    	
+							    <h4 class="sys-mg-t-10 sys-mg-b-5  text-left">Sales</h4>
+						        <div class="row sys-tbl">
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 text-success sys-500 text-left">
+						                $12,000.00<br>
+						                <small class="text-muted clearfix">This month</small>
+						            </div>
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 text-danger sys-500 text-center">
+							            $46,040.56<br>
+						                <small class="text-muted clearfix">This year</small>
+						            </div>
+						            <div class="col-xs-4 sys-pd-5 sys-500 text-right">
+						                $101,240.36<br>
+						                <small class="text-muted clearfix">Previous year</small>
+						            </div>
+						        </div>
+						        <h4 class="sys-mg-t-10 sys-mg-b-5  text-left">Profit</h4>
+						        <div class="row sys-tbl">
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 text-danger sys-500 text-left">
+						                $2,000.00<br>
+						                <small class="text-muted clearfix">This month</small>
+						            </div>
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 text-success sys-500 text-center">
+							            $16,040.56<br>
+						                <small class="text-muted clearfix">This year</small>
+						            </div>
+						            <div class="col-xs-4 sys-pd-5 sys-500 text-right">
+						                $30,240.32<br>
+						                <small class="text-muted clearfix">Previous year</small>
+						            </div>
+						        </div>
+						        <h4 class="sys-mg-t-10 sys-mg-b-5  text-left">Profit %</h4>
+						        <div class="row sys-tbl">
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 text-success sys-500 text-left">
+						                16.4%<br>
+						                <small class="text-muted clearfix">This month</small>
+						            </div>
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 text-danger sys-500 text-center">
+							            13.76%<br>
+						                <small class="text-muted clearfix">This year</small>
+						            </div>
+						            <div class="col-xs-4 sys-pd-5 sys-500 text-right">
+						                15.2%<br>
+						                <small class="text-muted clearfix">Previous year</small>
+						            </div>
+						        </div>
+						        <h4 class="sys-mg-t-10 sys-mg-b-5  text-left">Month to date</h4>
+						        <div class="row sys-tbl">
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 sys-500 text-left">
+						                $14,600.00<br>
+						                <small class="text-muted clearfix">Invoice value</small>
+						            </div>
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 sys-500 text-center">
+							            $0.00<br>
+						                <small class="text-muted clearfix">Credit note value</small>
+						            </div>
+						            <div class="col-xs-4 sys-pd-5 sys-500 text-right">
+						                $12,000.00<br>
+						                <small class="text-muted clearfix">Payments value</small>
+						            </div>
+						        </div>
+						        <hr class="sys-hr-light-gray sys-mg-off">
+						        <div class="row sys-tbl">
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 sys-500 text-left">
+						                823<br>
+						                <small class="text-muted clearfix">Invoice amount</small>
+						            </div>
+						            <div class="col-xs-4 sys-bd-light-gray-right sys-pd-5 sys-500 text-center">
+							            0<br>
+						                <small class="text-muted clearfix">Credit notes</small>
+						            </div>
+						            <div class="col-xs-4 sys-pd-5 sys-500 text-right">
+						                675<br>
+						                <small class="text-muted clearfix">Payments</small>
+						            </div>
+						        </div>
+						    <div class="row">
+							    <div class="col-sm-12">
+						        <div class="panel sys-widget sys-bd-off sys-mg-t-10">
+								    <div class="panel-body sys-bg-primary sys-fg-white sys-pd-off">
+								        <div class="row sys-pd-15 sys-pd-t-10 sys-pd-b-5">
+								            <div class="col-xs-12">
+								                <h5 class="sys-mg-off">Previous 24 months sales</h5>
+								            </div>
+								        </div>
+								        <div class="sys-mg-b-15">
+								            <span class="sparkline-widget-white" values="9000,13000,10000,90000,150000,80000,90000,110000,200000,160000,140000,210000,150000,180000,170000,230000,250000,280000,80000,110000,120000,290000, 230000,250000"></span>
+								        </div>
+								        <hr class="sys-hr-white sys-mg-off sys-opacity-5">
+				                        
+				                        <div class="sys-mg-off panel  sys-widget sys-bd-off sys-box-shadow-off sys-pd-l-10 sys-pd-r-10 sys-pd-t-5 sys-pd-b-5 sys-sml">
+									        <span class="sys-mg-off" role="tab" id="headingOneb">
+									            <a data-toggle="collapse"  href="#collapseOnedata" aria-expanded="false" aria-controls="collapseOneb" class="sys-block sys-bg-primary sys-fg-white">
+									                View data
+									                <i class="fa fa-angle-down pull-right"></i>
+									            </a>
+									            
+									        </span>
+									
+									        <div id="collapseOnedata" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneb">
+									            <div class="panel-body sys-block sys-fg-gray sys-box-shadow-off">
+									                <table class="table table-bordered sys-mg-off-b sys-bg-white">
+							                            <tbody>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 1</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 2</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 2</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 4</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 5</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 6</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 7</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 8</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 9</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 10</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 11</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            <tr class="sys-fg-primary">
+							                                <td class="sys-pd-5-l">Previous 12</td>
+							                                <td class="sys-700 text-right">$24,000.25</td>
+							                            </tr>
+							                            </tbody>
+							                        </table>
+									            </div>
+									        </div>
+									    </div>
+								    </div>
+								</div>
+							    </div>
+						    </div>
+
+			    	</div>
+			    </div>
+		    </div>
+	    </div>
+	    
+	    <div class="row">
+		    <div class="col-sm-12">
+			    <pre id="json-string">
+			    </pre>
+		    </div>
+	    </div>
+    </div>
+    <div class="container-fluid" id="thegeneratedhtml">
+	    
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="vendor/sparklines/jquery.sparkline.min.js"></script>
+    <script src="js/bootkit/sparklines.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/htmlparser.js"></script>
+    <script src="js/html2json.js"></script>
+    
+    <script>
+		$(".fittext").fitText(0.8);
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		});
+		$(function () {
+		  $('[data-toggle="popover"]').popover()
+		});
+		$(window).load(function(){
+			var html = $('#thehtml').prop('outerHTML');
+			var the_json = html2json(html);
+			var json_str = JSON.stringify(the_json, null, 2);
+			$("#json-string").text(json_str);
+			console.log(the_json);
+			
+			var the_json = json2html(the_json);
+			$("#thegeneratedhtml").html(the_json);
+			
+		});
+	</script>
+  </body>
+</html>

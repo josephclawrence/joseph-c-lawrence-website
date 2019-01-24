@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SYSPRO Product Visual Builder</title>
+
+    <!-- Bootstrap -->
+	<link href="css/sysprostyle.css" rel="stylesheet" />
+	<link href="css/kendo.common-bootstrap.min.css" rel="stylesheet" />
+	<link href="css/kendo.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/kendo.dataviz.min.css" rel="stylesheet" />	
+	<link href="css/hopscotch.min.css" rel="stylesheet" />
+	<link href="css/kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+	
+	<link href="css/ripples.min.css" rel="stylesheet" />
+	<link href="css/jquery.dropdown.css" rel="stylesheet" />
+	<link href="css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+	<link href="css/simple-line-icons.css" rel="stylesheet" />
+	<link href="css/bootstrap-combobox.css" rel="stylesheet" />
+<!-- 	<link href="css/nouislider.css" rel="stylesheet" /> -->
+	<link href="css/forms.css" rel="stylesheet" />
+	<link href="bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet" />
+	<script>
+		window.MSPointerEvent = null;
+
+		window.PointerEvent = null;
+
+	</script>
+	<script type="text/javascript">
+	  WebFontConfig = {
+	    google: { families: [ 'Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin' ] }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })(); 
+	</script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/kendo.js"></script>  
+	<script src="bower_components/immutable/dist/immutable.min.js"></script>
+  	</head>
+  	<body data-column-layout="3col" style="padding-top:0px;">
+		
+		<nav class="navbar navbar-default navbar-fixed-top navbar-controlbar">
+		  	<div class="container-fluid">
+			  	
+			      	<ul class="nav navbar-nav">
+			        	<li><a href="#">Link</a></li>
+						<li><a href="#"><i class="material-icons">create_new_folder</i> New folder</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+					            <li><a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">One more separated link</a></li>
+			          		</ul>
+					  	</li>
+					  	<li><a href="#">Next <i class="material-icons">play_arrow</i></a></li>
+					  	<li class="navbar-form form-inline">
+					  		<div class="form-group">
+					          	<input type="text" class="form-control" placeholder="Search">
+					          	<a href="#">
+						          	<i class="material-icons">search</i>
+					          	</a>
+					        </div>
+					  	</li>
+					  	<li class="navbar-form form-inline">
+					  		<div class="form-group checkbox-container">
+						        <div class="checkbox">
+						          	<label>
+						            	<input type="checkbox">
+									</label>
+						        </div>
+						        <label class="control-label ">A checkbox</label>
+						    </div>
+					  	
+					  	</li>
+					  	<li class="navbar-form form-inline">
+					  		<div class="form-group">
+						      	<label for="" class="control-label">Select or enter:</label>
+						    	<select class="combobox form-control dropdown-toggle">
+								  	<option></option>
+								  	<option value="PA">Pennsylvania</option>
+								  	<option value="CT">Connecticut</option>
+								  	<option value="NY">New York</option>
+								  	<option value="MD">Maryland</option>
+								  	<option value="VA">Virginia</option>
+								</select>
+						    </div>
+					  	
+					  	</li>
+					  	<li class="">
+					  		<button type="submit" class="btn btn-primary navbar-btn"><i class="material-icons">search</i> Search</button>
+					  	</li>
+
+				        
+			      	</ul>
+
+				  	<ul class="nav navbar-nav navbar-right">
+				        <li><a href="#">Link</a></li>
+				        <li class="dropdown">
+				          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">settings</i> <span class="caret"></span></a>
+						  	<ul class="dropdown-menu">
+					            <li><a href="#">Action</a></li>
+					            <li><a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+				          	</ul>
+				        </li>
+			      	</ul>
+
+		  	</div>
+		</nav>
+		
+		<div id="invisibleNode" style="display: none;"></div>
+		
+		<div id="wrapper" class="toggled">
+
+		    <div class="container-fluid" id="main-container">
+				
+				<!-- Error Notification empty element -->
+				<span id="errorNotification" style="display:none;"></span>
+				
+				<div class="row sys-mg-t-15">
+					<div class="col-sm-12">
+						<div class="well-sm" id="event-list">
+							
+						</div>
+					</div>
+				</div>				
+			    <div class="row sys-mg-t-15">
+				    <div class="col-sm-4 column-parent">
+					    
+					    <div class="panel sys-bd-off sys-box-shadow-off">
+					    	<div class="panel-body main-column" id="main_column_0" data-column="0">
+						    	<div class="sortable-list"> 	
+							    	<div class="draggable-row-section row widget layout-widget" >
+									    <div class="col-sm-12">
+								            <h4 class="sys-mg-off-t sys-mg-b-5"></h4>
+								            <div class="panel sys-widget sys-box-shadow-off sys-bd-light-gray ">
+										        <div class="panel-body sys-pd-off">
+												    <div class="row sys-tbl" data-row="0">
+											            <div class="col-xs-12 sys-bg-white sys-pd-off " >
+										                    <div class="panel sys-widget sys-box-shadow-off sys-mg-off">
+										                        <div class="panel-body sys-fg-inverse">
+										                        	<form class="form-horizontal">
+											                        	<div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<a href="#">A link to something</a>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-warning">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-success">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																		  	<div class="col-md-9">
+																	        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																	        </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																		  	<div class="col-md-9">
+																	        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																	        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																		    <div class="col-md-9">
+																			    <input type="number" class="form-control" id="222">
+																			    <p class="help-block error-message">Please enter a number</p>
+																		    </div>
+																		</div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																		    <div class="col-md-9">
+																			<div class="input-group ">
+																			    
+																			    <input type="text" id="addon3a" class="form-control">
+																			    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																			    <span class="input-group-btn">
+																			      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																			        	<i class="material-icons">search</i>
+																					</button>
+																			    </span>
+																			</div>
+																		    </div>
+																		</div>
+																		<div class="form-group">
+																	      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																	
+																	      <div class="col-md-9">
+																	        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																	        <input type="file" id="inputFile" multiple="">
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																	
+																	      <div class="col-md-9">
+																	        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																	        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																		    <div class="col-md-9">
+																		        <div class="checkbox sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																		    <div class="col-md-9">
+																		        <div class="togglebutton sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox" checked="">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    
+																	    <div class="form-group">
+																	      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																	
+																	      <div class="col-md-9">
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																	            Option one is this
+																	          </label>
+																	        </div>
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																	            Option two can be something else
+																	          </label>
+																	        </div>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select111" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select222" multiple="" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																	
+																	      <div class="col-md-9">
+																	    	<select class="combobox form-control dropdown-toggle" id="something">
+																			  <option></option>
+																			  <option value="PA">Pennsylvania</option>
+																			  <option value="CT">Connecticut</option>
+																			  <option value="NY">New York</option>
+																			  <option value="MD">Maryland</option>
+																			  <option value="VA">Virginia</option>
+																			</select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	    	<label for="slider1" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																	    	<div class="col-md-9">
+																	    		<div id="slider1" class="slider shor slider-material-orange"></div>
+																	    		<input type="number" min="0" max="60" step="1" id="input-number1" value="30" class="hidden">
+																	    	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																		  	<div class="col-md-9">
+																			  	<div class="input-group ">
+																				    
+																				    <input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																				    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																				    <span class="input-group-btn">
+																				      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																				        	<i class="material-icons">date_range</i>
+																						</button>
+																				    </span>
+																				</div>
+																	        	
+																	      	</div>
+																	    </div>
+																	</form> 
+										                        </div>
+										                    </div>
+											            </div>
+												    </div>
+									            </div>
+									        </div>
+									    </div>
+									</div>
+<!--
+									
+									<div class="draggable-row-section row widget layout-widget" >
+									    <div class="col-sm-12">
+								            <h4 class="sys-mg-off-t sys-mg-b-5"></h4>
+								            <div class="panel sys-widget sys-box-shadow-off sys-bd-light-gray ">
+										        <div class="panel-body sys-pd-off">
+												    <div class="row sys-tbl" data-row="0">
+											            <div class="col-xs-12 sys-bg-white sys-pd-off " >
+										                    <div class="panel sys-widget sys-box-shadow-off sys-mg-off">
+										                        <div class="panel-body sys-fg-inverse">
+										                        	<form class="form-horizontal">
+											                        	
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+													                        	<div class="form-group">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																				  	<div class="col-md-9">
+																			        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																			      	</div>
+																			    </div>
+												                        	</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group has-warning">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																				  	<div class="col-md-9">
+																			        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																			      	</div>
+																			    </div>
+												                        	</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group has-success">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																				  	<div class="col-md-9">
+																			        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																			      	</div>
+																			    </div>
+												                        	</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																				  	<div class="col-md-9">
+																			        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																			      	</div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																				  	<div class="col-md-9">
+																			        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																			        </div>
+																			    </div>
+																			</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																				  	<div class="col-md-9">
+																			        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																			        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																			      	</div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																				  	<div class="col-md-9">
+																			        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																			      	</div>
+																			    </div>
+																			</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																				    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																				    <div class="col-md-9">
+																					    <input type="number" class="form-control" id="222">
+																					    <p class="help-block error-message">Please enter a number</p>
+																				    </div>
+																				</div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																				    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																				    <div class="col-md-9">
+																					<div class="input-group ">
+																					    
+																					    <input type="text" id="addon3a" class="form-control">
+																					    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																					    <span class="input-group-btn">
+																					      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																					        	<i class="material-icons">search</i>
+																							</button>
+																					    </span>
+																					</div>
+																				    </div>
+																				</div>
+																			</div>
+												                        	<div class="col-sm-6">
+																				<div class="form-group">
+																			      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																			
+																			      <div class="col-md-9">
+																			        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																			        <input type="file" id="inputFile" multiple="">
+																			      </div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																				  	<div class="col-md-9">
+																			        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																			      	</div>
+																			    </div>
+												                        	</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																				  	<div class="col-md-9">
+																			        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																			      	</div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																			
+																			      <div class="col-md-9">
+																			        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																			        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																			      </div>
+																			    </div>
+																			</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																				    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																				    <div class="col-md-9">
+																				        <div class="checkbox sys-pd-t-5">
+																				          	<label>
+																				            	<input type="checkbox">
+																							</label>
+																				        </div>
+																				    </div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																				    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																				    <div class="col-md-9">
+																				        <div class="togglebutton sys-pd-t-5">
+																				          	<label>
+																				            	<input type="checkbox" checked="">
+																							</label>
+																				        </div>
+																				    </div>
+																			    </div>
+																			</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																			
+																			      <div class="col-md-9">
+																			        <div class="radio radio-primary sys-mg-off-b">
+																			          <label>
+																			            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																			            Option one is this
+																			          </label>
+																			        </div>
+																			        <div class="radio radio-primary sys-mg-off-b">
+																			          <label>
+																			            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																			            Option two can be something else
+																			          </label>
+																			        </div>
+																			      </div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																			
+																			      <div class="col-md-9">
+																			        <select id="select111" class="form-control dropdown-select">
+																			          <option>1</option>
+																			          <option>2</option>
+																			          <option>3</option>
+																			          <option>4</option>
+																			          <option>5</option>
+																			        </select>
+																			      </div>
+																			    </div>
+																			</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																			
+																			      <div class="col-md-9">
+																			        <select id="select222" multiple="" class="form-control dropdown-select">
+																			          <option>1</option>
+																			          <option>2</option>
+																			          <option>3</option>
+																			          <option>4</option>
+																			          <option>5</option>
+																			        </select>
+																			      </div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																			
+																			      <div class="col-md-9">
+																			    	<select class="combobox form-control dropdown-toggle" id="something">
+																					  <option></option>
+																					  <option value="PA">Pennsylvania</option>
+																					  <option value="CT">Connecticut</option>
+																					  <option value="NY">New York</option>
+																					  <option value="MD">Maryland</option>
+																					  <option value="VA">Virginia</option>
+																					</select>
+																			      </div>
+																			    </div>
+																			</div>
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			    	<label for="slider1" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																			    	<div class="col-md-9">
+																			    		<div id="slider1" class="slider shor slider-material-orange"></div>
+																			    		<input type="number" min="0" max="60" step="1" id="input-number1" value="30" class="hidden">
+																			    	</div>
+																			    </div>
+																			</div>
+											                        	</div>
+											                        	<div class="row">
+												                        	<div class="col-sm-6">
+																			    <div class="form-group">
+																			      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																				  	<div class="col-md-9">
+																			        	<input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																			      	</div>
+																			    </div>
+												                        	</div>
+											                        	</div>
+																	</form> 
+										                        </div>
+										                    </div>
+											            </div>
+												    </div>
+									            </div>
+									        </div>
+									    </div>
+									</div>
+							    	
+							    	<div class="draggable-row-section row widget layout-widget" >
+									    <div class="col-sm-12">
+								            <h4 class="sys-mg-off-t sys-mg-b-5"></h4>
+								            <div class="panel sys-widget sys-box-shadow-off sys-bd-light-gray ">
+										        <div class="panel-body sys-pd-off">
+												    <div class="row sys-tbl" data-row="0">
+											            <div class="col-sm-6 sys-bg-white sys-pd-off " >
+										                    <div class="panel sys-widget sys-box-shadow-off sys-mg-off">
+										                        <div class="panel-body sys-fg-inverse">
+										                        	<form class="form-horizontal">
+											                        	<div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<a href="#">A link to something</a>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-warning">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-success">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																		  	<div class="col-md-9">
+																	        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																	        </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																		  	<div class="col-md-9">
+																	        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																	        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																		    <div class="col-md-9">
+																			    <input type="number" class="form-control" id="222">
+																			    <p class="help-block error-message">Please enter a number</p>
+																		    </div>
+																		</div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																		    <div class="col-md-9">
+																			<div class="input-group ">
+																			    
+																			    <input type="text" id="addon3a" class="form-control">
+																			    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																			    <span class="input-group-btn">
+																			      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																			        	<i class="material-icons">search</i>
+																					</button>
+																			    </span>
+																			</div>
+																		    </div>
+																		</div>
+																		<div class="form-group">
+																	      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																	
+																	      <div class="col-md-9">
+																	        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																	        <input type="file" id="inputFile" multiple="">
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																	
+																	      <div class="col-md-9">
+																	        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																	        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																		    <div class="col-md-9">
+																		        <div class="checkbox sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																		    <div class="col-md-9">
+																		        <div class="togglebutton sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox" checked="">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    
+																	    <div class="form-group">
+																	      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																	
+																	      <div class="col-md-9">
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																	            Option one is this
+																	          </label>
+																	        </div>
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																	            Option two can be something else
+																	          </label>
+																	        </div>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select111" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select222" multiple="" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																	
+																	      <div class="col-md-9">
+																	    	<select class="combobox form-control dropdown-toggle" id="something">
+																			  <option></option>
+																			  <option value="PA">Pennsylvania</option>
+																			  <option value="CT">Connecticut</option>
+																			  <option value="NY">New York</option>
+																			  <option value="MD">Maryland</option>
+																			  <option value="VA">Virginia</option>
+																			</select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	    	<label for="slider1" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																	    	<div class="col-md-9">
+																	    		<div id="slider1" class="slider shor slider-material-orange"></div>
+																	    		<input type="number" min="0" max="60" step="1" id="input-number1" value="30" class="hidden">
+																	    	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																		  	<div class="col-md-9">
+																			  	<div class="input-group ">
+																				    
+																				    <input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																				    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																				    <span class="input-group-btn">
+																				      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																				        	<i class="material-icons">date_range</i>
+																						</button>
+																				    </span>
+																				</div>
+																	        	
+																	      	</div>
+																	    </div>
+																	</form> 
+										                        </div>
+										                    </div>
+											            </div>
+											            
+											            <div class="col-sm-6 sys-bg-white sys-pd-off " >
+										                    <div class="panel sys-widget sys-box-shadow-off sys-mg-off">
+										                        <div class="panel-body sys-fg-inverse">
+										                        	<form class="form-horizontal">
+											                        	<div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																		  	<div class="col-md-9">
+																	        	<a href="#">A link to something</a>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-warning">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group has-success">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																		  	<div class="col-md-9">
+																	        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																	        </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																		  	<div class="col-md-9">
+																	        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																	        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																		  	<div class="col-md-9">
+																	        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																		    <div class="col-md-9">
+																			    <input type="number" class="form-control" id="222">
+																			    <p class="help-block error-message">Please enter a number</p>
+																		    </div>
+																		</div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																		    <div class="col-md-9">
+																			<div class="input-group ">
+																			    
+																			    <input type="text" id="addon3a" class="form-control">
+																			    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																			    <span class="input-group-btn">
+																			      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																			        	<i class="material-icons">search</i>
+																					</button>
+																			    </span>
+																			</div>
+																		    </div>
+																		</div>
+																		<div class="form-group">
+																	      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																	
+																	      <div class="col-md-9">
+																	        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																	        <input type="file" id="inputFile" multiple="">
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																		  	<div class="col-md-9">
+																	        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																	      	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																	
+																	      <div class="col-md-9">
+																	        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																	        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																		    <div class="col-md-9">
+																		        <div class="checkbox sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    <div class="form-group">
+																		    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																		    <div class="col-md-9">
+																		        <div class="togglebutton sys-pd-t-5">
+																		          	<label>
+																		            	<input type="checkbox" checked="">
+																					</label>
+																		        </div>
+																		    </div>
+																	    </div>
+																	    
+																	    <div class="form-group">
+																	      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																	
+																	      <div class="col-md-9">
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																	            Option one is this
+																	          </label>
+																	        </div>
+																	        <div class="radio radio-primary sys-mg-off-b">
+																	          <label>
+																	            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																	            Option two can be something else
+																	          </label>
+																	        </div>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select111" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																	
+																	      <div class="col-md-9">
+																	        <select id="select222" multiple="" class="form-control dropdown-select">
+																	          <option>1</option>
+																	          <option>2</option>
+																	          <option>3</option>
+																	          <option>4</option>
+																	          <option>5</option>
+																	        </select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																	
+																	      <div class="col-md-9">
+																	    	<select class="combobox form-control dropdown-toggle" id="something">
+																			  <option></option>
+																			  <option value="PA">Pennsylvania</option>
+																			  <option value="CT">Connecticut</option>
+																			  <option value="NY">New York</option>
+																			  <option value="MD">Maryland</option>
+																			  <option value="VA">Virginia</option>
+																			</select>
+																	      </div>
+																	    </div>
+																	    <div class="form-group">
+																	    	<label for="slider1" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																	    	<div class="col-md-9">
+																	    		<div id="slider1" class="slider shor slider-material-orange"></div>
+																	    		<input type="number" min="0" max="60" step="1" id="input-number1" value="30" class="hidden">
+																	    	</div>
+																	    </div>
+																	    <div class="form-group">
+																	      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																		  	<div class="col-md-9">
+																	        	<input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																	      	</div>
+																	    </div>
+																	</form> 
+										                        </div>
+										                    </div>
+											            </div>
+												    </div>
+									            </div>
+									        </div>
+									    </div>
+									</div>
+-->
+					    		</div>
+					    	</div>
+					    </div>
+				    </div>
+	<!--
+					    <div class="col-sm-8 column-parent">
+						    <div class="panel sys-bd-off sys-box-shadow-off">
+						    	<div class="panel-body main-column" id="main_column_1" data-column="1">
+							    	<div class="sortable-list"> 	
+								    	<div class="draggable-row-section row widget layout-widget">
+										    <div class="col-sm-12">
+									            <h4 class="sys-mg-off-t sys-mg-b-5"></h4>
+									            <div class="panel sys-widget sys-box-shadow-off sys-bd-light-gray ">
+											        <div class="panel-body sys-pd-off">
+													    <div class="row sys-tbl" data-row="0">
+												            <div class="col-xs-12 sys-bg-white sys-pd-off">
+											                    <div class="panel sys-widget sys-box-shadow-off  sys-mg-off add-data-widget">
+											                        <div class="panel-body sys-fg-primary">
+											                        	<form class="form-horizontal">
+												                        	<div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																			  	<div class="col-md-9">
+																		        	<a href="#">A link to something</a>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group has-warning">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group has-success">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																			  	<div class="col-md-9">
+																		        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																		        </div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																			  	<div class="col-md-9">
+																		        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																		        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																			    <div class="col-md-9">
+																				    <input type="number" class="form-control" id="222">
+																				    <p class="help-block error-message">Please enter a number</p>
+																			    </div>
+																			</div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																			    <div class="col-md-9">
+																				<div class="input-group ">
+																				    
+																				    <input type="text" id="addon3a" class="form-control">
+																				    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																				    <span class="input-group-btn">
+																				      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																				        	<i class="material-icons">search</i>
+																						</button>
+																				    </span>
+																				</div>
+																			    </div>
+																			</div>
+																			<div class="form-group">
+																		      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																		
+																		      <div class="col-md-9">
+																		        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																		        <input type="file" id="inputFile" multiple="">
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																			  	<div class="col-md-9">
+																		        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																			  	<div class="col-md-9">
+																		        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																		
+																		      <div class="col-md-9">
+																		        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																		        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																			    <div class="col-md-9">
+																			        <div class="checkbox sys-pd-t-5">
+																			          	<label>
+																			            	<input type="checkbox">
+																						</label>
+																			        </div>
+																			    </div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																			    <div class="col-md-9">
+																			        <div class="togglebutton sys-pd-t-5">
+																			          	<label>
+																			            	<input type="checkbox" checked="">
+																						</label>
+																			        </div>
+																			    </div>
+																		    </div>
+																		    
+																		    <div class="form-group">
+																		      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																		
+																		      <div class="col-md-9">
+																		        <div class="radio radio-primary sys-mg-off-b">
+																		          <label>
+																		            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																		            Option one is this
+																		          </label>
+																		        </div>
+																		        <div class="radio radio-primary sys-mg-off-b">
+																		          <label>
+																		            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																		            Option two can be something else
+																		          </label>
+																		        </div>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																		
+																		      <div class="col-md-9">
+																		        <select id="select111" class="form-control dropdown-select">
+																		          <option>1</option>
+																		          <option>2</option>
+																		          <option>3</option>
+																		          <option>4</option>
+																		          <option>5</option>
+																		        </select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																		
+																		      <div class="col-md-9">
+																		        <select id="select222" multiple="" class="form-control dropdown-select">
+																		          <option>1</option>
+																		          <option>2</option>
+																		          <option>3</option>
+																		          <option>4</option>
+																		          <option>5</option>
+																		        </select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																		
+																		      <div class="col-md-9">
+																		    	<select class="combobox form-control dropdown-toggle" id="something">
+																				  <option></option>
+																				  <option value="PA">Pennsylvania</option>
+																				  <option value="CT">Connecticut</option>
+																				  <option value="NY">New York</option>
+																				  <option value="MD">Maryland</option>
+																				  <option value="VA">Virginia</option>
+																				</select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		    	<label for="slider" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																		    	<div class="col-md-9">
+																		    		<div id="slider" class="slider shor slider-material-orange"></div>
+																		    		<input type="number" min="0" max="60" step="1" id="input-number" value="30" class="hidden">
+																		    	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																			  	<div class="col-md-9">
+																				  	<div class="input-group ">
+																					    
+																					    <input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																					    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																					    <span class="input-group-btn">
+																					      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																					        	<i class="material-icons">date_range</i>
+																							</button>
+																					    </span>
+																					</div>
+																		        	
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																			  	<div class="col-md-9">
+																				  	<div class="input-group ">
+																					    
+																					    <input type="text" class="form-control date-input" id="" placeholder="Enter date">
+																					    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																					    <span class="input-group-btn">
+																					        <i class="material-icons">date_range</i>
+																					    </span>
+																					</div>
+																		        	
+																		      	</div>
+																		    </div>
+																		</form>   
+											                        </div>
+											                    </div>
+												            </div>
+													    </div>
+										            </div>
+										        </div>
+										    </div>
+										</div>
+						    		</div>
+						    	</div>
+						    </div>
+						    
+						    
+						    <div class="panel sys-bd-off sys-box-shadow-off">
+						    	<div class="panel-body main-column" id="main_column_1" data-column="1">
+							    	<div class="sortable-list"> 	
+								    	
+								    	<div class="draggable-row-section row widget layout-widget">
+										    <div class="col-sm-12">
+									            <h4 class="sys-mg-off-t sys-mg-b-5"></h4>
+									            <div class="panel sys-widget sys-box-shadow-off sys-bd-light-gray ">
+											        <div class="panel-body sys-pd-off">
+													    
+													    <div class="row sys-tbl" data-row="0">
+												            
+												            <div class="col-sm-6 sys-bg-white sys-pd-off">
+											                    <div class="panel sys-widget sys-box-shadow-off  sys-mg-off add-data-widget">
+											                        <div class="panel-body sys-fg-primary">
+											                        	<form class="form-horizontal">
+												                        	<div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																			  	<div class="col-md-9">
+																		        	<a href="#">A link to something</a>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group has-warning">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group has-success">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																			  	<div class="col-md-9">
+																		        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																		        </div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																			  	<div class="col-md-9">
+																		        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																		        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																			    <div class="col-md-9">
+																				    <input type="number" class="form-control" id="222">
+																				    <p class="help-block error-message">Please enter a number</p>
+																			    </div>
+																			</div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																			    <div class="col-md-9">
+																				<div class="input-group ">
+																				    
+																				    <input type="text" id="addon3a" class="form-control">
+																				    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																				    <span class="input-group-btn">
+																				      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																				        	<i class="material-icons">search</i>
+																						</button>
+																				    </span>
+																				</div>
+																			    </div>
+																			</div>
+																			<div class="form-group">
+																		      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																		
+																		      <div class="col-md-9">
+																		        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																		        <input type="file" id="inputFile" multiple="">
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																			  	<div class="col-md-9">
+																		        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																			  	<div class="col-md-9">
+																		        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																		
+																		      <div class="col-md-9">
+																		        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																		        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																			    <div class="col-md-9">
+																			        <div class="checkbox sys-pd-t-5">
+																			          	<label>
+																			            	<input type="checkbox">
+																						</label>
+																			        </div>
+																			    </div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																			    <div class="col-md-9">
+																			        <div class="togglebutton sys-pd-t-5">
+																			          	<label>
+																			            	<input type="checkbox" checked="">
+																						</label>
+																			        </div>
+																			    </div>
+																		    </div>
+																		    
+																		    <div class="form-group">
+																		      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																		
+																		      <div class="col-md-9">
+																		        <div class="radio radio-primary sys-mg-off-b">
+																		          <label>
+																		            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																		            Option one is this
+																		          </label>
+																		        </div>
+																		        <div class="radio radio-primary sys-mg-off-b">
+																		          <label>
+																		            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																		            Option two can be something else
+																		          </label>
+																		        </div>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																		
+																		      <div class="col-md-9">
+																		        <select id="select111" class="form-control dropdown-select">
+																		          <option>1</option>
+																		          <option>2</option>
+																		          <option>3</option>
+																		          <option>4</option>
+																		          <option>5</option>
+																		        </select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																		
+																		      <div class="col-md-9">
+																		        <select id="select222" multiple="" class="form-control dropdown-select">
+																		          <option>1</option>
+																		          <option>2</option>
+																		          <option>3</option>
+																		          <option>4</option>
+																		          <option>5</option>
+																		        </select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																		
+																		      <div class="col-md-9">
+																		    	<select class="combobox form-control dropdown-toggle" id="something">
+																				  <option></option>
+																				  <option value="PA">Pennsylvania</option>
+																				  <option value="CT">Connecticut</option>
+																				  <option value="NY">New York</option>
+																				  <option value="MD">Maryland</option>
+																				  <option value="VA">Virginia</option>
+																				</select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		    	<label for="slider" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																		    	<div class="col-md-9">
+																		    		<div id="slider" class="slider shor slider-material-orange"></div>
+																		    		<input type="number" min="0" max="60" step="1" id="input-number" value="30" class="hidden">
+																		    	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																		      	</div>
+																		    </div>
+																		</form>   
+											                        </div>
+											                    </div>
+												            </div>
+												            
+												            
+												            <div class="col-sm-6 sys-bg-white sys-pd-off">
+											                    <div class="panel sys-widget sys-box-shadow-off  sys-mg-off add-data-widget">
+											                        <div class="panel-body sys-fg-primary">
+											                        	<form class="form-horizontal">
+												                        	<div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Some normal text</label>
+																			  	<div class="col-md-9">
+																		        	<a href="#">A link to something</a>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group has-warning">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A themed field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group has-success">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Another themed field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" placeholder="Enter text" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A readonly form field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control" id="inputText" value="Data widget value" maxlength="256" readonly>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A static data widget</label>
+																			  	<div class="col-md-9">
+																		        	<span class="form-data-widget sys-fg-inverse">Data widget value</span>
+																		        </div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Email</label>
+																			  	<div class="col-md-9">
+																		        	<input type="email" class="form-control" id="inputEmail" placeholder="Enter email address" maxlength="256">
+																		        	<p class="help-block error-message">Please enter a valid email address (e.g. name@domain.com)</p>
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="password" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Password Field</label>
+																			  	<div class="col-md-9">
+																		        	<input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label for="222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A number only input</label>
+																			    <div class="col-md-9">
+																				    <input type="number" class="form-control" id="222">
+																				    <p class="help-block error-message">Please enter a number</p>
+																			    </div>
+																			</div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5" for="addon3a">Something with a button</label>
+																			    <div class="col-md-9">
+																				<div class="input-group ">
+																				    
+																				    <input type="text" id="addon3a" class="form-control">
+																				    <p class="help-block">This is just a helpful bit of text that can be shown if required. It can also house validation messages</p>
+																				    <span class="input-group-btn">
+																				      	<button type="button" class="btn btn-primary btn-fab btn-fab-xs">
+																				        	<i class="material-icons">search</i>
+																						</button>
+																				    </span>
+																				</div>
+																			    </div>
+																			</div>
+																			<div class="form-group">
+																		      <label for="inputFile" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">File</label>
+																		
+																		      <div class="col-md-9">
+																		        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+																		        <input type="file" id="inputFile" multiple="">
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a currency input mask</label>
+																			  	<div class="col-md-9">
+																		        	<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Input with a number/decimal input mask</label>
+																			  	<div class="col-md-9">
+																		        	<input data-inputmask="'alias': 'decimal', 'groupSeparator': ',', 'autoGroup': true" type="text" class="form-control text-left-hard" id="inputText" placeholder="Enter amount" maxlength="256">
+																		      	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="textArea" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A paragraph/long text input</label>
+																		
+																		      <div class="col-md-9">
+																		        <textarea class="form-control" rows="3" id="textArea" maxlength="3000"></textarea>
+																		        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A checkbox</label>
+																			    <div class="col-md-9">
+																			        <div class="checkbox sys-pd-t-5">
+																			          	<label>
+																			            	<input type="checkbox">
+																						</label>
+																			        </div>
+																			    </div>
+																		    </div>
+																		    <div class="form-group">
+																			    <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A toggle switch</label>
+																			    <div class="col-md-9">
+																			        <div class="togglebutton sys-pd-t-5">
+																			          	<label>
+																			            	<input type="checkbox" checked="">
+																						</label>
+																			        </div>
+																			    </div>
+																		    </div>
+																		    
+																		    <div class="form-group">
+																		      <label class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Radios</label>
+																		
+																		      <div class="col-md-9">
+																		        <div class="radio radio-primary sys-mg-off-b">
+																		          <label>
+																		            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+																		            Option one is this
+																		          </label>
+																		        </div>
+																		        <div class="radio radio-primary sys-mg-off-b">
+																		          <label>
+																		            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+																		            Option two can be something else
+																		          </label>
+																		        </div>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select111" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A select/Dropdown</label>
+																		
+																		      <div class="col-md-9">
+																		        <select id="select111" class="form-control dropdown-select">
+																		          <option>1</option>
+																		          <option>2</option>
+																		          <option>3</option>
+																		          <option>4</option>
+																		          <option>5</option>
+																		        </select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select Multiple</label>
+																		
+																		      <div class="col-md-9">
+																		        <select id="select222" multiple="" class="form-control dropdown-select">
+																		          <option>1</option>
+																		          <option>2</option>
+																		          <option>3</option>
+																		          <option>4</option>
+																		          <option>5</option>
+																		        </select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		      <label for="select2222" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">Select or enter</label>
+																		
+																		      <div class="col-md-9">
+																		    	<select class="combobox form-control dropdown-toggle" id="something">
+																				  <option></option>
+																				  <option value="PA">Pennsylvania</option>
+																				  <option value="CT">Connecticut</option>
+																				  <option value="NY">New York</option>
+																				  <option value="MD">Maryland</option>
+																				  <option value="VA">Virginia</option>
+																				</select>
+																		      </div>
+																		    </div>
+																		    <div class="form-group">
+																		    	<label for="slider" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A slider</label>
+																		    	<div class="col-md-9">
+																		    		<div id="slider" class="slider shor slider-material-orange"></div>
+																		    		<input type="number" min="0" max="60" step="1" id="input-number" value="30" class="hidden">
+																		    	</div>
+																		    </div>
+																		    <div class="form-group">
+																		      	<label for="inputEmail" class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5">A date picker</label>
+																			  	<div class="col-md-9">
+																		        	<input type="text" class="form-control date-input" id="inputText" placeholder="Enter date">
+																		      	</div>
+																		    </div>
+																		</form>   
+											                        </div>
+											                    </div>
+												            </div>
+													    </div>
+										            </div>
+										        </div>
+										    </div>
+										</div>
+						    		</div>
+						    	</div>
+						    </div>
+					    </div>
+	-->
+			    </div>
+			    
+			    
+		    </div>
+	    
+		</div>
+		
+		<!-- Error Notification Kendo Template -->
+		<script id="errorTemplate" type="text/x-kendo-template">
+            <div class="error-template">
+	            <i class="material-icons close-error-notification">close</i>
+                <i class="material-icons">error</i>
+                <h3>#= title #</h3>
+                <p>#= message #</p>
+            </div>
+        </script>
+
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+		
+	    <script src="js/bootstrap.js"></script>
+	    <script src="js/jQuery.hoverForMore.js"></script>
+	    <script src="js/list.min.js"></script>
+	    <script src="js/listgroup.min.js"></script>
+		<script src="js/hopscotch.min.js"></script>
+		<script src="js/helptour.js"></script>
+		<script src="js/bootstrap-3-typeahead.js"></script>
+		<script src="bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+		<script src="js/forms.js"></script>
+		<script src="js/ripples.min.js"></script>
+		<script src="js/jquery.dropdown.js"></script>
+		<script src="js/syspro/SYSPROInterop.js"></script> 
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/moment.min.js"></script>
+		<script src="js/bootstrap-material-datetimepicker.js"></script>
+		<script src="js/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+		<script src="js/bootstrap-combobox.js"></script>
+	    <script src="js/sysproscript.js"></script>
+	    <script>
+		    // Initialise form JS
+/*
+ 		    $.material.init();
+		    $(".dropdown-select").dropdown({ "autoinit" : ".dropdown-select" });
+		    $('.date-input').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+		    $(document).ready(function(){
+			    $('.combobox').combobox();
+				Inputmask().mask(document.querySelectorAll("input"));
+			});
+*/
+/*
+		    var slider = document.getElementById('slider');
+			noUiSlider.create(slider, {
+				start: 30,
+				connect: [true, false],
+				range: {
+					'min': 0,
+					'max': 60
+				}
+			});
+*/
+		    var inputNumber = document.getElementById('input-number');
+			/*
+slider.noUiSlider.on('update', function( values, handle ) {
+				var value = values[handle];
+
+				inputNumber.value = value;
+			});
+			
+			inputNumber.addEventListener('change', function(){
+				slider.noUiSlider.set([null, this.value]);
+			});
+*/
+			var slider = document.getElementById('slider1');
+			noUiSlider.create(slider, {
+				start: 30,
+				connect: [true, false],
+				range: {
+					'min': 0,
+					'max': 60
+				}
+			});
+		    var inputNumber = document.getElementById('input-number1');
+			slider.noUiSlider.on('update', function( values, handle ) {
+				var value = values[handle];
+
+				inputNumber.value = value;
+			});
+			
+			inputNumber.addEventListener('change', function(){
+				slider.noUiSlider.set([null, this.value]);
+			});
+			
+/*
+			$("input").on("blur", function(){
+				$("#event-list").text("Blur event");
+			});
+			$("input").on("focus", function(){
+				$("#event-list").text("Focus event");
+			});
+			$("input").on("focusin", function(){
+				$("#event-list").text("Focus in event");
+			});
+			$("input").on("focusout", function(){
+				$("#event-list").text("Focus out event");
+			});
+			$("input").on("change", function(){
+				$("#event-list").text("Change event");
+			});
+			$("select").on("select", function(){
+				$("#event-list").text("Select event");
+			});
+*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,241 @@
+//-> Borders
+.@{bootkit-prefix}-bd-primary {
+  .bk-border-variant(@bk-primary);
+}
+
+.@{bootkit-prefix}-bd-db-primary { // double border
+  border: 1px solid @bk-primary;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-success {
+  .bk-border-variant(@bk-success);
+}
+
+.@{bootkit-prefix}-bd-db-success {
+  border: 1px solid @bk-success;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-info {
+  .bk-border-variant(@bk-info);
+}
+
+.@{bootkit-prefix}-bd-db-info {
+  border: 1px solid @bk-info;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-warning {
+  .bk-border-variant(@bk-warning);
+}
+
+.@{bootkit-prefix}-bd-db-warning {
+  border: 1px solid @bk-warning;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-danger {
+  .bk-border-variant(@bk-danger);
+}
+
+.@{bootkit-prefix}-bd-db-danger {
+  border: 1px solid @bk-danger;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-inverse {
+  .bk-border-variant(@bk-inverse);
+}
+
+.@{bootkit-prefix}-bd-db-inverse {
+  border: 1px solid @bk-inverse;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-white {
+  .bk-border-variant(@bk-white);
+}
+
+.@{bootkit-prefix}-bd-db-white {
+  border: 1px solid @bk-white;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-gray {
+  .bk-border-variant(@bk-gray);
+}
+
+.@{bootkit-prefix}-bd-db-gray {
+  border: 1px solid @bk-gray;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-light-gray {
+  .bk-border-variant(@bk-light-gray);
+}
+
+.@{bootkit-prefix}-bd-db-light-gray {
+  border: 1px solid @bk-light-gray;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-very-light-gray {
+  .bk-border-variant(@bk-very-light-gray);
+}
+
+.@{bootkit-prefix}-bd-db-very-light-gray {
+  border: 1px solid @bk-very-light-gray;
+  padding: 4px;
+}
+
+.@{bootkit-prefix}-bd-textcolor {
+  .bk-border-variant(@text-color);
+}
+
+.@{bootkit-prefix}-bd-db-textcolor {
+  border: 1px solid @text-color;
+  padding: 4px;
+}
+
+// border sizing
+.@{bootkit-prefix}-bd-off {
+  border-width: 0 !important;
+}
+
+.@{bootkit-prefix}-bd-2x {
+  border-width: 2px !important;
+}
+
+.@{bootkit-prefix}-bd-3x {
+  border-width: 3px !important;
+}
+
+.@{bootkit-prefix}-bd-4x {
+  border-width: 4px !important;
+}
+
+.@{bootkit-prefix}-bd-5x {
+  border-width: 5px !important;
+}
+
+
+// set transition on backgrounds for child elements of
+a .bk-bd-lighten,
+a .bk-bd-darken {
+  transition: border @bk-transition;
+}
+
+//-> Border colors -----------------------------------------------------------------------------------------------
+// coloring borders for children when hovering over link
+a:hover {
+  &.@{bootkit-prefix}-bd-primary, // needed for overriding default border width of 1px set by bk-bd-primary
+  .@{bootkit-prefix}-bd-primary {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-primary, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-primary, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-success,
+  .@{bootkit-prefix}-bd-success {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-success, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-success, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-info,
+  .@{bootkit-prefix}-bd-info {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-info, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-info, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-warning,
+  .@{bootkit-prefix}-bd-warning {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-warning, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-warning, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-danger,
+  .@{bootkit-prefix}-bd-danger {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-danger, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-danger, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-inverse,
+  .@{bootkit-prefix}-bd-inverse {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-inverse, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-inverse, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-very-light-gray,
+  .@{bootkit-prefix}-bd-very-light-gray {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-very-light-gray, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-very-light-gray, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-light-gray,
+  .@{bootkit-prefix}-bd-light-gray {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-light-gray, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-light-gray, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-gray,
+  .@{bootkit-prefix}-bd-gray {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-gray, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-gray, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-white,
+  .@{bootkit-prefix}-bd-white {
+    &.@{bootkit-prefix}-bd-darken {
+      border-color: darken(@bk-white, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      border-color: lighten(@bk-white, @bk-link-lighten-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-textcolor,
+  .@{bootkit-prefix}-bd-textcolor {
+    &.@{bootkit-prefix}-bd-darken {
+      background-color: darken(@text-color, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-bd-lighten {
+      background-color: lighten(@text-color, @bk-link-lighten-percentage) !important;
+    }
+  }
+}
