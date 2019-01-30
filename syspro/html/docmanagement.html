@@ -18,6 +18,91 @@
         <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
 
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+
+        <style>
+            #file-treeview.k-treeview {
+                overflow: hidden;
+            }
+        #file-treeview .k-item, 
+        #file-treeview.k-treeview span.k-in {
+            cursor: pointer;
+            width: 100%;
+        }
+        #file-treeview.k-treeview .k-in {
+            margin: 0px;
+            padding: 4px 7px 4px 4px;
+        }
+        #file-treeview.k-treeview .k-in {
+            color: #34495e;
+        }
+        #file-treeview.k-treeview .k-in.k-state-selected {
+            background-color: #e8f3f9;
+            color: #34495e;
+        }
+        #file-treeview.k-treeview .k-in .material-icons {
+            color: #7f8c8d;
+        }
+        #file-treeview.k-treeview .k-in.k-state-selected .material-icons {
+            color: #34495e;
+        }
+        .k-detail-cell .k-grid-header {
+            display: none;
+        }
+        .k-detail-cell td {
+            overflow: visible;
+        }
+        .k-detail-cell td .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+        .fileExplorer .col-md-6 {
+            border-left: 1px solid #ecf0f1;
+            border-right: 1px solid #ecf0f1;
+        }
+        .fileTag {
+            padding: 1px;
+            margin: 1px;
+            display: inline-block;
+        }
+        .fileTag:hover {
+            text-decoration: none;
+            opacity: 0.9;
+        }
+        ul.timeline {
+            list-style-type: none;
+            position: relative;
+            padding-left: 12px;
+        }
+        ul.timeline:before {
+            content: ' ';
+            background: #d4d9df;
+            display: inline-block;
+            position: absolute;
+            left: 9px;
+            top: 6px;
+            width: 2px;
+            height: 100%;
+            z-index: 400;
+        }
+        ul.timeline > li {
+            margin: 15px 0;
+            padding-left: 15px;
+        }
+        ul.timeline > li:before {
+            content: ' ';
+            background: white;
+            display: inline-block;
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid #0078d7;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            z-index: 400;
+            margin-top: 5px;
+        }
+        </style>
+
         <script>
             window.MSPointerEvent = null;
             window.PointerEvent = null;
@@ -72,666 +157,97 @@
         <div id="wrapper" class="toggled">
             <div class="container-fluid sys-mg-t-15" id="main-container">
                 <div class="row sys-mg-t-15">
-                    <div class="col-sm-4 col-xs-12 column-parent">
+                    <div class="col-sm-12 col-xs-12 column-parent sys-mg-t-15">
                         <div class="panel sys-bd-off sys-box-shadow-off">
                             <div class="panel-body main-column">
-                                <div class=" row widget layout-widget">
-                                    <div class="col-xs-12">
-                                        <table class="table table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th>Document</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 col-xs-12 column-parent  sys-mg-t-15">
-                        <div class="panel sys-bd-off sys-box-shadow-off">
-                            <div class="panel-body main-column">
-                                <div class=" row widget layout-widget">
+                                <div class=" row widget layout-widget fileExplorer">
                                     <div class="col-md-3">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group label-floating is-empty">                             
+                                                    <div class="col-xs-11 ">
+                                                        <label for="Search" class="control-label sys-mg-off-t">Search</label>
+                                                        <input type="text" class="form-control" id="Search" maxlength="256">
+                                                        <p class="help-block error-message"></p>
+                                                    </div>
+                                                    <div class="col-xs-1 text-left">
+                                                        <a href="#"><i class="material-icons sys-fg-light-gray control-label">search</i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- File tree -->
+                                        <div class="row sys-mg-t-10">
+                                            <div class="col-xs-12">
+                                                <div id="file-treeview"></div>
+                                            </div>
+                                        </div>
+
+
                                         <!-- Filter -->
-                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="panel sys-box-shadow-off sys-bd-off">
-                                                <div class="panel-heading sys-bg-very-light-gray" role="tab" id="headingOne">
-                                                    <h4 class="sys-mg-off">
-                                                        <a class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse" role="button" data-toggle="collapse" data-parent="#accordion"
-                                                            href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                            Filter by tag
-                                                            <i class="material-icons pull-right collapsible-open-icon">keyboard_arrow_down</i>
-                                                            <i class="material-icons pull-right collapsible-close-icon">keyboard_arrow_up</i>
-                                                        </a>
+                                        <div class="row sys-mg-t-10">
+                                            <div class="col-xs-12">
+                                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                    <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div class="panel-heading sys-bg-very-light-gray" role="tab" id="headingOne">
+                                                            <h4 class="sys-mg-off">
+                                                                <a class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse" role="button" data-toggle="collapse" data-parent="#accordion"
+                                                                    href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                                    Filter by tag
+                                                                    <i class="material-icons pull-right collapsible-open-icon">keyboard_arrow_down</i>
+                                                                    <i class="material-icons pull-right collapsible-close-icon">keyboard_arrow_up</i>
+                                                                </a>
 
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                                    something
-                                                </div>
-                                            </div>
-                                            <div class="panel sys-box-shadow-off sys-bd-off">
-                                                <div class="panel-heading sys-bg-very-light-gray" role="tab" id="headingTwo">
-                                                    <h4 class="sys-mg-off">
-                                                        <a class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse" role="button" data-toggle="collapse" data-parent="#accordion"
-                                                            href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                            Filter by
-                                                            <i class="material-icons pull-right collapsible-open-icon">keyboard_arrow_down</i>
-                                                            <i class="material-icons pull-right collapsible-close-icon">keyboard_arrow_up</i>
-                                                        </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                            <a href="#" class="fileTag"><span class="label label-default">Default</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-primary">Primary</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-success">Success</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-info">Info</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-warning">Warning</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-danger">Danger</span></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div class="panel-heading sys-bg-very-light-gray" role="tab" id="headingTwo">
+                                                            <h4 class="sys-mg-off">
+                                                                <a class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse" role="button" data-toggle="collapse" data-parent="#accordion"
+                                                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                    Filter by
+                                                                    <i class="material-icons pull-right collapsible-open-icon">keyboard_arrow_down</i>
+                                                                    <i class="material-icons pull-right collapsible-close-icon">keyboard_arrow_up</i>
+                                                                </a>
 
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                    something
-                                                </div>
-                                            </div>
-                                            <div class="panel sys-box-shadow-off sys-bd-off">
-                                                <div class="panel-heading sys-bg-very-light-gray" role="tab" id="headingThree">
-                                                    <h4 class="sys-mg-off">
-                                                        <a class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse" role="button" data-toggle="collapse" data-parent="#accordion"
-                                                            href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                            Filter by
-                                                            <i class="material-icons pull-right collapsible-open-icon">keyboard_arrow_down</i>
-                                                            <i class="material-icons pull-right collapsible-close-icon">keyboard_arrow_up</i>
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                    something
+                                                            </h4>
+                                                        </div>
+                                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                            something
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <table class="table table-hover table-condensed">
+                                        <table class="table table-hover  table-striped table-noborder" id="stockCodeGrid">
                                             <thead>
                                                 <tr>
-                                                    <th>Document</th>
-                                                    <th></th>
+                                                    <th>Stock code</th>
+                                                    <th>Attached documents</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <a class="text-left" href="#">
-                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
-                                                            file</a
-                                                        >
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Info"
-                                                        >
-                                                            <i class="material-icons text-primary sys-txt-md">info</i>
-                                                        </a>
-                                                        <a
-                                                            href="#"
-                                                            class="sys-mg-r-15"
-                                                            data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Edit"
-                                                        >
-                                                            <i class="material-icons text-danger sys-txt-md"
-                                                                >delete_forever</i
-                                                            >
-                                                        </a>
-                                                    </td>
+                                                    <td colspan="3"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
+
                                     </div>
                                     <div class="col-md-3">
-                                        <h4>Document info</h4>
+                                        <h4>Document details</h4>
                                         <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs sys-fg-primary" role="tablist">
                                             <li class="nav-item active">
                                                 <a class="nav-link active" data-toggle="tab" href="#metaData" aria-expanded="true">Details</a>
@@ -745,7 +261,7 @@
                                             <div id="metaData" class="tab-pane fade sys-pd-t-5 active in" role="tabpanel">
                                                 <img src="https://vignette.wikia.nocookie.net/jacksmith/images/7/7c/Document-icon.png/revision/latest?cb=20130513232955" width="140" />
 
-                                                <table class="table table-condensed table-noborder table-hover">
+                                                <table class="table table-condensed table-noborder ">
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-left">Title</td>
@@ -762,8 +278,49 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div id="documentHistory" class="tab-pane fade sys-pd-t-5 active in" role="tabpanel">
-                                                <p>Document is currently v2.3.1</p>
+                                            <div id="documentHistory" class="tab-pane fade sys-pd-t-5 active" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <ul class="timeline">
+                                                            <li>
+                                                                <a href="#">v3.10.2</a>
+                                                                <a href="#" class="pull-right">1 April, 2018</a>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula.</p>
+                                                                <p><small><a href="#"><em>- User's name</em></a></small></p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">v3.10.1</a>
+                                                                <a href="#" class="pull-right">24 March, 2018</a>
+                                                                <p>Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin.</p>
+                                                                <p><small><a href="#"><em>- User's name</em></a></small></p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">v3.10</a>
+                                                                <a href="#" class="pull-right">4 March, 2018</a>
+                                                                <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh.</p>
+                                                                <p><small><a href="#"><em>- User's name</em></a></small></p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">v3.10.2</a>
+                                                                <a href="#" class="pull-right">1 April, 2018</a>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula.</p>
+                                                                <p><small><a href="#"><em>- User's name</em></a></small></p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">v3.10.1</a>
+                                                                <a href="#" class="pull-right">24 March, 2018</a>
+                                                                <p>Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin.</p>
+                                                                <p><small><a href="#"><em>- User's name</em></a></small></p>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">v3.10</a>
+                                                                <a href="#" class="pull-right">4 March, 2018</a>
+                                                                <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh.</p>
+                                                                <p><small><a href="#"><em>- User's name</em></a></small></p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -772,6 +329,193 @@
                         </div>    
                     </div>
                 </div>
+                <div class="row sys-mg-t-15">
+                    <div class="col-sm-4 col-xs-12 column-parent">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+                                    <div class="col-xs-12">
+                                        <table class="table  table-striped table-noborder">
+                                            <thead>
+                                                <tr>
+                                                    <th>Document</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <a class="text-left" href="#">
+                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
+                                                            file</a
+                                                        >
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="btn-group sys-mg-off">
+                                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="material-icons">more_horiz</i>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15" >
+                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                                                                            
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <a class="text-left" href="#">
+                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
+                                                            file</a
+                                                        >
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="btn-group sys-mg-off">
+                                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="material-icons">more_horiz</i>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15" >
+                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                                                                            
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <a class="text-left" href="#">
+                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
+                                                            file</a
+                                                        >
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="btn-group sys-mg-off">
+                                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="material-icons">more_horiz</i>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15" >
+                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                                                                            
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <a class="text-left" href="#">
+                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
+                                                            file</a
+                                                        >
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="btn-group sys-mg-off">
+                                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="material-icons">more_horiz</i>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15" >
+                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                                                                            
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <a class="text-left" href="#">
+                                                            <i class="material-icons sys-fg-primary">photo</i> Title of the
+                                                            file</a
+                                                        >
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="btn-group sys-mg-off">
+                                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="material-icons">more_horiz</i>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15" >
+                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="sys-mg-r-15">
+                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                                                                            
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
             </div>
         </div>
 
@@ -783,8 +527,508 @@
         <script src="js/UX_JS_ripples.min.js"></script>
         <script src="js/bootstrap.offcanvas.js"></script>
 
-        <script>
-            $(document).ready(function() {});
+        <script id="treeview-template" type="text/kendo-ui-template">
+            # if (item.subCategories) { #
+                <i class="material-icons">folder</i>
+            # } #
+            # if (item.name === 'Recent') { #
+                <i class="material-icons">access_time</i>
+            # } #
+            # if (item.name === 'Starred') { #
+                <i class="material-icons">star</i>
+            # } #
+            #: item.name # 
         </script>
+        <script type="text/x-kendo-template" id="fileGridTemplate">
+            <table class="table table-hover  table-striped table-noborder" id="fileGrid">
+                <thead>
+                    <tr>
+                        <th>Document</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </script>
+        <script id="fileRowTemplate" type="text/x-kendo-tmpl">
+            <tr>
+                <td class="text-left">
+                    <a class="text-left" href="">
+                        # if (Extension === "doc" || Extension === "docx") { #
+                        <i class="icofont-file-word sys-txt-lg"></i>
+                        # } else if (Extension === "pdf") { #
+                        <i class="icofont-file-pdf sys-txt-lg"></i>
+                        # } else if (Extension === "xls" || Extension === "xlsx") { #
+                        <i class="icofont-file-excel sys-txt-lg"></i>
+                        # } else if (Extension === "mov" || Extension === "mp4") { #
+                        <i class="icofont-file-flv sys-txt-lg"></i>
+                        # } else if (Extension === "jpg" || Extension === "gif" || Extension === "bmp" || Extension === "jpeg" || Extension === "tif" || Extension === "tiff") { #
+                        <i class="icofont-file-jpg sys-txt-lg"></i>
+                        # } else if (Extension === "ppt" || Extension === "pptx") { #
+                        <i class="icofont-file-presentation sys-txt-lg"></i>
+                        # } else if (Extension === "txt" || Extension === "rtf") { #
+                        <i class="icofont-file-text sys-txt-lg"></i>
+                        # } else { #
+                            <i class="icofont-file-alt sys-txt-lg"></i>
+                        # } #
+                        #: Title #
+                    </a>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group sys-mg-off">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_horiz</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="" class="sys-mg-r-15" >
+                                    <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="sys-mg-r-15">
+                                    <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="sys-mg-r-15">
+                                    <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                </a>
+                            </li>
+                        </ul>
+                    </div>                                                                        
+                </td>
+            </tr>
+        </script>
+        <script>
+            $(document).ready(function() {
+
+                $.material.init();
+
+                var inline = new kendo.data.HierarchicalDataSource({
+                    data: [
+                        { name: "Accounts receivable", subCategories: [
+                            { name: "Customers" },
+                            { name: "Branches" },
+                            { name: "Something", subCategories: [
+                            { name: "Something" },
+                            { name: "Something" },
+                            { name: "Something" }
+                        ] }
+                        ] },
+                        { name: "Inventory", subCategories: [
+                            { name: "Stock codes" },
+                            { name: "Price codes" },
+                            { name: "Something" }
+                        ] },
+                        { name: "Recent" },
+                        { name: "Starred" }
+                    ],
+                    schema: {
+                        model: {
+                            children: "subCategories"
+                        }
+                    }
+                });
+
+                $("#file-treeview").kendoTreeView({
+                    template: kendo.template($("#treeview-template").html()),
+                    dataSource: inline,
+                    dataTextField: [ "name" ]
+                });
+
+
+                var stockCodes = [
+                    {
+                        stockCode : "A100",
+                        documents : 5,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "pdf"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "doc"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A101",
+                        documents : 4,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A102",
+                        documents : 5,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A103",
+                        documents : 7,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A104",
+                        documents : 8,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "pdf"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "doc"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "png"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A105",
+                        documents : 4,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A106",
+                        documents : 3,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A107",
+                        documents : 5,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "A108",
+                        documents : 6,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "B100",
+                        documents : 8,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "C100",
+                        documents : 1,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "D100",
+                        documents : 3,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "E100",
+                        documents : 5,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "G100",
+                        documents : 6,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "W100",
+                        documents : 3,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "Q100",
+                        documents : 6,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "Z100",
+                        documents : 7,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "X100",
+                        documents : 2,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "V100",
+                        documents : 2,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }, {
+                        stockCode : "B100",
+                        documents : 2,
+                        files: [
+                            {
+                                Filename: "filename.jpg",
+                                Title: "Title of the file",
+                                Extension: "jpg"
+                            },
+                        ]
+                    }
+                ];
+                
+                var element = $("#stockCodeGrid").kendoGrid({
+                    dataSource: {
+                            data: stockCodes,
+                            schema: {
+                                model: {
+                                    fields: {
+                                        stockCode: { type: "string" },
+                                        documents: { type: "number" }
+                                    }
+                                }
+                            },
+                            pageSize: 20
+                        },
+                        height: 550,
+                        sortable: true,
+                        pageable: {
+                            input: true,
+                            numeric: false
+                        },
+                        detailTemplate: kendo.template($("#fileGridTemplate").html()),
+                        detailInit: detailInit,
+                        columns: [
+                            {
+                                field: "stockCode",
+                                title: "Stock code"
+                            },
+                            {
+                                field: "documents",
+                                title: "Attached documents"
+                            }
+                        ]
+                    });
+                });
+
+                function detailInit(e) {
+                    e.detailRow.find("#fileGrid").kendoGrid({
+                        dataSource: e.data.files,
+                        scrollable: true,
+                        pageable: false,
+                        rowTemplate: kendo.template($("#fileRowTemplate").html()),
+                        columns: [
+                            { field: "Title", title:"Title" }
+                            // { field: "ShipCountry", title:"Ship Country", width: "110px" }
+                        ]
+                    });
+
+                    // $("#grid .k-grid-header").css('display', 'none');
+                    // var detailRow = e.detailRow;
+
+                    // detailRow.find(".table").kendoTabStrip({
+                    //     animation: {
+                    //         open: { effects: "fadeIn" }
+                    //     }
+                    // });
+
+                    // detailRow.find(".orders").kendoGrid({
+                    //     dataSource: {
+                    //         type: "odata",
+                    //         transport: {
+                    //             read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+                    //         },
+                    //         serverPaging: true,
+                    //         serverSorting: true,
+                    //         serverFiltering: true,
+                    //         pageSize: 7,
+                    //         filter: { field: "EmployeeID", operator: "eq", value: e.data.EmployeeID }
+                    //     },
+                    //     scrollable: false,
+                    //     sortable: true,
+                    //     pageable: true,
+                    //     columns: [
+                    //         { field: "OrderID", title:"ID", width: "70px" },
+                    //         { field: "ShipCountry", title:"Ship Country", width: "110px" },
+                    //         { field: "ShipAddress", title:"Ship Address" },
+                    //         { field: "ShipName", title: "Ship Name", width: "300px" }
+                    //     ]
+                    // });
+                };
+            </script>
     </body>
 </html>

@@ -4365,7 +4365,7 @@ svg:not(:root) {
     background-color: #fbfbfb;
 }
 .table-hover > tbody > tr:hover {
-    background-color: #fbfbfb
+    background-color: #e8f3f9
 }
 .table-hover > tbody > tr:hover > .active {
     background-color: #ecf0f1;
@@ -8675,6 +8675,48 @@ td .btn.btn-delete {
 .icofont-brain:before {
     content: '\ec11';
 }
+.icofont-file-word:before {
+    content: '\eb2f';
+}
+.icofont-file-zip:before {
+    content: '\eb30';
+}
+.icofont-file-wave:before {
+    content: '\eb2d';
+}
+.icofont-file-tiff:before {
+    content: '\eb2b';
+}
+.icofont-file-text:before {
+    content: '\eb2a';
+}
+.icofont-file-spreadsheet:before {
+    content: '\eb27';
+}
+.icofont-file-presentation:before {
+    content: '\eb22';
+}
+.icofont-file-pdf:before {
+    content: '\eb1e';
+}
+.icofont-file-jpg:before {
+    content: '\eb1a';
+}
+.icofont-file-flv:before {
+    content: '\eb13';
+}
+.icofont-file-file:before {
+    content: '\eb12';
+}
+.icofont-file-exe:before {
+    content: '\eb11';
+}
+.icofont-file-excel:before {
+    content: '\eb10';
+}
+.icofont-file-alt:before {
+    content: '\eb08';
+}
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -9904,6 +9946,9 @@ td.k-state-focused.k-state-selected,
 }
 .sidebar-menu .tree a:focus {
     text-decoration: none;
+}
+.sidebar-menu .treeview.menu-open > a {
+    color: #34495e;
 }
 .treeview-menu {
     display: none;
@@ -11565,11 +11610,11 @@ body {
     overflow-y: scroll;
 }
 .k-treeview .k-i-expand {
-    margin-left: -10px
+    margin-left: -8px
 }
 .k-treeview .k-i-expand:before {
-    content: "keyboard_arrow_right";
-    font-family: "Material icons";
+    content: 'keyboard_arrow_right';
+    font-family: 'Material icons';
     color: #34495e;
     -webkit-transition: -webkit-transform 0.2s;
     transition: -webkit-transform 0.2s;
@@ -11578,11 +11623,11 @@ body {
 }
 .k-treeview .k-i-collapse {
     margin-top: 1px;
-    margin-left: -10px
+    margin-left: -8px
 }
 .k-treeview .k-i-collapse:before {
-    content: "keyboard_arrow_right";
-    font-family: "Material icons";
+    content: 'keyboard_arrow_right';
+    font-family: 'Material icons';
     color: #34495e;
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
@@ -11598,6 +11643,12 @@ body {
     font-size: 18px;
     margin-right: 0px;
     vertical-align: top;
+}
+.k-treeview .k-item {
+    padding: 0 0 0 19px
+}
+.k-treeview .k-item > .k-group {
+    border-left: 1px solid #ecf0f1;
 }
 /* Forms */
 .cs-select {
