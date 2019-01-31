@@ -363,12 +363,17 @@
             #file-treeview.k-treeview .k-in {
                 color: #34495e;
             }
-            #file-treeview.k-treeview .k-item:not([data-expanded]) .k-in:only-child.k-state-selected {
+            #file-treeview.k-treeview .k-item:not([data-expanded]) .k-in:only-child.k-state-selected, #fileGrid tr.k-state-selected, #fileGrid tr.k-state-selected td a {
                 background-color: #0b9c2b;
                 color: #fff;
             }
 
-            #file-treeview.k-treeview .k-item:not([data-expanded]) .k-in:only-child.k-state-selected::after {
+            #fileGrid tr.k-state-selected:hover td {
+                background-color: #0b9c2b;
+                color: #fff;
+            }
+
+            #file-treeview.k-treeview .k-item:not([data-expanded]) .k-in:only-child.k-state-selected::after, #fileGrid tr.k-state-selected::after {
                 font-family: "Material Icons";
                 font-weight: normal;
                 font-style: normal;
@@ -391,6 +396,10 @@
                 content: "check_circle";
                 float: right;
             }
+            #fileGrid tr.k-state-selected::after {
+                margin: 6px;
+            }
+
             #file-treeview.k-treeview .k-in .material-icons {
                 color: #7f8c8d;
             }
@@ -812,12 +821,11 @@
                 <thead>
                     <tr>
                         <th>Document</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="3"></td>
+                        <td colspan="1"></td>
                     </tr>
                 </tbody>
             </table>
@@ -846,50 +854,7 @@
                         #: Title #
                     </a>
                 </td>
-                <td class="text-right">
-                    <div class="btn-group sys-mg-off">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_horiz</i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="" class="sys-mg-r-15" >
-                                    <i class="material-icons text-muted sys-txt-sm">remove_red_eye</i> View
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="sys-mg-r-15" >
-                                    <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="sys-mg-r-15">
-                                    <i class="material-icons text-muted sys-txt-sm">info</i> View details
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="sys-mg-r-15">
-                                    <i class="material-icons text-muted sys-txt-sm">forward</i> Move document
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="sys-mg-r-15">
-                                    <i class="material-icons text-muted sys-txt-sm">attach_file</i> Attach to
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="sys-mg-r-15">
-                                    <i class="material-icons text-muted sys-txt-sm">cloud_upload</i> Upload new version
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="sys-mg-r-15">
-                                    <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </td>
+                
             </tr>
         </script>
         <script id="treeviewTemplate" type="text/kendo-ui-template">
@@ -1325,6 +1290,7 @@
                         dataSource: e.data.files,
                         scrollable: true,
                         pageable: false,
+                        selectable: "row",
                         rowTemplate: kendo.template($("#fileRowTemplate").html()),
                         columns: [
                             { field: "Title", title: "Title" },
