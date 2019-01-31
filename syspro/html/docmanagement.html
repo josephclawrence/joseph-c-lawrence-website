@@ -101,6 +101,15 @@
             z-index: 400;
             margin-top: 5px;
         }
+        .k-grid .dropdown-menu {
+            padding: 5px 0px;
+        }
+        .k-grid .dropdown-menu .material-icons {
+            vertical-align: text-bottom;
+        }
+        .k-grid .dropdown-menu li:hover{
+            background: #ecf0f1;
+        }
         </style>
 
         <script>
@@ -202,12 +211,12 @@
                                                             </h4>
                                                         </div>
                                                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                                            <a href="#" class="fileTag"><span class="label label-default">Default</span></a>
-                                                            <a href="#" class="fileTag"><span class="label label-primary">Primary</span></a>
-                                                            <a href="#" class="fileTag"><span class="label label-success">Success</span></a>
-                                                            <a href="#" class="fileTag"><span class="label label-info">Info</span></a>
-                                                            <a href="#" class="fileTag"><span class="label label-warning">Warning</span></a>
-                                                            <a href="#" class="fileTag"><span class="label label-danger">Danger</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-default">Bike</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-primary">Invoice</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-success">Late</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-info">Inventory</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-warning">Receipt</span></a>
+                                                            <a href="#" class="fileTag"><span class="label label-danger">Something</span></a>
                                                         </div>
                                                     </div>
                                                     <div class="panel sys-box-shadow-off sys-bd-off">
@@ -247,7 +256,51 @@
 
                                     </div>
                                     <div class="col-md-3">
-                                        <h4>Document details</h4>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                    <h4 class="pull-left">Document details</h4>
+                                                <div class="btn-group sys-mg-off pull-right">
+                                                    <button type="button" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Actions
+                                                        <i class="material-icons">more_horiz</i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="" class="sys-mg-r-15" >
+                                                                <i class="material-icons text-muted sys-txt-sm">remove_red_eye</i> View
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="sys-mg-r-15" >
+                                                                <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="sys-mg-r-15">
+                                                                <i class="material-icons text-muted sys-txt-sm">info</i> View details
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="sys-mg-r-15">
+                                                                <i class="material-icons text-muted sys-txt-sm">forward</i> Move document
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="sys-mg-r-15">
+                                                                <i class="material-icons text-muted sys-txt-sm">attach_file</i> Attach to
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="sys-mg-r-15">
+                                                                <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                        
+                                        
                                         <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs sys-fg-primary" role="tablist">
                                             <li class="nav-item active">
                                                 <a class="nav-link active" data-toggle="tab" href="#metaData" aria-expanded="true">Details</a>
@@ -259,8 +312,9 @@
                                         <div class="tab-content">
 
                                             <div id="metaData" class="tab-pane fade sys-pd-t-5 active in" role="tabpanel">
-                                                <img src="https://vignette.wikia.nocookie.net/jacksmith/images/7/7c/Document-icon.png/revision/latest?cb=20130513232955" width="140" />
-
+                                                <div class="text-center sys-mg-t-10 sys-mg-b-10">
+                                                    <img class="img-thumbnail" src="https://vignette.wikia.nocookie.net/jacksmith/images/7/7c/Document-icon.png/revision/latest?cb=20130513232955" width="140" />
+                                                </div>
                                                 <table class="table table-condensed table-noborder ">
                                                     <tbody>
                                                         <tr>
@@ -272,8 +326,31 @@
                                                             <td>PDF</td>
                                                         </tr>
                                                         <tr>
+                                                            <td class="text-left">Attached to</td>
+                                                            <td>
+                                                                <a href="#" data-tooltip="tooltip" data-placement="top" title="Stock code">A100</a>, <a href="#" data-tooltip="tooltip" data-placement="top" title="Stock code">B100</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td class="text-left">Owner</td>
                                                             <td><a href="#">Someone</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-left">Tags</td>
+                                                            <td>
+                                                                <a href="#" class="fileTag"><span class="label label-default">Bike</span></a>
+                                                                <a href="#" class="fileTag"><span class="label label-primary">Invoice</span></a>
+                                                                <a href="#" class="fileTag"><span class="label label-success">Late</span></a>
+                                                                <a href="#" class="fileTag"><span class="label label-info">Inventory</span></a>
+                                                                <a href="#" class="fileTag"><span class="label label-warning">Receipt</span></a>
+                                                                <a href="#" class="fileTag"><span class="label label-danger">Something</span></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-left">Extract</td>
+                                                            <td>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula.</p>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -358,17 +435,17 @@
                                                             <ul class="dropdown-menu">
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15" >
-                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                        <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                        <i class="material-icons text-muted sys-txt-sm">info</i> View details
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                        <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -391,17 +468,17 @@
                                                             <ul class="dropdown-menu">
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15" >
-                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                        <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                        <i class="material-icons text-muted sys-txt-sm">info</i> View details
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                        <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -424,17 +501,17 @@
                                                             <ul class="dropdown-menu">
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15" >
-                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                        <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                        <i class="material-icons text-muted sys-txt-sm">info</i> View details
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                        <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -457,17 +534,17 @@
                                                             <ul class="dropdown-menu">
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15" >
-                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                        <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                        <i class="material-icons text-muted sys-txt-sm">info</i> View details
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                        <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -490,17 +567,17 @@
                                                             <ul class="dropdown-menu">
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15" >
-                                                                        <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                                                        <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                                                        <i class="material-icons text-muted sys-txt-sm">info</i> View details
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#" class="sys-mg-r-15">
-                                                                        <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                                                        <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -586,17 +663,32 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="" class="sys-mg-r-15" >
-                                    <i class="material-icons text-primarysys-txt-md">save_alt</i> Download
+                                    <i class="material-icons text-muted sys-txt-sm">remove_red_eye</i> View
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="sys-mg-r-15" >
+                                    <i class="material-icons text-muted sys-txt-sm">save_alt</i> Download
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="sys-mg-r-15">
-                                    <i class="material-icons text-primary sys-txt-md">info</i> View details
+                                    <i class="material-icons text-muted sys-txt-sm">info</i> View details
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="sys-mg-r-15">
-                                    <i class="material-icons text-danger sys-txt-md" >delete_forever</i> Delete
+                                    <i class="material-icons text-muted sys-txt-sm">forward</i> Move document
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="sys-mg-r-15">
+                                    <i class="material-icons text-muted sys-txt-sm">attach_file</i> Attach to
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="sys-mg-r-15">
+                                    <i class="material-icons text-muted sys-txt-sm" >delete_forever</i> Delete
                                 </a>
                             </li>
                         </ul>
@@ -608,6 +700,7 @@
             $(document).ready(function() {
 
                 $.material.init();
+                $('[data-tooltip="tooltip"]').tooltip();
 
                 var inline = new kendo.data.HierarchicalDataSource({
                     data: [
@@ -637,7 +730,7 @@
 
                 $("#file-treeview").kendoTreeView({
                     template: kendo.template($("#treeview-template").html()),
-                    dataSource: inline,
+                    dataSource: inline,                    
                     dataTextField: [ "name" ]
                 });
 
@@ -970,6 +1063,9 @@
                             input: true,
                             numeric: false
                         },
+                        filterable: {
+                            mode: "menu"
+                        },
                         detailTemplate: kendo.template($("#fileGridTemplate").html()),
                         detailInit: detailInit,
                         columns: [
@@ -996,38 +1092,6 @@
                             // { field: "ShipCountry", title:"Ship Country", width: "110px" }
                         ]
                     });
-
-                    // $("#grid .k-grid-header").css('display', 'none');
-                    // var detailRow = e.detailRow;
-
-                    // detailRow.find(".table").kendoTabStrip({
-                    //     animation: {
-                    //         open: { effects: "fadeIn" }
-                    //     }
-                    // });
-
-                    // detailRow.find(".orders").kendoGrid({
-                    //     dataSource: {
-                    //         type: "odata",
-                    //         transport: {
-                    //             read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
-                    //         },
-                    //         serverPaging: true,
-                    //         serverSorting: true,
-                    //         serverFiltering: true,
-                    //         pageSize: 7,
-                    //         filter: { field: "EmployeeID", operator: "eq", value: e.data.EmployeeID }
-                    //     },
-                    //     scrollable: false,
-                    //     sortable: true,
-                    //     pageable: true,
-                    //     columns: [
-                    //         { field: "OrderID", title:"ID", width: "70px" },
-                    //         { field: "ShipCountry", title:"Ship Country", width: "110px" },
-                    //         { field: "ShipAddress", title:"Ship Address" },
-                    //         { field: "ShipName", title: "Ship Name", width: "300px" }
-                    //     ]
-                    // });
                 };
             </script>
     </body>
