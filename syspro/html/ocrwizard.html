@@ -504,6 +504,25 @@
                 font-size: 100px;
                 margin-bottom: 30px;
             }
+
+
+            .table.mapping-table > tbody > tr > td {
+                line-height: 1.91857143;
+                vertical-align: bottom;
+            }
+            .table.mapping-table > tbody > tr > td:first-child {
+                vertical-align: middle;
+            }
+            .ocrImageWrapper {
+                position: relative;
+            }
+            #ocrHighLightWrapper {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+            }
         </style>
     </head>
 
@@ -572,7 +591,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="#facilities" data-toggle="tab">
+                                                                <a href="#ocrMappingTab" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">swap_horizontal_circle</i>
                                                                     </div>
@@ -639,7 +658,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="facilities">
+                                                        <div class="tab-pane" id="ocrMappingTab">
                                                             <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <p class="lead text-center">
@@ -650,16 +669,21 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-xs-5">
-                                                                    <img
-                                                                        src="img/invoiceexample.png"
-                                                                        alt=""
-                                                                        class="img-responsive"
-                                                                    />
+                                                                    <div class="ocrImageWrapper">
+                                                                        <!-- <canvas id="ocrHighLightWrapper" width="100%" height="100%"></canvas> -->
+                                                                        <div id="ocrHighLightWrapper" width="100%" height="100%"></div>
+                                                                        <img
+                                                                            src="img/Capture.jpg"
+                                                                            alt=""
+                                                                            class="img-responsive "
+                                                                            id="ocrImage"
+                                                                        />
+                                                                </div>
                                                                 </div>
                                                                 <div class="col-xs-7">
                                                                     <div class="row">  
                                                                         <div class="col-xs-12">
-                                                                            <table class="table">
+                                                                            <table class="table mapping-table">
                                                                                 <thead>
                                                                                     <tr>
                                                                                         <th style="width: 40px;"></th>
@@ -673,7 +697,14 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">1</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText">"To"</span>
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="To" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
+                                                                                           
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -692,9 +723,13 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">2</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText"
-                                                                                                >"Order num."</span
-                                                                                            >
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="Order num" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -713,9 +748,13 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">3</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText"
-                                                                                                >"Post code"</span
-                                                                                            >
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="Post code" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -734,9 +773,13 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">4</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText"
-                                                                                                >"Qty"</span
-                                                                                            >
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="Qty" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -764,7 +807,7 @@
                                                                     <div class="row">  
                                                                         <div class="col-xs-12">
                                                                             <h4 class="sys-mg-t-15 text-center">Grid 1 <span><a href="#"><i class="material-icons text-danger">delete_forever</i></a></span></h4>
-                                                                            <table class="table">
+                                                                            <table class="table mapping-table">
                                                                                 <thead>
                                                                                     <tr>
                                                                                         <th style="width: 40px;"></th>
@@ -777,7 +820,13 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">1</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText">"DESCRIPTION"</span>
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="DESCRIPTION" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -790,9 +839,13 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">2</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText"
-                                                                                                >"HOURS"</span
-                                                                                            >
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="HOURS" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -805,9 +858,13 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">3</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText"
-                                                                                                >"RATE/HR"</span
-                                                                                            >
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="RATE/HR" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -820,9 +877,13 @@
                                                                                     <tr>
                                                                                         <td><span class="ocrItemNum">4</span></td>
                                                                                         <td class="ocrItemTextCell">
-                                                                                            <span class="ocrItemText"
-                                                                                                >"AMOUNT"</span
-                                                                                            >
+                                                                                            <div class="form-group label-floating is-empty">                             
+                                                                                                <div class="col-xs-12 ">
+                                                                                                    <label for="Search" class="control-label sys-mg-off-t"></label>
+                                                                                                    <input type="text" class="form-control" id="Search" value="AMOUNT" maxlength="256">
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input
@@ -954,11 +1015,117 @@
             #: item.name #
         </script>
         <script>
-            $(function() {
+            $(document).ready(function() {
                 // var template = kendo.template($("#template").html());
                 // var initialFiles = [{ name: "1.jpg" }, { name: "2.jpg" }, { name: "3.jpg" }, { name: "4.jpg" }, { name: "5.jpg" }, { name: "6.jpg" }];
 
                 // $("#products").html(kendo.render(template, initialFiles));
+
+                const ocrImage = document.getElementById('ocrImage'); 
+                const ocrImageNaturalHeight = ocrImage.naturalHeight;
+                const ocrImageNaturalWidth = ocrImage.naturalWidth;
+
+
+                const dataviz = kendo.dataviz;
+                const geom = kendo.geometry;
+                const Point = geom.Point;
+                const draw = kendo.drawing;
+                const Group = draw.Group;
+                const Path = draw.Path;
+
+                let count = 0;
+
+                function getOCRImageSize(ocrImage) {
+                    const ocrImageWidth = ocrImage.clientWidth;
+                    const ocrImageHeight = ocrImage.clientHeight;
+                    const widthPercent = ocrImageWidth / ocrImageNaturalWidth;
+                    const heightPercent = ocrImageHeight / ocrImageNaturalHeight;
+                    $(".ocrImageWrapper").width(ocrImageWidth);
+                    $(".ocrImageWrapper").height(ocrImageHeight);
+
+                    return [ocrImageWidth, ocrImageHeight, widthPercent, heightPercent];
+                }
+
+                
+
+
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+                    if (e.target.getAttribute("href") === "#ocrMappingTab" && count < 1) {
+
+                        //////// Kendo Drawing API stuff /////////
+                        const ocrHighLightWrapper = draw.Surface.create($("#ocrHighLightWrapper"), { 
+                            type: 'SVG'
+                            // click: function(e) {
+                            //     console.log(e.element.options.tooltip.content);
+                            // } 
+                        });
+                        ocrHighLightWrapper.bind("click", function(e) {
+                                console.log(e.element.options.tooltip.content);
+                            });
+                        const container = new Group();
+                        const [ocrImageWidth, ocrImageHeight, widthPercent, heightPercent] = getOCRImageSize(ocrImage);
+                        ////////// Canvas setup //////////////
+                        // const ocrHighLightWrapper = document.getElementById('ocrHighLightWrapper').getContext('2d');
+                        // const [ocrImageWidth, ocrImageHeight, widthPercent, heightPercent] = getOCRImageSize(ocrImage);
+                        // ocrHighLightWrapper.canvas.width = ocrImageWidth;
+                        // ocrHighLightWrapper.canvas.height = ocrImageHeight;
+                        // ocrHighLightWrapper.strokeStyle = '#ff0000';
+                        // ocrHighLightWrapper.fillStyle = 'rgba(255, 255, 0, 0.4)';
+                        // ocrHighLightWrapper.lineWidth = 2;
+                        
+                        $("#ocrHighLightWrapper").width(ocrImageWidth);
+                        $("#ocrHighLightWrapper").height(ocrImageHeight);
+                        
+
+                        fetch('https://api.myjson.com/bins/gn33c').then(response => {
+                            return response.json();
+                        }).then(data => {
+                            // Work with JSON data here
+                            console.log(data);
+                            data.recognitionResult.lines.forEach(line => {
+                                const bb = line.boundingBox;   
+                                
+                                const path = new Path({
+                                    fill: {
+                                        color: "rgb(255, 255, 0)",
+                                        opacity: 0.4                  
+                                    },
+                                    stroke: {
+                                        width: 0
+                                    },
+                                    tooltip: {
+                                        content: line.text,
+                                        offset: 10                   
+                                    },
+                                    cursor: "pointer"
+                                    // transform: geom.transform().translate(-50, 150).rotate(-45)
+                                }).moveTo(bb[0] * widthPercent, bb[1] * heightPercent)
+                                .lineTo(bb[2] * widthPercent, bb[3] * heightPercent)
+                                .lineTo(bb[4] * widthPercent, bb[5] * heightPercent)
+                                .lineTo(bb[6] * widthPercent, bb[7] * heightPercent);
+                                
+                                container.append(path);
+
+                                // ocrHighLightWrapper.beginPath();
+                                // ocrHighLightWrapper.moveTo(bb[0] * widthPercent, bb[1] * heightPercent);
+                                // ocrHighLightWrapper.lineTo(bb[2] * widthPercent, bb[3] * heightPercent);
+                                // ocrHighLightWrapper.lineTo(bb[4] * widthPercent, bb[5] * heightPercent);
+                                // ocrHighLightWrapper.lineTo(bb[6] * widthPercent, bb[7] * heightPercent);
+                                // ocrHighLightWrapper.fill();
+                            });
+
+                            ocrHighLightWrapper.draw(container);
+                        }).catch(err => {
+                            // Do something for an error here
+                        });
+
+                    
+                        count += 1;
+                        
+                        // ocrHighLightWrapper.strokeRect(0, 0, ocrImageWidth, ocrImageHeight);
+                    };
+                });
 
                 $("#files").kendoUpload({
                     async: {

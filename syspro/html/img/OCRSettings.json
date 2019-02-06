@@ -1,0 +1,122 @@
+﻿{
+  "OcrItems": [
+    {
+      "ItemType": "Header",
+      "NodeName": "OrderHeader",
+      "ParentNode": "Orders",
+      "Fields": [
+        {
+          "DataField": "Customer",
+          "LookUpField": "Supplier",
+          "DataPosition": "Right",
+          "Tolerance": "10",
+          "Seperator": ":"
+        },
+        {
+          "DataField": "OrderDate",
+          "LookUpField": "Document Date",
+          "DataPosition": "bottom",
+          "Tolerance": "10",
+          "Seperator": ":"
+        },
+        {
+          "DataField": "ShippingAddress",
+          "LookUpField": "Deliver To",
+          "DataPosition": "Bottom",
+          "Tolerance": "10",
+          "Seperator": ":"
+        },
+        {
+          "DataField": "Customer",
+          "LookUpField": "Our Account No. with you",
+          "DataPosition": "Right",
+          "Tolerance": "10",
+          "Seperator": ""
+        },
+        {
+          "DataField": "CustomerPoNumber",
+          "LookUpField": "Our Order No",
+          "DataPosition": "right",
+          "Tolerance": "10",
+          "Seperator": ""
+        },
+        {
+          "DataField": "SubTotal",
+          "LookUpField": "Sub Total",
+          "DataPosition": "Right",
+          "Tolerance": "10",
+          "Seperator": ""
+        },
+        {
+          "DataField": "Discount",
+          "LookUpField": "Overall Discount",
+          "DataPosition": "Right",
+          "Tolerance": "10",
+          "Seperator": ""
+        },
+        {
+          "DataField": "Total",
+          "LookUpField": "Tolal",
+          "DataPosition": "Right",
+          "Tolerance": "10",
+          "Seperator": ""
+        },
+        {
+          "DataField": "Vat",
+          "LookUpField": "VAT Total",
+          "DataPosition": "Right",
+          "Tolerance": "10",
+          "Seperator": ""
+        },
+        {
+          "DataField": "TotalIncludingTax",
+          "LookUpField": "Tolal (Inct)",
+          "DataPosition": "Right",
+          "Tolerance": "10",
+          "Seperator": ""
+        }
+      ]
+    },
+    {
+      "ItemType": "Lines",
+      "NodeName": "OrderDetails",
+      "ParentNode": "Orders",
+      "ParentNodeName": "StockLine",
+      "Fields": [
+        {
+          "NodeName": "StockCode",
+          "DataField": "StockCode",
+          "LookUpField": "StockCode",
+          "Tolerance": "100",
+      	  "Position": "Bottom"
+        },
+        {
+          "NodeName": "Description",
+          "DataField": "Description",
+          "LookUpField": "Description",
+          "Tolerance": "100",     
+ 	  "Position": "Bottom"
+
+        },
+        {
+          "DataField": "Price",
+          "LookUpField": "Unit Price",
+          "Tolerance": "100",
+          "Position": "Bottom"
+        },
+        {
+          "DataField": "GrossPrice",
+          "LookUpField": "Gross Amount",
+          "Tolerance": "100",
+          "Position": "Bottom"
+        },
+        {
+          "DataField": "Uom",
+          "LookUpField": "Uom",
+          "Tolerance": "100",
+          "Position": "Bottom"
+        }
+      ]
+    }
+  ]
+}

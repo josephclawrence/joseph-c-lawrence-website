@@ -45,9 +45,9 @@
         #file-treeview.k-treeview .k-in.k-state-selected .material-icons {
             color: #34495e;
         }
-        .k-detail-cell .k-grid-header {
+        /* .k-detail-cell .k-grid-header {
             display: none;
-        }
+        } */
         .k-detail-cell td {
             overflow: visible;
         }
@@ -171,7 +171,12 @@
                             <div class="panel-body main-column">
                                 <div class=" row widget layout-widget fileExplorer">
                                     <div class="col-md-3">
-                                        <div class="row">
+                                        <div class="row sys-mg-b-15">
+                                            <div class="col-xs-12">
+                                                <button class="btn btn-block btn-primary" type="button">Add new document</button>
+                                            </div>
+                                        </div>
+                                        <div class="row sys-mg-t-10">
                                             <div class="col-xs-12">
                                                 <div class="form-group label-floating is-empty">                             
                                                     <div class="col-xs-11 ">
@@ -334,6 +339,14 @@
                                                         <tr>
                                                             <td class="text-left">Owner</td>
                                                             <td><a href="#">Someone</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-left">Last modified</td>
+                                                            <td>10:30 21 October 2018</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-left">File size</td>
+                                                            <td>216 kb</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="text-left">Tags</td>
@@ -617,16 +630,18 @@
             #: item.name # 
         </script>
         <script type="text/x-kendo-template" id="fileGridTemplate">
-            <table class="table table-hover  table-striped table-noborder" id="fileGrid">
+            <table class="table table-hover table-striped table-noborder" id="fileGrid">
                 <thead>
                     <tr>
                         <th>Document</th>
+                        <th>Owner</th>
+                        <th>Last modified</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                     </tr>
                 </tbody>
             </table>
@@ -655,6 +670,8 @@
                         #: Title #
                     </a>
                 </td>
+                <td class="text-left">#: Owner #</td>
+                <td class="text-left">#: LastModified #</td>
                 <td class="text-right">
                     <div class="btn-group sys-mg-off">
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -689,6 +706,11 @@
                             <li>
                                 <a href="" class="sys-mg-r-15">
                                     <i class="material-icons text-muted sys-txt-sm">cloud_upload</i> Upload new version
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="sys-mg-r-15">
+                                    <i class="material-icons text-muted sys-txt-sm">send</i> Send to user
                                 </a>
                             </li>
                             <li>
@@ -748,32 +770,44 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "pdf"
+                                Extension: "pdf",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "doc"
+                                Extension: "doc",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -783,27 +817,37 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -813,27 +857,37 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -843,27 +897,37 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -873,27 +937,37 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "pdf"
+                                Extension: "pdf",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "doc"
+                                Extension: "doc",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "png"
+                                Extension: "png",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -903,7 +977,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -913,7 +989,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -923,7 +1001,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -933,7 +1013,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -943,7 +1025,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -953,7 +1037,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -963,7 +1049,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -973,7 +1061,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -983,7 +1073,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -993,7 +1085,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -1003,7 +1097,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -1013,7 +1109,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -1023,7 +1121,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -1033,7 +1133,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }, {
@@ -1043,7 +1145,9 @@
                             {
                                 Filename: "filename.jpg",
                                 Title: "Title of the file",
-                                Extension: "jpg"
+                                Extension: "jpg",
+                                Owner: "username",
+                                LastModified: "21/10/2018"
                             },
                         ]
                     }
@@ -1093,8 +1197,9 @@
                         pageable: false,
                         rowTemplate: kendo.template($("#fileRowTemplate").html()),
                         columns: [
-                            { field: "Title", title:"Title" }
-                            // { field: "ShipCountry", title:"Ship Country", width: "110px" }
+                            { field: "Title", title: "Title" },
+                            { field: "Owner", title: "Owner" },
+                            { field: "LastModified", title: "Last Modified" }
                         ]
                     });
                 };
