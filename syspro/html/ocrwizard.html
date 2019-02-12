@@ -902,16 +902,19 @@
                                                         </div>
                                                         <div class="tab-pane" id="description">
                                                             <div class="row">
-                                                                <div class="col-xs-12">
+                                                                <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                                                                     <p class="lead text-center sys-mg-t-15">
                                                                         Document successfully mapped to <b>Sales order</b>!
                                                                     </p>
-                                                                    <p class="text-center sys-pd-b-15">
-                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
+                                                                    <p class="text-left sys-mg-t-15 sys-mg-b-15">
+                                                                        Enter a name to save this set of mapping rules, so that you can make changes later if necessary:
                                                                     </p>
-                                                                    <p class="text-center sys-mg-t-15">
-                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
-                                                                    </p>
+                                                                    <div class="form-group label-floating is-empty sys-pd-off">                             
+                                                                            <label for="mappingRules" class="control-label sys-mg-off-t"></label>
+                                                                            <input type="text" class="input-lg form-control" id="mappingRules" value="" maxlength="256" placeholder="Enter mapping rules name">
+                                                                        
+                                                                    </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -928,7 +931,7 @@
                                                                 type="button"
                                                                 class="btn btn-finish btn-primary btn-wd"
                                                                 name="finish"
-                                                                value="Finish"
+                                                                value="Save and run mapping test"
                                                             />
                                                         </div>
 
