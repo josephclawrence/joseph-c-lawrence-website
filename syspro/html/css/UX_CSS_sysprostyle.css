@@ -9662,7 +9662,7 @@ td .btn.btn-delete {
     background-color: #ecf0f1 !important;
     font-weight: 400;
     color: #555555 !important;
-    padding: 0.333em 0 0.333em 0em;
+    padding: 4px;
     line-height: 1.9em;
     line-height: 2em
 }
@@ -11287,7 +11287,7 @@ td.k-state-focused.k-state-selected,
     left: 50%;
     margin-left: -125px;
     top: -150px;
-    z-index: 99999;
+    z-index: 999999;
     -webkit-box-shadow: 0 1px 15px 4px rgba(0, 0, 0, .18);
             box-shadow: 0 1px 15px 4px rgba(0, 0, 0, .18);
     border-bottom-left-radius: 20px;
@@ -12716,7 +12716,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 	padding-bottom: 0;
 	padding-right: 5%;
 	margin: 1px 0 0;
-	margin-bottom: 15px
+	margin-bottom: 3px
 }
 .form-group .additional-input-button input {
     float: left;
