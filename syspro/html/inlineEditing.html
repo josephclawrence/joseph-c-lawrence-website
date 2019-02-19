@@ -66,6 +66,14 @@
                 border-bottom-width: 2px;
                 transition: all 0.25s;
             }
+            .borderTable.thinBorder .editableCell,
+            .noBorderTable.thinBorder .editableCell {
+                border-bottom-width: 1px;
+            }
+            .borderTable.solidBorder .editableCell,
+            .noBorderTable.solidBorder .editableCell {
+                border-bottom-style: solid;
+            }
             .borderTable .editableCell {
                 border-bottom-color: #27ae60;
             }
@@ -142,10 +150,6 @@
                 <div class="row sys-mg-t-15">
                     <div class="col-xs-12 column-parent sys-mg-t-15">
                         <div class="noBorderTable mainType2 mainType">
-                            <p class="lead">
-                                1. Suggested styling: Table with no borders, no editable indication unless hovering, on hover
-                                a pale green dashed underline on editable cells, on focus a stronger green dashed underline.
-                            </p>
                             <table class="grid table table-hover table-striped table-noborder table-condensed">
                                 <thead>
                                     <tr></tr>
@@ -156,6 +160,39 @@
                             </table>
                         </div>
                         <hr class="sys-mg-t-15 sys-mg-b-15" />
+                        <div class="noBorderTable mainType2 mainType thinBorder">
+                            <table class="grid table table-hover table-striped table-noborder table-condensed">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr class="sys-mg-t-15 sys-mg-b-15" />
+                        <div class="noBorderTable mainType2 mainType thinBorder solidBorder">
+                            <table class="grid table table-hover table-striped table-noborder table-condensed">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr class="sys-mg-t-15 sys-mg-b-15" />
+                        <div class="noBorderTable  mainType thinBorder">
+                            <table class="grid table table-hover table-striped table-noborder table-condensed">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <hr class="sys-mg-t-15 sys-mg-b-15" />
                         <div class="noBorderTable mainType">
                             <p class="lead">
                                 2. Table with no borders, no editable indication unless hovering, on hover a strong green
@@ -216,7 +253,7 @@
                                     <tr></tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
