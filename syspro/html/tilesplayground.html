@@ -80,6 +80,37 @@
             .tile-inner {
                 padding: 8px;
             }
+			.big-square-tile .tile-bottom-half {
+				flex-direction: column;
+
+			}
+			.big-square-tile .tile-value-label {
+				width: auto;
+				float: none;
+			}
+			.big-square-tile .valueWrapper .material-icons {
+				vertical-align: bottom;
+			}
+			.big-square-tile .valueWrapper {
+				flex-grow: 1;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+			}
+			.big-square-tile .tile-main-value {
+				width: auto;
+			}
+			.gauge {
+				width: 260px;
+				height: 150px;
+			}
+			.wide-tile > .col-xs-12 {
+				justify-content: space-between;
+			}
+			.tile-top-half {
+				flex-shrink: 1;
+			}
             </style>
     </head>
 
@@ -293,29 +324,7 @@
 																		</div>
 																	</div>
 																</div>
-																<div class="small-tile row">
-																	<div class="col-xs-12">
-																		<div class="tile-top-half">
-																			<span class="text-left tile-title" >Customers on hold by customer class</span>
 
-																			<div class="tile-subtitle">Customer class:</div>
-
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_164d3ae69d574c06bf8449d589095ec0.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-1,0,0,-1,95,101)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
-
-																		</div>
-																		<div class="tile-bottom-half sys-pd-t-10">
-
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>-->
-																				<span class="tile-main-value sys-pd-t-10" >0</span>
-																				<span class="tile-value-label sys-pd-t-10"></span>
-
-																		</div>
-																	</div>
-																</div>
 															</div>
 
 																		</div>
@@ -720,45 +729,27 @@
 																	<div>
 																		<div class="tile-inner sys-fg-white sys-bg-info">
 																			<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
-																<div class="wide-tile row">
-																	<div class="col-xs-12">
-																		<div class="tile-top-half">
-																			<span class="text-left tile-title">Average days to pay</span>
-																			<span class="tile-subtitle">Company: EDU1</span>
-																		</div>
-																		<div class="tile-bottom-half">
-																			<i class="material-icons tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value tile-value-row">41</span>
-																				<span class="text-right pull-right pull-bottom tile-value-label">Days</span>
+																				<div class="wide-tile row">
+																					<div class="col-xs-12">
+																						<div class="tile-top-half">
+																							<span class="text-left tile-title">Average days to pay</span>
+																							<span class="tile-subtitle">Company: EDU1</span>
+																						</div>
+																						<div class="tile-bottom-half">
+																							<div class="valueWrapper">
+																								<i class="material-icons tile-icon text-success sys-fg-success">arrow_upward</i>
+																								<span class="tile-main-value tile-value-row">41
+																								<span class="tile-value-label">Days</span></span>
+																							</div>
+																							<div class="gaugeWrapper">
+																								<span data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  margin: 0 }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="visible: isVisible,
+																								value: selectedNumber" class="gauge"></span>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+
 																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="small-tile row">
-																	<div class="col-xs-12">
-																		<div class="tile-top-half">
-																			<span class="text-left tile-title">Average days to pay</span>
-
-																			<div class="tile-subtitle">Company: EDU1</div>
-
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_338b8bb6fec243a2a3c7fd692077e5cf.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-0.278991,-0.960294,0.960294,-0.278991,12.257246,110.203001)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
-
-																		</div>
-																		<div class="tile-bottom-half sys-pd-t-10">
-
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>-->
-																				<span class="tile-main-value sys-pd-t-10">41</span>
-																				<span class="tile-value-label sys-pd-t-10">Days</span>
-
-																		</div>
-																	</div>
-																</div>
-															</div>
 
 																		</div>
 																	</div>
@@ -1084,7 +1075,15 @@
             $.material.init();
             $(function() {
                 $('#loading-cover').hide();
-            });
+			});
+			function createGauge() {
+				var viewModel = kendo.observable({
+					selectedNumber: 41,
+					isVisible: true
+				});
+				kendo.bind($(".gaugeWrapper"), viewModel);
+        	}
+			$(document).ready(createGauge).bind("kendo:skinChange", createGauge);
             $(document).ready(function() {
 				// callLayerInterop.initializeInBrowser('http://172.20.10.6/UXTools/');
 				
