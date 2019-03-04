@@ -80,28 +80,50 @@
             .tile-inner {
                 padding: 8px;
             }
-			.big-square-tile .tile-bottom-half {
+			.big-square-tile .tile-bottom-half, .small-tile .tile-bottom-half, .tile-bottom-half.flex-column {
 				flex-direction: column;
-
+				align-items: flex-start;
+				justify-content: flex-end;
 			}
-			.big-square-tile .tile-value-label {
+			.chart-tile.tile-bottom-half.flex-column {
+				justify-content: normal;
+			} 
+			.big-square-tile .tile-value-label, .flex-column .tile-value-label {
 				width: auto;
 				float: none;
 			}
-			.big-square-tile .valueWrapper .material-icons {
+			.big-square-tile .tile-main-value {
+				font-size: 46px;
+			}
+			.big-square-tile .tile-value-label {
+				font-size: 20px;
+			}
+			.big-square-tile .valueWrapper .material-icons, .flex-column .valueWrapper .material-icons {
 				vertical-align: bottom;
 			}
-			.big-square-tile .valueWrapper {
+			.small-tile .chart-tile .material-icons {
+				font-size: 22px;
+			}
+			.big-square-tile .valueWrapper, .flex-column .valueWrapper {
 				flex-grow: 1;
-				display: flex;
+				padding-top: 3px;
+				/* display: flex;
 				flex-direction: row;
 				align-items: center;
-				justify-content: center;
+				justify-content: center; */
 			}
-			.big-square-tile .tile-main-value {
+			.small-tile .valueWrapper {
+				width: 100%;
+			}
+			.big-square-tile .tile-main-value, .flex-column .tile-main-value {
 				width: auto;
 			}
 			.gauge {
+				width: 121px;
+				height: 60px;
+				bottom: -3px;
+			}
+			.big-square-tile .gauge {
 				width: 260px;
 				height: 150px;
 			}
@@ -110,6 +132,53 @@
 			}
 			.tile-top-half {
 				flex-shrink: 1;
+				flex-grow: 0;
+			}
+			.tile-bottom-half {
+				flex-grow: 1;
+				align-items: flex-end;
+			}
+			.tile-sparkline {
+				height: 100%;
+				width: 100%;
+				display: flex;
+    			align-items: flex-end;
+			}
+			.tile-sparkline:not(.line-sparkline):not(.bullet-sparkline) {
+				bottom: -11px;
+			}
+			.wide-tile .tile-icon {
+    			font-size: 40px;
+			}
+			.tile-value-label {
+				width: auto;
+				float: right;
+			}
+			.tile-main-value {
+    			display: inline-block;
+				width: auto;
+				max-width: 100%;
+				white-space: nowrap;
+			}
+			.sys-bg-danger i.sys-fg-danger {
+				color: #ffffff !important;
+			}
+			.metric-only .tile-value-label.pull-right {
+				clear: both;
+				/* padding-top: 4px; */
+			}
+			.tile-inner {
+				padding: 10px;
+			}
+			.program-tile-icon-title .tile-title {
+				font-size: 22px;
+				font-weight: bold;
+			}
+			.ai-tile-icon-title {
+				display: flex;
+			}
+			.ai-tile-icon-title i {
+				padding-left: 3px;
 			}
             </style>
     </head>
@@ -164,13 +233,13 @@
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
 																			<span class="text-left tile-title">Customers on hold by customer class</span>
-																			<span class="tile-subtitle">Customer class:</span>
+																			<span class="tile-subtitle">Customer class: Something</span>
 																		</div>
 																		<div class="tile-bottom-half">
 																			<i class="material-icons tile-icon text-success sys-fg-primary"></i>
 																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value tile-value-row" >0</span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																				<span class="text-right pull-right tile-main-value tile-value-row" >0 <span class="text-right pull-right pull-bottom tile-value-label"></span></span>
+																				
 																			</div>
 																		</div>
 																	</div>
@@ -180,20 +249,25 @@
 																		<div class="tile-top-half">
 																			<span class="text-left tile-title" >Customers on hold by customer class</span>
 
-																			<div class="tile-subtitle">Customer class:</div>
+																			<div class="tile-subtitle">Customer class: Something</div>
 
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_164d3ae69d574c06bf8449d589095ec0.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-1,0,0,-1,95,101)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
 
 																		</div>
-																		<div class="tile-bottom-half sys-pd-t-10">
-
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
+																		<div class="tile-bottom-half flex-column chart-tile">
+																			<div class="valueWrapper">
+																				
 																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
+																				<span class="text-right pull-right tile-main-value "></span>
 																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
 																			</div>-->
-																				<span class="tile-main-value sys-pd-t-10" >0</span>
-																				<span class="tile-value-label sys-pd-t-10"></span>
+																				<span class="tile-main-value" >0</span>
+																				<span class="tile-value-label">label</span>
+																				<i class="material-icons text-left tile-icon text-success sys-fg-primary">arrow_upward</i>
+																			</div>
+																			<div class="gaugeWrapper">
+																				<span data-role="radialgauge" data-pointer="{color: 'white', length: 0.6}" data-gauge-area="{  margin: 0 }" data-scale="{ labels:{ color: '#FFFFFF', font: '9px Open Sans' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" 
+																				data-value="0" data-bind="visible: isVisible" class="gauge"></span>
+																			</div>
 
 																		</div>
 																	</div>
@@ -203,6 +277,9 @@
 																		</div>
 																	</div>
 																</div>
+
+
+
 
 																<div class="col-sm-4 col-xs-6 tile ">
 																	
@@ -232,18 +309,19 @@
 
 																			<div class="tile-subtitle">Company: EDU1</div>
 
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_338b8bb6fec243a2a3c7fd692077e5cf.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-0.278991,-0.960294,0.960294,-0.278991,12.257246,110.203001)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
-
 																		</div>
-																		<div class="tile-bottom-half sys-pd-t-10">
+																		<div class="tile-bottom-half flex-column chart-tile">
+																				<div class="valueWrapper">
 
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>-->
-																				<span class="tile-main-value sys-pd-t-10">41</span>
-																				<span class="tile-value-label sys-pd-t-10">Days</span>
+																					<span class="tile-main-value" >41</span>
+																					<span class="tile-value-label">days</span>
+																					<!-- <i class="material-icons text-left tile-icon text-success sys-fg-primary">arrow_upward</i> -->
+																				</div>
+
+																				<div class="gaugeWrapper">
+																						<span data-role="radialgauge" data-pointer="{color: 'white', length: 0.6}" data-gauge-area="{  margin: 0 }" data-scale="{ labels:{ color: '#FFFFFF', font: '9px Open Sans' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="visible: isVisible,
+																						value: selectedNumber" class="gauge"></span>
+																					</div>
 
 																		</div>
 																	</div>
@@ -263,9 +341,9 @@
 																<div class="wide-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="ai-tile-icon-title">
 																				<span class="text-left tile-title">Inventory Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
+																				<i class="icofont-brain-alt text-right pull-right"></i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
@@ -281,17 +359,18 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="ai-tile-icon-title">
 																				<span class="text-left tile-title">Inventory Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
+																				<i class="icofont-brain-alt text-right pull-right"></i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																			<div class="valueWrapper text-right metric-only long-metric">
+																				<i class="material-icons text-left tile-icon text-success sys-fg-success">arrow_upward</i>
+																				<span class="tile-main-value  pull-right">$32,083,994.22</span>
+																				<span class="tile-value-label pull-right">label</span>
+																				
 																			</div>
 																		</div>
 																	</div>
@@ -316,11 +395,12 @@
 																			<span class="tile-subtitle">Customer class:</span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons tile-icon text-success sys-fg-primary"></i>
+																			<div id="customersOnHold" class="tile-sparkline sys-pd-b-10"></div>
+																			<!-- <i class="material-icons tile-icon text-success sys-fg-primary"></i>
 																			<div class="tile-flex-right">
 																				<span class="text-right pull-right tile-main-value tile-value-row" >0</span>
 																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>
+																			</div> -->
 																		</div>
 																	</div>
 																</div>
@@ -358,18 +438,18 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">Sales Order Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
-																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																		<div class="tile-bottom-half flex-column chart-tile">
+																			<div class="valueWrapper">
+																				<!-- <i class="material-icons text-left tile-icon text-success sys-fg-primary"></i> -->
+																				<span class="tile-main-value ">$3208</span>
+																				<span class="tile-value-label">label</span>
 																			</div>
+																			<div id="customersOnHold" class="tile-sparkline sys-pd-b-10"></div>
 																		</div>
 																	</div>
 																</div>
@@ -378,6 +458,10 @@
 																		</div>
 																	</div>
 																</div>
+
+
+
+
 
 																<div class="col-sm-4 col-xs-6 tile ">
 																	
@@ -406,18 +490,14 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">RMA Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
+
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>
+																				<div id="customersOnHold" class="tile-sparkline sys-pd-b-10"></div>
 																		</div>
 																	</div>
 																</div>
@@ -454,17 +534,16 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">Customer Price Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																			<div class="valueWrapper text-right short-metric metric-only">
+																				<i class="material-icons text-left tile-icon text-success sys-fg-danger">arrow_downward</i>
+																				<span class="tile-main-value  pull-right">6</span>
+																				<span class="tile-value-label pull-right">days</span>
 																			</div>
 																		</div>
 																	</div>
@@ -502,17 +581,17 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">GIT Reference Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																			<div class="valueWrapper text-right metric-only long-metric">
+																				<i class="material-icons text-left tile-icon text-success sys-fg-warning">arrow_downward</i>
+																				<span class="tile-main-value  pull-right">$9,327,083,994,443,750.22</span>
+																				<span class="tile-value-label pull-right">label</span>
+																				
 																			</div>
 																		</div>
 																	</div>
@@ -536,11 +615,13 @@
 																			<span class="tile-subtitle">Company: EDU1</span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value tile-value-row">41</span>
-																				<span class="text-right pull-right pull-bottom tile-value-label">Days</span>
+																			<div id="avgDaysToPay" style="height:100%; width: 100%" class="tile-sparkline"></div>
+																			
+																			<div class="valueWrapper short-metric">
+																				<span class="text-left pull-left tile-main-value tile-value-row">41</span>
+																				<span class="text-left pull-left pull-bottom tile-value-label">Days</span>
 																			</div>
+																			<i class="material-icons tile-icon text-danger sys-fg-danger">arrow_downward</i>
 																		</div>
 																	</div>
 																</div>
@@ -551,14 +632,17 @@
 
 																			<div class="tile-subtitle">Company: EDU1</div>
 
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_338b8bb6fec243a2a3c7fd692077e5cf.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-0.278991,-0.960294,0.960294,-0.278991,12.257246,110.203001)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
+																			<div class="gaugeWrapper">
+																					<span data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  margin: 0 }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="visible: isVisible,
+																					value: selectedNumber" class="gauge"></span>
+																				</div>
 
 																		</div>
 																		<div class="tile-bottom-half sys-pd-t-10">
 
 																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
 																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
+																				<span class="text-right pull-right tile-main-value "></span>
 																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
 																			</div>-->
 																				<span class="tile-main-value sys-pd-t-10">41</span>
@@ -602,18 +686,19 @@
 
 																			<div class="tile-subtitle">Customer class:</div>
 
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_164d3ae69d574c06bf8449d589095ec0.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-1,0,0,-1,95,101)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
-
 																		</div>
-																		<div class="tile-bottom-half sys-pd-t-10">
+																		<div class="tile-bottom-half flex-column chart-tile">
+																			<div class="valueWrapper">
 
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>-->
-																				<span class="tile-main-value sys-pd-t-10" >0</span>
-																				<span class="tile-value-label sys-pd-t-10"></span>
+																				<span class="tile-main-value" >0</span>
+																				<span class="tile-value-label"></span>
+																				<!-- <i class="material-icons text-left tile-icon text-success sys-fg-primary">arrow_upward</i> -->
+																			</div>
+
+																			<div class="gaugeWrapper">
+																				<span data-role="radialgauge" data-pointer="{color: 'white', length: 0.6}" data-gauge-area="{  margin: 0 }" data-scale="{ labels:{ color: '#FFFFFF', font: '9px Open Sans' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="visible: isVisible,
+																				value: selectedNumber" class="gauge"></span>
+																			</div>
 
 																		</div>
 																	</div>
@@ -652,18 +737,19 @@
 
 																			<div class="tile-subtitle">Company: EDU1</div>
 
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_338b8bb6fec243a2a3c7fd692077e5cf.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-0.278991,-0.960294,0.960294,-0.278991,12.257246,110.203001)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
 
 																		</div>
-																		<div class="tile-bottom-half sys-pd-t-10">
+																		<div class="tile-bottom-half flex-column chart-tile">
+																			
 
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>-->
-																				<span class="tile-main-value sys-pd-t-10">41</span>
-																				<span class="tile-value-label sys-pd-t-10">Days</span>
+																			<div class="gaugeWrapper">
+																				<span data-role="radialgauge" data-pointer="{color: 'white', length: 0.6}" data-gauge-area="{  margin: 0 }" data-scale="{ labels:{ color: '#FFFFFF', font: '9px Open Sans' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="visible: isVisible,
+																				value: selectedNumber" class="gauge"></span>
+																			</div>
+																			<div class="valueWrapper text-center sys-pd-off-t">
+																				<span class="tile-main-value" >41</span>
+																				<span class="tile-value-label">days</span>
+																			</div>
 
 																		</div>
 																	</div>
@@ -701,18 +787,22 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">Inventory Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
-																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																		<div class="tile-bottom-half flex-column chart-tile">
+																			
+																			
+																			<div class="valueWrapper short-metric">
+																				
+																				<span class="tile-main-value">41</span>
+																				<span class="tile-value-label">Days</span>
+																				<i class="material-icons tile-icon text-danger sys-fg-danger">arrow_downward</i>
 																			</div>
+																			
+																			<div id="avgDaysToPay4" style="height:100%; width: 100%" class="tile-sparkline"></div>
 																		</div>
 																	</div>
 																</div>
@@ -735,11 +825,12 @@
 																							<span class="text-left tile-title">Average days to pay</span>
 																							<span class="tile-subtitle">Company: EDU1</span>
 																						</div>
-																						<div class="tile-bottom-half">
-																							<div class="valueWrapper">
-																								<i class="material-icons tile-icon text-success sys-fg-success">arrow_upward</i>
+																						<div class="tile-bottom-half flex-center">
+																							<div class="valueWrapper sys-pd-t-15 short-metric">
+																								
 																								<span class="tile-main-value tile-value-row">41
 																								<span class="tile-value-label">Days</span></span>
+																								<i class="material-icons tile-icon text-success sys-fg-success">arrow_upward</i>
 																							</div>
 																							<div class="gaugeWrapper">
 																								<span data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  margin: 0 }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="visible: isVisible,
@@ -784,17 +875,17 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">Sales Order Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																			<div class="valueWrapper text-right metric-only long-metric">
+																				<i class="material-icons text-left tile-icon text-success sys-fg-success">arrow_upward</i>
+																				<span class="tile-main-value  pull-right">$32,083.22</span>
+																				<span class="tile-value-label pull-right">label</span>
+																				
 																			</div>
 																		</div>
 																	</div>
@@ -832,18 +923,20 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">RMA Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
-																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																		<div class="tile-bottom-half flex-column chart-tile">
+																			<div class="valueWrapper">
+
+																				<span class="tile-main-value" >0</span>
+																				<span class="tile-value-label">label</span>
+																				<i class="material-icons text-left tile-icon text-success sys-fg-primary">arrow_upward</i>
 																			</div>
+																			<div id="avgDaysToPay3" style="height:100%; width: 100%" class="tile-sparkline line-sparkline"></div>
+
 																		</div>
 																	</div>
 																</div>
@@ -880,17 +973,16 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<div class="program-tile-icon-title">
+																			<div class="">
 																				<span class="text-left tile-title">Customer Price Query</span>
-																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
 																		</div>
 																		<div class="tile-bottom-half">
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																			<div class="valueWrapper text-right short-metric metric-only">
+																				<!-- <i class="material-icons text-left tile-icon text-success sys-fg-primary"></i> -->
+																				<span class="tile-main-value  pull-right">$3208</span>
+																				<span class="tile-value-label pull-right">label</span>
 																			</div>
 																		</div>
 																	</div>
@@ -929,7 +1021,7 @@
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
 																			<div class="program-tile-icon-title">
-																				<span class="text-left tile-title">GIT Reference Query</span>
+																				<span class="text-left tile-title ">GIT Reference Query</span>
 																				<i class="material-icons tile-program-load-icon pull-right text-right">exit_to_app</i>
 																			</div>
 																			<span class="tile-subtitle"></span>
@@ -937,7 +1029,7 @@
 																		<div class="tile-bottom-half">
 																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
 																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
+																				<span class="text-right pull-right tile-main-value "></span>
 																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
 																			</div>
 																		</div>
@@ -955,50 +1047,151 @@
 																	<div>
 																		<div class="tile-inner sys-fg-white sys-bg-success">
 																			<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
-																<div class="wide-tile row">
-																	<div class="col-xs-12">
-																		<div class="tile-top-half">
-																			<span class="text-left tile-title">Average days to pay</span>
-																			<span class="tile-subtitle">Company: EDU1</span>
-																		</div>
-																		<div class="tile-bottom-half">
-																			<i class="material-icons tile-icon text-success sys-fg-primary"></i>
-																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value tile-value-row">41</span>
-																				<span class="text-right pull-right pull-bottom tile-value-label">Days</span>
+																	<div class="wide-tile row">
+																		<div class="col-xs-12">
+																			<div class="tile-top-half">
+																				<span class="text-left tile-title">Average days to pay</span>
+																				<span class="tile-subtitle">Company: EDU1</span>
+																			</div>
+																			<div class="tile-bottom-half">
+																				<div id="avgDaysToPay2" style="height:100%; width: 100%" class="tile-sparkline line-sparkline"></div>
+																				<div class="valueWrapper short-metric">
+																					<span class="text-left pull-left tile-main-value tile-value-row">41</span>
+																					<span class="text-left pull-left pull-bottom tile-value-label">Days</span>
+																				</div>
+																				<i class="material-icons tile-icon text-danger sys-fg-danger">arrow_downward</i>
 																			</div>
 																		</div>
 																	</div>
-																</div>
-																<div class="small-tile row">
-																	<div class="col-xs-12">
-																		<div class="tile-top-half">
-																			<span class="text-left tile-title">Average days to pay</span>
+																	<div class="small-tile row">
+																		<div class="col-xs-12">
+																			<div class="tile-top-half">
+																				<span class="text-left tile-title">Average days to pay</span>
 
-																			<div class="tile-subtitle">Company: EDU1</div>
+																				<div class="tile-subtitle">Company: EDU1</div>
 
-																			<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_338b8bb6fec243a2a3c7fd692077e5cf.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-0.278991,-0.960294,0.960294,-0.278991,12.257246,110.203001)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
+																				<div data-role="radialgauge" data-pointer="color: 'white'" data-gauge-area="{  height: 60, width: 105, margin: { right: 10, top: 10} }" data-scale="{ labels:{ color: '#FFFFFF' }, min: 0, max: 100, minorTicks: { visible: false }, majorTicks: { visible:false, width: 1, size:1}, startAngle: 0, endAngle: 180, majorUnit:25, ranges: [{ from: 0, to: 30, color: '#008000' }, { from: 30, to: 70, color: '#E29F30' }, { from: 70, to: 100, color: '#FF0000' }] }" data-bind="value: Query.TILE_338b8bb6fec243a2a3c7fd692077e5cf.Value" class="k-gauge"><div data-role="surface" style="width: 105px; height: 60px;"><svg style="width: 100%; height: 100%; overflow: hidden; left: -0.5px; top: -0.875px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs></defs><g><path d="M0 0 L 105 0 105 60 0 60Z" stroke="none" fill="none"></path><g><g></g><g></g></g><g><path d="M8.75 50.5 C 8.75 44.413 10.21 38.331 12.973 32.908 15.737 27.484 19.799 22.728 24.723 19.151" stroke="#008000" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#dedede" stroke-width="2.5" fill="none"></path><path d="M24.723 19.151 C 31.289 14.38 39.384 11.75 47.5 11.75 55.616 11.75 63.711 14.38 70.277 19.151" stroke="#E29F30" stroke-width="2.5" fill="none"></path><path d="M70.277 19.151 C 75.201 22.728 79.263 27.484 82.027 32.908 84.79 38.331 86.25 44.413 86.25 50.5" stroke="#FF0000" stroke-width="2.5" fill="none"></path></g><g transform="matrix(-0.278991,-0.960294,0.960294,-0.278991,12.257246,110.203001)"><path d="M73.75 50.5 L 47.5 49.5 47.5 51.5Z" stroke="#000" stroke-width="0.5" fill="#000"></path><circle cx="47.5" cy="50.5" r="2" stroke="#000" fill="#000"></circle></g><g><g transform="matrix(1,0,0,1,-15,15.5)"><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><path d="M29.25 26 L 40.25 26 40.25 44 29.25 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="31.25" y="39" stroke="none" fill="#FFFFFF">0</text></g><g transform="matrix(1,0,0,1,-10.606602,4.893398)"><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><path d="M32.106 19.459 L 49.106 19.459 49.106 37.459 32.106 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="34.10570888343116" y="32.45926227402444" stroke="none" fill="#FFFFFF">25</text></g><g transform="matrix(1,0,0,1,0,0.5)"><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><path d="M39 16.75 L 56 16.75 56 34.75 39 34.75Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="40.99999999999999" y="29.75" stroke="none" fill="#FFFFFF">50</text></g><g transform="matrix(1,0,0,1,10.606602,4.893398)"><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><path d="M45.894 19.459 L 62.894 19.459 62.894 37.459 45.894 37.459Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="47.89429111656884" y="32.45926227402443" stroke="none" fill="#FFFFFF">75</text></g><g transform="matrix(1,0,0,1,15,15.5)"><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><path d="M41.75 26 L 65.75 26 65.75 44 41.75 44Z" stroke="none" fill="none"></path><text style="font:12px Arial,Helvetica,sans-serif;white-space:pre;" x="43.75" y="38.99999999999999" stroke="none" fill="#FFFFFF">100</text></g></g></g></svg></div></div>
 
-																		</div>
-																		<div class="tile-bottom-half sys-pd-t-10">
+																			</div>
+																			<div class="tile-bottom-half sys-pd-t-10">
 
-																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
-																			<!--<div class="tile-value-label">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
-																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
-																			</div>-->
-																				<span class="tile-main-value sys-pd-t-10">41</span>
-																				<span class="tile-value-label sys-pd-t-10">Days</span>
+																				<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
+																				<!--<div class="tile-value-label">
+																					<span class="text-right pull-right tile-main-value "></span>
+																					<span class="text-right pull-right pull-bottom tile-value-label"></span>
+																				</div>-->
+																					<span class="tile-main-value sys-pd-t-10">41</span>
+																					<span class="tile-value-label sys-pd-t-10">Days</span>
 
+																			</div>
 																		</div>
 																	</div>
-																</div>
 															</div>
 
 																		</div>
 																	</div>
 																</div>
 
+
+
+
+
+															<!-- start tile -->
+															<div class="col-sm-8 col-xs-12 tile ">
+																																
+																	<div class="tile-loading-cover" style="display: none;"><div class="loader"><div class="square"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square "></div><div class="square last"></div></div></div>
+																	<div>
+																		<div class="tile-inner sys-fg-white sys-bg-primary">
+																			<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+																	<div class="wide-tile row">
+																		<div class="col-xs-12">
+																			<div class="tile-top-half">
+																				<span class="text-left tile-title">Average days to pay</span>
+																				<span class="tile-subtitle">Company: EDU1</span>
+																			</div>
+																			<div class="tile-bottom-half">
+																				<div id="bulletChart" style="height:40px; width: 100%" class="tile-sparkline bullet-sparkline"></div>
+																				<div class="valueWrapper short-metric">
+																					<span class="text-left pull-left tile-main-value tile-value-row">365</span>
+																					<span class="text-left pull-left pull-bottom tile-value-label">label</span>
+																				</div>
+																				<i class="material-icons tile-icon text-danger sys-fg-danger">arrow_downward</i>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="small-tile row">
+																		<div class="col-xs-12">
+																			<div class="tile-top-half">
+																				<span class="text-left tile-title">Average days to pay</span>
+
+																				<div class="tile-subtitle">Company: EDU1</div>
+
+																				
+																			</div>
+																			<div class="tile-bottom-half sys-pd-t-10">
+
+																				<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
+
+																					<span class="tile-main-value sys-pd-t-10">41</span>
+																					<span class="tile-value-label sys-pd-t-10">Days</span>
+
+																			</div>
+																		</div>
+																	</div>
+															</div>
+
+																		</div>
+																	</div>
+																</div>
+
+																<!-- end tile -->
+
+																																															<!-- start tile -->
+																<div class="col-sm-8 col-xs-12 tile ">
+																																	
+																		<div class="tile-loading-cover" style="display: none;"><div class="loader"><div class="square"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square "></div><div class="square last"></div></div></div>
+																		<div>
+																			<div class="tile-inner sys-fg-white sys-bg-warning">
+																				<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+																		<div class="wide-tile row">
+																			<div class="col-xs-12">
+																				<div class="tile-top-half">
+																					<span class="text-left tile-title">Average days to pay</span>
+																					<span class="tile-subtitle">Company: EDU1</span>
+																				</div>
+																				<div class="tile-bottom-half">
+																					<div id="bulletChart2" style="height:50px; width: 100%" class="tile-sparkline bullet-sparkline"></div>
+																					
+																				</div>
+																			</div>
+																		</div>
+																		<div class="small-tile row">
+																			<div class="col-xs-12">
+																				<div class="tile-top-half">
+																					<span class="text-left tile-title">Average days to pay</span>
+
+																					<div class="tile-subtitle">Company: EDU1</div>
+
+																					
+																				</div>
+																				<div class="tile-bottom-half sys-pd-t-10">
+
+																					<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
+
+																						<span class="tile-main-value sys-pd-t-10">41</span>
+																						<span class="tile-value-label sys-pd-t-10">Days</span>
+
+																				</div>
+																			</div>
+																		</div>
+																</div>
+
+																			</div>
+																		</div>
+																	</div>
+
+																	<!-- end tile -->
+																
 																<div class="col-sm-4 col-xs-6 tile ">
 																	
 																	<div class="tile-loading-cover"><div class="loader"><div class="square"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square "></div><div class="square last"></div></div></div>
@@ -1035,7 +1228,7 @@
 																		<div class="tile-bottom-half">
 																			<i class="material-icons text-left tile-icon text-success sys-fg-primary"></i>
 																			<div class="tile-flex-right">
-																				<span class="text-right pull-right tile-main-value overflowing"></span>
+																				<span class="text-right pull-right tile-main-value "></span>
 																				<span class="text-right pull-right pull-bottom tile-value-label"></span>
 																			</div>
 																		</div>
@@ -1068,7 +1261,8 @@
 
         <script src="js/UX_JS_forms.js"></script>
         <script src="js/UX_JS_ripples.min.js"></script>
-        <script src="js/UX_JS_packery.min.js"></script>
+		<script src="js/UX_JS_packery.min.js"></script>
+		<script src="js/fitty.min.js"></script>
         <script src="js/UX_JS_draggabilly.min.js"></script>
 
         <script type="text/javascript">
@@ -1111,7 +1305,374 @@
 				});
 
 
+				
+			  
+			  	const daysToPayData = [
+					{
+						date: new Date("2018/01/01"),
+						value: 254119.67
+					},
+					{
+						date: new Date("2018/02/01"),
+						value: 154119.67
+					},
+					{
+						date: new Date("2018/03/01"),
+						value: 214119.67
+					},
+					{
+						date: new Date("2018/04/01"),
+						value: 54119.67
+					},
+					{
+						date: new Date("2018/05/01"),
+						value: 253219.67
+					},
+					{
+						date: new Date("2018/06/01"),
+						value: 27119.67
+					},
+					{
+						date: new Date("2018/07/01"),
+						value: 324119.67
+					},
+					{
+						date: new Date("2018/08/01"),
+						value: 304119.67
+					},
+					{
+						date: new Date("2018/09/01"),
+						value: 318119.67
+					},
+					{
+						date: new Date("2018/10/01"),
+						value: 298119.67
+					},
+					{
+						date: new Date("2018/11/01"),
+						value: 400119.67
+					},
+					{
+						date: new Date("2018/12/01"),
+						value: 384119.67
+					},
+					{
+						date: new Date("2019/01/01"),
+						value: 290119.67
+					},
+					{
+						date: new Date("2019/02/01"),
+						value: 301119.67
+					}
+				];
+
+				// sparkline chart example
+				$("#avgDaysToPay").kendoSparkline({
+                  type: "column",
+                  autoBind: false,
+                  series: [{
+						data: daysToPayData,
+                      categoryField: "date",
+                      color: "#1996e4",
+                      gap: 0.2,
+                      field: "value"
+                  }],
+                  categoryAxis: {
+                      type: "date",
+                      baseUnit: "months"
+                  },
+                  tooltip: {
+					  template: "#=kendo.toString(value, 'c2')# ",
+					  background: "black",
+					  color: "white",
+					  border: {
+						  width: 0
+					  },
+				  },
+				  plotArea: {
+						margin: 0
+				  },
+				  chartArea: {
+					  background: "transparent",
+					  opacity: 0,
+					  margin: {
+						  top: 0,
+						  bottom: 0,
+						  left: 0,
+						  right: 5
+						}
+				  }
+			  });
+
+			  // sparkline chart example
+				$("#avgDaysToPay4").kendoSparkline({
+                  type: "column",
+                  autoBind: false,
+                  series: [{
+						data: daysToPayData,
+                      categoryField: "date",
+                      color: "#ffffff",
+                      gap: 0.2,
+                      field: "value"
+                  }],
+                  categoryAxis: {
+                      type: "date",
+                      baseUnit: "months"
+                  },
+                  tooltip: {
+					  template: "#=kendo.toString(value, 'c2')# ",
+					  background: "black",
+					  color: "white",
+					  border: {
+						  width: 0
+					  },
+				  },
+				  plotArea: {
+						margin: 0
+				  },
+				  chartArea: {
+					  background: "transparent",
+					  opacity: 0,
+					  margin: {
+						  top: 0,
+						  bottom: 0,
+						  left: 0,
+						  right: 5
+						}
+				  }
+			  });
+
+			  // sparkline chart example
+				$("#avgDaysToPay2").kendoSparkline({
+                  type: "line",
+                  autoBind: false,
+                  series: [{
+						data: daysToPayData,
+                      	categoryField: "date",
+                      	color: "#fff",
+                      	// gap: 0.2,
+						  field: "value",
+						  style: 'smooth',
+						  width: '2px',
+					  	line: {
+							  style: 'smooth',
+							  width: '2px',
+							  color: "#fff"
+					  	}
+                  }],
+                  categoryAxis: {
+                      type: "date",
+                      baseUnit: "months"
+				  },
+				  valueAxis: {
+					  min: 0,
+					  narrowRange: false
+				  },
+                  tooltip: {
+					  template: "#=kendo.toString(value, 'c2')# ",
+					  background: "black",
+					  color: "white",
+					  border: {
+						  width: 0
+					  },
+				  },
+				  plotArea: {
+						margin: 0
+				  },
+				  chartArea: {
+					  background: "transparent",
+					  opacity: 0,
+					  margin: {
+						  top: 0,
+						  bottom: 0,
+						  left: 0,
+						  right: 5
+						}
+				  }
+			  });
+
+			  // sparkline chart example
+				$("#avgDaysToPay3").kendoSparkline({
+                  type: "line",
+                  autoBind: false,
+                  series: [{
+						data: daysToPayData,
+                      	categoryField: "date",
+                      	color: "#fff",
+                      	// gap: 0.2,
+						  field: "value",
+						  style: 'smooth',
+						  width: '2px',
+					  	line: {
+							  style: 'smooth',
+							  width: '2px',
+							  color: "#fff"
+					  	}
+                  }],
+                  categoryAxis: {
+                      type: "date",
+                      baseUnit: "months"
+				  },
+				  valueAxis: {
+					  min: 0,
+					  narrowRange: false
+				  },
+                  tooltip: {
+					  template: "#=kendo.toString(value, 'c2')# ",
+					  background: "black",
+					  color: "white",
+					  border: {
+						  width: 0
+					  },
+				  },
+				  plotArea: {
+						margin: 0
+				  },
+				  chartArea: {
+					  background: "transparent",
+					  opacity: 0,
+					  margin: {
+						  top: 0,
+						  bottom: 0,
+						  left: 0,
+						  right: 5
+						}
+				  }
+			  });
+
+			  // sparkline chart example
+				$("#customersOnHold, #customersOnHold2").kendoSparkline({
+                  type: "pie",
+                  autoBind: false,
+                  series: [{
+						data: [120, 80, 30],
+                      categoryField: "date",
+                      color: "#1996e4",
+                      gap: 0.2,
+                      field: "value"
+                  }],
+                  categoryAxis: {
+                      type: "date",
+                      baseUnit: "months"
+                  },
+                  tooltip: {
+					  template: "#=kendo.toString(value, 'c2')# ",
+					  background: "black",
+					  color: "white",
+					  border: {
+						  width: 0
+					  },
+				  },
+				  plotArea: {
+						margin: 0
+				  },
+				  seriesColors: ['#303F9F', '#D32F2F', '#F57C00', '#0097A7', '#388E3C'],
+				  chartArea: {
+					  background: "transparent",
+					  opacity: 0,
+					  margin: {
+						  top: 0,
+						  bottom: 0,
+						  left: 0,
+						  right: 5
+						}
+				  }
+			  });
+
+
+			  // Bullet chart
+			  $("#bulletChart").kendoSparkline({
+                type: "bullet",
+				data: [21, 23],
+				seriesColors: ['#D32F2F'],
+                valueAxis: {
+                    min: 0,
+                    max: 30,
+                    plotBands: [{
+                        from: 0, to: 15, color: "#fff", opacity: 0.15
+                    }, {
+                        from: 15, to: 22, color: "#fff", opacity: 0.3
+                    }, {
+                        from: 22, to: 30, color: "#fff", opacity: 0.15
+                    }]
+                },
+                tooltip: {
+					visible: true,
+					background: "black",
+					  color: "white",
+					  border: {
+						  width: 0
+					  },
+				},
+				chartArea: {
+					  background: "transparent",
+					  opacity: 0,
+					  margin: {
+						  top: 0,
+						  bottom: 0,
+						  left: 0,
+						  right: 5
+						}
+				  }
+			});
+			
+			// Bullet chart
+			$("#bulletChart2").kendoSparkline({
+                type: "bullet",
+				data: [21, 23],
+				seriesColors: ['#fff'],
+                valueAxis: {
+                    min: 0,
+                    max: 30,
+                    plotBands: [{
+                        from: 0, to: 15, color: "#fff", opacity: 0.15
+                    }, {
+                        from: 15, to: 22, color: "#fff", opacity: 0.3
+                    }, {
+                        from: 22, to: 30, color: "#fff", opacity: 0.15
+                    }]
+                },
+                tooltip: {
+					visible: true,
+					background: "black",
+					  color: "white",
+					  border: {
+						  width: 0
+					  },
+				},
+				chartArea: {
+					  background: "transparent",
+					  opacity: 0,
+					  margin: {
+						  top: 0,
+						  bottom: 0,
+						  left: 0,
+						  right: 5
+						}
+				  }
             });
+
+
+			fitty('.metric-only.short-metric .tile-main-value', {
+				minSize: 12,
+				maxSize: 65
+			});
+			fitty('.metric-only.long-metric .tile-main-value', {
+				minSize: 16,
+				maxSize: 45,
+				multiLine: true
+			});
+			fitty('.wide-tile .short-metric .tile-main-value', {
+				minSize: 12,
+				maxSize: 55
+			});
+			// fitty('.program-tile-icon-title .tile-title', {
+			// 	minSize: 16,
+			// 	maxSize: 45,
+			// 	multiLine: true
+			// });
+			
+        });
         </script>
     </body>
 </html>
