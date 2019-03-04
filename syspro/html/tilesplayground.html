@@ -232,7 +232,7 @@
 																<div class="wide-tile row" >
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<span class="text-left tile-title">Customers on hold by customer class</span>
+																			<span class="text-left tile-title overflowing">Customers on hold by customer class</span>
 																			<span class="tile-subtitle">Customer class: Something</span>
 																		</div>
 																		<div class="tile-bottom-half">
@@ -247,7 +247,7 @@
 																<div class="small-tile row">
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
-																			<span class="text-left tile-title" >Customers on hold by customer class</span>
+																			<span class="text-left tile-title overflowing" >Customers on hold by customer class</span>
 
 																			<div class="tile-subtitle">Customer class: Something</div>
 
@@ -1258,11 +1258,11 @@
         </div>
 
         <script src="js/UX_JS_bootstrap.js"></script>
-
         <script src="js/UX_JS_forms.js"></script>
         <script src="js/UX_JS_ripples.min.js"></script>
 		<script src="js/UX_JS_packery.min.js"></script>
 		<script src="js/fitty.min.js"></script>
+		<script src="js/jQuery.hoverForMore.js"></script>
         <script src="js/UX_JS_draggabilly.min.js"></script>
 
         <script type="text/javascript">
@@ -1671,6 +1671,22 @@
 			// 	maxSize: 45,
 			// 	multiLine: true
 			// });
+
+			// Javascript
+			$(".overflowing").hoverForMore({
+				speed: 60.0,		// Measured in pixels-per-second
+				loop: true,		// Scroll to the end and stop, or loop continuously?
+				gap: 20,		// When looping, insert this many pixels of blank space
+				target: false,		// Hover on this CSS selector instead of the text line itself
+				removeTitle: true,	// By default, remove the title attribute, as a tooltip is redundant
+				snapback: true,		// Animate when de-activating, as opposed to instantly reverting
+				addStyles: true,	// Auto-add CSS; leave this on unless you need to override default styles
+				alwaysOn: false,	// If you're insane, you can turn this into a <marquee> tag. (Please don't.)
+
+				// In case you want to alter the events which activate and de-activate the effect:
+				startEvent: "mouseenter",
+				stopEvent: "mouseleave"
+			});
 			
         });
         </script>
