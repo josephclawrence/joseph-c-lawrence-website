@@ -181,6 +181,13 @@
             margin-top: 15px;
             
         }
+
+        .has-tags.form-group.label-floating label.control-label {
+            font-size: 12px;
+            line-height: 1.07142857;
+            top: -18px;
+            left: 0px;
+        }
         </style>
 
         <script>
@@ -1441,7 +1448,11 @@
                 $('#tagsInput').tagsinput('add', { code: "AABB22", name: "Business" });
                 
                 $(".bootstrap-tagsinput").addClass("form-control");
-
+                $(".bootstrap-tagsinput").closest(".form-group").addClass("has-tags");
+                
+                $('#tagsInput').on('itemRemoved itemAdded', function(event) {
+                    $(".bootstrap-tagsinput").closest(".form-group").toggleClass("has-tags", $("#tagsInput").tagsinput('items').length > 0);
+                });
             
             </script>
     </body>
