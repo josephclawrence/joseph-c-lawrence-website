@@ -8,7 +8,7 @@
   margin-bottom: 10px;
 }
 .form-horizontal label {
-  text-align: left;
+  text-align: right;
 }
 .form-horizontal label.control-label {
   margin: 0;
@@ -379,7 +379,7 @@ label.checkbox-inline .checkbox-material:before {
   height: 20px;
   width: 20px;
   border-radius: 100%;
-  z-index: 2;
+  z-index: 1;
   opacity: 0;
   margin: 0;
   -webkit-transform: scale3d(2.3, 2.3, 1);
@@ -389,8 +389,8 @@ label.checkbox-inline .checkbox-material:before {
 label.checkbox-inline .checkbox-material .check {
   position: relative;
   display: inline-block;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border: 2px solid rgba(0,0,0, .54);
   border-radius: 2px;
   overflow: hidden;
@@ -406,8 +406,8 @@ label.checkbox-inline .checkbox-material .check:before {
        -o-transform: rotate(45deg);
           transform: rotate(45deg);
   display: block;
-  margin-top: -5px;
-  margin-left: 5px;
+  margin-top: -4px;
+  margin-left: 6px;
   width: 0;
   height: 0;
   -webkit-box-shadow: 0 0 0 0,
@@ -473,12 +473,8 @@ label.checkbox-inline input[type=checkbox]:checked + .checkbox-material .check {
 .checkbox input[type=checkbox]:checked + .checkbox-material .check:before,
 label.checkbox-inline input[type=checkbox]:checked + .checkbox-material .check:before {
   color: #2980b9;
-/*
   -webkit-box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
           box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
-*/
-          box-shadow: 0 0 0 10px, 10px -9px 0 9px, 30px 0 0 18px, 0px 30px 0 18px, -3px 5px 0 9px, 18px -10px 0 9px;
-  -webkit-box-shadow: 0 0 0 10px, 10px -9px 0 9px, 30px 0 0 18px, 0px 30px 0 18px, -3px 5px 0 9px, 18px -10px 0 9px;
 }
 fieldset[disabled] .checkbox,
 fieldset[disabled] label.checkbox-inline,
@@ -504,7 +500,7 @@ label.checkbox-inline input[type=checkbox][disabled] + .checkbox-material .check
   0% {
     -webkit-box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px;
             box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px;
-1  }
+  }
   50% {
     -webkit-box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px 2px 0 11px;
             box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px 2px 0 11px;
@@ -874,20 +870,17 @@ label.radio-inline {
   cursor: pointer;
   padding-left: 20px;
   position: relative;
-  color: #2c3e50;
-  transition: all 0.25s;
+  color: rgba(0,0,0, 0.26);
 }
 .form-group.is-focused .radio label,
 .form-group.is-focused label.radio-inline {
-  color: #2c3e50;
-  transition: all 0.25s;
+  color: rgba(0,0,0, 0.26);
 }
 .form-group.is-focused .radio label:hover,
 .form-group.is-focused label.radio-inline:hover,
 .form-group.is-focused .radio label:focus,
 .form-group.is-focused label.radio-inline:focus {
-  color: rgba(0,0,0, .6);
-  transition: all 0.25s;
+  color: rgba(0,0,0, .54);
 }
 fieldset[disabled] .form-group.is-focused .radio label,
 fieldset[disabled] .form-group.is-focused label.radio-inline {
@@ -1034,17 +1027,10 @@ output {
   line-height: 1.42857143;
 }
 .form-control {
-/*
-  height: 28px;
-  padding: 4px 0px 0px;
-*/
-	height: 23px;
-    padding: 0px 0px 4px;
+  height: 30px;
+  padding: 7px 0;
   font-size: 14px;
   line-height: 1.42857143;
-}
-label.col-md-3.control-label.sys-mg-t-5.sys-pd-t-5 {
-	padding-top: 3px !important;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"].form-control,
@@ -1159,20 +1145,12 @@ label.col-md-3.control-label.sys-mg-t-5.sys-pd-t-5 {
 .form-horizontal .checkbox,
 .form-horizontal .radio-inline,
 .form-horizontal .checkbox-inline {
-  padding-top: 0px;
-}
-.form-horizontal .radio:first-child,
-.form-horizontal .checkbox:first-child,
-.form-horizontal .radio-inline:first-child,
-.form-horizontal .checkbox-inline:first-child {
   padding-top: 8px;
 }
-/*
 .form-horizontal .radio,
 .form-horizontal .checkbox {
   min-height: 30px;
 }
-*/
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     padding-top: 8px;
@@ -1338,14 +1316,6 @@ fieldset[disabled] .form-group .form-control {
   	opacity: 1;
   	height:18px;
 }
-
-.form-group.is-focused .help-block.disabled-help-block {
-	transition: none;
-/*   display: block; */
-  	visibility: hidden;
-  	opacity: 0;
-  	height:0px;
-}
 .form-group.is-focused .help-block.error-message {
 	visibility: hidden;
 	opacity: 0;
@@ -1434,19 +1404,19 @@ fieldset[disabled] .form-group .form-control {
   margin-bottom: 7px;
 }
 .form-control::-moz-placeholder {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #BDBDBD;
   font-weight: 400;
 }
 .form-control:-ms-input-placeholder {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #BDBDBD;
   font-weight: 400;
 }
 .form-control::-webkit-input-placeholder {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #BDBDBD;
   font-weight: 400;
@@ -1485,22 +1455,22 @@ label.control-label {
 	padding-right: 0px !important;
 }
 .form-group .form-control {
-  margin-bottom: 0px;
+  margin-bottom: 7px;
 }
 .form-group .form-control::-moz-placeholder {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #BDBDBD;
   font-weight: 400;
 }
 .form-group .form-control:-ms-input-placeholder {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #BDBDBD;
   font-weight: 400;
 }
 .form-group .form-control::-webkit-input-placeholder {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #BDBDBD;
   font-weight: 400;
@@ -1508,9 +1478,9 @@ label.control-label {
 .form-group .checkbox label,
 .form-group .radio label,
 .form-group label {
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #2c3e50;
+  font-size: 16px;
+  line-height: 1.22857143;
+  color: #6f6f6f;
   font-weight: 400;
 }
 .form-group label.control-label {
@@ -1518,9 +1488,6 @@ label.control-label {
   line-height: 1.27142857;
   font-weight: 400;
   margin: 16px 0 0 0;
-}
-.form-group.disabled label.control-label, .form-group.disabled .radio label {
-    color: #95a5a6;
 }
 .form-group .help-block {
   margin-top: 0;
@@ -1703,9 +1670,6 @@ select.form-control[multiple],
   border: 0;
   background: transparent;
 }
-.input-group .input-group-addon i {
-  font-size: 20px;
-}
 .form-group input[type=file] {
   opacity: 0;
   position: absolute;
@@ -1842,11 +1806,7 @@ select.form-control[multiple],
           box-sizing: border-box;
 }
 .noUi-connect {
-	position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+	height: 2px;
 }
 .noUi-stacking .noUi-handle {
   z-index: 10;
@@ -1896,8 +1856,6 @@ select.form-control[multiple],
   border-radius: 0;
   height: 2px;
   background: #c8c8c8;
-  width: 0;
-  height: 0;
 }
 .noUi-origin[style^="left: 0"] .noUi-handle {
   background-color: #fff;
@@ -2168,7 +2126,7 @@ select.form-control[multiple],
 }
 .dropdownjs::after {
   right: 5px;
-  top: -6px;
+  top: 3px;
   font-size: 25px;
   position: absolute;
   font-family: 'Material Icons';
@@ -2182,14 +2140,11 @@ select.form-control[multiple],
     list-style: none;
     padding: 5px 10px;
 }
-    .dropdownjs > ul {
-        padding: 5px 0px;
-        max-width: 100%;
-        width: 100%;
-        height: auto;
-        max-height: 440px;
-        overflow-x: hidden;
-    }
+.dropdownjs > ul {
+    padding: 5px 0px;
+    max-width: 100%;
+    width: 100%;
+}
 .dropdownjs > ul[placement=bottom-left] {
 	top: 29px;
 }
@@ -2197,374 +2152,33 @@ select.form-control[multiple],
     background-color: #fafafa;
 }
 @media (min-width: 1092px) {
-	.column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 {
-		width: 58.33333333%;
-		float: left;
-		padding-top: 5px;
-	}
-}
-@media (min-width: 1000px) {
-	.column-parent.col-sm-4 .form-horizontal .col-md-3,
-	.column-parent.col-sm-4 .form-horizontal .col-md-9,
+	.column-parent.col-sm-4 .form-horizontal .col-md-3, 
+	.column-parent.col-sm-4 .form-horizontal .col-md-9, 
 /*
-	.column-parent.col-sm-6 .form-horizontal .col-md-9,
-	.column-parent.col-sm-6 .form-horizontal .col-md-3,
+	.column-parent.col-sm-6 .form-horizontal .col-md-9, 
+	.column-parent.col-sm-6 .form-horizontal .col-md-3, 
 */
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-9,
+	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-9, 
 	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-3,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9,
+	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9, 
 	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-3,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3,
-	.column-parent.col-sm-4 .form-horizontal .col-md-4,
-	.column-parent.col-sm-4 .form-horizontal .col-md-8,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-8,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-4,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-8,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-4,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4,
-/*
-	.column-parent.col-sm-4 .form-horizontal .col-md-5,
-	.column-parent.col-sm-4 .form-horizontal .col-md-7,
-*/
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5 {
+	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9, 
+	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3 {
 	    width: 100%;
 	}
-
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
-	    padding-top: 2px;
-	}
-
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio {
-		padding-left: 8px;
-	}
-
-
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .form-group,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .form-group {
-		min-height: 50px;
-	}
-
-
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-3,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-3,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-4,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-4 {
-	    width: 25%;
-	    float:left;
-	}
-
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-	.column-parent.col-sm-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
-	    width: 41.66666667%;
-	    float:left;
-	}
-
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-9,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-9,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-8,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-8 {
-	    width: 75%;
-	    float: left;
-	}
-
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7 {
-	    width: 58.33333333%;
-	    float: left;
-		padding-top: 5px;
-	}
-
-	.column-parent.col-sm-4 .form-horizontal .control-label,
-	.column-parent.col-sm-4 .form-horizontal .control-label,
+	.column-parent.col-sm-4 .form-horizontal .control-label, 
+	.column-parent.col-sm-4 .form-horizontal .control-label, 
 /*
-	.column-parent.col-sm-6 .col-sm-6 .form-horizontal .control-label,
+	.column-parent.col-sm-6 .col-sm-6 .form-horizontal .control-label, 
 	.column-parent.col-sm-6 .col-sm-6 .form-horizontal .radio label,
-*/
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .control-label,
+*/ 
+	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .control-label, 
 	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .radio label,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label,
+	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label, 
 	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .radio label,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label,
+	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label, 
 	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label {
 	    text-align: left;
-	}
-
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control, .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control, .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control {
-		height: 28px;
-		padding: 4px 0 0px;
-	}
-
-
-
-
-}
-@media (min-width: 540px) and (max-width: 999px) {
-	.column-parent.col-sm-4 .form-horizontal .col-md-3,
-	.column-parent.col-sm-6 .form-horizontal .col-md-3,
-	.column-parent.col-sm-12 .form-horizontal .col-md-3,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-3,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-3,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-3,
-	.column-parent.col-sm-8 .form-horizontal .col-md-3 {
-	    width: 25%;
-	    float:left;
-	}
-	.column-parent.col-sm-4 .form-horizontal .col-md-9,
-	.column-parent.col-sm-6 .form-horizontal .col-md-9,
-	.column-parent.col-sm-12 .form-horizontal .col-md-9,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-9,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-9,
-	.column-parent.col-sm-8 .form-horizontal .col-md-9 {
-	    width: 75%;
-	    float: left;
-	}
-	.column-parent.col-sm-4 .form-horizontal .col-md-4,
-	.column-parent.col-sm-6 .form-horizontal .col-md-4,
-	.column-parent.col-sm-12 .form-horizontal .col-md-4,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-4,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-4,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-4,
-	.column-parent.col-sm-8 .form-horizontal .col-md-4 {
-	    width: 33.33333333%;
-	    float:left;
-	}
-	.column-parent.col-sm-4 .form-horizontal .col-md-8,
-	.column-parent.col-sm-6 .form-horizontal .col-md-8,
-	.column-parent.col-sm-12 .form-horizontal .col-md-8,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-8,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-8,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-8,
-	.column-parent.col-sm-8 .form-horizontal .col-md-8 {
-	    width: 66.66666667%;
-	    float: left;
-	}
-/*
-	.column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-5,,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5,
-*/
-	.form-horizontal .col-md-5, .form-horizontal .checkbox-form-group .control-label {
-	    width: 41.66666667% !important;
-	    float: left !important;
-	}
-
-/*
-	.column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7,
-	.column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7,
-	.column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7,
-	.column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7,
-*/
-	.form-horizontal .col-md-7 {
-	    width: 58.33333333% !important;
-	    float: left !important;
-		padding-top: 5px;
-	}
-}
-
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 {
-    width: 100% !important;
-}
-
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7 .radio,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .form-group,
-.k-window[min-width~="540px"] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .form-group {
-    min-height: 50px;
-}
-
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-.k-window[min-width~="540px"] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
-    width: 41.66666667% !important;
-    float:left;
-}
-
-
-.k-window[min-width~="540px"] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7,
-.k-window[min-width~="540px"] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7 {
-    width: 58.33333333% !important;
-    float: left;
-	padding-top: 5px;
-}
-
-.k-window[min-width~="768px"] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="768px"] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="768px"] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-.k-window[min-width~="768px"] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label {
-    width: 41.66666667% !important;
-    float:left;
-}
-
-
-.k-window[min-width~="768px"] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7,
-.k-window[min-width~="768px"] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-7 {
-    width: 58.33333333% !important;
-    float: left;
-	padding-top: 5px;
-}
-
-
-/*
-.k-window[min-width~="540px"] .form-horizontal .col-md-5 {
-    width: 41.66666667% !important;
-    float: left !important;
-}
-
-.k-window[min-width~="540px"] .form-horizontal .col-md-7 {
-    width: 58.33333333% !important;
-    float: left !important;
-}
-*/
-
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5 {
-    width: 100% !important;
-}
-
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-
-.k-window[min-width~="1092px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-8 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .col-md-5,
-.k-window[min-width~="1092px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .checkbox-form-group .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-8 .checkbox-form-group .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label {
-    width: 41.66666667% !important;
-    float:left;
-}
-
-
-.k-window[min-width~="1092px"] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-8 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .col-md-7,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-7 {
-    width: 58.33333333% !important;
-    float: left;
-}
-
-.k-window[min-width~="1092px"] .column-parent.col-sm-4 .form-horizontal .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-4 .form-horizontal .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .radio label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .radio label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label,
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label {
-    text-align: left;
-}
-
-.k-window[min-width~="1092px"] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control,
-.k-window[min-width~="1092px"] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control {
-	height: 28px;
-	padding: 4px 0 0px;
-}
-
-@media (max-width: 539px) {
-	.form-group {
-		padding-right: 0px;
 	}
 }
 .form-data-widget {
@@ -2670,14 +2284,3 @@ form[data-role="sortable"] {
 }
 */
 /*# sourceMappingURL=bootstrap-material-design.css.map */
-.syspro-entryfield-description {
-	color: #0da1d2;
-}
-.form-group.label-static label.control-label, .form-group.label-floating.is-focused label.control-label, .form-group.label-floating:not(.is-empty) label.control-label {
-	top: -18px;
-	left: 15px;
-}
-.checkbox-form-group .control-label {
-	padding-left: 7.5px;
-
-}
