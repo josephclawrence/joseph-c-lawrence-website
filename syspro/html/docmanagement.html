@@ -733,6 +733,18 @@
         <script src="js/UX_JS_forms.js"></script>
         <script src="js/UX_JS_ripples.min.js"></script>
         <script src="js/bootstrap.offcanvas.js"></script>
+        <script id="fileTemplate" type="text/x-kendo-template">
+            <span class='k-progress'></span>
+            <div class='file-wrapper'>
+                <i class='sys-txt-lg icofont-file-#=addExtensionClass(files[0].extension)#'></i>
+                <h4 class='file-heading file-name-heading'>Name: #=name#</h4>
+                <h5 class='file-heading file-size-heading'>Size: #=size# bytes</h5>
+                <strong class="k-upload-status">
+                    <button type='button' class='k-upload-action btn btn-xs btn-primary'></button>
+                    <button type='button' class='k-upload-action btn btn-xs btn-primary'></button>
+                </strong>
+            </div>
+        </script>
         <script id="treeview-template" type="text/kendo-ui-template">
             # if (item.subCategories) { #
                 <i class="material-icons">folder</i>
@@ -1329,6 +1341,7 @@
                     validation: {
                         allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
                     },
+                    template: kendo.template($('#fileTemplate').html()),
                     success: onSuccess,
                     showFileList: true,
                     // dropZone: ".fileUploadDropZone",
@@ -1345,114 +1358,120 @@
                 );
 
                 function onSuccess(e) {
-                    if (e.operation == "upload") {
-                        for (var i = 0; i < e.files.length; i++) {
-                            var file = e.files[i].rawFile;
-
-                            if (file) {
-                                var reader = new FileReader();
-
-                                reader.onloadend = function() {
-                                    $("<div class='product'><img src=" + this.result + " /></div>").appendTo($("#products"));
-                                };
-
-                                reader.readAsDataURL(file);
-                            }
-                        }
-                    }
+                    console.log('upload success!');                    
                 }
                 
 
             });
-                // Windows
-                // Add new document window
-                const uploadFileWindow = $("#uploadFileWindow").kendoWindow({ //create a window
-                    actions: ["close"],
-                    draggable: true,
-                    minHeight: "200px",
-                    minWidth: "200px",
-                    width: "900px",
-                    height: "550px",
-                    modal: true,
-                    //pinned: false,
-                    position: {
-                        top: "50%",
-                        left: "50%"
-                    },
-                    animation: {
-                        open: {
-                            effects: "fadeIn",
-                            duration: 100
-                        },
-                        close: {
-                            effects: "fadeOut",
-                            duration: 80
-                        }
-                    },
-                    resizable: true,
-                    title: "Add new document",
-                    // deactivate: deactivateMethod,
-                    visible: false,
-                    // open: openFunction,
-                    // close: closeFunction,
-                    activate: function (e) {
-                        $('.k-window-action').attr('tabIndex', -1);
-                        $('.k-window-action').prop('tab-index', -1);
-                        //ElementQueries.init();
-                    }
-                }).data("kendoWindow");
-                
-                uploadFileWindow.wrapper.addClass("compact-window");
-                
-                const availableTags = [
-                    {
-                        code: "AABB22",
-                        name: "Business"
-                    },
-                    {
-                        code: "ABB22",
-                        name: "Finance"
-                    },
-                    {
-                        code: "AABB2",
-                        name: "Accounting"
-                    },
-                    {
-                        code: "AABB32",
-                        name: "Human Resources"
-                    },
-                    {
-                        code: "XABB22",
-                        name: "Supplier"
-                    },
-                    {
-                        code: "AABD22",
-                        name: "Customer"
-                    },
-                    {
-                        code: "AABV22",
-                        name: "Deadweight"
-                    }
-                ];
 
-                $('#tagsInput').tagsinput({
-                    itemValue: 'code',
-                    itemText: 'name',
-                    freeInput: true,
-                    typeahead: {
-                        displayKey: 'name',
-                        afterSelect: function(val) { this.$element.val(""); },
-                        source: availableTags
+            function addExtensionClass(extension) {
+                switch (extension) {
+                    case '.jpg':
+                    case '.img':
+                    case '.png':
+                    case '.gif':
+                        return "jpg";
+                    case '.doc':
+                    case '.docx':
+                        return "word";
+                    case '.xls':
+                    case '.xlsx':
+                        return "excel";
+                    case '.pdf':
+                        return "pdf";
+                    default:
+                        return "alt";
+                }
+            }
+            // Windows
+            // Add new document window
+            const uploadFileWindow = $("#uploadFileWindow").kendoWindow({ //create a window
+                actions: ["close"],
+                draggable: true,
+                minHeight: "200px",
+                minWidth: "200px",
+                width: "900px",
+                height: "550px",
+                modal: true,
+                //pinned: false,
+                position: {
+                    top: "50%",
+                    left: "50%"
+                },
+                animation: {
+                    open: {
+                        effects: "fadeIn",
+                        duration: 100
+                    },
+                    close: {
+                        effects: "fadeOut",
+                        duration: 80
                     }
-                });
-                $('#tagsInput').tagsinput('add', { code: "AABB22", name: "Business" });
-                
-                $(".bootstrap-tagsinput").addClass("form-control");
-                $(".bootstrap-tagsinput").closest(".form-group").addClass("has-tags");
-                
-                $('#tagsInput').on('itemRemoved itemAdded', function(event) {
-                    $(".bootstrap-tagsinput").closest(".form-group").toggleClass("has-tags", $("#tagsInput").tagsinput('items').length > 0);
-                });
+                },
+                resizable: true,
+                title: "Add new document",
+                // deactivate: deactivateMethod,
+                visible: false,
+                // open: openFunction,
+                // close: closeFunction,
+                activate: function (e) {
+                    $('.k-window-action').attr('tabIndex', -1);
+                    $('.k-window-action').prop('tab-index', -1);
+                    //ElementQueries.init();
+                }
+            }).data("kendoWindow");
+            
+            uploadFileWindow.wrapper.addClass("compact-window");
+            
+            const availableTags = [
+                {
+                    code: "AABB22",
+                    name: "Business"
+                },
+                {
+                    code: "ABB22",
+                    name: "Finance"
+                },
+                {
+                    code: "AABB2",
+                    name: "Accounting"
+                },
+                {
+                    code: "AABB32",
+                    name: "Human Resources"
+                },
+                {
+                    code: "XABB22",
+                    name: "Supplier"
+                },
+                {
+                    code: "AABD22",
+                    name: "Customer"
+                },
+                {
+                    code: "AABV22",
+                    name: "Deadweight"
+                }
+            ];
+
+            $('#tagsInput').tagsinput({
+                itemValue: 'code',
+                itemText: 'name',
+                freeInput: true,
+                typeahead: {
+                    displayKey: 'name',
+                    afterSelect: function(val) { this.$element.val(""); },
+                    source: availableTags
+                }
+            });
+            $('#tagsInput').tagsinput('add', { code: "AABB22", name: "Business" });
+            
+            $(".bootstrap-tagsinput").addClass("form-control");
+            $(".bootstrap-tagsinput").closest(".form-group").addClass("has-tags");
+            
+            $('#tagsInput').on('itemRemoved itemAdded', function(event) {
+                $(".bootstrap-tagsinput").closest(".form-group").toggleClass("has-tags", $("#tagsInput").tagsinput('items').length > 0);
+            });
             
             </script>
     </body>
