@@ -21,31 +21,75 @@
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
 
         <style>
-            #file-treeview.k-treeview {
+            .file-treeview.k-treeview {
                 overflow: hidden;
             }
-        #file-treeview .k-item, 
-        #file-treeview.k-treeview span.k-in {
+        .file-treeview .k-item, 
+        .file-treeview.k-treeview span.k-in {
             cursor: pointer;
             width: 100%;
         }
-        #file-treeview.k-treeview .k-in {
+        .file-treeview.k-treeview .k-in {
             margin: 0px;
             padding: 4px 7px 4px 4px;
         }
-        #file-treeview.k-treeview .k-in {
+        .file-treeview.k-treeview .k-in {
             color: #34495e;
         }
-        #file-treeview.k-treeview .k-in.k-state-selected {
+        .file-treeview.k-treeview .k-in.k-state-selected {
             background-color: #e8f3f9;
             color: #34495e;
         }
-        #file-treeview.k-treeview .k-in .material-icons {
+        .file-treeview.k-treeview .k-in .material-icons {
             color: #7f8c8d;
         }
-        #file-treeview.k-treeview .k-in.k-state-selected .material-icons {
+        .file-treeview.k-treeview .k-in.k-state-selected .material-icons {
             color: #34495e;
         }
+        .file-treeview.k-treeview:not(.file-explorer) .k-item:not([data-expanded]) .k-in:only-child.k-state-selected, #fileGrid tr.k-state-selected, #fileGrid tr.k-state-selected td a {
+                background-color: #0b9c2b;
+                color: #fff;
+            }
+
+
+            .file-treeview.k-treeview:not(.file-explorer) .k-item:not([data-expanded]) .k-in:only-child.k-state-selected::after, #fileGrid tr.k-state-selected::after {
+                font-family: "Material Icons";
+                font-weight: normal;
+                font-style: normal;
+                font-size: 19px;
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                line-height: 1;
+                text-transform: none;
+                letter-spacing: normal;
+                word-wrap: normal;
+                white-space: nowrap;
+                direction: ltr;
+                vertical-align: middle;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-feature-settings: "liga";
+                font-feature-settings: "liga";
+                content: "check_circle";
+                float: right;
+            }
+
+
+            .file-treeview.k-treeview:not(.file-explorer) .k-in .material-icons {
+                color: #7f8c8d;
+            }
+            .file-treeview.k-treeview:not(.file-explorer) .k-in.k-state-selected .material-icons {
+                color: #34495e;
+            }
+            .file-treeview.k-treeview:not(.file-explorer) .k-in.k-state-selected {
+                background-color: #e8f3f9;
+                color: #34495e;
+            }
+            .file-treeview.k-treeview:not(.file-explorer) .k-in .material-icons {
+                color: #7f8c8d;
+            }
         /* .k-detail-cell .k-grid-header {
             display: none;
         } */
@@ -230,6 +274,9 @@
         .k-file-name-size-wrapper {
             max-width: calc(100% - 35px - 7em);
         }
+        .file-upload-details {
+            display: none;
+        }
         </style>
 
         <script>
@@ -293,7 +340,7 @@
                                     <div class="col-md-3">
                                         <div class="row sys-mg-b-15">
                                             <div class="col-xs-12">
-                                                <button onclick="uploadFileWindow.center().open()" class="btn btn-block btn-primary" type="button">Add new document</button>
+                                                <button onclick="uploadFileWindow.setOptions({ newVersion: false });uploadFileWindow.center().open()" class="btn btn-block btn-primary" type="button">Add new document</button>
                                             </div>
                                         </div>
                                         <div class="row sys-mg-t-10">
@@ -314,7 +361,7 @@
                                         <!-- File tree -->
                                         <div class="row sys-mg-t-10">
                                             <div class="col-xs-12">
-                                                <div id="file-treeview"></div>
+                                                <div class="file-treeview file-explorer"></div>
                                             </div>
                                         </div>
 
@@ -401,17 +448,17 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="" class="sys-mg-r-15">
+                                                            <a href="#" class="sys-mg-r-15" onclick="moveFileWindow.setOptions({ moveDocument: true, title: 'Move document' });moveFileWindow.center().open()">
                                                                 <i class="material-icons text-muted sys-txt-sm">forward</i> Move document
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="" class="sys-mg-r-15">
+                                                            <a href="#" class="sys-mg-r-15" onclick="moveFileWindow.setOptions({ moveDocument: false, title: 'Attach document' });moveFileWindow.center().open()">
                                                                 <i class="material-icons text-muted sys-txt-sm">attach_file</i> Attach to
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="" class="sys-mg-r-15">
+                                                            <a href="#" class="sys-mg-r-15" onclick="uploadFileWindow.setOptions({ newVersion: true, title: 'Upload new version of document' });uploadFileWindow.center().open()">
                                                                 <i class="material-icons text-muted sys-txt-sm">cloud_upload</i> Upload new version
                                                             </a>
                                                         </li>
@@ -730,14 +777,31 @@
         </div>
 
         <!-- Windows -->
-        <div id="moveFileWindow"></div>
+        <div id="moveFileWindow">
+            <div class="container-fluid window-container">
+                <div class="row window-content sys-pd-t-15">
+                    <div class="col-sm-12">
+                        <p class="lead">Select program to attach document to:</p>
+                        <div class="file-treeview"></div>
+                    </div>
+                    <div class="col-sm-12">
+                        <span id="" class="pull-right">
+                            <button type="button" id="" class="btn btn-primary pull-right sys-mg-l-5 disabled" disabled>Continue</button>
+                        </span>
+                        <button type="button" class="btn btn-default pull-right closeWindow">Cancel</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
         <div id="uploadFileWindow">
             <div class="container-fluid window-container">
                 <div class="row window-content sys-pd-t-15">
                     <div class="col-sm-6">
                         <input name="files" id="files" type="file" />
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 file-upload-details">
                         <div class="form-group label-floating">
                             <label for="DocName" class="control-label">Document name</label>
                             <input type="text" class="form-control" id="DocName" maxlength="256">
@@ -756,8 +820,8 @@
                         
                     </div>
                     <div class="col-sm-12">
-                        <span id="addLayoutButtonPopoverWrap" class="pull-right">
-                            <button type="button" id="addLayoutWidgetButton" class="btn btn-primary pull-right sys-mg-l-5 disabled" disabled>Add section</button>
+                        <span id="" class="pull-right">
+                            <button type="button" id="" class="btn btn-primary pull-right sys-mg-l-5 disabled" disabled>Complete</button>
                         </span>
                         <button type="button" class="btn btn-default pull-right closeWindow">Cancel</button>
                     </div>
@@ -775,7 +839,7 @@
         <script src="js/UX_JS_forms.js"></script>
         <script src="js/UX_JS_ripples.min.js"></script>
         <script src="js/bootstrap.offcanvas.js"></script>
-        <script id="fileTemplate" type="text/x-kendo-template">
+        <!-- <script id="fileTemplate" type="text/x-kendo-template">
             <span class='k-progress'></span>
             <div class='file-wrapper'>
                 <i class='sys-txt-lg icofont-file-#=addExtensionClass(files[0].extension)#'></i>
@@ -786,7 +850,7 @@
                     <button type='button' class='k-upload-action btn btn-xs btn-primary'></button>
                 </strong>
             </div>
-        </script>
+        </script> -->
         <script id="treeview-template" type="text/kendo-ui-template">
             # if (item.subCategories) { #
                 <i class="material-icons">folder</i>
@@ -925,7 +989,7 @@
                     }
                 });
 
-                $("#file-treeview").kendoTreeView({
+                $(".file-treeview").kendoTreeView({
                     template: kendo.template($("#treeview-template").html()),
                     dataSource: inline,                    
                     dataTextField: [ "name" ]
@@ -1408,7 +1472,8 @@
                 );
 
                 function onSuccess(e) {
-                    console.log('upload success!');                    
+                    console.log('upload success!');  
+                    $(".file-upload-details").show(300);                  
                 }
                 
                 function addPreview(file, wrapper) {
@@ -1474,19 +1539,74 @@
                 },
                 resizable: true,
                 title: "Add new document",
-                // deactivate: deactivateMethod,
                 visible: false,
-                // open: openFunction,
                 // close: closeFunction,
                 activate: function (e) {
                     $('.k-window-action').attr('tabIndex', -1);
                     $('.k-window-action').prop('tab-index', -1);
                     //ElementQueries.init();
-                }
+                },
+                open: openUploadFileWindow
             }).data("kendoWindow");
+            
             
             uploadFileWindow.wrapper.addClass("compact-window");
             
+            function openUploadFileWindow() {
+                console.log(this.options.newVersion);
+                
+                if ( this.options.newVersion ) {
+                    console.log('new veriosn!');
+                    
+                }
+            };
+
+            const moveFileWindow = $("#moveFileWindow").kendoWindow({ //create a window
+                actions: ["close"],
+                draggable: true,
+                minHeight: "200px",
+                minWidth: "200px",
+                width: "900px",
+                height: "550px",
+                modal: true,
+                //pinned: false,
+                position: {
+                    top: "50%",
+                    left: "50%"
+                },
+                animation: {
+                    open: {
+                        effects: "fadeIn",
+                        duration: 100
+                    },
+                    close: {
+                        effects: "fadeOut",
+                        duration: 80
+                    }
+                },
+                resizable: true,
+                title: "Move document",
+                visible: false,
+                // close: closeFunction,
+                activate: function (e) {
+                    $('.k-window-action').attr('tabIndex', -1);
+                    $('.k-window-action').prop('tab-index', -1);
+                    //ElementQueries.init();
+                },
+                open: openMoveFileWindow
+            }).data("kendoWindow");
+            
+            
+            moveFileWindow.wrapper.addClass("compact-window");
+            
+            function openMoveFileWindow() {
+                console.log(this.options.moveDocument);                
+                if ( this.options.moveDocument ) {
+                    console.log('move document');
+                    
+                }
+            };
+
             const availableTags = [
                 {
                     code: "AABB22",

@@ -523,6 +523,48 @@
                 width: 100%;
                 height: 100%;
             }
+            .image-preview {
+            position: relative;
+            vertical-align: middle;
+            max-height: 45px;
+            max-width: 60px;
+        }
+        .k-upload-status .k-i-warning {
+            /* display: none; */
+            color: #d92800;
+            margin-right: 4px;
+            font-size: 20px;
+        }
+        .k-upload-status .k-button {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+        }
+        .k-file .k-icon {
+            font-size: 20px;
+        }
+        .k-file .k-i-retry {
+            color: #27ae60;
+        }
+        .k-file .k-i-close {
+            color: #d92800;
+        }
+        .k-dropzone .k-upload-status.k-upload-status-total {
+            display: none !important;
+        }
+        .k-upload-files .k-upload-status {
+            opacity: 1;
+        }
+        .k-upload-action:hover {
+            opacity: 0.8;
+        }
+        .k-file-name {
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .k-file-name-size-wrapper {
+            max-width: calc(100% - 35px - 7em);
+        }
         </style>
     </head>
 
@@ -1139,8 +1181,17 @@
                     validation: {
                         allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
                     },
+                    // template: kendo.template($('#fileTemplate').html()),
                     success: onSuccess,
                     showFileList: true,
+                    select: function(e) {
+                        var fileInfo = e.files[0];
+                        var wrapper = this.wrapper;
+
+                        setTimeout(function(){
+                        addPreview(fileInfo, wrapper);
+                        });
+                    }
                     // dropZone: ".fileUploadDropZone",
                 });
 
@@ -1155,22 +1206,25 @@
                 );
 
                 function onSuccess(e) {
-                    if (e.operation == "upload") {
-                        for (var i = 0; i < e.files.length; i++) {
-                            var file = e.files[i].rawFile;
+                    console.log('upload success!');                    
+                }
+                
+                function addPreview(file, wrapper) {
+                    var raw = file.rawFile;
+                    var reader  = new FileReader();
 
-                            if (file) {
-                                var reader = new FileReader();
+                    if (raw) {
+                    reader.onloadend = function () {
+                        var preview = $("<img class='image-preview'>").attr("src", this.result);
 
-                                reader.onloadend = function() {
-                                    $("<div class='product'><img src=" + this.result + " /></div>").appendTo($("#products"));
-                                };
+                        wrapper.find(".k-file[data-uid='" + file.uid + "'] .k-file-extension-wrapper")
+                        .replaceWith(preview);
+                    };
 
-                                reader.readAsDataURL(file);
-                            }
-                        }
+                    reader.readAsDataURL(raw);
                     }
                 }
+            });
 
                 $.material.init();
                 $('[data-tooltip="tooltip"]').tooltip();
