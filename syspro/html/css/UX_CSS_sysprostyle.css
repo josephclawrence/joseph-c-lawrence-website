@@ -3953,7 +3953,7 @@ th {
     border-bottom-color: #333333;
 }
 body > .tooltip {
-    z-index: 999999;
+    z-index: 1000005;
 }
 .compact-window .tooltip,
 .k-window .tooltip {
@@ -3979,7 +3979,7 @@ body > .tooltip {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 999999;
+    z-index: 1000005;
     display: none;
     max-width: 276px;
     padding: 1px;
@@ -4439,8 +4439,15 @@ tbody.collapse.in {
 .dropdown-toggle:focus {
     outline: 0;
 }
-.typeahead.dropdown-menu {
+.dropdown-menu.typeahead {
     padding: 5px 0;
+}
+.dropdown-menu.textcomplete-dropdown {
+    padding: 5px 0px
+}
+.dropdown-menu.textcomplete-dropdown .textcomplete-item .text-complete:hover {
+    background-color: transparent;
+    color: inherit;
 }
 .list .list-group-item {
     cursor: pointer;
@@ -5703,7 +5710,7 @@ form .data-section {
     min-height: 40px
 }
 .navbar.navbar-controlbar .form-group {
-    margin-top: 3px;
+    margin-top: 6px;
 }
 .navbar.navbar-controlbar .material-icons {
     vertical-align: top;
@@ -7956,6 +7963,7 @@ button::-moz-focus-inner {
 .navbar-controlbar .btn .material-icons {
     font-size: 18px;
     line-height: 0.85em;
+    padding-top: 0.5px;
 }
 .navbar-controlbar .btn.navbar-btn .material-icons {
     line-height: 1em;
@@ -8209,11 +8217,11 @@ button::-moz-focus-inner {
     margin-left: 0;
 }
 .btn-group-vertical > .btn-group:before {
-    content: " ";
+    content: ' ';
     display: table;
 }
 .btn-group-vertical > .btn-group:after {
-    content: " ";
+    content: ' ';
     display: table;
     clear: both;
 }
@@ -8257,11 +8265,11 @@ button::-moz-focus-inner {
     margin-left: 5px;
 }
 .btn-toolbar:before {
-    content: " ";
+    content: ' ';
     display: table;
 }
 .btn-toolbar:after {
-    content: " ";
+    content: ' ';
     display: table;
     clear: both;
 }
@@ -8335,7 +8343,7 @@ button::-moz-focus-inner {
     color: rgba(0, 0, 0, .25);
     background: transparent;
 }
-input[type="button"].btn-block {
+input[type='button'].btn-block {
     width: 100%;
 }
 td .btn.btn-default {
@@ -9047,7 +9055,7 @@ td .btn.btn-delete {
             box-shadow: 0 0 20px 3px rgba(0, 0, 0, .3) !important
 }
 .k-window.k-widget:not(.compact-window) {
-    z-index: 999999 !important
+    z-index: 1000000 !important
 }
 .k-window.k-widget:not(.compact-window).k-dialog {
     z-index: 1000009 !important;
@@ -9059,6 +9067,9 @@ td .btn.btn-delete {
 }
 .k-window.k-window-maximized {
     max-width: 100%;
+}
+.k-drag-clue {
+    z-index: 1000003 !important;
 }
 .k-alt {
     background-color: #fafafa;
@@ -9756,7 +9767,7 @@ td .btn.btn-delete {
     font-size: 14px;
 }
 .k-animation-container {
-    /* z-index: 200001 !important; */
+    z-index: 1000000 !important;
     -webkit-box-sizing: border-box !important;
             box-sizing: border-box !important
 }
@@ -10619,7 +10630,7 @@ td.k-state-focused.k-state-selected,
     color: #fff;
 }
 .k-grid tr.k-state-selected:hover td {
-    background-color: #e8f3f9;
+    background-color: #49abf9;
     color: #2c3e50;
     -webkit-transition: all 0.1s;
     transition: all 0.1s
@@ -10790,7 +10801,8 @@ td.k-state-focused.k-state-selected,
     background-color: #0078d7;
 }
 .noBorderTable .k-grid-header th.k-header,
-    .noBorderTable .k-filter-row th {
+    .noBorderTable .k-filter-row th,
+    .noBorderTable .k-grid .k-grouping-header {
     border-style: hidden;
     font-weight: 600;
 }
@@ -10798,6 +10810,14 @@ td.k-state-focused.k-state-selected,
     border-bottom-color: transparent;
     border-bottom-width: 1px;
     border-bottom-style: solid;
+    overflow: visible
+}
+.noBorderTable .editable-cell .dropdownjs .form-control,
+        .noBorderTable .editable-cell select.form-control {
+    background: none;
+    background-image: none;
+    margin-bottom: 0px;
+    cursor: pointer;
 }
 .noBorderTable tr .editable-cell.k-edit-cell {
     border-bottom-color: #27ae60;
@@ -11252,20 +11272,12 @@ td.k-state-focused.k-state-selected,
     right: -300px
 }
 .navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications .panel > .list-group:first-child .list-group-item:first-child,
-    .navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications
-        .panel
-        > .panel-collapse
-        > .list-group:first-child
-        .list-group-item:first-child {
+    .navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
 }
 .navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications .panel > .list-group:last-child .list-group-item:last-child,
-    .navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications
-        .panel
-        > .panel-collapse
-        > .list-group:last-child
-        .list-group-item:last-child {
+    .navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
 }
@@ -11293,31 +11305,30 @@ td.k-state-focused.k-state-selected,
     right: 5px;
     cursor: pointer;
 }
-.navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications {
-    & .panel-group a.panel-heading:hover,
-    .panel-group a.panel-heading:active {
-        color: #2c3e50;
-        text-decoration: none;
-    }
+.navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications .panel-group a.panel-heading:hover,
+    .navbar-offcanvas.navbar-offcanvas-right.offcanvas-notifications .panel-group a.panel-heading:active {
+    color: #2c3e50;
+    text-decoration: none;
 }
 #logonForm,
-#forgotPasswordForm {
+#forgotPasswordForm,
+#changePasswordForm {
     -webkit-box-shadow: 0 0 35px -10px rgba(0, 0, 0, .75);
             box-shadow: 0 0 35px -10px rgba(0, 0, 0, .75);
     margin: 60px auto
 }
-#logonForm .form-group, #forgotPasswordForm .form-group {
+#logonForm .form-group, #forgotPasswordForm .form-group, #changePasswordForm .form-group {
     padding-right: 0;
     margin-top: 20px
 }
-#logonForm .form-group .form-control, #forgotPasswordForm .form-group .form-control {
+#logonForm .form-group .form-control, #forgotPasswordForm .form-group .form-control, #changePasswordForm .form-group .form-control {
     margin-bottom: 10px;
     height: 30px;
     padding: 7px 0;
     font-size: 16px;
     line-height: 1.42857143;
 }
-#logonForm .form-horizontal .control-label, #forgotPasswordForm .form-horizontal .control-label {
+#logonForm .form-horizontal .control-label, #forgotPasswordForm .form-horizontal .control-label, #changePasswordForm .form-horizontal .control-label {
     padding-top: 8px;
 }
 .logon-button {
@@ -11396,7 +11407,10 @@ td.k-state-focused.k-state-selected,
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #fff
+}
+#loading-cover .loader {
+    top: 300px;
 }
 .error-template {
     width: 350px;
@@ -13889,12 +13903,7 @@ input[type="checkbox"][disabled] {
 .has-error .form-control {
     border-color: #e74c3c;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075)
-}
-.has-error .form-control:focus {
-    border-color: #990000;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #e74c3c;
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #e74c3c;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
 .has-error .input-group-addon {
     color: #e74c3c;
@@ -16421,8 +16430,23 @@ form[data-role="sortable"] {
 .fields-wrapper .list-group-item {
     cursor: pointer
 }
-.fields-wrapper .list-group-item input[type="radio"] {
+.fields-wrapper .list-group-item input[type='radio'] {
     visibility: hidden;
+}
+.fields-wrapper .list-group-item span.program-activity {
+    position: absolute;
+    right: 0px;
+    top: -1px;
+    font-size: 12px;
+    background: #ecf0f1;
+    width: 65px;
+    height: 19px;
+    text-align: left;
+    line-height: 19px;
+    padding-left: 4px;
+}
+.fields-wrapper .list-group-item.active span.program-activity {
+    color: #2c3e50;
 }
 .fields-wrapper .k-panelbar {
     border: none !important;
@@ -16471,6 +16495,9 @@ form[data-role="sortable"] {
 .add-data-widget.tile-inner .panel-body a {
     width: 100%;
     height: 100%;
+}
+#tiles-edit-list-wrapper {
+    display: none;
 }
 .layout-widget-preview-title {
     display: none;
@@ -16525,6 +16552,20 @@ form[data-role="sortable"] {
     margin: 0;
     right: 0;
     position: absolute;
+    height: 0px
+}
+.drilldown .drilldown-menu ul.active {
+    height: auto
+}
+.drilldown .drilldown-menu ul.active li.list-group-item {
+    height: auto;
+    padding: 7px 15px;
+    border-width: 1px 0;
+}
+.drilldown .drilldown-menu ul li.list-group-item {
+    height: 0px;
+    padding: 0px;
+    border-width: 0px 0;
 }
 .drilldown .drilldown-menu a {
     display: block;
@@ -16595,10 +16636,7 @@ form[data-role="sortable"] {
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
-.parentWidgetIsEntryForm
-    .fieldsPanelBar
-    .list-group-item:hover
-    > .quickAddEntryField {
+.parentWidgetIsEntryForm .fieldsPanelBar .list-group-item:hover > .quickAddEntryField {
     display: block;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
