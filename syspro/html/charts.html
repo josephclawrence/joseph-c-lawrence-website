@@ -45,6 +45,38 @@
         <script src="js/UX_JS_velocity.min.js"></script>
         <script src="js/kendo.all.min.js"></script>
         <script src="js/UX_JS_immutable.min.js"></script>
+        <style>
+            .suggestion-template {
+                box-shadow: 0px 0px 14px -4px rgba(0, 0, 0, 0.3);
+                background: #ffffff;
+                padding: 10px 15px;
+                border-radius: 4px;
+            }
+            .k-notification-aiSuggestion {
+                background: transparent;
+            }
+            .suggestion-link {
+                border-radius: 4px;
+            }
+            .suggestion-link:hover,
+            .suggestion-link:hover * {
+                text-decoration: none;
+            }
+            .suggestion-link > .row {
+                border-radius: 4px;
+            }
+            .suggestion-link:hover > .row {
+                background: #ecf0f1;
+            }
+            .syspro-search-button {
+                border-radius: 50%;
+                padding: 8px;
+                background: #303f9f !important;
+                display: block !important;
+            }
+            .syspro-search-button i {
+            }
+        </style>
     </head>
 
     <body data-column-layout="3col" style="padding-top:0px;">
@@ -57,6 +89,37 @@
         >
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class="dropdown full-width-dropdown nav-item" id="searchDropdown">
+                        <a
+                            href="#"
+                            class="dropdown-toggle fusion-main-page-buttons fusion-maininstance-buttons"
+                            data-toggle="dropdown"
+                            aria-expanded="false"
+                            ><i class="material-icons">search</i></a
+                        >
+                        <ul class="dropdown-menu nav sys-pd-l-15" role="menu">
+                            <li>
+                                <div class="form-group is-empty pull-right" style="padding-right: 25px !important;">
+                                    <div class="input-group">
+                                        <input
+                                            id="primarySearch"
+                                            type="text"
+                                            tabindex="-1"
+                                            class="form-control syspro-toolbar-widget input-lg"
+                                            placeholder="Search Syspro..."
+                                        />
+                                        <span class="input-group-btn">
+                                            <a class="syspro-search-button">
+                                                <i class="material-icons sys-txt-md sys-fg-white sys-pd-off-t"
+                                                    >arrow_forward</i
+                                                >
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                     <li class=" nav-item">
                         <a
                             href="#"
@@ -103,6 +166,9 @@
                                 <div class=" row widget layout-widget">
                                     <div id="lineChart"></div>
                                 </div>
+                                <button class="btn btn-lg btn-primary" id="showPredictionNotification">
+                                    Show suggestions
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -110,16 +176,114 @@
             </div>
         </div>
 
+        <span id="notification" style="display:none;"></span>
+
         <!-- Off Canvas menus -->
 
-        <script src="js/UX_JS_bootstrap.js"></script>
+        <script src="js/UX_JS_bootstrap.min.js"></script>
         <script src="js/UX_JS_bootstrap-3-typeahead.js"></script>
         <script src="js/bootstrap-tagsinput.min.js"></script>
         <script src="js/UX_JS_forms.js"></script>
         <script src="js/UX_JS_ripples.min.js"></script>
         <script src="js/bootstrap.offcanvas.js"></script>
 
+        <script id="aiSuggestionTemplate" type="text/x-kendo-template">
+            <div class="suggestion-template">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 class="sys-mg-b-5 sys-mg-t-5"><strong>Smart suggestions</strong> <i style="font-size: 40px" class="sys-fg-info icofont-brain-alt text-right pull-right"></i></h4>
+                        <small>Learned from your usage</small>
+                    </div>
+                </div>
+                # for (var i = 0; i < suggestions.length; i++) { #
+                    <a class="suggestion-link" href="#= suggestions[i].link #">
+                        <div class="row sys-mg-t-10" style="display: flex; align-items: center; align-content: stretch">
+                            <div class="">
+                                <i class="material-icons sys-txt-lg sys-mg-r-5" style="color: #= suggestions[i].icon.colour #">#= suggestions[i].icon.name #</i>
+                            </div>
+                            <div class="" style="flex-grow: 2">
+                                <h4 class="sys-mg-off sys-fg-inverse">#= suggestions[i].title #</h4>
+                                <p class="sys-txt-sm">#= suggestions[i].message #</p>
+                            </div>
+                            <div class="pull-right">
+                                <i class="material-icons sys-txt-md text-right pull-right" style="color:\#303F9F;">arrow_forward</i>
+                            </div>
+                        </div>
+                    </a>
+                # } #
+            </div>
+        </script>
+
         <script>
+            var notification = $("#notification")
+                .kendoNotification({
+                    position: {
+                        pinned: true,
+                        bottom: 30,
+                        right: 30,
+                    },
+                    animation: {
+                        open: {
+                            effects: " fade:in slideIn:left",
+                            duration: 350,
+                        },
+                        close: {
+                            effects: "slideIn:left",
+                            reverse: true,
+                            duration: 200,
+                        },
+                    },
+                    autoHideAfter: 0,
+                    // height: 350,
+                    width: 400,
+                    stacking: "down",
+                    templates: [
+                        {
+                            type: "aiSuggestion",
+                            template: $("#aiSuggestionTemplate").html(),
+                        },
+                    ],
+                })
+                .data("kendoNotification");
+
+            $("#showPredictionNotification").click(function() {
+                notification.show(
+                    {
+                        title: "New E-mail",
+                        message: "You have 1 new mail message! here is some other content and so on",
+                        suggestions: [
+                            {
+                                icon: {
+                                    colour: "#388E3C",
+                                    name: "assessment",
+                                },
+                                title: "New sales order entry",
+                                message: "Create a new sales order from ...",
+                                link: "#",
+                            },
+                            {
+                                icon: {
+                                    colour: "#303F9F",
+                                    name: "account_box",
+                                },
+                                title: "View Sarah Cox",
+                                message: "View the profile of supplier Sarah Cox",
+                                link: "#",
+                            },
+                            {
+                                icon: {
+                                    colour: "#C2185B",
+                                    name: "store_mall_directory",
+                                },
+                                title: "Check stock in Warehouse X",
+                                message: "View current stock levels of A100 in Warehouse X",
+                                link: "#",
+                            },
+                        ],
+                    },
+                    "aiSuggestion"
+                );
+            });
             function createChart() {
                 $("#pieChart").kendoChart({
                     title: {
@@ -355,7 +519,18 @@
                 });
             }
 
-            $(document).ready(createChart);
+            $(document).ready(function() {
+                $.material.init();
+                createChart();
+                $("#searchDropdown").on("shown.bs.dropdown", function() {
+                    console.log("ping");
+
+                    $("#primarySearch").focus();
+                    $("#primarySearch")
+                        .parents(".form-group")
+                        .addClass("is-focused");
+                });
+            });
         </script>
     </body>
 </html>
