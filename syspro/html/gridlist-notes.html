@@ -53,9 +53,54 @@
 			 position:absolute;
 			 cursor: pointer;
 			}
+         .gridlist-cell-comment {
+			  width: 0;
+			  height: 0;
+			  border-bottom: 10px solid #0078d7;
+			  border-left: 10px solid transparent;
+			 bottom:0;
+			 right:0;
+			 position:absolute;
+			 cursor: pointer;
+			}
 			td {
 				position: relative;
 			}
+         .popover.textarea-popover {
+            padding: 0px;
+            border: 0px solid #fff;
+            border-radius: 4px;
+            /* transition: top 0.2s; */
+         }
+         .popover-textarea-content {
+            height: 180px;  
+            width: 280px;  
+            }
+
+            textarea.popover-textarea {
+               border: 0px;   
+               margin: 0px; 
+               width: 100%;
+               height: 100%;
+               padding: 0px;  
+               box-shadow: none;
+            }
+            .textarea-popover .popover-title {
+               border-radius: 4px 4px 0 0;
+               border-bottom-color: #f7f7f7;
+            }
+         .textarea-popover .popover-footer {
+            margin: 0;
+            padding: 8px 14px;
+            font-weight: 400;
+            line-height: 18px;
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #EBEBEB;
+            border-radius: 0 0 4px 4px;
+         }
+         .popover.textarea-popover.bottom > .arrow:after, popover.textarea-popover.bottom > .arrow {
+            border-bottom-color: #f7f7f7;
+         }
 		</style>
   	</head>
   	<body data-column-layout="3col" style="padding-top:0px;">
@@ -126,7 +171,10 @@
 	            </td>
                <td role="gridcell">$18.00</td>
                <td role="gridcell">39</td>
-               <td role="gridcell">10</td>
+               <td role="gridcell">
+                  <span class="gridlist-cell-comment" tabindex="0" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="focus"></span>
+                  <span class="comment"></span>
+               </td>
                <td role="gridcell">false</td>
             </tr>
             <tr class="k-alt" data-uid="4f2ada0b-7846-4aa5-9801-76f9cb429ec3" role="row">
@@ -134,8 +182,9 @@
                <td role="gridcell">2</td>
                <td role="gridcell">1</td>
                <td role="gridcell">
-	               <span class="gridlist-cell-note" tabindex="0" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="focus"></span>
-	               $19.00
+                  <span class="gridlist-cell-note" tabindex="0" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="focus"></span>
+                  <span class="gridlist-cell-comment" tabindex="0" data-container="body" data-toggle="popover" data-placement="bottom"></span>
+	               <span class="comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
 	           </td>
                <td role="gridcell">17</td>
                <td role="gridcell">25</td>
@@ -205,7 +254,41 @@
         		
 	    <script src="js/UX_JS_bootstrap.js"></script>
 		<script>
-			$('.gridlist-cell-note').popover();
+         $('.gridlist-cell-note').popover();
+         
+         $(".gridlist-cell-comment").popover({
+            trigger : 'click',  
+            placement : 'bottom', 
+            html: 'true',
+            title: 'Add a comment',
+            content : '<textarea class="popover-textarea"></textarea>',
+            template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
+                     '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
+                     '</div><div class="popover-footer"><button type="button" class="btn btn-sm btn-default popover-cancel">'+
+                     '<i class="material-icons">cancel</i></button>&nbsp;'+
+                     '<button type="button" class="btn btn-primary btn-sm popover-submit pull-right">'+
+                     '<i class="material-icons">check</i></button></div></div>' 
+         })
+         .on('shown.bs.popover', function() {
+            //hide any visible comment-popover
+            $(".gridlist-cell-comment").not(this).popover('hide');
+            var $this = $(this);
+            // $('.textarea-popover').css('top', (parseInt($('.textarea-popover').css('top'), 10) + 10) + 'px');
+            
+            
+            //attach link text
+            $('.popover-textarea').val($this.parent().find(".comment").text().trim()).focus();
+            //close on cancel
+            $('.popover-cancel').click(function() {                              
+               $this.popover('hide');
+            });
+            //update link text on submit
+            $('.popover-submit').click(function() {
+               $this.parent().find(".comment").text($('.popover-textarea').val().trim());
+               $this.popover('hide');
+            });
+         });
+
 		</script>
 
 	</body>
