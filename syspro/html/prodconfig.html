@@ -21,8 +21,8 @@
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
 
         <style>
-            .panel-heading:hover,
-            .panel-heading:focus {
+            .prodConfigOptionsWrapper .panel-heading:hover,
+            .prodConfigOptionsWrapper .panel-heading:focus {
                 text-decoration: none;
                 background: #e8f2f5 !important;
             }
@@ -30,10 +30,57 @@
                 margin-top: 10px;
                 margin-bottom: 15px;
             }
-            .collapse.in,
-            .collapsing {
+            .prodConfigOptionsWrapper .collapse.in,
+            .prodConfigOptionsWrapper .collapsing {
                 background: #f9f9f9;
                 padding: 15px;
+            }
+            .noUi-tooltip {
+                word-wrap: normal;
+                bottom: 140%;
+                top: auto;
+                box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.2);
+                position: relative;
+                left: 50%;
+                background: white;
+                display: block;
+                border-radius: 50%;
+                text-align: center;
+                display: block;
+                position: absolute;
+                /* border: 1px solid #d9d9d9; */
+                border-radius: 3px;
+                background: #fff;
+                color: #000;
+                padding: 5px;
+                text-align: center;
+                white-space: nowrap;
+                transform: translate(-50%, 0);
+            }
+            .noUi-handle.noUi-active {
+                -webkit-transform: scale3d(1.3, 1.3, 1);
+                transform: scale3d(1.3, 1.3, 1);
+            }
+            .noUi-handle {
+                width: 18px;
+                height: 18px;
+                left: -18px;
+                top: -9px;
+            }
+            .slider .noUi-handle {
+                background-color: #0078d7;
+                border-color: #0078d7;
+            }
+            .noUi-connect {
+                background-color: #0078d7;
+            }
+            .productConfigAccordion textarea {
+                background-color: white !important;
+                padding: 5px;
+            }
+            .prodConfigOptionsWrapper {
+                max-height: 700px;
+                overflow: scroll;
             }
         </style>
 
@@ -95,100 +142,74 @@
                         <div class="panel sys-bd-off sys-box-shadow-off">
                             <div class="panel-body main-column">
                                 <div class=" row widget layout-widget">
-                                    <div class="col-md-3 col-md-offset-1">
-                                        <div class="panel sys-bd-off" style="margin-top:20px;">
-                                            <div class="panel-body sys-pd-15">
-                                                <h3 class="sys-mg-off-t sys-mg-b-15">Product name</h3>
-
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <table class="table table-borderless">
-                                                            <tr>
-                                                                <td>Width</td>
-                                                                <td>1.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Height</td>
-                                                                <td>1.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Lock</td>
-                                                                <td>1.00</td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <h2 class="sys-mg-b-15 clearfix">
-                                                            <span class="pull-left">Price:</span
-                                                            ><span class="pull-right">$326.80</span>
-                                                        </h2>
-                                                        <button class="btn btn-block btn-primary btn-lg" type="button">
-                                                            Generate quote
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-md-offset-1">
+                                    <div class="col-md-6 col-md-offset-1 col-sm-8 ">
                                         <!-- Filter -->
                                         <div class="row sys-mg-t-10">
                                             <div class="col-xs-12">
-                                                <h2 class="sys-mg-off-t">Configure product</h2>
-                                                <div
-                                                    class="panel-group"
-                                                    id="accordion"
-                                                    role="tablist"
-                                                    aria-multiselectable="true"
-                                                >
-                                                    <div class="panel sys-box-shadow-off sys-bd-off">
-                                                        <div
-                                                            class="panel-heading sys-bg-very-light-gray"
-                                                            role="tab"
-                                                            id="headingOne"
-                                                        >
-                                                            <h4 class="sys-mg-off">
-                                                                <a
-                                                                    class=" panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
-                                                                    role="button"
-                                                                    data-toggle="collapse"
-                                                                    data-parent="#accordion"
-                                                                    href="#collapseOne"
-                                                                    aria-expanded="true"
-                                                                    aria-controls="collapseOne"
-                                                                >
-                                                                    <div class="row">
-                                                                        <div class="col-xs-4">
-                                                                            Width
+                                                <h2 class="sys-mg-off-t">
+                                                    Configure product: <span class="text-muted pull-right">GATE-ATO</span>
+                                                </h2>
+                                                <div class="prodConfigOptionsWrapper">
+                                                    <div
+                                                        class="panel-group productConfigAccordion"
+                                                        id="accordion"
+                                                        role="tablist"
+                                                        aria-multiselectable="true"
+                                                    >
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-very-light-gray"
+                                                                role="tab"
+                                                                id="headingOne"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class=" panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        data-parent="#accordion"
+                                                                        href="#collapse_1"
+                                                                        aria-expanded="true"
+                                                                        aria-controls="collapse_1"
+                                                                    >
+                                                                        <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                Width
+                                                                            </div>
+                                                                            <div class="col-xs-7">
+                                                                                <b>1.00</b>
+                                                                            </div>
+                                                                            <div class="col-xs-1">
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-open-icon"
+                                                                                    >keyboard_arrow_down</i
+                                                                                >
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-close-icon"
+                                                                                    >keyboard_arrow_up</i
+                                                                                >
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-xs-7">
-                                                                            <b>1.00</b>
-                                                                        </div>
-                                                                        <div class="col-xs-1">
-                                                                            <i
-                                                                                class="material-icons pull-right collapsible-open-icon"
-                                                                                >keyboard_arrow_down</i
-                                                                            >
-                                                                            <i
-                                                                                class="material-icons pull-right collapsible-close-icon"
-                                                                                >keyboard_arrow_up</i
-                                                                            >
-                                                                        </div>
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="collapse_1"
+                                                                class="panel-collapse collapse in"
+                                                                role="tabpanel"
+                                                                aria-labelledby="headingOne"
+                                                            >
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 text-center">
+                                                                        <em class="text-center lead"
+                                                                            >Possible values: 0.500 - 1.500</em
+                                                                        >
+                                                                        <hr class="sys-mg-t-15 sys-mg-b-15" />
                                                                     </div>
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div
-                                                            id="collapseOne"
-                                                            class="panel-collapse collapse in"
-                                                            role="tabpanel"
-                                                            aria-labelledby="headingOne"
-                                                        >
-                                                            <div class="row">
-                                                                <div class="col-xs-12 form-horizontal">
-                                                                    <div class="form-group">
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-8 form-horizontal">
+                                                                        <!-- <div class="form-group">
                                                                         <label
                                                                             for="widthPossValues"
                                                                             class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
@@ -197,130 +218,560 @@
                                                                         <div class="col-md-9">
                                                                             <span name="widthPossValues">0.500 - 1.500</span>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label
-                                                                            for="slider1"
-                                                                            class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
-                                                                            >A slider</label
-                                                                        >
-                                                                        <div class="col-md-9">
-                                                                            <div
-                                                                                id="slider1"
-                                                                                class="slider shor slider-material-orange"
-                                                                            ></div>
-                                                                            <input
-                                                                                type="number"
-                                                                                min="0.5"
-                                                                                max="1.5"
-                                                                                step="0.1"
-                                                                                id="input-number1"
-                                                                                value="1.0"
-                                                                                class="hidden"
-                                                                            />
+                                                                    </div> -->
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="slider1"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Width</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <div
+                                                                                    id="slider1"
+                                                                                    class="slider shor slider-material-orange"
+                                                                                ></div>
+                                                                                <input
+                                                                                    type="number"
+                                                                                    min="0.5"
+                                                                                    max="1.5"
+                                                                                    step="0.1"
+                                                                                    id="input-number1"
+                                                                                    value="1.0"
+                                                                                    class="hidden"
+                                                                                />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="widthComments"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Comments</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <textarea
+                                                                                    class="form-control"
+                                                                                    rows="3"
+                                                                                    id="widthComments"
+                                                                                    maxlength="3000"
+                                                                                ></textarea>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label
-                                                                            for="widthComments"
-                                                                            class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
-                                                                            >Comments</label
-                                                                        >
-                                                                        <div class="col-md-9">
-                                                                            <textarea
-                                                                                class="form-control"
-                                                                                rows="3"
-                                                                                id="widthComments"
-                                                                                maxlength="3000"
-                                                                            ></textarea>
-                                                                        </div>
+                                                                    <div class="col-sm-4">
+                                                                        <img
+                                                                            src="https://via.placeholder.com/300x200"
+                                                                            alt=""
+                                                                            class="img-responsive"
+                                                                        />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="panel sys-box-shadow-off sys-bd-off">
-                                                        <div
-                                                            class="panel-heading sys-bg-very-light-gray"
-                                                            role="tab"
-                                                            id="headingTwo"
-                                                        >
-                                                            <h4 class="sys-mg-off">
-                                                                <a
-                                                                    class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
-                                                                    role="button"
-                                                                    data-toggle="collapse"
-                                                                    data-parent="#accordion"
-                                                                    href="#collapseTwo"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="collapseTwo"
-                                                                >
-                                                                    Height
-                                                                    <i
-                                                                        class="material-icons pull-right collapsible-open-icon"
-                                                                        >keyboard_arrow_down</i
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-very-light-gray"
+                                                                role="tab"
+                                                                id="headingTwo"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        data-parent="#accordion"
+                                                                        href="#collapse_2"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_2"
                                                                     >
-                                                                    <i
-                                                                        class="material-icons pull-right collapsible-close-icon"
-                                                                        >keyboard_arrow_up</i
-                                                                    >
-                                                                </a>
-                                                            </h4>
+                                                                    <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                Height
+                                                                            </div>
+                                                                            <div class="col-xs-7">
+                                                                                <b>1.60</b>
+                                                                            </div>
+                                                                            <div class="col-xs-1">
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-open-icon"
+                                                                                    >keyboard_arrow_down</i
+                                                                                >
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-close-icon"
+                                                                                    >keyboard_arrow_up</i
+                                                                                >
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="collapse_2"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="headingTwo"
+                                                            >
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 text-center">
+                                                                        <em class="text-center lead"
+                                                                            >Possible values: 1.000 - 2.500</em
+                                                                        >
+                                                                        <hr class="sys-mg-t-15 sys-mg-b-15" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-8 form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="slider1"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Height</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <div
+                                                                                    id="slider2"
+                                                                                    class="slider shor slider-material-orange"
+                                                                                ></div>
+                                                                                <input
+                                                                                    type="number"
+                                                                                    min="1.0"
+                                                                                    max="2.5"
+                                                                                    step="0.1"
+                                                                                    id="input-number2"
+                                                                                    value="1.0"
+                                                                                    class="hidden"
+                                                                                />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="widthComments"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Comments</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <textarea
+                                                                                    class="form-control"
+                                                                                    rows="3"
+                                                                                    id="widthComments"
+                                                                                    maxlength="3000"
+                                                                                ></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <img
+                                                                            src="https://via.placeholder.com/300x200"
+                                                                            alt=""
+                                                                            class="img-responsive"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div
-                                                            id="collapseTwo"
-                                                            class="panel-collapse collapse"
-                                                            role="tabpanel"
-                                                            aria-labelledby="headingTwo"
-                                                        >
-                                                            something
-                                                        </div>
-                                                    </div>
-                                                    <div class="panel sys-box-shadow-off sys-bd-off">
-                                                        <div
-                                                            class="panel-heading sys-bg-very-light-gray"
-                                                            role="tab"
-                                                            id="headingThree"
-                                                        >
-                                                            <h4 class="sys-mg-off">
-                                                                <a
-                                                                    class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
-                                                                    role="button"
-                                                                    data-toggle="collapse"
-                                                                    data-parent="#accordion"
-                                                                    href="#collapseThree"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="collapseThree"
-                                                                >
-                                                                    Lock type
-                                                                    <i
-                                                                        class="material-icons pull-right collapsible-open-icon"
-                                                                        >keyboard_arrow_down</i
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-very-light-gray"
+                                                                role="tab"
+                                                                id="headingThree"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        data-parent="#accordion"
+                                                                        href="#collapse_3"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_3"
                                                                     >
-                                                                    <i
-                                                                        class="material-icons pull-right collapsible-close-icon"
-                                                                        >keyboard_arrow_up</i
-                                                                    >
-                                                                </a>
-                                                            </h4>
+                                                                    <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                Lock type
+                                                                            </div>
+                                                                            <div class="col-xs-7">
+                                                                                <b>Single</b>
+                                                                            </div>
+                                                                            <div class="col-xs-1">
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-open-icon"
+                                                                                    >keyboard_arrow_down</i
+                                                                                >
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-close-icon"
+                                                                                    >keyboard_arrow_up</i
+                                                                                >
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="collapse_3"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="headingThree"
+                                                            >
+                                                                <div class="row">
+                                                                    <div class="col-sm-8 form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="widthComments"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Lock type</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <div class="layout-radio-options radio-btn-group" data-toggle="buttons">
+                                                                                        <label class="btn btn-radio text-left no-sunken active" >
+                                                                                            <input type="radio" name="row_options" id="single" value="single" autocomplete="off" checked>
+                                                                                            <!-- <i class="ti-stats-up"></i>  -->
+                                                                                            Single
+                                                                                        </label>
+                                                                                        <label class="btn btn-radio text-left no-sunken" >
+                                                                                            <input type="radio" name="row_options" id="double" value="double" autocomplete="off">
+                                                                                            <!-- <i class="ti-bar-chart"></i>  -->
+                                                                                            Double
+                                                                                        </label>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="widthComments"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Comments</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <textarea
+                                                                                    class="form-control"
+                                                                                    rows="3"
+                                                                                    id="widthComments"
+                                                                                    maxlength="3000"
+                                                                                ></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <img
+                                                                            src="https://via.placeholder.com/300x200"
+                                                                            alt=""
+                                                                            class="img-responsive"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div
-                                                            id="collapseThree"
-                                                            class="panel-collapse collapse"
-                                                            role="tabpanel"
-                                                            aria-labelledby="headingThree"
-                                                        >
-                                                            something
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-very-light-gray"
+                                                                role="tab"
+                                                                id="headingFour"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        data-parent="#accordion"
+                                                                        href="#collapse_4"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_4"
+                                                                    >
+                                                                        Colour
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-open-icon"
+                                                                            >keyboard_arrow_down</i
+                                                                        >
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-close-icon"
+                                                                            >keyboard_arrow_up</i
+                                                                        >
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="collapse_4"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="headingFour"
+                                                            >
+                                                                something
+                                                            </div>
+                                                        </div>
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-very-light-gray"
+                                                                role="tab"
+                                                                id="headingFive"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        data-parent="#accordion"
+                                                                        href="#collapse_5"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_5"
+                                                                    >
+                                                                        Gap
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-open-icon"
+                                                                            >keyboard_arrow_down</i
+                                                                        >
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-close-icon"
+                                                                            >keyboard_arrow_up</i
+                                                                        >
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="collapse_5"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="headingFive"
+                                                            >
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 text-center">
+                                                                        <em class="text-center lead"
+                                                                            >Possible values: 0.050 - 0.250</em
+                                                                        >
+                                                                        <hr class="sys-mg-t-15 sys-mg-b-15" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-8 form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="slider1"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Height</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <div
+                                                                                    id="slider3"
+                                                                                    class="slider shor slider-material-orange"
+                                                                                ></div>
+                                                                                <input
+                                                                                    type="number"
+                                                                                    
+                                                                                    id="input-number3"
+                                                                                    class="hidden"
+                                                                                />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="widthComments"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Comments</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <textarea
+                                                                                    class="form-control"
+                                                                                    rows="3"
+                                                                                    id="widthComments"
+                                                                                    maxlength="3000"
+                                                                                ></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <img
+                                                                            src="https://via.placeholder.com/300x200"
+                                                                            alt=""
+                                                                            class="img-responsive"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-very-light-gray"
+                                                                role="tab"
+                                                                id="headingSix"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        data-parent="#accordion"
+                                                                        href="#collapse_6"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_6"
+                                                                    >
+                                                                        Components & operations selection
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-open-icon"
+                                                                            >keyboard_arrow_down</i
+                                                                        >
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-close-icon"
+                                                                            >keyboard_arrow_up</i
+                                                                        >
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="collapse_6"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="headingSix"
+                                                            >
+                                                                <div id="grid"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="panel  sys-box-shadow-off">
-                                                    <div class="panel-body sys-bd-very-light-gray">
-                                                        <button class="btn btn-default pull-left" type="button">
-                                                            <i class="material-icons">arrow_back</i> Previous
-                                                        </button>
-                                                        <button class="btn btn-primary pull-right" type="button">
-                                                            Next <i class="material-icons">arrow_forward</i>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <button
+                                                    class="btn btn-default pull-left"
+                                                    type="button"
+                                                    id="movePrevious"
+                                                    data-toggle="collapse"
+                                                    data-parent="#accordion"
+                                                >
+                                                    <i class="material-icons">arrow_back</i> Previous
+                                                </button>
+                                                <button
+                                                    class="btn btn-primary pull-right"
+                                                    type="button"
+                                                    id="moveNext"
+                                                    href="#collapse_2"
+                                                    data-toggle="collapse"
+                                                    data-parent="#accordion"
+                                                >
+                                                    Next <i class="material-icons">arrow_forward</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-1 col-sm-4">
+                                        <div class="panel sys-bd-off" style="margin-top:53px;">
+                                            <div class="panel-body sys-pd-15">
+                                                <h3 class="sys-mg-off-t sys-mg-b-15">GATE-ATO</h3>
+                                                <table class="table table-borderless table-condensed table-striped">
+                                                    <tr>
+                                                        <td>SKU</td>
+                                                        <td>HHVTY_000122291817</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <table class="table table-borderless">
+                                                            <tr>
+                                                                <td>Width</td>
+                                                                <td><b>1.00</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Height</td>
+                                                                <td><b>1.60</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Lock</td>
+                                                                <td><b>Single</b></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <table class="table table-borderless table-condensed table-striped sys-mg-b-5">
+                                                            <tr>
+                                                                <td>Warehouse</td>
+                                                                <td>NC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Product class</td>
+                                                                <td>RND</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Unit of measure</td>
+                                                                <td>EA</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Unit mass</td>
+                                                                <td>25.300</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Unit volume</td>
+                                                                <td>236.000</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-white sys-pd-l-5"
+                                                                role="tab"
+                                                                id="finalComments"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-white sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        href="#finalCommentCollapse"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_4"
+                                                                    >
+                                                                        Add comment
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-open-icon"
+                                                                            >keyboard_arrow_down</i
+                                                                        >
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-close-icon"
+                                                                            >keyboard_arrow_up</i
+                                                                        >
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="finalCommentCollapse"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="finalComments"
+                                                            >
+                                                                <textarea class="form-control final-comments"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <hr class="sys-mg-t-10 sys-mg-b-10" />
+                                                        <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <h4 class="sys-mg-b-10 clearfix">Quantity:</h4>
+                                                            </div>
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group sys-mg-off-b">
+                                                                    <input type="number" class="pull-right form-control text-right" value="1" style="width: 50px;"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                            <span class="pull-left">Net value:</span
+                                                            ><span class="pull-right">$326.80</span>
+                                                        </h4>
+                                                        <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                            <span class="pull-left">Price:</span
+                                                            ><span class="pull-right">$326.80</span>
+                                                        </h3>
+                                                        <button class="btn btn-block btn-primary btn-lg sys-txt-lg sys-600" type="button">
+                                                            Create quote
                                                         </button>
                                                     </div>
                                                 </div>
@@ -350,8 +801,8 @@
                 $.material.init();
                 $('[data-tooltip="tooltip"]').tooltip();
 
-                var slider = document.getElementById("slider1");
-                noUiSlider.create(slider, {
+                var slider1 = document.getElementById("slider1");
+                noUiSlider.create(slider1, {
                     start: 1,
                     connect: [true, false],
                     step: 0.1,
@@ -361,17 +812,174 @@
                         max: 1.5,
                     },
                 });
-                var inputNumber = document.getElementById("input-number1");
-                slider.noUiSlider.on("update", function(values, handle) {
+                var inputNumber1 = document.getElementById("input-number1");
+                slider1.noUiSlider.on("update", function(values, handle) {
                     var value = values[handle];
 
-                    inputNumber.value = value;
+                    inputNumber1.value = value;
                 });
 
-                inputNumber.addEventListener("change", function() {
-                    slider.noUiSlider.set([null, this.value]);
+                inputNumber1.addEventListener("change", function() {
+                    slider1.noUiSlider.set([null, this.value]);
+                });
+
+                var slider2 = document.getElementById("slider2");
+                noUiSlider.create(slider2, {
+                    start: 1.5,
+                    connect: [true, false],
+                    step: 0.1,
+                    tooltips: [true],
+                    range: {
+                        min: 1.0,
+                        max: 2.5,
+                    },
+                });
+                var inputNumber2 = document.getElementById("input-number1");
+                slider2.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    inputNumber2.value = value;
+                });
+
+                inputNumber2.addEventListener("change", function() {
+                    slider2.noUiSlider.set([null, this.value]);
+                });
+
+                var slider3 = document.getElementById("slider3");
+                noUiSlider.create(slider3, {
+                    start: 0.100,
+                    connect: [true, false],
+                    step: 0.005,
+                    tooltips: [true],
+                    range: {
+                        min: 0.050,
+                        max: 0.250,
+                    },
+                });
+                var inputNumber3 = document.getElementById("input-number1");
+                slider3.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    inputNumber3.value = value;
+                });
+
+                inputNumber3.addEventListener("change", function() {
+                    slider3.noUiSlider.set([null, this.value]);
+                });
+
+                let activeAccordion = 0;
+                $(".panel-collapse:not(#finalCommentCollapse)").on("show.bs.collapse", function() {
+                    // do something…
+                    console.log(this);
+                    console.log(
+                        $(this)
+                            .attr("id")
+                            .split("_")[1]
+                    );
+                    activeAccordion = parseInt(
+                        $(this)
+                            .attr("id")
+                            .split("_")[1]
+                    );
+                    $("#moveNext").attr("href", `#collapse_${activeAccordion + 1}`);
+                    $("#movePrevious").attr("href", `#collapse_${activeAccordion - 1}`);
+                });
+
+                $("#finalCommentCollapse").on("shown.bs.collapse", function() {
+                    $(".final-comments").focus();
+                });
+                
+
+                var element = $("#grid").kendoGrid({
+                    dataSource: {
+                        data: [{
+                                Line : '001',
+                                OptionDescription : "Operations",
+                                Type : 'Operation'
+                            }, {
+                                Line : '005',
+                                OptionDescription : "Operations",
+                                Type : 'Operation'
+                            }
+                        ],
+                        schema: {
+                            model: {
+                                fields: {
+                                    Line: { type: "string" },
+                                    OptionDescription: { type: "string" },
+                                    Type: { type: "string" },
+                                }
+                            }
+                        },
+                    },
+                    height: 600,
+                    sortable: false,
+                    pageable: false,
+                    detailInit: detailInit,
+                    dataBound: function() {
+                        this.expandRow(this.tbody.find("tr.k-master-row").first());
+                    },
+                    columns: [
+                        {
+                            field: "Line",
+                            title: "Line",
+                            width: "110px"
+                        },
+                        {
+                            field: "OptionDescription",
+                            title: "Option description",
+                            width: "110px"
+                        },
+                        {
+                            field: "Type",
+                            width: "110px"
+                        }
+                    ]
                 });
             });
+
+            function detailInit(e) {
+                $("<div/>").appendTo(e.detailCell).kendoGrid({
+                    dataSource: {
+                        data: [{
+                                OperationLine : '002',
+                                OptionDescription : "Assembly",
+                                TotalQuant : 8,
+                                UOM : 'hrs',
+                                Comment : '',
+                            }, {
+                                OperationLine : '003',
+                                OptionDescription : "Drying",
+                                TotalQuant : null,
+                                UOM : '',
+                                Comment : '',
+                            }
+                        ],
+                        schema: {
+                            model: {
+                                fields: {
+                                    OperationLine: { type: "string" },
+                                    OptionDescription: { type: "string" },
+                                    TotalQuant: { type: "number" },
+                                    UOM: { type: "string" },
+                                    Comment: { type: "string" }
+                                }
+                            }
+                        },
+                    },
+                    scrollable: false,
+                    sortable: false,
+                    pageable: false,
+                    columns: [
+                        { field: "OperationLine" },
+                        { field: "OptionDescription", title:"Option description" },
+                        { field: "TotalQuant", title:"Total quantity/time" },
+                        { field: "UOM" },
+                        { field: "Comment" },
+                        { title: "Change", width: "100px" }
+                    ]
+                });
+            }
         </script>
     </body>
 </html>
