@@ -82,11 +82,39 @@
                 max-height: 700px;
                 overflow: scroll;
             }
+            .btn.btn-radio.active {
+                outline: 0;
+                background-image: none;
+                border: 2px solid #61dfff !important;
+            }
+            .loading-cover {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.94);
+                z-index: 99;
+                display: none;
+                transition: all 0.3s;
+            }
+            .prodConfigOptionsWrapper > .loading-cover {                
+                display: block;
+            }
+            .panel-group .panel {
+                position: relative;
+            }
+            .btn-colour {
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                padding: 0px;
+            }
         </style>
-
+        <script src="js/UX_JS_jquery.min.js"></script>
         <script>
+            $(".prodConfigOptionsWrapper .loading-cover").show();
             window.MSPointerEvent = null;
             window.PointerEvent = null;
+            
         </script>
         <script type="text/javascript">
             WebFontConfig = {
@@ -105,7 +133,7 @@
                 s.parentNode.insertBefore(wf, s);
             })();
         </script>
-        <script src="js/UX_JS_jquery.min.js"></script>
+        
         <script src="js/UX_JS_velocity.min.js"></script>
         <script src="js/kendo.all.min.js"></script>
         <script src="js/UX_JS_immutable.min.js"></script>
@@ -141,7 +169,7 @@
                     <div class="col-sm-12 col-xs-12 column-parent sys-mg-t-15">
                         <div class="panel sys-bd-off sys-box-shadow-off">
                             <div class="panel-body main-column">
-                                <div class=" row widget layout-widget">
+                                <div class=" row widget layout-widget" id="productConfigurator">
                                     <div class="col-md-6 col-md-offset-1 col-sm-8 ">
                                         <!-- Filter -->
                                         <div class="row sys-mg-t-10">
@@ -150,17 +178,18 @@
                                                     Configure product: <span class="text-muted pull-right">GATE-ATO</span>
                                                 </h2>
                                                 <div class="prodConfigOptionsWrapper">
+                                                    <div class="loading-cover"><span class="spinner"></span></div>
                                                     <div
                                                         class="panel-group productConfigAccordion"
                                                         id="accordion"
                                                         role="tablist"
                                                         aria-multiselectable="true"
                                                     >
-                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div class="panel sys-box-shadow-off sys-bd-off" id="width">
                                                             <div
                                                                 class="panel-heading sys-bg-very-light-gray"
                                                                 role="tab"
-                                                                id="headingOne"
+                                                                id="heading_width"
                                                             >
                                                                 <h4 class="sys-mg-off">
                                                                     <a
@@ -168,16 +197,16 @@
                                                                         role="button"
                                                                         data-toggle="collapse"
                                                                         data-parent="#accordion"
-                                                                        href="#collapse_1"
+                                                                        href="#collapse_width"
                                                                         aria-expanded="true"
-                                                                        aria-controls="collapse_1"
+                                                                        aria-controls="collapse_width"
                                                                     >
                                                                         <div class="row">
                                                                             <div class="col-xs-4">
                                                                                 Width
                                                                             </div>
                                                                             <div class="col-xs-7">
-                                                                                <b>1.00</b>
+                                                                                <b data-format="n2" data-bind="text: width.processedValue"></b>
                                                                             </div>
                                                                             <div class="col-xs-1">
                                                                                 <i
@@ -194,10 +223,10 @@
                                                                 </h4>
                                                             </div>
                                                             <div
-                                                                id="collapse_1"
+                                                                id="collapse_width"
                                                                 class="panel-collapse collapse in"
                                                                 role="tabpanel"
-                                                                aria-labelledby="headingOne"
+                                                                aria-labelledby="heading_width"
                                                             >
                                                                 <div class="row">
                                                                     <div class="col-xs-12 text-center">
@@ -238,6 +267,7 @@
                                                                                     id="input-number1"
                                                                                     value="1.0"
                                                                                     class="hidden"
+                                                                                    data-bind="value: width.value"
                                                                                 />
                                                                             </div>
                                                                         </div>
@@ -267,11 +297,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div data-bind="visible: height.isVisible" class="panel sys-box-shadow-off sys-bd-off" id="height">
                                                             <div
                                                                 class="panel-heading sys-bg-very-light-gray"
                                                                 role="tab"
-                                                                id="headingTwo"
+                                                                id="heading_height"
                                                             >
                                                                 <h4 class="sys-mg-off">
                                                                     <a
@@ -279,16 +309,16 @@
                                                                         role="button"
                                                                         data-toggle="collapse"
                                                                         data-parent="#accordion"
-                                                                        href="#collapse_2"
+                                                                        href="#collapse_height"
                                                                         aria-expanded="false"
-                                                                        aria-controls="collapse_2"
+                                                                        aria-controls="collapse_height"
                                                                     >
                                                                     <div class="row">
                                                                             <div class="col-xs-4">
                                                                                 Height
                                                                             </div>
                                                                             <div class="col-xs-7">
-                                                                                <b>1.60</b>
+                                                                                <b data-format="n2" data-bind="text: height.processedValue"></b>
                                                                             </div>
                                                                             <div class="col-xs-1">
                                                                                 <i
@@ -305,10 +335,10 @@
                                                                 </h4>
                                                             </div>
                                                             <div
-                                                                id="collapse_2"
+                                                                id="collapse_height"
                                                                 class="panel-collapse collapse"
                                                                 role="tabpanel"
-                                                                aria-labelledby="headingTwo"
+                                                                aria-labelledby="heading_height"
                                                             >
                                                                 <div class="row">
                                                                     <div class="col-xs-12 text-center">
@@ -339,6 +369,7 @@
                                                                                     id="input-number2"
                                                                                     value="1.0"
                                                                                     class="hidden"
+                                                                                    data-bind="value: height.value"
                                                                                 />
                                                                             </div>
                                                                         </div>
@@ -368,11 +399,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div data-bind="visible: lockType.isVisible" class="panel sys-box-shadow-off sys-bd-off" id="lockType">
                                                             <div
                                                                 class="panel-heading sys-bg-very-light-gray"
                                                                 role="tab"
-                                                                id="headingThree"
+                                                                id="heading_lockType"
                                                             >
                                                                 <h4 class="sys-mg-off">
                                                                     <a
@@ -380,16 +411,16 @@
                                                                         role="button"
                                                                         data-toggle="collapse"
                                                                         data-parent="#accordion"
-                                                                        href="#collapse_3"
+                                                                        href="#collapse_lockType"
                                                                         aria-expanded="false"
-                                                                        aria-controls="collapse_3"
+                                                                        aria-controls="collapse_lockType"
                                                                     >
-                                                                    <div class="row">
+                                                                        <div class="row">
                                                                             <div class="col-xs-4">
                                                                                 Lock type
                                                                             </div>
                                                                             <div class="col-xs-7">
-                                                                                <b>Single</b>
+                                                                                <b  data-bind="text: lockType.processedValue"></b>
                                                                             </div>
                                                                             <div class="col-xs-1">
                                                                                 <i
@@ -406,10 +437,10 @@
                                                                 </h4>
                                                             </div>
                                                             <div
-                                                                id="collapse_3"
+                                                                id="collapse_lockType"
                                                                 class="panel-collapse collapse"
                                                                 role="tabpanel"
-                                                                aria-labelledby="headingThree"
+                                                                aria-labelledby="heading_lockType"
                                                             >
                                                                 <div class="row">
                                                                     <div class="col-sm-8 form-horizontal">
@@ -422,12 +453,21 @@
                                                                             <div class="col-md-9">
                                                                                 <div class="layout-radio-options radio-btn-group" data-toggle="buttons">
                                                                                         <label class="btn btn-radio text-left no-sunken active" >
-                                                                                            <input type="radio" name="row_options" id="single" value="single" autocomplete="off" checked>
+                                                                                            <input 
+                                                                                                type="radio" name="lockTypeOption" id="single" 
+                                                                                                value="Single" autocomplete="off" 
+                                                                                                data-bind="checked: lockType.value"
+                                                                                                checked
+                                                                                            >
                                                                                             <!-- <i class="ti-stats-up"></i>  -->
                                                                                             Single
                                                                                         </label>
                                                                                         <label class="btn btn-radio text-left no-sunken" >
-                                                                                            <input type="radio" name="row_options" id="double" value="double" autocomplete="off">
+                                                                                            <input 
+                                                                                                type="radio" name="lockTypeOption" id="double" 
+                                                                                                value="Double" autocomplete="off"
+                                                                                                data-bind="checked: lockType.value"
+                                                                                            >
                                                                                             <!-- <i class="ti-bar-chart"></i>  -->
                                                                                             Double
                                                                                         </label>
@@ -461,11 +501,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div data-bind="visible: colour.isVisible" class="panel sys-box-shadow-off sys-bd-off" id="colour">
+                                                            <div class="loading-cover"><span class="spinner"></span></div>
                                                             <div
                                                                 class="panel-heading sys-bg-very-light-gray"
                                                                 role="tab"
-                                                                id="headingFour"
+                                                                id="heading_colour"
                                                             >
                                                                 <h4 class="sys-mg-off">
                                                                     <a
@@ -473,36 +514,135 @@
                                                                         role="button"
                                                                         data-toggle="collapse"
                                                                         data-parent="#accordion"
-                                                                        href="#collapse_4"
+                                                                        href="#collapse_colour"
                                                                         aria-expanded="false"
-                                                                        aria-controls="collapse_4"
+                                                                        aria-controls="collapse_colour"
                                                                     >
-                                                                        Colour
-                                                                        <i
-                                                                            class="material-icons pull-right collapsible-open-icon"
-                                                                            >keyboard_arrow_down</i
-                                                                        >
-                                                                        <i
-                                                                            class="material-icons pull-right collapsible-close-icon"
-                                                                            >keyboard_arrow_up</i
-                                                                        >
+                                                                        <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                Colour
+                                                                            </div>
+                                                                            <div class="col-xs-7">
+                                                                                <label data-bind="style: {background-color: colour.hexColour}" class="btn btn-radio btn-colour indicator"></label>
+                                                                            </div>
+                                                                            <div class="col-xs-1">
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-open-icon"
+                                                                                    >keyboard_arrow_down</i
+                                                                                >
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-close-icon"
+                                                                                    >keyboard_arrow_up</i
+                                                                                >
+                                                                            </div>
+                                                                        </div>
                                                                     </a>
                                                                 </h4>
                                                             </div>
                                                             <div
-                                                                id="collapse_4"
+                                                                id="collapse_colour"
                                                                 class="panel-collapse collapse"
                                                                 role="tabpanel"
-                                                                aria-labelledby="headingFour"
+                                                                aria-labelledby="heading_colour"
                                                             >
-                                                                something
+                                                                <div class="row">
+                                                                    <div class="col-sm-8 form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="colour"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Colour</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <div class="radio-btn-group" data-toggle="buttons">
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-primary">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="0" id="widget_title_text_colour_0" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-info">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="1" id="widget_title_text_colour_1" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-success">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="2" id="widget_title_text_colour_2" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-warning">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="3" id="widget_title_text_colour_3" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-danger">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="4" id="widget_title_text_colour_4" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-inverse active">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="8" id="widget_title_text_colour_8" autocomplete="off" required="required" checked="checked"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-gray">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="7" id="widget_title_text_colour_7" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-light-gray">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="6" id="widget_title_text_colour_6" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-very-light-gray">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="5" id="widget_title_text_colour_5" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <!-- <label class="btn btn-radio btn-colour sys-bg-white">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour" value="9" id="widget_title_text_colour_9" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour.value"
+                                                                                        >
+                                                                                    </label> -->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                                <label
+                                                                                    for="widthComments"
+                                                                                    class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                    >Comments</label
+                                                                                >
+                                                                                <div class="col-md-9">
+                                                                                    <textarea
+                                                                                        class="form-control"
+                                                                                        rows="3"
+                                                                                        id="widthComments"
+                                                                                        maxlength="3000"
+                                                                                    ></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div data-bind="visible: colour2.isVisible" class="panel sys-box-shadow-off sys-bd-off" id="colour2">
+                                                            <div class="loading-cover"><span class="spinner"></span></div>
                                                             <div
                                                                 class="panel-heading sys-bg-very-light-gray"
                                                                 role="tab"
-                                                                id="headingFive"
+                                                                id="heading_colour2"
                                                             >
                                                                 <h4 class="sys-mg-off">
                                                                     <a
@@ -510,27 +650,130 @@
                                                                         role="button"
                                                                         data-toggle="collapse"
                                                                         data-parent="#accordion"
-                                                                        href="#collapse_5"
+                                                                        href="#collapse_colour2"
                                                                         aria-expanded="false"
-                                                                        aria-controls="collapse_5"
+                                                                        aria-controls="collapse_colour2"
                                                                     >
-                                                                        Gap
-                                                                        <i
-                                                                            class="material-icons pull-right collapsible-open-icon"
-                                                                            >keyboard_arrow_down</i
-                                                                        >
-                                                                        <i
-                                                                            class="material-icons pull-right collapsible-close-icon"
-                                                                            >keyboard_arrow_up</i
-                                                                        >
+                                                                        <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                Colour
+                                                                            </div>
+                                                                            <div class="col-xs-7">
+                                                                                <label data-bind="style: {background-color: colour2.hexColour}" class="btn btn-radio btn-colour indicator"></label>
+                                                                            </div>
+                                                                            <div class="col-xs-1">
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-open-icon"
+                                                                                    >keyboard_arrow_down</i
+                                                                                >
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-close-icon"
+                                                                                    >keyboard_arrow_up</i
+                                                                                >
+                                                                            </div>
+                                                                        </div>
                                                                     </a>
                                                                 </h4>
                                                             </div>
                                                             <div
-                                                                id="collapse_5"
+                                                                id="collapse_colour2"
                                                                 class="panel-collapse collapse"
                                                                 role="tabpanel"
-                                                                aria-labelledby="headingFive"
+                                                                aria-labelledby="heading_colour2"
+                                                            >
+                                                                <div class="row">
+                                                                    <div class="col-sm-8 form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="colour"
+                                                                                class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                >Colour</label
+                                                                            >
+                                                                            <div class="col-md-9">
+                                                                                <div class="radio-btn-group" data-toggle="buttons">
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-primary">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour2" value="0" id="widget_title_text_colour2_0" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour2.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-info">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour2" value="1" id="widget_title_text_colour2_1" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour2.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    <label class="btn btn-radio btn-colour sys-bg-success">
+                                                                                        <input 
+                                                                                            type="radio" name="widget_title_text_colour2" value="2" id="widget_title_text_colour2_2" autocomplete="off" required="required"
+                                                                                            data-bind="checked: colour2.value"
+                                                                                        >
+                                                                                    </label>
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                                <label
+                                                                                    for="colour2Comments"
+                                                                                    class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
+                                                                                    >Comments</label
+                                                                                >
+                                                                                <div class="col-md-9">
+                                                                                    <textarea
+                                                                                        class="form-control"
+                                                                                        rows="3"
+                                                                                        id="colour2Comments"
+                                                                                        maxlength="3000"
+                                                                                    ></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-bind="visible: gap.isVisible" class="panel sys-box-shadow-off sys-bd-off" id="gap">
+                                                            <div
+                                                                class="panel-heading sys-bg-very-light-gray"
+                                                                role="tab"
+                                                                id="heading_gap"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-very-light-gray sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        data-parent="#accordion"
+                                                                        href="#collapse_gap"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_gap"
+                                                                    >
+                                                                        <div class="row">
+                                                                            <div class="col-xs-4">
+                                                                                Gap
+                                                                            </div>
+                                                                            <div class="col-xs-7">
+                                                                                <b data-format="n2"  data-bind="text: gap.processedValue">Configure option</b>
+                                                                            </div>
+                                                                            <div class="col-xs-1">
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-open-icon"
+                                                                                    >keyboard_arrow_down</i
+                                                                                >
+                                                                                <i
+                                                                                    class="material-icons pull-right collapsible-close-icon"
+                                                                                    >keyboard_arrow_up</i
+                                                                                >
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="collapse_gap"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="heading_gap"
                                                             >
                                                                 <div class="row">
                                                                     <div class="col-xs-12 text-center">
@@ -546,7 +789,7 @@
                                                                             <label
                                                                                 for="slider1"
                                                                                 class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
-                                                                                >Height</label
+                                                                                >Gap</label
                                                                             >
                                                                             <div class="col-md-9">
                                                                                 <div
@@ -558,6 +801,7 @@
                                                                                     
                                                                                     id="input-number3"
                                                                                     class="hidden"
+                                                                                    data-bind="value: gap.value"
                                                                                 />
                                                                             </div>
                                                                         </div>
@@ -588,11 +832,11 @@
                                                             </div>
                                                         </div>
                                                         <hr>
-                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                        <div data-bind="visible: componentsOperations.isVisible" class="panel sys-box-shadow-off sys-bd-off" id="componentsOperations">
                                                             <div
                                                                 class="panel-heading sys-bg-very-light-gray"
                                                                 role="tab"
-                                                                id="headingSix"
+                                                                id="heading_componentsOperations"
                                                             >
                                                                 <h4 class="sys-mg-off">
                                                                     <a
@@ -600,9 +844,9 @@
                                                                         role="button"
                                                                         data-toggle="collapse"
                                                                         data-parent="#accordion"
-                                                                        href="#collapse_6"
+                                                                        href="#collapse_componentsOperations"
                                                                         aria-expanded="false"
-                                                                        aria-controls="collapse_6"
+                                                                        aria-controls="collapse_componentsOperations"
                                                                     >
                                                                         Components & operations selection
                                                                         <i
@@ -617,10 +861,10 @@
                                                                 </h4>
                                                             </div>
                                                             <div
-                                                                id="collapse_6"
+                                                                id="collapse_componentsOperations"
                                                                 class="panel-collapse collapse"
                                                                 role="tabpanel"
-                                                                aria-labelledby="headingSix"
+                                                                aria-labelledby="heading_componentsOperations"
                                                             >
                                                                 <div id="grid"></div>
                                                             </div>
@@ -630,10 +874,9 @@
                                             </div>
                                             <div class="col-xs-12">
                                                 <button
-                                                    class="btn btn-default pull-left"
+                                                    class="btn btn-default pull-left disabled"
                                                     type="button"
                                                     id="movePrevious"
-                                                    data-toggle="collapse"
                                                     data-parent="#accordion"
                                                 >
                                                     <i class="material-icons">arrow_back</i> Previous
@@ -642,8 +885,6 @@
                                                     class="btn btn-primary pull-right"
                                                     type="button"
                                                     id="moveNext"
-                                                    href="#collapse_2"
-                                                    data-toggle="collapse"
                                                     data-parent="#accordion"
                                                 >
                                                     Next <i class="material-icons">arrow_forward</i>
@@ -652,13 +893,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-md-offset-1 col-sm-4">
-                                        <div class="panel sys-bd-off" style="margin-top:53px;">
+                                        <div class="panel sys-bd-off" style="margin-top:53px;" id="finalProductCard">
+                                            <div class="loading-cover"><span class="spinner"></span></div>
                                             <div class="panel-body sys-pd-15">
-                                                <h3 class="sys-mg-off-t sys-mg-b-15">GATE-ATO</h3>
+                                                <h3 class="sys-mg-off-t sys-mg-b-15" data-bind="text: product"></h3>
                                                 <table class="table table-borderless table-condensed table-striped">
                                                     <tr>
                                                         <td>SKU</td>
-                                                        <td>HHVTY_000122291817</td>
+                                                        <td data-bind="text: SKU"></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
@@ -670,46 +912,62 @@
                                                         <table class="table table-borderless table-condensed">
                                                             <tr>
                                                                 <td>Width</td>
-                                                                <td><b>1.00</b></td>
+                                                                <td><b data-bind="text: width.value" data-format="n2" ></b></td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr data-bind="visible: height.isVisible">
                                                                 <td>Height</td>
-                                                                <td><b>1.60</b></td>
+                                                                <td><b data-bind="text: height.value" data-format="n2" >1.60</b></td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr data-bind="visible: lockType.isVisible">
                                                                 <td>Lock</td>
                                                                 <td><b>Single</b></td>
+                                                            </tr>
+                                                            <tr data-bind="visible: colour.isVisible">
+                                                                <td>Colour</td>
+                                                                <td>
+                                                                    <label data-bind="style: {background-color: colour.hexColour}" class="btn btn-radio btn-colour indicator"></label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-bind="visible: colour2.isVisible">
+                                                                    <td>Colour</td>
+                                                                    <td>
+                                                                        <label data-bind="style: {background-color: colour2.hexColour}" class="btn btn-radio btn-colour indicator"></label>
+                                                                    </td>
+                                                                </tr>
+                                                            <tr data-bind="visible: gap.isVisible">
+                                                                <td>Gap</td>
+                                                                <td><b data-bind="text: gap.value" data-format="n2" ></b></td>
                                                             </tr>
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row" data-bind="visible: productDetails.isVisible">
                                                     <div class="col-xs-12">
                                                         <table class="table table-borderless table-condensed table-striped sys-mg-b-5">
                                                             <tr>
                                                                 <td>Warehouse</td>
-                                                                <td>NC</td>
+                                                                <td data-bind="text: productDetails.warehouse"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Product class</td>
-                                                                <td>RND</td>
+                                                                <td data-bind="text: productDetails.class"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Unit of measure</td>
-                                                                <td>EA</td>
+                                                                <td data-bind="text: productDetails.unitMeasure"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Unit mass</td>
-                                                                <td>25.300</td>
+                                                                <td data-bind="text: productDetails.unitMass"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Unit volume</td>
-                                                                <td>236.000</td>
+                                                                <td data-bind="text: productDetails.unitVolume"></td>
                                                             </tr>
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row" data-bind="visible: productDetails.isVisible">
                                                     <div class="col-xs-12">
                                                         <div class="panel sys-box-shadow-off sys-bd-off">
                                                             <div
@@ -758,7 +1016,7 @@
                                                             </div>
                                                             <div class="col-xs-6">
                                                                 <div class="form-group sys-mg-off-b">
-                                                                    <input type="number" class="pull-right form-control text-right" value="1" style="width: 50px;"/>
+                                                                    <input type="number" class="pull-right form-control text-right" value="1" style="width: 50px;" data-bind="value: quantity.value"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -770,7 +1028,7 @@
                                                             <span class="pull-left">Price:</span
                                                             ><span class="pull-right">$326.80</span>
                                                         </h3>
-                                                        <button class="btn btn-block btn-primary btn-lg sys-txt-lg sys-600" type="button">
+                                                        <button id="createQuote" class="disabled btn btn-block btn-primary btn-lg sys-txt-lg sys-600" type="button">
                                                             Create quote
                                                         </button>
                                                     </div>
@@ -797,9 +1055,193 @@
         <script src="js/bootstrap.offcanvas.js"></script>
 
         <script>
+            var defaultValue = function(value) {
+                return value !== null && value !== undefined ? value : 'Configure option'
+            }
+            var viewModel = kendo.observable({
+                product: "GATE-ATO",
+                SKU: "HHVTY_000122291817",
+                currentOption: 'width',
+                width: {
+                    isValid: false,
+                    isVisible: false,
+                    value: 1.0,
+                    processedValue: function() {
+                        return defaultValue(this.get("value"))
+                    },
+                    next: function() {
+                        return 'height';
+                    },
+                    previous: function() {
+                        return null;
+                    },
+                    comment: ""
+                },
+                height: {
+                    isValid: false,
+                    isVisible: false,
+                    value: null,
+                    processedValue: function() {
+                        return defaultValue(this.get("value"))
+                    },
+                    next: function() {
+                        return 'lockType';
+                    },
+                    previous: function() {
+                        return 'width';
+                    },
+                    comment: ""
+                },
+                lockType: {
+                    isValid: false,
+                    isVisible: false,
+                    value: "Single",
+                    processedValue: function() {
+                        return defaultValue(this.get("value"))
+                    },
+                    next: function() {
+                        return this.get("value") === 'Double' ? 'colour' : 'colour2';
+                    },
+                    previous: function() {
+                        return 'height';
+                    },
+                    comment: ""
+                },
+                colour: {
+                    isValid: false,
+                    isVisible: false,
+                    value: null,
+                    processedValue: function() {
+                        return defaultValue(this.get("value"))
+                    },
+                    next: function() {
+                        return 'gap';
+                    },
+                    previous: function() {
+                        return 'lockType';
+                    },
+                    hexColour: function() {
+                        var colourVal = this.get("value");
+
+                        if (colourVal === "0") {
+                            return "#0078d7";
+                        } else if (colourVal === "1") {
+                            return "#1abc9c";
+                        } else if (colourVal === "2") {
+                            return "#27ae60";
+                        } else if (colourVal === "3") {
+                            return "#e67e22";
+                        } else if (colourVal === "4") {
+                            return "#e74c3c";
+                        } else if (colourVal === "5") {
+                            return "#2c3e50";
+                        } else if (colourVal === "6") {
+                            return "#95a5a6";
+                        } else if (colourVal === "7") {
+                            return "#bdc3c7";
+                        } else if (colourVal === "8") {
+                            return "#ecf0f1";
+                        } else if (colourVal === "9") {
+                            return "#ffffff";
+                        }
+                    },
+                    rules: [
+                        {
+                            option: 'lockType',
+                            comparison: '=',
+                            value: 'Double'
+                        }
+                    ],
+                    comment: ""
+                },
+                colour2: {
+                    isValid: false,
+                    isVisible: false,
+                    value: null,
+                    processedValue: function() {
+                        return defaultValue(this.get("value"))
+                    },
+                    next: function() {
+                        return 'gap';
+                    },
+                    previous: function() {
+                        return 'lockType';
+                    },
+                    hexColour: function() {
+                        var colourVal = this.get("value");
+
+                        if (colourVal === "0") {
+                            return "#0078d7";
+                        } else if (colourVal === "1") {
+                            return "#1abc9c";
+                        } else if (colourVal === "2") {
+                            return "#27ae60";
+                        } else if (colourVal === "3") {
+                            return "#e67e22";
+                        } else if (colourVal === "4") {
+                            return "#e74c3c";
+                        } else if (colourVal === "5") {
+                            return "#2c3e50";
+                        } else if (colourVal === "6") {
+                            return "#95a5a6";
+                        } else if (colourVal === "7") {
+                            return "#bdc3c7";
+                        } else if (colourVal === "8") {
+                            return "#ecf0f1";
+                        } else if (colourVal === "9") {
+                            return "#ffffff";
+                        }
+                    },
+                    rules: [
+                        {
+                            option: 'lockType',
+                            comparison: '=',
+                            value: 'Single'
+                        }
+                    ],
+                    comment: ""
+                },
+                gap: {
+                    isValid: false,
+                    isVisible: false,
+                    value: null,
+                    processedValue: function() {
+                        return defaultValue(this.get("value"))
+                    },
+                    next: function() {
+                        viewModel.set('productDetails.isVisible', true);
+                        $("#createQuote").removeClass("disabled");
+                        return 'componentsOperations';
+                    },
+                    previous: function() {
+                        return 'colour';
+                    },
+                    comment: ""
+                },
+                productDetails: {
+                    isVisible: false,
+                    warehouse: 'NA',
+                    class: "RND",
+                    unitMeasure: "RND",
+                    unitMass: 236.000,
+                    unitVolume: 25.3000,
+                    comment: "",
+                },
+                componentsOperations: {
+                    isVisible: false,
+                    previous: function() {
+                        return 'gap';
+                    },
+                },
+                quantity: 1,
+                price: 236.00
+            });
+
             $(document).ready(function() {
                 $.material.init();
                 $('[data-tooltip="tooltip"]').tooltip();
+               
+                kendo.bind($("#productConfigurator"), viewModel);
 
                 var slider1 = document.getElementById("slider1");
                 noUiSlider.create(slider1, {
@@ -812,16 +1254,17 @@
                         max: 1.5,
                     },
                 });
-                var inputNumber1 = document.getElementById("input-number1");
-                slider1.noUiSlider.on("update", function(values, handle) {
+                var inputNumber1 = $("#input-number1");
+                slider1.noUiSlider.on("update", function(values, handle) {                    
                     var value = values[handle];
 
-                    inputNumber1.value = value;
+                    inputNumber1.val(value).change();
+                    // inputNumber1.change();
                 });
 
-                inputNumber1.addEventListener("change", function() {
-                    slider1.noUiSlider.set([null, this.value]);
-                });
+                // inputNumber1.on("change", function() {
+                //     slider1.noUiSlider.set([null, this.value]);
+                // });
 
                 var slider2 = document.getElementById("slider2");
                 noUiSlider.create(slider2, {
@@ -834,16 +1277,17 @@
                         max: 2.5,
                     },
                 });
-                var inputNumber2 = document.getElementById("input-number1");
+                var inputNumber2 = $("#input-number2");
                 slider2.noUiSlider.on("update", function(values, handle) {
                     var value = values[handle];
 
-                    inputNumber2.value = value;
+                    // inputNumber2.value = value;
+                    inputNumber2.val(value).change();
                 });
 
-                inputNumber2.addEventListener("change", function() {
-                    slider2.noUiSlider.set([null, this.value]);
-                });
+                // inputNumber2.addEventListener("change", function() {
+                //     slider2.noUiSlider.set([null, this.value]);
+                // });
 
                 var slider3 = document.getElementById("slider3");
                 noUiSlider.create(slider3, {
@@ -856,39 +1300,105 @@
                         max: 0.250,
                     },
                 });
-                var inputNumber3 = document.getElementById("input-number1");
+                var inputNumber3 = $("#input-number3");
                 slider3.noUiSlider.on("update", function(values, handle) {
                     var value = values[handle];
 
-                    inputNumber3.value = value;
+                    // inputNumber3.value = value;
+                    inputNumber3.val(value).change();
                 });
 
-                inputNumber3.addEventListener("change", function() {
-                    slider3.noUiSlider.set([null, this.value]);
-                });
+                // inputNumber3.addEventListener("change", function() {
+                //     slider3.noUiSlider.set([null, this.value]);
+                // });
 
-                let activeAccordion = 0;
+                // let activeAccordion = 0;
+                // $(".panel-collapse:not(#finalCommentCollapse)").on("hide.bs.collapse", function() {
+                //     // do something…
+                //     const currentOption = $(this).attr("id").split("_")[1];
+                //     console.log(currentOption);
+                    
+                //     const nextOption = viewModel[currentOption].next();
+                //     console.log(nextOption);
+                //     const nextNextOption = viewModel[nextOption].next();
+                //     viewModel.set(`${nextOption}.isVisible`, true);
+                //     // activeAccordion = parseInt(
+                //     //     $(this)
+                //     //         .attr("id")
+                //     //         .split("_")[1]
+                //     // );
+                //     $("#moveNext").attr("href", `#collapse_${nextNextOption}`);
+                //     $("#movePrevious").attr("href", `#collapse_${activeAccordion - 1}`);
+                // });
+
                 $(".panel-collapse:not(#finalCommentCollapse)").on("show.bs.collapse", function() {
-                    // do something…
-                    console.log(this);
-                    console.log(
-                        $(this)
-                            .attr("id")
-                            .split("_")[1]
-                    );
-                    activeAccordion = parseInt(
-                        $(this)
-                            .attr("id")
-                            .split("_")[1]
-                    );
-                    $("#moveNext").attr("href", `#collapse_${activeAccordion + 1}`);
-                    $("#movePrevious").attr("href", `#collapse_${activeAccordion - 1}`);
+                    //console.log(this);
+                    
+                    $(".panel-collapse.in:not(#finalCommentCollapse)").collapse('hide');
                 });
 
                 $("#finalCommentCollapse").on("shown.bs.collapse", function() {
                     $(".final-comments").focus();
                 });
                 
+                $("#movePrevious").click(function() {
+                    const currentOpenSection = $(".productConfigAccordion .collapse.in");
+                    const currentOption = currentOpenSection.attr("id").split("_")[1];
+                    const nextOption = viewModel[currentOption].next();
+                    const previousOption = viewModel[currentOption].previous();
+                    viewModel.set(`${currentOption}.isValid`, true);
+                    // viewModel.set(`${nextOption}.isVisible`, true);
+
+                    currentOpenSection.collapse('hide');
+                    $(`#collapse_${previousOption}`).collapse('show');
+                    $(this).toggleClass('disabled', previousOption === 'width');
+                    $("#moveNext").toggleClass('disabled', nextOption === 'componentsOperations');
+                });
+
+                $("#moveNext").click(function() {
+                    $("#finalProductCard .loading-cover").show();
+                    const currentOpenSection = $(".productConfigAccordion .collapse.in");
+                    const currentOption = currentOpenSection.attr("id").split("_")[1];
+                    const nextOption = viewModel[currentOption].next();
+                    const previousOption = viewModel[currentOption].previous();
+                    viewModel.set(`${currentOption}.isValid`, true);
+                    viewModel.set(`${nextOption}.isVisible`, true);
+
+                    currentOpenSection.collapse('hide');
+                    
+                    $(`#collapse_${nextOption}`).collapse('show');
+
+                    console.log(previousOption);
+                    
+                    $("#movePrevious").toggleClass('disabled', previousOption === 'width');
+                    $(this).toggleClass('disabled', nextOption === 'componentsOperations');
+
+                    setTimeout(() => {
+                        $("#finalProductCard .loading-cover").hide();
+                    }, 600);
+                    
+                });
+
+                $("[name='lockTypeOption']").change(function(e) {
+                    $("#colour .loading-cover, #colour2 .loading-cover").show();
+                    const value = $(this).val();
+                    if ( value === 'Single' ) {
+                        if (viewModel.colour.isVisible) {
+                            viewModel.set('colour2.isVisible', true);
+                            viewModel.set('colour.isVisible', false);
+                            $("#collapse_colour").collapse('hide');
+                        }
+                    } else if ( value === 'Double' ) {
+                        if (viewModel.colour2.isVisible) {
+                            viewModel.set('colour2.isVisible', false);
+                            viewModel.set('colour.isVisible', true);
+                            $("#collapse_colour2").collapse('hide');
+                        }
+                    }
+                    setTimeout(() => {
+                        $("#colour .loading-cover, #colour2 .loading-cover").hide();
+                    }, 400);
+                });
 
                 var element = $("#grid").kendoGrid({
                     dataSource: {
@@ -936,6 +1446,11 @@
                         }
                     ]
                 });
+
+                
+                setTimeout(() => {
+                    $(".prodConfigOptionsWrapper .loading-cover").hide();
+                }, 800);
             });
 
             function detailInit(e) {
