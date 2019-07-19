@@ -104,8 +104,11 @@
             border-bottom: 1px solid #EBEBEB;
             border-radius: 0 0 4px 4px;
          }
-         .popover.textarea-popover.bottom > .arrow:after, popover.textarea-popover.bottom > .arrow {
+         .popover.textarea-popover.bottom > .arrow:after, .popover.textarea-popover.bottom > .arrow {
             border-bottom-color: #f7f7f7;
+         }
+         td span.comment {
+            display: none;
          }
 		</style>
   	</head>
@@ -179,6 +182,7 @@
                <td role="gridcell">39</td>
                <td role="gridcell">
                   <span class="gridlist-cell-comment" tabindex="0" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="focus"></span>
+                  <span class="truncatedComment"></span>
                   <span class="comment"></span>
                </td>
                <td role="gridcell">false</td>
@@ -190,7 +194,8 @@
                <td role="gridcell">
                   <span class="gridlist-cell-note" tabindex="0" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-trigger="focus"></span>
                   <span class="gridlist-cell-comment" tabindex="0" data-container="body" data-toggle="popover" data-placement="bottom"></span>
-	               <span class="comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
+                  <span class="truncatedComment"></span>
+                  <span class="comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
 	           </td>
                <td role="gridcell">17</td>
                <td role="gridcell">25</td>
@@ -260,6 +265,16 @@
         		
 	    <script src="js/UX_JS_bootstrap.js"></script>
 		<script>
+         $(document).ready(function() {
+            $('.comment').each(function(idx, elem) {
+               $(this).siblings('.truncatedComment').text(truncateWithEllipses($(this).text().trim()));
+            });            
+         });
+
+         function truncateWithEllipses(text) {
+            return text.substr(0, 55) + (text.length > 56 ? '...' : ''); 
+         }
+
          $('.gridlist-cell-note').popover();
          
          $(".gridlist-cell-comment").popover({
@@ -275,22 +290,23 @@
                      '<button type="button" class="btn btn-primary btn-sm popover-submit pull-right">'+
                      '<i class="material-icons">check</i></button></div></div>' 
          })
-         .on('shown.bs.popover', function() {
+         .on('shown.bs.popover', function(e) {
             //hide any visible comment-popover
             $(".gridlist-cell-comment").not(this).popover('hide');
             var $this = $(this);
-            // $('.textarea-popover').css('top', (parseInt($('.textarea-popover').css('top'), 10) + 10) + 'px');
-            
-            
+            var $popover = $(e.target).data('bs.popover').$tip;
+            var $comment = $this.parent().find(".comment");
+            var $popoverTextarea = $popover.find('.popover-textarea');
             //attach link text
-            $('.popover-textarea').val($this.parent().find(".comment").text().trim()).focus();
+            $popoverTextarea.val($comment.text().trim()).focus();
             //close on cancel
             $('.popover-cancel').click(function() {                              
                $this.popover('hide');
             });
             //update link text on submit
             $('.popover-submit').click(function() {
-               $this.parent().find(".comment").text($('.popover-textarea').val().trim());
+               $comment.text($popoverTextarea.val().trim());
+               $this.parent().find(".truncatedComment").text(truncateWithEllipses($comment.text().trim()));
                $this.popover('hide');
             });
          });
