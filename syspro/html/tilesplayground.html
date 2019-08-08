@@ -126,7 +126,8 @@
 			.big-square-tile .tile-main-value {
 				font-size: 46px;
 			}
-			.big-square-tile .metric-only .tile-main-value {
+			/* .big-square-tile .metric-only .tile-main-value { */
+			.big-square-tile .tile-main-value {
 				font-size: 56px;
 			}
 			.big-square-tile .tile-value-label {
@@ -176,7 +177,7 @@
 				width: 260px;
 				height: 130px;
 			}
-			.wide-tile > .col-xs-12 {
+			.wide-tile > .col-xs-12, .big-tile > .col-xs-12 {
 				justify-content: space-between;
 			}
 			.tile-top-half {
@@ -196,15 +197,15 @@
 			.tile-sparkline:not(.line-sparkline):not(.bullet-sparkline) {
 				bottom: -11px;
 			}
-			.wide-tile .tile-icon {
+			.wide-tile .tile-icon, .big-tile .tile-icon {
     			font-size: 40px;
 				flex-shrink: 1;
 			}
-			.wide-tile .tile-sparkline {
+			.wide-tile .tile-sparkline, .big-tile .tile-sparkline {
 				flex-basis: 50%;
 				flex-grow: 2;
 			}
-			.wide-tile.chart-only .tile-sparkline {
+			.wide-tile.chart-only .tile-sparkline, .big-tile.chart-only .tile-sparkline {
 				flex-basis: 100%;
 			}
 			.tile-icon {
@@ -226,7 +227,8 @@
 			.sys-bg-danger i.sys-fg-danger {
 				color: #ffffff !important;
 			}
-			.metric-only .tile-value-label.pull-right {
+			/* .metric-only .tile-value-label.pull-right { */
+			.tile-value-label.pull-right {
 				clear: both;
 				/* padding-top: 4px; */
 			}
@@ -267,13 +269,14 @@
 			.small-tile .tile-icon {
 				align-self: inherit;
 			}
-			.big-square-tile .valueWrapper.metric-only {
+			/* .big-square-tile .valueWrapper.metric-only { */
+			.big-square-tile .valueWrapper {				
 				width: 100%;
 			}
-			.wide-tile .valueWrapper {
+			.wide-tile .valueWrapper, .big-tile .valueWrapper {
 				overflow: hidden;
 			}
-			.wide-tile .tile-title {
+			.wide-tile .tile-title, .big-tile .tile-title {
 				line-height: 1.15;
 			}
 			.flex-row {
@@ -283,12 +286,16 @@
 				align-items: center;
 				justify-content: space-between;
 			}
-			.wide-tile .tile-main-value {
+			.wide-tile .tile-main-value, .big-tile .tile-main-value {
 				width: 100%;
 			}
-			.wide-tile .tile-value-label {
+			.wide-tile .tile-value-label, .big-tile .tile-value-label {
 				font-size: 12px;
 				width: 100%;
+			}
+			.big-square-tile .tile-sparkline {
+				max-width: 260px;
+				max-height: 130px;
 			}
             </style>
     </head>
@@ -357,9 +364,9 @@
 																				<div class="small-tile row">
 																					<div class="col-xs-12">
 																						<div class="tile-top-half">
-																							<span class="text-left tile-title " >Customers on hold by customer class</span>
+																							<span class="text-left tile-title " >Customers on hold by customer class and so on</span>
 
-																							<div class="tile-subtitle">Customer class: Something</div>
+																							<div class="tile-subtitle">Customer class: Something else</div>
 
 
 																						</div>
@@ -501,7 +508,7 @@
 																	<div>
 																		<div class="tile-inner sys-fg-white sys-bg-magenta">
 																			<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
-																<div class="wide-tile row chart-only" >
+																<div class="big-tile row chart-only" >
 																	<div class="col-xs-12">
 																		<div class="tile-top-half">
 																			<span class="text-left tile-title">Customers on hold by customer class</span>
@@ -884,7 +891,7 @@
 																	<div>
 																		<div class="tile-inner sys-fg-white sys-bg-info">
 																			<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
-																				<div class="wide-tile row">
+																				<div class="big-tile row">
 																					<div class="col-xs-12">
 																						<div class="tile-top-half">
 																							<span class="text-left tile-title">Average days to pay</span>
@@ -1432,7 +1439,7 @@
 																<div>
 																	<div class="tile-inner sys-fg-white sys-bg-info">
 																		<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
-																			<div class="wide-tile row">
+																			<div class="big-tile row">
 																				<div class="col-xs-12">
 																					<div class="tile-top-half">
 																						<span class="text-left tile-title">Average days to pay</span>
@@ -1699,13 +1706,19 @@
 																				<span class="tile-subtitle">There could also be a subtitle</span>
 																			</div>
 																			<div class="tile-bottom-half flex-column chart-tile">
-																				<div class="valueWrapper">
+																					<div class="valueIconWrapper">
+																							<i class="material-icons tile-icon text-danger sys-fg-danger">trending_down</i>
+																							<span class="tile-main-value text-right">41</span>
+																						</div>
+																						<span class="tile-value-label text-right">possibly long label</span>
+																				<!-- <div class="valueWrapper">
 	
 																					<span class="tile-main-value text-right" >0</span>
 																					<span class="tile-value-label text-right">possibly long label</span>
-																				</div>
-																				<div id="avgDaysToPay6" style="height:100%; width: 100%" class="tile-sparkline line-sparkline"></div>
-	
+																				</div> -->
+																				<div class="tile-sparkline">
+																				<div id="avgDaysToPay6" style="height:100%; width: 100%" class=" line-sparkline"></div>
+																			</div>
 																			</div>
 																		</div>
 																	</div>
@@ -1776,7 +1789,7 @@
 																				<div>
 																					<div class="tile-inner sys-fg-white sys-bg-danger">
 																						<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
-																								<div class="wide-tile row">
+																								<div class="big-tile row">
 																										<div class="col-xs-12">
 																											<div class="tile-top-half">
 																												<span class="text-left tile-title">Average days to pay and more to the title, lots more in fact</span>
@@ -1808,7 +1821,7 @@
 																					<div>
 																						<div class="tile-inner sys-fg-white sys-bg-info">
 																							<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
-																								<div class="wide-tile row">
+																								<div class="big-tile row">
 																									<div class="col-xs-12">
 																										<div class="tile-top-half">
 																											<span class="text-left tile-title">Average days to pay</span>
@@ -1837,6 +1850,42 @@
 																					</div>
 																				</div>
 																				<!-- end of previous tile -->
+
+																<!-- Big tile structure test -->
+																<div class="col-sm-8 col-xs-12 tile big-square-tile">
+																	
+																		<div class="tile-loading-cover" style="display: none;"><div class="loader"><div class="square"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square "></div><div class="square last"></div></div></div>
+																		<div>
+																			<div class="tile-inner sys-fg-white sys-bg-info">
+																				<div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+																					<div class="big-tile row">
+																						<div class="col-xs-12">
+																							<div class="tile-top-half">
+																								<span class="text-left tile-title">Average days to pay</span>
+																								<span class="tile-subtitle">Company: EDU1</span>
+																							</div>
+																							<div class="tile-bottom-half flex-center">
+																									<div class="flex-row">
+																									<i class="material-icons text-left tile-icon text-white sys-fg-white main-tile-icon">location_city</i>
+																									<div class="valueWrapper text-right">
+																										
+																										<span class="tile-main-value">410373739,0277,629892231919182</span>
+																										<span class="text-right tile-value-label">Days</span>
+																									</div>
+																								</div>
+																								<div class="tile-sparkline">
+																									<div id="avgDaysToPay5" style="height:130px; width: 100%" class=" line-sparkline"></div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+	
+																				</div>
+	
+																			</div>
+																		</div>
+																	</div>
+																	<!-- end of previous tile -->
 														</div>
 													</div>
 												</div>
@@ -2041,7 +2090,7 @@
 			  });
 
 			  // sparkline chart example
-				$("#avgDaysToPay2, #avgDaysToPay5").kendoSparkline({
+				$("#avgDaysToPay2, #avgDaysToPay5, #avgDaysToPay8").kendoSparkline({
                   type: "line",
                   autoBind: false,
                   series: [{
@@ -2250,41 +2299,24 @@
 				  }
             });
 
-			var fitties = fitty('.small-tile .metric-only .tile-main-value', {
+			fitty('.small-tile .metric-only .tile-main-value', {
 				minSize: 16,
 				maxSize: 35,
 				multiLine: true
 			});
-			// fitty('.big-square-tile .metric-only .tile-main-value', {
-			// 	minSize: 16,
-			// 	maxSize: 65,
-			// 	multiLine: true
-			// });
-			fitty('.wide-tile .tile-main-value', {
+
+			fitty('.wide-tile .tile-main-value, .big-tile .tile-main-value', {
 				minSize: 22,
 				maxSize: 56,
 				multiLine: true
 			});
-			// var myFittyElement = fitties[0].element;
 
-			// fitties.forEach((elem) => {
-			// 	elem.element.addEventListener('fit', function(e) {
-			// 		if ( e.detail.newValue > 30 ) {
-			// 			$(elem.element).css('line-height', '0.75em');
-			// 		} else {
-			// 			$(elem.element).css('line-height', '1em');
-			// 		}
-			// 		console.log(e.detail);
-			// 	});
-			// })
-			// myFittyElement.addEventListener('fit', function(e) {
-			// 	console.log(e.detail);
-			// });
-			// fitty('.program-tile-icon-title .tile-title', {
-			// 	minSize: 16,
-			// 	maxSize: 45,
+			// fitty('.big-tile .tile-main-value', {
+			// 	minSize: 22,
+			// 	maxSize: 56,
 			// 	multiLine: true
 			// });
+
 
 			// Javascript
 			$(".overflowing").hoverForMore({

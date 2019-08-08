@@ -96,7 +96,7 @@
                 display: none;
                 transition: all 0.3s;
             }
-            .prodConfigOptionsWrapper > .loading-cover {                
+            .prodConfigOptionsWrapper > .loading-cover {
                 display: block;
             }
             .panel-group .panel {
@@ -114,7 +114,6 @@
             $(".prodConfigOptionsWrapper .loading-cover").show();
             window.MSPointerEvent = null;
             window.PointerEvent = null;
-            
         </script>
         <script type="text/javascript">
             WebFontConfig = {
@@ -133,7 +132,7 @@
                 s.parentNode.insertBefore(wf, s);
             })();
         </script>
-        
+
         <script src="js/UX_JS_velocity.min.js"></script>
         <script src="js/kendo.all.min.js"></script>
         <script src="js/UX_JS_immutable.min.js"></script>
@@ -171,22 +170,38 @@
                             <div class="panel-body main-column">
                                 <div class="row widget layout-widget" id="productConfigurator">
                                     <div class="col-md-6 col-md-offset-1 col-sm-8 ">
-                                        <!-- Filter -->
                                         <div class="row sys-mg-t-10">
-                                            <div class="col-xs-12">                                                
+                                            <div class="col-xs-8">
+                                                <div class="form-group sys-mg-t-5">
+                                                    <input
+                                                        type="text"
+                                                        class="form-control input-lg"
+                                                        placeholder="Search products"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button class="btn btn-primary btn-lg btn-block">
+                                                    Search <i class="material-icons">search</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row sys-mg-t-10">
+                                            <div class="col-xs-12">
                                                 <h2 class="sys-mg-off-t">
                                                     Configure product: <span class="text-muted pull-right">GATE-ATO</span>
                                                 </h2>
                                                 <div class="prodConfigOptionsWrapper">
                                                     <div class="loading-cover"><span class="spinner"></span></div>
-                                                    <div 
-                                                        data-template="singleOptionTemplate" 
+                                                    <div
+                                                        data-template="singleOptionTemplate"
                                                         data-bind="source: CFGTSC"
                                                         class="panel-group productConfigAccordion"
                                                         id="accordion"
                                                         role="tablist"
                                                         aria-multiselectable="true"
                                                     ></div>
+                                                    <!-- 
                                                     <div
                                                         class="panel-group productConfigAccordion"
                                                         id="accordion"
@@ -247,16 +262,7 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-sm-8 form-horizontal">
-                                                                        <!-- <div class="form-group">
-                                                                        <label
-                                                                            for="widthPossValues"
-                                                                            class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
-                                                                            >Possible values</label
-                                                                        >
-                                                                        <div class="col-md-9">
-                                                                            <span name="widthPossValues">0.500 - 1.500</span>
-                                                                        </div>
-                                                                    </div> -->
+
                                                                         <div class="form-group">
                                                                             <label
                                                                                 for="slider1"
@@ -468,7 +474,7 @@
                                                                                                 data-bind="checked: lockType.value"
                                                                                                 checked
                                                                                             >
-                                                                                            <!-- <i class="ti-stats-up"></i>  -->
+
                                                                                             Single
                                                                                         </label>
                                                                                         <label class="btn btn-radio text-left no-sunken" >
@@ -477,7 +483,7 @@
                                                                                                 value="Double" autocomplete="off"
                                                                                                 data-bind="checked: lockType.value"
                                                                                             >
-                                                                                            <!-- <i class="ti-bar-chart"></i>  -->
+ 
                                                                                             Double
                                                                                         </label>
                                                                                         
@@ -618,12 +624,7 @@
                                                                                             data-bind="checked: colour.value"
                                                                                         >
                                                                                     </label>
-                                                                                    <!-- <label class="btn btn-radio btn-colour sys-bg-white">
-                                                                                        <input 
-                                                                                            type="radio" name="widget_title_text_colour" value="9" id="widget_title_text_colour_9" autocomplete="off" required="required"
-                                                                                            data-bind="checked: colour.value"
-                                                                                        >
-                                                                                    </label> -->
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -879,6 +880,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                 -->
                                                 </div>
                                             </div>
                                             <div class="col-xs-12">
@@ -916,16 +918,28 @@
                                                         <td></td>
                                                     </tr>
                                                 </table>
+
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <table class="table table-borderless table-condensed">
+                                                        <table 
+                                                            class="table table-borderless table-condensed"
+                                                            data-template="finalProductTableTemplate"
+                                                            data-bind="source: CFGTSC"
+                                                        >
+                                                        <!-- <table class="table table-borderless table-condensed">
                                                             <tr>
                                                                 <td>Width</td>
-                                                                <td><b data-bind="text: width.value" data-format="n2" ></b></td>
+                                                                <td>
+                                                                    <b data-bind="text: width.value" data-format="n2"></b>
+                                                                </td>
                                                             </tr>
                                                             <tr data-bind="visible: height.isVisible">
                                                                 <td>Height</td>
-                                                                <td><b data-bind="text: height.value" data-format="n2" >1.60</b></td>
+                                                                <td>
+                                                                    <b data-bind="text: height.value" data-format="n2"
+                                                                        >1.60</b
+                                                                    >
+                                                                </td>
                                                             </tr>
                                                             <tr data-bind="visible: lockType.isVisible">
                                                                 <td>Lock</td>
@@ -934,25 +948,33 @@
                                                             <tr data-bind="visible: colour.isVisible">
                                                                 <td>Colour</td>
                                                                 <td>
-                                                                    <label data-bind="style: {background-color: colour.hexColour}" class="btn btn-radio btn-colour indicator"></label>
+                                                                    <label
+                                                                        data-bind="style: {background-color: colour.hexColour}"
+                                                                        class="btn btn-radio btn-colour indicator"
+                                                                    ></label>
                                                                 </td>
                                                             </tr>
                                                             <tr data-bind="visible: colour2.isVisible">
-                                                                    <td>Colour</td>
-                                                                    <td>
-                                                                        <label data-bind="style: {background-color: colour2.hexColour}" class="btn btn-radio btn-colour indicator"></label>
-                                                                    </td>
-                                                                </tr>
+                                                                <td>Colour</td>
+                                                                <td>
+                                                                    <label
+                                                                        data-bind="style: {background-color: colour2.hexColour}"
+                                                                        class="btn btn-radio btn-colour indicator"
+                                                                    ></label>
+                                                                </td>
+                                                            </tr>
                                                             <tr data-bind="visible: gap.isVisible">
                                                                 <td>Gap</td>
-                                                                <td><b data-bind="text: gap.value" data-format="n2" ></b></td>
+                                                                <td><b data-bind="text: gap.value" data-format="n2"></b></td>
                                                             </tr>
-                                                        </table>
+                                                        </table> -->
                                                     </div>
                                                 </div>
                                                 <div class="row" data-bind="visible: productDetails.isVisible">
                                                     <div class="col-xs-12">
-                                                        <table class="table table-borderless table-condensed table-striped sys-mg-b-5">
+                                                        <table
+                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5"
+                                                        >
                                                             <tr>
                                                                 <td>Warehouse</td>
                                                                 <td data-bind="text: productDetails.warehouse"></td>
@@ -1025,7 +1047,13 @@
                                                             </div>
                                                             <div class="col-xs-6">
                                                                 <div class="form-group sys-mg-off-b">
-                                                                    <input type="number" class="pull-right form-control text-right" value="1" style="width: 50px;" data-bind="value: quantity.value"/>
+                                                                    <input
+                                                                        type="number"
+                                                                        class="pull-right form-control text-right"
+                                                                        value="1"
+                                                                        style="width: 50px;"
+                                                                        data-bind="value: quantity.value"
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1037,7 +1065,11 @@
                                                             <span class="pull-left">Price:</span
                                                             ><span class="pull-right">$326.80</span>
                                                         </h3>
-                                                        <button id="createQuote" class="disabled btn btn-block btn-primary btn-lg sys-txt-lg sys-600" type="button">
+                                                        <button
+                                                            id="createQuote"
+                                                            class="disabled btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
+                                                            type="button"
+                                                        >
                                                             Create quote
                                                         </button>
                                                     </div>
@@ -1055,13 +1087,13 @@
         <script id="numberInput" type="text/x-kendo-template">
             <div class="form-group">
                 <label
-                    for="slider1"
+                    for="slider_#: name #"
                     class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
                     >#: name #</label
                 >
                 <div class="col-md-9">
                     <div
-                        id="slider2"
+                        id="slider_#: name #"
                         class="slider shor slider-material-orange"
                     ></div>
                     <input
@@ -1069,38 +1101,34 @@
                         min="#: criteria[0].Minimum #"
                         max="#: criteria[0].Maximum #"
                         step="#: criteria[0].Increment || 0.1 #"
-                        id="input-number2"
+                        id="slider_input_#: name #"
                         value="1.0"
                         class="hidden"
-                        data-bind="value: height.value"
+                        data-bind="value: state['#: line #'].value"
                     />
                 </div>
             </div>
+            <script>
+                var slider_#: name # = document.getElementById("slider_#: name #");
+                noUiSlider.create(slider_#: name #, {
+                    start: 1,
+                    connect: [true, false],
+                    step: 0.1,
+                    tooltips: [true],
+                    range: {
+                        min: 0.5,
+                        max: 1.5,
+                    },
+                });
+                var slider_input_#: name # = $("\#slider_input_#: name #");
+                slider_#: name #.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+                    slider_input_#: name #.val(value);
+                    slider_input_#: name #.change();
+                });
+            <\/script>
         </script>
         <script id="radioInput" type="text/x-kendo-template">
-            <div class="form-group">
-                <label
-                    for="slider1"
-                    class="col-md-3 control-label sys-mg-t-2 sys-pd-t-5"
-                    >#: name #</label
-                >
-                <div class="col-md-9">
-                    <div
-                        id="slider2"
-                        class="slider shor slider-material-orange"
-                    ></div>
-                    <input
-                        type="number"
-                        min="#: criteria[0].Minimum #"
-                        max="#: criteria[0].Maximum #"
-                        step="#: criteria[0].Increment || 0.1 #"
-                        id="input-number2"
-                        value="1.0"
-                        class="hidden"
-                        data-bind="value: height.value"
-                    />
-                </div>
-            </div>
             <div class="form-group">
                 <label
                     for="#: name #Option"
@@ -1111,16 +1139,16 @@
                     <div class="layout-radio-options radio-btn-group" data-toggle="buttons">
                         # for (var i = 0; i < criteria.length; i++) { #
                             <label class="btn btn-radio text-left no-sunken active" >
-                                <input 
-                                    type="radio" name="#: name #Option" id="#: criteria[i].Name #" 
-                                    value="#: criteria[i].Name #" autocomplete="off" 
-                                    data-bind="checked: lockType.value"
+                                <input
+                                    type="radio" name="#: name #Option" id="#: criteria[i].Name #"
+                                    value="#: criteria[i].Name #" autocomplete="off"
+                                    data-bind="checked: state.#: line #.value"
                                     checked
                                 >
                                 <!-- <i class="ti-stats-up"></i>  -->
                                 #: criteria[i].Description #
                             </label>
-                        # } #                    
+                        # } #
                     </div>
                 </div>
             </div>
@@ -1178,8 +1206,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-8 form-horizontal">                            
-                            #= renderInputTemplate(SelectionCriteria.Criteria, SelectionCriteria.Description) #
+                        <div class="col-sm-8 form-horizontal">
+                            #= renderInputTemplate(SelectionCriteria.Criteria, SelectionCriteria.Description, SelectionCriteria.Line) #
                             <div class="form-group">
                                 <label
                                     for="#: SelectionCriteria.Description #Comments"
@@ -1207,26 +1235,15 @@
                 </div>
             </div>
         </script>
-        <!-- Templates -->
-        <script id="configOptionsTemplate" type="text/x-kendo-template">
-            <span>#: currentConfigurationObject #</span>
-            <h2 class="sys-mg-off-t">
-                Configure product: <span class="text-muted pull-right">GATE-ATO</span>
-            </h2>
-            <div class="prodConfigOptionsWrapper">
-                <div class="loading-cover"><span class="spinner"></span></div>
-                <div
-                    class="panel-group productConfigAccordion"
-                    id="accordion"
-                    role="tablist"
-                    aria-multiselectable="true"
-                >
-                # for (var i = 0; i < CFGTSC.length; i++) { #
-                    SINGLE TEMPLATE HERE
-                # } #
-                </div>
-            </div>
+        <script id="finalProductTableTemplate" type="text/x-kendo-template">
+            <tr data-bind="visible: state['#: SelectionCriteria.Line #'].isVisible">
+                <td>#: SelectionCriteria.Description #</td>
+                <td>
+                    <b data-bind="text: state['#: SelectionCriteria.Line #'].value" data-format="n2" ></b>
+                </td>
+            </tr>
         </script>
+
         <script src="js/UX_JS_bootstrap.js"></script>
         <script src="js/UX_JS_bootstrap-3-typeahead.js"></script>
         <script src="js/bootstrap-tagsinput.min.js"></script>
@@ -1236,29 +1253,30 @@
         <script src="js/bootstrap.offcanvas.js"></script>
 
         <script>
+            var CFGTPC = [
+                {
+                    CallSource: "S",
+                    ProductCode: "GATE-ATO",
+                    Date: "2019-10-07",
+                    Quantity: null,
+                    OverrideComponentWh: null,
 
-            var CFGTPC = [ {
-                CallSource: "S",
-                ProductCode: "GATE-ATO",
-                Date: "2019-10-07",
-                Quantity : null,
-                OverrideComponentWh : null,
-                
-                SalesOrdersAndQuotes: [
-                    {
-                        CustomerPoNumber: "GF 700",
-                        Customer: "0000014"
-                    }
-                ],
-                BillOfMaterialsAndEstimates: [
-                    {
-                        StockCode: null,
-                        Route: null
-                    }
-                ],
-            }];
+                    SalesOrdersAndQuotes: [
+                        {
+                            CustomerPoNumber: "GF 700",
+                            Customer: "0000014",
+                        },
+                    ],
+                    BillOfMaterialsAndEstimates: [
+                        {
+                            StockCode: null,
+                            Route: null,
+                        },
+                    ],
+                },
+            ];
 
-            var CFGTSCx = [ 
+            var CFGTSCx = [
                 {
                     SelectionCriteria: {
                         Line: "001",
@@ -1270,16 +1288,16 @@
                                 CriteriaLine: "001",
                                 Name: "Gate W",
                                 Description: "Gate Width (Not frame Width)",
-                                Minimum: 0.500,
-                                Maximum: 1.500,
-                            }
+                                Minimum: 0.5,
+                                Maximum: 1.5,
+                            },
                         ],
                     },
                     CurrentConfigurationObject: "CFGTSC",
                     Parameters: {
                         Function: "N",
-                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001"
-                    }
+                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001",
+                    },
                 },
                 {
                     SelectionCriteria: {
@@ -1292,17 +1310,17 @@
                                 CriteriaLine: "001",
                                 Name: "Gate H",
                                 Description: "Gate Height (Not frame height)",
-                                Minimum: 1.000,
-                                Maximum: 2.500,
-                                Increment: 0.100,
-                            }
+                                Minimum: 1.0,
+                                Maximum: 2.5,
+                                Increment: 0.1,
+                            },
                         ],
                     },
                     CurrentConfigurationObject: "CFGTSC",
                     Parameters: {
                         Function: "N",
-                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001"
-                    }
+                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001",
+                    },
                 },
                 {
                     SelectionCriteria: {
@@ -1324,14 +1342,14 @@
                                 Description: "Double",
                                 Minimum: null,
                                 Maximum: null,
-                            }
+                            },
                         ],
                     },
                     CurrentConfigurationObject: "CFGTSC",
                     Parameters: {
                         Function: "N",
-                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001"
-                    }
+                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001",
+                    },
                 },
                 {
                     SelectionCriteria: {
@@ -1356,8 +1374,8 @@
                                 InvSelectionCritera: {
                                     SelectionCriteria: "Lock Type",
                                     SelCriLine: "003",
-                                    InvSelCriVal: "Double"
-                                }
+                                    InvSelCriVal: "Double",
+                                },
                             },
                             {
                                 CriteriaLine: "001",
@@ -1368,16 +1386,16 @@
                                 InvSelectionCritera: {
                                     SelectionCriteria: "Lock Type",
                                     SelCriLine: "003",
-                                    InvSelCriVal: "Double"
-                                }
-                            }
+                                    InvSelCriVal: "Double",
+                                },
+                            },
                         ],
                     },
                     CurrentConfigurationObject: "CFGTSC",
                     Parameters: {
                         Function: "N",
-                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001"
-                    }
+                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001",
+                    },
                 },
                 {
                     SelectionCriteria: {
@@ -1390,17 +1408,17 @@
                                 CriteriaLine: "001",
                                 Name: "Gap",
                                 Description: "Gap",
-                                Minimum: 0.050,
-                                Maximum: 0.250,
+                                Minimum: 0.05,
+                                Maximum: 0.25,
                                 Increment: 0.005,
-                            }
+                            },
                         ],
                     },
                     CurrentConfigurationObject: "CFGTSC",
                     Parameters: {
                         Function: "N",
-                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001"
-                    }
+                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001",
+                    },
                 },
             ];
 
@@ -1418,52 +1436,52 @@
                                     Type: "Optional",
                                     WorkCentre: "DRY",
                                     Description: "Drying",
-                                    RunTime: 1.00000,
+                                    RunTime: 1.0,
                                     TimeUom: "hrs",
-                                    TotalTime: 1.00000,
-                                    MinimumPer: 1.000000,
-                                    MaximumPer: 1.000000,
+                                    TotalTime: 1.0,
+                                    MinimumPer: 1.0,
+                                    MaximumPer: 1.0,
                                     WorkCtrRate: 1,
-                                    UnitValue: 0.75000,
-                                    Cost: 0.75000,
+                                    UnitValue: 0.75,
+                                    Cost: 0.75,
                                     ProductClass: "_LAB",
-                                }
-                            ]
-                        }
+                                },
+                            ],
+                        },
                     ],
                     CurrentConfigurationObject: "CFGTOC",
                     Parameters: {
                         Function: "N",
-                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001"
-                    }
-                }
+                        configurationinstance: "T_SYS-d33aaa86-f57d-48b1-894d-f68c0eb573b3-001",
+                    },
+                },
             ];
 
             var CFGTOC = [
                 {
                     StockCode: "GATE?????",
-                    Description: null,    
+                    Description: null,
                     Warehouse: "N",
-                    Quantity: 1.000000,
+                    Quantity: 1.0,
                     QuantityUom: "EA",
                     Date: "2019-10-07",
-                    UnitMass: 54.880000,
-                    UnitVolume: 0.000000,
+                    UnitMass: 54.88,
+                    UnitVolume: 0.0,
                     ProductClass: "_RND",
-                    FinishSalesQuoteParent: {      
-                        Price: 1413.08000,
+                    FinishSalesQuoteParent: {
+                        Price: 1413.08,
                         PriceUom: "EA",
                         Commission: null,
                         LineValue: 1413.08,
                     },
-                    FinishListPriceDetails: {      
-                        PriceCode: "A", 
-                        Price: 1413.08000,
+                    FinishListPriceDetails: {
+                        PriceCode: "A",
+                        Price: 1413.08,
                         PriceBasis: "S",
                         Commission: 0,
                     },
                     CreateBomEstJob: "A",
-                }
+                },
             ];
 
             var CFGTFD = [
@@ -1476,114 +1494,122 @@
                             Release: null,
                             Route: 0,
                             Operation: "00001",
-                        }
+                        },
                     ],
                     BomStructure: [
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGHGATO100"
+                            Component: "GGHGATO100",
                         },
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGLKATO200"
+                            Component: "GGLKATO200",
                         },
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGPTATO100"
+                            Component: "GGPTATO100",
                         },
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGSCATO100"
+                            Component: "GGSCATO100",
                         },
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGSTATO025"
+                            Component: "GGSTATO025",
                         },
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGSTATO100"
+                            Component: "GGSTATO100",
                         },
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGSTATO200"
+                            Component: "GGSTATO200",
                         },
                         {
                             ParentPart: "GATE00008",
                             Version: null,
                             Release: null,
-                            Route: 0,  
+                            Route: 0,
                             SequenceNum: "000010",
-                            Component: "GGSTATO210D"
-                        }
+                            Component: "GGSTATO210D",
+                        },
                     ],
                     JobDetails: [
                         {
-                            Job: "00000657"
-                        }
+                            Job: "00000657",
+                        },
                     ],
                     SalesOrders: [
                         {
-                            SalesOrder: "000905"
-                        }
+                            SalesOrder: "000905",
+                        },
                     ],
-                    Configuration: "Complete"
-                }
+                    Configuration: "Complete",
+                },
             ];
-            
+
             var buildViewModel = kendo.observable({
                 currentConfigurationObject: "CFGTPC",
                 currentSelectionCriteriaIndex: 0,
                 currentSelectionCriteriaLine: "001",
                 state: {
-                    "001": 1.0
+                    "001": {
+                        isValid: false,
+                        isVisible: true,
+                        value: null,
+                        processedValue: function() {
+                            return defaultValue(this.get("value"));
+                        },
+                        comment: "",
+                    },
                 },
                 CFGTPC: CFGTPC,
                 CFGTSC: CFGTSCx,
                 CFGTPD: CFGTPD,
                 CFGTOC: CFGTOC,
-                CFGTFD: CFGTFD
-                // CFGTPC: new kendo.data.HierarchicalDataSource({ 
-                //     data: CFGTPC 
+                CFGTFD: CFGTFD,
+                // CFGTPC: new kendo.data.HierarchicalDataSource({
+                //     data: CFGTPC
                 // }),
-                // CFGTSC: new kendo.data.HierarchicalDataSource({ 
+                // CFGTSC: new kendo.data.HierarchicalDataSource({
                 //     data: CFGTSC
                 // }),
-                // CFGTPD: new kendo.data.HierarchicalDataSource({ 
-                //     data: CFGTPD 
+                // CFGTPD: new kendo.data.HierarchicalDataSource({
+                //     data: CFGTPD
                 // }),
-                // CFGTOC: new kendo.data.HierarchicalDataSource({ 
-                //     data: CFGTOC 
+                // CFGTOC: new kendo.data.HierarchicalDataSource({
+                //     data: CFGTOC
                 // }),
-                // CFGTFD: new kendo.data.HierarchicalDataSource({ 
-                //     data: CFGTFD 
+                // CFGTFD: new kendo.data.HierarchicalDataSource({
+                //     data: CFGTFD
                 // }),
             });
 
@@ -1593,29 +1619,33 @@
             // buildViewModel.CFGTOC.read();
             // buildViewModel.CFGTFD.read();
 
-            function renderInputTemplate(criteria, selectionCriteriaDescription) {
+            function renderInputTemplate(criteria, selectionCriteriaDescription, line) {
                 const templateObject = {
                     criteria,
-                    name: selectionCriteriaDescription
-                }
-
-                if ( criteria.length === 1 ) {
-                    return kendo.Template.compile($('#numberInput').html())(templateObject);
+                    line,
+                    name: selectionCriteriaDescription,
+                };
+                console.log(templateObject);
+                
+                if (criteria.length === 1) {
+                    return kendo.Template.compile($("#numberInput").html())(templateObject);
+                } else {
+                    return;
                 }
             }
 
             function checkDependentOptions(selectionCriteria, value) {
                 // Function to get next criteria name/object
                 const nextSelectionCriteria = getNextOption(selectionCriteria);
-                
+
                 const optionsToExclude = [];
                 // Loop through criteria, check if each has InvSelectionCritera
                 nextSelectionCriteria.SelectionCriteria.Criteria.forEach((criteria) => {
-                    if ( criteria.hasOwnPropertyValue("InvSelectionCritera") ) {
+                    if (criteria.hasOwnPropertyValue("InvSelectionCritera")) {
                         // const inCriteriaNode = getNodeFromProperty("SelectionCriteria.Line", criteria.InvSelectionCritera.SelCriLine);
                         const compareValue = criteria.InvSelectionCritera.InvSelCriVal;
                         const value = buildViewModel.state[`${criteria.InvSelectionCritera.SelCriLine}`];
-                        if ( compareValue === value ) {
+                        if (compareValue === value) {
                             optionsToExclude.push(criteria.Name);
                         }
                     }
@@ -1625,91 +1655,105 @@
                 ///// get relevant previous selection criteria
                 ///// get value
                 ///// compare value agains current InvSelectionCritera
-                
+
                 // store invalid option for this next selectionCriteria in an array
 
                 // return that object/array
 
                 return optionsToExclude;
-            };
-
-            function getNextOption(selectionCriteria) {
-                const nextLine = "00" + (Number(buildViewModel.currentSelectionCriteriaLine) + 1);
-                // buildViewModel.CFGTSC.filter({ field: "SelectionCriteria.Line", operator: "equals", value: nextLine });
-                // return buildViewModel.view()[0];
-                return getNodeFromProperty("SelectionCriteria.Line", nextLine);
             }
 
-            function getNodeFromProperty(field, value) {                
-                buildViewModel.CFGTSC.filter({ field: field, operator: "equals", value: value });
-                return buildViewModel.view()[0];
-            }
+            // function getNextOption(selectionCriteria) {
+            //     const nextLine = "00" + (Number(buildViewModel.currentSelectionCriteriaLine) + 1);
+            //     // buildViewModel.CFGTSC.filter({ field: "SelectionCriteria.Line", operator: "equals", value: nextLine });
+            //     // return buildViewModel.view()[0];
+            //     return getNodeFromProperty("SelectionCriteria.Line", nextLine);
+            // }
 
+            // function getNodeFromProperty(field, value) {
+            //     buildViewModel.CFGTSC.filter({ field: field, operator: "equals", value: value });
+            //     return buildViewModel.view()[0];
+            // }
+
+            //
 
             var defaultValue = function(value) {
-                return value !== null && value !== undefined ? value : 'Configure option'
+                return value !== null && value !== undefined ? value : "Configure option";
+            };
+
+            function addNewCriteriaResponse(criteria) {
+                buildViewModel.state[criteria.SelectionCriteria.Line] = {
+                    isValid: false,
+                    isVisible: false,
+                    value: null,
+                    processedValue: function() {
+                        return defaultValue(this.get("value"));
+                    },
+                    comment: "",
+                }
             }
+
             var viewModel = kendo.observable({
                 product: "GATE-ATO",
                 SKU: "HHVTY_000122291817",
-                currentOption: 'width',
+                currentOption: "width",
                 width: {
                     isValid: false,
                     isVisible: false,
                     value: 1.0,
                     processedValue: function() {
-                        return defaultValue(this.get("value"))
+                        return defaultValue(this.get("value"));
                     },
                     next: function() {
-                        return 'height';
+                        return "height";
                     },
                     previous: function() {
                         return null;
                     },
-                    comment: ""
+                    comment: "",
                 },
                 height: {
                     isValid: false,
                     isVisible: false,
                     value: null,
                     processedValue: function() {
-                        return defaultValue(this.get("value"))
+                        return defaultValue(this.get("value"));
                     },
                     next: function() {
-                        return 'lockType';
+                        return "lockType";
                     },
                     previous: function() {
-                        return 'width';
+                        return "width";
                     },
-                    comment: ""
+                    comment: "",
                 },
                 lockType: {
                     isValid: false,
                     isVisible: false,
                     value: "Single",
                     processedValue: function() {
-                        return defaultValue(this.get("value"))
+                        return defaultValue(this.get("value"));
                     },
                     next: function() {
-                        return this.get("value") === 'Double' ? 'colour' : 'colour2';
+                        return this.get("value") === "Double" ? "colour" : "colour2";
                     },
                     previous: function() {
-                        return 'height';
+                        return "height";
                     },
-                    comment: ""
+                    comment: "",
                 },
                 colour: {
                     isValid: false,
                     isVisible: false,
                     value: null,
                     processedValue: function() {
-                        return defaultValue(this.get("value"))
+                        return defaultValue(this.get("value"));
                     },
                     next: function() {
-                        return 'gap';
+                        return "gap";
                     },
                     previous: function() {
-                        return 'lockType';
+                        return "lockType";
                     },
                     hexColour: function() {
                         var colourVal = this.get("value");
@@ -1738,25 +1782,25 @@
                     },
                     rules: [
                         {
-                            option: 'lockType',
-                            comparison: '=',
-                            value: 'Double'
-                        }
+                            option: "lockType",
+                            comparison: "=",
+                            value: "Double",
+                        },
                     ],
-                    comment: ""
+                    comment: "",
                 },
                 colour2: {
                     isValid: false,
                     isVisible: false,
                     value: null,
                     processedValue: function() {
-                        return defaultValue(this.get("value"))
+                        return defaultValue(this.get("value"));
                     },
                     next: function() {
-                        return 'gap';
+                        return "gap";
                     },
                     previous: function() {
-                        return 'lockType';
+                        return "lockType";
                     },
                     hexColour: function() {
                         var colourVal = this.get("value");
@@ -1785,119 +1829,101 @@
                     },
                     rules: [
                         {
-                            option: 'lockType',
-                            comparison: '=',
-                            value: 'Single'
-                        }
+                            option: "lockType",
+                            comparison: "=",
+                            value: "Single",
+                        },
                     ],
-                    comment: ""
+                    comment: "",
                 },
                 gap: {
                     isValid: false,
                     isVisible: false,
                     value: null,
                     processedValue: function() {
-                        return defaultValue(this.get("value"))
+                        return defaultValue(this.get("value"));
                     },
                     next: function() {
-                        viewModel.set('productDetails.isVisible', true);
+                        viewModel.set("productDetails.isVisible", true);
                         $("#createQuote").removeClass("disabled");
-                        return 'componentsOperations';
+                        return "componentsOperations";
                     },
                     previous: function() {
-                        return 'colour';
+                        return "colour";
                     },
-                    comment: ""
+                    comment: "",
                 },
                 productDetails: {
                     isVisible: false,
-                    warehouse: 'NA',
+                    warehouse: "NA",
                     class: "RND",
                     unitMeasure: "RND",
-                    unitMass: 236.000,
-                    unitVolume: 25.3000,
+                    unitMass: 236.0,
+                    unitVolume: 25.3,
                     comment: "",
                 },
                 componentsOperations: {
                     isVisible: false,
                     previous: function() {
-                        return 'gap';
+                        return "gap";
                     },
                 },
                 quantity: 1,
-                price: 236.00
+                price: 236.0,
             });
 
             $(document).ready(function() {
                 $.material.init();
                 $('[data-tooltip="tooltip"]').tooltip();
-               
-                kendo.bind($("#productConfigurator"), viewModel);
-                kendo.bind($("#productConfigurator"), buildViewModel);
-                var slider1 = document.getElementById("slider1");
-                noUiSlider.create(slider1, {
-                    start: 1,
-                    connect: [true, false],
-                    step: 0.1,
-                    tooltips: [true],
-                    range: {
-                        min: 0.5,
-                        max: 1.5,
-                    },
-                });
-                var inputNumber1 = $("#input-number1");
-                slider1.noUiSlider.on("update", function(values, handle) {                    
-                    var value = values[handle];
 
-                    inputNumber1.val(value).change();
-                    // inputNumber1.change();
-                });
+                // kendo.bind($("#productConfigurator"), viewModel);
+                kendo.bind($("#productConfigurator"), buildViewModel);
 
                 // inputNumber1.on("change", function() {
                 //     slider1.noUiSlider.set([null, this.value]);
                 // });
 
-                var slider2 = document.getElementById("slider2");
-                noUiSlider.create(slider2, {
-                    start: 1.5,
-                    connect: [true, false],
-                    step: 0.1,
-                    tooltips: [true],
-                    range: {
-                        min: 1.0,
-                        max: 2.5,
-                    },
-                });
-                var inputNumber2 = $("#input-number2");
-                slider2.noUiSlider.on("update", function(values, handle) {
-                    var value = values[handle];
+                // var slider2 = document.getElementById("slider2");
+                // noUiSlider.create(slider2, {
+                //     start: 1.5,
+                //     connect: [true, false],
+                //     step: 0.1,
+                //     tooltips: [true],
+                //     range: {
+                //         min: 1.0,
+                //         max: 2.5,
+                //     },
+                // });
+                // var inputNumber2 = $("#input-number2");
+                // slider2.noUiSlider.on("update", function(values, handle) {
+                //     var value = values[handle];
 
-                    // inputNumber2.value = value;
-                    inputNumber2.val(value).change();
-                });
+                //     // inputNumber2.value = value;
+                //     inputNumber2.val(value).change();
+                // });
 
                 // inputNumber2.addEventListener("change", function() {
                 //     slider2.noUiSlider.set([null, this.value]);
                 // });
 
-                var slider3 = document.getElementById("slider3");
-                noUiSlider.create(slider3, {
-                    start: 0.100,
-                    connect: [true, false],
-                    step: 0.005,
-                    tooltips: [true],
-                    range: {
-                        min: 0.050,
-                        max: 0.250,
-                    },
-                });
-                var inputNumber3 = $("#input-number3");
-                slider3.noUiSlider.on("update", function(values, handle) {
-                    var value = values[handle];
+                // var slider3 = document.getElementById("slider3");
+                // noUiSlider.create(slider3, {
+                //     start: 0.100,
+                //     connect: [true, false],
+                //     step: 0.005,
+                //     tooltips: [true],
+                //     range: {
+                //         min: 0.050,
+                //         max: 0.250,
+                //     },
+                // });
+                // var inputNumber3 = $("#input-number3");
+                // slider3.noUiSlider.on("update", function(values, handle) {
+                //     var value = values[handle];
 
-                    // inputNumber3.value = value;
-                    inputNumber3.val(value).change();
-                });
+                //     // inputNumber3.value = value;
+                //     inputNumber3.val(value).change();
+                // });
 
                 // inputNumber3.addEventListener("change", function() {
                 //     slider3.noUiSlider.set([null, this.value]);
@@ -1908,7 +1934,7 @@
                 //     // do something…
                 //     const currentOption = $(this).attr("id").split("_")[1];
                 //     console.log(currentOption);
-                    
+
                 //     const nextOption = viewModel[currentOption].next();
                 //     console.log(nextOption);
                 //     const nextNextOption = viewModel[nextOption].next();
@@ -1924,14 +1950,14 @@
 
                 $(".panel-collapse:not(#finalCommentCollapse)").on("show.bs.collapse", function() {
                     //console.log(this);
-                    
-                    $(".panel-collapse.in:not(#finalCommentCollapse)").collapse('hide');
+
+                    $(".panel-collapse.in:not(#finalCommentCollapse)").collapse("hide");
                 });
 
                 $("#finalCommentCollapse").on("shown.bs.collapse", function() {
                     $(".final-comments").focus();
                 });
-                
+
                 $("#movePrevious").click(function() {
                     const currentOpenSection = $(".productConfigAccordion .collapse.in");
                     const currentOption = currentOpenSection.attr("id").split("_")[1];
@@ -1940,10 +1966,10 @@
                     viewModel.set(`${currentOption}.isValid`, true);
                     // viewModel.set(`${nextOption}.isVisible`, true);
 
-                    currentOpenSection.collapse('hide');
-                    $(`#collapse_${previousOption}`).collapse('show');
-                    $(this).toggleClass('disabled', previousOption === 'width');
-                    $("#moveNext").toggleClass('disabled', nextOption === 'componentsOperations');
+                    currentOpenSection.collapse("hide");
+                    $(`#collapse_${previousOption}`).collapse("show");
+                    $(this).toggleClass("disabled", previousOption === "width");
+                    $("#moveNext").toggleClass("disabled", nextOption === "componentsOperations");
                 });
 
                 $("#moveNext").click(function() {
@@ -1955,35 +1981,34 @@
                     viewModel.set(`${currentOption}.isValid`, true);
                     viewModel.set(`${nextOption}.isVisible`, true);
 
-                    currentOpenSection.collapse('hide');
-                    
-                    $(`#collapse_${nextOption}`).collapse('show');
+                    currentOpenSection.collapse("hide");
+
+                    $(`#collapse_${nextOption}`).collapse("show");
 
                     console.log(previousOption);
-                    
-                    $("#movePrevious").toggleClass('disabled', previousOption === 'width');
-                    $(this).toggleClass('disabled', nextOption === 'componentsOperations');
+
+                    $("#movePrevious").toggleClass("disabled", previousOption === "width");
+                    $(this).toggleClass("disabled", nextOption === "componentsOperations");
 
                     setTimeout(() => {
                         $("#finalProductCard .loading-cover").hide();
                     }, 600);
-                    
                 });
 
                 $("[name='lockTypeOption']").change(function(e) {
                     $("#colour .loading-cover, #colour2 .loading-cover").show();
                     const value = $(this).val();
-                    if ( value === 'Single' ) {
+                    if (value === "Single") {
                         if (viewModel.colour.isVisible) {
-                            viewModel.set('colour2.isVisible', true);
-                            viewModel.set('colour.isVisible', false);
-                            $("#collapse_colour").collapse('hide');
+                            viewModel.set("colour2.isVisible", true);
+                            viewModel.set("colour.isVisible", false);
+                            $("#collapse_colour").collapse("hide");
                         }
-                    } else if ( value === 'Double' ) {
+                    } else if (value === "Double") {
                         if (viewModel.colour2.isVisible) {
-                            viewModel.set('colour2.isVisible', false);
-                            viewModel.set('colour.isVisible', true);
-                            $("#collapse_colour2").collapse('hide');
+                            viewModel.set("colour2.isVisible", false);
+                            viewModel.set("colour.isVisible", true);
+                            $("#collapse_colour2").collapse("hide");
                         }
                     }
                     setTimeout(() => {
@@ -1993,15 +2018,17 @@
 
                 var element = $("#grid").kendoGrid({
                     dataSource: {
-                        data: [{
-                                Line : '001',
-                                OptionDescription : "Operations",
-                                Type : 'Operation'
-                            }, {
-                                Line : '005',
-                                OptionDescription : "Operations",
-                                Type : 'Operation'
-                            }
+                        data: [
+                            {
+                                Line: "001",
+                                OptionDescription: "Operations",
+                                Type: "Operation",
+                            },
+                            {
+                                Line: "005",
+                                OptionDescription: "Operations",
+                                Type: "Operation",
+                            },
                         ],
                         schema: {
                             model: {
@@ -2009,8 +2036,8 @@
                                     Line: { type: "string" },
                                     OptionDescription: { type: "string" },
                                     Type: { type: "string" },
-                                }
-                            }
+                                },
+                            },
                         },
                     },
                     height: 200,
@@ -2024,67 +2051,70 @@
                         {
                             field: "Line",
                             title: "Line",
-                            width: "110px"
+                            width: "110px",
                         },
                         {
                             field: "OptionDescription",
                             title: "Option description",
-                            width: "110px"
+                            width: "110px",
                         },
                         {
                             field: "Type",
-                            width: "110px"
-                        }
-                    ]
+                            width: "110px",
+                        },
+                    ],
                 });
 
-                
                 setTimeout(() => {
                     $(".prodConfigOptionsWrapper .loading-cover").hide();
                 }, 800);
             });
 
             function detailInit(e) {
-                $("<div/>").appendTo(e.detailCell).kendoGrid({
-                    dataSource: {
-                        data: [{
-                                OperationLine : '002',
-                                OptionDescription : "Assembly",
-                                TotalQuant : 8,
-                                UOM : 'hrs',
-                                Comment : '',
-                            }, {
-                                OperationLine : '003',
-                                OptionDescription : "Drying",
-                                TotalQuant : null,
-                                UOM : '',
-                                Comment : '',
-                            }
-                        ],
-                        schema: {
-                            model: {
-                                fields: {
-                                    OperationLine: { type: "string" },
-                                    OptionDescription: { type: "string" },
-                                    TotalQuant: { type: "number" },
-                                    UOM: { type: "string" },
-                                    Comment: { type: "string" }
-                                }
-                            }
+                $("<div/>")
+                    .appendTo(e.detailCell)
+                    .kendoGrid({
+                        dataSource: {
+                            data: [
+                                {
+                                    OperationLine: "002",
+                                    OptionDescription: "Assembly",
+                                    TotalQuant: 8,
+                                    UOM: "hrs",
+                                    Comment: "",
+                                },
+                                {
+                                    OperationLine: "003",
+                                    OptionDescription: "Drying",
+                                    TotalQuant: null,
+                                    UOM: "",
+                                    Comment: "",
+                                },
+                            ],
+                            schema: {
+                                model: {
+                                    fields: {
+                                        OperationLine: { type: "string" },
+                                        OptionDescription: { type: "string" },
+                                        TotalQuant: { type: "number" },
+                                        UOM: { type: "string" },
+                                        Comment: { type: "string" },
+                                    },
+                                },
+                            },
                         },
-                    },
-                    scrollable: false,
-                    sortable: false,
-                    pageable: false,
-                    columns: [
-                        { field: "OperationLine" },
-                        { field: "OptionDescription", title:"Option description" },
-                        { field: "TotalQuant", title:"Total quantity/time" },
-                        { field: "UOM" },
-                        { field: "Comment" },
-                        { title: "Change", width: "100px" }
-                    ]
-                });
+                        scrollable: false,
+                        sortable: false,
+                        pageable: false,
+                        columns: [
+                            { field: "OperationLine" },
+                            { field: "OptionDescription", title: "Option description" },
+                            { field: "TotalQuant", title: "Total quantity/time" },
+                            { field: "UOM" },
+                            { field: "Comment" },
+                            { title: "Change", width: "100px" },
+                        ],
+                    });
             }
         </script>
     </body>

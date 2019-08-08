@@ -10060,7 +10060,7 @@ td.k-state-focused.k-state-selected,
     max-width: 284px !important;
     height: 142px !important
 }
-.tile.col-sm-8 .wide-tile {
+.tile.col-sm-8 .wide-tile, .tile.col-sm-8 .big-tile {
     display: block;
     height: 100%;
 }
@@ -10076,7 +10076,7 @@ td.k-state-focused.k-state-selected,
     display: block;
     height: 100%;
 }
-.tile.col-sm-4 .wide-tile {
+.tile.col-sm-4 .wide-tile, .tile.col-sm-4 .big-tile {
     display: none;
 }
 .tile.col-sm-2 {
@@ -10088,7 +10088,7 @@ td.k-state-focused.k-state-selected,
     display: block;
     height: 100%;
 }
-.tile.col-sm-2 .wide-tile {
+.tile.col-sm-2 .wide-tile, .tile.col-sm-2 .big-tile {
     display: none;
 }
 .tile > div {
@@ -10179,29 +10179,29 @@ td.k-state-focused.k-state-selected,
 .tile-inner .panel-body > .row .col-xs-12 {
     height: 100%;
 }
-.wide-tile > div {
+.wide-tile > div, .big-tile > div {
     height: 100%;
 }
-.wide-tile .tile-title {
+.wide-tile .tile-title, .big-tile .tile-title {
     font-size: 21px;
     white-space: normal;
 }
-.wide-tile .tile-subtitle {
+.wide-tile .tile-subtitle, .big-tile .tile-subtitle {
     font-size: 13px;
 }
-.wide-tile .tile-value-label {
+.wide-tile .tile-value-label, .big-tile .tile-value-label {
     font-size: 13.5px;
 }
-.wide-tile .tile-main-value {
+.wide-tile .tile-main-value, .big-tile .tile-main-value {
     font-size: 32px;
     line-height: 1em;
 }
-.wide-tile .tile-icon {
+.wide-tile .tile-icon, .big-tile .tile-icon {
     font-size: 50px;
     -webkit-transition: font-size 0.3s ease;
     transition: font-size 0.3s ease;
 }
-.wide-tile > .col-xs-12 {
+.wide-tile > .col-xs-12, .big-tile > .col-xs-12 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
