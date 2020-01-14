@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/postcss.css" rel="stylesheet" />
+        <link href="css/daterangepicker.css" rel="stylesheet" />
+        <link href="css/UX_CSS_bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+
+        <style>
+            .file-treeview.k-treeview {
+                overflow: hidden;
+            }
+        .file-treeview .k-item, 
+        .file-treeview.k-treeview span.k-in {
+            cursor: pointer;
+            width: 100%;
+        }
+
+        </style>
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+        <div id="invisibleNode" style="display: none;"></div>
+        <div id="invisibleToolbarNode" style="display: none;"></div>
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
+                        >
+                            <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid sys-mg-t-15" id="main-container">
+                <div class="row sys-mg-t-15">
+                    <div class="col-sm-4 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+
+                                    <div class="col-md-12">
+                                        <div class="panel sys-widget sys-box-shadow-off">
+                                            <div class="panel-body sys-pd-off">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="optionone" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+
+                                    <div class="col-md-12">
+                                        <div class="panel sys-widget sys-box-shadow-off">
+                                            <div class="panel-body sys-pd-off">
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='optiontwo'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="material-icons">calendar_today</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Off Canvas menus -->
+
+        <script src="js/UX_JS_bootstrap.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/daterangepicker.js"></script>
+        <script src="js/UX_JS_bootstrap-datetimepicker.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.material.init();
+
+                $('#optiontwo').datetimepicker({
+                icons: {
+                    time: "material-icons",
+                    date: "material-icons",
+                    up: "material-icons",
+                    down: "material-icons",
+                    previous: "material-icons",
+                    next: "material-icons",
+                    close: 'material-icons'
+                },
+                sideBySide: false,
+                showClose: true,
+                keepOpen: true,
+            });
+
+                $('#optionone').daterangepicker({
+                    "singleDatePicker": true,
+                    "showDropdowns": false,
+                    "timePicker": true,
+                    "timePicker24Hour": true,
+                    "locale": {
+                        "format": 'M/DD/YY hh:mm',
+                        "separator": " - ",
+                        "applyLabel": "Apply",
+                        "cancelLabel": "Cancel",
+                        "fromLabel": "From",
+                        "toLabel": "To",
+                        "customRangeLabel": "Custom",
+                        "weekLabel": "W",
+                        "daysOfWeek": [
+                            "Su",
+                            "Mo",
+                            "Tu",
+                            "We",
+                            "Th",
+                            "Fr",
+                            "Sa"
+                        ],
+                        "monthNames": [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December"
+                        ],
+                        "firstDay": 1
+                    },
+                    "linkedCalendars": false,
+                    "showCustomRangeLabel": false,
+                }, function(start, end, label) {
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+                });
+
+            });
+            
+        </script>
+    </body>
+</html>
