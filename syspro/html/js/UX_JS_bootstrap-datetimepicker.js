@@ -315,13 +315,13 @@
                     row.push($('<td>').append($('<a>').attr({ 'data-action': 'today', 'title': options.tooltips.today }).append($('<span>today</span>').addClass(options.icons.today))));
                 }
                 if (!options.sideBySide && hasDate() && hasTime()) {
-                    row.push($('<td>').append($('<a>').attr({ 'data-action': 'togglePicker', 'title': options.tooltips.selectTime }).append($('<span>access_time</span>').addClass(options.icons.time))));
+                    row.push($('<td>').append($('<a>').attr({ 'data-action': 'togglePicker' }).append($('<span class="sys-fg-inverse">access_time</span>').addClass(options.icons.time).attr({ 'title': options.tooltips.selectTime }))));
                 }
                 if (options.showClear) {
                     row.push($('<td>').append($('<a>').attr({ 'data-action': 'clear', 'title': options.tooltips.clear }).append($('<span>delete_forever</span>').addClass(options.icons.clear))));
                 }
                 if (options.showClose) {
-                    row.push($('<td>').append($('<a>').attr({ 'data-action': 'close', 'title': options.tooltips.close }).append($('<span>close</span>').addClass(options.icons.close))));
+                    row.push($('<td>').append($('<a>').attr({ 'data-action': 'close', 'title': options.tooltips.close }).append($('<span class="sys-fg-success">check</span>').addClass(options.icons.close))));
                 }
                 return $('<table>').addClass('table-condensed').append($('<tbody>').append($('<tr>').append(row)));
             },
@@ -1117,9 +1117,19 @@
                             closed.addClass('in');
                         }
                         if ($this.is('span')) {
-                            $this.toggleClass(options.icons.time + ' ' + options.icons.date);
+                            // $this.toggleClass(options.icons.time + ' ' + options.icons.date);
+                            if ( $(".timepicker-picker").closest(".collapse").hasClass("in") || $(".timepicker-picker").closest(".collapsing").attr("aria-expanded") === 'true' ) {
+                                $this.text("calendar_today").attr({ 'title': 'Select date' });
+                            } else {
+                                $this.text("access_time").attr({ 'title': 'Select time' });
+                            }
                         } else {
-                            $this.find('span').toggleClass(options.icons.time + ' ' + options.icons.date);
+                            //$this.find('span').toggleClass(options.icons.time + ' ' + options.icons.date);
+                            if ( $(".timepicker-picker").closest(".collapse").hasClass("in") || $(".timepicker-picker").closest(".collapsing").attr("aria-expanded") === 'true' ) {
+                                $this.find('span').text("calendar_today").attr({ 'title': 'Select date' });
+                            } else {
+                                $this.find('span').text("access_time").attr({ 'title': 'Select time' });
+                            }
                         }
 
                         // NOTE: uncomment if toggled state will be restored in show()
