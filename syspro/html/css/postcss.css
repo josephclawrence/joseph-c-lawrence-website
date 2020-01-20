@@ -6606,13 +6606,13 @@ form .data-section {
     opacity: 0;
     visibility: hidden;
 }
-.dropdown .dropdown-submenu {
-    position: relative;
-    overflow: visible;
-}
 .dropdown .dropdown-submenu > .dropdown-menu {
     top: 0;
-    right: 100%;
+    left: 100%;
+    overflow: visible;
+}
+.dropdown .dropdown-submenu {
+    position: relative;
     overflow: visible;
 }
 .dropdown .dropdown-submenu:hover > .dropdown-menu {
@@ -6620,6 +6620,10 @@ form .data-section {
 }
 .dropdown .dropdown-submenu:hover > a:after {
     border-left-color: #fff;
+}
+.navbar-right .dropdown .dropdown-submenu > .dropdown-menu {
+    right: 100%;
+    left: auto;
 }
 .dropdown-menu {
     position: absolute;
@@ -18652,17 +18656,17 @@ a.btn.btn-block > .panel.sys-widget > .data-widget-options {
     z-index: 9999 !important
 }
 .toolbar-widget-options .popover .popover-content {
-    padding: 3px;
+    padding: 1px;
 }
 .toolbar-widget-options .popover .popover-content .nav-pills > li > a {
-    padding: 3px 5px;
+    padding: 1px 5px;
 }
 .toolbar-widget-options .popover.left {
-    margin-left: -14px;
-    margin-top: 15px;
+    margin-left: -5px  !important;
+    margin-top: 0px !important;
 }
 .toolbar-widget-options .popover.left > .arrow {
-    margin-top: -25px;
+    margin-top: -11px  !important;
 }
 .toolbar-widget-options .popover i {
     background: transparent;
