@@ -435,13 +435,19 @@
 [data-theme='dark'] .avanti-checked {
     background-color: var(--light_blue_grey);
 }
-[data-theme='dark'] .dropdownjs > ul {
+[data-theme='dark'] .dropdownjs > ul, 
+    [data-theme='dark'] .editable-cell .dropdownjs .form-control, 
+    [data-theme='dark'] .editable-cell select.form-control {
     background: #525f6d;
     -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, .12), 0 1px 6px rgba(0, 0, 0, .42);
             box-shadow: 0 1px 6px rgba(0, 0, 0, .12), 0 1px 6px rgba(0, 0, 0, .42);
 }
 [data-theme='dark'] .dropdownjs > ul > li.selected,
-        [data-theme='dark'] .dropdownjs > ul > li:active {
+        [data-theme='dark'] .dropdownjs > ul > li:active,
+        [data-theme='dark'] .editable-cell .dropdownjs .form-control > li.selected,
+        [data-theme='dark'] .editable-cell .dropdownjs .form-control > li:active,
+        [data-theme='dark'] .editable-cell select.form-control > li.selected,
+        [data-theme='dark'] .editable-cell select.form-control > li:active {
     background-color: #027b9f;
 }
 [data-theme='dark'] .panel-group a.panel-heading:hover {
@@ -3680,6 +3686,8 @@ th {
 }
 .list-group-item.field-name i.material-icons {
     font-size: 18px;
+    height: 0.8em;
+    line-height: 0.8;
 }
 .list-group-item .quickAddDragHandle {
     border-radius: 50px;
@@ -4162,7 +4170,7 @@ th {
     color: inherit;
 }
 .panel-heading + .list-group .list-group-item:first-child {
-    border-top-width: 0;
+    border-top-color: transparent;
 }
 .panel-heading > .material-icons {
     vertical-align: top;
@@ -4919,6 +4927,13 @@ body > .tooltip {
     border-top: 4px solid;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
+}
+.dropdown-submenu .caret {
+    border-left: 4px solid;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    float: right;
+    margin-top: 8px;
 }
 svg:not(:root) {
     overflow: hidden;
@@ -6050,12 +6065,49 @@ form .data-section {
             box-shadow: none;
     border-bottom: 1px solid var(--color_athens_gray_approx) !important;
 }
+[data-syspromodalid^='SearchWindowMain'] .window-content > .container-fluid, 
+[data-syspromodalid^='SearchWindowMain'] .window-content > .container-fluid > .row > .column-parent,
+[data-syspromodalid^='SearchWindowMain'] .window-content > .container-fluid > .row > .column-parent > .panel,
+[data-syspromodalid^='SearchWindowMain'] .window-content > .container-fluid > .row > .column-parent > .panel > .panel-body,
+[data-syspromodalid^='SearchWindowMain'] .window-content > .container-fluid > .row > .column-parent > .panel > .panel-body .layout-widget,
+[data-syspromodalid^='SearchWindowMain'] .window-content > .container-fluid > .row > .column-parent > .panel > .panel-body .layout-widget > .col-xs-12 {
+    height: 100% !important;
+    max-height: 100%;
+}
+[data-syspromodalid^='SearchWindowMain'] .window-content > .container-fluid > .row {
+    height: calc(100% - 8px) !important;
+}
+[data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Filter'], [data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Search'] {
+    height: 100%;
+    max-height: 100%;
+}
+[data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Filter'] .card-bindable, [data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Search'] .card-bindable {
+    height: 100%;
+    max-height: 100%;
+}
+[data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Filter'] .card-bindable .avanti-search-results, [data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Search'] .card-bindable .avanti-search-results {
+    height: calc(100% - 60px) !important;
+}
+[data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Filter'] .card-bindable .avanti-search-results > div:not(.avanti-text-search-results), [data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Search'] .card-bindable .avanti-search-results > div:not(.avanti-text-search-results) {
+    height: calc(100% - 22px) !important;
+}
+[data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Filter'] .card-bindable .avanti-search-results .avanti-search-results-grid, [data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Search'] .card-bindable .avanti-search-results .avanti-search-results-grid {
+    height: 100% !important;
+}
+[data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Filter'] .card-bindable .avanti-search-results .avanti-search-results-grid .k-grid-content, [data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Search'] .card-bindable .avanti-search-results .avanti-search-results-grid .k-grid-content {
+    height: calc(100% - 65px) !important;
+}
+[data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Filter'] .avanti-base-class, [data-syspromodalid^='SearchWindowMain'] [data-cardtypedetail='Search'] .avanti-base-class {
+    max-height: 100% !important;
+    height: 100% !important;
+    min-height: 300px !important;
+}
 .avanti-search-card .avanti-search-inputs {
     padding-left: 7px;
     width: 400px;
     max-width: 100%;
 }
-.avanti-search-card .avanti-search-inputs .form-group .form-control {
+.avanti-search-card .avanti-search-inputs .form-group .form-control, .avanti-search-card .avanti-search-inputs .form-group .input-group {
     background-color: transparent;
 }
 .avanti-search-card .avanti-text-search-results {
@@ -9198,7 +9250,8 @@ td .btn.btn-delete {
     padding: 4px;
 }
 .sys-bd-off {
-    border-width: 0 !important;
+    border-width: 1px !important;
+    border-color: transparent !important;
 }
 .sys-bd-2x {
     border-width: 2px !important;
@@ -10016,7 +10069,20 @@ td .btn.btn-delete {
             box-shadow: none;
 }
 .k-combobox {
-    border-radius: var(--base-border-radius);
+    border-radius: var(--base-border-radius)
+}
+.k-combobox .k-dropdown-wrap {
+    border: none;
+    border-width: 0px;
+}
+.k-combobox .k-dropdown-wrap .k-select {/* background-image: linear-gradient(var(--color_boston_blue_approx), var(--color_boston_blue_approx)),
+            linear-gradient(var(--color_quill_gray_approx), var(--color_quill_gray_approx)); */
+    background-color: var(--color_athens_gray_approx);/* background-size: 0 2px, 100% 1px;
+            background-repeat: no-repeat;
+            background-position: center bottom, center calc(100% - 1px); */
+}
+.k-combobox .k-dropdown-wrap .k-select .k-icon {
+    top: -5px;
 }
 .k-dropdown {
     border-radius: var(--base-border-radius)
@@ -10650,7 +10716,8 @@ td.k-state-focused.k-state-selected,
     top: 49px;
     padding-left: 0;
     padding-right: 0;
-    overflow: scroll
+    overflow: scroll;
+    padding-bottom: 49px
 }
 #fusion-sidebar-wrapper2.navbar-offcanvas.in {
     left: 0;
@@ -10991,10 +11058,7 @@ td.k-state-focused.k-state-selected,
     display: flex;
     -webkit-box-align: end;
         -ms-flex-align: end;
-            align-items: flex-end
-}
-.tile-sparkline:not(.line-sparkline):not(.bullet-sparkline) {
-    bottom: -11px;
+            align-items: flex-end;
 }
 .tile-icon {
     margin-right: 5px
@@ -13393,6 +13457,9 @@ input.k-textbox {
     line-height: 1.4em;
     width: 2.8em;
 }
+input:-internal-autofill-selected {
+    background-color: transparent !important;
+}
 optgroup {
     color: inherit;
     font: inherit;
@@ -13867,7 +13934,7 @@ output {
 .label.label-danger {
     background-color: var(--color_cinnabar_approx);
 }
-.form-control {
+.form-control:not(.k-combobox) {
     display: block;
     width: 100%;
     color: var(--color_fuscous_gray_approx);
@@ -13892,13 +13959,13 @@ output {
             box-shadow: none;
     border-radius: 0
 }
-.form-control:focus {
+.form-control:not(.k-combobox):focus {
     border-color: var(--color_lochmara_approx);
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px var(--black_7_5), 0 0 8px var(--color_calypso_approx);
             box-shadow: inset 0 1px 1px var(--black_7_5), 0 0 8px var(--color_calypso_approx);
 }
-.form-control:-ms-input-placeholder {
+.form-control:not(.k-combobox):-ms-input-placeholder {
     font-size: 14px;
     line-height: 1.42857143;
     color: var(--color_submarine_approx);
@@ -14308,7 +14375,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .form-group.is-focused label.control-label {
     color: var(--color_boston_blue_approx);
 }
-.form-group.is-focused .form-control {
+.form-group.is-focused .form-control:not(.k-combobox) {
     outline: none;
     background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color_boston_blue_approx)), to(var(--color_boston_blue_approx))),
                 -webkit-gradient(linear, left top, left bottom, from(var(--color_quill_gray_approx)), to(var(--color_quill_gray_approx)));
@@ -14320,7 +14387,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     -webkit-transition-duration: 0.3s;
             transition-duration: 0.3s;
 }
-.form-group.is-focused .form-control .material-input:after {
+.form-group.is-focused .form-control:not(.k-combobox) .material-input:after {
     background-color: var(--color_boston_blue_approx);
 }
 .form-group.is-focused .help-block {
@@ -14386,7 +14453,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .form-group.is-focused.label-placeholder label.control-label {
     color: var(--color_submarine_approx);
 }
-.form-group .form-control {
+.form-group .form-control:not(.k-combobox) {
     border: 0;
     background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color_boston_blue_approx)), to(var(--color_boston_blue_approx))),
             -webkit-gradient(linear, left top, left bottom, from(var(--color_quill_gray_approx)), to(var(--color_quill_gray_approx)));
@@ -14408,7 +14475,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     border-top-left-radius: var(--base-border-radius);
     border-top-right-radius: var(--base-border-radius);
 }
-.form-group .form-control:-ms-input-placeholder {
+.form-group .form-control:not(.k-combobox):-ms-input-placeholder {
     font-size: 14px;
     line-height: 1.42857143;
     color: var(--color_submarine_approx);
@@ -16713,11 +16780,12 @@ input[type='number']::-ms-clear {
     margin: 0;
     min-width: 200px;
 }
-.combobox-container.combobox-selected .pulldown {
-    display: none;
-}
-.combobox-container:not(.combobox-selected) .remove {
-    display: none;
+.combobox-container {/* &.combobox-selected .pulldown {
+        display: none;
+    }
+    &:not(.combobox-selected) .remove {
+        display: none;
+    } */
 }
 .combobox-container .dropdown-menu > .active > a {
     text-decoration: none;

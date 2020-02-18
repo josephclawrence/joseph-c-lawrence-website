@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/postcss.css" rel="stylesheet" />
+        <link href="css/daterangepicker.css" rel="stylesheet" />
+        <link href="css/UX_CSS_bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+
+        <style>
+
+        </style>
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+        <div id="invisibleNode" style="display: none;"></div>
+        <div id="invisibleToolbarNode" style="display: none;"></div>
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
+                        >
+                            <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid sys-mg-t-15" id="main-container">
+                <div class="row sys-mg-t-15">
+                    <!-- <div class="col-sm-4 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+
+                                    <div class="col-md-12">
+                                        <div class="panel sys-widget sys-box-shadow-off">
+                                            <div class="panel-body sys-pd-off">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="optionone" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div> -->
+
+                    <div class="col-sm-4 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+
+                                    <div class="col-md-12">
+                                        <div class="panel sys-widget sys-box-shadow-off">
+                                            <div class="panel-body sys-pd-off">
+                                                <div class="form-horizontal">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group is-empty">
+                    
+                                                                <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                    <span>Date time</span>
+                                                                </label>
+                                                                <div class="col-md-7 syspro-entry-content">
+                                                                    <input 
+                                                                        id="data"
+                                                                        data-role="combobox"
+                                                                        data-placeholder="Type something..."
+                                                                        data-value-primitive="true"
+                                                                        class="form-control syspro-trackfield-change syspro-combobox-inform" 
+                                                                        data-fieldname="data" 
+                                                                        data-text-field="Description"
+                                                                        data-value-field="Value"
+                                                                        data-filter="contains"
+                                                                        data-popup="{appendTo: $('.k-dropdown-wrap')}"
+                                                                        data-bind="value: data.Value, 
+                                                                            source: data.Items.Item" 
+                                                                        style="display: none; width: 100%;" 
+                                                                        data-fieldlastvalue="" 
+                                                                    />                                                                         
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<!-- 
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='optiontwo'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="material-icons">calendar_today</span>
+                                                        </span>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Off Canvas menus -->
+
+        <script src="js/UX_JS_bootstrap.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.material.init();
+
+
+
+            });
+            const viewModel = kendo.observable({
+                data: {
+                    "Value":"10:07",
+                    "Caption":"FOLLOW UP TIME",
+                    "Tooltip":"",
+                    "Description":"",
+                    "EntryField":"true",
+                    "EntryType":"12",
+                    "Items":{
+                        "Item":[
+                            {"ParentName":"CMSP40L1FollowUpTime","Value":"a0001","Description":"00:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0002","Description":"00:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0003","Description":"01:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0004","Description":"01:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0005","Description":"02:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0006","Description":"02:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0007","Description":"03:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0008","Description":"03:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0009","Description":"04:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0010","Description":"04:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0011","Description":"05:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0012","Description":"05:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0013","Description":"06:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0014","Description":"06:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0015","Description":"07:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0016","Description":"07:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0017","Description":"08:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0018","Description":"08:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0019","Description":"09:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0020","Description":"09:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0021","Description":"10:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0022","Description":"10:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0023","Description":"11:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0024","Description":"11:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0025","Description":"12:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0026","Description":"12:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0027","Description":"13:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0028","Description":"13:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0029","Description":"14:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0030","Description":"14:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0031","Description":"15:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0032","Description":"15:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0033","Description":"16:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0034","Description":"16:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0035","Description":"17:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0036","Description":"17:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0037","Description":"18:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0038","Description":"18:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0039","Description":"19:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0040","Description":"19:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0041","Description":"20:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0042","Description":"20:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0043","Description":"21:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0044","Description":"21:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0045","Description":"22:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0046","Description":"22:30"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0047","Description":"23:00"},{"ParentName":"CMSP40L1FollowUpTime","Value":"a0048","Description":"23:30"}
+                        ]
+                    }
+                }
+            });
+            kendo.bind($(".form-horizontal"), viewModel);
+        </script>
+    </body>
+</html>
