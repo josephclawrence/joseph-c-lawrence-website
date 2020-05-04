@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/bootstrap-tagsinput.css" />
+        <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+
+        <style>
+            .prodConfigOptionsWrapper .panel-heading:hover,
+            .prodConfigOptionsWrapper .panel-heading:focus {
+                text-decoration: none;
+                background: #e8f2f5 !important;
+            }
+            .form-group {
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+            .prodConfigOptionsWrapper .collapse.in,
+            .prodConfigOptionsWrapper .collapsing {
+                background: #f9f9f9;
+                padding: 15px;
+            }
+            .noUi-tooltip {
+                word-wrap: normal;
+                bottom: 140%;
+                top: auto;
+                box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.2);
+                position: relative;
+                left: 50%;
+                background: white;
+                display: block;
+                border-radius: 50%;
+                text-align: center;
+                display: block;
+                position: absolute;
+                /* border: 1px solid #d9d9d9; */
+                border-radius: 3px;
+                background: #fff;
+                color: #000;
+                padding: 5px;
+                text-align: center;
+                white-space: nowrap;
+                transform: translate(-50%, 0);
+            }
+            .noUi-handle.noUi-active {
+                -webkit-transform: scale3d(1.3, 1.3, 1);
+                transform: scale3d(1.3, 1.3, 1);
+            }
+            .noUi-handle {
+                width: 18px;
+                height: 18px;
+                left: -18px;
+                top: -9px;
+            }
+            .slider .noUi-handle {
+                background-color: #0078d7;
+                border-color: #0078d7;
+            }
+            .noUi-connect {
+                background-color: #0078d7;
+            }
+            .productConfigAccordion textarea {
+                background-color: white !important;
+                padding: 5px;
+            }
+            .prodConfigOptionsWrapper {
+                max-height: 700px;
+                overflow: scroll;
+            }
+            .btn.btn-radio.active {
+                outline: 0;
+                background-image: none;
+                border: 2px solid #61dfff !important;
+            }
+
+
+            .btn-colour {
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                padding: 0px;
+            }
+        </style>
+
+<style>
+    /*************/
+    /*!
+
+=========================================================
+* Paper Bootstrap Wizard - v1.0.2
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/paper-bootstrap-wizard
+* Copyright 2017 Creative Tim (http://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/paper-bootstrap-wizard/blob/master/LICENSE.md)
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
+    .wizard-container {
+        padding-top: 100px;
+        z-index: 3;
+    }
+
+    .btn.btn-fill {
+        color: #ffffff;
+        background-color: #66615b;
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+    .btn.btn-fill:hover,
+    .btn.btn-fill:focus,
+    .btn.btn-fill:active,
+    .btn.btn-fill.active,
+    .open > .btn.btn-fill.dropdown-toggle {
+        background-color: #484541;
+        color: #ffffff;
+        border-color: #484541;
+    }
+    .btn.btn-fill .caret,
+    .navbar .navbar-nav > li > a.btn.btn-fill .caret {
+        border-top-color: #ffffff;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        outline: 0 !important;
+    }
+    .btn:active,
+    .btn.active,
+    .open > .btn.dropdown-toggle {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: 0 !important;
+    }
+    .btn.btn-icon {
+        border-radius: 25px;
+        padding: 7px 10px;
+    }
+    .btn.btn-icon i {
+        margin-right: 0px;
+    }
+    .btn [class*="ti-"] {
+        vertical-align: middle;
+    }
+
+    /* .btn-success {
+        border-color: #7ac29a;
+        color: #7ac29a;
+    } */
+
+    .btn-disabled {
+        cursor: default;
+    }
+
+    .btn-simple {
+        border: 0;
+        padding: 7px 18px;
+    }
+
+    .btn-wd {
+        min-width: 140px;
+    }
+    /*            Navigation menu                */
+    .nav-pills {
+        background-color: #f3f2ee;
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        top: 40px;
+        text-align: center;
+    }
+    .nav-pills > li + li {
+        margin-left: 0;
+    }
+    .nav-pills > li > a {
+        padding: 0;
+        max-width: 120px;
+        margin: 0 auto;
+        color: #34495e;
+        border-radius: 50%;
+        position: relative;
+        top: -29px;
+        z-index: 100;
+        font-size: 14px;
+    line-height: 3;
+    }
+    .nav-pills > li > a:after {
+        content: "";
+        width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    right: 38px;
+    top: 8px;
+        transform: scale(0);
+        transition: 0.2s all linear;
+    }
+    .nav-pills > li > a:hover,
+    .nav-pills > li > a:focus {
+        background-color: transparent;
+        color: rgba(0, 0, 0, 0.2);
+        outline: 0 !important;
+        cursor: pointer;
+    }
+    .nav-pills > li.active > a:after {
+        content: "";
+        width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    right: 38px;
+    top: 8px;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transition: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+    }
+    .nav-pills > li.active > a,
+    .nav-pills > li.active > a:hover,
+    .nav-pills > li.active > a:focus {
+        background-color: transparent;
+        font-size: 15px;
+        -webkit-transition: font-size 0.2s linear;
+        -moz-transition: font-size 0.2s linear;
+        -o-transition: font-size 0.2s linear;
+        -ms-transition: font-size 0.2s linear;
+        transition: font-size 0.2s linear;
+    }
+    .nav-pills > li.active > a .material-icons,
+    .nav-pills > li.active > a:hover .material-icons,
+    .nav-pills > li.active > a:focus .material-icons {
+        color: #ffffff;
+        font-size: 32px;
+        top: 2px;
+        left: 4px;
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+    }
+
+    .wizard-card .picture-container {
+        position: relative;
+        cursor: pointer;
+        text-align: center;
+    }
+    .wizard-card .icon-circle {
+        font-size: 20px;
+        border: 3px solid #f3f2ee;
+        text-align: center;
+        border-radius: 50%;
+        color: #0078d7;
+        font-weight: 600;
+        width: 45px;
+        height: 45px;
+        background-color: #ffffff;
+        margin: 0 auto;
+        position: relative;
+        top: 8px;
+    }
+    .wizard-card .icon-circle .material-icons {
+        position: absolute;
+        left: 6px;
+    right: 0px;
+    top: 7px;
+    font-size: 26px;
+        z-index: 1;
+    }
+
+    .wizard-card .nav-pills > li.active > a:after {
+        background-color: #0078d7;
+    }
+    .wizard-card .nav-pills > li.active > a {
+        color: #0078d7;
+    }
+    .wizard-card .nav-pills .icon-circle.checked {
+        border-color: #0078d7;
+    }
+
+    .progress-bar {
+        float: left;
+        width: 0%;
+        height: 100%;
+        font-size: 12px;
+        line-height: 20px;
+        color: #fff;
+        text-align: center;
+        background-color: #337ab7;
+        -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        -webkit-transition: width 0.6s ease;
+        -o-transition: width 0.6s ease;
+        transition: width 0.6s ease;
+    }
+    .wizard-card .wizard-navigation .progress-bar {
+        background-color: #0078d7;
+    }
+
+    .wizard-card .tab-content {
+        min-height: 435px;
+        padding: 120px 20px 10px;
+    }
+    .wizard-card .wizard-footer {
+        padding: 0 15px 5px;
+    }
+    .wizard-card .disabled {
+        display: none;
+    }
+
+    .wizard-card .wizard-navigation {
+        position: relative;
+    }
+    .wizard-card .wizard-navigation .progress-with-circle {
+        position: relative;
+        top: 40px;
+        z-index: 50;
+        height: 4px;
+    }
+    .wizard-card .wizard-navigation .progress-with-circle .progress-bar {
+        box-shadow: none;
+        -webkit-transition: width 0.3s ease;
+        -o-transition: width 0.3s ease;
+        transition: width 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .main .container {
+            margin-bottom: 50px;
+        }
+    }
+    @media (min-width: 768px) {
+        .navbar-form {
+            margin-top: 21px;
+            margin-bottom: 21px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .btn-wd {
+            min-width: 140px;
+        }
+    }
+
+
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+        padding-left: 12px;
+    }
+    ul.timeline:before {
+        content: " ";
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 9px;
+        top: 6px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+    ul.timeline > li {
+        margin: 15px 0;
+        padding-left: 15px;
+    }
+    ul.timeline > li:before {
+        content: " ";
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #0078d7;
+        left: 3px;
+        width: 14px;
+        height: 14px;
+        z-index: 400;
+        margin-top: 5px;
+    }
+    .sys-bg-inverse .table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: transparent;
+    }
+    #quoteWizard .form-group {
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+.packages-options {
+    width: 100%;
+}
+.btn-group.packages-options > .btn.package,
+.btn-group.packages-options > .btn.package:first-child:not(:last-child):not(.dropdown-toggle),
+.btn-group.packages-options > .btn.package:not(:first-child):not(:last-child):not(.dropdown-toggle),
+.btn-group.packages-options > .btn.package:last-child:not(:first-child) {
+    border-radius: 4px !important;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-width: 3px;
+}
+.btn-group.packages-options > .btn.package.active {
+    border: 3px solid #f1c40f !important;
+}
+.btn-group.packages-options > .btn.package .package-selected-icon {
+    color: #f3f2ee;
+}
+.btn-group.packages-options > .btn.package.active .package-selected-icon {
+    color: #f1c40f;
+}
+</style>
+
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script>
+            $(".prodConfigOptionsWrapper .loading-cover").show();
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+
+        <script src="js/UX_JS_velocity.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+        <script src="js/UX_JS_immutable.min.js"></script>
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+        <div id="invisibleNode" style="display: none;"></div>
+        <div id="invisibleToolbarNode" style="display: none;"></div>
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
+                        >
+                            <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid sys-mg-t-15" id="main-container">
+                <div class="row sys-mg-t-5">
+                    <div class="col-sm-12 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class="row widget layout-widget" id="">
+                                    <div class="col-md-9 col-sm-8 ">
+                                        <div class="panel sys-bd-off">
+                                            <!--      Wizard container        -->
+                                            <div class="card wizard-card sys-pd-b-10 sys-pd-t-10" id="quoteWizard">
+                                                <form action="" method="">
+                                                    <div class="wizard-navigation">
+                                                        <div class="progress-with-circle">
+                                                            <div
+                                                                class="progress-bar"
+                                                                role="progressbar"
+                                                                aria-valuenow="1"
+                                                                aria-valuemin="1"
+                                                                aria-valuemax="4"
+                                                                style="width: 15%;"
+                                                            ></div>
+                                                        </div>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#info" data-toggle="tab">
+                                                                    <div class="icon-circle">
+                                                                        <i class=" material-icons">note_add</i>
+                                                                    </div>
+                                                                    Basic info
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#packages" data-toggle="tab">
+                                                                    <div class="icon-circle">
+                                                                        <i class=" material-icons">swap_horizontal_circle</i>
+                                                                    </div>
+                                                                    Packages
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#additional" data-toggle="tab">
+                                                                    <div class="icon-circle">
+                                                                        <i class=" material-icons">thumb_up</i>
+                                                                    </div>
+                                                                    Additional
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#isv" data-toggle="tab">
+                                                                    <div class="icon-circle">
+                                                                        <i class=" material-icons">thumb_up</i>
+                                                                    </div>
+                                                                    ISV options
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#infrastructre" data-toggle="tab">
+                                                                    <div class="icon-circle">
+                                                                        <i class=" material-icons">thumb_up</i>
+                                                                    </div>
+                                                                    Infrastructure
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#other" data-toggle="tab">
+                                                                    <div class="icon-circle">
+                                                                        <i class=" material-icons">thumb_up</i>
+                                                                    </div>
+                                                                    Other items
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane" id="info">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <p class="lead text-center">
+                                                                        Select an existing document, or add a new one.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="form-horizontal">
+
+                                                                        <div class="row">
+                                                                    <!-- <div class="row"> -->
+                                                                            <div class="col-sm-12 col-md-8 col-md-offset-2 data-section" data-section="0">
+
+
+
+
+
+
+
+                                                                                <div class="form-group is-empty" data-guid="b90b1407-cce1-4684-bbe8-d2116c99e2f8">
+                                                                                    
+                                                                                        <label for="  Invoice" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1Invoice.Caption">INVOICE</span>
+                                                                                                <span class="text-warning mandatory-indication">*</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                <div class="input-group">
+                                                                                                    <span class="spinner"></span>
+                                                                                                    <input type="text" class="form-control syspro-trackfield-change syspro-browse-input syspro-focusable syspro-trackfield-keydown" id="Fields.APSPINF1Invoice" data-fieldname="Fields.APSPINF1Invoice" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1Invoice.InputMask, entryvalue: Fields.APSPINF1Invoice.Value, predictivesearch: Fields.APSPINF1Invoice.PredictiveSearch, entryfieldevents: Fields.APSPINF1Invoice.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
+                                                                                                    <span class="input-group-btn disabled">
+                                                                                                        <a class="syspro-browse-button" data-fieldname="Fields.APSPINF1Invoice" data-bind="attr: { data-fieldvalue: Fields.APSPINF1Invoice.Value, data-predictivesearchfield: Fields.APSPINF1Invoice.PredictiveSearch  }" data-fieldvalue="" data-predictivesearchfield="undefined">
+                                                                                                            <i class="material-icons">search</i>
+                                                                                                        </a>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                <p class="help-block syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1Invoice.Description"></p>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="49cefc24-e1bc-425b-b444-4e248e72ab0c">
+                                                                                    
+                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1TransactionAmount.Caption">TRANSACTION AMOUNT</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                <input data-inputmask="'alias': 'decimal', 'radixPoint': ',', 'decimalProtect': false, 'autoGroup': true, 'rightAlign': false, 'allowMinus': true" type="text" step="any" class="form-control syspro-trackfield-change syspro-focusable syspro-trackfield-keydown syspro-numeric-input syspro-supports-mask" id="Fields.APSPINF1TransactionAmount" data-fieldname="Fields.APSPINF1TransactionAmount" data-groupseparator="." data-bind="inputmask: Fields.APSPINF1TransactionAmount.InputMask, ignorethousandseperators: Fields.APSPINF1TransactionAmount.IgnoreThousandSeperator, decimals: Fields.APSPINF1TransactionAmount.Decimals, value: Fields.APSPINF1TransactionAmount.Value, entryfieldevents: Fields.APSPINF1TransactionAmount.EntryFieldEvents" im-insert="true" data-inputmask-groupseparator="." data-inputmask-digitsoptional="false" data-entryfieldevents="" placeholder="" data-inputmask-digits="2" data-fieldlastvalue="[object Object]" >
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="a53591ec-b475-4d37-8e0e-e12a5c2f77b7">
+                                                                                    
+                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1TransactionReference.Caption">TRANSACTION REFERENCE</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                    <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask" id="Fields.APSPINF1TransactionReference" data-fieldname="Fields.APSPINF1TransactionReference" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1TransactionReference.InputMask, entryvalue: Fields.APSPINF1TransactionReference.Value, predictivesearch: Fields.APSPINF1TransactionReference.PredictiveSearch, entryfieldevents: Fields.APSPINF1TransactionReference.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
+                                                                                                <p class="help-block syspro-entryfield-tooltip syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1TransactionReference.Tooltip"></p>
+                                                                                                <p class="help-block syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1TransactionReference.Description"></p>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="c8a2063b-e597-4f7d-cd4f-462eec118980">
+                                                                                    
+                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1Branch.Caption">BRANCH</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                <div class="input-group">
+                                                                                                    <span class="spinner"></span>
+                                                                                                    <input type="text" class="form-control syspro-trackfield-change syspro-browse-input syspro-focusable syspro-trackfield-keydown predictive-search-initialized" id="Fields.APSPINF1Branch" data-fieldname="Fields.APSPINF1Branch" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1Branch.InputMask, entryvalue: Fields.APSPINF1Branch.Value, predictivesearch: Fields.APSPINF1Branch.PredictiveSearch, entryfieldevents: Fields.APSPINF1Branch.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
+                                                                                                    <span class="input-group-btn disabled">
+                                                                                                        <a class="syspro-browse-button" data-fieldname="Fields.APSPINF1Branch" data-bind="attr: { data-fieldvalue: Fields.APSPINF1Branch.Value, data-predictivesearchfield: Fields.APSPINF1Branch.PredictiveSearch  }" data-fieldvalue="" data-predictivesearchfield="APBranch">
+                                                                                                            <i class="material-icons">search</i>
+                                                                                                        </a>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                <p class="help-block syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1Branch.Description"></p>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="2bb5d7e1-30aa-48e7-9f10-e4c503e8d343">
+                                                                                    
+                                                                                        <label for="  Registered Cr/Dr noteQuick add" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1RegisteredCrDrNote.Caption">REGISTERED CR/DR NOTE</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                    <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask syspro-button-created" id="Fields.APSPINF1RegisteredCrDrNote" data-fieldname="Fields.APSPINF1RegisteredCrDrNote" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1RegisteredCrDrNote.InputMask, entryvalue: Fields.APSPINF1RegisteredCrDrNote.Value, predictivesearch: Fields.APSPINF1RegisteredCrDrNote.PredictiveSearch, entryfieldevents: Fields.APSPINF1RegisteredCrDrNote.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" style="display: none;" >
+                                                                                                <p class="help-block syspro-entryfield-tooltip syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1RegisteredCrDrNote.Tooltip" style="display: none;"></p>
+                                                                                                <p class="help-block syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1RegisteredCrDrNote.Description" style="display: none;"></p>
+                                                                            
+                                                                            
+                                                                                    <a ref="#" onclick="sysproInterop.hyperlinkClicked(this)" class="syspro-hyperlink-button disabled" data-fieldname="Fields.APSPINF1RegisteredCrDrNote" data-fieldcaption:="" 'fields.apspinf1registeredcrdrnote'="" data-fieldvalue="Select" data-bind="html: Fields.APSPINF1RegisteredCrDrNote.Value">Select</a></div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="272247ae-3799-4e69-b5de-ec155faaf8fe">
+                                                                                    
+                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1InvoiceDate.Caption">INVOICE DATE</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                <div class="input-group date">
+                                                                                                    <input type="text" class="form-control date-input syspro-focusable syspro-trackfield-change" placeholder="Enter date" id="Fields.APSPINF1InvoiceDate" data-fieldname="Fields.APSPINF1InvoiceDate" data-bind="datevalue: Fields.APSPINF1InvoiceDate.Value" data-fieldlastvalue="[object Object]" >
+                                                                                                    <span class="input-group-addon disabled">
+                                                                                                        <i class="material-icons text-primary">date_range</i>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="95f549d5-636d-46cb-9b99-611a09fd419c">
+                                                                                    
+                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1DiscountDate.Caption">DISCOUNT DATE</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                <div class="input-group date">
+                                                                                                    <input type="text" class="form-control date-input syspro-focusable syspro-trackfield-change" placeholder="Enter date" id="Fields.APSPINF1DiscountDate" data-fieldname="Fields.APSPINF1DiscountDate" data-bind="datevalue: Fields.APSPINF1DiscountDate.Value" data-fieldlastvalue="[object Object]" >
+                                                                                                    <span class="input-group-addon disabled">
+                                                                                                        <i class="material-icons text-primary">date_range</i>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="ee8f1c1f-4b02-4f25-f74d-3105223bb961">
+                                                                                    
+                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1DueDate.Caption">DUE DATE</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                <div class="input-group date">
+                                                                                                    <input type="text" class="form-control date-input syspro-focusable syspro-trackfield-change" placeholder="Enter date" id="Fields.APSPINF1DueDate" data-fieldname="Fields.APSPINF1DueDate" data-bind="datevalue: Fields.APSPINF1DueDate.Value" data-fieldlastvalue="[object Object]" >
+                                                                                                    <span class="input-group-addon disabled">
+                                                                                                        <i class="material-icons text-primary">date_range</i>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="e4346959-e7c4-4adb-d647-489e3001ca9b">
+                                                                                    
+                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1JournalNotation.Caption">JOURNAL NOTATION</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                    <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask" id="Fields.APSPINF1JournalNotation" data-fieldname="Fields.APSPINF1JournalNotation" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1JournalNotation.InputMask, entryvalue: Fields.APSPINF1JournalNotation.Value, predictivesearch: Fields.APSPINF1JournalNotation.PredictiveSearch, entryfieldevents: Fields.APSPINF1JournalNotation.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
+                                                                                                <p class="help-block syspro-entryfield-tooltip syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1JournalNotation.Tooltip"></p>
+                                                                                                <p class="help-block syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1JournalNotation.Description"></p>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group checkbox-form-group disabled" data-guid="cdce214c-569c-4ff9-9681-cd81fe0680e0">
+                                                                                    
+                                                                                        <label for="" class="pull-left control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1GRNMatchingRequired.Caption">GRN MATCHING REQUIRED</span>
+                                                                                        </label>
+                                                                                    <div class="pull-left sys-pd-l-10 syspro-entry-content">
+                                                                                                <div class="checkbox sys-pd-t-5 disabled">
+                                                                                                    <label>
+                                                                                                        <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.APSPINF1GRNMatchingRequired" data-fieldname="Fields.APSPINF1GRNMatchingRequired" data-bind="checked: Fields.APSPINF1GRNMatchingRequired.Value" data-fieldlastvalue="[object Object]" ><span class="checkbox-material"><span class="check"></span></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty" data-guid="33cc3ff1-a47e-4377-a977-81b15562a472">
+                                                                                    
+                                                                                        <label for="  Entry numberQuick add" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1ExchangeRate.Caption">EXCHANGE RATE</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                                <input data-inputmask="'alias': 'decimal', 'radixPoint': ',', 'decimalProtect': false, 'autoGroup': true, 'rightAlign': false, 'allowMinus': true" type="text" step="any" class="form-control syspro-trackfield-change syspro-focusable syspro-trackfield-keydown syspro-numeric-input syspro-supports-mask" id="Fields.APSPINF1ExchangeRate" data-fieldname="Fields.APSPINF1ExchangeRate" data-groupseparator="." data-bind="inputmask: Fields.APSPINF1ExchangeRate.InputMask, ignorethousandseperators: Fields.APSPINF1ExchangeRate.IgnoreThousandSeperator, decimals: Fields.APSPINF1ExchangeRate.Decimals, value: Fields.APSPINF1ExchangeRate.Value, entryfieldevents: Fields.APSPINF1ExchangeRate.EntryFieldEvents" im-insert="true" data-inputmask-groupseparator="." data-inputmask-digitsoptional="false" data-entryfieldevents="" data-inputmask-digits="6" data-fieldlastvalue="[object Object]" >
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                                <div class="form-group checkbox-form-group disabled" data-guid="614c4430-88f9-41c6-dfbe-82c2a4ef9456">
+                                                                                    
+                                                                                        <label for="  Fixed exchange rate" class="pull-left control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1FixedExchangeRate.Caption">FIXED EXCHANGE RATE</span>
+                                                                                        </label>
+                                                                                    <div class="pull-left sys-pd-l-10 syspro-entry-content">
+                                                                                                <div class="checkbox sys-pd-t-5">
+                                                                                                    <label>
+                                                                                                        <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.APSPINF1FixedExchangeRate" data-fieldname="Fields.APSPINF1FixedExchangeRate" data-bind="checked: Fields.APSPINF1FixedExchangeRate.Value" data-fieldlastvalue="[object Object]" ><span class="checkbox-material"><span class="check"></span></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                            
+                                                                            
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="packages">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <p class="lead text-center">
+                                                                        Map text found in the document to Sales order fields.
+                                                                        Click a piece of highlighted text to map it.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                                                                    <div class="btn-group packages-options" data-toggle="buttons">
+                                                                        <label class="btn btn-inverse sys-fg-white active package sys-bg-inverse btn-block">
+                                                                            <input type="checkbox" autocomplete="off" checked> 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Foundation</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#foundationsDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="foundationsDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="foundationsDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-inverse sys-fg-white package sys-bg-inverse btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Foundation+</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#foundationsPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="foundationsPlusDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="foundationsPlusDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-success sys-fg-white package sys-bg-success btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Financials</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#financialsDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="financialsDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="financialsDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-success sys-fg-white package sys-bg-success btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Financials+</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#financialsPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="financialsPlusDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="financialsPlusDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-info sys-fg-white package sys-bg-info btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Distribution</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#distributionDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="distributionDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="distributionDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-info sys-fg-white package sys-bg-info btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Distribution+</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#distributionPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="distributionPlusDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="distributionPlusDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+
+                                                                        <label class="btn btn-primary sys-fg-white package sys-bg-primary btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Manufacturing</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#manufacturingDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="manufacturingDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="manufacturingDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-primary sys-fg-white package sys-bg-primary btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Manufacturing+</b>
+                                                                                </div>
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <a href="#manufacturingPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="manufacturingPlusDetails">
+                                                                                        View details
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-white">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <b>$14.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="manufacturingPlusDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="additional">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <p class="lead text-center sys-mg-t-15">
+                                                                        Document successfully mapped to <b>Sales order</b>!
+                                                                    </p>
+                                                                    <p class="text-center sys-pd-b-15">
+                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
+                                                                    </p>
+                                                                    <p class="text-center sys-mg-t-15">
+                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="isv">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <p class="lead text-center sys-mg-t-15">
+                                                                        Document successfully mapped to <b>Sales order</b>!
+                                                                    </p>
+                                                                    <p class="text-center sys-pd-b-15">
+                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
+                                                                    </p>
+                                                                    <p class="text-center sys-mg-t-15">
+                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="infrastructure">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <p class="lead text-center sys-mg-t-15">
+                                                                        Document successfully mapped to <b>Sales order</b>!
+                                                                    </p>
+                                                                    <p class="text-center sys-pd-b-15">
+                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
+                                                                    </p>
+                                                                    <p class="text-center sys-mg-t-15">
+                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="other">
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <p class="lead text-center sys-mg-t-15">
+                                                                        Document successfully mapped to <b>Sales order</b>!
+                                                                    </p>
+                                                                    <p class="text-center sys-pd-b-15">
+                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
+                                                                    </p>
+                                                                    <p class="text-center sys-mg-t-15">
+                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="wizard-footer">
+                                                        <div class="pull-right">
+                                                            <input
+                                                                type="button"
+                                                                class="btn btn-next btn-primary btn-wd"
+                                                                name="next"
+                                                                value="Next"
+                                                            />
+                                                            <input
+                                                                type="button"
+                                                                class="btn btn-finish btn-primary btn-wd"
+                                                                name="finish"
+                                                                value="Finish"
+                                                            />
+                                                        </div>
+
+                                                        <div class="pull-left">
+                                                            <input
+                                                                type="button"
+                                                                class="btn btn-previous btn-default btn-wd"
+                                                                name="previous"
+                                                                value="Previous"
+                                                            />
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- wizard container -->
+                                    </div>
+                                    <div class="col-md-3  col-sm-4">
+                                        <div class="panel sys-bd-off sys-bg-inverse sys-fg-white" id="finalQuoteCard">
+                                            <div class="loading-cover"><span class="spinner"></span></div>
+                                            <div class="panel-body sys-pd-15">
+                                                <h3 class="sys-mg-off-t sys-mg-b-15" data-bind="text: product"></h3>
+                                                <table class="table table-borderless table-condensed table-striped">
+                                                    <tr>
+                                                        <td>SKU</td>
+                                                        <td data-bind="text: SKU"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <table 
+                                                            class="table table-borderless table-condensed"
+                                                            data-template="finalProductTableTemplate"
+                                                            data-bind="source: CFGTSC"
+                                                        >
+                                                        <!-- <table class="table table-borderless table-condensed">
+                                                            <tr>
+                                                                <td>Width</td>
+                                                                <td>
+                                                                    <b data-bind="text: width.value" data-format="n2"></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-bind="visible: height.isVisible">
+                                                                <td>Height</td>
+                                                                <td>
+                                                                    <b data-bind="text: height.value" data-format="n2"
+                                                                        >1.60</b
+                                                                    >
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-bind="visible: lockType.isVisible">
+                                                                <td>Lock</td>
+                                                                <td><b>Single</b></td>
+                                                            </tr>
+                                                            <tr data-bind="visible: colour.isVisible">
+                                                                <td>Colour</td>
+                                                                <td>
+                                                                    <label
+                                                                        data-bind="style: {background-color: colour.hexColour}"
+                                                                        class="btn btn-radio btn-colour indicator"
+                                                                    ></label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-bind="visible: colour2.isVisible">
+                                                                <td>Colour</td>
+                                                                <td>
+                                                                    <label
+                                                                        data-bind="style: {background-color: colour2.hexColour}"
+                                                                        class="btn btn-radio btn-colour indicator"
+                                                                    ></label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-bind="visible: gap.isVisible">
+                                                                <td>Gap</td>
+                                                                <td><b data-bind="text: gap.value" data-format="n2"></b></td>
+                                                            </tr>
+                                                        </table> -->
+                                                    </div>
+                                                </div>
+                                                <div class="row" data-bind="visible: productDetails.isVisible">
+                                                    <div class="col-xs-12">
+                                                        <table
+                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5"
+                                                        >
+                                                            <tr>
+                                                                <td>Warehouse</td>
+                                                                <td data-bind="text: productDetails.warehouse"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Product class</td>
+                                                                <td data-bind="text: productDetails.class"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Unit of measure</td>
+                                                                <td data-bind="text: productDetails.unitMeasure"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Unit mass</td>
+                                                                <td data-bind="text: productDetails.unitMass"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Unit volume</td>
+                                                                <td data-bind="text: productDetails.unitVolume"></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="row" data-bind="visible: productDetails.isVisible">
+                                                    <div class="col-xs-12">
+                                                        <div class="panel sys-box-shadow-off sys-bd-off">
+                                                            <div
+                                                                class="panel-heading sys-bg-white sys-pd-l-5"
+                                                                role="tab"
+                                                                id="finalComments"
+                                                            >
+                                                                <h4 class="sys-mg-off">
+                                                                    <a
+                                                                        class="collapsed panel-heading sys-block sys-bg-white sys-fg-inverse"
+                                                                        role="button"
+                                                                        data-toggle="collapse"
+                                                                        href="#finalCommentCollapse"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapse_4"
+                                                                    >
+                                                                        Add comment
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-open-icon"
+                                                                            >keyboard_arrow_down</i
+                                                                        >
+                                                                        <i
+                                                                            class="material-icons pull-right collapsible-close-icon"
+                                                                            >keyboard_arrow_up</i
+                                                                        >
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div
+                                                                id="finalCommentCollapse"
+                                                                class="panel-collapse collapse"
+                                                                role="tabpanel"
+                                                                aria-labelledby="finalComments"
+                                                            >
+                                                                <textarea class="form-control final-comments"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <hr class="sys-mg-t-10 sys-mg-b-10" />
+                                                        <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <h4 class="sys-mg-b-10 clearfix">Quantity:</h4>
+                                                            </div>
+                                                            <div class="col-xs-6">
+                                                                <div class="form-group sys-mg-off-b">
+                                                                    <input
+                                                                        type="number"
+                                                                        class="pull-right form-control text-right"
+                                                                        value="1"
+                                                                        style="width: 50px;"
+                                                                        data-bind="value: quantity.value"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                            <span class="pull-left">Net value:</span
+                                                            ><span class="pull-right">$326.80</span>
+                                                        </h4>
+                                                        <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                            <span class="pull-left">Price:</span
+                                                            ><span class="pull-right">$326.80</span>
+                                                        </h3>
+                                                        <button
+                                                            id="createQuote"
+                                                            class="disabled btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
+                                                            type="button"
+                                                        >
+                                                            Create quote
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/UX_JS_bootstrap.js"></script>
+        <script src="js/UX_JS_bootstrap-3-typeahead.js"></script>
+        <script src="js/bootstrap-tagsinput.min.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+        <script src="js/UX_JS_ripples.min.js"></script>
+        <script src="js/jquery.bootstrap.wizard.js"></script>
+        <script src="js/paper-bootstrap-wizard.js"></script>
+
+        <script>
+
+            $(document).ready(function() {
+                $.material.init();
+                $('[data-tooltip="tooltip"]').tooltip();
+
+            });
+
+        </script>
+    </body>
+</html>

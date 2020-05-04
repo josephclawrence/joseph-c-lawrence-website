@@ -15,8 +15,6 @@
 
         <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
         <link href="css/postcss.css" rel="stylesheet" />
-        <link href="css/daterangepicker.css" rel="stylesheet" />
-        <link href="css/UX_CSS_bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
 
         <style>
@@ -50,8 +48,6 @@
     </head>
 
     <body data-column-layout="3col" style="padding-top:0px;">
-        <div id="invisibleNode" style="display: none;"></div>
-        <div id="invisibleToolbarNode" style="display: none;"></div>
 
         <nav
             id="fusion-toolbar"
@@ -118,14 +114,15 @@
                                                                         data-placeholder="Type something..."
                                                                         data-value-primitive="true"
                                                                         class="form-control syspro-trackfield-change syspro-combobox-inform" 
-                                                                        data-fieldname="data" 
                                                                         data-text-field="Description"
                                                                         data-value-field="Value"
                                                                         data-filter="contains"
-                                                                        data-popup="{appendTo: $('.k-dropdown-wrap')}"
+                                                                        data-popup="{
+                                                                            anchor: $('#data'),
+                                                                            position: 'bottom right'}"
                                                                         data-bind="value: data.Value, 
                                                                             source: data.Items.Item" 
-                                                                        style="display: none; width: 100%;" 
+                                                                        style="width: 100%;" 
                                                                         data-fieldlastvalue="" 
                                                                     />                                                                         
                                                                 </div>
@@ -133,15 +130,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-<!-- 
-                                                <div class="form-group">
-                                                    <div class='input-group date' id='optiontwo'>
-                                                        <input type='text' class="form-control" />
-                                                        <span class="input-group-addon">
-                                                            <span class="material-icons">calendar_today</span>
-                                                        </span>
-                                                    </div>
-                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
