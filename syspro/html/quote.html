@@ -102,12 +102,108 @@
     #quoteOverallProgress {
         position: fixed;
         bottom: 0;
-        height: 40px;
+        /* height: 40px; */
         width: 100%;
-        padding: 10px;
+        padding: 0px;
+        z-index: 999999;
     }
+    .overall-progress-bar {
+        margin-bottom: 0px;
+    list-style: none;
+    overflow: hidden;
+    font-weight: 400;
+    display: -webkit-box;
+    display: flex;
+    counter-reset: li;
+    padding-inline-start: 0px;
+}
+.progress-bar__steps {
+  /* background: #ddd;
+  color: #666; */
+  background: #2c3e50;
+  color: #ffffff;
+  width: 16%;
+  position: relative;
+  cursor: default;
+  list-style-image: none;
+  list-style-type: none;
+  padding: 8px 5px;
+  text-align: center;
+}
+@media screen and (min-width: 800px) {
+  .progress-bar__steps {
+    padding: 8px 0 8px 65px;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 800px) {
+  .progress-bar__steps:first-child {
+    padding: 8px 0 8px 30px;
+  }
+}
+@media screen and (min-width: 800px) {
+  .progress-bar__steps:after {
+    border-bottom: 50px solid transparent;
+    border-top: 50px solid transparent;
+    content: " ";
+    display: block;
+    height: 0;
+    left: 100%;
+    margin-top: -50px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    border-left: 30px solid #2c3e50;
+    z-index: 2;
+  }
+}
+@media screen and (min-width: 800px) {
+  .progress-bar__steps:before {
+    border-bottom: 50px solid transparent;
+    border-top: 50px solid transparent;
+    content: " ";
+    display: block;
+    height: 0;
+    left: 100%;
+    margin-top: -50px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    border-left: 30px solid #fff;
+    z-index: 1;
+    margin-left: 5px;
+  }
+}
+.overall-progress-bar .current {
+  background: #0078d7;
+  color: #fff;
+}
+.overall-progress-bar .current:after {
+  border-left: 30px solid #0078d7;
+}
 
-    #progressbar {
+@media screen and (min-width: 800px) {
+  .progress-bar__steps--numbers:before {
+    content: counter(li) " ";
+    counter-increment: li;
+    margin-right: 15px;
+    background: transparent;
+    border: 1px solid #666;
+    border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    width: 20px;
+  }
+}
+.current .progress-bar__steps--numbers:before {
+  background: white;
+  color: #0078d7;
+}
+
+
+    /* #progressbar {
         margin-bottom: 10px;
         overflow: hidden;
     }
@@ -154,7 +250,7 @@
 #progressbar li.active:before, #progressbar li.active:after {
   background: #5cb85c;
   color: white;
-}
+} */
     /*************/
     /*!
 
@@ -313,9 +409,9 @@
     .nav-pills > li.active > a:hover .material-icons,
     .nav-pills > li.active > a:focus .material-icons {
         color: #ffffff;
-        font-size: 32px;
-        top: 2px;
-        left: 4px;
+        /* font-size: 32px;
+        top: 3px;
+        left: 3px; */
         -webkit-transition: all 0.2s linear;
         -moz-transition: all 0.2s linear;
         -o-transition: all 0.2s linear;
@@ -333,7 +429,7 @@
         border: 3px solid #f3f2ee;
         text-align: center;
         border-radius: 50%;
-        color: #0078d7;
+        color: #00802b;
         font-weight: 600;
         width: 45px;
         height: 45px;
@@ -352,13 +448,13 @@
     }
 
     .wizard-card .nav-pills > li.active > a:after {
-        background-color: #0078d7;
+        background-color: #00802b;
     }
     .wizard-card .nav-pills > li.active > a {
-        color: #0078d7;
+        color: #00802b;
     }
     .wizard-card .nav-pills .icon-circle.checked {
-        border-color: #0078d7;
+        border-color: #00802b;
     }
 
     .progress-bar {
@@ -377,7 +473,7 @@
         transition: width 0.6s ease;
     }
     .wizard-card .wizard-navigation .progress-bar {
-        background-color: #0078d7;
+        background-color: #00802b;
     }
 
     .wizard-card .tab-content {
@@ -501,7 +597,7 @@
     margin-right: 10px;
     width: 30%;
     white-space: normal;
-    min-height: 55px;
+    min-height: 58px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -687,7 +783,7 @@
                                                             <li>
                                                                 <a href="#info" data-toggle="tab">
                                                                     <div class="icon-circle">
-                                                                        <i class=" material-icons">note_add</i>
+                                                                        <i class=" material-icons">person_pin</i>
                                                                     </div>
                                                                     Basic info
                                                                 </a>
@@ -695,7 +791,7 @@
                                                             <li>
                                                                 <a href="#packages" data-toggle="tab">
                                                                     <div class="icon-circle">
-                                                                        <i class=" material-icons">swap_horizontal_circle</i>
+                                                                        <i class=" material-icons">apps</i>
                                                                     </div>
                                                                     Packages
                                                                 </a>
@@ -703,7 +799,7 @@
                                                             <li>
                                                                 <a href="#additional" data-toggle="tab">
                                                                     <div class="icon-circle">
-                                                                        <i class=" material-icons">thumb_up</i>
+                                                                        <i class=" material-icons">queue_play_next</i>
                                                                     </div>
                                                                     Additional
                                                                 </a>
@@ -711,7 +807,7 @@
                                                             <li>
                                                                 <a href="#isv" data-toggle="tab">
                                                                     <div class="icon-circle">
-                                                                        <i class=" material-icons">thumb_up</i>
+                                                                        <i class=" material-icons">power</i>
                                                                     </div>
                                                                     ISV options
                                                                 </a>
@@ -719,7 +815,7 @@
                                                             <li>
                                                                 <a href="#infrastructure" data-toggle="tab">
                                                                     <div class="icon-circle">
-                                                                        <i class=" material-icons">thumb_up</i>
+                                                                        <i class=" material-icons">dns</i>
                                                                     </div>
                                                                     Infrastructure
                                                                 </a>
@@ -727,7 +823,7 @@
                                                             <li>
                                                                 <a href="#other" data-toggle="tab">
                                                                     <div class="icon-circle">
-                                                                        <i class=" material-icons">thumb_up</i>
+                                                                        <i class=" material-icons">speaker_notes</i>
                                                                     </div>
                                                                     Other items
                                                                 </a>
@@ -1577,13 +1673,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane" id="infrastructure">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <p class="lead text-center sys-mg-t-15">
-                                                                        Infrastructure options
-                                                                    </p>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <div class="form-horizontal">
@@ -1640,7 +1730,7 @@
                                                                                         <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                     </div>
                                                                                 </div>
-                                                                                
+                                                                                <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
                                                                                 <div class="form-group is-empty">                                                
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Database</span>
@@ -1699,7 +1789,7 @@
                                                                                         <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                     </div>
                                                                                 </div>
-                                                                                
+                                                                                <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
                                                                                 <div class="form-group is-empty">                                                
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Geo-replication</span>
@@ -1744,17 +1834,125 @@
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane" id="other">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <p class="lead text-center sys-mg-t-15">
-                                                                        Document successfully mapped to <b>Sales order</b>!
-                                                                    </p>
-                                                                    <p class="text-center sys-pd-b-15">
-                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
-                                                                    </p>
-                                                                    <p class="text-center sys-mg-t-15">
-                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
-                                                                    </p>
+                                                            <div class="row sys-mg-b-10">
+                                                                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                                                    <a href="#" class="btn btn-primary btn-md">Add new item</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-horizontal">
+                                                                <div class="col-sm-12">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-md-10 col-md-offset-1">
+
+                                                                            <div class="row">
+                                                                        <!-- <div class="row"> -->
+                                                                                <div class="col-sm-1">
+                                                                                    <i class="material-icons sys-fg-danger">delete_forever</i>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-5">                                   
+                                                                                    <!-- <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Region</span>
+                                                                                    </label> -->
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="text" class="form-control" placeholder="Description">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-2">
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="number" class="form-control" placeholder="Quantity">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-2">
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="number" class="form-control" placeholder="Price">              
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-md-2 text-right">
+                                                                                    <b>$48.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr class="sys-bg-very-light-gray sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-md-10 col-md-offset-1">
+
+                                                                            <div class="row">
+                                                                        <!-- <div class="row"> -->
+                                                                                <div class="col-sm-1">
+                                                                                    <i class="material-icons sys-fg-danger">delete_forever</i>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-5">                                   
+                                                                                    <!-- <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Region</span>
+                                                                                    </label> -->
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="text" class="form-control" placeholder="Description">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-2">
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="number" class="form-control" placeholder="Quantity">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-2">
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="number" class="form-control" placeholder="Price">              
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-md-2 text-right">
+                                                                                    <b>$48.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr class="sys-bg-very-light-gray sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-md-10 col-md-offset-1">
+
+                                                                            <div class="row">
+                                                                        <!-- <div class="row"> -->
+                                                                                <div class="col-sm-1">
+                                                                                    <i class="material-icons sys-fg-danger">delete_forever</i>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-5">                                   
+                                                                                    <!-- <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Region</span>
+                                                                                    </label> -->
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="text" class="form-control" placeholder="Description">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-2">
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="number" class="form-control" placeholder="Quantity">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty col-sm-2">
+                                                                                    <div class="syspro-entry-content">
+                                                                                        <input type="number" class="form-control" placeholder="Price">              
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-md-2 text-right">
+                                                                                    <b>$48.00</b>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr class="sys-bg-very-light-gray sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1802,15 +2000,19 @@
                                                         >
                                                             <tr>
                                                                 <td>Quote ID</td>
-                                                                <td data-bind="text: productDetails.warehouse">ZX000011928273</td>
+                                                                <td>ZX000011928273</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Detail</td>
-                                                                <td data-bind="text: productDetails.class">value</td>
+                                                                <td>Quote version</td>
+                                                                <td>v4</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Another detail</td>
-                                                                <td data-bind="text: productDetails.unitMeasure">value</td>
+                                                                <td>Last edited</td>
+                                                                <td>12 May 2020</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Last edited by</td>
+                                                                <td>Han Solo</td>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -1886,7 +2088,7 @@
                                                             class="disabled btn btn-block btn-success btn-lg sys-txt-lg sys-600"
                                                             type="button"
                                                         >
-                                                            Accept quote
+                                                            Quote accepted
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1902,7 +2104,7 @@
         </div>
 
         <div id="quoteOverallProgress" class="sys-bg-inverse">
-            <ul id="progressbar">
+            <!-- <ul id="progressbar">
                 <li class="active">
                     <span class="sys-bg-success sys-fg-white">Step 1</span>
                 </li>  
@@ -1911,7 +2113,34 @@
                 <li>Step 4</li> 
                 <li>Step 5</li>
                 <li>Step 6</li>                 
-            </ul>
+            </ul> -->
+
+            <ol class="overall-progress-bar">
+                <li class="progress-bar__steps">
+                    <span class="progress-bar__steps--numbers"></span>
+                    <span class="progress-bar__steps--text">A step</span>
+                </li>
+                <li class="progress-bar__steps current">
+                    <span class="progress-bar__steps--numbers"></span>
+                    <span class="progress-bar__steps--text">Generate quote</span>
+                </li>
+                <li class="progress-bar__steps">
+                    <span class="progress-bar__steps--numbers"></span>
+                    <span class="progress-bar__steps--text">A step</span>
+                </li>
+                <li class="progress-bar__steps">
+                    <span class="progress-bar__steps--numbers"></span>
+                    <span class="progress-bar__steps--text">A step</span>
+                </li>
+                <li class="progress-bar__steps">
+                    <span class="progress-bar__steps--numbers"></span>
+                    <span class="progress-bar__steps--text">A step</span>
+                </li>
+                <li class="progress-bar__steps">
+                    <span class="progress-bar__steps--numbers"></span>
+                    <span class="progress-bar__steps--text">A step</span>
+                </li>
+            </ol>
         </div>
 
         <script src="js/UX_JS_bootstrap.js"></script>
@@ -2104,7 +2333,7 @@
 
                 var slider5 = document.getElementById("slider5");
                 noUiSlider.create(slider5, {
-                    start: 5,
+                    start: 10,
                     connect: [true, false],
                     step: 1,
                     tooltips: [true],
