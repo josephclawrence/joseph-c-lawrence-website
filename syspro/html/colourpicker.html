@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/postcss.css" rel="stylesheet" />
+
+
+        <style>
+.k-flatcolorpicker .k-slider-horizontal .k-slider-track {
+    box-shadow: none;
+    border-width: 0;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle {
+    margin-top: 0px;
+    border: 9px solid #fff;
+    width: 10px;
+    height: 10px;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle:focus, .k-flatcolorpicker .k-hue-slider .k-draghandle:hover {
+    border-width: 10px;
+    margin-top: -1px;
+}
+/* .k-flatcolorpicker .k-hue-slider .k-draghandle:hover {
+    border-width: 11px;
+    margin-top: -2px;
+} */
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle,
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle:focus,
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle:hover {
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #eee;
+    margin-left: -7px;
+    margin-top: -7px;
+    border-radius: 9px;
+    /* -webkit-box-shadow: 0 1px 2px #444; */
+    box-shadow: none;
+    /* background: 0 0; */
+    background-color: transparent !important;
+}
+
+.k-slider-horizontal .k-slider-track {
+    top: 50%;
+    left: 0;
+    height: 10px;
+    border-radius: 5px;
+}
+.k-colorpicker .k-selected-color {
+    width: 2em;
+    height: 2em;
+}
+.k-picker-wrap .k-select {
+    line-height: 2em;
+}
+.k-colorpicker .k-picker-wrap {
+    line-height: 2em;
+}
+        </style>
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
+                        >
+                            <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid " id="main-container">
+                <div class="row sys-mg-t-15">
+
+
+                    <div class="col-sm-4 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+
+                                    <div class="col-md-12">
+                                        <div class="panel sys-widget sys-box-shadow-off">
+                                            <div class="panel-body sys-pd-off">
+                                                <div class="form-horizontal">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group is-empty">
+                    
+                                                                <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                    <span>Colour</span>
+                                                                </label>
+                                                                <div class="col-md-7 syspro-entry-content">
+                                                                    <input id="colorpicker" />
+                                                                      
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Off Canvas menus -->
+
+        <script src="js/UX_JS_bootstrap.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.material.init();
+
+                $("#colorpicker").kendoColorPicker({
+                    preview: false,
+                    value: "#b72bba"
+                });
+
+            });
+
+        </script>
+    </body>
+</html>

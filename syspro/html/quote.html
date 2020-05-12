@@ -98,6 +98,63 @@
         </style>
 
 <style>
+
+    #quoteOverallProgress {
+        position: fixed;
+        bottom: 0;
+        height: 40px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    #progressbar {
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+#progressbar li {
+  list-style-type: none;
+  color: #99a2a8;
+  font-size: 9px;
+  width: calc(100%/6);
+  float: left;
+  position: relative;
+}
+
+#progressbar li span {
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+#progressbar li:before {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: #eaf0f4;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+}
+#progressbar li:after {
+  content: '';
+  width: 100%;
+  height: 10px;
+  background: #eaf0f4;
+  position: absolute;
+  left: -50%;
+  top: 8px;
+  z-index: -1;
+}
+#progressbar li:last-child:after {
+  width: 150%;
+}
+#progressbar li.active {
+  color: #5cb85c;
+}
+#progressbar li.active:before, #progressbar li.active:after {
+  background: #5cb85c;
+  color: white;
+}
     /*************/
     /*!
 
@@ -409,20 +466,59 @@
     margin-top: 0px;
     margin-bottom: 2px;
 }
-.packages-options {
+.packages-options, .infrastructure-options, .database-optoins {
     width: 100%;
 }
+.btn-group.infrastructure-options {
+    margin: 3px 1px;
+}
+.btn-group.packages-options > .btn.package,
+.btn-group.infrastructure-options > .btn.infrastructure-option,
+.btn-group.database-options > .btn.database-option {
+    margin-bottom: 5px;
+    padding: 10px;
+    border-width: 3px;
+}
+
 .btn-group.packages-options > .btn.package,
 .btn-group.packages-options > .btn.package:first-child:not(:last-child):not(.dropdown-toggle),
 .btn-group.packages-options > .btn.package:not(:first-child):not(:last-child):not(.dropdown-toggle),
 .btn-group.packages-options > .btn.package:last-child:not(:first-child) {
     border-radius: 4px !important;
     width: 100%;
-    margin-bottom: 5px;
-    padding: 10px;
-    border-width: 3px;
 }
-.btn-group.packages-options > .btn.package.active {
+
+
+.btn-group.database-options > .btn.database-option,
+.btn-group.database-options > .btn.database:first-child:not(:last-child):not(.dropdown-toggle),
+.btn-group.database-options > .btn.database:not(:first-child):not(:last-child):not(.dropdown-toggle),
+.btn-group.database-options > .btn.database:last-child:not(:first-child),
+.btn-group.infrastructure-options > .btn.infrastructure-option,
+.btn-group.infrastructure-options > .btn.infrastructure:first-child:not(:last-child):not(.dropdown-toggle),
+.btn-group.infrastructure-options > .btn.infrastructure:not(:first-child):not(:last-child):not(.dropdown-toggle),
+.btn-group.infrastructure-options > .btn.infrastructure:last-child:not(:first-child) {
+    border-radius: 4px !important;
+    margin-right: 10px;
+    width: 30%;
+    white-space: normal;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-group > .btn .sys-txt-md {
+    line-height: 1.2em;
+}
+
+.btn-group.infrastructure-options > .btn.infrastructure-option {
+    /* border-radius: 4px !important; */
+    min-height: 40px;
+}
+
+.btn-group.packages-options > .btn.package.active,
+.btn-group.infrastructure-options > .btn.infrastructure-option.active,
+.btn-group.database-options > .btn.database-option.active {
     border: 3px solid #f1c40f !important;
 }
 .btn-group.packages-options > .btn.package .package-selected-icon {
@@ -431,6 +527,84 @@
 .btn-group.packages-options > .btn.package.active .package-selected-icon {
     color: #f1c40f;
 }
+.noUi-horizontal {
+    height: 10px;
+    height: 3px;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+.noUi-connect {
+    border-radius: 3px;
+    background-color: #0078d7;
+}
+.noUi-tooltip {
+    left: 50%;
+    border-radius: 4px;
+    padding: 2px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+
+
+/* Popover stuff */
+.popover.textarea-popover {
+            padding: 0px;
+            border: 0px solid #fff;
+            border-radius: 4px;
+            max-width: 100%;
+            resize: horizontal;
+            /* overflow: auto; */
+            width: 135px;
+            /* transition: top 0.2s; */
+         }
+
+            .popover.textarea-popover .popover-textarea-content {
+    height: 40px;
+    width: 100%;
+}
+
+            .textarea-popover .popover-title {
+               border-radius: 4px 4px 0 0;
+               border-bottom-color: #f7f7f7;
+               color:#2c3e50;
+            }
+         .textarea-popover .popover-footer {
+            margin: 0;
+            padding: 8px 14px;
+            font-weight: 400;
+            line-height: 18px;
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #EBEBEB;
+            border-radius: 0 0 4px 4px;
+         }
+         .popover.textarea-popover.bottom > .arrow:after, .popover.textarea-popover.bottom > .arrow {
+            border-bottom-color: #f7f7f7;
+         }
+
+    .k-dropdown-wrap .k-input, .k-multiselect-wrap .k-input, .k-numeric-wrap .k-input, .k-picker-wrap .k-input, .k-selectbox .k-input, .k-textbox > input {
+    line-height: 1.3;
+    }
+    .k-dropdown-wrap.k-state-default, .k-numeric-wrap.k-state-default, .k-picker-wrap.k-state-default {
+    background-color: transparent;
+    }
+    .discount {
+        cursor: pointer;
+    }
+    .infrastructure-pricing {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 60px;
+    }
+    .form-group a.view-details {
+        width: auto;
+        display: inline;
+    }
+    .item-name {
+        white-space: normal;
+    }
 </style>
 
         <script src="js/UX_JS_jquery.min.js"></script>
@@ -543,7 +717,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="#infrastructre" data-toggle="tab">
+                                                                <a href="#infrastructure" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">thumb_up</i>
                                                                     </div>
@@ -565,7 +739,7 @@
                                                             <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <p class="lead text-center">
-                                                                        Select an existing document, or add a new one.
+                                                                        Select customer region, and enter details.
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -575,100 +749,92 @@
 
                                                                         <div class="row">
                                                                     <!-- <div class="row"> -->
-                                                                            <div class="col-sm-12 col-md-8 col-md-offset-2 data-section" data-section="0">
+                                                                            <div class="col-sm-12 col-md-10 col-md-offset-1">
 
-
-
-
-
-
-
-                                                                                <div class="form-group is-empty" data-guid="b90b1407-cce1-4684-bbe8-d2116c99e2f8">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                        <label for="  Invoice" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1Invoice.Caption">INVOICE</span>
-                                                                                                <span class="text-warning mandatory-indication">*</span>
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Region</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" id="region" class="form-control">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Sub-region</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" id="subregion" class="form-control" disabled="disabled">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Number of users</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <div
+                                                                                            id="slider5"
+                                                                                            class="slider shor slider-material-orange"
+                                                                                        ></div>
+                                                                                        <input
+                                                                                            type="number"
+                                                                                            min="1"
+                                                                                            max="20"
+                                                                                            step="1"
+                                                                                            id="input-number5"
+                                                                                            value="5"
+                                                                                            class="hidden"
+                                                                                            
+                                                                                        />
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Name</span>
                                                                                         </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
-                                                                                                <div class="input-group">
-                                                                                                    <span class="spinner"></span>
-                                                                                                    <input type="text" class="form-control syspro-trackfield-change syspro-browse-input syspro-focusable syspro-trackfield-keydown" id="Fields.APSPINF1Invoice" data-fieldname="Fields.APSPINF1Invoice" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1Invoice.InputMask, entryvalue: Fields.APSPINF1Invoice.Value, predictivesearch: Fields.APSPINF1Invoice.PredictiveSearch, entryfieldevents: Fields.APSPINF1Invoice.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
-                                                                                                    <span class="input-group-btn disabled">
-                                                                                                        <a class="syspro-browse-button" data-fieldname="Fields.APSPINF1Invoice" data-bind="attr: { data-fieldvalue: Fields.APSPINF1Invoice.Value, data-predictivesearchfield: Fields.APSPINF1Invoice.PredictiveSearch  }" data-fieldvalue="" data-predictivesearchfield="undefined">
-                                                                                                            <i class="material-icons">search</i>
-                                                                                                        </a>
-                                                                                                    </span>
-                                                                                                </div>
-                                                                                                <p class="help-block syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1Invoice.Description"></p>
+                                                                                        <input type="text" step="any" class="form-control syspro-trackfield-change syspro-focusable syspro-trackfield-keydown syspro-numeric-input syspro-supports-mask">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                                                            
+                                                                            
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Address</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask">
+                                                                                        <p class="help-block syspro-entryfield-tooltip syspro-help-block disabled-help-block" ></p>
+                                                                                        <p class="help-block syspro-entryfield-description syspro-help-block disabled-help-block" ></p>
                                                                             
                                                                             
                                                                                     </div>
-                                                                            
-                                                                            
+                                                                                                                                                        
                                                                                 </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="49cefc24-e1bc-425b-b444-4e248e72ab0c">
-                                                                                    
-                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1TransactionAmount.Caption">TRANSACTION AMOUNT</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                <input data-inputmask="'alias': 'decimal', 'radixPoint': ',', 'decimalProtect': false, 'autoGroup': true, 'rightAlign': false, 'allowMinus': true" type="text" step="any" class="form-control syspro-trackfield-change syspro-focusable syspro-trackfield-keydown syspro-numeric-input syspro-supports-mask" id="Fields.APSPINF1TransactionAmount" data-fieldname="Fields.APSPINF1TransactionAmount" data-groupseparator="." data-bind="inputmask: Fields.APSPINF1TransactionAmount.InputMask, ignorethousandseperators: Fields.APSPINF1TransactionAmount.IgnoreThousandSeperator, decimals: Fields.APSPINF1TransactionAmount.Decimals, value: Fields.APSPINF1TransactionAmount.Value, entryfieldevents: Fields.APSPINF1TransactionAmount.EntryFieldEvents" im-insert="true" data-inputmask-groupseparator="." data-inputmask-digitsoptional="false" data-entryfieldevents="" placeholder="" data-inputmask-digits="2" data-fieldlastvalue="[object Object]" >
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="a53591ec-b475-4d37-8e0e-e12a5c2f77b7">
-                                                                                    
-                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1TransactionReference.Caption">TRANSACTION REFERENCE</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                    <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask" id="Fields.APSPINF1TransactionReference" data-fieldname="Fields.APSPINF1TransactionReference" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1TransactionReference.InputMask, entryvalue: Fields.APSPINF1TransactionReference.Value, predictivesearch: Fields.APSPINF1TransactionReference.PredictiveSearch, entryfieldevents: Fields.APSPINF1TransactionReference.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
-                                                                                                <p class="help-block syspro-entryfield-tooltip syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1TransactionReference.Tooltip"></p>
-                                                                                                <p class="help-block syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1TransactionReference.Description"></p>
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
+
                                                                             
                                                                                 <div class="form-group is-empty" data-guid="c8a2063b-e597-4f7d-cd4f-462eec118980">
                                                                                     
-                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1Branch.Caption">BRANCH</span>
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1Branch.Caption">Extra</span>
                                                                                         </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
                                                                                                 <div class="input-group">
                                                                                                     <span class="spinner"></span>
-                                                                                                    <input type="text" class="form-control syspro-trackfield-change syspro-browse-input syspro-focusable syspro-trackfield-keydown predictive-search-initialized" id="Fields.APSPINF1Branch" data-fieldname="Fields.APSPINF1Branch" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1Branch.InputMask, entryvalue: Fields.APSPINF1Branch.Value, predictivesearch: Fields.APSPINF1Branch.PredictiveSearch, entryfieldevents: Fields.APSPINF1Branch.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
+                                                                                                    <input type="text" class="form-control syspro-trackfield-change syspro-browse-input syspro-focusable syspro-trackfield-keydown predictive-search-initialized" id="Fields.APSPINF1Branch" data-fieldname="Fields.APSPINF1Branch" >
                                                                                                     <span class="input-group-btn disabled">
-                                                                                                        <a class="syspro-browse-button" data-fieldname="Fields.APSPINF1Branch" data-bind="attr: { data-fieldvalue: Fields.APSPINF1Branch.Value, data-predictivesearchfield: Fields.APSPINF1Branch.PredictiveSearch  }" data-fieldvalue="" data-predictivesearchfield="APBranch">
+                                                                                                        <a class="syspro-browse-button" data-fieldname="Fields.APSPINF1Branch" data-predictivesearchfield="APBranch">
                                                                                                             <i class="material-icons">search</i>
                                                                                                         </a>
                                                                                                     </span>
@@ -680,204 +846,7 @@
                                                                             
                                                                             
                                                                                 </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="2bb5d7e1-30aa-48e7-9f10-e4c503e8d343">
-                                                                                    
-                                                                                        <label for="  Registered Cr/Dr noteQuick add" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1RegisteredCrDrNote.Caption">REGISTERED CR/DR NOTE</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                    <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask syspro-button-created" id="Fields.APSPINF1RegisteredCrDrNote" data-fieldname="Fields.APSPINF1RegisteredCrDrNote" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1RegisteredCrDrNote.InputMask, entryvalue: Fields.APSPINF1RegisteredCrDrNote.Value, predictivesearch: Fields.APSPINF1RegisteredCrDrNote.PredictiveSearch, entryfieldevents: Fields.APSPINF1RegisteredCrDrNote.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" style="display: none;" >
-                                                                                                <p class="help-block syspro-entryfield-tooltip syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1RegisteredCrDrNote.Tooltip" style="display: none;"></p>
-                                                                                                <p class="help-block syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1RegisteredCrDrNote.Description" style="display: none;"></p>
-                                                                            
-                                                                            
-                                                                                    <a ref="#" onclick="sysproInterop.hyperlinkClicked(this)" class="syspro-hyperlink-button disabled" data-fieldname="Fields.APSPINF1RegisteredCrDrNote" data-fieldcaption:="" 'fields.apspinf1registeredcrdrnote'="" data-fieldvalue="Select" data-bind="html: Fields.APSPINF1RegisteredCrDrNote.Value">Select</a></div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="272247ae-3799-4e69-b5de-ec155faaf8fe">
-                                                                                    
-                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1InvoiceDate.Caption">INVOICE DATE</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                <div class="input-group date">
-                                                                                                    <input type="text" class="form-control date-input syspro-focusable syspro-trackfield-change" placeholder="Enter date" id="Fields.APSPINF1InvoiceDate" data-fieldname="Fields.APSPINF1InvoiceDate" data-bind="datevalue: Fields.APSPINF1InvoiceDate.Value" data-fieldlastvalue="[object Object]" >
-                                                                                                    <span class="input-group-addon disabled">
-                                                                                                        <i class="material-icons text-primary">date_range</i>
-                                                                                                    </span>
-                                                                                                </div>
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="95f549d5-636d-46cb-9b99-611a09fd419c">
-                                                                                    
-                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1DiscountDate.Caption">DISCOUNT DATE</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                <div class="input-group date">
-                                                                                                    <input type="text" class="form-control date-input syspro-focusable syspro-trackfield-change" placeholder="Enter date" id="Fields.APSPINF1DiscountDate" data-fieldname="Fields.APSPINF1DiscountDate" data-bind="datevalue: Fields.APSPINF1DiscountDate.Value" data-fieldlastvalue="[object Object]" >
-                                                                                                    <span class="input-group-addon disabled">
-                                                                                                        <i class="material-icons text-primary">date_range</i>
-                                                                                                    </span>
-                                                                                                </div>
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="ee8f1c1f-4b02-4f25-f74d-3105223bb961">
-                                                                                    
-                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1DueDate.Caption">DUE DATE</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                <div class="input-group date">
-                                                                                                    <input type="text" class="form-control date-input syspro-focusable syspro-trackfield-change" placeholder="Enter date" id="Fields.APSPINF1DueDate" data-fieldname="Fields.APSPINF1DueDate" data-bind="datevalue: Fields.APSPINF1DueDate.Value" data-fieldlastvalue="[object Object]" >
-                                                                                                    <span class="input-group-addon disabled">
-                                                                                                        <i class="material-icons text-primary">date_range</i>
-                                                                                                    </span>
-                                                                                                </div>
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="e4346959-e7c4-4adb-d647-489e3001ca9b">
-                                                                                    
-                                                                                        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1JournalNotation.Caption">JOURNAL NOTATION</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                    <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask" id="Fields.APSPINF1JournalNotation" data-fieldname="Fields.APSPINF1JournalNotation" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~" data-bind="inputmask: Fields.APSPINF1JournalNotation.InputMask, entryvalue: Fields.APSPINF1JournalNotation.Value, predictivesearch: Fields.APSPINF1JournalNotation.PredictiveSearch, entryfieldevents: Fields.APSPINF1JournalNotation.EntryFieldEvents" data-inputmask-mask="" data-entryfieldevents="" data-fieldlastvalue="[object Object]" >
-                                                                                                <p class="help-block syspro-entryfield-tooltip syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1JournalNotation.Tooltip"></p>
-                                                                                                <p class="help-block syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1JournalNotation.Description"></p>
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group checkbox-form-group disabled" data-guid="cdce214c-569c-4ff9-9681-cd81fe0680e0">
-                                                                                    
-                                                                                        <label for="" class="pull-left control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1GRNMatchingRequired.Caption">GRN MATCHING REQUIRED</span>
-                                                                                        </label>
-                                                                                    <div class="pull-left sys-pd-l-10 syspro-entry-content">
-                                                                                                <div class="checkbox sys-pd-t-5 disabled">
-                                                                                                    <label>
-                                                                                                        <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.APSPINF1GRNMatchingRequired" data-fieldname="Fields.APSPINF1GRNMatchingRequired" data-bind="checked: Fields.APSPINF1GRNMatchingRequired.Value" data-fieldlastvalue="[object Object]" ><span class="checkbox-material"><span class="check"></span></span>
-                                                                                                    </label>
-                                                                                                </div>
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group is-empty" data-guid="33cc3ff1-a47e-4377-a977-81b15562a472">
-                                                                                    
-                                                                                        <label for="  Entry numberQuick add" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1ExchangeRate.Caption">EXCHANGE RATE</span>
-                                                                                        </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                <input data-inputmask="'alias': 'decimal', 'radixPoint': ',', 'decimalProtect': false, 'autoGroup': true, 'rightAlign': false, 'allowMinus': true" type="text" step="any" class="form-control syspro-trackfield-change syspro-focusable syspro-trackfield-keydown syspro-numeric-input syspro-supports-mask" id="Fields.APSPINF1ExchangeRate" data-fieldname="Fields.APSPINF1ExchangeRate" data-groupseparator="." data-bind="inputmask: Fields.APSPINF1ExchangeRate.InputMask, ignorethousandseperators: Fields.APSPINF1ExchangeRate.IgnoreThousandSeperator, decimals: Fields.APSPINF1ExchangeRate.Decimals, value: Fields.APSPINF1ExchangeRate.Value, entryfieldevents: Fields.APSPINF1ExchangeRate.EntryFieldEvents" im-insert="true" data-inputmask-groupseparator="." data-inputmask-digitsoptional="false" data-entryfieldevents="" data-inputmask-digits="6" data-fieldlastvalue="[object Object]" >
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                            
-                                                                                <div class="form-group checkbox-form-group disabled" data-guid="614c4430-88f9-41c6-dfbe-82c2a4ef9456">
-                                                                                    
-                                                                                        <label for="  Fixed exchange rate" class="pull-left control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                            <span data-bind="htmltextnonull: Fields.APSPINF1FixedExchangeRate.Caption">FIXED EXCHANGE RATE</span>
-                                                                                        </label>
-                                                                                    <div class="pull-left sys-pd-l-10 syspro-entry-content">
-                                                                                                <div class="checkbox sys-pd-t-5">
-                                                                                                    <label>
-                                                                                                        <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.APSPINF1FixedExchangeRate" data-fieldname="Fields.APSPINF1FixedExchangeRate" data-bind="checked: Fields.APSPINF1FixedExchangeRate.Value" data-fieldlastvalue="[object Object]" ><span class="checkbox-material"><span class="check"></span></span>
-                                                                                                    </label>
-                                                                                                </div>
-                                                                            
-                                                                            
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                            
-                                                                            
-                                                                            
+                                                                                                                               
                                                                             
                                                                             </div>
                                                                         </div>
@@ -886,16 +855,16 @@
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane" id="packages">
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <p class="lead text-center">
                                                                         Map text found in the document to Sales order fields.
                                                                         Click a piece of highlighted text to map it.
                                                                     </p>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                             <div class="row">
-                                                                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                                                                <div class="col-xs-12 col-md-10 col-md-offset-1">
                                                                     <div class="btn-group packages-options" data-toggle="buttons">
                                                                         <label class="btn btn-inverse sys-fg-white active package sys-bg-inverse btn-block">
                                                                             <input type="checkbox" autocomplete="off" checked> 
@@ -904,21 +873,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Foundation</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#foundationsDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="foundationsDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#foundationsDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="foundationsDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="foundationsDetails">
@@ -943,21 +917,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Foundation+</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#foundationsPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="foundationsPlusDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#foundationsPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="foundationsPlusDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="foundationsPlusDetails">
@@ -982,21 +961,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Financials</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#financialsDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="financialsDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#financialsDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="financialsDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="financialsDetails">
@@ -1021,21 +1005,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Financials+</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#financialsPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="financialsPlusDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#financialsPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="financialsPlusDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="financialsPlusDetails">
@@ -1060,21 +1049,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Distribution</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#distributionDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="distributionDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#distributionDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="distributionDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="distributionDetails">
@@ -1099,21 +1093,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Distribution+</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#distributionPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="distributionPlusDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#distributionPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="distributionPlusDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="distributionPlusDetails">
@@ -1139,21 +1138,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Manufacturing</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#manufacturingDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="manufacturingDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#manufacturingDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="manufacturingDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="manufacturingDetails">
@@ -1178,21 +1182,26 @@
                                                                                     <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
                                                                                     <b>Manufacturing+</b>
                                                                                 </div>
-                                                                                <div class="col-xs-4 text-left">
-                                                                                    <a href="#manufacturingPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white" aria-expanded="false" aria-controls="manufacturingPlusDetails">
-                                                                                        View details
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#manufacturingPlusDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="manufacturingPlusDetails">
+                                                                                        <i class="material-icons sys-fg-white"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
                                                                                         <i class="material-icons sys-txt-xs sys-fg-white">expand_more</i>
                                                                                     </a>
-                                                                                </div>
-                                                                                <div class="col-xs-1">
                                                                                     <a href="" class="view-details" data-toggle="tooltip" 
                                                                                     data-tooltip="tooltip"
                                                                                     data-placement="top" title="Download details document">
                                                                                         <i class="material-icons sys-fg-white">description</i>
                                                                                     </a>
                                                                                 </div>
-                                                                                <div class="col-xs-3">
+                                                                                <div class="col-xs-4">
+                                                                                    
+                                                                                </div>
+                                                                                <div class="col-xs-2">
                                                                                     <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row collapse" id="manufacturingPlusDetails">
@@ -1215,17 +1224,208 @@
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane" id="additional">
+
                                                             <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <p class="lead text-center sys-mg-t-15">
-                                                                        Document successfully mapped to <b>Sales order</b>!
-                                                                    </p>
-                                                                    <p class="text-center sys-pd-b-15">
-                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
-                                                                    </p>
-                                                                    <p class="text-center sys-mg-t-15">
-                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
-                                                                    </p>
+                                                                <div class="col-xs-12 col-md-10 col-md-offset-1">
+                                                                    <div class="btn-group packages-options" data-toggle="buttons">
+                                                                        <label class="btn btn-default sys-fg-inverse active package sys-bg-white btn-block">
+                                                                            <input type="checkbox" autocomplete="off" checked> 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>POS</b>
+                                                                                </div>
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#posDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="posDetails">
+                                                                                        <i class="material-icons sys-fg-inverse"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                    </a>
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-inverse">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="slider1"
+                                                                                            class="col-md-3 control-label sys-mg-t-2"
+                                                                                            >Users: </label
+                                                                                        >
+                                                                                        <div class="col-md-9">
+                                                                                            <div
+                                                                                                id="slider1"
+                                                                                                class="slider shor slider-material-orange"
+                                                                                            ></div>
+                                                                                            <input
+                                                                                                type="number"
+                                                                                                min="1"
+                                                                                                max="20"
+                                                                                                step="1"
+                                                                                                id="input-number1"
+                                                                                                value="5"
+                                                                                                class="hidden"
+                                                                                                
+                                                                                            />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-xs-2">
+                                                                                    <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="posDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-default sys-fg-inverse package sys-bg-white btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Espresso</b>
+                                                                                </div>
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#espressoDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="espressoDetails">
+                                                                                        <i class="material-icons sys-fg-inverse"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                    </a>
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-inverse">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="slider2"
+                                                                                            class="col-md-3 control-label sys-mg-t-2"
+                                                                                            >Users: </label
+                                                                                        >
+                                                                                        <div class="col-md-9">
+                                                                                            <div
+                                                                                                id="slider2"
+                                                                                                class="slider shor slider-material-orange"
+                                                                                            ></div>
+                                                                                            <input
+                                                                                                type="number"
+                                                                                                min="1"
+                                                                                                max="20"
+                                                                                                step="1"
+                                                                                                id="input-number2"
+                                                                                                value="5"
+                                                                                                class="hidden"                                      
+                                                                                            />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-2">
+                                                                                    <b>$32.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="espressoDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-default sys-fg-inverse package sys-bg-white btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b class="item-name">Manufacturing Operations Management (MOM)</b>
+                                                                                </div>
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#momDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="momDetails">
+                                                                                        <i class="material-icons sys-fg-inverse"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                    </a>
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-inverse">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="slider6"
+                                                                                            class="col-md-3 control-label sys-mg-t-2"
+                                                                                            >Users: </label
+                                                                                        >
+                                                                                        <div class="col-md-9">
+                                                                                            <div
+                                                                                                id="slider6"
+                                                                                                class="slider shor slider-material-orange"
+                                                                                            ></div>
+                                                                                            <input
+                                                                                                type="number"
+                                                                                                min="1"
+                                                                                                max="20"
+                                                                                                step="1"
+                                                                                                id="input-number6"
+                                                                                                value="5"
+                                                                                                class="hidden"                                      
+                                                                                            />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-2">
+                                                                                    <b>$32.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="momDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1233,14 +1433,146 @@
                                                             <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <p class="lead text-center sys-mg-t-15">
-                                                                        Document successfully mapped to <b>Sales order</b>!
+                                                                        A note about <b>Independent Software Vendors.</b>
                                                                     </p>
-                                                                    <p class="text-center sys-pd-b-15">
-                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
-                                                                    </p>
-                                                                    <p class="text-center sys-mg-t-15">
-                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
-                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12 col-md-10 col-md-offset-1">
+                                                                    <div class="btn-group packages-options" data-toggle="buttons">
+                                                                        <label class="btn btn-default sys-fg-inverse active package sys-bg-white btn-block">
+                                                                            <input type="checkbox" autocomplete="off" checked> 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Warehouse management</b>
+                                                                                </div>
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#warehouseDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="warehouseDetails">
+                                                                                        <i class="material-icons sys-fg-inverse"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                    </a>
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-inverse">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="slider3"
+                                                                                            class="col-md-3 control-label sys-mg-t-2"
+                                                                                            >Users: </label
+                                                                                        >
+                                                                                        <div class="col-md-9">
+                                                                                            <div
+                                                                                                id="slider3"
+                                                                                                class="slider shor slider-material-orange"
+                                                                                            ></div>
+                                                                                            <input
+                                                                                                type="number"
+                                                                                                min="1"
+                                                                                                max="20"
+                                                                                                step="1"
+                                                                                                id="input-number3"
+                                                                                                value="5"
+                                                                                                class="hidden"
+                                                                                                
+                                                                                            />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-xs-2">
+                                                                                    <b>$14.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="warehouseDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="btn btn-default sys-fg-inverse package sys-bg-white btn-block">
+                                                                            <input type="checkbox" autocomplete="off" > 
+                                                                            <div class="row">
+                                                                                <div class="col-xs-4 text-left">
+                                                                                    <i class="material-icons package-selected-icon sys-mg-r-5 pull-left">check_circle</i>
+                                                                                    <b>Bartender</b>
+                                                                                </div>
+                                                                                <div class="col-xs-2 text-left more-details">
+                                                                                    <a href="#bartenderDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="bartenderDetails">
+                                                                                        <i class="material-icons sys-fg-inverse"
+                                                                                        data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip"
+                                                                                        data-placement="top" title="View details">info</i>
+                                                                                        <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                    </a>
+                                                                                    <a href="" class="view-details" data-toggle="tooltip" 
+                                                                                    data-tooltip="tooltip"
+                                                                                    data-placement="top" title="Download details document">
+                                                                                        <i class="material-icons sys-fg-inverse">description</i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="slider4"
+                                                                                            class="col-md-3 control-label sys-mg-t-2"
+                                                                                            >Users: </label
+                                                                                        >
+                                                                                        <div class="col-md-9">
+                                                                                            <div
+                                                                                                id="slider4"
+                                                                                                class="slider shor slider-material-orange"
+                                                                                            ></div>
+                                                                                            <input
+                                                                                                type="number"
+                                                                                                min="1"
+                                                                                                max="20"
+                                                                                                step="1"
+                                                                                                id="input-number4"
+                                                                                                value="5"
+                                                                                                class="hidden"                                      
+                                                                                            />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-2">
+                                                                                    <b>$32.00</b>
+                                                                                    <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row collapse" id="bartenderDetails">
+                                                                                <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                    <ul>
+                                                                                        <li>System Foundation</li>
+                                                                                        <li>System Administration</li>
+                                                                                        <li>Report Writer</li>
+                                                                                        <li>Reporting Services</li>
+                                                                                        <li>Office Automation</li>
+                                                                                        <li>Contact Management</li>
+                                                                                        <li>Executive Dashboards</li>
+                                                                                        <li>Interface System</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1248,14 +1580,166 @@
                                                             <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <p class="lead text-center sys-mg-t-15">
-                                                                        Document successfully mapped to <b>Sales order</b>!
+                                                                        Infrastructure options
                                                                     </p>
-                                                                    <p class="text-center sys-pd-b-15">
-                                                                        <button type="button" class="btn btn-lg btn-primary">Run first OCR Mapped Sales Order</button>
-                                                                    </p>
-                                                                    <p class="text-center sys-mg-t-15">
-                                                                        Or click 'Finish' below to exit the OCR mapping wizard.
-                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="form-horizontal">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                                                                <div class="form-group is-empty">             
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Infrastructure size</span>
+                                                                                        <p class="sys-mg-t-5">
+                                                                                            <a href="#infrastructureDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="infrastructureDetails">
+                                                                                                <i class="material-icons sys-fg-primary">info</i>
+                                                                                                <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                            </a>
+                                                                                            
+                                                                                            <i class="material-icons sys-fg-primary"
+                                                                                            data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip"
+                                                                                            data-placement="top" title="Download info document">description</i>
+                                                                                        </p>
+                                                                                    </label>
+                                                                                    
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <div class="btn-group infrastructure-options" data-toggle="buttons">
+                                                                                            <label class="btn btn-default sys-fg-inverse active infrastructure-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off" checked> 
+                                                                                                <b class="sys-txt-md">Small</b>
+                                                                                            </label>
+                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
+                                                                                                <b class="sys-txt-md">Medium</b>
+                                                                                            </label>
+                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
+                                                                                                <b class="sys-txt-md">Large</b>
+                                                                                            </label>
+                                                                                          </div>
+                                                                                          <div class="row collapse" id="infrastructureDetails">
+                                                                                            <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                                <ul>
+                                                                                                    <li>System Foundation</li>
+                                                                                                    <li>System Administration</li>
+                                                                                                    <li>Report Writer</li>
+                                                                                                    <li>Reporting Services</li>
+                                                                                                    <li>Office Automation</li>
+                                                                                                    <li>Contact Management</li>
+                                                                                                    <li>Executive Dashboards</li>
+                                                                                                    <li>Interface System</li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2 infrastructure-pricing">
+                                                                                        <b>+ $32.00</b>
+                                                                                        <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="form-group is-empty">                                                
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Database</span>
+                                                                                        <p class="sys-mg-t-5">
+                                                                                            <a href="#databaseDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="databaseDetails">
+                                                                                                <i class="material-icons sys-fg-primary">info</i>
+                                                                                                <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                            </a>
+                                                                                            
+                                                                                            <i class="material-icons sys-fg-primary"
+                                                                                            data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip"
+                                                                                            data-placement="top" title="Download info document">description</i>
+                                                                                        </p>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <div class="btn-group database-options" data-toggle="buttons">
+                                                                                            <label class="btn btn-default sys-fg-inverse active database-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="database_option" autocomplete="off" checked> 
+                                                                                                <b class="sys-txt-md">SQL on Windows</b>
+                                                                                            </label>
+                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
+                                                                                                <b class="sys-txt-md">SQL on Linux</b>
+                                                                                            </label>
+                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
+                                                                                                <b class="sys-txt-md">SQL Express on Linux</b>
+                                                                                            </label>
+                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
+                                                                                                <b class="sys-txt-md">Something on Linux</b>
+                                                                                            </label>
+                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
+                                                                                                <b class="sys-txt-md">MongoDB on Something</b>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <div class="row collapse" id="databaseDetails">
+                                                                                            <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                                <ul>
+                                                                                                    <li>System Foundation</li>
+                                                                                                    <li>System Administration</li>
+                                                                                                    <li>Report Writer</li>
+                                                                                                    <li>Reporting Services</li>
+                                                                                                    <li>Office Automation</li>
+                                                                                                    <li>Contact Management</li>
+                                                                                                    <li>Executive Dashboards</li>
+                                                                                                    <li>Interface System</li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2 infrastructure-pricing">
+                                                                                        <b>+ $32.00</b>
+                                                                                        <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="form-group is-empty">                                                
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Geo-replication</span>
+                                                                                        <p class="sys-mg-t-5">
+                                                                                            <a href="#georeplicationDetails" role="button" data-toggle="collapse" class="view-details sys-fg-white sys-mg-r-10" aria-expanded="false" aria-controls="georeplicationDetails">
+                                                                                                <i class="material-icons sys-fg-primary">info</i>
+                                                                                                <i class="material-icons sys-txt-xs sys-fg-inverse">expand_more</i>
+                                                                                            </a>
+                                                                                            
+                                                                                            <i class="material-icons sys-fg-primary"
+                                                                                            data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip"
+                                                                                            data-placement="top" title="Download info document">description</i>
+                                                                                        </p>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <select id="georeplication"></select>
+                                                                                        <div class="row collapse" id="georeplicationDetails">
+                                                                                            <div class="col-xs-12 text-left sys-pd-t-10">
+                                                                                                <ul>
+                                                                                                    <li>System Foundation</li>
+                                                                                                    <li>System Administration</li>
+                                                                                                    <li>Report Writer</li>
+                                                                                                    <li>Reporting Services</li>
+                                                                                                    <li>Office Automation</li>
+                                                                                                    <li>Contact Management</li>
+                                                                                                    <li>Executive Dashboards</li>
+                                                                                                    <li>Interface System</li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2 infrastructure-pricing">
+                                                                                        <b>+ $32.00</b>
+                                                                                        <i class="material-icons sys-fg-warning sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">redeem</i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1310,98 +1794,28 @@
                                         <div class="panel sys-bd-off sys-bg-inverse sys-fg-white" id="finalQuoteCard">
                                             <div class="loading-cover"><span class="spinner"></span></div>
                                             <div class="panel-body sys-pd-15">
-                                                <h3 class="sys-mg-off-t sys-mg-b-15" data-bind="text: product"></h3>
-                                                <table class="table table-borderless table-condensed table-striped">
-                                                    <tr>
-                                                        <td>SKU</td>
-                                                        <td data-bind="text: SKU"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </table>
 
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <table 
-                                                            class="table table-borderless table-condensed"
-                                                            data-template="finalProductTableTemplate"
-                                                            data-bind="source: CFGTSC"
-                                                        >
-                                                        <!-- <table class="table table-borderless table-condensed">
-                                                            <tr>
-                                                                <td>Width</td>
-                                                                <td>
-                                                                    <b data-bind="text: width.value" data-format="n2"></b>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-bind="visible: height.isVisible">
-                                                                <td>Height</td>
-                                                                <td>
-                                                                    <b data-bind="text: height.value" data-format="n2"
-                                                                        >1.60</b
-                                                                    >
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-bind="visible: lockType.isVisible">
-                                                                <td>Lock</td>
-                                                                <td><b>Single</b></td>
-                                                            </tr>
-                                                            <tr data-bind="visible: colour.isVisible">
-                                                                <td>Colour</td>
-                                                                <td>
-                                                                    <label
-                                                                        data-bind="style: {background-color: colour.hexColour}"
-                                                                        class="btn btn-radio btn-colour indicator"
-                                                                    ></label>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-bind="visible: colour2.isVisible">
-                                                                <td>Colour</td>
-                                                                <td>
-                                                                    <label
-                                                                        data-bind="style: {background-color: colour2.hexColour}"
-                                                                        class="btn btn-radio btn-colour indicator"
-                                                                    ></label>
-                                                                </td>
-                                                            </tr>
-                                                            <tr data-bind="visible: gap.isVisible">
-                                                                <td>Gap</td>
-                                                                <td><b data-bind="text: gap.value" data-format="n2"></b></td>
-                                                            </tr>
-                                                        </table> -->
-                                                    </div>
-                                                </div>
                                                 <div class="row" data-bind="visible: productDetails.isVisible">
                                                     <div class="col-xs-12">
                                                         <table
                                                             class="table table-borderless table-condensed table-striped sys-mg-b-5"
                                                         >
                                                             <tr>
-                                                                <td>Warehouse</td>
-                                                                <td data-bind="text: productDetails.warehouse"></td>
+                                                                <td>Quote ID</td>
+                                                                <td data-bind="text: productDetails.warehouse">ZX000011928273</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Product class</td>
-                                                                <td data-bind="text: productDetails.class"></td>
+                                                                <td>Detail</td>
+                                                                <td data-bind="text: productDetails.class">value</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Unit of measure</td>
-                                                                <td data-bind="text: productDetails.unitMeasure"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Unit mass</td>
-                                                                <td data-bind="text: productDetails.unitMass"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Unit volume</td>
-                                                                <td data-bind="text: productDetails.unitVolume"></td>
+                                                                <td>Another detail</td>
+                                                                <td data-bind="text: productDetails.unitMeasure">value</td>
                                                             </tr>
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <div class="row" data-bind="visible: productDetails.isVisible">
+                                                <!-- <div class="row" data-bind="visible: productDetails.isVisible">
                                                     <div class="col-xs-12">
                                                         <div class="panel sys-box-shadow-off sys-bd-off">
                                                             <div
@@ -1440,40 +1854,39 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="row">
                                                     <div class="col-xs-12">
                                                         <hr class="sys-mg-t-10 sys-mg-b-10" />
-                                                        <div class="row">
-                                                            <div class="col-xs-6">
-                                                                <h4 class="sys-mg-b-10 clearfix">Quantity:</h4>
-                                                            </div>
-                                                            <div class="col-xs-6">
-                                                                <div class="form-group sys-mg-off-b">
-                                                                    <input
-                                                                        type="number"
-                                                                        class="pull-right form-control text-right"
-                                                                        value="1"
-                                                                        style="width: 50px;"
-                                                                        data-bind="value: quantity.value"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
-                                                            <span class="pull-left">Net value:</span
-                                                            ><span class="pull-right">$326.80</span>
+                                                            <span class="pull-left">Number of users</span
+                                                            ><span class="pull-right">42</span>
+                                                        </h4>
+                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                            <span class="pull-left">Per user cost</span
+                                                            ><span class="pull-right">$56.00</span>
+                                                        </h4>
+                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                            <span class="pull-left">Service charge</span
+                                                            ><span class="pull-right">$560.00</span>
                                                         </h4>
                                                         <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
-                                                            <span class="pull-left">Price:</span
-                                                            ><span class="pull-right">$326.80</span>
+                                                            <span class="pull-left">Total</span
+                                                            ><span class="pull-right">$2912.00</span>
                                                         </h3>
                                                         <button
                                                             id="createQuote"
-                                                            class="disabled btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
+                                                            class="btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
                                                             type="button"
                                                         >
-                                                            Create quote
+                                                            Generate quote
+                                                        </button>
+                                                        <button
+                                                            id="createQuote"
+                                                            class="disabled btn btn-block btn-success btn-lg sys-txt-lg sys-600"
+                                                            type="button"
+                                                        >
+                                                            Accept quote
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1486,6 +1899,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div id="quoteOverallProgress" class="sys-bg-inverse">
+            <ul id="progressbar">
+                <li class="active">
+                    <span class="sys-bg-success sys-fg-white">Step 1</span>
+                </li>  
+                <li>Step 2</li> 
+                <li>Step 3</li>
+                <li>Step 4</li> 
+                <li>Step 5</li>
+                <li>Step 6</li>                 
+            </ul>
         </div>
 
         <script src="js/UX_JS_bootstrap.js"></script>
@@ -1502,6 +1928,266 @@
             $(document).ready(function() {
                 $.material.init();
                 $('[data-tooltip="tooltip"]').tooltip();
+
+
+                var region = $("#region").kendoDropDownList({
+                    optionLabel: "Select region...",
+                    dataTextField: "name",
+                    dataValueField: "categoryID",
+                    dataSource: {
+                        data: [
+                            {
+                                name: 'Africa',
+                                categoryID: 'africa',
+                            },
+                            {
+                                name: 'North America',
+                                categoryID: 'northamerica',
+                            },
+                            {
+                                name: 'South America',
+                                categoryID: 'southamerica',
+                            },
+                            {
+                                name: 'Europe',
+                                categoryID: 'europe',
+                            },
+                            {
+                                name: 'Australasia',
+                                categoryID: 'australasia',
+                            },
+                            {
+                                name: 'Asia',
+                                categoryID: 'asia',
+                            },
+                        ]
+                    }
+                }).data("kendoDropDownList");
+                const regionData = [
+                        {
+                            name: 'South Africa',
+                            categoryID: 'africa',
+                        },
+                        {
+                            name: 'USA',
+                            categoryID: 'northamerica',
+                        },
+                        {
+                            name: 'Brazil',
+                            categoryID: 'southamerica',
+                        },
+                        {
+                            name: 'France',
+                            categoryID: 'europe',
+                        },
+                        {
+                            name: 'Australia',
+                            categoryID: 'australasia',
+                        },
+                        {
+                            name: 'China',
+                            categoryID: 'asia',
+                        },
+                        {
+                            name: 'Kenya',
+                            categoryID: 'africa',
+                        },
+                        {
+                            name: 'Mexico',
+                            categoryID: 'northamerica',
+                        },
+                        {
+                            name: 'Argentina',
+                            categoryID: 'southamerica',
+                        },
+                        {
+                            name: 'Italy',
+                            categoryID: 'europe',
+                        },
+                        {
+                            name: 'New Zealand',
+                            categoryID: 'australasia',
+                        },
+                        {
+                            name: 'Malaysia',
+                            categoryID: 'asia',
+                        },
+                ];
+
+                var subregion = $("#subregion").kendoDropDownList({
+                    autoBind: false,
+                    cascadeFrom: "region",
+                    optionLabel: "Select sub-region...",
+                    dataTextField: "name",
+                    dataValueField: "name",
+                    dataSource: {
+                        data: regionData
+                    }
+                }).data("kendoDropDownList");
+
+
+                var slider1 = document.getElementById("slider1");
+                noUiSlider.create(slider1, {
+                    start: 10,
+                    connect: [true, false],
+                    step: 1,
+                    tooltips: [true],
+                    range: {
+                        min: 1,
+                        max: 20,
+                    },
+                });
+                var inputNumber1 = $("#input-number1");
+                slider1.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    // inputNumber2.value = value;
+                    inputNumber1.val(value).change();
+                });
+
+                var slider2 = document.getElementById("slider2");
+                noUiSlider.create(slider2, {
+                    start: 5,
+                    connect: [true, false],
+                    step: 1,
+                    tooltips: [true],
+                    range: {
+                        min: 1,
+                        max: 20,
+                    },
+                });
+                var inputNumber2 = $("#input-number2");
+                slider2.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    // inputNumber2.value = value;
+                    inputNumber2.val(value).change();
+                });
+
+                var slider3 = document.getElementById("slider3");
+                noUiSlider.create(slider3, {
+                    start: 5,
+                    connect: [true, false],
+                    step: 1,
+                    tooltips: [true],
+                    range: {
+                        min: 1,
+                        max: 20,
+                    },
+                });
+                var inputNumber3 = $("#input-number3");
+                slider3.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    // inputNumber3.value = value;
+                    inputNumber3.val(value).change();
+                });
+
+                var slider4 = document.getElementById("slider4");
+                noUiSlider.create(slider4, {
+                    start: 5,
+                    connect: [true, false],
+                    step: 1,
+                    tooltips: [true],
+                    range: {
+                        min: 1,
+                        max: 20,
+                    },
+                });
+                var inputNumber4 = $("#input-number4");
+                slider4.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    // inputNumber4.value = value;
+                    inputNumber4.val(value).change();
+                });
+
+                var slider5 = document.getElementById("slider5");
+                noUiSlider.create(slider5, {
+                    start: 5,
+                    connect: [true, false],
+                    step: 1,
+                    tooltips: [true],
+                    range: {
+                        min: 1,
+                        max: 20,
+                    },
+                });
+                var inputNumber5 = $("#input-number5");
+                slider5.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    // inputNumber4.value = value;
+                    inputNumber4.val(value).change();
+                });
+
+                var slider6 = document.getElementById("slider6");
+                noUiSlider.create(slider6, {
+                    start: 5,
+                    connect: [true, false],
+                    step: 1,
+                    tooltips: [true],
+                    range: {
+                        min: 1,
+                        max: 20,
+                    },
+                });
+                var inputNumber6 = $("#input-number6");
+                slider6.noUiSlider.on("update", function(values, handle) {
+                    var value = values[handle];
+
+                    // inputNumber4.value = value;
+                    inputNumber6.val(value).change();
+                });
+
+                // $('.discount').popover({
+                //     html: '<input type="text" class="form-control" />'
+                // });
+
+                $(".discount").popover({
+                    trigger : 'click',  
+                    placement : 'auto', 
+                    html: 'true',
+                    title: 'Add a comment',
+                    content : '<input type="text" class="form-control"></input>',
+                    template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
+                            '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
+                            '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
+                            '<i class="material-icons sys-txt-sm">cancel</i></button>&nbsp;'+
+                            '<button type="button" class="btn btn-primary btn-xs popover-submit pull-right">'+
+                            '<i class="material-icons sys-txt-sm">check</i></button></div></div>' 
+                })
+                .on('shown.bs.popover', function(e) {
+                    //hide any visible comment-popover
+                    $(".discount").not(this).popover('hide');
+                    var $this = $(this);
+                    var $popover = $(e.target).data('bs.popover').$tip;
+                    var $comment = $this.parent().find(".comment");
+                    var $popoverTextarea = $popover.find('.popover-textarea');
+                    //attach link text
+                    $popoverTextarea.val($comment.text().trim()).focus();
+                    //close on cancel
+                    $('.popover-cancel').click(function() {                              
+                        $this.popover('hide');
+                    });
+                    //update link text on submit
+                    $('.popover-submit').click(function() {
+                        // $comment.text($popoverTextarea.val().trim());
+                        // $this.parent().find(".truncatedComment").text(truncateWithEllipses($comment.text().trim()));
+                        $this.popover('hide');
+                    });
+                });
+
+                $("#georeplication").kendoMultiSelect({
+                    placeholder: "Select regions...",
+                    dataTextField: "name",
+                    dataValueField: "name",
+                    height: 400,
+                    dataSource: {
+                        data: regionData,
+                        group: { field: "categoryID" }
+                    }                    
+                });
 
             });
 
