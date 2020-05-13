@@ -1992,11 +1992,11 @@
                                         <div class="panel sys-bd-off sys-bg-inverse sys-fg-white" id="finalQuoteCard">
                                             <div class="loading-cover"><span class="spinner"></span></div>
                                             <div class="panel-body sys-pd-15">
-
-                                                <div class="row" data-bind="visible: productDetails.isVisible">
+                                                <a href="#quoteDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="quoteDetails">Quote ZX000011928273 details <i class="material-icons sys-txt-sm">expand_more</i></a>
+                                                <div id="quoteDetails" class="row collapse" data-bind="visible: productDetails.isVisible">
                                                     <div class="col-xs-12">
                                                         <table
-                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5"
+                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5 sys-txt-md"
                                                         >
                                                             <tr>
                                                                 <td>Quote ID</td>
@@ -2017,46 +2017,7 @@
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="row" data-bind="visible: productDetails.isVisible">
-                                                    <div class="col-xs-12">
-                                                        <div class="panel sys-box-shadow-off sys-bd-off">
-                                                            <div
-                                                                class="panel-heading sys-bg-white sys-pd-l-5"
-                                                                role="tab"
-                                                                id="finalComments"
-                                                            >
-                                                                <h4 class="sys-mg-off">
-                                                                    <a
-                                                                        class="collapsed panel-heading sys-block sys-bg-white sys-fg-inverse"
-                                                                        role="button"
-                                                                        data-toggle="collapse"
-                                                                        href="#finalCommentCollapse"
-                                                                        aria-expanded="false"
-                                                                        aria-controls="collapse_4"
-                                                                    >
-                                                                        Add comment
-                                                                        <i
-                                                                            class="material-icons pull-right collapsible-open-icon"
-                                                                            >keyboard_arrow_down</i
-                                                                        >
-                                                                        <i
-                                                                            class="material-icons pull-right collapsible-close-icon"
-                                                                            >keyboard_arrow_up</i
-                                                                        >
-                                                                    </a>
-                                                                </h4>
-                                                            </div>
-                                                            <div
-                                                                id="finalCommentCollapse"
-                                                                class="panel-collapse collapse"
-                                                                role="tabpanel"
-                                                                aria-labelledby="finalComments"
-                                                            >
-                                                                <textarea class="form-control final-comments"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+
                                                 <div class="row">
                                                     <div class="col-xs-12">
                                                         <hr class="sys-mg-t-10 sys-mg-b-10" />
@@ -2064,11 +2025,57 @@
                                                             <span class="pull-left">Number of users</span
                                                             ><span class="pull-right">42</span>
                                                         </h4>
-                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                        <h4 class="sys-mg-b-5 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Per user cost</span
                                                             ><span class="pull-right">$56.00</span>
                                                         </h4>
-                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                        <a href="#costDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="costDetails">Cost breakdown <span class="sys-txt-sm">( per user / total )</span> <i class="material-icons sys-txt-sm">expand_more</i></a>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div id="costDetails" class="row collapse" data-bind="visible: productDetails.isVisible">
+                                                    <div class="col-xs-12">
+                                                        <table
+                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5 sys-txt-md"
+                                                        >
+                                                            <tr>
+                                                                <td>Foundations</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Foundations+</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Financials</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Distribution</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>POS</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Espresso</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Bartender</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>SQL on Linux</td>
+                                                                <td class="text-right">$32 / $500</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-10">
                                                             <span class="pull-left">Service charge</span
                                                             ><span class="pull-right">$560.00</span>
                                                         </h4>
