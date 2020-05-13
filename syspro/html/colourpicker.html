@@ -72,6 +72,12 @@
 .k-colorpicker .k-picker-wrap {
     line-height: 2em;
 }
+.form-group + .popover {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
         </style>
 
         <script>
@@ -138,7 +144,7 @@
                                                 <div class="form-horizontal">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <div class="form-group is-empty">
+                                                            <div class="form-group is-empty" data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse. Lomo photo booth raw denim chillwave, distillery flannel narwhal messenger bag lo-fi quinoa authentic migas.">
                     
                                                                 <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
                                                                     <span>Colour</span>
@@ -149,7 +155,7 @@
                                                                       
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group is-empty">
+                                                            <div class="form-group is-empty" data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse. Lomo photo booth raw denim chillwave, distillery flannel narwhal messenger bag lo-fi quinoa authentic migas.">
                     
                                                                 <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
                                                                     <span>Colour</span>
@@ -160,6 +166,17 @@
                                                                         data-role="colorpicker" 
                                                                         data-value="#ccc000"
                                                                         data-preview="false" />
+                                                                      
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group is-empty" data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse.">
+                    
+                                                                <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                    <span>Colour</span>
+                                                                </label>
+                                                                <div class="col-md-7 syspro-entry-content">
+                                                                    <input type="text" class="form-control" />
                                                                       
                                                                 </div>
                                                             </div>
@@ -191,6 +208,7 @@
                 $.material.init();
 
                 kendo.bind($("body"), viewModel);
+                $('[data-toggle="popover"]').popover();
             });
 
 
