@@ -106,11 +106,12 @@
 
     #quoteOverallProgress {
         position: fixed;
-        bottom: 0;
+        bottom: 23px;
         /* height: 40px; */
         width: 100%;
         padding: 0px;
         z-index: 999999;
+        border-top: 1px solid #bdc3c7;
     }
     .overall-progress-bar {
         margin-bottom: 0px;
@@ -125,25 +126,25 @@
 .progress-bar__steps {
   /* background: #ddd;
   color: #666; */
-  background: #2c3e50;
-  color: #ffffff;
+  background: #bdc3c7;
+  color: #2c3e50;
   width: 16%;
   position: relative;
   cursor: default;
   list-style-image: none;
   list-style-type: none;
-  padding: 8px 5px;
+  padding: 4px 5px;
   text-align: center;
 }
 @media screen and (min-width: 800px) {
   .progress-bar__steps {
-    padding: 8px 0 8px 65px;
+    padding: 4px 0 4px 65px;
     text-align: left;
   }
 }
 @media screen and (min-width: 800px) {
   .progress-bar__steps:first-child {
-    padding: 8px 0 8px 30px;
+    padding: 4px 0 4px 30px;
   }
 }
 @media screen and (min-width: 800px) {
@@ -158,7 +159,7 @@
     position: absolute;
     top: 50%;
     width: 0;
-    border-left: 30px solid #2c3e50;
+    border-left: 30px solid #bdc3c7;
     z-index: 2;
   }
 }
@@ -180,11 +181,11 @@
   }
 }
 .overall-progress-bar .current {
-  background: #0078d7;
+  background: #7f8c8d;
   color: #fff;
 }
 .overall-progress-bar .current:after {
-  border-left: 30px solid #0078d7;
+  border-left: 30px solid #7f8c8d;
 }
 
 @media screen and (min-width: 800px) {
@@ -197,14 +198,14 @@
     border-radius: 50%;
     display: inline-block;
     height: 20px;
-    line-height: 20px;
+    line-height: 18px;
     text-align: center;
     width: 20px;
   }
 }
 .current .progress-bar__steps--numbers:before {
   background: white;
-  color: #0078d7;
+  color: #7f8c8d;
 }
 
 
@@ -3792,9 +3793,11 @@
                     </div>
                 </div>
             </div>
+
+            <div class="statusBar sys-bg-inverse" style="display: block;"><span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)           TUESDAY 8   JANUARY 2019</span></div>
         </div>
 
-        <div id="quoteOverallProgress" class="sys-bg-inverse">
+        <div id="quoteOverallProgress" class="sys-bg-light-gray">
             <!-- <ul id="progressbar">
                 <li class="active">
                     <span class="sys-bg-success sys-fg-white">Step 1</span>
@@ -4088,7 +4091,7 @@
                     placement : 'auto', 
                     html: 'true',
                     title: 'Add a comment',
-                    content : '<span class="sys-txt-xs">Percentage - max 12.5%</span><input type="text" class="slider-input"></input>',
+                    content : '<span class="sys-txt-xs sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="slider-input"></input>',
                     template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
                             '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
                             '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
