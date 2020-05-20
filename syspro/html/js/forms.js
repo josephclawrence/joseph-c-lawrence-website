@@ -76,7 +76,7 @@
       // These options set what will be started by $.material.init()
       "validate": true,
       "input": true,
-      "ripples": true,
+      "ripples": false,
       "checkbox": true,
       "togglebutton": true,
       "radio": true,

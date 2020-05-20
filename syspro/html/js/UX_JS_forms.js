@@ -84,7 +84,7 @@
       "autofill": false,
 
       "withRipples": [
-        ".btn:not(.btn-link)",
+        ".btn:not(.btn-link):not(.infrastructure-option):not(.database-option):not(.customer-type-option)",
         ".card-image",
         ".navbar a:not(.withoutripple)",
         ".dropdown-menu a",
