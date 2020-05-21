@@ -21,7 +21,12 @@
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
 
         <style>
-
+            .customer-details {
+                display: none;
+            }
+            .existing-customer-field {
+                display: none;
+            }
             .form-group {
                 margin-top: 10px;
                 margin-bottom: 15px;
@@ -609,7 +614,7 @@
     width: 30%;
 }
 .btn.customer-type-option {
-    width: 46%;
+    width: calc(50% - 5px);
 }
 
 .btn-group > .btn .sys-txt-md {
@@ -978,7 +983,37 @@
                                                                         <div class="row">
                                                                     <!-- <div class="row"> -->
                                                                             <div class="col-sm-6">
-
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Quote date</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input  class="form-control date" value=>
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Expiry date</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input  class="form-control date">
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Description</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <textarea class="form-control " rows="4"></textarea>
+                                                                            
+                                                                                    </div>
+                                                                                </div>
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
@@ -986,46 +1021,68 @@
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
                                                                                         <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                                                                                            <label class="btn btn-default sys-fg-inverse active customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="customer_type" autocomplete="off" checked> 
+                                                                                            <label class="btn btn-default sys-fg-inverse  customer-type-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="customer_type" autocomplete="off" value="prospect"> 
                                                                                                 <b class="sys-txt-md">Prospect</b>
                                                                                             </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="customer_type" autocomplete="off"> 
+                                                                                            <label class="btn btn-default sys-fg-inverse 
+                                                                                            sys-mg-off-r
+                                                                                            customer-type-option sys-bg-white text-center">
+                                                                                                <input type="radio" name="customer_type" autocomplete="off" value="existing"> 
                                                                                                 <b class="sys-txt-md">Existing Customer</b>
                                                                                             </label>
                                                                                         </div>
                                                                                         </div>
                                                                                 </div>
-                                                                                <div class="form-group is-empty">
+                                                                                <div class="form-group is-empty existing-customer-field">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Customer code</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <div class="input-group">
+                                                                                            <span class="spinner"></span>
+                                                                                            <input type="text" class="form-control" id="customerCode">
+                                                                                            <span class="input-group-btn">
+                                                                                                <a class="syspro-browse-button" >
+                                                                                                    <i class="material-icons">search</i>
+                                                                                                </a>
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                            
+                                                                            
+                                                                                </div>
+                                                                                <div class="form-group is-empty customer-details region-field">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Region</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" id="region" class="form-control">
+                                                                                        <input type="text" id="region" class="form-control" required>
                                                                             
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty">
+                                                                                <div class="form-group is-empty customer-details region-field">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Sub-region</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" id="subregion" class="form-control" disabled="disabled">
+                                                                                        <input type="text" id="subregion" class="form-control" disabled="disabled" required>
                                                                             
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty sys-pd-t-5">
+                                                                                <div class="form-group is-empty customer-details">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Number of users</span>
                                                                                     </label>
  
-                                                                                    <div class="col-md-7 syspro-entry-content md-outline">
+                                                                                    <div class="col-md-4 syspro-entry-content">
                                                                                         <input
                                                                                             type="number"
                                                                                             min="0"
@@ -1034,32 +1091,84 @@
                                                                                             id="input-number5"
                                                                                             value=""
                                                                                             class="form-control"
-                                                                                            
+                                                                                            required
                                                                                         />
-                                                                                        <label for="input-number5" class="control-label">
-                                                                                            Number of users
-                                                                                        </label>
+
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty">
-                                                                                    
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Name</span>
+                                                                                <hr class="sys-mg-t-10 sys-mg-b-10" />
+                                                                                <a href="#resellerInfo" data-toggle="collapse" aria-expanded="false" aria-controls="resellerInfo">
+                                                                                    <h4>Reseller info <i class="material-icons">keyboard_arrow_down</i></h4>
+                                                                                </a>
+                                                                                <div class="collapse" id="resellerInfo">
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller code</span>
                                                                                         </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" step="any" class="form-control syspro-trackfield-change syspro-focusable syspro-trackfield-keydown syspro-numeric-input syspro-supports-mask">
-                                                                            
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="text" class="form-control" value="WD003X">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller name</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="text" class="form-control" value="Boots 'n' all">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller contact</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="text" class="form-control" value="Jimmy Page">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller phone</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="phone" class="form-control" value="+1 334 2269085">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller email</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="email" class="form-control" value="jimmy@bootsnall.com">
+                                                                                        </div>
+                                                                                            
                                                                                     </div>
                                                                                 </div>
-                                                                                  
                                                                             </div>
-                                                                            <div class="col-sm-6">
-                                                                            
+                                                                            <div class="col-sm-6 customer-details">
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Address</span>
+                                                                                        <span>Company name</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" class="form-control" required>
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Address line 1</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
@@ -1070,7 +1179,7 @@
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Address 2</span>
+                                                                                        <span>Address line 2</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
@@ -1081,7 +1190,7 @@
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Other info</span>
+                                                                                        <span>City</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
@@ -1092,7 +1201,7 @@
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Other info</span>
+                                                                                        <span>State/Province</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
@@ -1103,81 +1212,114 @@
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Other info</span>
+                                                                                        <span>Country</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" class="form-control">
-                                                                                    </div>
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty">
-                                                                                    
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Other info</span>
-                                                                                    </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" class="form-control">
-                                                                                    </div>
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty">
-                                                                                    
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Other info</span>
-                                                                                    </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" class="form-control">
-                                                                                    </div>
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty">
-                                                                                    
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Other info</span>
-                                                                                    </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" class="form-control">
-                                                                                    </div>
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty">
-                                                                                    
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Other info</span>
-                                                                                    </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" class="form-control">
-                                                                                    </div>
-                                                                                        
-                                                                                </div>
-                                                                            
-                                                                                <div class="form-group is-empty">
-                                                                                    
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Extra</span>
-                                                                                    </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                                <div class="input-group">
-                                                                                                    <span class="spinner"></span>
-                                                                                                    <input type="text" class="form-control" id="Fields.APSPINF1Branch">
-                                                                                                    <span class="input-group-btn disabled">
-                                                                                                        <a class="syspro-browse-button" >
-                                                                                                            <i class="material-icons">search</i>
-                                                                                                        </a>
-                                                                                                    </span>
-                                                                                                </div>
-                                                                                                <p class="help-block syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.APSPINF1Branch.Description"></p>
-                                                                            
+                                                                                        <input type="text" id="country" class="form-control">
                                                                             
                                                                                     </div>
-                                                                            
-                                                                            
                                                                                 </div>
-                                                                                                                               
+
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Post/ZIP code</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-4 syspro-entry-content">
+                                                                                        <input type="text" class="form-control">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Currency</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" class="form-control">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Contact name</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" class="form-control">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+                                                                                <div class="form-group is-empty">
+                                                                                        
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Contact phone</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="phone" class="form-control" value="+1 334 2269085">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Contact email</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="email" class="form-control" value="jimmy@bootsnall.com">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+                                                                                <div class="form-group is-empty existing-customer-field">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Company Reg. No.</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" class="form-control">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty existing-customer-field">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>VAT No.</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input type="text" class="form-control">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty existing-customer-field">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Subscription cycle</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <select type="text" class="form-control">
+                                                                                            <option value="annual">Annual</option>
+                                                                                            <option value="biannual">Bi-annual</option>
+                                                                                            <option value="quarterly">Quarterly</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty existing-customer-field">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>License start date</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input class="form-control date">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
                                                                             
                                                                             </div>
                                                                         </div>
@@ -4229,7 +4371,9 @@
                                                         >
                                                             <tr>
                                                                 <td>Foundations</td>
-                                                                <td class="text-right">$32 / $500</td>
+                                                                <td class="text-right">
+                                                                    <small class="original-price sys-fg-danger sys-mg-r-5">$40 / $600</small>
+                                                                    $32 / $500</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Foundations+</td>
@@ -4249,7 +4393,9 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>Espresso</td>
-                                                                <td class="text-right">$32 / $500</td>
+                                                                <td class="text-right">
+                                                                    <small class="original-price sys-fg-danger sys-mg-r-5">$40 / $600</small>
+                                                                    $32 / $500</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Bartender</td>
@@ -4267,6 +4413,10 @@
                                                         <h4 class="sys-mg-b-15 clearfix sys-mg-t-10">
                                                             <span class="pull-left">Service charge</span
                                                             ><span class="pull-right">$560.00</span>
+                                                        </h4>
+                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-10">
+                                                            <span class="pull-left">Total discount</span
+                                                            ><span class="pull-right sys-fg-danger">- $140.00</span>
                                                         </h4>
                                                         <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Total</span
@@ -4350,6 +4500,7 @@
         <script src="js/UX_JS_ripples.min.js"></script>
         <script src="js/jquery.bootstrap.wizard.js"></script>
         <script src="js/paper-bootstrap-wizard.js"></script>
+        <script src="js/UX_JS_bootstrap-datepicker.js"></script>
 
         <script>
 
@@ -4357,6 +4508,47 @@
                 $.material.init();
                 $('[data-tooltip="tooltip"]').tooltip();
 
+                $(".date").datepicker({
+                    maxViewMode: 2,
+                    todayBtn: 'linked',
+                    autoclose: true,
+                    todayHighlight: true,
+                    zIndexOffset: 1000000
+                });
+
+                $("input[name='customer_type']").on("change", function(e) {
+                    const value = $(this).val();
+                    if ( value === 'existing' ) {
+                        $('.existing-customer-field').show();
+                    } else if ( value === 'prospect' ) {
+                        $('.customer-details input').each((idx, field) => {
+                            $(field).val('');
+                        });
+                        $('.existing-customer-field').hide();
+                        // $('.customer-details').show();
+                        $(".region-field").show();
+                    }
+                    
+                    
+                });
+
+                $("#customerCode").on("keydown", function() {
+                    $('.customer-details input').each((idx, field) => {
+                        $(field).val('customer info');
+                    });
+                    $('.customer-details').show();
+                    
+                });
+
+                var country = $("#country").kendoDropDownList({
+                    optionLabel: "Select country...",
+                    // dataTextField: "name",
+                    // dataValueField: "categoryID",
+                    filter: 'contains',
+                    dataSource: {
+                        data: ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]
+                    }
+                }).data("kendoDropDownList");
 
                 var region = $("#region").kendoDropDownList({
                     optionLabel: "Select region...",
@@ -4448,6 +4640,9 @@
                     optionLabel: "Select sub-region...",
                     dataTextField: "name",
                     dataValueField: "name",
+                    select: function(e) {
+                        $('.customer-details').show();
+                    },
                     dataSource: {
                         data: regionData
                     }
