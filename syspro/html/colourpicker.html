@@ -203,6 +203,22 @@
                                                                       
                                                                 </div>
                                                             </div>
+
+                                                            <hr>
+                                                            <div class="form-group is-empty">
+                    
+                                                                <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                    <span>Dropdown</span>
+                                                                </label>
+                                                                <div class="col-md-7 syspro-entry-content">
+                                                                    <input data-role="dropdownlist"
+                                                                        class="form-control" 
+                                                                        data-bind="value: selectedItem, source: items"
+                                                                    />
+                                                                    <!-- data-text-field="ItemName"
+                                                                    data-value-field="ItemID" -->
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,6 +241,9 @@
         <script src="js/UX_JS_forms.js"></script>
         <script>
         var viewModel = kendo.observable({
+            items: [
+            "Afghanistan","Albania","Algeria"
+            ]
 
         });
             $(document).ready(function() {
@@ -233,6 +252,13 @@
                 kendo.bind($("body"), viewModel);
                 $('[data-toggle="popover"]').popover();
             });
+            var country = $("#country").kendoDropDownList({
+                    optionLabel: "Select country...",
+                    // dataTextField: "name",
+                    // dataValueField: "categoryID",
+                    filter: 'contains',
+                    
+                }).data("kendoDropDownList");
 
 
         </script>

@@ -6154,6 +6154,13 @@ form .data-section {
 .navbar-controlbar .dropdownjs {
     width: auto;
 }
+.navbar-controlbar .dropdownjs::after {
+    right: -10px;
+    top: 2px;
+}
+.navbar-controlbar .dropdownjs input {
+    width: calc(100% - 10px) !important;
+}
 .navbar-controlbar .navbar-nav {
     padding-right: 10px;
 }
@@ -10186,7 +10193,21 @@ td .btn.btn-delete {
     border-radius: var(--base-border-radius);
 }
 .k-colorpicker {
-    border-radius: var(--base-border-radius);
+    border-radius: var(--base-border-radius)
+}
+.k-colorpicker .k-selected-color {
+    width: 2em;
+    height: 2em;
+}
+.k-colorpicker .k-picker-wrap {
+    line-height: 2em;
+}
+.k-colorpicker .k-picker-wrap .k-select {
+    line-height: 2em;
+}
+.k-colorpicker .k-selected-color .k-i-line {
+    font-size: 2em;
+    vertical-align: top;
 }
 .k-datetimepicker {
     border-radius: var(--base-border-radius);
@@ -10744,6 +10765,41 @@ td.k-state-focused.k-state-selected,
     -webkit-box-shadow: none;
             box-shadow: none;
     border-radius: var(--base-border-radius);
+}
+.k-flatcolorpicker .k-slider-horizontal .k-slider-track {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border-width: 0;
+    top: 50%;
+    left: 0;
+    height: 10px;
+    border-radius: 5px;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle {
+    margin-top: 0px;
+    border: 9px solid #fff;
+    width: 10px;
+    height: 10px;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle:focus, .k-flatcolorpicker .k-hue-slider .k-draghandle:hover {
+    border-width: 10px;
+    margin-top: -1px;
+}
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle:focus, .k-flatcolorpicker .k-hsv-rectangle .k-draghandle:hover {
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #eee;
+    margin-left: -7px;
+    margin-top: -7px;
+    border-radius: 9px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    background-color: transparent !important;
 }
 .sidebar-nav {
     position: absolute;
@@ -14933,6 +14989,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     background: var(--color_athens_gray_approx);
     border-color: var(--color_athens_gray_approx);
 }
+.form-group.disabled .dropdownjs, .form-group.disabled .dropdownjs::after {
+    cursor: not-allowed;
+}
 .form-group .k-combobox .k-dropdown-wrap .k-input {
     text-indent: 0;
 }
@@ -16789,7 +16848,8 @@ input[type='number']::-ms-clear {
 }
 .dropdownjs {
     display: inline-block;
-    width: 100%
+    width: 100%;
+    cursor: pointer
 }
 .dropdownjs > ul {
     padding: 5px 0;
@@ -16802,6 +16862,9 @@ input[type='number']::-ms-clear {
 .dropdownjs > ul > li {
     list-style: none;
     padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .dropdownjs > ul > li:hover {
     background-color: var(--alabaster);
@@ -16818,9 +16881,10 @@ input[type='number']::-ms-clear {
     font-style: normal;
     font-weight: 400;
     content: '\e5c5';
-    pointer-events: none;
+    /* pointer-events: none; */
     line-height: 1;
     color: var(--color_tapa_approx);
+    cursor: pointer;
 }
 .form-data-widget {
     padding: 1px 0 4px;

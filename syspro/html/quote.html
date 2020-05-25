@@ -491,10 +491,6 @@
     .wizard-card .wizard-footer {
         padding: 0 15px 5px;
     }
-    .wizard-card .disabled {
-        display: none;
-    }
-
     .wizard-card .wizard-navigation {
         position: relative;
     }
@@ -533,6 +529,10 @@
 
     .sys-bg-inverse .table-striped > tbody > tr:nth-of-type(odd) {
         background-color: transparent;
+    }
+    #quoteWizard {
+        min-height: 630px;
+        height: 100%;
     }
     #quoteWizard .form-group {
     margin-top: 0px;
@@ -743,6 +743,9 @@
     .item-name {
         white-space: normal;
     }
+    .package .btn.active.disabled {
+        opacity: 1;
+    }
 </style>
 <style>
     .original-price {
@@ -894,7 +897,7 @@
         </nav>
 
         <div id="wrapper" class="toggled">
-            <div class="container-fluid sys-mg-t-15" id="main-container">
+            <div class="container-fluid" id="main-container">
                 <div class="row sys-mg-t-5">
                     <div class="col-sm-12 col-xs-12 column-parent sys-mg-t-15">
                         <div class="panel sys-bd-off sys-box-shadow-off">
@@ -969,13 +972,6 @@
                                                     </div>
                                                     <div class="tab-content">
                                                         <div class="tab-pane" id="info">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <p class="lead text-center">
-                                                                        Select customer region, and enter details.
-                                                                    </p>
-                                                                </div>
-                                                            </div>
                                                             <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <div class="form-horizontal">
@@ -1343,11 +1339,16 @@
                                                                             <div class="col-sm-6">
                                                                                 <div class="sys-fg-white package sys-bg-inverse">
                                                                                     <div class="row">
-                                                                                        <div class="col-sm-1 text-left">
-                                                                                            <div class="btn-group" data-toggle="buttons">
-                                                                                                <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r active">
-                                                                                                <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-warning">check_circle</i>
+                                                                                        <div class="col-sm-1 text-left" data-toggle="tooltip" 
+                                                                                        data-tooltip="tooltip" data-container="body"
+                                                                                        data-placement="auto top"
+                                                                                        data-container="body" title="'Foundation' is a mandatory package">
+                                                                                            <div class="btn-group" data-toggle="buttons" >
+                                                                                                <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r active disabled"
+                                                                                                >
+                                                                                                <input type="checkbox" autocomplete="off" checked="checked" disabled>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-warning"
+                                                                                                >check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -1355,7 +1356,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#foundationsDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="foundationsDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Foundation</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
@@ -1363,7 +1364,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-white sys-txt-sm">description</i>
                                                                                             </a>
@@ -1403,7 +1404,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#foundationsPlusDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="foundationsPlusDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Foundation+</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
@@ -1411,7 +1412,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-white sys-txt-sm">description</i>
                                                                                             </a>
@@ -1495,16 +1496,19 @@
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
-                                                                                                <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r active">
-                                                                                                <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-warning">check_circle</i>
+                                                                                                <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r active disabled">
+                                                                                                <input type="checkbox" autocomplete="off" checked="checked" disabled>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-warning"
+                                                                                                data-toggle="tooltip" 
+                                                                                                data-tooltip="tooltip" data-container="body"
+                                                                                                data-placement="auto top" data-container="body" title="'Financials' is a mandatory package">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#financialsDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="financialsDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Financials</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
@@ -1512,7 +1516,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-white sys-txt-sm">description</i>
                                                                                             </a>
@@ -1551,7 +1555,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#financialsPlusDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="financialsPlusDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Financials+</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
@@ -1559,7 +1563,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-white sys-txt-sm">description</i>
                                                                                             </a>
@@ -1569,17 +1573,67 @@
                                                                                             <b>$14.00</b>
                                                                                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
                                                                                         </div>
-                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="financialsPlusDetails">
-                                                                                            <ul>
-                                                                                                <li>System Foundation</li>
-                                                                                                <li>System Administration</li>
-                                                                                                <li>Report Writer</li>
-                                                                                                <li>Reporting Services</li>
-                                                                                                <li>Office Automation</li>
-                                                                                                <li>Contact Management</li>
-                                                                                                <li>Executive Dashboards</li>
-                                                                                                <li>Interface System</li>
-                                                                                            </ul>
+                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-20 collapse" id="financialsPlusDetails">
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        SYSPRO Analytics
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Process Modelling
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Workflow Services Professional
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        e.net System Manager
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Document Flow Manager
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -1602,24 +1656,25 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#distributionDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="distributionDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Distribution</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
                                                                                                 >info</i> -->
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
-                                                                                            <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
-                                                                                            data-placement="top" title="Download details document">
-                                                                                                <i class="material-icons sys-fg-white sys-txt-sm">description</i>
-                                                                                            </a>
+                                                                                            
                                                                                         </div>
                                                                                         <div class="col-sm-4 col-sm-offset-2 text-right">
                                                                                             <b>$14.00</b>
                                                                                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
                                                                                         </div>
                                                                                         <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="distributionDetails">
+                                                                                            <a href="" class="package-title pull-right sys-mg-r-5" data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip" data-container="body"
+                                                                                            data-placement="top" title="Download details document">
+                                                                                                <i class="material-icons sys-fg-white sys-txt-lg">description</i>
+                                                                                            </a>
                                                                                             <ul>
                                                                                                 <li>System Foundation</li>
                                                                                                 <li>System Administration</li>
@@ -1647,36 +1702,87 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-sm-5 text-left">
-                                                                                            <a href="#distribution+Details" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="distribution+Details" 
+                                                                                            <a href="#distributionPlusDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="distributionPlusDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Distribution+</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
                                                                                                 >info</i> -->
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
-                                                                                            <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
-                                                                                            data-placement="top" title="Download details document">
-                                                                                                <i class="material-icons sys-fg-white sys-txt-sm">description</i>
-                                                                                            </a>
+                                                                                            
                                                                                         </div>
                                                                                         <div class="col-sm-4 col-sm-offset-2 text-right">
                                                                                             <b>$14.00</b>
                                                                                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
                                                                                         </div>
-                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="distributionPlusDetails">
-                                                                                            <ul>
-                                                                                                <li>System Foundation</li>
-                                                                                                <li>System Administration</li>
-                                                                                                <li>Report Writer</li>
-                                                                                                <li>Reporting Services</li>
-                                                                                                <li>Office Automation</li>
-                                                                                                <li>Contact Management</li>
-                                                                                                <li>Executive Dashboards</li>
-                                                                                                <li>Interface System</li>
-                                                                                            </ul>
+                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse sys-pd-l-20" id="distributionPlusDetails">
+                                                                                            <a href="" class="package-title pull-right sys-mg-r-5" data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip" data-container="body"
+                                                                                            data-placement="top" title="Download details document">
+                                                                                                <i class="material-icons sys-fg-white sys-txt-lg">description</i>
+                                                                                            </a>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        SYSPRO Analytics
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Process Modelling
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Workflow Services Professional
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        e.net System Manager
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Document Flow Manager
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -1700,18 +1806,14 @@
                                                                                         </div>
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#manufacturingDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="manufacturingDetails" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Manufacturing</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
                                                                                                 >info</i> -->
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
-                                                                                            <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
-                                                                                            data-placement="top" title="Download details document">
-                                                                                                <i class="material-icons sys-fg-white sys-txt-sm">description</i>
-                                                                                            </a>
+                                                                                            
                                                                                         </div>
 
                                                                                         <div class="col-sm-4 col-sm-offset-2 text-right">
@@ -1719,6 +1821,11 @@
                                                                                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
                                                                                         </div>
                                                                                         <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="manufacturingDetails">
+                                                                                            <a href="" class="package-title pull-right sys-mg-r-5" data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip" data-container="body"
+                                                                                            data-placement="top" title="Download details document">
+                                                                                                <i class="material-icons sys-fg-white sys-txt-lg">description</i>
+                                                                                            </a>
                                                                                             <ul>
                                                                                                 <li>System Foundation</li>
                                                                                                 <li>System Administration</li>
@@ -1748,34 +1855,84 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#manufacturingPlusDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="manufacturingPlusDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Manufacturing+</b>
                                                                                                 <!-- <i class="material-icons sys-fg-white sys-txt-sm"
                                                                                                 >info</i> -->
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
                                                                                             </a>
-                                                                                            <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
-                                                                                            data-placement="top" title="Download details document">
-                                                                                                <i class="material-icons sys-fg-white sys-txt-sm">description</i>
-                                                                                            </a>
                                                                                         </div>
                                                                                         <div class="col-sm-4 col-sm-offset-2 text-right">
                                                                                             <b>$14.00</b>
                                                                                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
                                                                                         </div>
-                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="manufacturingPlusDetails">
-                                                                                            <ul>
-                                                                                                <li>System Foundation</li>
-                                                                                                <li>System Administration</li>
-                                                                                                <li>Report Writer</li>
-                                                                                                <li>Reporting Services</li>
-                                                                                                <li>Office Automation</li>
-                                                                                                <li>Contact Management</li>
-                                                                                                <li>Executive Dashboards</li>
-                                                                                                <li>Interface System</li>
-                                                                                            </ul>
+                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse sys-pd-l-20" id="manufacturingPlusDetails">
+                                                                                            <a href="" class="package-title pull-right sys-mg-r-5" data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip" data-container="body"
+                                                                                            data-placement="top" title="Download details document">
+                                                                                                <i class="material-icons sys-fg-white sys-txt-lg">description</i>
+                                                                                            </a>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        SYSPRO Analytics
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Process Modelling
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Workflow Services Professional
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        e.net System Manager
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                                    <label class="sys-fg-white">
+                                                                                                        <input
+                                                                                                            type="checkbox"
+                                                                                                            id="sommat"
+                                                                                                            checked="checked"
+                                                                                                        />
+                                                                                                        Document Flow Manager
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -1805,7 +1962,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>Financial Queries</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
@@ -1813,7 +1970,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -1875,7 +2032,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#distQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="distQDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>Distribution Queries</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
@@ -1883,7 +2040,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -1949,7 +2106,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>Operation Queries</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
@@ -1957,7 +2114,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2019,7 +2176,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#distQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="distQDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>Master Data Management</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
@@ -2027,7 +2184,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2092,7 +2249,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>POS</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
@@ -2100,7 +2257,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2160,20 +2317,16 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-sm-5 text-left">
-                                                                                            <a href="#distQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="distQDetails"
+                                                                                            <a href="#procManDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="procManDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>Procurement Management</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
                                                                                                 >info</i> -->
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
-                                                                                            <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
-                                                                                            data-placement="top" title="Download details document">
-                                                                                                <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
-                                                                                            </a>
+                                                                                            
                                                                                         </div>
 
                                                                                         <div class="col-sm-2">
@@ -2201,7 +2354,12 @@
                                                                                             <b>$14.00</b>
                                                                                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
                                                                                         </div>
-                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="distQDetails">
+                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="procManDetails">
+                                                                                            <a href="" class="package-title pull-right sys-mg-r-5" data-toggle="tooltip" 
+                                                                                            data-tooltip="tooltip" data-container="body"
+                                                                                            data-placement="top" title="Download details document">
+                                                                                                <i class="material-icons sys-fg-inverse sys-txt-lg">description</i>
+                                                                                            </a>
                                                                                             <ul>
                                                                                                 <li>System Foundation</li>
                                                                                                 <li>System Administration</li>
@@ -2235,7 +2393,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>Sales Management</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
@@ -2243,7 +2401,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2305,7 +2463,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#distQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="distQDetails"
                                                                                             data-toggle="tooltip" 
-                                                                                                data-tooltip="tooltip"
+                                                                                                data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="top" title="View details">
                                                                                                 <b>Operation Management</b>
                                                                                                 <!-- <i class="material-icons sys-fg-inverse sys-txt-sm"
@@ -2313,7 +2471,7 @@
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2387,7 +2545,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <b class="package-title">Point of sale (POS)</b>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2437,7 +2595,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <b class="package-title">Espresso</b>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2488,7 +2646,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <b class="package-title">Manufacturing Operations Management (MOM)</b>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2536,7 +2694,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <b>Additional Designer Seats</b>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2587,7 +2745,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <b class="package-title">Additional Analytics Viewers</b>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2635,7 +2793,7 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <b class="package-title">Additional Contact Management User</b>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2700,13 +2858,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2766,13 +2924,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2833,13 +2991,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2898,13 +3056,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -2965,13 +3123,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3030,13 +3188,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3097,13 +3255,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3162,13 +3320,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3229,13 +3387,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3294,13 +3452,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3361,13 +3519,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3426,13 +3584,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3493,13 +3651,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3558,13 +3716,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3625,13 +3783,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3690,13 +3848,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3757,13 +3915,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3822,13 +3980,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3889,13 +4047,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#warehouseDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="warehouseDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Warehouse Management</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -3954,13 +4112,13 @@
                                                                                         <div class="col-sm-5 text-left">
                                                                                             <a href="#BartenderDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="BartenderDetails" 
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                                 <b>Bartender</b>
                                                                                                 <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                             </a>
                                                                                             <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download details document">
                                                                                                 <i class="material-icons sys-fg-inverse sys-txt-sm">description</i>
                                                                                             </a>
@@ -4028,7 +4186,7 @@
                                                                                             
                                                                                             <i class="material-icons sys-fg-primary"
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download info document">description</i>
                                                                                         </p>
                                                                                     </label>
@@ -4080,7 +4238,7 @@
                                                                                             
                                                                                             <i class="material-icons sys-fg-primary"
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download info document">description</i>
                                                                                         </p>
                                                                                     </label>
@@ -4139,7 +4297,7 @@
                                                                                             
                                                                                             <i class="material-icons sys-fg-primary"
                                                                                             data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip"
+                                                                                            data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="Download info document">description</i>
                                                                                         </p>
                                                                                     </label>
@@ -4370,13 +4528,13 @@
                                                             class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5 sys-txt-md"
                                                         >
                                                             <tr>
-                                                                <td>Foundations</td>
+                                                                <td>Foundation</td>
                                                                 <td class="text-right">
                                                                     <small class="original-price sys-fg-danger sys-mg-r-5">$40 / $600</small>
                                                                     $32 / $500</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Foundations+</td>
+                                                                <td>Foundation+</td>
                                                                 <td class="text-right">$32 / $500</td>
                                                             </tr>
                                                             <tr>
