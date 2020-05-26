@@ -494,7 +494,7 @@
     }
 
     .wizard-card .tab-content {
-        min-height: 435px;
+        /* min-height: 435px; */
         padding: 120px 20px 10px;
     }
     .wizard-card .wizard-footer {
@@ -573,7 +573,7 @@
 .packages-options .package:not(:first-child):not(:last-child):not(.dropdown-toggle),
 .packages-options .package:last-child:not(:first-child) {
     border-radius: 4px !important;
-    /* width: 100%; */
+    width: calc(100% - 5px);
 }
 .packages-options .btn-group {
     margin-top: 0px;
@@ -640,7 +640,7 @@
     border: 3px solid #f1c40f !important;
 }
 .packages-options .package .package-selected-icon {
-    color: #f3f2ee;
+    /* color: #f3f2ee; */
     font-size: 24px;
 }
 .packages-options .package .btn.active .package-selected-icon {
@@ -777,7 +777,7 @@
     .md-outline input[type="text"], .md-outline input[type="password"], .md-outline input[type="email"], .md-outline input[type="url"], .md-outline input[type="time"], .md-outline input[type="date"], .md-outline input[type="datetime-local"], .md-outline input[type="tel"], .md-outline input[type="number"], .md-outline input[type="search-md"], .md-outline input[type="search"], .md-outline textarea.md-textarea {
     -webkit-box-sizing: border-box !important;
     box-sizing: border-box !important;
-    background-color: transparent !important;
+    background-color: #ffffff !important;
     border: 1px solid #dadce0 !important;
     border-radius: 4px !important;
     outline: none !important;
@@ -786,17 +786,44 @@
     -webkit-transition: all .3s !important;
     transition: all .3s !important;
     background-position: unset !important;
-    background: none !important;
+    /* background: none !important; */
     background-image: none !important;
     margin: 0 !important;
     padding: 2px 5px !important;
     height: 25px;
 }
-.md-outline label {
+.md-outline:not(.is-empty) label {
+    position: absolute !important;
+    top: -4px !important;
+    left: 0px !important;
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+    font-size: 1.2rem !important;
+    background: #ecf0f1 !important; 
+    /* -webkit-transform: translateY(-5px) scale(0.8) !important;
+    transform: translateY(-5px) scale(0.8) !important; */
+    -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out !important;
+    transition: color .2s ease-out, -webkit-transform .2s ease-out !important;
+    transition: transform .2s ease-out, color .2s ease-out !important;
+    transition: transform .2s ease-out, color .2s ease-out, -webkit-transform .2s ease-out !important;
+
+    -webkit-transform: translateY(-5px) scale(0.8);
+    transform: translateY(-5px) scale(0.8);
+    background: rgb(255,255,255) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ecf0f1",GradientType=1) !important;
+}
+.sys-bg-very-light-gray .md-outline:not(.is-empty) label {
+    background: rgb(255,255,255) !important;
+    background: -moz-linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
+    background: -webkit-linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ecf0f1",GradientType=1) !important;
+}
+.md-outline.is-empty label {
     position: absolute !important;
     top: -6px !important;
-    left: 0 !important;
-    padding-left: 6px !important;
+    left: 0px !important;
+    padding-left: 5px !important;
     font-size: 1.2rem !important;
     color: #757575 !important;
     cursor: text !important;
@@ -812,6 +839,7 @@
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
+    background: none !important;
 }
 /* input[type="text"]:not(.browser-default)+label::after, input[type="password"]:not(.browser-default)+label::after, input[type="email"]:not(.browser-default)+label::after, input[type="url"]:not(.browser-default)+label::after, input[type="time"]:not(.browser-default)+label::after, input[type="date"]:not(.browser-default)+label::after, input[type="datetime"]:not(.browser-default)+label::after, input[type="datetime-local"]:not(.browser-default)+label::after, input[type="tel"]:not(.browser-default)+label::after, input[type="number"]:not(.browser-default)+label::after, input[type="search"]:not(.browser-default)+label::after, input[type="phone"]:not(.browser-default)+label::after, input[type="search-md"]+label::after, textarea.md-textarea+label::after {
     position: absolute !important;
@@ -841,15 +869,26 @@
     -webkit-box-shadow: 0 1px 0 0 #0078d7 !important;
     box-shadow: 0 1px 0 0 #0078d7 !important;
 } */
+
 .md-outline input[type="text"]:focus:not([readonly])+label, .md-outline input[type="password"]:focus:not([readonly])+label, .md-outline input[type="email"]:focus:not([readonly])+label, .md-outline input[type="url"]:focus:not([readonly])+label, .md-outline input[type="time"]:focus:not([readonly])+label, .md-outline input[type="date"]:focus:not([readonly])+label, .md-outline input[type="datetime-local"]:focus:not([readonly])+label, .md-outline input[type="tel"]:focus:not([readonly])+label, .md-outline input[type="number"]:focus:not([readonly])+label, .md-outline input[type="search-md"]:focus:not([readonly])+label, .md-outline input[type="search"]:focus:not([readonly])+label, .md-outline textarea.md-textarea:focus:not([readonly])+label {
     color: #0078d7 !important;
     left: 3px !important;
     padding-right: 5px !important;
     padding-left: 5px !important;
     font-weight: 500 !important;
-    background: #fff !important;
+    /* background: #ecf0f1 !important; */
     -webkit-transform: translateY(-5px) scale(0.8) !important;
     transform: translateY(-5px) scale(0.8) !important;
+    background: rgb(255,255,255) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ecf0f1",GradientType=1) !important;
+}
+.sys-bg-very-light-gray .md-outline input[type="text"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="password"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="email"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="url"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="time"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="date"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="datetime-local"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="tel"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="number"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="search-md"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="search"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline textarea.md-textarea:focus:not([readonly])+label {
+
+    background: rgb(255,255,255) !important;
+    background: -moz-linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
+    background: -webkit-linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ecf0f1",GradientType=1) !important;
 }
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
@@ -969,14 +1008,14 @@
                                                                     Infrastructure
                                                                 </a>
                                                             </li>
-                                                            <li>
+                                                            <!-- <li>
                                                                 <a href="#other" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">speaker_notes</i>
                                                                     </div>
                                                                     Other items
                                                                 </a>
-                                                            </li>
+                                                            </li> -->
                                                         </ul>
                                                     </div>
                                                     <div class="tab-content">
@@ -994,7 +1033,7 @@
                                                                                         <span>Quote date</span>
                                                                                         </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
-                                                                                        <input  class="form-control date" value=>
+                                                                                        <input  class="form-control date" id="quoteDate">
                                                                             
                                                                                     </div>
                                                                                 </div>
@@ -1004,11 +1043,24 @@
                                                                                         <span>Expiry date</span>
                                                                                         </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
-                                                                                        <input  class="form-control date">
+                                                                                        <input  class="form-control date" id="quoteExpiryDate">
                                                                             
                                                                                     </div>
                                                                                 </div>
-                                                                                
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Quote version</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <select type="text" class="form-control">
+                                                                                            <option value="1">v1</option>
+                                                                                            <option value="2">v2</option>
+                                                                                            <option value="3">v3</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
@@ -1160,14 +1212,23 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-6 customer-details">
+                                                                                <!-- <div class="form-group is-empty md-outline">
+                                                                                        <input type="text" class="form-control" id="customerName" required />
+                                                                                        <label for="customerName" class="">
+                                                                                            Company name
+                                                                                        </label>
+                                                                                        
+                                                                                </div> -->
                                                                                 <div class="form-group is-empty">
-                                                                                    
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Company name</span>
+                                                                                        <span>Customer name</span>
                                                                                     </label>
                                                                                     <div class="col-md-7 syspro-entry-content">
-                                                                                        <input type="text" class="form-control" required>
+                                                                                        <input type="text" class="form-control" id="customerName" required />
+                                                                                        
                                                                                     </div>
+                                                                                    
+                                                                                   
                                                                                         
                                                                                 </div>
                                                                                 <div class="form-group is-empty">
@@ -1332,17 +1393,18 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="packages">
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <h3 class="">
-                                                                        Core Bundles
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
+                                                        <div class="tab-pane quote-scrollable-pane" id="packages">
+                                                            
                                                             <div class="row">
                                                                 <div class="col-xs-12 other-column-width">
-                                                                    <div class="packages-options quote-scrollable-pane">
+                                                                    <div class="packages-options ">
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <h3 class="sys-mg-off-t">
+                                                                                    Core Bundles
+                                                                                </h3>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
                                                                                 <div class="sys-fg-white package sys-bg-inverse">
@@ -1355,7 +1417,7 @@
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r active disabled"
                                                                                                 >
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked" disabled>
-                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-warning"
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray sys-fg-warning"
                                                                                                 >check_circle</i>
                                                                                                 
                                                                                                 </label>
@@ -1405,7 +1467,7 @@
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-white">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -1506,7 +1568,7 @@
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r active disabled">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked" disabled>
-                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-warning"
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray sys-fg-warning"
                                                                                                 data-toggle="tooltip" 
                                                                                                 data-tooltip="tooltip" data-container="body"
                                                                                                 data-placement="auto top" data-container="body" title="'Financials' is a mandatory package">check_circle</i>
@@ -1556,7 +1618,7 @@
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-white">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -1657,7 +1719,7 @@
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-white">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -1705,7 +1767,7 @@
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-white">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -1806,7 +1868,7 @@
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-white">check_circle</i>
 
                                                                                                 
                                                                                                 </label>
@@ -1856,7 +1918,7 @@
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-white">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -1955,14 +2017,14 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
-                                                                            <div class="col-xs-6">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2026,14 +2088,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -2099,14 +2161,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-xs-6">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2170,14 +2232,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -2242,14 +2304,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-xs-6">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2313,14 +2375,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -2386,14 +2448,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-xs-6">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2457,14 +2519,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -2538,14 +2600,14 @@
                                                                 <div class="col-xs-12 other-column-width">
                                                                     <div class="packages-options quote-scrollable-pane">
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2568,7 +2630,7 @@
                                                                                                         step="10"
                                                                                                         id="input-number1"
                                                                                                         value=""
-                                                                                                        class="form control"
+                                                                                                        class="form-control"
                                                                                                         
                                                                                                     />
                                                                                                 <label
@@ -2588,14 +2650,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2639,14 +2701,14 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2687,14 +2749,14 @@
                                                                                 </div>
                                                                             
                                                                             </div>
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2738,14 +2800,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2786,14 +2848,14 @@
                                                                                 </div>
                                                                             
                                                                             </div>
-                                                                            <div class="col-sm-6 ">
-                                                                                <div class="sys-fg-inverse package sys-bg-white">
+                                                                            <div class="col-sm-12 ">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 
                                                                                                 </label>
                                                                                             </div>
@@ -2842,9 +2904,11 @@
                                                         <div class="tab-pane" id="isv">
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
+                                                                    <div class="form-group md-outline">
                                                                     <!-- <p class="lead text-center"> -->
                                                                         <!-- A note about <b>Independent Software Vendors.</b> -->
                                                                         <input class="form-control isv-filter" type="text" placeholder="Filter ISVs..." />
+                                                                    </div>
                                                                     <!-- </p> -->
                                                                 </div>
                                                             </div>
@@ -2852,14 +2916,14 @@
                                                                 <div class="col-xs-12 other-column-width">
                                                                     <div class="packages-options quote-scrollable-pane">
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -2918,14 +2982,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -2985,14 +3049,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3050,14 +3114,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3117,14 +3181,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3182,14 +3246,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3249,14 +3313,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3314,14 +3378,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3381,14 +3445,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3446,14 +3510,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3513,14 +3577,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3578,14 +3642,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3645,14 +3709,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3710,14 +3774,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3777,14 +3841,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3842,14 +3906,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3909,14 +3973,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -3974,14 +4038,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -4041,14 +4105,14 @@
                                                                         </div>
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -4106,14 +4170,14 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-inverse active package sys-bg-white">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="sys-fg-inverse package sys-bg-very-light-gray">
                                                                                     <div class="row">
                                                                                         <div class="col-sm-1 text-left">
                                                                                             <div class="btn-group" data-toggle="buttons">
                                                                                                 <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                                                                                 <input type="checkbox" autocomplete="off" checked="checked">
-                                                                                                <i class="material-icons package-selected-icon pull-left">check_circle</i>
+                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -4337,7 +4401,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="other">
+                                                        <!-- <div class="tab-pane" id="other">
                                                             <div class="row sys-mg-b-10">
                                                                 <div class="col-sm-12 col-md-10 col-md-offset-1">
                                                                     <a href="#" class="btn btn-primary btn-md">Add new item</a>
@@ -4348,14 +4412,11 @@
                                                                     
 
                                                                             <div class="row">
-                                                                        <!-- <div class="row"> -->
                                                                                 <div class="col-sm-1">
                                                                                     <i class="material-icons sys-fg-danger">delete_forever</i>
                                                                                 </div>
                                                                                 <div class="form-group is-empty col-sm-5">                                   
-                                                                                    <!-- <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Region</span>
-                                                                                    </label> -->
+
                                                                                     <div class="syspro-entry-content">
                                                                                         <input type="text" class="form-control" placeholder="Description">
                                                                             
@@ -4384,14 +4445,11 @@
 
                                                                     
                                                                             <div class="row">
-                                                                        <!-- <div class="row"> -->
                                                                                 <div class="col-sm-1">
                                                                                     <i class="material-icons sys-fg-danger">delete_forever</i>
                                                                                 </div>
                                                                                 <div class="form-group is-empty col-sm-5">                                   
-                                                                                    <!-- <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Region</span>
-                                                                                    </label> -->
+
                                                                                     <div class="syspro-entry-content">
                                                                                         <input type="text" class="form-control" placeholder="Description">
                                                                             
@@ -4418,14 +4476,11 @@
 
 
                                                                             <div class="row">
-                                                                        <!-- <div class="row"> -->
                                                                                 <div class="col-sm-1">
                                                                                     <i class="material-icons sys-fg-danger">delete_forever</i>
                                                                                 </div>
                                                                                 <div class="form-group is-empty col-sm-5">                                   
-                                                                                    <!-- <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Region</span>
-                                                                                    </label> -->
+
                                                                                     <div class="syspro-entry-content">
                                                                                         <input type="text" class="form-control" placeholder="Description">
                                                                             
@@ -4452,7 +4507,7 @@
 
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <div class="wizard-footer">
                                                         <div class="pull-right">
@@ -4473,7 +4528,7 @@
                                                         <div class="pull-left">
                                                             <input
                                                                 type="button"
-                                                                class="btn btn-previous btn-default btn-wd"
+                                                                class="btn btn-previous btn-default btn-wd sys-bg-gray sys-fg-white"
                                                                 name="previous"
                                                                 value="Previous"
                                                             />
@@ -4672,6 +4727,16 @@
 
             $(document).ready(function() {
                 $.material.init();
+
+                const tabHeight = $(window).height() - 200;
+                console.log($(window).height());
+                console.log(tabHeight);
+                
+                // $(".tab-content").height(tabHeight);
+                $(".tab-content").css({'maxHeight': tabHeight, 'height': tabHeight});
+                $(".quote-scrollable-pane").css({'maxHeight': tabHeight - 130, 'height': tabHeight - 130});
+                $("#isv .quote-scrollable-pane").css({'maxHeight': tabHeight - 160, 'height': tabHeight - 160});
+
                 $('[data-tooltip="tooltip"]').tooltip();
 
                 $(".date").datepicker({
@@ -4701,6 +4766,7 @@
                 $("#customerCode").on("keydown", function() {
                     $('.customer-details input').each((idx, field) => {
                         $(field).val('customer info');
+                        $(field).closest(".form-group").removeClass("is-empty");
                     });
                     $('.customer-details').show();
                     
@@ -4822,9 +4888,10 @@
                 $(".discount").popover({
                     trigger : 'click',  
                     placement : 'auto', 
+                    container: 'body',
                     html: 'true',
                     title: 'Add a comment',
-                    content : '<span class="sys-txt-xs sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
+                    content : '<span class="sys-txt-sm sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
                     template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
                             '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
                             '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
