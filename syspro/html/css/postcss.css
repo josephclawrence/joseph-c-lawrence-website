@@ -4549,7 +4549,8 @@ body > .tooltip {
     -webkit-box-shadow: var(--box-shadow-7);
             box-shadow: var(--box-shadow-7);
     white-space: normal;
-    min-width: 60px
+    min-width: 60px;
+    pointer-events: none
 }
 .popover.top {
     margin-top: -0px;
@@ -4685,6 +4686,9 @@ body > .tooltip {
 }
 .popover.textarea-popover.left > .arrow:after {
     border-left-color: var(--color_black_haze_approx);
+}
+.layout-widget-options .popover, .data-widget-options .popover, .toolbar-widget-options .popover {
+    pointer-events: auto;
 }
 .popover-title {
     margin: 0;

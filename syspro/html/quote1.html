@@ -33,7 +33,7 @@
             .customer-details {
                 display: none;
             }
-            .existing-customer-field, .existing-quote-field, .quote-field, .customer-type-field {
+            .existing-customer-field {
                 display: none;
             }
             .form-group {
@@ -543,21 +543,9 @@
         min-height: 630px;
         height: 100%;
     }
-    #quoteWizard .form-horizontal .form-group {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
     #quoteWizard .form-group {
     margin-top: 0px;
     margin-bottom: 10px;
-}
-#quoteWizard .form-group.md-outline {
-    margin-top: 0px;
-    margin-bottom: 16px;
-    padding-right: 0px;
-}
-#quoteWizard .column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-control {
-    width: auto;
 }
 .quote-scrollable-pane {
     max-height: 450px;
@@ -567,7 +555,7 @@
     width: 100%;
 }
 .btn-group.quote-toggle-buttons {
-    margin: 0px;
+    margin: 3px 1px;
 }
 .packages-options .package,
 .btn-group.quote-toggle-buttons > .btn {
@@ -786,7 +774,7 @@
 .package .md-outline {
     margin-bottom: 0px !important;
 }
-.md-outline .form-control, .md-outline input, .md-outline input[type="text"], .md-outline input[type="password"], .md-outline input[type="email"], .md-outline input[type="url"], .md-outline input[type="time"], .md-outline input[type="date"], .md-outline input[type="datetime-local"], .md-outline input[type="tel"], .md-outline input[type="number"], .md-outline input[type="search-md"], .md-outline input[type="search"], .md-outline textarea {
+    .md-outline input[type="text"], .md-outline input[type="password"], .md-outline input[type="email"], .md-outline input[type="url"], .md-outline input[type="time"], .md-outline input[type="date"], .md-outline input[type="datetime-local"], .md-outline input[type="tel"], .md-outline input[type="number"], .md-outline input[type="search-md"], .md-outline input[type="search"], .md-outline textarea.md-textarea {
     -webkit-box-sizing: border-box !important;
     box-sizing: border-box !important;
     background-color: #ffffff !important;
@@ -823,7 +811,6 @@
     transform: translateY(-5px) scale(0.8);
     background: rgb(255,255,255) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ecf0f1",GradientType=1) !important;
-    z-index: 9;
 }
 .sys-bg-very-light-gray .md-outline:not(.is-empty) label {
     background: rgb(255,255,255) !important;
@@ -853,7 +840,6 @@
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     background: none !important;
-    z-index: 9;
 }
 /* input[type="text"]:not(.browser-default)+label::after, input[type="password"]:not(.browser-default)+label::after, input[type="email"]:not(.browser-default)+label::after, input[type="url"]:not(.browser-default)+label::after, input[type="time"]:not(.browser-default)+label::after, input[type="date"]:not(.browser-default)+label::after, input[type="datetime"]:not(.browser-default)+label::after, input[type="datetime-local"]:not(.browser-default)+label::after, input[type="tel"]:not(.browser-default)+label::after, input[type="number"]:not(.browser-default)+label::after, input[type="search"]:not(.browser-default)+label::after, input[type="phone"]:not(.browser-default)+label::after, input[type="search-md"]+label::after, textarea.md-textarea+label::after {
     position: absolute !important;
@@ -873,7 +859,7 @@
     -webkit-transform: translateY(-13px) scale(0.8);
     transform: translateY(-13px) scale(0.8);
 } */
-.md-outline.is-focused .form-control:not([readonly]), .md-outline input:focus:not([readonly]), .md-outline input[type="text"]:focus:not([readonly]), .md-outline input[type="password"]:focus:not([readonly]), .md-outline input[type="email"]:focus:not([readonly]), .md-outline input[type="url"]:focus:not([readonly]), .md-outline input[type="time"]:focus:not([readonly]), .md-outline input[type="date"]:focus:not([readonly]), .md-outline input[type="datetime-local"]:focus:not([readonly]), .md-outline input[type="tel"]:focus:not([readonly]), .md-outline input[type="number"]:focus:not([readonly]), .md-outline input[type="search-md"]:focus:not([readonly]), .md-outline input[type="search"]:focus:not([readonly]), .md-outline textarea:focus:not([readonly]) {
+.md-outline input[type="text"]:focus:not([readonly]), .md-outline input[type="password"]:focus:not([readonly]), .md-outline input[type="email"]:focus:not([readonly]), .md-outline input[type="url"]:focus:not([readonly]), .md-outline input[type="time"]:focus:not([readonly]), .md-outline input[type="date"]:focus:not([readonly]), .md-outline input[type="datetime-local"]:focus:not([readonly]), .md-outline input[type="tel"]:focus:not([readonly]), .md-outline input[type="number"]:focus:not([readonly]), .md-outline input[type="search-md"]:focus:not([readonly]), .md-outline input[type="search"]:focus:not([readonly]), .md-outline textarea.md-textarea:focus:not([readonly]) {
     border-color: #0078d7 !important;
     -webkit-box-shadow: inset 0 0 0 1px #0078d7 !important;
     box-shadow: inset 0 0 0 1px #0078d7 !important;
@@ -884,7 +870,7 @@
     box-shadow: 0 1px 0 0 #0078d7 !important;
 } */
 
-.md-outline.is-focused .form-control:not([readonly])+label, .md-outline input:focus:not([readonly])+label, .md-outline input[type="text"]:focus:not([readonly])+label, .md-outline input[type="password"]:focus:not([readonly])+label, .md-outline input[type="email"]:focus:not([readonly])+label, .md-outline input[type="url"]:focus:not([readonly])+label, .md-outline input[type="time"]:focus:not([readonly])+label, .md-outline input[type="date"]:focus:not([readonly])+label, .md-outline input[type="datetime-local"]:focus:not([readonly])+label, .md-outline input[type="tel"]:focus:not([readonly])+label, .md-outline input[type="number"]:focus:not([readonly])+label, .md-outline input[type="search-md"]:focus:not([readonly])+label, .md-outline input[type="search"]:focus:not([readonly])+label, .md-outline textarea:focus:not([readonly])+label {
+.md-outline input[type="text"]:focus:not([readonly])+label, .md-outline input[type="password"]:focus:not([readonly])+label, .md-outline input[type="email"]:focus:not([readonly])+label, .md-outline input[type="url"]:focus:not([readonly])+label, .md-outline input[type="time"]:focus:not([readonly])+label, .md-outline input[type="date"]:focus:not([readonly])+label, .md-outline input[type="datetime-local"]:focus:not([readonly])+label, .md-outline input[type="tel"]:focus:not([readonly])+label, .md-outline input[type="number"]:focus:not([readonly])+label, .md-outline input[type="search-md"]:focus:not([readonly])+label, .md-outline input[type="search"]:focus:not([readonly])+label, .md-outline textarea.md-textarea:focus:not([readonly])+label {
     color: #0078d7 !important;
     left: 3px !important;
     padding-right: 5px !important;
@@ -896,32 +882,13 @@
     background: rgb(255,255,255) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ecf0f1",GradientType=1) !important;
 }
-.sys-bg-very-light-gray .md-outline input:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="text"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="password"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="email"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="url"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="time"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="date"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="datetime-local"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="tel"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="number"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="search-md"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="search"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline textarea:focus:not([readonly])+label {
+.sys-bg-very-light-gray .md-outline input[type="text"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="password"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="email"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="url"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="time"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="date"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="datetime-local"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="tel"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="number"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="search-md"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline input[type="search"]:focus:not([readonly])+label, .sys-bg-very-light-gray .md-outline textarea.md-textarea:focus:not([readonly])+label {
 
     background: rgb(255,255,255) !important;
     background: -moz-linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
     background: -webkit-linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
     background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(236,240,241,1) 70%) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ecf0f1",GradientType=1) !important;
-}
-.md-outline .k-dropdown .k-dropdown-wrap .k-select, .md-outline .k-dropdown .k-dropdown-wrap {
-    background: #ffffff;
-}
-.md-outline .input-group {
-    background-color: #ffffff;
-}
-.md-outline .input-group .input-group-btn {
-    padding: 2px 3px 0;
-    cursor: pointer;
-    vertical-align: middle;
-    right: 10px;
-}
-
-@media (min-width: 1000px) {
-.column-parent.col-sm-12 .form-horizontal .col-sm-4 .md-outline .form-control {
-    height: 28px;
-    padding: 2px 0 0 4px;
-}
 }
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
@@ -966,7 +933,9 @@
                     <li class=" nav-item">
                         <a
                             href="#"
-                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
                         >
                             <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
                         </a>
@@ -1050,133 +1019,64 @@
                                                         </ul>
                                                     </div>
                                                     <div class="tab-content">
-                                                        <div class="tab-pane " id="info">
-                                                            <div class="row quote-scrollable-pane">
+                                                        <div class="tab-pane quote-scrollable-pane" id="info">
+                                                            <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <div class="form-horizontal">
 
                                                                         <div class="row">
                                                                     <!-- <div class="row"> -->
-                                                                            <div class="col-sm-4">
+                                                                            <div class="col-sm-6">
                                                                                 <div class="form-group is-empty">
                                                                                     
-                                                                                    <!-- <label for="" class="col-xs-12">
-                                                                                        <span>Quote for</span>
-                                                                                    </label> -->
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                                                                                            <label class="btn btn-default sys-fg-inverse  customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" value="newquote"> 
-                                                                                                <b class="sys-txt-md">New Quote</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse 
-                                                                                            sys-mg-off-r
-                                                                                            customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" value="existingquote"> 
-                                                                                                <b class="sys-txt-md">Existing Quote</b>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty existing-quote-field md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <div class="input-group">
-                                                                                        <span class="spinner"></span>
-                                                                                        <label for="quoteNumber" class="">
-                                                                                            <span>Quote number</span>
-                                                                                        </label>
-                                                                                        <input type="text" class="form-control" id="quoteNumber">
-                                                                                        <span class="input-group-btn">
-                                                                                            <a class="syspro-browse-button" >
-                                                                                                <i class="material-icons">search</i>
-                                                                                            </a>
-                                                                                        </span>
-                                                                                    </div>
-
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                                <div class="form-group is-empty md-outline quote-field">
-                                                                                    <input  class="form-control date" id="quoteDate">
-                                                                                    <label for="quoteDate" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Quote date</span>
                                                                                         </label>
-
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input  class="form-control date" id="quoteDate">
+                                                                            
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="form-group is-empty md-outline quote-field">
-                                                                                    <input  class="form-control date" id="quoteExpiryDate">
-                                                                                    <label for="" class="">
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Expiry date</span>
                                                                                         </label>
-                                                                                        
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input  class="form-control date" id="quoteExpiryDate">
                                                                             
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="form-group md-outline quote-field">
-                                                                                    <select type="text" class="form-control">
-                                                                                        <option value="1">v1</option>
-                                                                                        <option value="2">v2</option>
-                                                                                        <option value="3">v3</option>
-                                                                                    </select>
-                                                                                    <label for="" class="">
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Quote version</span>
                                                                                     </label>
-                                                                                   
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <select type="text" class="form-control">
+                                                                                            <option value="1">v1</option>
+                                                                                            <option value="2">v2</option>
+                                                                                            <option value="3">v3</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                        
                                                                                 </div>
-                                                                                <hr class="sys-mg-t-10 sys-mg-b-10" />
-                                                                                <a href="#resellerInfo" data-toggle="collapse" aria-expanded="false" aria-controls="resellerInfo">
-                                                                                    <h4>Reseller info <i class="material-icons">keyboard_arrow_down</i></h4>
-                                                                                </a>
-                                                                                <div class="collapse" id="resellerInfo">
-                                                                                    <div class="form-group md-outline">
-                                                                                        
-                                                                                        <label for="" class="">
-                                                                                            <span>Reseller code</span>
-                                                                                        </label>
-                                                                                            <input type="text" class="form-control" value="WD003X">
-                                                                                            
-                                                                                    </div>
-                                                                                    <div class="form-group md-outline">
-                                                                                        
-                                                                                        <label for="" class="">
-                                                                                            <span>Reseller name</span>
-                                                                                        </label>
-                                                                                            <input type="text" class="form-control" value="Boots 'n' all">
-                                                                                            
-                                                                                    </div>
-                                                                                    <div class="form-group md-outline">
-                                                                                        
-                                                                                        <label for="" class="">
-                                                                                            <span>Reseller contact</span>
-                                                                                        </label>
-                                                                                            <input type="text" class="form-control" value="Jimmy Page">
-                                                                                            
-                                                                                    </div>
-                                                                                    <div class="form-group md-outline">
-                                                                                        
-                                                                                        <label for="" class="">
-                                                                                            <span>Reseller phone</span>
-                                                                                        </label>
-                                                                                            <input type="phone" class="form-control" value="+1 334 2269085">
-                                                                                            
-                                                                                    </div>
-                                                                                    <div class="form-group md-outline">
-                                                                                        
-                                                                                        <label for="" class="">
-                                                                                            <span>Reseller email</span>
-                                                                                        </label>
-                                                                                            <input type="email" class="form-control" value="jimmy@bootsnall.com">
-                                                                                            
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-sm-4">
-                                                                                <div class="form-group is-empty customer-type-field">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <!-- <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Description</span>
+                                                                                        </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <textarea class="form-control " rows="3"></textarea>
+                                                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Quote for</span>
-                                                                                    </label> -->
-                                                                                    <div class="syspro-entry-content">
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
                                                                                             <label class="btn btn-default sys-fg-inverse  customer-type-option sys-bg-white text-center">
                                                                                                 <input type="radio" name="customer_type" autocomplete="off" value="prospect"> 
@@ -1184,20 +1084,19 @@
                                                                                             </label>
                                                                                             <label class="btn btn-default sys-fg-inverse 
                                                                                             sys-mg-off-r
-                                                                                            customer-type-option 
-                                                                                            existing-customer sys-bg-white text-center">
+                                                                                            customer-type-option sys-bg-white text-center">
                                                                                                 <input type="radio" name="customer_type" autocomplete="off" value="existing"> 
                                                                                                 <b class="sys-txt-md">Existing Customer</b>
                                                                                             </label>
                                                                                         </div>
                                                                                         </div>
                                                                                 </div>
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
+                                                                                <div class="form-group is-empty existing-customer-field">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Customer code</span>
                                                                                     </label>
-                                                                                    <div class=" syspro-entry-content">
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <div class="input-group">
                                                                                             <span class="spinner"></span>
                                                                                             <input type="text" class="form-control" id="customerCode">
@@ -1212,32 +1111,35 @@
                                                                             
                                                                             
                                                                                 </div>
-                                                                                
-                                                                                
-                                                                                <div class="form-group customer-details region-field md-outline">
+                                                                                <div class="form-group is-empty customer-details region-field">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Region</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" id="region" class="form-control" required>
                                                                             
+                                                                                    </div>
                                                                                 </div>
 
-                                                                                <div class="form-group customer-details region-field md-outline">
+                                                                                <div class="form-group is-empty customer-details region-field">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Sub-region</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" id="subregion" class="form-control" disabled="disabled" required>
                                                                             
+                                                                                    </div>
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty customer-details md-outline">
+                                                                                <div class="form-group is-empty customer-details">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Number of users</span>
                                                                                     </label>
  
+                                                                                    <div class="col-md-4 syspro-entry-content">
                                                                                         <input
                                                                                             type="number"
                                                                                             min="0"
@@ -1249,39 +1151,67 @@
                                                                                             required
                                                                                         />
 
+                                                                                    </div>
                                                                                 </div>
 
-                                                                                <div class="form-group md-outline customer-details">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Subscription cycle</span>
-                                                                                    </label>
-                                                                                        <select type="text" class="form-control">
-                                                                                            <option value="annual">Annual</option>
-                                                                                            <option value="biannual">Bi-annual</option>
-                                                                                            <option value="quarterly">Quarterly</option>
-                                                                                        </select>
+                                                                                <hr class="sys-mg-t-10 sys-mg-b-10" />
+                                                                                <a href="#resellerInfo" data-toggle="collapse" aria-expanded="false" aria-controls="resellerInfo">
+                                                                                    <h4>Reseller info <i class="material-icons">keyboard_arrow_down</i></h4>
+                                                                                </a>
+                                                                                <div class="collapse" id="resellerInfo">
+                                                                                    <div class="form-group is-empty">
                                                                                         
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>License start date</span>
-                                                                                    </label>
-                                                                                        <input class="form-control date">
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller code</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="text" class="form-control" value="WD003X">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
                                                                                         
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller name</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="text" class="form-control" value="Boots 'n' all">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller contact</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="text" class="form-control" value="Jimmy Page">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller phone</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="phone" class="form-control" value="+1 334 2269085">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
+                                                                                    <div class="form-group is-empty">
+                                                                                        
+                                                                                        <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                            <span>Reseller email</span>
+                                                                                        </label>
+                                                                                        <div class="col-md-7 syspro-entry-content">
+                                                                                            <input type="email" class="form-control" value="jimmy@bootsnall.com">
+                                                                                        </div>
+                                                                                            
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="form-group is-empty md-outline customer-details">
-                                                                                    <textarea class="form-control " rows="3"></textarea>
-                                                                                    <label for="" class="">
-                                                                                        <span>Description</span>
-                                                                                    </label>
-
-                                                                                </div>
-                                                                               
                                                                             </div>
-                                                                            <div class="col-sm-4 customer-details sys-pd-t-5">
+                                                                            <div class="col-sm-6 customer-details">
                                                                                 <!-- <div class="form-group is-empty md-outline">
                                                                                         <input type="text" class="form-control" id="customerName" required />
                                                                                         <label for="customerName" class="">
@@ -1289,120 +1219,173 @@
                                                                                         </label>
                                                                                         
                                                                                 </div> -->
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    <label for="" class="">
+                                                                                <div class="form-group is-empty">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Customer name</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control" id="customerName" required />
                                                                                         
+                                                                                    </div>
+                                                                                    
+                                                                                   
                                                                                         
                                                                                 </div>
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Address line 1</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Address line 2</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>City</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>State/Province</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Country</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" id="country" class="form-control">
                                                                             
+                                                                                    </div>
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Post/ZIP code</span>
                                                                                     </label>
+                                                                                    <div class="col-md-4 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Currency</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Contact name</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
-                                                                                <div class="form-group md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                         
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Contact phone</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="phone" class="form-control" value="+1 334 2269085">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
-                                                                                <div class="form-group  md-outline">
+                                                                                <div class="form-group is-empty">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Contact email</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="email" class="form-control" value="jimmy@bootsnall.com">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
+                                                                                <div class="form-group is-empty existing-customer-field">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Company Reg. No.</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
+                                                                                <div class="form-group is-empty existing-customer-field">
                                                                                     
-                                                                                    <label for="" class="">
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>VAT No.</span>
                                                                                     </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
                                                                                         <input type="text" class="form-control">
+                                                                                    </div>
                                                                                         
                                                                                 </div>
 
-                                                                                
+                                                                                <div class="form-group is-empty">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>Subscription cycle</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <select type="text" class="form-control">
+                                                                                            <option value="annual">Annual</option>
+                                                                                            <option value="biannual">Bi-annual</option>
+                                                                                            <option value="quarterly">Quarterly</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
+                                                                                <div class="form-group is-empty existing-customer-field">
+                                                                                    
+                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                                                                                        <span>License start date</span>
+                                                                                    </label>
+                                                                                    <div class="col-md-7 syspro-entry-content">
+                                                                                        <input class="form-control date">
+                                                                                    </div>
+                                                                                        
+                                                                                </div>
+
                                                                             
                                                                             </div>
                                                                         </div>
@@ -1410,9 +1393,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane " id="packages">
+                                                        <div class="tab-pane quote-scrollable-pane" id="packages">
                                                             
-                                                            <div class="row quote-scrollable-pane">
+                                                            <div class="row">
                                                                 <div class="col-xs-12 other-column-width">
                                                                     <div class="packages-options ">
                                                                         <div class="row">
@@ -2613,9 +2596,9 @@
                                                         </div>
                                                         <div class="tab-pane" id="additional">
 
-                                                            <div class="row quote-scrollable-pane">
+                                                            <div class="row">
                                                                 <div class="col-xs-12 other-column-width">
-                                                                    <div class="packages-options ">
+                                                                    <div class="packages-options quote-scrollable-pane">
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div class="sys-fg-inverse package sys-bg-very-light-gray">
@@ -2929,9 +2912,9 @@
                                                                     <!-- </p> -->
                                                                 </div>
                                                             </div>
-                                                            <div class="row quote-scrollable-pane">
+                                                            <div class="row">
                                                                 <div class="col-xs-12 other-column-width">
-                                                                    <div class="packages-options ">
+                                                                    <div class="packages-options quote-scrollable-pane">
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
                                                                                 <div class="sys-fg-inverse package sys-bg-very-light-gray">
@@ -4259,12 +4242,12 @@
                                                         </div>
                                                         <div class="tab-pane" id="infrastructure">
 
-                                                            <div class="row quote-scrollable-pane">
+                                                            <div class="row">
                                                                 <div class="col-xs-12">
                                                                     <div class="form-horizontal">
                                                                         <div class="row">
                                                                             <div class="col-sm-12 col-md-10 col-md-offset-1">
-                                                                                <div class="form-group is-empty ">             
+                                                                                <div class="form-group is-empty">             
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Infrastructure size</span>
                                                                                         <p class="sys-mg-t-5">
@@ -4316,7 +4299,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-                                                                                <div class="form-group is-empty ">                                                
+                                                                                <div class="form-group is-empty">                                                
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Database</span>
                                                                                         <p class="sys-mg-t-5">
@@ -4375,7 +4358,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-                                                                                <div class="form-group is-empty ">                                                
+                                                                                <div class="form-group is-empty">                                                
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                                                                                         <span>Geo-replication</span>
                                                                                         <p class="sys-mg-t-5">
@@ -4765,30 +4748,10 @@
                     zIndexOffset: 1000000
                 });
 
-                $("input[name='quote_type']").on("change", function(e) {
-                    const value = $(this).val();
-                    if ( value === 'existingquote' ) {
-                        $('.existing-quote-field').show();
-                    } else if ( value === 'newquote' ) {
-                        // $('.customer-details input').each((idx, field) => {
-                        //     $(field).val('');
-                        // });
-                        $('.existing-quote-field').hide();
-                        $('.quote-field').show();
-                        $('.customer-type-field').show();
-                        
-                        // $('.customer-details').show();
-                        // $(".region-field").show();
-                    }
-                    
-                    
-                });
-
                 $("input[name='customer_type']").on("change", function(e) {
                     const value = $(this).val();
                     if ( value === 'existing' ) {
                         $('.existing-customer-field').show();
-
                     } else if ( value === 'prospect' ) {
                         $('.customer-details input').each((idx, field) => {
                             $(field).val('');
@@ -4810,26 +4773,6 @@
                     
                 });
 
-                $("#quoteNumber").on("keydown", function() {
-                    // $('.customer-details input').each((idx, field) => {
-                    //     $(field).val('customer info');
-                    //     $(field).closest(".form-group").removeClass("is-empty");
-                    // });
-                    $('.quote-field').show();
-                    $('.customer-type-field').show();
-                    $(".existing-customer").addClass("active");
-                    $('.customer-details input').each((idx, field) => {
-                        $(field).val('customer info');
-                        $(field).closest(".form-group").removeClass("is-empty");
-                    });
-                    $('.customer-details').show();
-                });
-
-                $(".fusion-current-account").click(function(){
-                    $(".form-group").show();
-                    $(".customer-details").show();
-                });
-
                 var country = $("#country").kendoDropDownList({
                     optionLabel: "Select country...",
                     // dataTextField: "name",
@@ -4841,7 +4784,7 @@
                 }).data("kendoDropDownList");
 
                 var region = $("#region").kendoDropDownList({
-                    // optionLabel: "Select region...",
+                    optionLabel: "Select region...",
                     dataTextField: "name",
                     dataValueField: "categoryID",
                     dataSource: {
@@ -4927,7 +4870,7 @@
                 var subregion = $("#subregion").kendoDropDownList({
                     autoBind: false,
                     cascadeFrom: "region",
-                    // optionLabel: "Select sub-region...",
+                    optionLabel: "Select sub-region...",
                     dataTextField: "name",
                     dataValueField: "name",
                     select: function(e) {
