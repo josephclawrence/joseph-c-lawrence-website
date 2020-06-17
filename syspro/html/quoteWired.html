@@ -15,7 +15,7 @@
 
         <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
         <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/bootstrap-tagsinput.css" />
+        <link rel="stylesheet" href="css/perfect-scrollbar.css" />
         <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
 
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
@@ -562,6 +562,7 @@
 .quote-scrollable-pane {
     max-height: 450px;
     overflow-y: scroll;
+    position: relative;
 }
 .packages-options, .quote-toggle-buttons {
     width: 100%;
@@ -769,6 +770,9 @@
     }
 </style>
 <style>
+    #lineItemsTotals {
+        font-size: 12px !important;
+    }
     .original-price {
         text-decoration: line-through;
     }
@@ -950,7 +954,6 @@
 
         <script src="js/UX_JS_velocity.min.js"></script>
         <script src="js/kendo.all.min.js"></script>
-        <script src="js/UX_JS_immutable.min.js"></script>
     </head>
 
     <body data-column-layout="3col" style="padding-top:0px;">
@@ -998,7 +1001,9 @@
                                                                 style="width: 15%;"
                                                             ></div>
                                                         </div>
-                                                        <ul>
+                                                        <ul data-template="quoteStepsTemplate" data-bind="source: activeSections"></ul>
+                                                        
+                                                        <!-- <ul>
                                                             <li>
                                                                 <a href="#info" data-toggle="tab">
                                                                     <div class="icon-circle">
@@ -1007,7 +1012,7 @@
                                                                     Quote information
                                                                 </a>
                                                             </li>
-                                                            <li>
+                                                            <li data-bind="visible: productSuiteActive">
                                                                 <a href="#packages" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">apps</i>
@@ -1015,7 +1020,7 @@
                                                                     Product suite
                                                                 </a>
                                                             </li>
-                                                            <li>
+                                                            <li data-bind="visible: additionalSoftwareActive">
                                                                 <a href="#additional" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">queue_play_next</i>
@@ -1023,7 +1028,7 @@
                                                                     Additional software
                                                                 </a>
                                                             </li>
-                                                            <li>
+                                                            <li data-bind="visible: isvSoftwareActive">
                                                                 <a href="#isv" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">power</i>
@@ -1039,7 +1044,7 @@
                                                                     Infrastructure
                                                                 </a>
                                                             </li>
-                                                            <li>
+                                                            <li data-bind="visible: edducationActive">
                                                                 <a href="#education" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">dns</i>
@@ -1047,15 +1052,8 @@
                                                                     Education
                                                                 </a>
                                                             </li>
-                                                            <!-- <li>
-                                                                <a href="#other" data-toggle="tab">
-                                                                    <div class="icon-circle">
-                                                                        <i class=" material-icons">speaker_notes</i>
-                                                                    </div>
-                                                                    Other items
-                                                                </a>
-                                                            </li> -->
                                                         </ul>
+                                                     -->
                                                     </div>
                                                     <div class="tab-content">
                                                         <div class="tab-pane " id="info">
@@ -1065,7 +1063,8 @@
 
                                                                         <div class="row">
                                                                             <div class="col-sm-6" data-template="infoFieldTemplate" data-bind="source: quoteInformationColumn1"></div>
-                                                                            <div class="col-sm-6">
+                                                                            <div class="col-sm-6" data-template="infoFieldTemplate" data-bind="source: quoteInformationColumn2"></div>
+                                                                            <div class="col-sm-6" style="display: none;">
                                                                                 <div class="form-group is-empty">
                                                                                     
                                                                                     <!-- <label for="" class="col-xs-12">
@@ -1366,7 +1365,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane " id="packages">
+                                                        <div class="tab-pane " id="productSuite" data-bind="visible: productSuiteActive">
                                                             
                                                             <div class="row quote-scrollable-pane">
                                                                 <div class="col-xs-12 other-column-width">
@@ -1551,7 +1550,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="additional">
+                                                        <div class="tab-pane" id="additionalSoftware" data-bind="visible: additionalSoftwareActive">
 
                                                             <div class="row quote-scrollable-pane">
                                                                 <div class="col-xs-12 other-column-width">
@@ -1561,7 +1560,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="isv">
+                                                        <div class="tab-pane" id="isvSoftware" data-bind="visible: isvSoftwareActive">
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <div class="form-group md-outline">
@@ -1757,113 +1756,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="tab-pane" id="other">
-                                                            <div class="row sys-mg-b-10">
-                                                                <div class="col-sm-12 col-md-10 col-md-offset-1">
-                                                                    <a href="#" class="btn btn-primary btn-md">Add new item</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-horizontal">
-                                                                <div class="col-sm-12">
-                                                                    
-
-                                                                            <div class="row">
-                                                                                <div class="col-sm-1">
-                                                                                    <i class="material-icons sys-fg-danger">delete_forever</i>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-5">                                   
-
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="text" class="form-control" placeholder="Description">
-                                                                            
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-2">
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="number" class="form-control" placeholder="Quantity">
-                                                                            
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-2">
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="number" class="form-control" placeholder="Price">              
-                                                                                    </div>
-                                                                                    
-                                                                                </div>
-                                                                                <div class="col-md-2 text-center">
-                                                                                    <b>$48.00</b>
-                                                                                    <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <hr class="sys-bg-very-light-gray sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-
-
-
-                                                                    
-                                                                            <div class="row">
-                                                                                <div class="col-sm-1">
-                                                                                    <i class="material-icons sys-fg-danger">delete_forever</i>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-5">                                   
-
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="text" class="form-control" placeholder="Description">
-                                                                            
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-2">
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="number" class="form-control" placeholder="Quantity">
-                                                                            
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-2">
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="number" class="form-control" placeholder="Price">              
-                                                                                    </div>
-                                                                                    
-                                                                                </div>
-                                                                                <div class="col-md-2 text-center">
-                                                                                    <b>$48.00</b>
-                                                                                    <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <hr class="sys-bg-very-light-gray sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-
-
-                                                                            <div class="row">
-                                                                                <div class="col-sm-1">
-                                                                                    <i class="material-icons sys-fg-danger">delete_forever</i>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-5">                                   
-
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="text" class="form-control" placeholder="Description">
-                                                                            
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-2">
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="number" class="form-control" placeholder="Quantity">
-                                                                            
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty col-sm-2">
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <input type="number" class="form-control" placeholder="Price">              
-                                                                                    </div>
-                                                                                    
-                                                                                </div>
-                                                                                <div class="col-md-2 text-center">
-                                                                                    <b>$48.00</b>
-                                                                                    <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <hr class="sys-bg-very-light-gray sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
+                                                        <div class="tab-pane " id="education" data-bind="visible: educationActive"></div>
                                                     </div>
                                                     <div class="wizard-footer">
                                                         <div class="pull-right">
@@ -1944,7 +1837,7 @@
                                                 <div id="costDetails" class="row collapse in ">
                                                     <div class="col-xs-12">
                                                         <table
-                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5 sys-txt-md"
+                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5"
                                                             id="lineItemsTotals"
                                                         >
                                                             <tbody data-template="lineItemTotalsTemplate" data-bind="source: productSuite"></tbody>
@@ -2076,13 +1969,12 @@
 
         <script src="js/UX_JS_bootstrap.js"></script>
         <script src="js/UX_JS_bootstrap-3-typeahead.js"></script>
-        <script src="js/bootstrap-tagsinput.min.js"></script>
         <script src="js/nouislider.min.js"></script>
         <script src="js/UX_JS_forms.js"></script>
-        <script src="js/UX_JS_ripples.min.js"></script>
         <script src="js/jquery.bootstrap.wizard.js"></script>
-        <script src="js/paper-bootstrap-wizard.js"></script>
+        <!-- <script src="js/paper-bootstrap-wizard.js"></script> -->
         <script src="js/UX_JS_bootstrap-datepicker.js"></script>
+        <script src="js/perfect-scrollbar.js"></script>
 
         <script type="text/x-kendo-template" id="packageTemplate">            
             <div data-bind="css: { col-sm-6: isProductSuite, col-sm-12: isNotProductSuite }">
@@ -2218,16 +2110,31 @@
             </tr>
         </script>
 
+        <script id="quoteStepsTemplate" type="text/x-kendo-template">
+            <li>
+                <a href="\\##: id #" data-toggle="tab">
+                    <div class="icon-circle">
+                        <i class=" material-icons">#: icon #</i>
+                    </div>
+                    #: name #
+                </a>
+            </li>
+        </script>
         <script id="infoFieldTemplate" type="text/x-kendo-template">
             <div class="form-group md-outline" data-bind="css: { is-empty: isEmpty }">
                 #if ( type === 'text' ) {#
                     <input type="text" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
-                    <label for="#: name #" class="">
+                    <label for="#: id #" class="">
+                        <span>#: label #</span>
+                    </label>
+                #} else if ( type === 'dropdownlist' ) {#
+                    <textarea rows="3" class="form-control" id="#: id #" name="#: name #" data-bind="value: default" #: readonly # />
+                    <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'textarea' ) {#
                     <textarea rows="3" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
-                    <label for="#: name #" class="">
+                    <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'radio' ) {#
@@ -2244,12 +2151,12 @@
                     </div>
                 #} else if ( type === 'number' ) {#
                     <input type="number" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
-                    <label for="#: name #" class="">
+                    <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'date' ) {#
                     <input type="text" class="form-control date" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" />
-                    <label for="#: name #" class="">
+                    <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'select' ) {#
@@ -2259,7 +2166,7 @@
                         }); 
                         #
                     </select>
-                    <label for="#: name #" class="">
+                    <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'browse' ) {#        
@@ -2270,1066 +2177,1117 @@
 
         <script>
 
+            var Package = kendo.data.Model.define({
+                fields: {
+                    "name": {
+                        type: "string"
+                    },
+                    "perUserCost": {
+                        type: "number"
+                    },
+                    "userCount": {
+                        type: "number"
+                    },
+                    "mandatory": {
+                        type: "boolean"
+                    },
+                    "hasOwnUserCount": {
+                        type: "boolean"
+                    },
+                    "category": {
+                        type: "string"
+                    },
+                    // "discount": {
+                    //     type: "number"
+                    // },
+                    "currency": {
+                        type: "string"
+                    },
+                    "detailsLink": {
+                        type: "string"
+                    }
+                },
+                sysbgverylightgray: function() {
+                    return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("name"));
+                },
+                sysfginverse: function() {
+                    return this.sysbgverylightgray();
+                },
+                sysfgwhite: function() {
+                    return !this.sysbgverylightgray();
+                },
+                sysbginverse: function() {
+                    return ["Foundation", "Foundation+"].includes(this.get("name"));
+                },
+                sysbgsuccess: function() {
+                    return ["Financials", "Financials+"].includes(this.get("name"));
+                },
+                sysbginfo: function() {
+                    return ["Distribution", "Distribution+"].includes(this.get("name"));
+                },
+                sysbgprimary: function() {
+                    return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
+                },
+                isActive: function() {
+                    return this.get("userCount") > 0;
+                },
+                isProductSuite: function() {
+                    return this.get("category") === "productSuite";
+                },
+                isNotProductSuite: function() {
+                    return this.get("category") !== "productSuite";
+                },
+                totalNetCost: function() {
+                    return this.get("userCount") * this.get("perUserCost");
+                },
+                totalNetCostWithCurrency: function() {
+                    return this.get("discount.hasDiscount") && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
+                },
+                totalCost: function() {
+                    return this.totalNetCost() - this.totalDiscount();
+                },
+                totalCostWithCurrency: function() {
+                    return this.get("currency") + this.totalCost();
+                },
+                totalDiscount: function() {
+                    return this.totalNetCost() * (this.get("discount.value") / 100);
+                },
+                totalDiscountWithCurrency: function() {
+                    return this.get("currency") + this.totalDiscount();
+                },
+                perUserCostWithCurrency: function() {
+                    return this.get("currency") + this.get("perUserCost");
+                },
+                perUserCostWithCurrencyAndDiscount: function() {
+                    return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("discount.value") / 100));
+                },
+            });
+            
+            var EntryField = kendo.data.Model.define({
+                fields: {
+                    "name": {
+                        type: "string"
+                    },
+                    "id": {
+                        type: "string"
+                    },
+                    "label": {
+                        type: "string"
+                    },
+                    "required": {
+                        type: "boolean"
+                    },
+                    "readonly": {
+                        type: "string"
+                    },
+                    "default": {
+                        type: "string"
+                    },
+                    // "discount": {
+                    //     type: "number"
+                    // },
+                    "options": {
+                        type: "array"
+                    }
+                },
+                isEmpty: function() {
+                    return this.get("default") == '';
+                },
+                sysfginverse: function() {
+                    return this.sysbgverylightgray();
+                },
+
+            });
+            
+            const hasDiscount = function() {
+                return parseInt(this.get("value")) > 0;
+            };
+            
+            const viewModel = kendo.observable({
+                dataSource: {
+                    data: []
+                },
+                currency: "$",
+                quoteInformationColumn1: new kendo.data.DataSource({
+                    schema: {
+                        model: EntryField
+                    },
+                    data: [
+                        {
+                            id: 'ferferfer',
+                            name: 'newOrExisting',
+                            label: '',
+                            type: 'radio',
+                            default: '',
+                            options: [
+                                {
+                                    value: 'new',
+                                    label: 'New quote',
+                                },
+                                {
+                                    value: 'existing',
+                                    label: 'Existing quote',
+                                }
+                            ],
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'dddferfer',
+                            name: 'quoteNumber',
+                            label: 'Quote number',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'pojpojp',
+                            name: 'refNumber',
+                            label: 'Reference number',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: 'readonly'
+                        },
+                        {
+                            id: 'xxxpojpojp',
+                            name: 'quoteDate',
+                            label: 'Quote date',
+                            type: 'date',
+                            default: new Date(),
+                            options: [],
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'xwxpojpojp',
+                            name: 'expiryDate',
+                            label: 'Expiry date',
+                            type: 'date',
+                            default: '',
+                            options: [],
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'kkkdddeee',
+                            name: 'quoteVersion',
+                            label: 'Quote version',
+                            type: 'select',
+                            default: '',
+                            options: [
+                                {
+                                    value: 1,
+                                    label: 'v1'
+                                },
+                                {
+                                    value: 2,
+                                    label: 'v2'
+                                }
+                            ],
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'kkkddddddeee',
+                            name: 'customerNumber',
+                            label: 'Customer number',
+                            type: 'browse',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'kdddddeee',
+                            name: 'customerName',
+                            label: 'Customer name',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'kkkddfdfdfe',
+                            name: 'numberUsers',
+                            label: 'Number of users',
+                            type: 'number',
+                            default: 0,
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'sssssddeee',
+                            name: 'paymentCycle',
+                            label: 'Payment cycle',
+                            type: 'select',
+                            default: '',
+                            options: [
+                                {
+                                    value: 1,
+                                    label: 'Annual'
+                                },
+                                {
+                                    value: 2,
+                                    label: 'Bi-annual'
+                                },
+                                {
+                                    value: 3,
+                                    label: 'Quarterly'
+                                }
+                            ],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'pooioido',
+                            name: 'licenseStartDate',
+                            label: 'License start date',
+                            type: 'date',
+                            default: '',
+                            options: [],
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'ffrrpopopooi',
+                            name: 'description',
+                            label: 'Description',
+                            type: 'textarea',
+                            default: '',
+                            options: [],
+                            required: true,
+                            readonly: ''
+                        },
+                    ]
+                }),
+                quoteInformationColumn2: new kendo.data.DataSource({
+                    schema: {
+                        model: EntryField
+                    },
+                    data: [
+                        {
+                            id: 'kwddddeee',
+                            name: 'addressOne',
+                            label: 'Address line 1',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'kdddxxeee',
+                            name: 'addressTwo',
+                            label: 'Address line 2',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'kdzzddeee',
+                            name: 'city',
+                            label: 'City',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'kdhhjddeee',
+                            name: 'state',
+                            label: 'State/Province',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'country',
+                            name: 'country',
+                            label: 'Country',
+                            type: 'dropdownlist',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'postzip',
+                            name: 'postzip',
+                            label: 'Postal/Zip code',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'currency',
+                            name: 'currency',
+                            label: 'Currency',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'contactName',
+                            name: 'contactName',
+                            label: 'Contact name',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'contactPhone',
+                            name: 'contactPhone',
+                            label: 'Contact phone',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'contactEmail',
+                            name: 'contactEmail',
+                            label: 'Contact email',
+                            type: 'email',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'companyReg',
+                            name: 'companyReg',
+                            label: 'Company reg. no.',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        },
+                        {
+                            id: 'vatNumber',
+                            name: 'vatNumber',
+                            label: 'Company VAT no.',
+                            type: 'text',
+                            default: '',
+                            options: [],
+                            required: false,
+                            readonly: ''
+                        }
+                    ]
+                }),
+                netGrandTotal: function() {
+                    const apiServicesNetTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+
+                    const additionalSoftwareNetTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+
+                    const isvSoftwareNetTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+
+                    return apiServicesNetTotal + additionalSoftwareNetTotal + isvSoftwareNetTotal;
+                },
+                discountGrandTotal: function() {
+                    const apiServicesDiscountTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+
+                    const additionalSoftwareDiscountTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+
+                    const isvSoftwareDiscountTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+
+                    return apiServicesDiscountTotal + additionalSoftwareDiscountTotal + isvSoftwareDiscountTotal;
+                },
+                discountGrandTotalWithCurrency: function() {
+                    return this.get("currency") + this.discountGrandTotal();
+                },
+                grandTotal: function() {
+                    const apiServicesGrandTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+
+                    const additionalSoftwareGrandTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+
+                    const isvSoftwareGrandTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+
+                    return apiServicesGrandTotal + additionalSoftwareGrandTotal + isvSoftwareGrandTotal;
+                },
+                grandTotalWithCurrency: function() {
+                    return this.get("currency") + this.grandTotal();
+                },
+                productSuite: new kendo.data.DataSource({
+                    schema: {
+                        model: Package
+                    },
+                    data: [
+                        {
+                            id: 'ffffouno',
+                            name: 'Foundation',
+                            detailsLink: 'https://google.com',
+                            mandatory: true,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'fffffwfwouno',
+                            name: 'Foundation+',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: true,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'qvbffffouno',
+                            name: 'Financials',
+                            detailsLink: 'https://google.com',
+                            mandatory: true,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Financials',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'ddbffwfwouno',
+                            name: 'Financials+',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: true,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'qwwwffouno',
+                            name: 'Distribution',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Distribution',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'ddbgggewuno',
+                            name: 'Distribution+',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: true,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'lpoouno',
+                            name: 'Manufacturing',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Manufacturing',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'ddbgggknkr',
+                            name: 'Manufacturing+',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'productSuite',
+                            hasOwnUserCount: false,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: true,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                    ]
+                }),
+                apiServices: new kendo.data.DataSource({
+                    schema: {
+                        model: Package
+                    },
+                    data: [
+                        {
+                            id: 'xxxssshhh',
+                            name: 'Financial Queries',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'dddoooawawa',
+                            name: 'Distribution Queries',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 12,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'hhhwhww8888wh',
+                            name: 'Operation Queries',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'wewiuhiwuehiu',
+                            name: 'Master Data Management',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'oioeroifer',
+                            name: 'Point of sale (POS)',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'qqhen',
+                            name: 'Procurement Management',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'erferiiii7',
+                            name: 'Sales Management',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                        {
+                            id: 'aaopoapwowow',
+                            name: 'Operation Management',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'apiServices',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: [
+                                'System Foundation',
+                                'System Administration',
+                                'Report Writer',
+                                'Reporting Services',
+                                'Office Automation',
+                                'Contact Management',
+                                'Executive Dashboards',
+                                'Interface System',
+                            ]
+                        },
+                    ]
+                }),
+                additionalSoftware: new kendo.data.DataSource({
+                    schema: {
+                        model: Package
+                    },
+                    data: [
+                        {
+                            id: 'dsdxxxssshhh',
+                            name: 'Point of sale (POS)',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'additionalSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: []
+                        },
+                        {
+                            id: 'wefoooawawa',
+                            name: 'Espresso',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'additionalSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 12,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+
+                        },
+                        {
+                            id: 'oboe888wh',
+                            name: 'Manufacturing Operation Management (MOM)',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'additionalSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: []
+                        },
+                        {
+                            id: 'wwwwwwwiwuehiu',
+                            name: 'Additional designer seats',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'additionalSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                        },
+                        {
+                            id: 'foioeroifer',
+                            name: 'Additional analytics viewers',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'additionalSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                        },
+                        {
+                            id: 'ferferfqqhen',
+                            name: 'Additional Contact Management User',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'additionalSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 0,
+                            perUserCost: 15,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 0,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                            subItems: []
+                        }
+                    ]
+                }),
+                isvSoftware: new kendo.data.DataSource({
+                    schema: {
+                        model: Package
+                    },
+                    data: [
+                        {
+                            id: 'ooiwwwhn',
+                            name: 'Warehouse Management',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'isvSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 10,
+                            perUserCost: 14,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 5,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                        },
+                        {
+                            id: 'ooiwwdddwhn',
+                            name: 'Bartender',
+                            detailsLink: 'https://google.com',
+                            mandatory: false,
+                            category: 'isvSoftware',
+                            hasOwnUserCount: true,
+                            userCount: 30,
+                            perUserCost: 24,
+                            isPlusPackage: false,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                value: 15,
+                                type: 'percentage'
+                            },
+                            currency: "$",
+                        },
+                    ]
+                }),
+                infrastructure: new kendo.data.DataSource({
+
+                }),
+                productSuiteActive: function() {
+                    return this.get("productSuite") && this.get("productSuite").data().length;
+                },
+                apiServicesActive: function() {
+                    return this.get("apiServices") && this.get("apiServices").data().length;
+                },
+                additionalSoftwareActive: function() {
+                    return this.get("additionalSoftware") && this.get("additionalSoftware").data().length;
+                },
+                isvSoftwareActive: function() {
+                    return this.get("isvSoftware") && this.get("isvSoftware").data().length;
+                },
+                educationActive: function() {
+                    return this.get("education") && this.get("education").data().length;
+                },
+                activeSections: function() {
+                    const activeSections = [];
+                    
+                    activeSections.push({ 
+                        id: 'info',
+                        name: 'Quote information',
+                        icon: 'person_pin',
+                    });
+                    if ( this.productSuiteActive() ) activeSections.push({ 
+                        id: 'productSuite',
+                        name: 'Product suite',
+                        icon: 'apps',
+                    });
+                    if ( this.additionalSoftwareActive() ) activeSections.push({ 
+                        id: 'additionalSoftware',
+                        name: 'Add-on software',
+                        icon: 'queue_play_next',
+                    });
+                    if ( this.isvSoftwareActive() ) activeSections.push({ 
+                        id: 'isvSoftware',
+                        name: 'ISV software',
+                        icon: 'power',
+                    });
+                    activeSections.push({ 
+                        id: 'infrastructure',
+                        name: 'Infrastructure',
+                        icon: 'dns',
+                    });
+                    if ( this.educationActive() ) activeSections.push({ 
+                        id: 'education',
+                        name: 'Education',
+                        icon: 'school',
+                    });
+                    
+                    return activeSections;
+                },
+            });
+
             function renderPlusPackageSubItemsTemplate(data) {
                 return kendo.Template.compile($('#plusPackageSubItemsTemplate').html())(data);
             }
 
             $(document).ready(function() {
                 $.material.init();
-
-                var Package = kendo.data.Model.define({
-                    fields: {
-                        "name": {
-                            type: "string"
-                        },
-                        "perUserCost": {
-                            type: "number"
-                        },
-                        "userCount": {
-                            type: "number"
-                        },
-                        "mandatory": {
-                            type: "boolean"
-                        },
-                        "hasOwnUserCount": {
-                            type: "boolean"
-                        },
-                        "category": {
-                            type: "string"
-                        },
-                        // "discount": {
-                        //     type: "number"
-                        // },
-                        "currency": {
-                            type: "string"
-                        },
-                        "detailsLink": {
-                            type: "string"
-                        }
-                    },
-                    sysbgverylightgray: function() {
-                        return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("name"));
-                    },
-                    sysfginverse: function() {
-                        return this.sysbgverylightgray();
-                    },
-                    sysfgwhite: function() {
-                        return !this.sysbgverylightgray();
-                    },
-                    sysbginverse: function() {
-                        return ["Foundation", "Foundation+"].includes(this.get("name"));
-                    },
-                    sysbgsuccess: function() {
-                        return ["Financials", "Financials+"].includes(this.get("name"));
-                    },
-                    sysbginfo: function() {
-                        return ["Distribution", "Distribution+"].includes(this.get("name"));
-                    },
-                    sysbgprimary: function() {
-                        return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
-                    },
-                    isActive: function() {
-                        return this.get("userCount") > 0;
-                    },
-                    isProductSuite: function() {
-                        return this.get("category") === "productSuite";
-                    },
-                    isNotProductSuite: function() {
-                        return this.get("category") !== "productSuite";
-                    },
-                    totalNetCost: function() {
-                        return this.get("userCount") * this.get("perUserCost");
-                    },
-                    totalNetCostWithCurrency: function() {
-                        return this.get("discount.hasDiscount") && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
-                    },
-                    totalCost: function() {
-                        return this.totalNetCost() - this.totalDiscount();
-                    },
-                    totalCostWithCurrency: function() {
-                        return this.get("currency") + this.totalCost();
-                    },
-                    totalDiscount: function() {
-                        return this.totalNetCost() * (this.get("discount.value") / 100);
-                    },
-                    totalDiscountWithCurrency: function() {
-                        return this.get("currency") + this.totalDiscount();
-                    },
-                    perUserCostWithCurrency: function() {
-                        return this.get("currency") + this.get("perUserCost");
-                    },
-                    perUserCostWithCurrencyAndDiscount: function() {
-                        return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("discount.value") / 100));
-                    },
-                });
-                
-                var EntryField = kendo.data.Model.define({
-                    fields: {
-                        "name": {
-                            type: "string"
-                        },
-                        "id": {
-                            type: "string"
-                        },
-                        "label": {
-                            type: "string"
-                        },
-                        "required": {
-                            type: "boolean"
-                        },
-                        "readonly": {
-                            type: "string"
-                        },
-                        "default": {
-                            type: "string"
-                        },
-                        // "discount": {
-                        //     type: "number"
-                        // },
-                        "options": {
-                            type: "array"
-                        }
-                    },
-                    isEmpty: function() {
-                        return this.get("default") == '';
-                    },
-                    sysfginverse: function() {
-                        return this.sysbgverylightgray();
-                    },
-
-                });
-                
-                const hasDiscount = function() {
-                    return parseInt(this.get("value")) > 0;
-                };
-                const viewModel = kendo.observable({
-                    dataSource: {
-                        data: []
-                    },
-                    currency: "$",
-                    quoteInformationColumn1: new kendo.data.DataSource({
-                        schema: {
-                            model: EntryField
-                        },
-                        data: [
-                            {
-                                id: 'ferferfer',
-                                name: 'newOrExisting',
-                                label: '',
-                                type: 'radio',
-                                default: '',
-                                options: [
-                                    {
-                                        value: 'new',
-                                        label: 'New quote',
-                                    },
-                                    {
-                                        value: 'existing',
-                                        label: 'Existing quote',
-                                    }
-                                ],
-                                required: true,
-                                readonly: ''
-                            },
-                            {
-                                id: 'dddferfer',
-                                name: 'quoteNumber',
-                                label: 'Quote number',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'pojpojp',
-                                name: 'refNumber',
-                                label: 'Reference number',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: 'readonly'
-                            },
-                            {
-                                id: 'xxxpojpojp',
-                                name: 'quoteDate',
-                                label: 'Quote date',
-                                type: 'date',
-                                default: new Date(),
-                                options: [],
-                                required: true,
-                                readonly: ''
-                            },
-                            {
-                                id: 'xwxpojpojp',
-                                name: 'expiryDate',
-                                label: 'Expiry date',
-                                type: 'date',
-                                default: '',
-                                options: [],
-                                required: true,
-                                readonly: ''
-                            },
-                            {
-                                id: 'kkkdddeee',
-                                name: 'quoteVersion',
-                                label: 'Quote version',
-                                type: 'select',
-                                default: '',
-                                options: [
-                                    {
-                                        value: 1,
-                                        label: 'v1'
-                                    },
-                                    {
-                                        value: 2,
-                                        label: 'v2'
-                                    }
-                                ],
-                                required: true,
-                                readonly: ''
-                            },
-                            {
-                                id: 'kkkddddddeee',
-                                name: 'customerNumber',
-                                label: 'Customer number',
-                                type: 'browse',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'kdddddeee',
-                                name: 'customerName',
-                                label: 'Customer name',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'kkkddfdfdfe',
-                                name: 'numberUsers',
-                                label: 'Number of users',
-                                type: 'number',
-                                default: 0,
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'sssssddeee',
-                                name: 'paymentCycle',
-                                label: 'Payment cycle',
-                                type: 'select',
-                                default: '',
-                                options: [
-                                    {
-                                        value: 1,
-                                        label: 'Annual'
-                                    },
-                                    {
-                                        value: 2,
-                                        label: 'Bi-annual'
-                                    },
-                                    {
-                                        value: 3,
-                                        label: 'Quarterly'
-                                    }
-                                ],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'pooioido',
-                                name: 'licenseStartDate',
-                                label: 'License start date',
-                                type: 'date',
-                                default: '',
-                                options: [],
-                                required: true,
-                                readonly: ''
-                            },
-                            {
-                                id: 'ffrrpopopooi',
-                                name: 'description',
-                                label: 'Description',
-                                type: 'textarea',
-                                default: '',
-                                options: [],
-                                required: true,
-                                readonly: ''
-                            },
-                        ]
-                    }),
-                    quoteInformationColumn2: new kendo.data.DataSource({
-                        schema: {
-                            model: EntryField
-                        },
-                        data: [
-                            {
-                                id: 'kwddddeee',
-                                name: 'addressOne',
-                                label: 'Address line 1',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'kdddxxeee',
-                                name: 'addressTwo',
-                                label: 'Address line 2',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'kdzzddeee',
-                                name: 'city',
-                                label: 'City',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'kdhhjddeee',
-                                name: 'state',
-                                label: 'State/Province',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'country',
-                                name: 'country',
-                                label: 'Country',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'postzip',
-                                name: 'postzip',
-                                label: 'Postal/Zip code',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'currency',
-                                name: 'currency',
-                                label: 'Currency',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'contactName',
-                                name: 'contactName',
-                                label: 'Contact name',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'contactPhone',
-                                name: 'contactPhone',
-                                label: 'Contact phone',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'contactEmail',
-                                name: 'contactEmail',
-                                label: 'Contact email',
-                                type: 'email',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'companyReg',
-                                name: 'companyReg',
-                                label: 'Company reg. no.',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            },
-                            {
-                                id: 'vatNumber',
-                                name: 'vatNumber',
-                                label: 'Company VAT no.',
-                                type: 'text',
-                                default: '',
-                                options: [],
-                                required: false,
-                                readonly: ''
-                            }
-                        ]
-                    }),
-                    netGrandTotal: function() {
-                        const apiServicesNetTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                        const additionalSoftwareNetTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                        const isvSoftwareNetTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                        return apiServicesNetTotal + additionalSoftwareNetTotal + isvSoftwareNetTotal;
-                    },
-                    discountGrandTotal: function() {
-                        const apiServicesDiscountTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                        const additionalSoftwareDiscountTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                        const isvSoftwareDiscountTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                        return apiServicesDiscountTotal + additionalSoftwareDiscountTotal + isvSoftwareDiscountTotal;
-                    },
-                    discountGrandTotalWithCurrency: function() {
-                        return this.get("currency") + this.discountGrandTotal();
-                    },
-                    grandTotal: function() {
-                        const apiServicesGrandTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                        const additionalSoftwareGrandTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                        const isvSoftwareGrandTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                        return apiServicesGrandTotal + additionalSoftwareGrandTotal + isvSoftwareGrandTotal;
-                    },
-                    grandTotalWithCurrency: function() {
-                        return this.get("currency") + this.grandTotal();
-                    },
-                    productSuite: new kendo.data.DataSource({
-                        schema: {
-                            model: Package
-                        },
-                        data: [
-                            {
-                                id: 'ffffouno',
-                                name: 'Foundation',
-                                detailsLink: 'https://google.com',
-                                mandatory: true,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'fffffwfwouno',
-                                name: 'Foundation+',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: true,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'qvbffffouno',
-                                name: 'Financials',
-                                detailsLink: 'https://google.com',
-                                mandatory: true,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Financials',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'ddbffwfwouno',
-                                name: 'Financials+',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: true,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'qwwwffouno',
-                                name: 'Distribution',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Distribution',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'ddbgggewuno',
-                                name: 'Distribution+',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: true,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'lpoouno',
-                                name: 'Manufacturing',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Manufacturing',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'ddbgggknkr',
-                                name: 'Manufacturing+',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'productSuite',
-                                hasOwnUserCount: false,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: true,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                        ]
-                    }),
-                    apiServices: new kendo.data.DataSource({
-                        schema: {
-                            model: Package
-                        },
-                        data: [
-                            {
-                                id: 'xxxssshhh',
-                                name: 'Financial Queries',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'dddoooawawa',
-                                name: 'Distribution Queries',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 12,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'hhhwhww8888wh',
-                                name: 'Operation Queries',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'wewiuhiwuehiu',
-                                name: 'Master Data Management',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'oioeroifer',
-                                name: 'Point of sale (POS)',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'qqhen',
-                                name: 'Procurement Management',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'erferiiii7',
-                                name: 'Sales Management',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                            {
-                                id: 'aaopoapwowow',
-                                name: 'Operation Management',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'apiServices',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: [
-                                    'System Foundation',
-                                    'System Administration',
-                                    'Report Writer',
-                                    'Reporting Services',
-                                    'Office Automation',
-                                    'Contact Management',
-                                    'Executive Dashboards',
-                                    'Interface System',
-                                ]
-                            },
-                        ]
-                    }),
-                    additionalSoftware: new kendo.data.DataSource({
-                        schema: {
-                            model: Package
-                        },
-                        data: [
-                            {
-                                id: 'dsdxxxssshhh',
-                                name: 'Point of sale (POS)',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'additionalSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: []
-                            },
-                            {
-                                id: 'wefoooawawa',
-                                name: 'Espresso',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'additionalSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 12,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-
-                            },
-                            {
-                                id: 'oboe888wh',
-                                name: 'Manufacturing Operation Management (MOM)',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'additionalSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: []
-                            },
-                            {
-                                id: 'wwwwwwwiwuehiu',
-                                name: 'Additional designer seats',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'additionalSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                            },
-                            {
-                                id: 'foioeroifer',
-                                name: 'Additional analytics viewers',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'additionalSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                            },
-                            {
-                                id: 'ferferfqqhen',
-                                name: 'Additional Contact Management User',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'additionalSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 0,
-                                perUserCost: 15,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 0,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                                subItems: []
-                            }
-                        ]
-                    }),
-                    isvSoftware: new kendo.data.DataSource({
-                        schema: {
-                            model: Package
-                        },
-                        data: [
-                            {
-                                id: 'ooiwwwhn',
-                                name: 'Warehouse Management',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'isvSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 10,
-                                perUserCost: 14,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 5,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                            },
-                            {
-                                id: 'ooiwwdddwhn',
-                                name: 'Bartender',
-                                detailsLink: 'https://google.com',
-                                mandatory: false,
-                                category: 'isvSoftware',
-                                hasOwnUserCount: true,
-                                userCount: 30,
-                                perUserCost: 24,
-                                isPlusPackage: false,
-                                discount: {
-                                    hasDiscount: hasDiscount,
-                                    value: 15,
-                                    type: 'percentage'
-                                },
-                                currency: "$",
-                            },
-                        ]
-                    }),
-                    infrastructure: new kendo.data.DataSource({
-
-                    })
-                });
-
 
                 kendo.bind("body", viewModel);
                 const tabHeight = $(window).height() - 200;
@@ -3526,11 +3484,6 @@
                     }
                 }).data("kendoDropDownList");
 
-
-                // $('.discount').popover({
-                //     html: '<input type="text" class="form-control" />'
-                // });
-
                 $(".discount").popover({
                     trigger : 'click',  
                     placement : 'auto', 
@@ -3538,7 +3491,7 @@
                     html: 'true',
                     title: 'Add a comment',
                     // content : '<span class="sys-txt-sm sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
-                    content: '<span class="sys-txt-sm sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
+                    content: '<span class="sys-txt-md sys-fg-inverse">% - max 12.5%</span><input type="text" class="form-control"></input>',
                     template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
                             '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content md-outline">xxx'+
                             '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
@@ -3597,6 +3550,75 @@
                 // });
                 
                 // kendo.bind("body", viewModel);
+                
+                $(".wizard-card").bootstrapWizard({
+                    tabClass: "nav nav-pills",
+                    nextSelector: ".btn-next",
+                    previousSelector: ".btn-previous",
+
+                    onNext: function(tab, navigation, index) {
+                        var $valid = true; // use some validator
+                        if (!$valid) {
+                            $validator.focusInvalid();
+                            return false;
+                        }
+                    },
+
+                    onInit: function(tab, navigation, index) {
+                        //check number of tabs and fill the entire row
+                        var $total = navigation.find("li").length;
+                        $width = 100 / $total;
+
+                        navigation.find("li").css("width", $width + "%");
+                    },
+
+                    onTabClick: function(tab, navigation, index) {
+                        var $valid = true; // use some validator
+
+                        if (!$valid) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    },
+
+                    onTabShow: function(tab, navigation, index) {
+                        var $total = navigation.find("li").length;
+                        var $current = index + 1;
+
+                        var $wizard = navigation.closest(".wizard-card");
+
+                        // If it's the last tab then hide the last button and show the finish instead
+                        if ($current >= $total) {
+                            $($wizard)
+                                .find(".btn-next")
+                                .hide();
+                            $($wizard)
+                                .find(".btn-finish")
+                                .show();
+                        } else {
+                            $($wizard)
+                                .find(".btn-next")
+                                .show();
+                            $($wizard)
+                                .find(".btn-finish")
+                                .hide();
+                        }
+
+                        //update progress
+                        var move_distance = 100 / $total;
+                        move_distance = move_distance * index + move_distance / 2;
+
+                        $wizard.find($(".progress-bar")).css({ width: move_distance + "%" });
+                        //e.relatedTarget // previous tab
+
+                        $wizard.find($(".wizard-card .nav-pills li.active a .icon-circle")).addClass("checked");
+                    },
+                });
+
+                $(".set-full-height").css("height", "auto");
+
+                const ps = new PerfectScrollbar('.quote-scrollable-pane');
 
                 window.viewModel = viewModel;
 
