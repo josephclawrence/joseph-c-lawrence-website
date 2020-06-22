@@ -935,6 +935,9 @@
 .panel.panel-inverse .panel-heading {
     background: #2c3e50;
 }
+.form-control:not(.k-combobox) {
+    height: 30px;
+}
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
         <script>
@@ -999,6 +1002,26 @@
                                         <div class="row">
                                             <div class="col-xs-6">
                                                 <button class="btn btn-primary btn-sm">New hotfix</button>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group is-empty sys-mg-off sys-pd-off">                  
+                                                                                    
+                                                    <div class="input-group">
+                                                        <span class="spinner"></span>
+                                                        <!-- <label for="quoteNumber" class="">
+                                                            <span>Customer</span>
+                                                        </label> -->
+                                                        <input type="text" class="form-control" id="quoteNumber" placeholder="Customer">
+                                                        <span class="input-group-btn">
+                                                            <a class="syspro-browse-button" >
+                                                                <i class="material-icons">search</i>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+
+                                            
+                                            
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
