@@ -770,6 +770,12 @@
     }
 </style>
 <style>
+    .discount-amount {
+        margin-right: 32px;
+    }
+    .discount-amount.discount-allowed {
+        margin-right: 0px;
+    }
     #lineItemsTotals {
         font-size: 12px !important;
     }
@@ -1373,7 +1379,7 @@
                                                                         <div class="row">
                                                                             <div class="col-xs-12">
                                                                                 <h3 class="sys-mg-off-t">
-                                                                                    Core Bundles
+                                                                                    Syspro software
                                                                                 </h3>
                                                                             </div>
                                                                         </div>
@@ -1991,18 +1997,32 @@
                     }"
                 >
                     <div class="row">
-                        <div class="col-sm-1 text-left">
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
-                                <input type="checkbox" autocomplete="off">
-                                <i class="material-icons package-selected-icon pull-left" data-bind="css: { 
-                                    sys-fg-gray: sysfginverse,
-                                    sys-fg-white: sysfgwhite,
-                                }">check_circle</i>
-                                
-                                </label>
+                        #if (mandatory) {#
+                            <div class="col-sm-1 text-left" data-toggle="tooltip" data-tooltip="tooltip" data-container="body" data-placement="auto top" title="" data-original-title="'Foundation' is a mandatory package">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
+                                    <input type="checkbox" autocomplete="off" checked="true" disabled>
+                                    <i class="material-icons package-selected-icon pull-left sys-fg-warning">check_circle</i>
+                                    
+                                    </label>
+                                </div>
                             </div>
-                        </div>
+                        #} else {#
+                            <div class="col-sm-1 text-left">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r" data-bind="css: { 
+                                        active: isSelected,
+                                    }">
+                                    <input type="checkbox" autocomplete="off" data-bind="checked: isSelected">
+                                    <i class="material-icons package-selected-icon pull-left" data-bind="css: { 
+                                        sys-fg-gray: sysfginverse,
+                                        sys-fg-white: sysfgwhite,
+                                    }">check_circle</i>
+                                    
+                                    </label>
+                                </div>
+                            </div>
+                        #}#
                         <div class="col-sm-5 text-left">
                             <a href="#: detailsLink #" class="package-title" data-toggle="tooltip" 
                             data-tooltip="tooltip" data-container="body"
@@ -2062,11 +2082,11 @@
                             <span data-bind="visible: discount.hasDiscount">
                                 <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
                             </span>                           
-                            <b data-bind="text: currency"></b><b data-bind="text: totalCost"></b>
+                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: discount.discountAllowed }"></b>
                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                                 data-toggle="popover" 
                                 title="Apply discount"
-                                data-bind="css:{active: discount.hasDiscount}">assignment_returned</i>
+                                data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
                             <span class="hidden-discount-field" style="display: none;">
                                 <input type="text" class="form-control" data-bind='value: discount.value'></input>
                             </span>
@@ -2111,7 +2131,7 @@
         </script>
 
         <script id="quoteStepsTemplate" type="text/x-kendo-template">
-            <li>
+            <li data-bind="style: { width: wizardTabsWidth }">
                 <a href="\\##: id #" data-toggle="tab">
                     <div class="icon-circle">
                         <i class=" material-icons">#: icon #</i>
@@ -2191,6 +2211,9 @@
                     "mandatory": {
                         type: "boolean"
                     },
+                    isSelected: {
+                        type: "boolean"
+                    },
                     "hasOwnUserCount": {
                         type: "boolean"
                     },
@@ -2229,7 +2252,7 @@
                     return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
                 },
                 isActive: function() {
-                    return this.get("userCount") > 0;
+                    return (this.get("mandatory") || this.get("isSelected")) && this.get("userCount") > 0;
                 },
                 isProductSuite: function() {
                     return this.get("category") === "productSuite";
@@ -2641,8 +2664,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: false,
+                            isSelected: true,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: false,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2668,8 +2693,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: true,
+                            isSelected: true,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2695,8 +2722,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2722,8 +2751,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: true,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2749,8 +2780,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2776,8 +2809,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: true,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2803,8 +2838,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2830,8 +2867,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: true,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2864,8 +2903,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2891,8 +2932,10 @@
                             userCount: 0,
                             perUserCost: 12,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: false,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -2918,8 +2961,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: false,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -2945,8 +2990,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: false,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -2972,8 +3019,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -2999,8 +3048,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -3026,8 +3077,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -3053,8 +3106,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -3087,8 +3142,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -3105,8 +3162,10 @@
                             userCount: 0,
                             perUserCost: 12,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -3123,8 +3182,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -3141,8 +3202,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -3158,8 +3221,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -3175,8 +3240,10 @@
                             userCount: 0,
                             perUserCost: 15,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: false,
                                 value: 0,
                                 type: 'percentage'
                             },
@@ -3200,8 +3267,10 @@
                             userCount: 10,
                             perUserCost: 14,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: true,
                                 value: 5,
                                 type: 'percentage'
                             },
@@ -3217,8 +3286,10 @@
                             userCount: 30,
                             perUserCost: 24,
                             isPlusPackage: false,
+                            isSelected: false,
                             discount: {
                                 hasDiscount: hasDiscount,
+                                discountAllowed: false,
                                 value: 15,
                                 type: 'percentage'
                             },
@@ -3279,6 +3350,12 @@
                     });
                     
                     return activeSections;
+                },
+                wizardTabsWidth: function() {
+                    const $total = this.activeSections().length;
+                    const $width = 100 / $total;
+
+                    return $width + "%";
                 },
             });
 
@@ -3551,7 +3628,7 @@
                 
                 // kendo.bind("body", viewModel);
                 
-                $(".wizard-card").bootstrapWizard({
+                const wizard = $(".wizard-card").bootstrapWizard({
                     tabClass: "nav nav-pills",
                     nextSelector: ".btn-next",
                     previousSelector: ".btn-previous",
@@ -3615,6 +3692,8 @@
                         $wizard.find($(".wizard-card .nav-pills li.active a .icon-circle")).addClass("checked");
                     },
                 });
+
+                console.log(wizard);
 
                 $(".set-full-height").css("height", "auto");
 

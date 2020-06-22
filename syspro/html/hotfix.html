@@ -103,7 +103,6 @@
     #quoteOverallProgress {
         position: fixed;
         bottom: 23px;
-        /* height: 40px; */
         width: 100%;
         padding: 0px;
         z-index: 999999;
@@ -480,8 +479,9 @@
     }
 
     .wizard-card .tab-content {
-        /* min-height: 435px; */
+        min-height: 475px;
         padding: 120px 20px 10px;
+
     }
     .wizard-card .wizard-footer {
         padding: 0 15px 5px;
@@ -525,24 +525,24 @@
     .sys-bg-inverse .table-striped > tbody > tr:nth-of-type(odd) {
         background-color: transparent;
     }
-    #quoteWizard {
+    #hotfixWizard, #hotfixNavigator {
         min-height: 630px;
         height: 100%;
     }
-    #quoteWizard .form-horizontal .form-group {
+    #hotfixWizard .form-horizontal .form-group {
         margin-left: 0px;
         margin-right: 0px;
     }
-    #quoteWizard .form-group {
+    #hotfixWizard .form-group {
     margin-top: 0px;
     margin-bottom: 10px;
 }
-#quoteWizard .form-group.md-outline {
+#hotfixWizard .form-group.md-outline {
     margin-top: 0px;
     margin-bottom: 16px;
     padding-right: 0px;
 }
-#quoteWizard .column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-control {
+#hotfixWizard .column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-control {
     width: auto;
 }
 .quote-scrollable-pane {
@@ -914,6 +914,27 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+.k-treeview .k-item > .k-group {
+    border-left: 1px solid #c2d5da;
+}
+.k-treeview .k-in.k-state-hover {
+    background: #c2d5da;
+}
+.k-treeview span.k-in {
+    cursor: pointer;
+    width: 97%;
+}
+.k-treeview .k-state-selected {
+    /* background-color: var(--color_pickled_bluewood_approx) !important */
+    background-color: #2c3e50 !important;
+}
+#hotfixNavigator {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px -2px;
+    background: #ecf0f1;
+}
+.panel.panel-inverse .panel-heading {
+    background: #2c3e50;
+}
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
         <script>
@@ -971,27 +992,31 @@
                 <div class="row sys-mg-t-5">
                     <div class="col-sm-12 col-xs-12 column-parent sys-mg-t-15">
                         <div class="row widget layout-widget" id="">
-                            <div class="col-sm-12">
-                                <div class="panel sys-bd-off">
-                                    <div class="row">
-                                        <div class="sys-mg-l-15 sys-mg-r-15">
-                                            <div class="alert alert-info sys-pd-5 sys-mg-t-10">
-                                                <div class="row">
-                                                    <div class="col-xs-12 text-left">
-                                                        <b>System information:&nbsp;&nbsp;</b>  SYSPRO 8 2020 R1  &nbsp;&nbsp;/&nbsp; &nbsp;Hotfixes (6)
-                                                    </div>
-                                                    <!-- <div class="col-xs-4 text-center">
-                                                        
-                                                    </div>
-                                                    <div class="col-xs-4 text-center">
-                                                        Hotfixes (6)
-                                                    </div> -->
-                                                </div>
+                            <div class="col-sm-3">
+                                <!-- <div class="alert sys-bg-very-light-gray" id="hotfixNavigator"> -->
+                                <div class="panel panel-inverse sys-bd-very-light-gray" id="hotfixNavigator">
+                                    <div class="panel-heading sys-pd-10">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <button class="btn btn-primary btn-sm">New hotfix</button>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="panel-body">
+                                        
+                                        <div class="row sys-mg-t-10">
+                                            <div class="col-xs-12">
+                                                <div class="file-treeview file-explorer"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="panel sys-bd-off">
+                                    
                                     <!--      Wizard container        -->
-                                    <div class="card wizard-card sys-pd-b-10" id="quoteWizard">
+                                    <div class="card wizard-card sys-pd-b-10" id="hotfixWizard">
                                         <form action="" method="">
                                             <div class="wizard-navigation">
                                                 <div class="progress-with-circle">
@@ -1006,6 +1031,14 @@
                                                 </div>
                                                 <ul>
                                                     <li>
+                                                        <a href="#info" data-toggle="tab">
+                                                            <div class="icon-circle">
+                                                                <i class=" material-icons">info</i>
+                                                            </div>
+                                                            Information
+                                                        </a>
+                                                    </li>
+                                                    <li>
                                                         <a href="#availableUpgrades" data-toggle="tab">
                                                             <div class="icon-circle">
                                                                 <i class=" material-icons">system_update_alt</i>
@@ -1014,7 +1047,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#info" data-toggle="tab">
+                                                        <a href="#hotfixes" data-toggle="tab">
                                                             <div class="icon-circle">
                                                                 <i class=" material-icons">playlist_add</i>
                                                             </div>
@@ -1041,7 +1074,83 @@
                                                 </ul>
                                             </div>
                                             <div class="tab-content">
-
+                                                <div class="tab-pane " id="info">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-sm-offset-3">
+                                                            <div class="alert sys-bd-very-light-gray">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 text-center sys-pd-b-10">
+                                                                        <i class="material-icons sys-txt-lg sys-fg-info">info</i> 
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-horizontal">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group is-empty sys-mg-b-15">
+    
+                                                                                <label for="xxx" class="col-md-5 control-label sys-pd-t-5">
+                                                                                    <b>Select environment</b>
+                                                                                </label>
+                                                                                <div class="col-md-7 syspro-entry-content">
+                                                                                    <select class="form-control" id="">
+                                                                                        <option value="test">Test</option>
+                                                                                        <option value="dev">Dev</option>
+                                                                                        <option value="live">Live</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group is-empty sys-mg-b-15">
+    
+                                                                                <label for="xxx" class="col-md-5 control-label sys-pd-t-5">
+                                                                                    <b>Select date/time</b>
+                                                                                </label>
+                                                                                <div class="col-md-7 syspro-entry-content">
+                                                                                    <input type="text" class="form-control date" id="">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group sys-mg-b-15">
+    
+                                                                                <label for="xxx" class="col-md-5 control-label sys-pd-t-5">
+                                                                                    <b>Change request ID</b>
+                                                                                </label>
+                                                                                <div class="col-md-7 syspro-entry-content sys-pd-t-5">
+                                                                                    <span class="">XXX2020R1223v8</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group sys-mg-b-15">
+    
+                                                                                <label for="xxx" class="col-md-5 control-label sys-pd-t-5">
+                                                                                    <b>Status</b>
+                                                                                </label>
+                                                                                <div class="col-md-7 syspro-entry-content sys-pd-t-5">
+                                                                                    <span class="">
+                                                                                        <i class="material-icons sys-fg-success">done</i>
+                                                                                        Approved
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-xs-6">
+                                                                        <button class="btn btn-block btn-danger">
+                                                                            <i class="material-icons pull-left">settings_backup_restore</i>
+                                                                            Rollback
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-xs-6">
+                                                                        <button class="btn btn-block btn-success">
+                                                                            Approve
+                                                                            <i class="material-icons pull-right">done</i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="tab-pane " id="availableUpgrades">
                                                     <p class="lead text-center">
                                                         Select from the available upgrades. Some information about Early Adoption upgrades
@@ -1069,7 +1178,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="oneDetails"
+                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="oneDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1105,7 +1214,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="oneDetails"
+                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="oneDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1146,7 +1255,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="oneDetails"
+                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="oneDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1182,7 +1291,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="oneDetails"
+                                                                                        <a href="#oneDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="oneDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1211,7 +1320,7 @@
                                                 </div>
 
 
-                                                <div class="tab-pane " id="info">
+                                                <div class="tab-pane " id="hotfixes">
                                                     <div class="row quote-scrollable-pane">
 
                                                         <div class="col-xs-12">
@@ -1245,7 +1354,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1279,7 +1388,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1318,7 +1427,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1353,7 +1462,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1387,7 +1496,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1421,7 +1530,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1455,7 +1564,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1494,7 +1603,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1529,7 +1638,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1564,7 +1673,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                         data-toggle="tooltip" 
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
@@ -1594,33 +1703,11 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <p class="lead text-center">
-                                                                Select destination and confirm upgrades and hotfixes to begin installation.
+                                                                Confirm upgrades and hotfixes to begin installation.
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <label for="" class="col-sm-3 control-label sys-mg-t-7 sys-pd-t-5 text-right sys-txt-md">
-                                                            <b>Deploy to</b>
-                                                            
-                                                        </label>
-                                                        <div class="col-sm-7">
-                                                            
-                                                            <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                                                                <label class="btn btn-default sys-fg-inverse active infrastructure-option sys-bg-white text-center">
-                                                                    <input type="radio" name="infrastructure_size" autocomplete="off" checked> 
-                                                                    <b class="sys-txt-md">Live</b>
-                                                                </label>
-                                                                <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                    <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                    <b class="sys-txt-md">Test</b>
-                                                                </label>
-                                                                <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                    <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                    <b class="sys-txt-md">Development</b>
-                                                                </label>
-                                                              </div>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="row quote-scrollable-pane">
                                                         <div class="col-xs-12 ">
                                      
@@ -1657,7 +1744,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-5 text-left">
-                                                                                    <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5" aria-expanded="false" aria-controls="finQDetails"
+                                                                                    <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
                                                                                     data-toggle="tooltip" 
                                                                                         data-tooltip="tooltip" data-container="body"
                                                                                         data-placement="top" title="View details">
@@ -1791,10 +1878,19 @@
         <script src="js/bootstrap-tagsinput.min.js"></script>
         <script src="js/nouislider.min.js"></script>
         <script src="js/UX_JS_forms.js"></script>
-        <script src="js/UX_JS_ripples.min.js"></script>
         <script src="js/jquery.bootstrap.wizard.js"></script>
         <script src="js/paper-bootstrap-wizard.js"></script>
-
+        <script id="treeview-template" type="text/kendo-ui-template">
+            # if (item.type === 'environment') { #
+                <i class="material-icons">dns</i>
+           
+            #} else if (item.type === 'version') { #
+                <i class="material-icons">device_hub</i>
+            #} else {#
+                <i class="material-icons">build</i>
+            # } #
+            #: item.name # 
+        </script>
         <script>
 
             $(document).ready(function() {
@@ -1855,7 +1951,43 @@
                     });
                 });
 
+                var inline = new kendo.data.HierarchicalDataSource({
+                    data: [
+                        { name: "Test environment", type: "environment", subCategories: [
+                            { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
+                                { name: "Hot 9" },
+                                { name: "Hot 8" },
+                                { name: "Mad Adam" }
+                            ] }
+                        ] },
+                        { name: "Dev environment", type: "environment", subCategories: [
+                            { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
+                                { name: "Hot 22.1" },
+                                { name: "Hotfix something longer 222.11.a.11" },
+                            ] }
+                        ] },
+                        { name: "Live environment", type: "environment", subCategories: [
+                            { name: "SYSPRO 8 2020 R1", type: "version", subCategories: [
+                                { name: "Hot 4" },
+                                { name: "Hot 2" },
+                                { name: "Hot 1" }
+                            ] }
+                        ] },
+                    ],
+                    schema: {
+                        model: {
+                            children: "subCategories"
+                        }
+                    }
+                });
 
+                const treeView = $(".file-treeview").kendoTreeView({
+                    template: kendo.template($("#treeview-template").html()),
+                    dataSource: inline,                    
+                    dataTextField: [ "name" ]
+                }).data("kendoTreeView");
+                treeView.expand(".k-item");
+                treeView.expand(".k-item .k-item");
             });
 
         </script>
