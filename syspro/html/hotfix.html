@@ -16,6 +16,7 @@
         <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
         <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/bootstrap-tagsinput.css" />
+        <link rel="stylesheet" href="css/UX_CSS_bootstrap-datetimepicker.min.css" />
         <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
 
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
@@ -1903,6 +1904,9 @@
         <script src="js/UX_JS_forms.js"></script>
         <script src="js/jquery.bootstrap.wizard.js"></script>
         <script src="js/paper-bootstrap-wizard.js"></script>
+        <script src="js/UX_JS_bootstrap-datepicker.js"></script>
+        <script src="js/UX_JS_moment.min.js"></script>
+        <script src="js/UX_JS_bootstrap-datetimepicker.js"></script>
         <script id="treeview-template" type="text/kendo-ui-template">
             # if (item.type === 'environment') { #
                 <i class="material-icons">dns</i>
@@ -2002,6 +2006,23 @@
                             children: "subCategories"
                         }
                     }
+                });
+
+                $(".date").datetimepicker({
+                    icons: {
+                        time: "material-icons",
+                        date: "material-icons",
+                        up: "material-icons",
+                        down: "material-icons",
+                        previous: "material-icons",
+                        next: "material-icons",
+                        close: 'material-icons'
+                    },
+                    sideBySide: false,
+                    showClose: true,
+                    keepOpen: true,
+                    allowInputToggle: true,
+                    format: 'DD-MMM-YYYY HH:mm',
                 });
 
                 const treeView = $(".file-treeview").kendoTreeView({
