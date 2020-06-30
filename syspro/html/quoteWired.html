@@ -708,7 +708,7 @@
          }
 
             .popover.textarea-popover .popover-textarea-content {
-                height: 60px;
+                height: 100px;
                 width: 100%;
                 padding-top: 0px;
             }
@@ -785,6 +785,13 @@
     .md-outline {
     position: relative !important;
     
+}
+.discount-type-option {
+    width: 100%;
+}
+.discount-type-option .btn.active {
+    background-color: #0078d7 !important;
+    color: #ffffff !important;
 }
 .package-title {
     font-size: 14px;
@@ -1591,6 +1598,7 @@
                                                                 <div class="col-xs-12">
                                                                     <div class="form-horizontal">
                                                                         <div class="row">
+                                                                            <div class="col-sm-12 col-md-10 col-md-offset-1" data-template="infrastructureItemTemplate" data-bind="source: infrastructure"></div>
                                                                             <div class="col-sm-12 col-md-10 col-md-offset-1">
                                                                                 <div class="form-group is-empty ">             
                                                                                     <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
@@ -2086,9 +2094,19 @@
                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                                 data-toggle="popover" 
                                 title="Apply discount"
+                                data-content='<div class="row"><div class="col-xs-12"><div class="btn-group discount-type-option" data-toggle="buttons">
+                                    <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
+                                        <input type="radio" name="discount-type" autocomplete="off" value="percentage"> 
+                                        <b class="sys-txt-md">%</b>
+                                    </label>
+                                    <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
+                                        <input type="radio" name="discount-type" autocomplete="off" value="fixed"> 
+                                        <b class="sys-txt-md">123</b>
+                                    </label></div></div></div><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
                                 data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
                             <span class="hidden-discount-field" style="display: none;">
-                                <input type="text" class="form-control" data-bind='value: discount.value'></input>
+                                <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
+                            <input type="number" max="#: discount.max #" class="form-control discount-value" data-bind='value: discount.value'></input>
                             </span>
                         </div>
                         #if (data.subItems && data.subItems.length) {#
@@ -2169,6 +2187,18 @@
                         }); 
                         #
                     </div>
+                #} else if ( type === 'radioButton' ) {#
+                    <div class="syspro-entry-content">
+                        # $.each(data.options, function (index, option) {
+                            # <div class="radio">
+                                <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
+                                    <input type="radio" name="quote_type" autocomplete="off" value="newquote"> 
+                                    <b class="sys-txt-md">New Quote</b>
+                                </label>
+                            </div>  #                        
+                        }); 
+                        #
+                    </div>
                 #} else if ( type === 'number' ) {#
                     <input type="number" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
                     <label for="#: id #" class="">
@@ -2195,7 +2225,99 @@
             </div>
         </script>
 
+        <script id="infrastructureItemTemplate" type="text/x-kendo-template">
+            <div class="form-group is-empty ">
+                #if ( type === 'text' ) {# 
+                #} else if ( type === 'radioButton' ) {#         
+                    <label for="#: id #" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                        <span>#: label #</span>
+                        <p class="sys-mg-t-5">
+                            <a href="#: detailsLink #" class="package-title" data-toggle="tooltip" 
+                            data-tooltip="tooltip" data-container="body"
+                            data-placement="top" title="Download details document">
+                                <i class="material-icons sys-fg-primary">description</i>
+                            </a>
+                        </p>
+                    </label>
+                    
+                    <div class="col-md-7 syspro-entry-content">
+                        <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
+                            #   $.each(data.options, function (index, item) { #
+                                    <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
+                                        <input type="radio" name="#: name #" autocomplete="off" value="${item.value}" data-bind="checked: selectedOption"> 
+                                        <b class="sys-txt-md">${item.label}</b>
+                                    </label>                       
+                                # }); 
+                            #
+                        </div>
+                        
+                    </div>
+                    <div class="col-xs-2 infrastructure-pricing">
+                        <span data-bind="visible: discount.hasDiscount">
+                            <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
+                        </span>                           
+                        + <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: discount.discountAllowed }"></b>
+                        <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
+                            data-toggle="popover" 
+                            title="Apply discount"
+                            data-content='<div class="row"><div class="col-xs-12"><div class="btn-group discount-type-option" data-toggle="buttons">
+                                <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
+                                    <input type="radio" name="discount-type" autocomplete="off" value="percentage" data-bind="checked: discount.type"> 
+                                    <b class="sys-txt-md">%</b>
+                                </label>
+                                <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
+                                    <input type="radio" name="discount-type" autocomplete="off" value="fixed" data-bind="checked: discount.type"> 
+                                    <b class="sys-txt-md">123</b>
+                                </label></div></div></div><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
+                            data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
+                        <span class="hidden-discount-field" style="display: none;">
+                            <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
+                            <input type="number" max="#: discount.max #" class="form-control discount-value" data-bind='value: discount.value'></input>
+                        </span>
+
+                    </div>
+
+                #}#
+            </div>
+            <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
+        </script>
         <script>
+            
+            const hasDiscount = function() {
+                return parseInt(this.get("value")) > 0;
+            };
+
+            const totalNetCost = function() {
+                return this.get("userCount") * this.get("perUserCost");
+            };
+
+            const totalNetCostWithCurrency = function() {
+                return this.get("discount.discountAllowed") && this.get("discount.hasDiscount") && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
+            };
+
+            const totalCost = function() {
+                return this.totalNetCost() - this.totalDiscount();
+            };
+
+            const totalCostWithCurrency = function() {
+                return this.get("currency") + this.totalCost();
+            };
+
+            const totalDiscount = function() {
+                return this.totalNetCost() * (this.get("discount.value") / 100);
+            };
+
+            const totalDiscountWithCurrency = function() {
+                return this.get("currency") + this.totalDiscount();
+            };
+
+            const perUserCostWithCurrency = function() {
+                return this.get("currency") + this.get("perUserCost");
+            };
+
+            const perUserCostWithCurrencyAndDiscount = function() {
+                return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("discount.value") / 100));
+            };
 
             var Package = kendo.data.Model.define({
                 fields: {
@@ -2260,30 +2382,15 @@
                 isNotProductSuite: function() {
                     return this.get("category") !== "productSuite";
                 },
-                totalNetCost: function() {
-                    return this.get("userCount") * this.get("perUserCost");
-                },
-                totalNetCostWithCurrency: function() {
-                    return this.get("discount.hasDiscount") && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
-                },
-                totalCost: function() {
-                    return this.totalNetCost() - this.totalDiscount();
-                },
-                totalCostWithCurrency: function() {
-                    return this.get("currency") + this.totalCost();
-                },
-                totalDiscount: function() {
-                    return this.totalNetCost() * (this.get("discount.value") / 100);
-                },
-                totalDiscountWithCurrency: function() {
-                    return this.get("currency") + this.totalDiscount();
-                },
-                perUserCostWithCurrency: function() {
-                    return this.get("currency") + this.get("perUserCost");
-                },
-                perUserCostWithCurrencyAndDiscount: function() {
-                    return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("discount.value") / 100));
-                },
+                hasDiscount,
+                totalNetCost,
+                totalNetCostWithCurrency,
+                totalCost,
+                totalCostWithCurrency,
+                totalDiscount,
+                totalDiscountWithCurrency,
+                perUserCostWithCurrency,
+                perUserCostWithCurrencyAndDiscount,
             });
             
             var EntryField = kendo.data.Model.define({
@@ -2321,10 +2428,56 @@
                 },
 
             });
+
+            var InfrastructureItem = kendo.data.Model.define({
+                fields: {
+                    "name": {
+                        type: "string"
+                    },
+                    "id": {
+                        type: "string"
+                    },
+                    "label": {
+                        type: "string"
+                    },
+                    "required": {
+                        type: "boolean"
+                    },
+                    "readonly": {
+                        type: "string"
+                    },
+                    "default": {
+                        type: "string"
+                    },
+                    "options": {
+                        type: "array"
+                    },
+                    "cost": {
+                        type: "number"
+                    },
+                },
+                isEmpty: function() {
+                    return this.get("default") == '';
+                },
+                sysfginverse: function() {
+                    return this.sysbgverylightgray();
+                },
+                totalNetCost: function() {
+                    // TODO: Get the active, checked item, and grab the cost of that
+                    return this.get("cost");
+                },
+                totalNetCostWithCurrency: function() {
+                    return this.get("discount.discountAllowed") && this.get("discount.hasDiscount") ? viewModel.currency + this.totalNetCost() : '';
+                },
+                hasDiscount,
+                totalCost,
+                totalCostWithCurrency,
+                totalDiscount,
+                totalDiscountWithCurrency,
+                perUserCostWithCurrency,
+                perUserCostWithCurrencyAndDiscount,
+            });
             
-            const hasDiscount = function() {
-                return parseInt(this.get("value")) > 0;
-            };
             
             const viewModel = kendo.observable({
                 dataSource: {
@@ -2669,7 +2822,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: false,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2698,7 +2852,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'fixed',
+                                max: 20,
                             },
                             currency: "$",
                             subItems: [
@@ -2727,7 +2882,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 10,
                             },
                             currency: "$",
                             subItems: [
@@ -2756,7 +2912,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'fixed',
+                                max: 10,
                             },
                             currency: "$",
                             subItems: [
@@ -2785,7 +2942,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'fixed',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2814,7 +2972,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2843,7 +3002,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2872,7 +3032,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2908,7 +3069,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2937,7 +3099,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: false,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2966,7 +3129,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: false,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -2995,7 +3159,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: false,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -3024,7 +3189,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -3053,7 +3219,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -3082,7 +3249,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -3111,7 +3279,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: [
@@ -3147,7 +3316,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: []
@@ -3167,7 +3337,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
 
@@ -3187,7 +3358,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: []
@@ -3207,7 +3379,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                         },
@@ -3226,7 +3399,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                         },
@@ -3245,7 +3419,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: false,
                                 value: 0,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                             subItems: []
@@ -3272,7 +3447,8 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                         },
@@ -3291,14 +3467,103 @@
                                 hasDiscount: hasDiscount,
                                 discountAllowed: false,
                                 value: 15,
-                                type: 'percentage'
+                                type: 'percentage',
+                                max: 15,
                             },
                             currency: "$",
                         },
                     ]
                 }),
                 infrastructure: new kendo.data.DataSource({
-
+                    schema: {
+                        model: InfrastructureItem,
+                    },
+                    data: [
+                        {
+                            id: 'infrastructureSize',
+                            name: 'infrastructureSize',
+                            label: 'Infrastructure size',
+                            detailsLink: 'https://google.com',
+                            type: 'radioButton',
+                            default: '',
+                            cost: 32,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                discountAllowed: true,
+                                value: 0,
+                                type: 'percentage',
+                                max: 15,
+                            },
+                            options: [
+                                {
+                                    value: 'small',
+                                    label: 'Small',
+                                    cost: 15,
+                                },
+                                {
+                                    value: 'medium',
+                                    label: 'Medium',
+                                    cost: 20,
+                                },
+                                {
+                                    value: 'large',
+                                    label: 'Large',
+                                    cost: 25,
+                                }
+                            ],
+                            selectedOption: 'small',
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'database',
+                            name: 'database',
+                            label: 'Database',
+                            detailsLink: 'https://google.com',
+                            type: 'radioButton',
+                            default: '',
+                            cost: 22,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                discountAllowed: true,
+                                value: 0,
+                                type: 'percentage',
+                                max: 15,
+                            },
+                            options: [
+                                {
+                                    value: 'sqlwindows',
+                                    label: 'SQL on Windows',
+                                    cost: 12,
+                                },
+                                {
+                                    value: 'sqllinux',
+                                    label: 'SQL on Linux',
+                                    cost: 15,
+                                },
+                                {
+                                    value: 'sqlexpresslinux',
+                                    label: 'SQL Express on Linux',
+                                    cost: 10,
+                                }
+                                ,
+                                {
+                                    value: 'somethingelse',
+                                    label: 'Something on Linux',
+                                    cost: 20,
+                                }
+                                ,
+                                {
+                                    value: 'mongodb',
+                                    label: 'MongoDB on Something',
+                                    cost: 30,
+                                }
+                            ],
+                            selectedOption: 'sqllinux',
+                            required: true,
+                            readonly: ''
+                        },
+                    ]
                 }),
                 productSuiteActive: function() {
                     return this.get("productSuite") && this.get("productSuite").data().length;
@@ -3568,9 +3833,9 @@
                     html: 'true',
                     title: 'Add a comment',
                     // content : '<span class="sys-txt-sm sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
-                    content: '<span class="sys-txt-md sys-fg-inverse">% - max 12.5%</span><input type="text" class="form-control"></input>',
+                    // content: '<span class="sys-txt-md sys-fg-inverse">% - max 12.5%</span><input type="number" class="form-control"></input>',
                     template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
-                            '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content md-outline">xxx'+
+                            '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
                             '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
                             '<i class="material-icons sys-txt-sm">cancel</i></button>&nbsp;'+
                             '<button type="button" class="btn btn-primary btn-xs popover-submit pull-right">'+
@@ -3581,10 +3846,15 @@
                     $(".discount").not(this).popover('hide');
                     const $this = $(this);
                     const $popover = $(e.target).data('bs.popover').$tip;
-                    const $hiddenField = $this.siblings(".hidden-discount-field").find("input");
-                    const $popoverInput = $popover.find("input");
-                    const value = $hiddenField.val();
+                    const $hiddenValueField = $this.siblings(".hidden-discount-field").find("input.discount-value");
+                    const $hiddenTypeField = $this.siblings(".hidden-discount-field").find("input.discount-type-value");
+                    const $popoverInput = $popover.find("input.discount-amount-input");
+                    const value = $hiddenValueField.val();
+                    const type = $hiddenTypeField.val();
                     $popoverInput.val(value);
+                    $popover.find('.discount-type-option input[value="' + type + '"]').prop("checked",true);
+                    $popover.find('.discount-type-option input[value="' + type + '"]').closest('.btn').addClass('active');
+                    
                     // var $popover = $(e.target).data('bs.popover').$tip;
                     // var $popoverTextarea = $popover.find('.popover-textarea');
                     //attach link text
@@ -3598,8 +3868,11 @@
                         // $comment.text($popoverTextarea.val().trim());
                         // $this.parent().find(".truncatedComment").text(truncateWithEllipses($comment.text().trim()));
                         // kendo.bind("body", viewModel);
-                        $hiddenField.val($popoverInput.val());
-                        $hiddenField.trigger("change");
+                        const $typeInput = $popover.find('.discount-type-option input');
+                        $hiddenValueField.val($popoverInput.val());
+                        $hiddenTypeField.val($typeInput.val());
+                        $hiddenValueField.trigger("change");
+                        $hiddenTypeField.trigger("change");
                         $this.popover('hide');
                     });
                 });

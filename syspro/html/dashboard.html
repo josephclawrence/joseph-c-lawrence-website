@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-material.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.material.min.css" rel="stylesheet" />
+        <!-- <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" /> -->
+        <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/bootstrap-tagsinput.css" />
+        <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/UX_JS_velocity.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+        <script src="js/UX_JS_immutable.min.js"></script>
+        <style>
+
+            .syspro-search-button {
+                border-radius: 50%;
+                padding: 8px;
+                background: #303f9f !important;
+                display: block !important;
+            }
+            .syspro-search-button i {
+            }
+        </style>
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+        <div id="invisibleNode" style="display: none;"></div>
+        <div id="invisibleToolbarNode" style="display: none;"></div>
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
+                        >
+                            <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid sys-mg-t-15" id="main-container">
+                <div class="row sys-mg-t-15">
+                    <div class="col-sm-4 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+                                    <div id="columnChart"></div>
+                                </div>
+                                <div class=" row widget layout-widget">
+                                    <div id="areaChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 column-parent">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+                                    <div id="pieChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 column-parent">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+                                    <div id="lineChart"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Off Canvas menus -->
+
+        <script src="js/UX_JS_bootstrap.min.js"></script>
+        <script src="js/UX_JS_bootstrap-3-typeahead.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+
+
+        <script>
+
+            const data = [
+                {
+                    "RunDateTime": "2019-11-19 08:15:36.880",
+                    "ProgramName": "RMAP11",
+                    "ProgramVersion": "8.0.027",
+                    "Operator": "TEST",
+                    "GroupCode": "ADMIN",
+                    "Role": "065",
+                    "ComputerName": "INWARDS-QC"
+                },
+                {
+                    "RunDateTime": "2019-11-29 16:12:08.990",
+                    "ProgramName": "IMPFRE",
+                    "ProgramVersion": "8.0.031",
+                    "Operator": "syssup",
+                    "GroupCode": "ADMIN",
+                    "Role": [],
+                    "ComputerName": "DESKTOP-IMCL4DK"
+                },
+                {
+                    "RunDateTime": "2019-12-18 11:22:42.420",
+                    "ProgramName": "WIPPEN",
+                    "ProgramVersion": "8.0.092",
+                    "Operator": "AIRSHAD",
+                    "GroupCode": "ADMIN",
+                    "Role": "065",
+                    "ComputerName": "ALIIRSHAD"
+                },
+                {
+                    "RunDateTime": "2019-12-27 11:21:08.790",
+                    "ProgramName": "CMSPB2",
+                    "ProgramVersion": "8.0.014",
+                    "Operator": "DWILSON",
+                    "GroupCode": "ADMIN",
+                    "Role": "065",
+                    "ComputerName": "DWILSON-LENOVO"
+                },
+                {
+                    "RunDateTime": "2020-01-07 09:48:31.670",
+                    "ProgramName": "INVPEN",
+                    "ProgramVersion": "8.0.152",
+                    "Operator": "BCHAU",
+                    "GroupCode": "ADMIN",
+                    "Role": "065",
+                    "ComputerName": "DESKTOP-AKQR3NT"
+                },
+                {
+                    "RunDateTime": "2020-01-07 15:09:27.880",
+                    "ProgramName": "RMAP20",
+                    "ProgramVersion": "8.0.067",
+                    "Operator": "AMERLINO",
+                    "GroupCode": "ADMIN",
+                    "Role": "065",
+                    "ComputerName": "DESKTOP-IMCL4DK"
+                },
+                {
+                    "RunDateTime": "2020-01-07 15:14:11.900",
+                    "ProgramName": "RMAP20",
+                    "ProgramVersion": "8.0.067",
+                    "Operator": "AMERLINO",
+                    "GroupCode": "ADMIN",
+                    "Role": "065",
+                    "ComputerName": "DESKTOP-IMCL4DK"
+                },
+                {
+                    "RunDateTime": "2020-01-10 11:51:14.850",
+                    "ProgramName": "IMPIMP",
+                    "ProgramVersion": "8.0.034",
+                    "Operator": "JBRNE",
+                    "GroupCode": "ADMIN",
+                    "Role": [],
+                    "ComputerName": "JOHNBRNE-LENOVO"
+                },
+                {
+                    "RunDateTime": "2020-01-14 14:19:26.500",
+                    "ProgramName": "ARSPCS",
+                    "ProgramVersion": "8.0.091",
+                    "Operator": "JCIARDUL",
+                    "GroupCode": "ADMIN",
+                    "Role": "065",
+                    "ComputerName": "DESKTOP-UJ7GDDB"
+                }
+            ];
+            
+            function createChart() {
+                $("#pieChart").kendoChart({
+                    title: {
+                        position: "bottom",
+                        text: "Share of Internet Population Growth, 2007 - 2012",
+                    },
+                    legend: {
+                        visible: false,
+                    },
+                    chartArea: {
+                        background: "",
+                    },
+                    seriesDefaults: {
+                        labels: {
+                            visible: true,
+                            background: "transparent",
+                            template: "#= category #: \n #= value#%",
+                        },
+                        overlay: {
+                            gradient: "none",
+                        },
+                    },
+                    seriesColors: ["#0078d7", "#27ae60", "#e67e22", "#1abc9c", "#e74c3c", "#2c3e50"],
+                    series: [
+                        {
+                            type: "pie",
+                            startAngle: 150,
+                            data: [
+                                {
+                                    category: "Asia",
+                                    value: 53.8,
+                                },
+                                {
+                                    category: "Europe",
+                                    value: 16.1,
+                                },
+                                {
+                                    category: "Latin America",
+                                    value: 11.3,
+                                },
+                                {
+                                    category: "Africa",
+                                    value: 9.6,
+                                },
+                                {
+                                    category: "Middle East",
+                                    value: 5.2,
+                                },
+                                {
+                                    category: "North America",
+                                    value: 3.6,
+                                },
+                            ],
+                        },
+                    ],
+                    tooltip: {
+                        visible: true,
+                        format: "{0}%",
+                    },
+                });
+
+                $("#lineChart").kendoChart({
+                    title: {
+                        text: "Gross domestic product growth: GDP annual %",
+                    },
+                    legend: {
+                        position: "bottom",
+                    },
+                    chartArea: {
+                        background: "",
+                    },
+                    seriesDefaults: {
+                        type: "line",
+                        style: "smooth",
+                    },
+                    seriesColors: ["#0078d7", "#27ae60", "#e67e22", "#1abc9c", "#e74c3c", "#2c3e50"],
+                    series: [
+                        {
+                            name: "India",
+                            data: [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.89, 8.238, 9.552, 6.855],
+                        },
+                        {
+                            name: "World",
+                            data: [1.988, 2.733, 3.994, 3.464, 4.001, 3.939, 1.333, -2.245, 4.339, 2.727],
+                        },
+                        {
+                            name: "Russian Federation",
+                            data: [4.743, 7.295, 7.175, 6.376, 8.153, 8.535, 5.247, -7.832, 4.3, 4.3],
+                        },
+                        {
+                            name: "Haiti",
+                            data: [-0.253, 0.362, -3.519, 1.799, 2.252, 3.343, 0.843, 2.877, -5.416, 5.59],
+                        },
+                    ],
+                    valueAxis: {
+                        labels: {
+                            format: "{0}%",
+                        },
+                        line: {
+                            visible: false,
+                        },
+                        axisCrossingValue: -10,
+                    },
+                    categoryAxis: {
+                        categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
+                        majorGridLines: {
+                            visible: false,
+                        },
+                        labels: {
+                            rotation: "auto",
+                        },
+                    },
+                    tooltip: {
+                        visible: true,
+                        format: "{0}%",
+                        template: "#= series.name #: #= value #",
+                    },
+                });
+                
+                $("#columnChart").kendoChart({
+                    title: {
+                        text: "Gross domestic product growth: GDP annual %",
+                    },
+                    legend: {
+                        position: "top",
+                    },
+                    seriesDefaults: {
+                        type: "column",
+                        overlay: {
+                            gradient: "none",
+                        },
+                        border: {
+                            width: 0,
+                        },
+                    },
+                    seriesColors: ["#0078d7", "#27ae60", "#e67e22", "#1abc9c", "#e74c3c", "#2c3e50"],
+                    series: [
+                        {
+                            name: "India",
+                            data: [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.89, 8.238, 9.552, 6.855],
+                        },
+                        {
+                            name: "Russian Federation",
+                            data: [4.743, 7.295, 7.175, 6.376, 8.153, 8.535, 5.247, -7.832, 4.3, 4.3],
+                        },
+                        {
+                            name: "Germany",
+                            data: [0.01, -0.375, 1.161, 0.684, 3.7, 3.269, 1.083, -5.127, 3.69, 2.995],
+                        },
+                    ],
+                    valueAxis: {
+                        labels: {
+                            format: "{0}%",
+                        },
+                        line: {
+                            visible: false,
+                        },
+                        axisCrossingValue: 0,
+                    },
+                    categoryAxis: {
+                        categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
+                        line: {
+                            visible: false,
+                        },
+                        labels: {
+                            padding: { top: 135 },
+                        },
+                    },
+                    tooltip: {
+                        visible: true,
+                        format: "{0}%",
+                        template: "#= series.name #: #= value #",
+                    },
+                });
+
+                $("#areaChart").kendoChart({
+                    title: {
+                        text: "Gross domestic product growth \n /GDP annual %/",
+                    },
+                    legend: {
+                        position: "bottom",
+                    },
+                    seriesDefaults: {
+                        type: "area",
+                        area: {
+                            line: {
+                                style: "smooth",
+                            },
+                        },
+                        overlay: {
+                            gradient: "none",
+                        },
+                        opacity: 0.95,
+                        stack: true,
+                    },
+                    seriesColors: ["#0078d7", "#27ae60", "#e67e22", "#1abc9c", "#e74c3c", "#2c3e50"],
+                    series: [
+                        {
+                            name: "India",
+                            data: [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.89, 8.238, 9.552, 6.855],
+                        },
+                        {
+                            name: "World",
+                            data: [1.988, 2.733, 3.994, 3.464, 4.001, 3.939, 1.333, -2.245, 4.339, 2.727],
+                        },
+                        {
+                            name: "Haiti",
+                            data: [-0.253, 0.362, -3.519, 1.799, 2.252, 3.343, 0.843, 2.877, -5.416, 5.59],
+                        },
+                    ],
+                    valueAxis: {
+                        labels: {
+                            format: "{0}%",
+                        },
+                        line: {
+                            visible: false,
+                        },
+                        axisCrossingValue: -10,
+                    },
+                    categoryAxis: {
+                        categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
+                        majorGridLines: {
+                            visible: false,
+                        },
+                        labels: {
+                            rotation: "auto",
+                        },
+                    },
+                    tooltip: {
+                        visible: true,
+                        format: "{0}%",
+                        template: "#= series.name #: #= value #",
+                    },
+                });
+            }
+
+            $(document).ready(function() {
+                $.material.init();
+                createChart();
+                $("#searchDropdown").on("shown.bs.dropdown", function() {
+                    console.log("ping");
+
+                    $("#primarySearch").focus();
+                    $("#primarySearch")
+                        .parents(".form-group")
+                        .addClass("is-focused");
+                });
+            });
+        </script>
+    </body>
+</html>

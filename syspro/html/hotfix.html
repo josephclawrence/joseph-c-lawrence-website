@@ -1002,7 +1002,7 @@
                                     <div class="panel-heading sys-pd-10">
                                         <div class="row">
                                             <div class="col-xs-6">
-                                                <button class="btn btn-primary btn-sm">New hotfix</button>
+                                                <button class="btn btn-primary btn-sm">Request hotfix</button>
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="form-group is-empty sys-mg-off sys-pd-off">                  
@@ -1165,7 +1165,7 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="col-xs-6">
-                                                                        <button class="btn btn-block btn-success">
+                                                                        <button class="btn btn-block btn-success disabled" disabled="true">
                                                                             Approve
                                                                             <i class="material-icons pull-right">done</i>
                                                                         </button>
@@ -1909,10 +1909,11 @@
         <script src="js/UX_JS_bootstrap-datetimepicker.js"></script>
         <script id="treeview-template" type="text/kendo-ui-template">
             # if (item.type === 'environment') { #
-                <i class="material-icons">dns</i>
-           
+                <i class="material-icons">dns</i>           
             #} else if (item.type === 'version') { #
                 <i class="material-icons">device_hub</i>
+            #} else if (item.type === 'hotfix') { #
+                <i class="material-icons">apps</i>
             #} else {#
                 <i class="material-icons">build</i>
             # } #
@@ -1982,23 +1983,39 @@
                     data: [
                         { name: "Test environment", type: "environment", subCategories: [
                             { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
-                                { name: "Hot 9" },
-                                { name: "Hot 8" },
-                                { name: "Mad Adam" }
-                            ] }
+                                { name: "12345", type: "hotfix", subCategories: [
+                                    { name: "Hot 9" },
+                                    { name: "Hot 8" },
+                                    { name: "Mad Adam" }
+                                ] },
+                                { name: "6789", type: "hotfix", subCategories: [
+                                    { name: "Hot 9" },
+                                    { name: "Hot 8" },
+                                    { name: "Mad Adam" }
+                                ] },
+                            ] },
                         ] },
                         { name: "Dev environment", type: "environment", subCategories: [
                             { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
-                                { name: "Hot 22.1" },
-                                { name: "Hotfix something longer 222.11.a.11" },
-                            ] }
+                                { name: "12345", type: "hotfix", subCategories: [
+                                    { name: "Hot 22.1" },
+                                    { name: "Hotfix something longer 222.11.a.11" },
+                                ] },
+                            ] },
                         ] },
                         { name: "Live environment", type: "environment", subCategories: [
                             { name: "SYSPRO 8 2020 R1", type: "version", subCategories: [
-                                { name: "Hot 4" },
-                                { name: "Hot 2" },
-                                { name: "Hot 1" }
-                            ] }
+                                { name: "345", type: "hotfix", subCategories: [
+                                    { name: "Hot 4" },
+                                    { name: "Hot 2" },
+                                    { name: "Hot 1" }
+                                ] },
+                                { name: "8910", type: "hotfix", subCategories: [
+                                    { name: "Hot 4" },
+                                    { name: "Hot 2" },
+                                    { name: "Hot 1" }
+                                ] },
+                            ] },
                         ] },
                     ],
                     schema: {
