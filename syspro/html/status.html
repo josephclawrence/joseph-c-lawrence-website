@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/postcss.css" rel="stylesheet" />
+
+
+        <style>
+            .panel-heading .collapsible-open-icon {
+                display: none;
+            }
+            .panel-heading .collapsible-close-icon {
+                display: inline-block;
+            }
+            .panel-heading .collapsed .collapsible-open-icon {
+                display: inline-block;
+            }
+            .panel-heading .collapsed .collapsible-close-icon {
+                display: none;
+            }
+        </style>
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav  sys-fg-primary">
+                    <li>
+                        <a class="navbar-brand" href="#">
+                            <img alt="Brand" src="img/UX_IMG_SYSPROLogo.png" style="height: 35px">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid sys-mg-t-15" id="main-container">
+                <div class="row sys-mg-t-15">
+                    <div class="col-sm-10 col-sm-offset-1 col-xs-12 column-parent sys-mg-t-15">
+                        <div class="sys-bg-success sys-fg-white sys-rd sys-pd-10">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4 class="pull-left sys-mg-off">All services operational</h4>
+                                    <i class="material-icons pull-right sys-txt-md">check_circle</i>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3>Syspro Avanti Current Status</h3>
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel-group" id="statusSections" role="tablist" aria-multiselectable="true">
+                                    <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
+                                      <div class="panel-heading sys-pd-10" role="tab" id="usaWestHeading">
+                                        <h4 class="panel-title">
+                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#statusSections" href="#usaWest" aria-expanded="false" aria-controls="usaWest">
+                                            <i class="material-icons pull-left collapsible-open-icon sys-fg-gray">add</i>
+                                            <i class="material-icons pull-left collapsible-close-icon sys-fg-gray">remove</i>
+                                            USA (USA West) - California
+                                            <i class="material-icons pull-right sys-fg-success">check_circle_outline</i>
+                                          </a>
+                                        </h4>
+                                      </div>
+                                      <div id="usaWest" class="panel-collapse collapse" role="tabpanel" aria-labelledby="usaWestHeading">
+                                        <div class="panel-body">
+                                          <table class="table ">
+                                              <thead>
+                                                  <th></th>
+                                                  <th style="width: 10%;">Jun 29</th>
+                                                  <th style="width: 10%;">Jun 30</th>
+                                                  <th style="width: 10%;">Jul 01</th>
+                                                  <th style="width: 10%;">Jul 02</th>
+                                                  <th style="width: 10%;">Jul 03</th>
+                                                  <th style="width: 10%;">Jul 04</th>
+                                                  <th style="width: 10%;">Jul 05</th>
+                                              </thead>
+                                              <tbody>
+                                                  <tr>
+                                                      <td>SYSPRO Application Services</td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#incident_111">
+
+                                                            <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                        </a>
+                                                    </td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td>SYSPRO Avanti Services</td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                </tr>
+                                                <tr>
+                                                      <td>SYSPRO Espresso Services</td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td>
+                                                        <a href="#incident_222">
+                                                            <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                        </a>
+                                                    </td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>SYSPRO Espresso Services</td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>SYSPRO Reporting Services</td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                        data-tooltip="tooltip" data-container="body"
+                                                        data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
+                                      <div class="panel-heading sys-pd-10" role="tab" id="usaEastHeading">
+                                        <h4 class="panel-title">
+                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#statusSections" href="#usaEast" aria-expanded="false" aria-controls="usaEast">
+                                            <i class="material-icons pull-left collapsible-open-icon sys-fg-gray">add</i>
+                                            <i class="material-icons pull-left collapsible-close-icon sys-fg-gray">remove</i>
+                                            USA (USA East) - New York
+                                            <i class="material-icons pull-right sys-fg-success">check_circle_outline</i>
+                                          </a>
+                                        </h4>
+                                      </div>
+                                      <div id="usaEast" class="panel-collapse collapse" role="tabpanel" aria-labelledby="usaEastHeading">
+                                        <div class="panel-body">
+                                            <table class="table ">
+                                                <thead>
+                                                    <th></th>
+                                                    <th style="width: 10%;">Jun 29</th>
+                                                    <th style="width: 10%;">Jun 30</th>
+                                                    <th style="width: 10%;">Jul 01</th>
+                                                    <th style="width: 10%;">Jul 02</th>
+                                                    <th style="width: 10%;">Jul 03</th>
+                                                    <th style="width: 10%;">Jul 04</th>
+                                                    <th style="width: 10%;">Jul 05</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>SYSPRO Application Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i>
+                                                      </td>
+                                                      <td>
+                                                          <a href="#incident_111">
+  
+                                                              <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                              data-tooltip="tooltip" data-container="body"
+                                                              data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                          </a>
+                                                      </td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SYSPRO Avanti Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                  </tr>
+                                                  <tr>
+                                                        <td>SYSPRO Espresso Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td>
+                                                          <a href="#incident_222">
+                                                              <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                              data-tooltip="tooltip" data-container="body"
+                                                              data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                          </a>
+                                                      </td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>SYSPRO Espresso Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>SYSPRO Reporting Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
+                                      <div class="panel-heading sys-pd-10" role="tab" id="europeWestHeading">
+                                        <h4 class="panel-title">
+                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#statusSections" href="#europeWest" aria-expanded="false" aria-controls="europeWest">
+                                            <i class="material-icons pull-left collapsible-open-icon sys-fg-gray">add</i>
+                                            <i class="material-icons pull-left collapsible-close-icon sys-fg-gray">remove</i>
+                                            Europe (EU West) - Ireland
+                                            <i class="material-icons pull-right sys-fg-success">check_circle_outline</i>
+                                          </a>
+                                        </h4>
+                                      </div>
+                                      <div id="europeWest" class="panel-collapse collapse" role="tabpanel" aria-labelledby="europeWestHeading">
+                                        <div class="panel-body">
+                                            <table class="table ">
+                                                <thead>
+                                                    <th></th>
+                                                    <th style="width: 10%;">Jun 29</th>
+                                                    <th style="width: 10%;">Jun 30</th>
+                                                    <th style="width: 10%;">Jul 01</th>
+                                                    <th style="width: 10%;">Jul 02</th>
+                                                    <th style="width: 10%;">Jul 03</th>
+                                                    <th style="width: 10%;">Jul 04</th>
+                                                    <th style="width: 10%;">Jul 05</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>SYSPRO Application Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i>
+                                                      </td>
+                                                      <td>
+                                                          <a href="#incident_111">
+  
+                                                              <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                              data-tooltip="tooltip" data-container="body"
+                                                              data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                          </a>
+                                                      </td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SYSPRO Avanti Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                  </tr>
+                                                  <tr>
+                                                        <td>SYSPRO Espresso Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td>
+                                                          <a href="#incident_222">
+                                                              <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                              data-tooltip="tooltip" data-container="body"
+                                                              data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                          </a>
+                                                      </td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>SYSPRO Espresso Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>SYSPRO Reporting Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
+                                        <div class="panel-heading sys-pd-10" role="tab" id="europeEastHeading">
+                                          <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#statusSections" href="#europeEast" aria-expanded="false" aria-controls="europeEast">
+                                              <i class="material-icons pull-left collapsible-open-icon sys-fg-gray">add</i>
+                                              <i class="material-icons pull-left collapsible-close-icon sys-fg-gray">remove</i>
+                                              Europe (EU East) - Estonia
+                                              <i class="material-icons pull-right sys-fg-success">check_circle_outline</i>
+                                            </a>
+                                          </h4>
+                                        </div>
+                                        <div id="europeEast" class="panel-collapse collapse" role="tabpanel" aria-labelledby="europeEastHeading">
+                                          <div class="panel-body">
+                                            <table class="table ">
+                                                <thead>
+                                                    <th></th>
+                                                    <th style="width: 10%;">Jun 29</th>
+                                                    <th style="width: 10%;">Jun 30</th>
+                                                    <th style="width: 10%;">Jul 01</th>
+                                                    <th style="width: 10%;">Jul 02</th>
+                                                    <th style="width: 10%;">Jul 03</th>
+                                                    <th style="width: 10%;">Jul 04</th>
+                                                    <th style="width: 10%;">Jul 05</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>SYSPRO Application Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i>
+                                                      </td>
+                                                      <td>
+                                                          <a href="#incident_111">
+  
+                                                              <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                              data-tooltip="tooltip" data-container="body"
+                                                              data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                          </a>
+                                                      </td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SYSPRO Avanti Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                  </tr>
+                                                  <tr>
+                                                        <td>SYSPRO Espresso Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td>
+                                                          <a href="#incident_222">
+                                                              <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                              data-tooltip="tooltip" data-container="body"
+                                                              data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                          </a>
+                                                      </td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>SYSPRO Espresso Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>SYSPRO Reporting Services</td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                          data-tooltip="tooltip" data-container="body"
+                                                          data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
+                                        <div class="panel-heading sys-pd-10" role="tab" id="africaHeading">
+                                          <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#statusSections" href="#africa" aria-expanded="false" aria-controls="africa">
+                                              <i class="material-icons pull-left collapsible-open-icon sys-fg-gray">add</i>
+                                              <i class="material-icons pull-left collapsible-close-icon sys-fg-gray">remove</i>
+                                              Africa (Southern Africa) - Johannesburg
+                                              <i class="material-icons pull-right sys-fg-success">check_circle_outline</i>
+                                            </a>
+                                          </h4>
+                                        </div>
+                                        <div id="africa" class="panel-collapse collapse" role="tabpanel" aria-labelledby="africaHeading">
+                                          <div class="panel-body">
+                                              <table class="table ">
+                                                  <thead>
+                                                      <th></th>
+                                                      <th style="width: 10%;">Jun 29</th>
+                                                      <th style="width: 10%;">Jun 30</th>
+                                                      <th style="width: 10%;">Jul 01</th>
+                                                      <th style="width: 10%;">Jul 02</th>
+                                                      <th style="width: 10%;">Jul 03</th>
+                                                      <th style="width: 10%;">Jul 04</th>
+                                                      <th style="width: 10%;">Jul 05</th>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr>
+                                                          <td>SYSPRO Application Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#incident_111">
+    
+                                                                <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                                data-tooltip="tooltip" data-container="body"
+                                                                data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                            </a>
+                                                        </td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td>SYSPRO Avanti Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                          <td>SYSPRO Espresso Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td>
+                                                            <a href="#incident_222">
+                                                                <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                                data-tooltip="tooltip" data-container="body"
+                                                                data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                            </a>
+                                                        </td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>SYSPRO Espresso Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>SYSPRO Reporting Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
+                                        <div class="panel-heading sys-pd-10" role="tab" id="australiaHeading">
+                                          <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#statusSections" href="#australia" aria-expanded="false" aria-controls="australia">
+                                              <i class="material-icons pull-left collapsible-open-icon sys-fg-gray">add</i>
+                                              <i class="material-icons pull-left collapsible-close-icon sys-fg-gray">remove</i>
+                                              Australia - Sydney
+                                              <i class="material-icons pull-right sys-fg-success">check_circle_outline</i>
+                                            </a>
+                                          </h4>
+                                        </div>
+                                        <div id="australia" class="panel-collapse collapse" role="tabpanel" aria-labelledby="australiaHeading">
+                                          <div class="panel-body">
+                                              <table class="table ">
+                                                  <thead>
+                                                      <th></th>
+                                                      <th style="width: 10%;">Jun 29</th>
+                                                      <th style="width: 10%;">Jun 30</th>
+                                                      <th style="width: 10%;">Jul 01</th>
+                                                      <th style="width: 10%;">Jul 02</th>
+                                                      <th style="width: 10%;">Jul 03</th>
+                                                      <th style="width: 10%;">Jul 04</th>
+                                                      <th style="width: 10%;">Jul 05</th>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr>
+                                                          <td>SYSPRO Application Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#incident_111">
+    
+                                                                <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                                data-tooltip="tooltip" data-container="body"
+                                                                data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                            </a>
+                                                        </td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td>SYSPRO Avanti Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                    </tr>
+                                                    <tr>
+                                                          <td>SYSPRO Espresso Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td>
+                                                            <a href="#incident_222">
+                                                                <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                                                data-tooltip="tooltip" data-container="body"
+                                                                data-placement="top" title="Last checked: 2020/07/03 18:05">error_outline</i>
+                                                            </a>
+                                                        </td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>SYSPRO Espresso Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>SYSPRO Reporting Services</td>
+                                                          <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                        <td><i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                                                            data-tooltip="tooltip" data-container="body"
+                                                            data-placement="top" title="Last checked: 2020/07/03 18:05">check</i></td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3>Past incidents</h3>
+                                <div class="incident sys-mg-b-20 sys-pd-b-20" id="incident_111">
+                                    <h4>July 1 2020, 18:05</h4>
+                                    <hr class="sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5"/>
+                                    <p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                </div>
+                                <div class="incident sys-mg-b-20 sys-pd-b-20" id="incident_222">
+                                    <h4>July 4 2020, 17:25</h4>
+                                    <hr class="sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5"/>
+                                    <p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column">
+                                <div class=" row widget layout-widget">
+
+                                    <div class="col-md-12">
+                                        <div class="panel sys-widget sys-box-shadow-off">
+                                            <div class="panel-body sys-pd-off">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="optionone" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     -->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Off Canvas menus -->
+
+        <script src="js/UX_JS_bootstrap.js"></script>
+        <script>
+            $(document).ready(function() {
+                // $.material.init();
+
+                $('[data-tooltip="tooltip"]').tooltip();
+            });
+
+        </script>
+    </body>
+</html>

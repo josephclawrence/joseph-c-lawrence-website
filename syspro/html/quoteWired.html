@@ -966,7 +966,7 @@
         </script>
 
         <script src="js/UX_JS_velocity.min.js"></script>
-        <script src="js/kendo.all.min.js"></script>
+        <script src="js/UX_JS_kendo.all.min.js"></script>
     </head>
 
     <body data-column-layout="3col" style="padding-top:0px;">
@@ -1599,172 +1599,7 @@
                                                                     <div class="form-horizontal">
                                                                         <div class="row">
                                                                             <div class="col-sm-12 col-md-10 col-md-offset-1" data-template="infrastructureItemTemplate" data-bind="source: infrastructure"></div>
-                                                                            <div class="col-sm-12 col-md-10 col-md-offset-1">
-                                                                                <div class="form-group is-empty ">             
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Infrastructure size</span>
-                                                                                        <p class="sys-mg-t-5">
-                                                                                            <i class="material-icons sys-fg-primary"
-                                                                                            data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="Download info document">description</i>
-                                                                                        </p>
-                                                                                    </label>
-                                                                                    
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                                                                                            <label class="btn btn-default sys-fg-inverse active infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off" checked> 
-                                                                                                <b class="sys-txt-md">Small</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">Medium</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">Large</b>
-                                                                                            </label>
-                                                                                          </div>
-                                                                                          
-                                                                                    </div>
-                                                                                    <div class="col-xs-2 infrastructure-pricing">
-                                                                                        <b>+ $32.00</b>
-                                                                                        <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-                                                                                <div class="form-group is-empty ">                                                
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Database</span>
-                                                                                        <p class="sys-mg-t-5">
-
-                                                                                            <i class="material-icons sys-fg-primary"
-                                                                                            data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="Download info document">description</i>
-                                                                                        </p>
-                                                                                    </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                                                                                            <label class="btn btn-default sys-fg-inverse active database-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="database_option" autocomplete="off" checked> 
-                                                                                                <b class="sys-txt-md">SQL on Windows</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">SQL on Linux</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">SQL Express on Linux</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">Something on Linux</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse database-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="database_option" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">MongoDB on Something</b>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                        
-                                                                                    </div>
-                                                                                    <div class="col-xs-2 infrastructure-pricing">
-                                                                                        <b>+ $32.00</b>
-                                                                                        <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-                                                                                <div class="form-group is-empty ">                                                
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Geo-replication</span>
-                                                                                        <p class="sys-mg-t-5">
-
-                                                                                            <i class="material-icons sys-fg-primary"
-                                                                                            data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="Download info document">description</i>
-                                                                                        </p>
-                                                                                    </label>
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <select id="georeplication"></select>
-                                                                                        
-                                                                                    </div>
-                                                                                    <div class="col-xs-2 infrastructure-pricing">
-                                                                                        <b>+ $32.00</b>
-                                                                                        <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-                                                                                <div class="form-group is-empty ">             
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>High availability</span>
-                                                                                        <p class="sys-mg-t-5">
-                                                                                            <i class="material-icons sys-fg-primary"
-                                                                                            data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="Download info document">description</i>
-                                                                                        </p>
-                                                                                    </label>
-                                                                                    
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                                                                                            <label class="btn btn-default sys-fg-inverse active infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off" checked> 
-                                                                                                <b class="sys-txt-md">Cold</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">Warm</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">Hot</b>
-                                                                                            </label>
-                                                                                          </div>
-                                                                                          
-                                                                                    </div>
-                                                                                    <div class="col-xs-2 infrastructure-pricing">
-                                                                                        <b>+ $32.00</b>
-                                                                                        <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-                                                                                <div class="form-group is-empty ">             
-                                                                                    <label for="" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                                                                                        <span>Backup frequency</span>
-                                                                                        <p class="sys-mg-t-5">
-                                                                                            <i class="material-icons sys-fg-primary"
-                                                                                            data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="Download info document">description</i>
-                                                                                        </p>
-                                                                                    </label>
-                                                                                    
-                                                                                    <div class="col-md-7 syspro-entry-content">
-                                                                                        <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                                                                                            <label class="btn btn-default sys-fg-inverse active infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off" checked> 
-                                                                                                <b class="sys-txt-md">Cold</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">Warm</b>
-                                                                                            </label>
-                                                                                            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="infrastructure_size" autocomplete="off"> 
-                                                                                                <b class="sys-txt-md">Hot</b>
-                                                                                            </label>
-                                                                                          </div>
-                                                                                          
-                                                                                    </div>
-                                                                                    <div class="col-xs-2 infrastructure-pricing">
-                                                                                        <b>+ $32.00</b>
-                                                                                        <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -2224,21 +2059,26 @@
                 #}#
             </div>
         </script>
-
+        <!-- <script id="radioButtonItemTemplate" type="text/x-kendo-template">
+            <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
+                <input type="radio" name="#: name #" autocomplete="off" value="#: value #" data-bind="checked: selectedOption"> 
+                <b class="sys-txt-md">#: label #</b>
+            </label>
+        </script> -->
         <script id="infrastructureItemTemplate" type="text/x-kendo-template">
             <div class="form-group is-empty ">
+                <label for="#: id #" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
+                    <span>#: label #</span>
+                    <p class="sys-mg-t-5">
+                        <a href="#: detailsLink #" class="package-title" data-toggle="tooltip" 
+                        data-tooltip="tooltip" data-container="body"
+                        data-placement="top" title="Download details document">
+                            <i class="material-icons sys-fg-primary">description</i>
+                        </a>
+                    </p>
+                </label>
                 #if ( type === 'text' ) {# 
-                #} else if ( type === 'radioButton' ) {#         
-                    <label for="#: id #" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                        <span>#: label #</span>
-                        <p class="sys-mg-t-5">
-                            <a href="#: detailsLink #" class="package-title" data-toggle="tooltip" 
-                            data-tooltip="tooltip" data-container="body"
-                            data-placement="top" title="Download details document">
-                                <i class="material-icons sys-fg-primary">description</i>
-                            </a>
-                        </p>
-                    </label>
+                #} else if ( type === 'radioButton' ) {#                             
                     
                     <div class="col-md-7 syspro-entry-content">
                         <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
@@ -2252,32 +2092,40 @@
                         </div>
                         
                     </div>
-                    <div class="col-xs-2 infrastructure-pricing">
-                        <span data-bind="visible: discount.hasDiscount">
-                            <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
-                        </span>                           
-                        + <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: discount.discountAllowed }"></b>
-                        <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
-                            data-toggle="popover" 
-                            title="Apply discount"
-                            data-content='<div class="row"><div class="col-xs-12"><div class="btn-group discount-type-option" data-toggle="buttons">
-                                <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
-                                    <input type="radio" name="discount-type" autocomplete="off" value="percentage" data-bind="checked: discount.type"> 
-                                    <b class="sys-txt-md">%</b>
-                                </label>
-                                <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
-                                    <input type="radio" name="discount-type" autocomplete="off" value="fixed" data-bind="checked: discount.type"> 
-                                    <b class="sys-txt-md">123</b>
-                                </label></div></div></div><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
-                            data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
-                        <span class="hidden-discount-field" style="display: none;">
-                            <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
-                            <input type="number" max="#: discount.max #" class="form-control discount-value" data-bind='value: discount.value'></input>
-                        </span>
+                    
+                #} else if ( type === 'select' ) {#
 
+                    <div class="col-md-7 syspro-entry-content">
+                        <select class="form-control" id="#: id #" name="#: name #" data-value-field="value" data-text-field="label" data-value-primitive="false" data-bind="source: options, value: selectedOption, attr: { required: required }">
+
+                        </select>
                     </div>
-
+                    
                 #}#
+                <div class="col-xs-2 infrastructure-pricing">
+                    <span data-bind="visible: discount.hasDiscount">
+                        <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
+                    </span>                           
+                    + <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: discount.discountAllowed }"></b>
+                    <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
+                        data-toggle="popover" 
+                        title="Apply discount"
+                        data-content='<div class="row"><div class="col-xs-12"><div class="btn-group discount-type-option" data-toggle="buttons">
+                            <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
+                                <input type="radio" name="discount-type" autocomplete="off" value="percentage" data-bind="checked: discount.type"> 
+                                <b class="sys-txt-md">%</b>
+                            </label>
+                            <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
+                                <input type="radio" name="discount-type" autocomplete="off" value="fixed" data-bind="checked: discount.type"> 
+                                <b class="sys-txt-md">123</b>
+                            </label></div></div></div><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
+                        data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
+                    <span class="hidden-discount-field" style="display: none;">
+                        <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
+                        <input type="number" max="#: discount.max #" class="form-control discount-value" data-bind='value: discount.value'></input>
+                    </span>
+
+                </div>
             </div>
             <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
         </script>
@@ -2449,9 +2297,6 @@
                     "default": {
                         type: "string"
                     },
-                    "options": {
-                        type: "array"
-                    },
                     "cost": {
                         type: "number"
                     },
@@ -2478,11 +2323,21 @@
                 perUserCostWithCurrencyAndDiscount,
             });
             
-            
+            const wizardTabsWidth = function() {
+                console.log('ping');
+                const $total = viewModel.activeSections().length;
+                const $width = 100 / $total;
+                console.log($total, $width);
+                return $width + "%";
+            };
+
             const viewModel = kendo.observable({
-                dataSource: {
-                    data: []
+                change: function(e) {
+                    console.log(e);
                 },
+                // dataSource: {
+                //     data: []
+                // },
                 currency: "$",
                 quoteInformationColumn1: new kendo.data.DataSource({
                     schema: {
@@ -3300,6 +3155,10 @@
                     schema: {
                         model: Package
                     },
+                    change: function(e) {
+                        console.log(e);
+                        // viewModel.wizardTabsWidth();
+                    },
                     data: [
                         {
                             id: 'dsdxxxssshhh',
@@ -3479,9 +3338,138 @@
                         model: InfrastructureItem,
                     },
                     data: [
+                        
+                        {
+                            id: 'databaseOption',
+                            name: 'databaseOptions',
+                            label: 'Database',
+                            detailsLink: 'https://google.com',
+                            type: 'select',
+                            default: '',
+                            cost: 22,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                discountAllowed: true,
+                                value: 0,
+                                type: 'percentage',
+                                max: 15,
+                            },
+                            options: [
+                                {
+                                    value: 'sqlwindows',
+                                    label: 'SQL on Windows',
+                                    cost: 12,
+                                },
+                                {
+                                    value: 'sqllinux',
+                                    label: 'SQL on Linux',
+                                    cost: 15,
+                                },
+                                {
+                                    value: 'sqlexpresslinux',
+                                    label: 'SQL Express on Linux',
+                                    cost: 10,
+                                },
+                                {
+                                    value: 'somethingelse',
+                                    label: 'Something on Linux',
+                                    cost: 20,
+                                },
+                                {
+                                    value: 'mongodb',
+                                    label: 'MongoDB on Something',
+                                    cost: 30,
+                                }
+                            ],
+                            selectedOption: 'sqlwindows',
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'backupFrequency',
+                            name: 'backupFrequency1',
+                            label: 'Backup frequency',
+                            detailsLink: 'https://google.com',
+                            type: 'select',
+                            default: '',
+                            cost: 32,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                discountAllowed: true,
+                                value: 0,
+                                type: 'percentage',
+                                max: 15,
+                            },
+                            options: [
+                                {
+                                    value: 'daily',
+                                    label: 'Daily',
+                                    cost: 15,
+                                },
+                                {
+                                    value: 'twodays',
+                                    label: 'Every two days',
+                                    cost: 20,
+                                },
+                                {
+                                    value: 'weekly',
+                                    label: 'Weekly',
+                                    cost: 25,
+                                },
+                                {
+                                    value: 'biweekly',
+                                    label: 'Bi-weekly',
+                                    cost: 30,
+                                },
+                                {
+                                    value: 'monthly',
+                                    label: 'Monthly',
+                                    cost: 35,
+                                }
+                            ],
+                            selectedOption: 'twodays',
+                            required: true,
+                            readonly: ''
+                        },
+                        {
+                            id: 'highAvailability',
+                            name: 'highAvailability1',
+                            label: 'High availability',
+                            detailsLink: 'https://google.com',
+                            type: 'radioButton',
+                            default: '',
+                            cost: 32,
+                            discount: {
+                                hasDiscount: hasDiscount,
+                                discountAllowed: true,
+                                value: 0,
+                                type: 'percentage',
+                                max: 15,
+                            },
+                            options: [
+                                {
+                                    value: 'cold',
+                                    label: 'Cold',
+                                    cost: 15,
+                                },
+                                {
+                                    value: 'warm',
+                                    label: 'Warm',
+                                    cost: 20,
+                                },
+                                {
+                                    value: 'hot',
+                                    label: 'Hot',
+                                    cost: 25,
+                                }
+                            ],
+                            selectedOption: 'hot',
+                            required: true,
+                            readonly: ''
+                        },
                         {
                             id: 'infrastructureSize',
-                            name: 'infrastructureSize',
+                            name: 'infrastructureSize1',
                             label: 'Infrastructure size',
                             detailsLink: 'https://google.com',
                             type: 'radioButton',
@@ -3511,58 +3499,13 @@
                                     cost: 25,
                                 }
                             ],
-                            selectedOption: 'small',
+                            selectedOption: 'large',
                             required: true,
                             readonly: ''
                         },
-                        {
-                            id: 'database',
-                            name: 'database',
-                            label: 'Database',
-                            detailsLink: 'https://google.com',
-                            type: 'radioButton',
-                            default: '',
-                            cost: 22,
-                            discount: {
-                                hasDiscount: hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            options: [
-                                {
-                                    value: 'sqlwindows',
-                                    label: 'SQL on Windows',
-                                    cost: 12,
-                                },
-                                {
-                                    value: 'sqllinux',
-                                    label: 'SQL on Linux',
-                                    cost: 15,
-                                },
-                                {
-                                    value: 'sqlexpresslinux',
-                                    label: 'SQL Express on Linux',
-                                    cost: 10,
-                                }
-                                ,
-                                {
-                                    value: 'somethingelse',
-                                    label: 'Something on Linux',
-                                    cost: 20,
-                                }
-                                ,
-                                {
-                                    value: 'mongodb',
-                                    label: 'MongoDB on Something',
-                                    cost: 30,
-                                }
-                            ],
-                            selectedOption: 'sqllinux',
-                            required: true,
-                            readonly: ''
-                        },
+                        
+                        
+                        
                     ]
                 }),
                 productSuiteActive: function() {
@@ -3616,13 +3559,16 @@
                     
                     return activeSections;
                 },
-                wizardTabsWidth: function() {
-                    const $total = this.activeSections().length;
-                    const $width = 100 / $total;
-
-                    return $width + "%";
-                },
+                wizardTabsWidth,
             });
+
+            viewModel.quoteInformationColumn1.read();
+            viewModel.quoteInformationColumn2.read();
+            viewModel.productSuite.read();
+            viewModel.apiServices.read();
+            viewModel.additionalSoftware.read();
+            viewModel.isvSoftware.read();
+            viewModel.infrastructure.read();
 
             function renderPlusPackageSubItemsTemplate(data) {
                 return kendo.Template.compile($('#plusPackageSubItemsTemplate').html())(data);
