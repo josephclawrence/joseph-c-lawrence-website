@@ -79,11 +79,29 @@
             <div class="container-fluid sys-mg-t-15" id="main-container">
                 <div class="row sys-mg-t-15">
                     <div class="col-sm-10 col-sm-offset-1 col-xs-12 column-parent sys-mg-t-15">
-                        <div class="sys-bg-success sys-fg-white sys-rd sys-pd-10">
+                        <div class="sys-bg-success sys-fg-white sys-rd sys-pd-10 sys-mg-b-5">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <h4 class="pull-left sys-mg-off">All services operational</h4>
                                     <i class="material-icons pull-right sys-txt-md">check_circle</i>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="sys-bg-warning sys-fg-white sys-rd sys-pd-10 sys-mg-b-5">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4 class="pull-left sys-mg-off">EU East: SYSPRO Application Service currently undergoing scheduled maintenance. <a class="sys-fg-white" href="#incident_111">View details <i class="material-icons pull-right sys-txt-sm">arrow_right_alt</i></a></h4>
+                                    <i class="material-icons pull-right sys-txt-md">error</i>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="sys-bg-danger sys-fg-white sys-rd sys-pd-10 sys-mg-b-5">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4 class="pull-left sys-mg-off">USA West: SYSPRO Avanti Service currently offline. <a class="sys-fg-white" href="#incident_111">View details <i class="material-icons pull-right sys-txt-sm">arrow_right_alt</i></a></h4>
+                                    <i class="material-icons pull-right sys-txt-md">error</i>
                                 </div>
                             </div>
                             
@@ -97,7 +115,11 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="panel-group" id="statusSections" role="tablist" aria-multiselectable="true">
+                                <div role="tablist" aria-multiselectable="true" class="panel-group" id="statusSections" data-template="regionTemplate" data-bind="source: uptimeData"></div>
+                                <!-- <div class="panel-group" id="statusSections" role="tablist" aria-multiselectable="true">
+
+
+
                                     <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
                                       <div class="panel-heading sys-pd-10" role="tab" id="usaWestHeading">
                                         <h4 class="panel-title">
@@ -1059,7 +1081,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                  </div>
+                                  </div> -->
 
                             </div>
                         </div>
@@ -1067,16 +1089,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <h3>Past incidents</h3>
-                                <div class="incident sys-mg-b-20 sys-pd-b-20" id="incident_111">
-                                    <h4>July 1 2020, 18:05</h4>
-                                    <hr class="sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5"/>
-                                    <p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                                </div>
-                                <div class="incident sys-mg-b-20 sys-pd-b-20" id="incident_222">
-                                    <h4>July 4 2020, 17:25</h4>
-                                    <hr class="sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5"/>
-                                    <p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                                </div>
+                                <div data-template="incidentTemplate" data-bind="source: pastIncidents"></div>
                             </div>
                         </div>
                         <!-- <div class="panel sys-bd-off sys-box-shadow-off">
@@ -1103,14 +1116,1343 @@
         </div>
 
 
-        <!-- Off Canvas menus -->
-
         <script src="js/UX_JS_bootstrap.js"></script>
+        
+        <script id="regionTemplate" type="text/x-kendo-template">
+            <div class="panel sys-box-shadow-off sys-bd-very-light-gray">
+                <div class="panel-heading sys-pd-10" role="tab" id="#: datacentre #Heading">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="\\#statusSections" href="\\##: datacentre #" aria-expanded="false" aria-controls="#: datacentre #">
+                            <i class="material-icons pull-left collapsible-open-icon sys-fg-gray">add</i>
+                            <i class="material-icons pull-left collapsible-close-icon sys-fg-gray">remove</i>
+                            #: region # - #: location # - #: datacentre #
+                            #if ( dcstatus === 'Up' ) {#
+                                <i class="material-icons pull-right sys-fg-success">check_circle_outline</i>
+                            #} else if ( dcstatus === 'Warning' ) {# 
+                                <i class="material-icons pull-right sys-fg-warning">error_outline</i>
+                            #} else if ( dcstatus === 'Down' ) {# 
+                                <i class="material-icons pull-right sys-fg-danger">error_outline</i>
+                            #}#
+                            
+                        </a>
+                    </h4>
+                </div>
+                <div id="#: datacentre #" class="panel-collapse collapse" role="tabpanel" aria-labelledby="#: datacentre #Heading">
+                    <div class="panel-body">
+                        <table class="table ">
+                            <thead>
+                                <th></th>
+                                <th style="width: 10%;">Jun 29</th>
+                                <th style="width: 10%;">Jun 30</th>
+                                <th style="width: 10%;">Jul 01</th>
+                                <th style="width: 10%;">Jul 02</th>
+                                <th style="width: 10%;">Jul 03</th>
+                                <th style="width: 10%;">Jul 04</th>
+                                <th style="width: 10%;">Jul 05</th>
+                            </thead>
+                            <tbody>
+                                #= renderServiceTemplate(services) #
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </script>
+        
+        <script id="serviceTemplate" type="text/x-kendo-template">
+            <tr>
+                <td>#: type #</td>
+                #   $.each(data.days, function (index, day) {
+                        console.log(day.status);
+                        # <td> #
+                        if ( day.status === 'Up' ) {
+                            # <i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                            data-tooltip="tooltip" data-container="body"
+                            data-placement="top" title="Last checked: ${day.checkin}">check</i> #
+                        } else if ( day.status === 'Warning' ) {
+                            # <a href="\\#incident_${day.id}">
+                                <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                                data-tooltip="tooltip" data-container="body"
+                                data-placement="top" title="Last checked: ${day.checkin}">error_outline</i>
+                            </a> #
+                        } else if ( day.status === 'Down' ) {
+                            # <a href="\\#incident_${day.id}">
+                                <i class="material-icons sys-fg-danger" data-toggle="tooltip" 
+                                data-tooltip="tooltip" data-container="body"
+                                data-placement="top" title="Last checked: ${day.checkin}">error_outline</i>
+                            </a> #
+                        }
+                        # </td> #
+                    }); 
+                #
+            </tr>
+        </script>
+        <script id="dayTemplate" type="text/x-kendo-template">
+            <td>
+                #if ( status === 'Up' ) {#
+                    <i class="material-icons sys-fg-success" data-toggle="tooltip" 
+                    data-tooltip="tooltip" data-container="body"
+                    data-placement="top" title="Last checked: #: checkin #">check</i>
+                #} else if ( status === 'Warning' ) {# 
+                    <a href="\\#incident_#: id #">
+                        <i class="material-icons sys-fg-warning" data-toggle="tooltip" 
+                        data-tooltip="tooltip" data-container="body"
+                        data-placement="top" title="Last checked: #: checkin #">error_outline</i>
+                    </a>
+                #} else if ( status === 'Down' ) {# 
+                    <a href="\\#incident_#: id #">
+                        <i class="material-icons sys-fg-danger" data-toggle="tooltip" 
+                        data-tooltip="tooltip" data-container="body"
+                        data-placement="top" title="Last checked: #: checkin #">error_outline</i>
+                    </a>
+                #}#
+                
+            </td>
+        </script>
+        
+        <script id="incidentTemplate" type="text/x-kendo-template">
+            <div class="incident sys-mg-b-20 sys-pd-b-20" id="incident_#: id #">
+                <h4>#: dateTime #</h4>
+                <hr class="sys-fg-very-light-gray sys-mg-t-5 sys-mg-b-5"/>
+                <p>#: details #</p>
+                <p>
+                    <a href="#: rcaDocLink #"><i class="material-icons sys-fg-inverse">description</i> Download RCA document</a>
+                </p>
+            </div>
+        </script>
         <script>
+            function renderServiceTemplate(data) {
+                let serviceTemplateString = '';
+                $.each(data.service, function (index, service) {
+                    console.log(kendo.Template.compile($('#serviceTemplate').html())(service));
+                    serviceTemplateString += kendo.Template.compile($('#serviceTemplate').html())(service);
+                });
+                return serviceTemplateString;
+            }
+            const viewModel = kendo.observable({
+                uptimeData: new kendo.data.DataSource({
+                    data: [
+                        {
+                            "id": "0001",
+                            "region": "USA",
+                            "datacentre": "WEST-US",
+                            "location": "California - USA",
+                            "dcstatus": "Up",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "0002",
+                            "region": "USA",
+                            "datacentre": "EAST-US",
+                            "location": "New York - USA",
+                            "dcstatus": "Warning",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "0003",
+                            "region": "Europe",
+                            "datacentre": "WEST-EU",
+                            "location": "Dublin - Ireland",
+                            "dcstatus": "Up",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "0004",
+                            "region": "Europe",
+                            "datacentre": "EAST-EU",
+                            "location": "Estonia",
+                            "dcstatus": "Up",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "0005",
+                            "region": "Africa",
+                            "datacentre": "S-AFRICA",
+                            "location": "Johannesburg - South Africa",
+                            "dcstatus": "Up",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "0006",
+                            "region": "Africa",
+                            "datacentre": "N-AFRICA",
+                            "location": "Tunis - Tunisia",
+                            "dcstatus": "Up",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "0007",
+                            "region": "APAC",
+                            "datacentre": "N-APAC",
+                            "location": "Tokya - Japan",
+                            "dcstatus": "Up",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "0008",
+                            "region": "APAC",
+                            "datacentre": "S-APAC",
+                            "location": "Sydney - Australia",
+                            "dcstatus": "Down",
+                            "services": {
+                                "service": [
+                                    {
+                                        "id": "1001",
+                                        "type": "SYSPRO Application Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                        
+                                    },
+                                    {
+                                        "id": "1002",
+                                        "type": "SYSPRO Avanti Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1003",
+                                        "type": "SYSPRO Espresso Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:03",
+                                                "status":"Up"
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        "id": "1004",
+                                        "type": "SYSPRO Reporting Services",
+                                        "days": [
+                                            {
+                                                "checkin":"2020/06/30 18:01",
+                                                "status":"Down", "id": "222"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:08",
+                                                "status":"Up"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                            {
+                                                "checkin":"2020/06/30 18:00",
+                                                "status":"Warning", "id": "111"
+                                            },
+                                        ],                            
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }),    
+                pastIncidents: new kendo.data.DataSource({
+                    data: [
+                        {
+                            id: "111",
+                            dateTime: "July 1 2020, 18:05",
+                            details: "Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            rcaDocLink: "http://syspro.com"
+                        },
+                        {
+                            id: "222",
+                            dateTime: "June 1 2020, 17:05",
+                            details: "Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            rcaDocLink: "http://syspro.com"
+                        },
+                        {
+                            id: "333",
+                            dateTime: "May 1 2020, 18:05",
+                            details: "Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            rcaDocLink: "http://syspro.com"
+                        },
+                        {
+                            id: "444",
+                            dateTime: "March 1 2020, 18:05",
+                            details: "Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.",
+                            rcaDocLink: "http://syspro.com"
+                        }
+                    ]
+                }),
+            });
+
             $(document).ready(function() {
                 // $.material.init();
-
+                kendo.bind("body", viewModel);
                 $('[data-tooltip="tooltip"]').tooltip();
+                
             });
 
         </script>
