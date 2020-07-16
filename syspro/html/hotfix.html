@@ -1512,7 +1512,7 @@
                                                                             <div class="form-group sys-mg-b-15">
                                             
                                                                                 <label for="xxx" class="col-md-5 control-label sys-pd-t-5">
-                                                                                    <b>Deplyment group</b>
+                                                                                    <b>Deployment group</b>
                                                                                 </label>
                                                                                 <div class="col-md-7 syspro-entry-content sys-pd-t-5">
                                                                                     <span class="">TEST</span>
@@ -1559,6 +1559,29 @@
                                                                                         <i class="material-icons sys-fg-success">done</i>                                                
                                                                                     </span>
                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="row rollback-request">
+                                                                                <div class="col-xs-6 col-xs-offset-3">
+                                                                                    <button class="btn btn-block btn-danger">
+                                                                                        Roll back
+                                                                                        <i class="material-icons pull-right">restore</i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row pending-request">
+                                                                                <div class="col-xs-6">
+                                                                                    <button class="btn btn-block btn-default">
+                                                                                        Cancel
+                                                                                        <i class="material-icons pull-right">cancel</i>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="col-xs-6">
+                                                                                    <button class="btn btn-block btn-success" disabled>
+                                                                                        Save changes
+                                                                                        <i class="material-icons pull-right">check_circle</i>
+                                                                                    </button>
+                                                                                </div>
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1677,19 +1700,19 @@
                     { name: "Customer Name XXX0001 | 8833", type: "customer", subCategories: [
                     { name: "Test environment", type: "environment", parentId: 1, subCategories: [
                         // { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
-                            { name: "Request Id: 12345", type: "hotfix" },
-                            { name: "Request Id: 6789", type: "hotfix" },
+                            { name: "Request Id: 12345", type: "hotfix", status: 'pending' },
+                            { name: "Request Id: 6789", type: "hotfix", status: 'complete' },
                         // ] },
                     ] },
                     { name: "Dev environment", type: "environment", parentId: 6, subCategories: [
                         // { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
-                            { name: "Request Id: 12345", type: "hotfix" },
+                            { name: "Request Id: 12345", type: "hotfix", status: 'pending' },
                         // ] },
                     ] },
                     { name: "Live environment", type: "environment", parentId: 11, subCategories: [
                         // { name: "SYSPRO 8 2020 R1", type: "version", subCategories: [
-                            { name: "Request Id: 345", type: "hotfix" },
-                            { name: "Request Id: 8910", type: "hotfix" },
+                            { name: "Request Id: 345", type: "hotfix", status: 'complete' },
+                            { name: "Request Id: 8910", type: "hotfix", status: 'complete' },
                         // ] },
                     ] },
                 
@@ -2000,10 +2023,31 @@
                         if (node && node.type && node.type === 'environment') {
                             const id = inline.getByUid($(e.node).data('uid')).parentId;
                             $("#grid").data('kendoGrid').dataSource.filter({ field: "id", operator: "eq", value: id });
+                            $(".rollback-request, .pending-request").hide();
                             $(".btn-next").attr('disabled', false);
                             $('#hotfixWizard').bootstrapWizard('enable',1);
                             $('#hotfixWizard').bootstrapWizard('enable',2);
                             $('#hotfixWizard').bootstrapWizard('enable',3);
+                        } else if (node && node.type && node.type === 'hotfix') {                            
+                            $(".btn-next").attr('disabled', true);
+                            $(".icon-circle").removeClass('checked');
+                            if (node.status === 'complete') {
+                                $("..pending-request").hide();
+                                $(".rollback-request").show();
+                            } else if (node.status === 'pending') {
+                                $(".rollback-request").hide();
+                                $(".pending-request").show();
+                            }
+                            $('#hotfixWizard').bootstrapWizard('show',0);
+                            $('#hotfixWizard').bootstrapWizard('disable',1);
+                            $('#hotfixWizard').bootstrapWizard('disable',2);
+                            $('#hotfixWizard').bootstrapWizard('disable',3);
+                        } else if (node && node.type && node.type === 'customer') {
+                            $("#grid").data('kendoGrid').dataSource.filter({});
+                            $('#hotfixWizard').bootstrapWizard('show',0);
+                            $('#hotfixWizard').bootstrapWizard('disable',1);
+                            $('#hotfixWizard').bootstrapWizard('disable',2);
+                            $('#hotfixWizard').bootstrapWizard('disable',3);
                         }
                         
                     },

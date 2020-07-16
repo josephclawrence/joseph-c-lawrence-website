@@ -941,6 +941,89 @@
 }
 }
 </style>
+<style>
+    .hint.md-outline {
+        -webkit-box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.75) !important;
+        box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.75) !important;
+        position: absolute !important;
+    }
+    .placeholderGhost {
+        border: 2px dashed #cccccc !important;
+        border-radius: 4 !important;
+        opacity: 0.5;
+        margin-bottom: 10px;
+    }
+    .dragHandle, .removeField {
+        display: none;
+        height: 100%;
+        width: 25px;
+        float: right;
+        position: absolute;
+        top: 0px;
+        text-align: center;
+        z-index: 9;
+        padding-top: 2px;
+    }
+    .dragHandle {
+        right: 0px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        cursor: move;
+    }
+    .removeField {
+        right: 25px;
+        cursor: pointer;
+    }
+</style>
+<style>
+
+.radio-list-group input[type=radio] {
+	display:none;
+}
+.radio-list-group .list-group-item {
+	position:relative;
+	overflow:hidden;
+	border-style:hidden;
+}
+.radio-list-group .list-group-item label {
+	display:block;
+	width:100%;
+	font-weight:normal;
+}
+.radio-list-group .list-group-item input+span {
+	position:absolute;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:100%;
+	border:1px solid #ddd;
+	padding: 4px 15px;
+	margin-bottom:-1px;
+	z-index:1;
+}
+.radio-list-group .list-group-item input+span i.material-icons:before {
+    vertical-align: text-bottom;
+}
+.radio-list-group .list-group-item input+span i.material-icons:before {
+	content: "radio_button_unchecked";
+	font-size:20px;
+	line-height:20px;
+	font-weight:bold;
+}
+.radio-list-group .list-group-item input:checked+span i.material-icons:before {
+    content: "radio_button_checked";
+}
+.radio-list-group .list-group-item:hover input+span {
+background-color:#f5f5f5
+}
+.radio-list-group .list-group-item input:checked+span {
+color:#fff;background-color:#428bca;border-color:#428bca;
+	z-index:10;
+}
+
+</style>
         <script src="js/UX_JS_jquery.min.js"></script>
         <script>
             $(".prodConfigOptionsWrapper .loading-cover").show();
@@ -967,6 +1050,7 @@
 
         <script src="js/UX_JS_velocity.min.js"></script>
         <script src="js/UX_JS_kendo.all.min.js"></script>
+        
     </head>
 
     <body data-column-layout="3col" style="padding-top:0px;">
@@ -979,6 +1063,24 @@
         >
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            onclick="SAAS_QUOTE.infoFieldWindow.center().open()"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account"
+                        >
+                            <i class="material-icons">add_box</i>
+                        </a>
+                    </li>
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            onclick="SAAS_QUOTE.initEditLayout()"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account"
+                        >
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </li>
                     <li class=" nav-item">
                         <a
                             href="#"
@@ -1075,309 +1177,16 @@
                                                                     <div class="form-horizontal">
 
                                                                         <div class="row">
-                                                                            <div class="col-sm-6" data-template="infoFieldTemplate" data-bind="source: quoteInformationColumn1"></div>
-                                                                            <div class="col-sm-6" data-template="infoFieldTemplate" data-bind="source: quoteInformationColumn2"></div>
-                                                                            <div class="col-sm-6" style="display: none;">
-                                                                                <div class="form-group is-empty">
-                                                                                    
-                                                                                    <!-- <label for="" class="col-xs-12">
-                                                                                        <span>Quote for</span>
-                                                                                    </label> -->
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <!-- <div class="btn-group quote-toggle-buttons" data-toggle="buttons"> -->
-                                                                                        <div class="radio">
-                                                                                            <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" value="newquote"> 
-                                                                                                <b class="sys-txt-md">New Quote</b>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                        <div class="radio">
-                                                                                            <label class="sys-fg-inverse 
-                                                                                            sys-mg-off-r
-                                                                                            customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" value="existingquote"> 
-                                                                                                <b class="sys-txt-md">Existing Quote</b>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                        <!-- </div> -->
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group is-empty existing-quote-field md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <div class="input-group">
-                                                                                        <span class="spinner"></span>
-                                                                                        <label for="quoteNumber" class="">
-                                                                                            <span>Quote number</span>
-                                                                                        </label>
-                                                                                        <input type="text" class="form-control" id="quoteNumber">
-                                                                                        <span class="input-group-btn">
-                                                                                            <a class="syspro-browse-button" >
-                                                                                                <i class="material-icons">search</i>
-                                                                                            </a>
-                                                                                        </span>
-                                                                                    </div>
-
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                                <div class="form-group md-outline quote-field">
-                                                                                    <input  class="form-control" id="" readonly value="112222333">
-                                                                                    <label for="" class="">
-                                                                                        <span>Reference number</span>
-                                                                                        </label>
-
-                                                                                </div>
-                                                                                <div class="form-group is-empty md-outline quote-field">
-                                                                                    <input  class="form-control date" id="quoteDate">
-                                                                                    <label for="quoteDate" class="">
-                                                                                        <span>Quote date</span>
-                                                                                        </label>
-
-                                                                                </div>
-                                                                                <div class="form-group is-empty md-outline quote-field">
-                                                                                    <input  class="form-control date" id="quoteExpiryDate">
-                                                                                    <label for="" class="">
-                                                                                        <span>Expiry date</span>
-                                                                                        </label>
-                                                                                        
-                                                                            
-                                                                                </div>
-                                                                                <div class="form-group md-outline quote-field">
-                                                                                    <select type="text" class="form-control">
-                                                                                        <option value="1">v1</option>
-                                                                                        <option value="2">v2</option>
-                                                                                        <option value="3">v3</option>
-                                                                                    </select>
-                                                                                    <label for="" class="">
-                                                                                        <span>Quote version</span>
-                                                                                    </label>
-                                                                                   
-                                                                                </div>
-
-
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Customer code</span>
-                                                                                    </label>
-                                                                                    <div class=" syspro-entry-content">
-                                                                                        <div class="input-group">
-                                                                                            <span class="spinner"></span>
-                                                                                            <input type="text" class="form-control" id="customerCode">
-                                                                                            <span class="input-group-btn">
-                                                                                                <a class="syspro-browse-button" >
-                                                                                                    <i class="material-icons">search</i>
-                                                                                                </a>
-                                                                                            </span>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                            
-                                                                            
-                                                                                </div>
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    <label for="" class="">
-                                                                                        <span>Customer name</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control" id="customerName" required />
-                                                                                        
-                                                                                        
-                                                                                </div>
-                                                                                
-                                                                                <div class="form-group customer-details region-field md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Region</span>
-                                                                                    </label>
-                                                                                        <input type="text" id="region" class="form-control" required>
-                                                                            
-                                                                                </div>
-
-                                                                                <div class="form-group customer-details region-field md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Sub-region</span>
-                                                                                    </label>
-                                                                                        <input type="text" id="subregion" class="form-control" disabled="disabled" required>
-                                                                            
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty customer-details md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Number of users</span>
-                                                                                    </label>
- 
-                                                                                        <input
-                                                                                            type="number"
-                                                                                            min="0"
-                                                                                            max="2000"
-                                                                                            step="10"
-                                                                                            id="input-number5"
-                                                                                            value=""
-                                                                                            class="form-control"
-                                                                                            required
-                                                                                        />
-
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline customer-details">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Payment cycle</span>
-                                                                                    </label>
-                                                                                        <select type="text" class="form-control">
-                                                                                            <option value="annual">Annual</option>
-                                                                                            <option value="biannual">Bi-annual</option>
-                                                                                            <option value="quarterly">Quarterly</option>
-                                                                                        </select>
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>License start date</span>
-                                                                                    </label>
-                                                                                        <input class="form-control date">
-                                                                                        
-                                                                                </div>
-                                                                                <div class="form-group is-empty md-outline customer-details">
-                                                                                    <textarea class="form-control " rows="3"></textarea>
-                                                                                    <label for="" class="">
-                                                                                        <span>Description</span>
-                                                                                    </label>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <!-- <div class="col-sm-4">
-
-                                                                                
-                                                                               
-                                                                            </div> -->
-                                                                            <div class="col-sm-6 customer-details sys-pd-t-5">
-                                                                                <!-- <div class="form-group is-empty md-outline">
-                                                                                        <input type="text" class="form-control" id="customerName" required />
-                                                                                        <label for="customerName" class="">
-                                                                                            Company name
-                                                                                        </label>
-                                                                                        
-                                                                                </div> -->
-                                                                                
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Address line 1</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Address line 2</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>City</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>State/Province</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Country</span>
-                                                                                    </label>
-                                                                                        <input type="text" id="country" class="form-control">
-                                                                            
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Post/ZIP code</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Currency</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Contact name</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                        
-                                                                                    <label for="" class="">
-                                                                                        <span>Contact phone</span>
-                                                                                    </label>
-                                                                                        <input type="phone" class="form-control" value="+1 334 2269085">
-                                                                                        
-                                                                                </div>
-                                                                                <div class="form-group  md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Contact email</span>
-                                                                                    </label>
-                                                                                        <input type="email" class="form-control" value="jimmy@bootsnall.com">
-                                                                                        
-                                                                                </div>
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>Company Reg. No.</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
-                                                                                    
-                                                                                    <label for="" class="">
-                                                                                        <span>VAT No.</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
-                                                                                </div>
-
-                                                                                
-                                                                            
-                                                                            </div>
+                                                                            <div class="col-sm-6 info-fields-column"
+                                                                            id="quoteInformationColumn1" data-template="infoFieldParentTemplate" data-bind="source: quoteInformationColumn1"></div>
+                                                                            <div class="col-sm-6 info-fields-column" 
+                                                                            id="quoteInformationColumn2" data-template="infoFieldParentTemplate" data-bind="source: quoteInformationColumn2"></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <div class="tab-pane " id="productSuite" data-bind="visible: productSuiteActive">
                                                             
                                                             <div class="row quote-scrollable-pane">
@@ -1815,7 +1624,8 @@
                 </li>
             </ol>
         </div>
-
+        <script src="js/UX_JS_SYSPROUXQueryUi.js"></script>
+        <script src="js/bundle.js"></script>
         <script src="js/UX_JS_bootstrap.js"></script>
         <script src="js/UX_JS_bootstrap-3-typeahead.js"></script>
         <script src="js/nouislider.min.js"></script>
@@ -1824,7 +1634,42 @@
         <!-- <script src="js/paper-bootstrap-wizard.js"></script> -->
         <script src="js/UX_JS_bootstrap-datepicker.js"></script>
         <script src="js/perfect-scrollbar.js"></script>
+        
+        <div id="kendoUIWindows">
+            <div id="infoFieldWindow">
+                <div class="container-fluid window-container">
+            
+                    <div class="row window-content data-section-pane-1">
+                        <div class="col-sm-6 col-sm-offset-3" id="data-fields">
+                            <p class="sys-mg-t-5 sys-mg-b-10 lead text-center">
+                                Select an info field to add
+                            </p>
+                            <div class="drilldown-menu-wrapper">
+                                <!-- <div class="drilldown-loading-cover"><span class="spinner"></span></div> -->
+                                
+                                <div class="sys-mg-t-5">
+                                    <div class="list-group radio-list-group">
+                                    <div class="list-group radio-list-group" data-template="infoFieldOptionTemplate" data-bind="source: infoFields"></div>
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="row window-footer">
+                        <div class="col-sm-12">
+                            <span id="addDataButtonPopoverWrap" class="pull-right">
+                                <button onclick="SAAS_QUOTE.addInfoField()" type="button" id="addInfoFieldButton" class="btn btn-primary pull-right sys-mg-l-5"
+                                 disabled>Add field</button>
+                            </span>                            
+                            <button onclick="SAAS_QUOTE.infoFieldWindow.close()" type="button" class="btn btn-default pull-right closeWindow">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script type="text/x-kendo-template" id="packageTemplate">            
             <div data-bind="css: { col-sm-6: isProductSuite, col-sm-12: isNotProductSuite }">
                 <div 
@@ -1929,15 +1774,7 @@
                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                                 data-toggle="popover" 
                                 title="Apply discount"
-                                data-content='<div class="row"><div class="col-xs-12"><div class="btn-group discount-type-option" data-toggle="buttons">
-                                    <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
-                                        <input type="radio" name="discount-type" autocomplete="off" value="percentage"> 
-                                        <b class="sys-txt-md">%</b>
-                                    </label>
-                                    <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
-                                        <input type="radio" name="discount-type" autocomplete="off" value="fixed"> 
-                                        <b class="sys-txt-md">123</b>
-                                    </label></div></div></div><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
+                                data-content='<div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
                                 data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
                             <span class="hidden-discount-field" style="display: none;">
                                 <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
@@ -1948,7 +1785,7 @@
                             <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="#: id #Details">
                                 <ul>
                                     #if (isPlusPackage) {#
-                                        #= renderPlusPackageSubItemsTemplate(subItems) #
+                                        #= SAAS_QUOTE.renderPlusPackageSubItemsTemplate(subItems) #
                                     #} else {#
                                         #   $.each(subItems, function (index, item) {
                                                 # <li>${item}</li>  #                        
@@ -1993,8 +1830,15 @@
                 </a>
             </li>
         </script>
+        <script id="infoFieldParentTemplate" type="text/x-kendo-template">
+            #= SAAS_QUOTE.renderInfoFieldTemplate(data, data.uid) #
+        </script>
+        
         <script id="infoFieldTemplate" type="text/x-kendo-template">
-            <div class="form-group md-outline" data-bind="css: { is-empty: isEmpty }">
+            
+            <div class="form-group md-outline" data-bind="css: { is-empty: isEmpty }" data-guid="#: id #">
+                <span class="dragHandle sys-bg-primary"><i class="material-icons sys-fg-white">drag_indicator</i></span>
+                <span class="removeField sys-bg-danger"><i class="material-icons sys-fg-white">delete_forever</i></span>
                 #if ( type === 'text' ) {#
                     <input type="text" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
                     <label for="#: id #" class="">
@@ -2110,15 +1954,7 @@
                     <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                         data-toggle="popover" 
                         title="Apply discount"
-                        data-content='<div class="row"><div class="col-xs-12"><div class="btn-group discount-type-option" data-toggle="buttons">
-                            <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
-                                <input type="radio" name="discount-type" autocomplete="off" value="percentage" data-bind="checked: discount.type"> 
-                                <b class="sys-txt-md">%</b>
-                            </label>
-                            <label class="btn btn-default sys-fg-inverse sys-bg-white text-center btn-xs" style="width: 50%;">
-                                <input type="radio" name="discount-type" autocomplete="off" value="fixed" data-bind="checked: discount.type"> 
-                                <b class="sys-txt-md">123</b>
-                            </label></div></div></div><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
+                        data-content='<div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
                         data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
                     <span class="hidden-discount-field" style="display: none;">
                         <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
@@ -2129,44 +1965,56 @@
             </div>
             <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
         </script>
+        
+        <script id="infoFieldOptionTemplate" type="text/x-kendo-template">
+            #if ( !active ) {#
+                <div class="list-group-item">&nbsp;
+                    <label>
+                        <input type="radio" name="infoFieldOptions" value="#: id #">
+                        <span class="list-group-item-text"><i class="material-icons"></i> #: label #</span>
+                    </label>
+                </div>
+            #}#
+        </script>
         <script>
             
-            const hasDiscount = function() {
-                return parseInt(this.get("value")) > 0;
-            };
-
-            const totalNetCost = function() {
-                return this.get("userCount") * this.get("perUserCost");
-            };
-
-            const totalNetCostWithCurrency = function() {
-                return this.get("discount.discountAllowed") && this.get("discount.hasDiscount") && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
-            };
-
-            const totalCost = function() {
-                return this.totalNetCost() - this.totalDiscount();
-            };
-
-            const totalCostWithCurrency = function() {
-                return this.get("currency") + this.totalCost();
-            };
-
-            const totalDiscount = function() {
-                return this.totalNetCost() * (this.get("discount.value") / 100);
-            };
-
-            const totalDiscountWithCurrency = function() {
-                return this.get("currency") + this.totalDiscount();
-            };
-
-            const perUserCostWithCurrency = function() {
-                return this.get("currency") + this.get("perUserCost");
-            };
-
-            const perUserCostWithCurrencyAndDiscount = function() {
-                return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("discount.value") / 100));
-            };
-
+            const viewModelMethods = {
+                hasDiscount: function() {
+                    return parseInt(this.get("value")) > 0;
+                },
+                totalNetCost: function() {
+                    return this.get("userCount") * this.get("perUserCost");
+                },
+                totalNetCostWithCurrency: function() {
+                    return this.get("discount.discountAllowed") && this.get("discount.hasDiscount") && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
+                },
+                totalCost: function() {
+                    return this.totalNetCost() - this.totalDiscount();
+                },
+                totalCostWithCurrency: function() {
+                    return this.get("currency") + this.totalCost();
+                },
+                totalDiscount: function() {
+                    return this.totalNetCost() * (this.get("discount.value") / 100);
+                },
+                totalDiscountWithCurrency: function() {
+                    return this.get("currency") + this.totalDiscount();
+                },
+                perUserCostWithCurrency: function() {
+                    return this.get("currency") + this.get("perUserCost");
+                },
+                perUserCostWithCurrencyAndDiscount: function() {
+                    return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("discount.value") / 100));
+                },
+                wizardTabsWidth: function() {
+                    console.log('ping');
+                    const $total = viewModel.activeSections().length;
+                    const $width = 100 / $total;
+                    console.log($total, $width);
+                    return $width + "%";
+                },
+            }
+            
             var Package = kendo.data.Model.define({
                 fields: {
                     "name": {
@@ -2230,15 +2078,15 @@
                 isNotProductSuite: function() {
                     return this.get("category") !== "productSuite";
                 },
-                hasDiscount,
-                totalNetCost,
-                totalNetCostWithCurrency,
-                totalCost,
-                totalCostWithCurrency,
-                totalDiscount,
-                totalDiscountWithCurrency,
-                perUserCostWithCurrency,
-                perUserCostWithCurrencyAndDiscount,
+                hasDiscount: viewModelMethods.hasDiscount,
+                totalNetCost: viewModelMethods.totalNetCost,
+                totalNetCostWithCurrency: viewModelMethods.totalNetCostWithCurrency,
+                totalCost: viewModelMethods.totalCost,
+                totalCostWithCurrency: viewModelMethods.totalCostWithCurrency,
+                totalDiscount: viewModelMethods.totalDiscount,
+                totalDiscountWithCurrency: viewModelMethods.totalDiscountWithCurrency,
+                perUserCostWithCurrency: viewModelMethods.perUserCostWithCurrency,
+                perUserCostWithCurrencyAndDiscount: viewModelMethods.perUserCostWithCurrencyAndDiscount,
             });
             
             var EntryField = kendo.data.Model.define({
@@ -2266,6 +2114,9 @@
                     // },
                     "options": {
                         type: "array"
+                    },
+                    "active": {
+                        type: "boolean"
                     }
                 },
                 isEmpty: function() {
@@ -2314,32 +2165,21 @@
                 totalNetCostWithCurrency: function() {
                     return this.get("discount.discountAllowed") && this.get("discount.hasDiscount") ? viewModel.currency + this.totalNetCost() : '';
                 },
-                hasDiscount,
-                totalCost,
-                totalCostWithCurrency,
-                totalDiscount,
-                totalDiscountWithCurrency,
-                perUserCostWithCurrency,
-                perUserCostWithCurrencyAndDiscount,
+                hasDiscount: viewModelMethods.hasDiscount,
+                totalCost: viewModelMethods.totalCost,
+                totalCostWithCurrency: viewModelMethods.totalCostWithCurrency,
+                totalDiscount: viewModelMethods.totalDiscount,
+                totalDiscountWithCurrency: viewModelMethods.totalDiscountWithCurrency,
+                perUserCostWithCurrency: viewModelMethods.perUserCostWithCurrency,
+                perUserCostWithCurrencyAndDiscount: viewModelMethods.perUserCostWithCurrencyAndDiscount,
             });
-            
-            const wizardTabsWidth = function() {
-                console.log('ping');
-                const $total = viewModel.activeSections().length;
-                const $width = 100 / $total;
-                console.log($total, $width);
-                return $width + "%";
-            };
-
+                        
             const viewModel = kendo.observable({
                 change: function(e) {
                     console.log(e);
                 },
-                // dataSource: {
-                //     data: []
-                // },
                 currency: "$",
-                quoteInformationColumn1: new kendo.data.DataSource({
+                infoFields: new kendo.data.DataSource({
                     schema: {
                         model: EntryField
                     },
@@ -2361,7 +2201,8 @@
                                 }
                             ],
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'dddferfer',
@@ -2371,7 +2212,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'pojpojp',
@@ -2391,7 +2233,8 @@
                             default: new Date(),
                             options: [],
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'xwxpojpojp',
@@ -2401,7 +2244,8 @@
                             default: '',
                             options: [],
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'kkkdddeee',
@@ -2420,7 +2264,8 @@
                                 }
                             ],
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'kkkddddddeee',
@@ -2430,7 +2275,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'kdddddeee',
@@ -2440,7 +2286,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: false,
                         },
                         {
                             id: 'kkkddfdfdfe',
@@ -2450,7 +2297,8 @@
                             default: 0,
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'sssssddeee',
@@ -2473,7 +2321,8 @@
                                 }
                             ],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'pooioido',
@@ -2483,7 +2332,8 @@
                             default: '',
                             options: [],
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'ffrrpopopooi',
@@ -2493,15 +2343,9 @@
                             default: '',
                             options: [],
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
-                    ]
-                }),
-                quoteInformationColumn2: new kendo.data.DataSource({
-                    schema: {
-                        model: EntryField
-                    },
-                    data: [
                         {
                             id: 'kwddddeee',
                             name: 'addressOne',
@@ -2510,7 +2354,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'kdddxxeee',
@@ -2520,7 +2365,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: false,
                         },
                         {
                             id: 'kdzzddeee',
@@ -2530,7 +2376,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'kdhhjddeee',
@@ -2540,7 +2387,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: false,
                         },
                         {
                             id: 'country',
@@ -2550,7 +2398,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'postzip',
@@ -2560,7 +2409,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'currency',
@@ -2570,7 +2420,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'contactName',
@@ -2580,7 +2431,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'contactPhone',
@@ -2590,7 +2442,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: false,
                         },
                         {
                             id: 'contactEmail',
@@ -2600,7 +2453,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'companyReg',
@@ -2610,7 +2464,8 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'vatNumber',
@@ -2620,7 +2475,73 @@
                             default: '',
                             options: [],
                             required: false,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
+                        }
+                    ]
+                
+                }),
+                quoteInformationColumn1: new kendo.data.DataSource({
+                    data: [
+                        {
+                            id: 'ferferfer',
+                        },
+                        {
+                            id: 'dddferfer',   
+                        },
+                        {
+                            id: 'xxxpojpojp',
+                        },
+                        {
+                            id: 'xwxpojpojp',
+                        },
+                        {
+                            id: 'kkkdddeee',
+                        },
+                        {
+                            id: 'kkkddddddeee',
+                        },
+                        {
+                            id: 'kdddddeee',
+                        },
+                        {
+                            id: 'kkkddfdfdfe',
+                        },
+                        {
+                            id: 'sssssddeee',
+                        },
+
+                        {
+                            id: 'ffrrpopopooi',
+                        },
+                        
+                    ]
+                }),
+                quoteInformationColumn2: new kendo.data.DataSource({
+                    data: [
+                        {
+                            id: 'kwddddeee',
+                        },
+                        {
+                            id: 'kdzzddeee',
+                        },
+                        {
+                            id: 'country',
+                        },
+                        {
+                            id: 'postzip',
+                        },
+                        {
+                            id: 'currency',
+                        },
+                        {
+                            id: 'contactName',
+                        },
+                        {
+                            id: 'contactPhone',
+                        },
+                        {
+                            id: 'vatNumber',
                         }
                     ]
                 }),
@@ -2674,7 +2595,7 @@
                             isPlusPackage: false,
                             isSelected: true,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: false,
                                 value: 5,
                                 type: 'percentage',
@@ -2704,7 +2625,7 @@
                             isPlusPackage: true,
                             isSelected: true,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'fixed',
@@ -2734,7 +2655,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -2764,7 +2685,7 @@
                             isPlusPackage: true,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'fixed',
@@ -2794,7 +2715,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'fixed',
@@ -2824,7 +2745,7 @@
                             isPlusPackage: true,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -2854,7 +2775,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -2884,7 +2805,7 @@
                             isPlusPackage: true,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -2921,7 +2842,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -2951,7 +2872,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: false,
                                 value: 5,
                                 type: 'percentage',
@@ -2981,7 +2902,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: false,
                                 value: 0,
                                 type: 'percentage',
@@ -3011,7 +2932,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: false,
                                 value: 0,
                                 type: 'percentage',
@@ -3041,7 +2962,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3071,7 +2992,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3101,7 +3022,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3131,7 +3052,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3172,7 +3093,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -3193,7 +3114,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -3214,7 +3135,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3235,7 +3156,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3255,7 +3176,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3275,7 +3196,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: false,
                                 value: 0,
                                 type: 'percentage',
@@ -3303,7 +3224,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 5,
                                 type: 'percentage',
@@ -3323,7 +3244,7 @@
                             isPlusPackage: false,
                             isSelected: false,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: false,
                                 value: 15,
                                 type: 'percentage',
@@ -3348,7 +3269,7 @@
                             default: '',
                             cost: 22,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3383,7 +3304,8 @@
                             ],
                             selectedOption: 'sqlwindows',
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'backupFrequency',
@@ -3394,7 +3316,7 @@
                             default: '',
                             cost: 32,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3429,7 +3351,8 @@
                             ],
                             selectedOption: 'twodays',
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'highAvailability',
@@ -3440,7 +3363,7 @@
                             default: '',
                             cost: 32,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3465,7 +3388,8 @@
                             ],
                             selectedOption: 'hot',
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         {
                             id: 'infrastructureSize',
@@ -3476,7 +3400,7 @@
                             default: '',
                             cost: 32,
                             discount: {
-                                hasDiscount: hasDiscount,
+                                hasDiscount: viewModelMethods.hasDiscount,
                                 discountAllowed: true,
                                 value: 0,
                                 type: 'percentage',
@@ -3501,7 +3425,8 @@
                             ],
                             selectedOption: 'large',
                             required: true,
-                            readonly: ''
+                            readonly: '',
+                            active: true,
                         },
                         
                         
@@ -3559,280 +3484,510 @@
                     
                     return activeSections;
                 },
-                wizardTabsWidth,
+                wizardTabsWidth: viewModelMethods.wizardTabsWidth,
             });
 
-            viewModel.quoteInformationColumn1.read();
-            viewModel.quoteInformationColumn2.read();
-            viewModel.productSuite.read();
-            viewModel.apiServices.read();
-            viewModel.additionalSoftware.read();
-            viewModel.isvSoftware.read();
-            viewModel.infrastructure.read();
+            const SAAS_QUOTE = {
+                tempDraggedItem: [],
+                infoFieldWindow: null,
+                init: function() {
+                    viewModel.infoFields.read();
+                    viewModel.quoteInformationColumn1.read();
+                    viewModel.quoteInformationColumn2.read();
+                    viewModel.productSuite.read();
+                    viewModel.apiServices.read();
+                    viewModel.additionalSoftware.read();
+                    viewModel.isvSoftware.read();
+                    viewModel.infrastructure.read();
 
-            function renderPlusPackageSubItemsTemplate(data) {
-                return kendo.Template.compile($('#plusPackageSubItemsTemplate').html())(data);
-            }
+                    $.material.init();
 
-            $(document).ready(function() {
-                $.material.init();
+                    kendo.bind($("body"), viewModel);
+                    SAAS_QUOTE.initWizard();
+                    SAAS_QUOTE.initFormFields();
+                    SAAS_QUOTE.sizeLayout();
+                    SAAS_QUOTE.uiInitExtras();
+                    SAAS_QUOTE.initInfoFieldWindow();
+                    SAAS_QUOTE.registerEventHandlers();
+                },
+                initWizard: function() {
+                    const wizard = $(".wizard-card").bootstrapWizard({
+                        tabClass: "nav nav-pills",
+                        nextSelector: ".btn-next",
+                        previousSelector: ".btn-previous",
 
-                kendo.bind("body", viewModel);
-                const tabHeight = $(window).height() - 200;
+                        onNext: function(tab, navigation, index) {
+                            var $valid = true; // use some validator
+                            if (!$valid) {
+                                $validator.focusInvalid();
+                                return false;
+                            }
+                        },
 
-                $("#isvFilter").on("keyup", function() {
-                    viewModel.isvSoftware.filter({ field: "name", operator: "contains", value: $(this).val() })
-                });
-                // $(".tab-content").height(tabHeight);
-                $(".tab-content").css({'maxHeight': tabHeight, 'height': tabHeight});
-                $(".quote-scrollable-pane").css({'maxHeight': tabHeight - 130, 'height': tabHeight - 130});
-                $("#isv .quote-scrollable-pane").css({'maxHeight': tabHeight - 160, 'height': tabHeight - 160});
+                        onInit: function(tab, navigation, index) {
+                            //check number of tabs and fill the entire row
+                            var $total = navigation.find("li").length;
+                            $width = 100 / $total;
 
-                $('[data-tooltip="tooltip"]').tooltip();
+                            navigation.find("li").css("width", $width + "%");
+                        },
 
-                // $("#quoteDate").val(new Date());
-                $(".date").datepicker({
-                    maxViewMode: 2,
-                    todayBtn: 'linked',
-                    autoclose: true,
-                    todayHighlight: true,
-                    zIndexOffset: 1000000
-                });
+                        onTabClick: function(tab, navigation, index) {
+                            var $valid = true; // use some validator
 
-                $("input[name='quote_type']").on("change", function(e) {
-                    const value = $(this).val();
-                    if ( value === 'existingquote' ) {
-                        $('.existing-quote-field').show();
-                    } else if ( value === 'newquote' ) {
+                            if (!$valid) {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        },
+
+                        onTabShow: function(tab, navigation, index) {
+                            var $total = navigation.find("li").length;
+                            var $current = index + 1;
+
+                            var $wizard = navigation.closest(".wizard-card");
+
+                            // If it's the last tab then hide the last button and show the finish instead
+                            if ($current >= $total) {
+                                $($wizard)
+                                    .find(".btn-next")
+                                    .hide();
+                                $($wizard)
+                                    .find(".btn-finish")
+                                    .show();
+                            } else {
+                                $($wizard)
+                                    .find(".btn-next")
+                                    .show();
+                                $($wizard)
+                                    .find(".btn-finish")
+                                    .hide();
+                            }
+
+                            //update progress
+                            var move_distance = 100 / $total;
+                            move_distance = move_distance * index + move_distance / 2;
+
+                            $wizard.find($(".progress-bar")).css({ width: move_distance + "%" });
+                            //e.relatedTarget // previous tab
+
+                            $wizard.find($(".wizard-card .nav-pills li.active a .icon-circle")).addClass("checked");
+                        },
+                    });
+
+                },
+                registerEventHandlers: function() {
+                    $("input[name='quote_type']").on("change", function(e) {
+                        const value = $(this).val();
+                        if ( value === 'existingquote' ) {
+                            $('.existing-quote-field').show();
+                        } else if ( value === 'newquote' ) {
+                            // $('.customer-details input').each((idx, field) => {
+                            //     $(field).val('');
+                            // });
+                            $('.existing-quote-field').hide();
+                            $('.quote-field').show();
+                            $('.customer-type-field').show();
+                            
+                            // $('.customer-details').show();
+                            // $(".region-field").show();
+                        }
+                        
+                        
+                    });
+
+                    $("#customerCode").on("keydown", function() {
+                        $('.customer-details input').each((idx, field) => {
+                            $(field).val('customer info');
+                            $(field).closest(".form-group").removeClass("is-empty");
+                        });
+                        $('.customer-details').show();
+                        
+                    });
+
+                    $("#quoteNumber").on("keydown", function() {
                         // $('.customer-details input').each((idx, field) => {
-                        //     $(field).val('');
+                        //     $(field).val('customer info');
+                        //     $(field).closest(".form-group").removeClass("is-empty");
                         // });
-                        $('.existing-quote-field').hide();
                         $('.quote-field').show();
                         $('.customer-type-field').show();
-                        
-                        // $('.customer-details').show();
-                        // $(".region-field").show();
-                    }
-                    
-                    
-                });
-
-                // $("input[name='customer_type']").on("change", function(e) {
-                //     const value = $(this).val();
-                //     if ( value === 'existing' ) {
-                //         $('.existing-customer-field').show();
-
-                //     } else if ( value === 'prospect' ) {
-                //         $('.customer-details input').each((idx, field) => {
-                //             $(field).val('');
-                //         });
-                //         $('.existing-customer-field').hide();
-                //         // $('.customer-details').show();
-                //         $(".region-field").show();
-                //     }
-                    
-                    
-                // });
-
-                $("#customerCode").on("keydown", function() {
-                    $('.customer-details input').each((idx, field) => {
-                        $(field).val('customer info');
-                        $(field).closest(".form-group").removeClass("is-empty");
+                        $(".existing-customer").addClass("active");
+                        $('.customer-details input').each((idx, field) => {
+                            $(field).val('customer info');
+                            $(field).closest(".form-group").removeClass("is-empty");
+                        });
+                        $('.customer-details').show();
                     });
-                    $('.customer-details').show();
-                    
-                });
 
-                $("#quoteNumber").on("keydown", function() {
-                    // $('.customer-details input').each((idx, field) => {
-                    //     $(field).val('customer info');
-                    //     $(field).closest(".form-group").removeClass("is-empty");
-                    // });
-                    $('.quote-field').show();
-                    $('.customer-type-field').show();
-                    $(".existing-customer").addClass("active");
-                    $('.customer-details input').each((idx, field) => {
-                        $(field).val('customer info');
-                        $(field).closest(".form-group").removeClass("is-empty");
+                    $(".fusion-current-account").click(function(){
+                        $(".form-group").show();
+                        $(".customer-details").show();
                     });
-                    $('.customer-details').show();
-                });
 
-                $(".fusion-current-account").click(function(){
-                    $(".form-group").show();
-                    $(".customer-details").show();
-                });
+                },
+                sizeLayout: function() {
+                    // TODO: Maybe handle wizard tep sizing here somehow
+                    const tabHeight = $(window).height() - 200;
 
-                var country = $("#country").kendoDropDownList({
-                    optionLabel: "Select country...",
-                    // dataTextField: "name",
-                    // dataValueField: "categoryID",
-                    filter: 'contains',
-                    dataSource: {
-                        data: ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]
-                    }
-                }).data("kendoDropDownList");
+                    $("#isvFilter").on("keyup", function() {
+                        viewModel.isvSoftware.filter({ field: "name", operator: "contains", value: $(this).val() })
+                    });
+                    // $(".tab-content").height(tabHeight);
+                    $(".tab-content").css({'maxHeight': tabHeight, 'height': tabHeight});
+                    $(".quote-scrollable-pane").css({'maxHeight': tabHeight - 130, 'height': tabHeight - 130});
+                    $("#isv .quote-scrollable-pane").css({'maxHeight': tabHeight - 160, 'height': tabHeight - 160});
+                },
+                initFormFields: function() {
+                    $(".date").datepicker({
+                        maxViewMode: 2,
+                        todayBtn: 'linked',
+                        autoclose: true,
+                        todayHighlight: true,
+                        zIndexOffset: 1000000
+                    });
 
-                var region = $("#region").kendoDropDownList({
-                    // optionLabel: "Select region...",
-                    dataTextField: "name",
-                    dataValueField: "categoryID",
-                    dataSource: {
-                        data: [
+                    
+                    var country = $("#country").kendoDropDownList({
+                        optionLabel: "Select country...",
+                        // dataTextField: "name",
+                        // dataValueField: "categoryID",
+                        filter: 'contains',
+                        dataSource: {
+                            data: ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]
+                        }
+                    }).data("kendoDropDownList");
+
+                    var region = $("#region").kendoDropDownList({
+                        // optionLabel: "Select region...",
+                        dataTextField: "name",
+                        dataValueField: "categoryID",
+                        dataSource: {
+                            data: [
+                                {
+                                    name: 'Africa',
+                                    categoryID: 'africa',
+                                },
+                                {
+                                    name: 'North America',
+                                    categoryID: 'northamerica',
+                                },
+                                {
+                                    name: 'South America',
+                                    categoryID: 'southamerica',
+                                },
+                                {
+                                    name: 'Europe',
+                                    categoryID: 'europe',
+                                },
+                                {
+                                    name: 'Australasia',
+                                    categoryID: 'australasia',
+                                },
+                                {
+                                    name: 'Asia',
+                                    categoryID: 'asia',
+                                },
+                            ]
+                        }
+                    }).data("kendoDropDownList");
+                    const regionData = [
                             {
-                                name: 'Africa',
+                                name: 'South Africa',
                                 categoryID: 'africa',
                             },
                             {
-                                name: 'North America',
+                                name: 'USA',
                                 categoryID: 'northamerica',
                             },
                             {
-                                name: 'South America',
+                                name: 'Brazil',
                                 categoryID: 'southamerica',
                             },
                             {
-                                name: 'Europe',
+                                name: 'France',
                                 categoryID: 'europe',
                             },
                             {
-                                name: 'Australasia',
+                                name: 'Australia',
                                 categoryID: 'australasia',
                             },
                             {
-                                name: 'Asia',
+                                name: 'China',
                                 categoryID: 'asia',
                             },
-                        ]
-                    }
-                }).data("kendoDropDownList");
-                const regionData = [
-                        {
-                            name: 'South Africa',
-                            categoryID: 'africa',
-                        },
-                        {
-                            name: 'USA',
-                            categoryID: 'northamerica',
-                        },
-                        {
-                            name: 'Brazil',
-                            categoryID: 'southamerica',
-                        },
-                        {
-                            name: 'France',
-                            categoryID: 'europe',
-                        },
-                        {
-                            name: 'Australia',
-                            categoryID: 'australasia',
-                        },
-                        {
-                            name: 'China',
-                            categoryID: 'asia',
-                        },
-                        {
-                            name: 'Kenya',
-                            categoryID: 'africa',
-                        },
-                        {
-                            name: 'Mexico',
-                            categoryID: 'northamerica',
-                        },
-                        {
-                            name: 'Argentina',
-                            categoryID: 'southamerica',
-                        },
-                        {
-                            name: 'Italy',
-                            categoryID: 'europe',
-                        },
-                        {
-                            name: 'New Zealand',
-                            categoryID: 'australasia',
-                        },
-                        {
-                            name: 'Malaysia',
-                            categoryID: 'asia',
-                        },
-                ];
+                            {
+                                name: 'Kenya',
+                                categoryID: 'africa',
+                            },
+                            {
+                                name: 'Mexico',
+                                categoryID: 'northamerica',
+                            },
+                            {
+                                name: 'Argentina',
+                                categoryID: 'southamerica',
+                            },
+                            {
+                                name: 'Italy',
+                                categoryID: 'europe',
+                            },
+                            {
+                                name: 'New Zealand',
+                                categoryID: 'australasia',
+                            },
+                            {
+                                name: 'Malaysia',
+                                categoryID: 'asia',
+                            },
+                    ];
 
-                var subregion = $("#subregion").kendoDropDownList({
-                    autoBind: false,
-                    cascadeFrom: "region",
-                    // optionLabel: "Select sub-region...",
-                    dataTextField: "name",
-                    dataValueField: "name",
-                    select: function(e) {
-                        $('.customer-details').show();
-                    },
-                    dataSource: {
-                        data: regionData
-                    }
-                }).data("kendoDropDownList");
-
-                $(".discount").popover({
-                    trigger : 'click',  
-                    placement : 'auto', 
-                    container: 'body',
-                    html: 'true',
-                    title: 'Add a comment',
-                    // content : '<span class="sys-txt-sm sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
-                    // content: '<span class="sys-txt-md sys-fg-inverse">% - max 12.5%</span><input type="number" class="form-control"></input>',
-                    template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
-                            '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
-                            '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
-                            '<i class="material-icons sys-txt-sm">cancel</i></button>&nbsp;'+
-                            '<button type="button" class="btn btn-primary btn-xs popover-submit pull-right">'+
-                            '<i class="material-icons sys-txt-sm">check</i></button></div></div>' 
-                })
-                .on('shown.bs.popover', function(e) {
-                    //hide any visible comment-popover
-                    $(".discount").not(this).popover('hide');
-                    const $this = $(this);
-                    const $popover = $(e.target).data('bs.popover').$tip;
-                    const $hiddenValueField = $this.siblings(".hidden-discount-field").find("input.discount-value");
-                    const $hiddenTypeField = $this.siblings(".hidden-discount-field").find("input.discount-type-value");
-                    const $popoverInput = $popover.find("input.discount-amount-input");
-                    const value = $hiddenValueField.val();
-                    const type = $hiddenTypeField.val();
-                    $popoverInput.val(value);
-                    $popover.find('.discount-type-option input[value="' + type + '"]').prop("checked",true);
-                    $popover.find('.discount-type-option input[value="' + type + '"]').closest('.btn').addClass('active');
+                    var subregion = $("#subregion").kendoDropDownList({
+                        autoBind: false,
+                        cascadeFrom: "region",
+                        // optionLabel: "Select sub-region...",
+                        dataTextField: "name",
+                        dataValueField: "name",
+                        select: function(e) {
+                            $('.customer-details').show();
+                        },
+                        dataSource: {
+                            data: regionData
+                        }
+                    }).data("kendoDropDownList");
                     
-                    // var $popover = $(e.target).data('bs.popover').$tip;
-                    // var $popoverTextarea = $popover.find('.popover-textarea');
-                    //attach link text
-                    // $popoverTextarea.val($comment.text().trim()).focus();
-                    //close on cancel
-                    $('.popover-cancel').click(function() {                              
-                        $this.popover('hide');
+                    $("#georeplication").kendoMultiSelect({
+                        placeholder: "Select regions...",
+                        dataTextField: "name",
+                        dataValueField: "name",
+                        height: 400,
+                        dataSource: {
+                            data: regionData,
+                            group: { field: "categoryID" }
+                        }                    
                     });
-                    //update link text on submit
-                    $('.popover-submit').click(function() {
-                        // $comment.text($popoverTextarea.val().trim());
-                        // $this.parent().find(".truncatedComment").text(truncateWithEllipses($comment.text().trim()));
-                        // kendo.bind("body", viewModel);
-                        const $typeInput = $popover.find('.discount-type-option input');
-                        $hiddenValueField.val($popoverInput.val());
-                        $hiddenTypeField.val($typeInput.val());
-                        $hiddenValueField.trigger("change");
-                        $hiddenTypeField.trigger("change");
-                        $this.popover('hide');
-                    });
-                });
+                },
+                uiInitExtras: function() {
+                    $('[data-tooltip="tooltip"]').tooltip();
 
-                $("#georeplication").kendoMultiSelect({
-                    placeholder: "Select regions...",
-                    dataTextField: "name",
-                    dataValueField: "name",
-                    height: 400,
-                    dataSource: {
-                        data: regionData,
-                        group: { field: "categoryID" }
-                    }                    
-                });
+                    // $("#quoteDate").val(new Date());
+                    
+                    $(".discount").popover({
+                        trigger : 'click',  
+                        placement : 'auto', 
+                        container: 'body',
+                        html: 'true',
+                        title: 'Add a comment',
+                        // content : '<span class="sys-txt-sm sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
+                        // content: '<span class="sys-txt-md sys-fg-inverse">% - max 12.5%</span><input type="number" class="form-control"></input>',
+                        template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
+                                '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
+                                '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
+                                '<i class="material-icons sys-txt-sm">cancel</i></button>&nbsp;'+
+                                '<button type="button" class="btn btn-primary btn-xs popover-submit pull-right">'+
+                                '<i class="material-icons sys-txt-sm">check</i></button></div></div>' 
+                    })
+                    .on('shown.bs.popover', function(e) {
+                        //hide any visible comment-popover
+                        $(".discount").not(this).popover('hide');
+                        const $this = $(this);
+                        const $popover = $(e.target).data('bs.popover').$tip;
+                        const $hiddenValueField = $this.siblings(".hidden-discount-field").find("input.discount-value");
+                        const $hiddenTypeField = $this.siblings(".hidden-discount-field").find("input.discount-type-value");
+                        const $popoverInput = $popover.find("input.discount-amount-input");
+                        const value = $hiddenValueField.val();
+                        const type = $hiddenTypeField.val();
+                        $popoverInput.val(value);
+                    
+                        
+                        // var $popover = $(e.target).data('bs.popover').$tip;
+                        // var $popoverTextarea = $popover.find('.popover-textarea');
+                        //attach link text
+                        // $popoverTextarea.val($comment.text().trim()).focus();
+                        //close on cancel
+                        $('.popover-cancel').click(function() {                              
+                            $this.popover('hide');
+                        });
+                        //update link text on submit
+                        $('.popover-submit').click(function() {
+                            // $comment.text($popoverTextarea.val().trim());
+                            // $this.parent().find(".truncatedComment").text(truncateWithEllipses($comment.text().trim()));
+                            // kendo.bind("body", viewModel);
+                            $hiddenValueField.val($popoverInput.val());
+                            $hiddenValueField.trigger("change");
+                            $this.popover('hide');
+                        });
+                    });
+                    const ps = new PerfectScrollbar('.quote-scrollable-pane');
+                },
+                renderPlusPackageSubItemsTemplate: function(data) {
+                    return kendo.Template.compile($('#plusPackageSubItemsTemplate').html())(data);
+                },
+                renderInfoFieldTemplate: function(data, uid) {
+                    const infoField = viewModel.infoFields.get(data.id);
+                    // infoField.guid = uid;
+                    console.log(data);
+                    console.log(infoField);
+                    return kendo.Template.compile($('#infoFieldTemplate').html())(infoField);
+                },
+                placeholder: function(element) {
+                    return element.clone().addClass('placeholderGhost');
+                },
+                hint: function(element) {
+                    return element
+                        .clone()
+                        .addClass('hint')
+                        .height(element.height())
+                        .width(element.width() + 25)
+                        .css('z-index', '9999999');
+                },
+                initEditLayout: function() {  
+                    $('.dragHandle').show(); 
+                    $('.removeField').show();  
+
+                    $("#quoteInformationColumn1").kendoSortable({
+                        connectWith: "#quoteInformationColumn2",
+                        placeholder: SAAS_QUOTE.placeholder,
+                        hint: SAAS_QUOTE.hint,
+                        //handle: '.dragHandle',
+                        filter: '>.form-group',
+                        ignore: '.removeField', 
+                        end(widget) {
+                            console.log(widget);
+                            console.log(widget.item.data('guid'));
+                            console.log(widget.sender.element.attr('id'));
+                            const fieldGuid = widget.item.data('guid');
+                            console.log(fieldGuid);
+                            const columnDataSourceName = widget.sender.element.attr('id');
+                            const dataSource = viewModel[columnDataSourceName];
+                            // const item = dataSource.getByUid(fieldGuid);
+                            const item = dataSource.get(fieldGuid);
+                            console.log(columnDataSourceName);
+                            console.log(dataSource);
+                            console.log(item);                        
+                            
+                            if (widget.action === 'sort') {  
+                                widget.preventDefault();                          
+                                dataSource.data();
+                                dataSource.remove(item);
+                                widget.item.remove();
+                                dataSource.insert(widget.newIndex, item);
+                                dataSource.data();
+                            } else if (widget.action === 'remove') {
+                                const itemClone = item.toJSON();
+                                SAAS_QUOTE.tempDraggedItem = [JSON.stringify(itemClone), item.id];
+                                widget.item.remove();
+                                dataSource.remove(item);
+                                dataSource.data();
+                            } else if (widget.action === 'receive') {
+                                console.log(SAAS_QUOTE.tempDraggedItem);
+                                widget.preventDefault(); 
+                                widget.item.remove();
+                                const itemToInsert = JSON.parse(SAAS_QUOTE.tempDraggedItem[0]);
+                                itemToInsert.id = SAAS_QUOTE.tempDraggedItem[1];
+                                dataSource.insert(widget.newIndex, itemToInsert);
+                                SAAS_QUOTE.tempDraggedItem = [];
+                                dataSource.data();
+                            }
+                            
+                            $(".dragHandle").show();
+                            $('.removeField').show(); 
+                        }
+                    });
+
+                    $("#quoteInformationColumn2").kendoSortable({
+                        connectWith: "#quoteInformationColumn1",
+                        placeholder: SAAS_QUOTE.placeholder,
+                        hint: SAAS_QUOTE.hint,
+                        // handler: '.dragHandle',
+                        // filter: '>.form-group',
+                        ignore: '.removeField',
+                        end(widget) {
+                            console.log(widget);
+                            console.log(widget.item.data('guid'));
+                            console.log(widget.sender.element.attr('id'));
+                            const fieldGuid = widget.item.data('guid');
+                            const columnDataSourceName = widget.sender.element.attr('id');
+                            const dataSource = viewModel[columnDataSourceName];
+                            const item = dataSource.get(fieldGuid);
+                            
+                            if (widget.action === 'sort') {
+                                widget.preventDefault();
+                                dataSource.data();
+                                dataSource.remove(item);
+                                widget.item.remove();
+                                dataSource.insert(widget.newIndex, item);
+                            } else if (widget.action === 'remove') {
+                                SAAS_QUOTE.tempDraggedItem = [JSON.stringify(item.toJSON()), item.id];
+                                widget.item.remove();
+                                dataSource.remove(item);
+                                dataSource.data();
+                            } else if (widget.action === 'receive') {
+                                console.log(SAAS_QUOTE.tempDraggedItem);
+                                widget.preventDefault(); 
+                                widget.item.remove();
+                                const itemToInsert = JSON.parse(SAAS_QUOTE.tempDraggedItem[0]);
+                                itemToInsert.id = SAAS_QUOTE.tempDraggedItem[1];
+                                dataSource.insert(widget.newIndex, itemToInsert);
+                                SAAS_QUOTE.tempDraggedItem = [];
+                                dataSource.data();
+                            }
+                            
+                            $(".dragHandle").show();
+                            $('.removeField').show(); 
+                        }
+                    });
+                    
+                    $(".removeField").on("click", function(e) {
+                        const fieldGuid = $(e.target).closest('.form-group').data('guid');
+                        const columnDataSourceName = $(e.target).closest('.info-fields-column').attr('id');
+                        const dataSource = viewModel[columnDataSourceName];
+                        const item = dataSource.getByUid(fieldGuid);
+                        const fieldItem = viewModel.infoFields.get(item.id);
+                        dataSource.remove(item);
+                        fieldItem.set("active", false);
+                    });
+                },
+                infoFieldWindowOpen: function() {
+                    console.log('open');
+                    
+                    $("input[name='infoFieldOptions']").on("change", function() {
+                        console.log('change');
+                        if ( $("input[name='infoFieldOptions']:checked").length ) {
+                            $("#addInfoFieldButton").removeAttr("disabled");
+                        } else {
+                            $("#addInfoFieldButton").prop("disabled", true);
+                        }
+                    });                    
+                    return null;
+                },
+                infoFieldWindowClose: function() {
+                    return null;
+                },
+                addInfoField: function() {
+                    if ( $("input[name='infoFieldOptions']:checked").length ) {
+                        const infoFieldId = $("input[name='infoFieldOptions']:checked").val();
+                        const infoFieldItem = viewModel.infoFields.get(infoFieldId);
+                        infoFieldItem.set('active', true);
+                        viewModel.quoteInformationColumn1.insert(0, { id: infoFieldId });
+                    }
+                    SAAS_QUOTE.infoFieldWindow.close();
+                },
+                initInfoFieldWindow: function() {
+                    SYSPRO_VB.createKendoWindow('infoFieldWindow', 'Add new info field', SAAS_QUOTE.infoFieldWindowOpen, SAAS_QUOTE.infoFieldWindowClose, null, null, null, null, null, null, null, null, true);
+                    SAAS_QUOTE.infoFieldWindow = $('#infoFieldWindow').data('kendoWindow');
+                }
+            }
+             
+            
+            
+            $(document).ready(function() {
+                
+                
+                SAAS_QUOTE.init();
+                
+                
 
                 // var lineItemTotalsTemplate = kendo.template($("#lineItemTotalsTemplate").html());
                 // console.log(viewModel.apiServices.data());
@@ -3847,76 +4002,12 @@
                 
                 // kendo.bind("body", viewModel);
                 
-                const wizard = $(".wizard-card").bootstrapWizard({
-                    tabClass: "nav nav-pills",
-                    nextSelector: ".btn-next",
-                    previousSelector: ".btn-previous",
+                            
 
-                    onNext: function(tab, navigation, index) {
-                        var $valid = true; // use some validator
-                        if (!$valid) {
-                            $validator.focusInvalid();
-                            return false;
-                        }
-                    },
-
-                    onInit: function(tab, navigation, index) {
-                        //check number of tabs and fill the entire row
-                        var $total = navigation.find("li").length;
-                        $width = 100 / $total;
-
-                        navigation.find("li").css("width", $width + "%");
-                    },
-
-                    onTabClick: function(tab, navigation, index) {
-                        var $valid = true; // use some validator
-
-                        if (!$valid) {
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    },
-
-                    onTabShow: function(tab, navigation, index) {
-                        var $total = navigation.find("li").length;
-                        var $current = index + 1;
-
-                        var $wizard = navigation.closest(".wizard-card");
-
-                        // If it's the last tab then hide the last button and show the finish instead
-                        if ($current >= $total) {
-                            $($wizard)
-                                .find(".btn-next")
-                                .hide();
-                            $($wizard)
-                                .find(".btn-finish")
-                                .show();
-                        } else {
-                            $($wizard)
-                                .find(".btn-next")
-                                .show();
-                            $($wizard)
-                                .find(".btn-finish")
-                                .hide();
-                        }
-
-                        //update progress
-                        var move_distance = 100 / $total;
-                        move_distance = move_distance * index + move_distance / 2;
-
-                        $wizard.find($(".progress-bar")).css({ width: move_distance + "%" });
-                        //e.relatedTarget // previous tab
-
-                        $wizard.find($(".wizard-card .nav-pills li.active a .icon-circle")).addClass("checked");
-                    },
-                });
-
-                console.log(wizard);
 
                 $(".set-full-height").css("height", "auto");
 
-                const ps = new PerfectScrollbar('.quote-scrollable-pane');
+                
 
                 window.viewModel = viewModel;
 
