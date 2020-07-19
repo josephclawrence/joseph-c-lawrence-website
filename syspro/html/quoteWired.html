@@ -349,6 +349,9 @@
         min-width: 140px;
     }
     /*            Navigation menu                */
+    .wizard-tab {
+        width: 20%;
+    }
     .nav-pills {
         background-color: #f3f2ee;
         position: absolute;
@@ -708,7 +711,7 @@
          }
 
             .popover.textarea-popover .popover-textarea-content {
-                height: 100px;
+                height: 55px;
                 width: 100%;
                 padding-top: 0px;
             }
@@ -1774,7 +1777,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                                 data-toggle="popover" 
                                 title="Apply discount"
-                                data-content='<div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
+                                data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span></div></div>'
                                 data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
                             <span class="hidden-discount-field" style="display: none;">
                                 <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
@@ -1821,7 +1824,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         </script>
 
         <script id="quoteStepsTemplate" type="text/x-kendo-template">
-            <li data-bind="style: { width: wizardTabsWidth }">
+            <li class="wizard-tab" data-bind="style: { width: wizardTabsWidth }">
                 <a href="\\##: id #" data-toggle="tab">
                     <div class="icon-circle">
                         <i class=" material-icons">#: icon #</i>
@@ -1954,7 +1957,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                         data-toggle="popover" 
                         title="Apply discount"
-                        data-content='<div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span>'
+                        data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span></div></div>'
                         data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
                     <span class="hidden-discount-field" style="display: none;">
                         <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
@@ -2177,6 +2180,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             const viewModel = kendo.observable({
                 change: function(e) {
                     console.log(e);
+                    
                 },
                 currency: "$",
                 infoFields: new kendo.data.DataSource({
@@ -3078,7 +3082,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     },
                     change: function(e) {
                         console.log(e);
-                        // viewModel.wizardTabsWidth();
+                        setTimeout(function(){
+                            viewModelMethods.wizardTabsWidth();
+                        }, 300)
+                        
                     },
                     data: [
                         {
@@ -3940,13 +3947,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     });
                     
                     $(".removeField").on("click", function(e) {
-                        const fieldGuid = $(e.target).closest('.form-group').data('guid');
-                        const columnDataSourceName = $(e.target).closest('.info-fields-column').attr('id');
-                        const dataSource = viewModel[columnDataSourceName];
-                        const item = dataSource.getByUid(fieldGuid);
-                        const fieldItem = viewModel.infoFields.get(item.id);
-                        dataSource.remove(item);
-                        fieldItem.set("active", false);
+                        SAAS_QUOTE.removeInfoField(e.target);
                     });
                 },
                 infoFieldWindowOpen: function() {
@@ -3973,6 +3974,15 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         viewModel.quoteInformationColumn1.insert(0, { id: infoFieldId });
                     }
                     SAAS_QUOTE.infoFieldWindow.close();
+                },
+                removeInfoField: function(field) {
+                    const fieldGuid = $(field).closest('.form-group').data('guid');
+                    const columnDataSourceName = $(field).closest('.info-fields-column').attr('id');
+                    const dataSource = viewModel[columnDataSourceName];
+                    const item = dataSource.getByUid(fieldGuid);
+                    const fieldItem = viewModel.infoFields.get(item.id);
+                    dataSource.remove(item);
+                    fieldItem.set("active", false);
                 },
                 initInfoFieldWindow: function() {
                     SYSPRO_VB.createKendoWindow('infoFieldWindow', 'Add new info field', SAAS_QUOTE.infoFieldWindowOpen, SAAS_QUOTE.infoFieldWindowClose, null, null, null, null, null, null, null, null, true);
