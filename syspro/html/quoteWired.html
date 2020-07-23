@@ -1025,7 +1025,11 @@ background-color:#f5f5f5
 color:#fff;background-color:#428bca;border-color:#428bca;
 	z-index:10;
 }
-
+.info-fields-column .radio {
+    height: 28px;
+    display: inline-block;
+    margin-right: 15px;
+}
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
         <script>
@@ -1838,22 +1842,23 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         </script>
         
         <script id="infoFieldTemplate" type="text/x-kendo-template">
-            
-            <div class="form-group md-outline" data-bind="css: { is-empty: isEmpty }" data-guid="#: id #">
+            #: isOutline() #
+            #: isEmpty() #
+            <div class="form-group #if ( isEmpty() ) {# is-empty #}# #if ( isOutline() ) {# md-outline #}# " data-guid="#: id #">
                 <span class="dragHandle sys-bg-primary"><i class="material-icons sys-fg-white">drag_indicator</i></span>
                 <span class="removeField sys-bg-danger"><i class="material-icons sys-fg-white">delete_forever</i></span>
                 #if ( type === 'text' ) {#
-                    <input type="text" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
+                    <input type="text" class="form-control" id="#: id #" name="#: name #" #if ( required ) {# required #}# data-bind="value: value" #: readonly # />
                     <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'dropdownlist' ) {#
-                    <textarea rows="3" class="form-control" id="#: id #" name="#: name #" data-bind="value: default" #: readonly # />
+                    <textarea rows="3" class="form-control" id="#: id #" name="#: name #" data-bind="value: default" #: readonly # #if ( required ) {# required #}# />
                     <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'textarea' ) {#
-                    <textarea rows="3" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
+                    <textarea rows="3" class="form-control" id="#: id #" name="#: name #" data-bind="value: default" #if ( required ) {# required #}# #: readonly # />
                     <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
@@ -1882,17 +1887,17 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         #
                     </div>
                 #} else if ( type === 'number' ) {#
-                    <input type="number" class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" #: readonly # />
+                    <input type="number" class="form-control" id="#: id #" name="#: name #" data-bind="value: default" #if ( required ) {# required #}# #: readonly # />
                     <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'date' ) {#
-                    <input type="text" class="form-control date" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default" />
+                    <input type="text" class="form-control date" id="#: id #" name="#: name #" data-bind="value: default" #if ( required ) {# required #}# />
                     <label for="#: id #" class="">
                         <span>#: label #</span>
                     </label>
                 #} else if ( type === 'select' ) {#
-                    <select class="form-control" id="#: id #" name="#: name #" data-bind="attr: { required: required }, value: default">
+                    <select class="form-control" id="#: id #" name="#: name #" #if ( required ) {# required #}# data-bind="value: default">
                         # $.each(data.options, function (index, option) {
                             # <option value="${option.value}">${option.label}</option>  #                        
                         }); 
@@ -2112,6 +2117,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     "default": {
                         type: "string"
                     },
+                    "type": {
+                        type: "string"
+                    },
+                    "isOutlined": {
+                        type: "boolean"
+                    },
                     // "discount": {
                     //     type: "number"
                     // },
@@ -2123,7 +2134,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     }
                 },
                 isEmpty: function() {
-                    return this.get("default") == '';
+                    return this.get("default") === '';
+                },
+                isOutline: function() {
+                    // console.log(this.get("type"));
+                    // console.log(this.get("type") == "radio");
+                    return !(this.get("type") == 'radio');
                 },
                 sysfginverse: function() {
                     return this.sysbgverylightgray();
@@ -2194,6 +2210,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: '',
                             type: 'radio',
                             default: '',
+                            value: '',
                             options: [
                                 {
                                     value: 'new',
@@ -2214,8 +2231,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Quote number',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
-                            required: false,
+                            required: true,
                             readonly: '',
                             active: true,
                         },
@@ -2225,6 +2243,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Reference number',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: 'readonly'
@@ -2246,6 +2265,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Expiry date',
                             type: 'date',
                             default: '',
+                            value: '',
                             options: [],
                             required: true,
                             readonly: '',
@@ -2257,6 +2277,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Quote version',
                             type: 'select',
                             default: '',
+                            value: '',
                             options: [
                                 {
                                     value: 1,
@@ -2277,6 +2298,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Customer number',
                             type: 'browse',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2288,6 +2310,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Customer name',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2310,6 +2333,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Payment cycle',
                             type: 'select',
                             default: '',
+                            value: '',
                             options: [
                                 {
                                     value: 1,
@@ -2334,6 +2358,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'License start date',
                             type: 'date',
                             default: '',
+                            value: '',
                             options: [],
                             required: true,
                             readonly: '',
@@ -2345,6 +2370,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Description',
                             type: 'textarea',
                             default: '',
+                            value: '',
                             options: [],
                             required: true,
                             readonly: '',
@@ -2355,7 +2381,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             name: 'addressOne',
                             label: 'Address line 1',
                             type: 'text',
-                            default: '',
+                            default: '222333',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2367,6 +2393,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Address line 2',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2378,6 +2405,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'City',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2389,6 +2417,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'State/Province',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2400,6 +2429,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Country',
                             type: 'dropdownlist',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2411,6 +2441,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Postal/Zip code',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2422,6 +2453,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Currency',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2433,6 +2465,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Contact name',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2444,6 +2477,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Contact phone',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2455,6 +2489,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Contact email',
                             type: 'email',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2466,6 +2501,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Company reg. no.',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -2477,6 +2513,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             label: 'Company VAT no.',
                             type: 'text',
                             default: '',
+                            value: '',
                             options: [],
                             required: false,
                             readonly: '',
@@ -3081,7 +3118,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         model: Package
                     },
                     change: function(e) {
-                        console.log(e);
+                        // console.log(e);
                         setTimeout(function(){
                             viewModelMethods.wizardTabsWidth();
                         }, 300)
@@ -3274,6 +3311,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             detailsLink: 'https://google.com',
                             type: 'select',
                             default: '',
+                            value: '',
                             cost: 22,
                             discount: {
                                 hasDiscount: viewModelMethods.hasDiscount,
@@ -3321,6 +3359,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             detailsLink: 'https://google.com',
                             type: 'select',
                             default: '',
+                            value: '',
                             cost: 32,
                             discount: {
                                 hasDiscount: viewModelMethods.hasDiscount,
@@ -3368,6 +3407,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             detailsLink: 'https://google.com',
                             type: 'radioButton',
                             default: '',
+                            value: '',
                             cost: 32,
                             discount: {
                                 hasDiscount: viewModelMethods.hasDiscount,
@@ -3405,6 +3445,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             detailsLink: 'https://google.com',
                             type: 'radioButton',
                             default: '',
+                            value: '',
                             cost: 32,
                             discount: {
                                 hasDiscount: viewModelMethods.hasDiscount,
@@ -3505,9 +3546,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     viewModel.apiServices.read();
                     viewModel.additionalSoftware.read();
                     viewModel.isvSoftware.read();
-                    viewModel.infrastructure.read();
-
-                    $.material.init();
+                    viewModel.infrastructure.read();                    
 
                     kendo.bind($("body"), viewModel);
                     SAAS_QUOTE.initWizard();
@@ -3516,6 +3555,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     SAAS_QUOTE.uiInitExtras();
                     SAAS_QUOTE.initInfoFieldWindow();
                     SAAS_QUOTE.registerEventHandlers();
+                    $.material.init();
                 },
                 initWizard: function() {
                     const wizard = $(".wizard-card").bootstrapWizard({
@@ -3834,8 +3874,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 renderInfoFieldTemplate: function(data, uid) {
                     const infoField = viewModel.infoFields.get(data.id);
                     // infoField.guid = uid;
-                    console.log(data);
-                    console.log(infoField);
+                    // console.log(data);
+                    console.log(infoField.isOutline());
+                    // infoField.isOutlined = infoField.isOutline();
                     return kendo.Template.compile($('#infoFieldTemplate').html())(infoField);
                 },
                 placeholder: function(element) {
@@ -3861,18 +3902,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         filter: '>.form-group',
                         ignore: '.removeField', 
                         end(widget) {
-                            console.log(widget);
-                            console.log(widget.item.data('guid'));
-                            console.log(widget.sender.element.attr('id'));
                             const fieldGuid = widget.item.data('guid');
-                            console.log(fieldGuid);
                             const columnDataSourceName = widget.sender.element.attr('id');
                             const dataSource = viewModel[columnDataSourceName];
-                            // const item = dataSource.getByUid(fieldGuid);
-                            const item = dataSource.get(fieldGuid);
-                            console.log(columnDataSourceName);
-                            console.log(dataSource);
-                            console.log(item);                        
+                            const item = dataSource.get(fieldGuid);                       
                             
                             if (widget.action === 'sort') {  
                                 widget.preventDefault();                          
@@ -3888,7 +3921,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                 dataSource.remove(item);
                                 dataSource.data();
                             } else if (widget.action === 'receive') {
-                                console.log(SAAS_QUOTE.tempDraggedItem);
                                 widget.preventDefault(); 
                                 widget.item.remove();
                                 const itemToInsert = JSON.parse(SAAS_QUOTE.tempDraggedItem[0]);
@@ -3897,7 +3929,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                 SAAS_QUOTE.tempDraggedItem = [];
                                 dataSource.data();
                             }
-                            
+                            $.material.init();
                             $(".dragHandle").show();
                             $('.removeField').show(); 
                         }
@@ -3911,9 +3943,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         // filter: '>.form-group',
                         ignore: '.removeField',
                         end(widget) {
-                            console.log(widget);
-                            console.log(widget.item.data('guid'));
-                            console.log(widget.sender.element.attr('id'));
                             const fieldGuid = widget.item.data('guid');
                             const columnDataSourceName = widget.sender.element.attr('id');
                             const dataSource = viewModel[columnDataSourceName];
@@ -3931,7 +3960,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                 dataSource.remove(item);
                                 dataSource.data();
                             } else if (widget.action === 'receive') {
-                                console.log(SAAS_QUOTE.tempDraggedItem);
                                 widget.preventDefault(); 
                                 widget.item.remove();
                                 const itemToInsert = JSON.parse(SAAS_QUOTE.tempDraggedItem[0]);
@@ -3940,7 +3968,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                 SAAS_QUOTE.tempDraggedItem = [];
                                 dataSource.data();
                             }
-                            
+                            $.material.init();
                             $(".dragHandle").show();
                             $('.removeField').show(); 
                         }
@@ -3973,7 +4001,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         infoFieldItem.set('active', true);
                         viewModel.quoteInformationColumn1.insert(0, { id: infoFieldId });
                     }
-                    SAAS_QUOTE.infoFieldWindow.close();
+                    $.material.init();
+                    SAAS_QUOTE.infoFieldWindow.close();                    
                 },
                 removeInfoField: function(field) {
                     const fieldGuid = $(field).closest('.form-group').data('guid');
