@@ -2016,7 +2016,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             </div>
                         #}#
                         <div class="col-sm-5 text-left">
-                            <a href="#: detailsLink #" class="package-title" data-toggle="tooltip" 
+                            <a href="#: ProductLink #" class="package-title" data-toggle="tooltip" 
                             data-tooltip="tooltip" data-container="body"
                             data-placement="top" title="Download details document">
                                 <i class="material-icons sys-txt-sm" data-bind="css: { 
@@ -2071,18 +2071,18 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         </div>
 
                         <div class="col-sm-4 text-right">
-                            <span data-bind="visible: discount.hasDiscount">
+                            <span data-bind="visible: hasDiscount">
                                 <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
                             </span>                           
-                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: discount.discountAllowed }"></b>
+                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: DiscountAllowed }"></b>
                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                                 data-toggle="popover" 
                                 title="Apply discount"
-                                data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span></div></div>'
-                                data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
+                                data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: MaxDiscountPercentage #%</span></div></div>'
+                                data-bind="visible: DiscountAllowed, css:{active: hasDiscount}">assignment_returned</i>
                             <span class="hidden-discount-field" style="display: none;">
                                 <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
-                            <input type="number" max="#: discount.max #" class="form-control discount-value" data-bind='value: discount.value'></input>
+                            <input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-value" data-bind='value: DiscountValue'></input>
                             </span>
                         </div>
                         #if (data.subItems && data.subItems.length) {#
@@ -2116,7 +2116,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             <tr data-bind="visible: isActive">
                 <td>#: name #</td>
                 <td class="text-right">
-                    <small data-bind="visible: discount.hasDiscount" class="original-price sys-fg-danger sys-mg-r-5">
+                    <small data-bind="visible: hasDiscount" class="original-price sys-fg-danger sys-mg-r-5">
                         <span data-bind="text: perUserCostWithCurrency"></span> / <span data-bind="text: totalNetCostWithCurrency"></span>
                     </small>
                     <span data-bind="text: perUserCostWithCurrencyAndDiscount"></span> / <span data-bind="text: totalCostWithCurrency"></span>
@@ -2140,7 +2140,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 <label for="#: id #" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                     <span>#: label #</span>
                     <p class="sys-mg-t-5">
-                        <a href="#: detailsLink #" class="package-title" data-toggle="tooltip" 
+                        <a href="#: ProductLink #" class="package-title" data-toggle="tooltip" 
                         data-tooltip="tooltip" data-container="body"
                         data-placement="top" title="Download details document">
                             <i class="material-icons sys-fg-primary">description</i>
@@ -2173,18 +2173,18 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     
                 #}#
                 <div class="col-xs-2 infrastructure-pricing">
-                    <span data-bind="visible: discount.hasDiscount">
+                    <span data-bind="visible: hasDiscount">
                         <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
                     </span>                           
-                    + <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: discount.discountAllowed }"></b>
+                    + <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: DiscountAllowed }"></b>
                     <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                         data-toggle="popover" 
                         title="Apply discount"
-                        data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: discount.max #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: discount.max #%</span></div></div>'
-                        data-bind="visible: discount.discountAllowed, css:{active: discount.hasDiscount}">assignment_returned</i>
+                        data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: MaxDiscountPercentage #%</span></div></div>'
+                        data-bind="visible: DiscountAllowed, css:{active: hasDiscount}">assignment_returned</i>
                     <span class="hidden-discount-field" style="display: none;">
                         <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
-                        <input type="number" max="#: discount.max #" class="form-control discount-value" data-bind='value: discount.value'></input>
+                        <input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-value" data-bind='value: DiscountValue'></input>
                     </span>
 
                 </div>
@@ -2198,8 +2198,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 "IsNewQuote": "true",
                 "QuoteNumber": "10A00000001",
                 "ReferenceNumber": "Reference Number",
-                "QuoteDate": "2020-07-28T11:20:24.2585246+02:00",
-                "ExpiryDate": "2020-07-28T11:20:24.2585246+02:00",
+                "QuoteDate": "2020-07-30T09:49:45.7658027+02:00",
+                "ExpiryDate": "2020-07-30T09:49:45.7668019+02:00",
                 "QuoteVersionList": {
                     "string": [
                         "V1",
@@ -2555,7 +2555,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "4",
+                            "DiscountValue": "4",
+                            "DiscountPercentage": "22.2",
+                            "MaxDiscountPercentage": "50",
+                            "DiscountAllowed": "true",
                             "FeatureList": {
                                 "string": [
                                     "System Foundation",
@@ -2577,7 +2580,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Accounts Receivable",
@@ -2598,7 +2604,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Inventory Management",
@@ -2618,7 +2627,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Inventory Management",
@@ -2639,7 +2651,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "4",
+                            "DiscountValue": "4",
+                            "DiscountPercentage": "22.2",
+                            "MaxDiscountPercentage": "50",
+                            "DiscountAllowed": "true",
                             "FeatureList": null,
                             "SubProductList": {
                                 "Product": [
@@ -2651,7 +2666,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2663,7 +2681,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2675,7 +2696,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2687,7 +2711,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     }
@@ -2702,7 +2729,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "4",
+                            "DiscountValue": "4",
+                            "DiscountPercentage": "22.2",
+                            "MaxDiscountPercentage": "30",
+                            "DiscountAllowed": "true",
                             "FeatureList": null,
                             "SubProductList": {
                                 "Product": [
@@ -2714,7 +2744,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2726,7 +2759,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2738,7 +2774,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2750,7 +2789,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2762,7 +2804,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "4",
+                                        "DiscountPercentage": "22.2",
+                                        "MaxDiscountPercentage": "50",
+                                        "DiscountAllowed": "true",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2774,7 +2819,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2786,7 +2834,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2798,7 +2849,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     }
@@ -2813,7 +2867,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "4",
+                            "DiscountValue": "4",
+                            "DiscountPercentage": "22.2",
+                            "MaxDiscountPercentage": "40",
+                            "DiscountAllowed": "true",
                             "FeatureList": null,
                             "SubProductList": {
                                 "Product": [
@@ -2825,7 +2882,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2837,7 +2897,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2849,7 +2912,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2861,7 +2927,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     },
@@ -2873,7 +2942,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                                         "NumberOfUsers": "0",
                                         "Price": "18",
-                                        "Discount": "0",
+                                        "DiscountValue": "0",
+                                        "DiscountPercentage": "0",
+                                        "MaxDiscountPercentage": "0",
+                                        "DiscountAllowed": "false",
                                         "FeatureList": null,
                                         "SubProductList": null
                                     }
@@ -2892,7 +2964,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Accounts Payable Primary Query",
@@ -2913,7 +2988,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "4",
+                            "DiscountPercentage": "22.2",
+                            "MaxDiscountPercentage": "50",
+                            "DiscountAllowed": "true",
                             "FeatureList": {
                                 "string": [
                                     "Inventory Management Primary Query",
@@ -2935,7 +3013,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Bill of Materials Primary Query",
@@ -2956,7 +3037,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Accounts Payable Primary Posting",
@@ -2981,7 +3065,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": null,
                             "SubProductList": null
                         },
@@ -2993,7 +3080,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Purchase Orders Primary Posting",
@@ -3015,7 +3105,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Sales Orders Primary Posting",
@@ -3037,7 +3130,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Work in Progress Primary Posting",
@@ -3060,7 +3156,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": {
                                 "string": [
                                     "Inventory Management Inspection System",
@@ -3085,7 +3184,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "4",
+                            "DiscountPercentage": "22.2",
+                            "MaxDiscountPercentage": "80",
+                            "DiscountAllowed": "true",
                             "FeatureList": null,
                             "SubProductList": null
                         },
@@ -3097,7 +3199,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": null,
                             "SubProductList": null
                         },
@@ -3109,7 +3214,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": null,
                             "SubProductList": null
                         },
@@ -3121,7 +3229,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": null,
                             "SubProductList": null
                         },
@@ -3133,7 +3244,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": null,
                             "SubProductList": null
                         },
@@ -3145,7 +3259,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": null,
                             "SubProductList": null
                         },
@@ -3157,7 +3274,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
-                            "Discount": "0",
+                            "DiscountValue": "0",
+                            "DiscountPercentage": "0",
+                            "MaxDiscountPercentage": "0",
+                            "DiscountAllowed": "false",
                             "FeatureList": null,
                             "SubProductList": null
                         }
@@ -3178,7 +3298,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     return this.get("userCount") * this.get("perUserCost");
                 },
                 totalNetCostWithCurrency: function() {
-                    return this.get("discount.discountAllowed") && this.get("discount.hasDiscount") && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
+                    return this.get("DiscountAllowed") && this.hasDiscount() && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
                 },
                 totalCost: function() {
                     return this.totalNetCost() - this.totalDiscount();
@@ -3187,7 +3307,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     return this.get("currency") + this.totalCost();
                 },
                 totalDiscount: function() {
-                    return this.totalNetCost() * (this.get("discount.value") / 100);
+                    return this.totalNetCost() * (this.get("DiscountValue") / 100);
                 },
                 totalDiscountWithCurrency: function() {
                     return this.get("currency") + this.totalDiscount();
@@ -3196,7 +3316,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     return this.get("currency") + this.get("perUserCost");
                 },
                 perUserCostWithCurrencyAndDiscount: function() {
-                    return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("discount.value") / 100));
+                    return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("DiscountValue") / 100));
                 },
                 productSuiteActive: function() {
                     return this.get("CoreBundles") && this.get("CoreBundles.Product") && this.get("CoreBundles.Product").length;
@@ -3289,7 +3409,231 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     console.log($total, $width);
                     return $width + "%";
                 },
+                sysbgverylightgray: function() {
+                    return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("name"));
+                },
+                sysfginverse: function() {
+                    return this.sysbgverylightgray();
+                },
+                sysfgwhite: function() {
+                    return !this.sysbgverylightgray();
+                },
+                sysbginverse: function() {
+                    return ["Foundation", "Foundation+"].includes(this.get("name"));
+                },
+                sysbgsuccess: function() {
+                    return ["Financials", "Financials+"].includes(this.get("name"));
+                },
+                sysbginfo: function() {
+                    return ["Distribution", "Distribution+"].includes(this.get("name"));
+                },
+                sysbgprimary: function() {
+                    return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
+                },
+                isActive: function() {
+                    return (this.get("IsMandatory") || this.get("isSelected")) && this.get("userCount") > 0;
+                },
+                isProductSuite: function() {
+                    return this.get("category") === "productSuite";
+                },
+                isNotProductSuite: function() {
+                    return this.get("category") !== "productSuite";
+                },
+                isEmpty: function() {
+                    return this.get("default") === '';
+                },
+                isOutline: function() {
+                    // console.log(this.get("type"));
+                    // console.log(this.get("type") == "radio");
+                    return !(this.get("type") == 'radio');
+                },
+                sysfginverse: function() {
+                    return this.sysbgverylightgray();
+                },
+                totalNetCost: function() {
+                    // TODO: Get the active, checked item, and grab the cost of that
+                    return this.get("cost");
+                },
+                totalNetCostWithCurrency: function() {
+                    return this.get("DiscountAllowed") && this.hasDiscount() ? viewModel.currency + this.totalNetCost() : '';
+                },
             }
+            
+
+            kendo.data.ObservableObject.prototype.hasDiscount = function() {
+                return parseInt(this.get("DiscountValue")) > 0;
+            };
+            kendo.data.ObservableObject.prototype.hasOwnUserCount = function() {
+                return this.parent().parent() !== viewModel.CoreBundles;
+            };
+            kendo.data.ObservableObject.prototype.totalNetCost = function() {
+                return this.get("userCount") * this.get("perUserCost");
+            };
+            kendo.data.ObservableObject.prototype.totalNetCostWithCurrency = function() {
+                return this.get("DiscountAllowed") && this.hasDiscount() && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
+            };
+            kendo.data.ObservableObject.prototype.totalCost = function() {
+                return this.totalNetCost() - this.totalDiscount();
+            };
+            kendo.data.ObservableObject.prototype.totalCostWithCurrency = function() {
+                return this.get("currency") + this.totalCost();
+            };
+            kendo.data.ObservableObject.prototype.totalDiscount = function() {
+                return this.totalNetCost() * (this.get("DiscountValue") / 100);
+            };
+            kendo.data.ObservableObject.prototype.totalDiscountWithCurrency = function() {
+                return this.get("currency") + this.totalDiscount();
+            };
+            kendo.data.ObservableObject.prototype.perUserCostWithCurrency = function() {
+                return this.get("currency") + this.get("perUserCost");
+            };
+            kendo.data.ObservableObject.prototype.perUserCostWithCurrencyAndDiscount = function() {
+                return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("DiscountValue") / 100));
+            };
+            kendo.data.ObservableObject.prototype.productSuiteActive = function() {
+                return this.get("CoreBundles") && this.get("CoreBundles.Product") && this.get("CoreBundles.Product").length;
+            };
+            kendo.data.ObservableObject.prototype.apiServicesActive = function() {
+                return this.get("ApiServices") && this.get("ApiServices.Product") && this.get("ApiServices.Product").length;
+            };
+            kendo.data.ObservableObject.prototype.additionalSoftwareActive = function() {
+                return this.get("AdditionalSoftware") && this.get("AdditionalSoftware.Product") && this.get("AdditionalSoftware.Product").length;
+            };
+            kendo.data.ObservableObject.prototype.isvSoftwareActive = function() {
+                return this.get("IsvSoftware") && this.get("IsvSoftware.Product") && this.get("IsvSoftware.Product").length;
+            };
+            kendo.data.ObservableObject.prototype.educationActive = function() {
+                return this.get("education") && this.get("education").length;
+            };
+            kendo.data.ObservableObject.prototype.activeSections = function() {
+                const activeSections = [];
+                
+                activeSections.push({ 
+                    id: 'info',
+                    name: 'Quote information',
+                    icon: 'person_pin',
+                });
+                if ( this.productSuiteActive() ) activeSections.push({ 
+                    id: 'productSuite',
+                    name: 'Product suite',
+                    icon: 'apps',
+                });
+                if ( this.additionalSoftwareActive() ) activeSections.push({ 
+                    id: 'additionalSoftware',
+                    name: 'Add-on software',
+                    icon: 'queue_play_next',
+                });
+                if ( this.isvSoftwareActive() ) activeSections.push({ 
+                    id: 'isvSoftware',
+                    name: 'ISV software',
+                    icon: 'power',
+                });
+                activeSections.push({ 
+                    id: 'infrastructure',
+                    name: 'Infrastructure',
+                    icon: 'dns',
+                });
+                if ( this.educationActive() ) activeSections.push({ 
+                    id: 'education',
+                    name: 'Education',
+                    icon: 'school',
+                });
+                
+                return activeSections;
+            };
+            kendo.data.ObservableObject.prototype.netGrandTotal = function() {
+                const apiServicesNetTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+
+                const additionalSoftwareNetTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+
+                const isvSoftwareNetTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+
+                return apiServicesNetTotal + additionalSoftwareNetTotal + isvSoftwareNetTotal;
+            };
+            kendo.data.ObservableObject.prototype.discountGrandTotal = function() {
+                const apiServicesDiscountTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+
+                const additionalSoftwareDiscountTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+
+                const isvSoftwareDiscountTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+
+                return apiServicesDiscountTotal + additionalSoftwareDiscountTotal + isvSoftwareDiscountTotal;
+            };
+            kendo.data.ObservableObject.prototype.discountGrandTotalWithCurrency = function() {
+                return this.get("currency") + this.discountGrandTotal();
+            };
+            kendo.data.ObservableObject.prototype.grandTotal = function() {
+                const apiServicesGrandTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+
+                const additionalSoftwareGrandTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+
+                const isvSoftwareGrandTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+
+                return apiServicesGrandTotal + additionalSoftwareGrandTotal + isvSoftwareGrandTotal;
+            };
+            kendo.data.ObservableObject.prototype.grandTotalWithCurrency = function() {
+                return this.get("currency") + this.grandTotal();
+            };             
+            kendo.data.ObservableObject.prototype.wizardTabsWidth = function() {
+                console.log('ping');
+                const $total = viewModel.activeSections().length;
+                const $width = 100 / $total;
+                console.log($total, $width);
+                return $width + "%";
+            };
+            kendo.data.ObservableObject.prototype.sysbgverylightgray = function() {
+                return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("name"));
+            };
+            kendo.data.ObservableObject.prototype.sysfginverse = function() {
+                return this.sysbgverylightgray();
+            };
+            kendo.data.ObservableObject.prototype.sysfgwhite = function() {
+                return !this.sysbgverylightgray();
+            };
+            kendo.data.ObservableObject.prototype.sysbginverse = function() {
+                return ["Foundation", "Foundation+"].includes(this.get("name"));
+            };
+            kendo.data.ObservableObject.prototype.sysbgsuccess = function() {
+                return ["Financials", "Financials+"].includes(this.get("name"));
+            };
+            kendo.data.ObservableObject.prototype.sysbginfo = function() {
+                return ["Distribution", "Distribution+"].includes(this.get("name"));
+            };
+            kendo.data.ObservableObject.prototype.sysbgprimary = function() {
+                return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
+            };
+            kendo.data.ObservableObject.prototype.isActive = function() {
+                return (this.get("IsMandatory") || this.get("isSelected")) && this.get("userCount") > 0;
+            };
+            kendo.data.ObservableObject.prototype.isProductSuite = function() {
+                return this.get("category") === "productSuite";
+            };
+            kendo.data.ObservableObject.prototype.isNotProductSuite = function() {
+                return this.get("category") !== "productSuite";
+            };
+            kendo.data.ObservableObject.prototype.isEmpty = function() {
+                return this.get("default") === '';
+            };
+            kendo.data.ObservableObject.prototype.isOutline = function() {
+                // console.log(this.get("type"));
+                // console.log(this.get("type") == "radio");
+                return !(this.get("type") == 'radio');
+            };
+            kendo.data.ObservableObject.prototype.sysfginverse = function() {
+                return this.sysbgverylightgray();
+            };
+            kendo.data.ObservableObject.prototype.totalNetCost = function() {
+                // TODO: Get the active, checked item, and grab the cost of that
+                return this.get("cost");
+            };
+            kendo.data.ObservableObject.prototype.totalNetCostWithCurrency = function() {
+                return this.get("DiscountAllowed") && this.hasDiscount() ? viewModel.currency + this.totalNetCost() : '';
+            };
+
+            kendo.data.ObservableObject.prototype.testFunction = function() {
+                console.log('ping');
+                console.log(this);
+            };
             
 
             const viewModel = kendo.observable( Object.assign(data, viewModelMethods) );
@@ -3324,7 +3668,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     "currency": {
                         type: "string"
                     },
-                    "detailsLink": {
+                    "ProductLink": {
                         type: "string"
                     }
                 },
@@ -3454,7 +3798,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     return this.get("cost");
                 },
                 totalNetCostWithCurrency: function() {
-                    return this.get("discount.discountAllowed") && this.get("discount.hasDiscount") ? viewModel.currency + this.totalNetCost() : '';
+                    return this.get("DiscountAllowed") && this.hasDiscount() ? viewModel.currency + this.totalNetCost() : '';
                 },
                 hasDiscount: viewModelMethods.hasDiscount,
                 totalCost: viewModelMethods.totalCost,
@@ -3899,7 +4243,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'ffffouno',
                             name: 'Foundation',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: true,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -3929,7 +4273,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'fffffwfwouno',
                             name: 'Foundation+',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -3959,7 +4303,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'qvbffffouno',
                             name: 'Financials',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: true,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -3989,7 +4333,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'ddbffwfwouno',
                             name: 'Financials+',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -4019,7 +4363,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'qwwwffouno',
                             name: 'Distribution',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -4049,7 +4393,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'ddbgggewuno',
                             name: 'Distribution+',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -4079,7 +4423,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'lpoouno',
                             name: 'Manufacturing',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -4109,7 +4453,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'ddbgggknkr',
                             name: 'Manufacturing+',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'productSuite',
                             hasOwnUserCount: false,
@@ -4146,7 +4490,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'xxxssshhh',
                             name: 'Financial Queries',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4176,7 +4520,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'dddoooawawa',
                             name: 'Distribution Queries',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4206,7 +4550,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'hhhwhww8888wh',
                             name: 'Operation Queries',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4236,7 +4580,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'wewiuhiwuehiu',
                             name: 'Master Data Management',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4266,7 +4610,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'oioeroifer',
                             name: 'Point of sale (POS)',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4296,7 +4640,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'qqhen',
                             name: 'Procurement Management',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4326,7 +4670,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'erferiiii7',
                             name: 'Sales Management',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4356,7 +4700,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'aaopoapwowow',
                             name: 'Operation Management',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'apiServices',
                             hasOwnUserCount: true,
@@ -4400,7 +4744,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'dsdxxxssshhh',
                             name: 'Point of sale (POS)',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'additionalSoftware',
                             hasOwnUserCount: true,
@@ -4421,7 +4765,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'wefoooawawa',
                             name: 'Espresso',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'additionalSoftware',
                             hasOwnUserCount: true,
@@ -4442,7 +4786,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'oboe888wh',
                             name: 'Manufacturing Operation Management (MOM)',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'additionalSoftware',
                             hasOwnUserCount: true,
@@ -4463,7 +4807,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'wwwwwwwiwuehiu',
                             name: 'Additional designer seats',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'additionalSoftware',
                             hasOwnUserCount: true,
@@ -4483,7 +4827,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'foioeroifer',
                             name: 'Additional analytics viewers',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'additionalSoftware',
                             hasOwnUserCount: true,
@@ -4503,7 +4847,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'ferferfqqhen',
                             name: 'Additional Contact Management User',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'additionalSoftware',
                             hasOwnUserCount: true,
@@ -4531,7 +4875,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'ooiwwwhn',
                             name: 'Warehouse Management',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'isvSoftware',
                             hasOwnUserCount: true,
@@ -4551,7 +4895,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         {
                             id: 'ooiwwdddwhn',
                             name: 'Bartender',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             mandatory: false,
                             category: 'isvSoftware',
                             hasOwnUserCount: true,
@@ -4580,7 +4924,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             id: 'databaseOption',
                             name: 'databaseOptions',
                             label: 'Database',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             type: 'select',
                             default: '',
                             value: '',
@@ -4628,7 +4972,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             id: 'backupFrequency',
                             name: 'backupFrequency1',
                             label: 'Backup frequency',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             type: 'select',
                             default: '',
                             value: '',
@@ -4676,7 +5020,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             id: 'highAvailability',
                             name: 'highAvailability1',
                             label: 'High availability',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             type: 'radioButton',
                             default: '',
                             value: '',
@@ -4714,7 +5058,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             id: 'infrastructureSize',
                             name: 'infrastructureSize1',
                             label: 'Infrastructure size',
-                            detailsLink: 'https://google.com',
+                            ProductLink: 'https://google.com',
                             type: 'radioButton',
                             default: '',
                             value: '',
