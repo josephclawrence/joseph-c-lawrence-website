@@ -16,6 +16,7 @@
         <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
         <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/perfect-scrollbar.css" />
+        <link rel="stylesheet" href="css/UX_CSS_bootstrap-datepicker3.min.css" />
         <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
 
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
@@ -30,12 +31,12 @@
             .package.sys-bg-primary {
                 background-color: #007FA3 !important;
             }
-            .customer-details {
+            /* .customer-details {
                 display: none;
             }
             .existing-customer-field, .existing-quote-field, .quote-field, .customer-type-field {
                 display: none;
-            }
+            } */
             .form-group {
                 margin-top: 10px;
                 margin-bottom: 15px;
@@ -1070,24 +1071,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         >
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right sys-fg-primary">
-                    <li class=" nav-item">
-                        <a
-                            href="#"
-                            onclick="SAAS_QUOTE.infoFieldWindow.center().open()"
-                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account"
-                        >
-                            <i class="material-icons">add_box</i>
-                        </a>
-                    </li>
-                    <li class=" nav-item">
-                        <a
-                            href="#"
-                            onclick="SAAS_QUOTE.initEditLayout()"
-                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account"
-                        >
-                            <i class="material-icons">edit</i>
-                        </a>
-                    </li>
+
                     <li class=" nav-item">
                         <a
                             href="#"
@@ -1142,7 +1126,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     Product suite
                                                                 </a>
                                                             </li>
-                                                            <li data-bind="visible: additionalSoftwareActive">
+                                                            <li data-bind="visible: AdditionalSoftwareActive">
                                                                 <a href="#additional" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">queue_play_next</i>
@@ -1150,7 +1134,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     Additional software
                                                                 </a>
                                                             </li>
-                                                            <li data-bind="visible: isvSoftwareActive">
+                                                            <li data-bind="visible: IsvSoftwareActive">
                                                                 <a href="#isv" data-toggle="tab">
                                                                     <div class="icon-circle">
                                                                         <i class=" material-icons">power</i>
@@ -1186,7 +1170,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         <div class="row">
                                                                     <!-- <div class="row"> -->
                                                                             <div class="col-sm-6">
-                                                                                <div class="form-group is-empty">
+                                                                                <div class="form-group">
                                                                                     
                                                                                     <!-- <label for="" class="col-xs-12">
                                                                                         <span>Quote for</span>
@@ -1210,7 +1194,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <!-- </div> -->
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="form-group is-empty existing-quote-field md-outline">                                 
+                                                                                <div class="form-group existing-quote-field md-outline">                                 
                                                                                     <div class="input-group">
                                                                                         <span class="spinner"></span>
                                                                                         <label for="QuoteNumber" class="">
@@ -1235,7 +1219,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                     </label>
 
                                                                                 </div>
-                                                                                <div class="form-group is-empty md-outline quote-field">
+                                                                                <div class="form-group md-outline quote-field">
                                                                                     <input  class="form-control date" 
                                                                                     data-bind="value: QuoteDate" id="QuoteDate">
                                                                                     <label for="QuoteDate" class="">
@@ -1243,7 +1227,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         </label>
 
                                                                                 </div>
-                                                                                <div class="form-group is-empty md-outline quote-field">
+                                                                                <div class="form-group md-outline quote-field">
                                                                                     <input  class="form-control date" 
                                                                                     data-bind="value: ExpiryDate" id="ExpiryDate">
                                                                                     <label for="ExpiryDate" class="">
@@ -1262,7 +1246,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                 </div>
 
 
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
+                                                                                <div class="form-group existing-customer-field md-outline">
                                                                                     
                                                                                     <label for="" class="">
                                                                                         <span>Customer code</span>
@@ -1283,7 +1267,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                             
                                                                             
                                                                                 </div>
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     <label for="CustomerName" class="">
                                                                                         <span>Customer name</span>
                                                                                     </label>
@@ -1302,12 +1286,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <input 
                                                                                             id="Region"
                                                                                             data-role="dropdownlist"
-                                                                                            data-auto-bind="false"
                                                                                             data-value-primitive="true"
                                                                                             data-text-field="RegionName"
                                                                                             data-value-field="CategoryId"
                                                                                             data-bind="value:       SelectedRegion,
-                                                                                            source: RegionList.Region" class="form-control" required
+                                                                                            source: RegionList.Region,
+                                                                                            events: {change: onDropDownListChange}" class="form-control" required
                                                                                         >
                                                                             
                                                                                 </div>
@@ -1320,19 +1304,19 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <input 
                                                                                             id="SubRegion" 
                                                                                             data-role="dropdownlist"
-                                                                                            data-auto-bind="false"
                                                                                             data-value-primitive="true"
                                                                                             data-text-field="RegionName"
                                                                                             data-value-field="CategoryId"
                                                                                             data-cascade-from="Region"
                                                                                             data-bind="value:       SelectedSubRegion,
-                                                                                            source: SubRegionList.Region" class="form-control"
+                                                                                            source: SubRegionList.Region,
+                                                                                            events: {change: onDropDownListChange}" class="form-control"
                                                                                             disabled="disabled" required
                                                                                         >
                                                                             
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty customer-details md-outline">
+                                                                                <div class="form-group customer-details md-outline">
                                                                                     
                                                                                     <label for="NumberOfUsers" class="">
                                                                                         <span>Number of users</span>
@@ -1362,7 +1346,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
+                                                                                <div class="form-group existing-customer-field md-outline">
                                                                                     
                                                                                     <label for="" class="">
                                                                                         <span>License start date</span>
@@ -1370,7 +1354,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <input class="form-control date">
                                                                                         
                                                                                 </div>
-                                                                                <div class="form-group is-empty md-outline customer-details">
+                                                                                <div class="form-group md-outline customer-details">
                                                                                     <textarea class="form-control " id="QuoteDescription"
                                                                                     data-bind="value: QuoteDescription" rows="3"></textarea>
                                                                                     <label for="QuoteDescription" class="">
@@ -1385,7 +1369,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                
                                                                             </div> -->
                                                                             <div class="col-sm-6 customer-details sys-pd-t-5">
-                                                                                <!-- <div class="form-group is-empty md-outline">
+                                                                                <!-- <div class="form-group md-outline">
                                                                                         <input type="text" class="form-control" id="customerName" required />
                                                                                         <label for="customerName" class="">
                                                                                             Company name
@@ -1393,7 +1377,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div> -->
                                                                                 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     
                                                                                     <label for="AddressLine1" class="">
                                                                                         <span>Address line 1</span>
@@ -1402,7 +1386,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     
                                                                                     <label for="AddressLine2" class="">
                                                                                         <span>Address line 2</span>
@@ -1411,7 +1395,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     
                                                                                     <label for="City" class="">
                                                                                         <span>City</span>
@@ -1421,7 +1405,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     
                                                                                     <label for="StateProvince" class="">
                                                                                         <span>State/Province</span>
@@ -1439,14 +1423,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <input
                                                                                             id="Country" 
                                                                                             data-role="dropdownlist"
-                                                                                            data-auto-bind="false"
                                                                                             data-bind="value:       SelectedCountry,
-                                                                                            source: CountryList.string" class="form-control"
-                                                                                            disabled="disabled" required>
+                                                                                            source: CountryList.string,
+                                                                                            events: {change: onDropDownListChange}" class="form-control"
+                                                                                            required>
                                                                             
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     
                                                                                     <label for="PostalZipCode" class="">
                                                                                         <span>Post/ZIP code</span>
@@ -1455,7 +1439,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     
                                                                                     <label for="Currency" class="">
                                                                                         <span>Currency</span>
@@ -1465,7 +1449,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty md-outline">
+                                                                                <div class="form-group md-outline">
                                                                                     
                                                                                     <label for="ContactName" class="">
                                                                                         <span>Contact name</span>
@@ -1489,7 +1473,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <input type="email" class="form-control" id="ContactEmail" data-bind="value: ContactEmail">
                                                                                         
                                                                                 </div>
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
+                                                                                <div class="form-group existing-customer-field md-outline">
                                                                                     
                                                                                     <label for="" class="">
                                                                                         <span>Company Reg. No.</span>
@@ -1498,7 +1482,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         
                                                                                 </div>
 
-                                                                                <div class="form-group is-empty existing-customer-field md-outline">
+                                                                                <div class="form-group existing-customer-field md-outline">
                                                                                     
                                                                                     <label for="" class="">
                                                                                         <span>VAT No.</span>
@@ -1525,7 +1509,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                             </div>
                                                         </div>
 
-                                                        <div class="tab-pane " id="productSuite" data-bind="visible: productSuiteActive">
+                                                        <div class="tab-pane " id="CoreBundles" data-bind="visible: productSuiteActive">
                                                             
                                                             <div class="row quote-scrollable-pane">
                                                                 <div class="col-xs-12 other-column-width">
@@ -1540,163 +1524,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                                                                         <div class="row" data-template="packageTemplate" data-bind="source: CoreBundles.Product"></div>
 
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="sys-fg-white package sys-bg-inverse">
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-1 text-left" data-toggle="tooltip" 
-                                                                                        data-tooltip="tooltip" data-container="body"
-                                                                                        data-placement="auto top"
-                                                                                        data-container="body" title="'Foundation' is a mandatory package">
-                                                                                            <div class="btn-group" data-toggle="buttons" >
-                                                                                                <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r active disabled"
-                                                                                                >
-                                                                                                <input type="checkbox" autocomplete="off" checked="checked" disabled>
-                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-gray sys-fg-warning"
-                                                                                                >check_circle</i>
-                                                                                                
-                                                                                                </label>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-5 text-left">
-                                                                                            <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="Download details document">
-                                                                                                <i class="material-icons sys-fg-white sys-txt-sm">description</i>
-                                                                                            </a>
-                                                                                            <a href="#foundationsDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="foundationsDetails" 
-                                                                                            data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="View details">
-                                                                                                <b>Foundation</b>
-                                                                                                <!-- <i class="material-icons sys-fg-white sys-txt-sm"
-                                                                                                >info</i> -->
-                                                                                                <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
-                                                                                            </a>
-                                                                                            
-                                                                                        </div>
-                                                                                        <div class="col-sm-4 col-sm-offset-2 text-right">
-                                                                                            <small class="original-price sys-fg-danger">$18.00</small>
-                                                                                            <b>$14.00</b>
-                                                                                            <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount active" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                        </div>
-                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="foundationsDetails">
-                                                                                            <ul>
-                                                                                                <li>System Foundation</li>
-                                                                                                <li>System Administration</li>
-                                                                                                <li>Report Writer</li>
-                                                                                                <li>Reporting Services</li>
-                                                                                                <li>Office Automation</li>
-                                                                                                <li>Contact Management</li>
-                                                                                                <li>Executive Dashboards</li>
-                                                                                                <li>Interface System</li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-sm-6">
-                                                                                <div class=" sys-fg-white  package sys-bg-inverse">
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-1 text-left">
-                                                                                            <div class="btn-group" data-toggle="buttons">
-                                                                                                <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
-                                                                                                <input type="checkbox" autocomplete="off">
-                                                                                                <i class="material-icons package-selected-icon pull-left sys-fg-white">check_circle</i>
-                                                                                                </label>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-sm-5 text-left">
-                                                                                            <a href="" class="package-title" data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="Download details document">
-                                                                                                <i class="material-icons sys-fg-white sys-txt-sm">description</i>
-                                                                                            </a>
-                                                                                            <a href="#foundationsPlusDetails" role="button" data-toggle="collapse" class="package-title sys-fg-white sys-mg-r-5" aria-expanded="false" aria-controls="foundationsPlusDetails" 
-                                                                                            data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="View details">
-                                                                                                <b>Foundation+</b>
-                                                                                                <!-- <i class="material-icons sys-fg-white sys-txt-sm"
-                                                                                                >info</i> -->
-                                                                                                <i class="material-icons sys-txt-sm sys-fg-white package-title-arrow">expand_more</i>
-                                                                                            </a>
-                                                                                            
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-4 col-sm-offset-2 text-right">
-                                                                                            <b>$14.00</b>
-                                                                                            <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" data-toggle="popover" title="Apply discount">assignment_returned</i>
-                                                                                        </div>
-                                                                                        <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-20 collapse" id="foundationsPlusDetails">
-                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
-                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                                    <label class="sys-fg-white">
-                                                                                                        <input
-                                                                                                            type="checkbox"
-                                                                                                            id="sommat"
-                                                                                                            checked="checked"
-                                                                                                        />
-                                                                                                        SYSPRO Analytics
-                                                                                                    </label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
-                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                                    <label class="sys-fg-white">
-                                                                                                        <input
-                                                                                                            type="checkbox"
-                                                                                                            id="sommat"
-                                                                                                            checked="checked"
-                                                                                                        />
-                                                                                                        Process Modelling
-                                                                                                    </label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
-                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                                    <label class="sys-fg-white">
-                                                                                                        <input
-                                                                                                            type="checkbox"
-                                                                                                            id="sommat"
-                                                                                                            checked="checked"
-                                                                                                        />
-                                                                                                        Workflow Services Professional
-                                                                                                    </label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
-                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                                    <label class="sys-fg-white">
-                                                                                                        <input
-                                                                                                            type="checkbox"
-                                                                                                            id="sommat"
-                                                                                                            checked="checked"
-                                                                                                        />
-                                                                                                        e.net System Manager
-                                                                                                    </label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="form-group checkbox-form-group sys-mg-t-5">
-                                                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                                    <label class="sys-fg-white">
-                                                                                                        <input
-                                                                                                            type="checkbox"
-                                                                                                            id="sommat"
-                                                                                                            checked="checked"
-                                                                                                        />
-                                                                                                        Document Flow Manager
-                                                                                                    </label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                                                                             
+                                                                                                                           
                                                                         <div class="row">
                                                                             <div class="col-xs-12">
                                                                                 <h3 class="">
@@ -1710,7 +1538,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="additionalSoftware" data-bind="visible: additionalSoftwareActive">
+                                                        <div class="tab-pane" id="AdditionalSoftware" data-bind="visible: AdditionalSoftwareActive">
 
                                                             <div class="row quote-scrollable-pane">
                                                                 <div class="col-xs-12 other-column-width">
@@ -1720,7 +1548,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="isvSoftware" data-bind="visible: isvSoftwareActive">
+                                                        <div class="tab-pane" id="IsvSoftware" data-bind="visible: IsvSoftwareActive">
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <div class="form-group md-outline">
@@ -1790,41 +1618,40 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                             <div class="loading-cover"><span class="spinner"></span></div>
                                             <div class="panel-body sys-pd-15">
                                                 <a href="#quoteDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="quoteDetails">Quote ZX000011928273 details <i class="material-icons sys-txt-sm">expand_more</i></a>
-                                                <div id="quoteDetails" class="row collapse" data-bind="visible: productDetails.isVisible">
+                                                <div id="quoteDetails" class="row collapse">
                                                     <div class="col-xs-12">
                                                         <table
                                                             class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5 sys-txt-md"
                                                         >
                                                             <tr>
                                                                 <td>Quote ID</td>
-                                                                <td>ZX000011928273</td>
+                                                                <td data-bind="text: QuoteSummary.QuoteNumber"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Quote version</td>
-                                                                <td>v4</td>
+                                                                <td data-bind="text: QuoteSummary.QuoteVersion"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Last edited</td>
-                                                                <td>12 May 2020</td>
+                                                                <td data-bind="text: QuoteSummary.LastEdited"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Last edited by</td>
-                                                                <td>Han Solo</td>
+                                                                <td data-bind="text: QuoteSummary.LastEditedBy"></td>
                                                             </tr>
                                                         </table>
                                                     </div>
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-xs-12">
                                                         <hr class="sys-mg-t-10 sys-mg-b-10" />
                                                         <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Number of users</span
-                                                            ><span class="pull-right">42</span>
+                                                            ><span class="pull-right" data-bind="text: QuoteSummary.NumberOfUsers"></span>
                                                         </h4>
                                                         <h4 class="sys-mg-b-5 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Per user cost</span
-                                                            ><span class="pull-right">$56.00</span>
+                                                            ><span class="pull-right" data-bind="text: QuoteSummary.CostPerUser">$56.00</span>
                                                         </h4>
                                                         <a href="#costDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="costDetails">Cost breakdown <span class="sys-txt-sm">( per user / total )</span> <i class="material-icons sys-txt-sm">expand_more</i></a>
                                                     </div>
@@ -1836,46 +1663,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                             class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5"
                                                             id="lineItemsTotals"
                                                         >
-                                                            <tbody data-template="lineItemTotalsTemplate" data-bind="source: productSuite"></tbody>
-                                                            <tbody data-template="lineItemTotalsTemplate" data-bind="source: apiServices"></tbody>
-                                                            <tbody data-template="lineItemTotalsTemplate" data-bind="source: additionalSoftware"></tbody>
-                                                            <tbody data-template="lineItemTotalsTemplate" data-bind="source: isvSoftware"></tbody>
-                                                            <!-- <tr>
-                                                                <td>Foundation</td>
-                                                                <td class="text-right">
-                                                                    <small class="original-price sys-fg-danger sys-mg-r-5">$40 / $600</small>
-                                                                    $32 / $500</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Foundation+</td>
-                                                                <td class="text-right">$32 / $500</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Financials</td>
-                                                                <td class="text-right">$32 / $500</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Distribution</td>
-                                                                <td class="text-right">$32 / $500</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>POS</td>
-                                                                <td class="text-right">$32 / $500</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Espresso</td>
-                                                                <td class="text-right">
-                                                                    <small class="original-price sys-fg-danger sys-mg-r-5">$40 / $600</small>
-                                                                    $32 / $500</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Bartender</td>
-                                                                <td class="text-right">$32 / $500</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>SQL on Linux</td>
-                                                                <td class="text-right">$32 / $500</td>
-                                                            </tr> -->
+                                                            <tbody data-template="lineItemTotalsTemplate" data-bind="source: QuoteSummary.CostBreakdownList.CostItem"></tbody>
+                  
                                                         </table>
                                                     </div>
                                                 </div>
@@ -1887,11 +1676,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                         </h4> -->
                                                         <h4 class="sys-mg-b-15 clearfix sys-mg-t-10">
                                                             <span class="pull-left">Total discount</span
-                                                            ><span class="pull-right sys-fg-danger" data-bind="text: discountGrandTotalWithCurrency">- $140.00</span>
+                                                            ><span class="pull-right sys-fg-danger" data-bind="text: QuoteSummary.TotalDiscount">- $140.00</span>
                                                         </h4>
                                                         <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Total</span
-                                                            ><span class="pull-right" data-bind="text: grandTotalWithCurrency"></span>
+                                                            ><span class="pull-right" data-bind="text: QuoteSummary.Total"></span>
                                                         </h3>
                                                         <button
                                                             id="createQuote"
@@ -1990,7 +1779,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 >
                     <div class="row">
                         #if (IsMandatory) {#
-                            <div class="col-sm-1 text-left" data-toggle="tooltip" data-tooltip="tooltip" data-container="body" data-placement="auto top" title="" data-original-title="'Foundation' is a mandatory package">
+                            <div class="col-sm-1 text-left" data-toggle="tooltip" data-tooltip="tooltip" data-container="body" data-placement="auto top" title="" data-original-title="#: Description # is a mandatory package">
                                 <div class="btn-group" data-toggle="buttons">
                                     <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
                                     <input type="checkbox" autocomplete="off" checked="true" disabled>
@@ -2003,9 +1792,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             <div class="col-sm-1 text-left">
                                 <div class="btn-group" data-toggle="buttons">
                                     <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r" data-bind="css: { 
-                                        active: isSelected,
+                                        active: IsSelected,
                                     }">
-                                    <input type="checkbox" autocomplete="off" data-bind="checked: isSelected">
+                                    <input type="checkbox" autocomplete="off" data-bind="checked: IsSelected">
                                     <i class="material-icons package-selected-icon pull-left" data-bind="css: { 
                                         sys-fg-gray: sysfginverse,
                                         sys-fg-white: sysfgwhite,
@@ -2024,15 +1813,15 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                     sys-fg-white: sysfgwhite,
                                 }">description</i>
                             </a>
-                            #if (data.subItems && data.subItems.length) {#
-                                <a href="\\##: id #Details" role="button" data-toggle="collapse" class="package-title sys-mg-r-5" aria-expanded="false" aria-controls="#: id #Details"
+                            #if ((data.FeatureList && data.FeatureList.string && data.FeatureList.string.length) || (data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
+                                <a href="\\##: StockCode #Details" role="button" data-toggle="collapse" class="package-title sys-mg-r-5" aria-expanded="false" aria-controls="#: StockCode #Details"
                                 data-toggle="tooltip" 
                                     data-tooltip="tooltip" data-container="body"
                                     data-placement="top" title="View details" data-bind="css: { 
                                         sys-fg-inverse: sysfginverse,
                                         sys-fg-white: sysfgwhite,
                                     }">
-                                    <b>#: name #</b>
+                                    <b>#: Description #</b>
                                     <!-- <i class="material-icons sys-txt-sm" data-bind="css: { 
                                         sys-fg-inverse: sysfginverse,
                                         sys-fg-white: sysfgwhite,
@@ -2044,7 +1833,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                     }">expand_more</i>
                                 </a>
                             #} else {#
-                                <b>#: name #</b>
+                                <b>#: Description #</b>
                             #}#
                         </div>
 
@@ -2072,26 +1861,26 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                         <div class="col-sm-4 text-right">
                             <span data-bind="visible: hasDiscount">
-                                <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
+                                <small class="original-price sys-fg-danger" data-bind="text: priceWithCurrency"></small>
                             </span>                           
-                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: DiscountAllowed }"></b>
+                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: priceWithCurrency, css: { discount-allowed: DiscountAllowed }"></b>
                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                                 data-toggle="popover" 
                                 title="Apply discount"
                                 data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: MaxDiscountPercentage #%</span></div></div>'
                                 data-bind="visible: DiscountAllowed, css:{active: hasDiscount}">assignment_returned</i>
                             <span class="hidden-discount-field" style="display: none;">
-                                <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
+                                
                             <input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-value" data-bind='value: DiscountValue'></input>
                             </span>
                         </div>
-                        #if (data.subItems && data.subItems.length) {#
-                            <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="#: id #Details">
+                        #if ((data.FeatureList && data.FeatureList.string && data.FeatureList.string.length) || (data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
+                            <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="#: StockCode #Details">
                                 <ul>
-                                    #if (isPlusPackage) {#
-                                        #= SAAS_QUOTE.renderPlusPackageSubItemsTemplate(subItems) #
+                                    #if ((data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
+                                        #= SAAS_QUOTE.renderPlusPackageSubItemsTemplate(SubProductList.Product) #
                                     #} else {#
-                                        #   $.each(subItems, function (index, item) {
+                                        #   $.each(FeatureList.string, function (index, item) {
                                                 # <li>${item}</li>  #                        
                                             }); 
                                         #
@@ -2107,19 +1896,28 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
         <script id="plusPackageSubItemsTemplate" type="text/x-kendo-template">
             # $.each(data.subItems, function (index, item) {
-                   # <p>${item}</p>  #                        
+                   #
+                   <div class="form-group checkbox-form-group sys-mg-t-5">
+                        <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                            <label class="sys-fg-white">
+                                <input type="checkbox" id="${StockCode}" checked="checked"><span class="checkbox-material"><span class="check"></span></span>
+                                ${Description}
+                            </label>
+                        </div>
+                    </div>
+                    #                    
               }); 
             #
         </script>
 
         <script id="lineItemTotalsTemplate" type="text/x-kendo-template">
-            <tr data-bind="visible: isActive">
-                <td>#: name #</td>
+            <tr>
+                <td>#: Description #</td>
                 <td class="text-right">
-                    <small data-bind="visible: hasDiscount" class="original-price sys-fg-danger sys-mg-r-5">
-                        <span data-bind="text: perUserCostWithCurrency"></span> / <span data-bind="text: totalNetCostWithCurrency"></span>
+                    <small data-bind="visible: lineItemHasDiscount" class="original-price sys-fg-danger sys-mg-r-5">
+                        <span data-bind="text: Cost"></span> / <span data-bind="text: Discount"></span>
                     </small>
-                    <span data-bind="text: perUserCostWithCurrencyAndDiscount"></span> / <span data-bind="text: totalCostWithCurrency"></span>
+                    <span data-bind="text: costWithCurrency"></span> / <span data-bind="text: totalWithCurrency"></span>
                 </td>
             </tr>
         </script>
@@ -2136,7 +1934,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         </script>
 
         <script id="infrastructureItemTemplate" type="text/x-kendo-template">
-            <div class="form-group is-empty ">
+            <div class="form-group ">
                 <label for="#: id #" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
                     <span>#: label #</span>
                     <p class="sys-mg-t-5">
@@ -2183,7 +1981,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: MaxDiscountPercentage #%</span></div></div>'
                         data-bind="visible: DiscountAllowed, css:{active: hasDiscount}">assignment_returned</i>
                     <span class="hidden-discount-field" style="display: none;">
-                        <input type="text" class="discount-type-value" data-bind='value: discount.type'></input>
+                        
                         <input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-value" data-bind='value: DiscountValue'></input>
                     </span>
 
@@ -2198,8 +1996,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 "IsNewQuote": "true",
                 "QuoteNumber": "10A00000001",
                 "ReferenceNumber": "Reference Number",
-                "QuoteDate": "2020-07-30T09:49:45.7658027+02:00",
-                "ExpiryDate": "2020-07-30T09:49:45.7668019+02:00",
+                "QuoteDate": "2020-08-03T10:29:13.6572737+02:00",
+                "ExpiryDate": "2020-08-03T10:29:13.6572737+02:00",
                 "QuoteVersionList": {
                     "string": [
                         "V1",
@@ -2576,7 +2374,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             "IsSelected": "true",
                             "IsMandatory": "true",
                             "StockCode": "BUN-MANFIN",
-                            "Description": "Fincancials",
+                            "Description": "Financials",
                             "ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
                             "NumberOfUsers": "0",
                             "Price": "18",
@@ -3283,200 +3081,85 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         }
                     ]
                 },
-                "IsvSoftware": null
+                "IsvSoftware": null,
+                "QuoteSummary": {
+                    "QuoteNumber": "10A00000001",
+                    "QuoteVersion": "V2",
+                    "LastEdited": "2020-08-03T10:29:13.6832752+02:00",
+                    "LastEditedBy": "Joe",
+                    "NumberOfUsers": "42",
+                    "CostPerUser": "56",
+                    "TotalDiscount": "16",
+                    "Total": "126",
+                    "CostBreakdownList": {
+                        "CostItem": [
+                            {
+                                "Description": "Foundation",
+                                "Cost": "18",
+                                "Total": "18",
+                                "Discount": "4"
+                            },
+                            {
+                                "Description": "Fincancials",
+                                "Cost": "18",
+                                "Total": "18",
+                                "Discount": "0"
+                            },
+                            {
+                                "Description": "Distribution",
+                                "Cost": "18",
+                                "Total": "18",
+                                "Discount": "0"
+                            },
+                            {
+                                "Description": "Manufacturing",
+                                "Cost": "18",
+                                "Total": "18",
+                                "Discount": "0"
+                            },
+                            {
+                                "Description": "Foundation+",
+                                "Cost": "18",
+                                "Total": "18",
+                                "Discount": "4"
+                            },
+                            {
+                                "Description": "Distribution+",
+                                "Cost": "18",
+                                "Total": "18",
+                                "Discount": "4"
+                            },
+                            {
+                                "Description": "Manufacturing+",
+                                "Cost": "18",
+                                "Total": "18",
+                                "Discount": "4"
+                            }
+                        ]
+                    }
+                }
             };
-            
-            // const model = kendo.data.Node.define({
-            //     id: 'Id',
-            //     children: WidgetsSch,
-            // });
-            const viewModelMethods = {
-                hasDiscount: function() {
-                    return parseInt(this.get("value")) > 0;
-                },
-                totalNetCost: function() {
-                    return this.get("userCount") * this.get("perUserCost");
-                },
-                totalNetCostWithCurrency: function() {
-                    return this.get("DiscountAllowed") && this.hasDiscount() && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
-                },
-                totalCost: function() {
-                    return this.totalNetCost() - this.totalDiscount();
-                },
-                totalCostWithCurrency: function() {
-                    return this.get("currency") + this.totalCost();
-                },
-                totalDiscount: function() {
-                    return this.totalNetCost() * (this.get("DiscountValue") / 100);
-                },
-                totalDiscountWithCurrency: function() {
-                    return this.get("currency") + this.totalDiscount();
-                },
-                perUserCostWithCurrency: function() {
-                    return this.get("currency") + this.get("perUserCost");
-                },
-                perUserCostWithCurrencyAndDiscount: function() {
-                    return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("DiscountValue") / 100));
-                },
-                productSuiteActive: function() {
-                    return this.get("CoreBundles") && this.get("CoreBundles.Product") && this.get("CoreBundles.Product").length;
-                },
-                apiServicesActive: function() {
-                    return this.get("ApiServices") && this.get("ApiServices.Product") && this.get("ApiServices.Product").length;
-                },
-                additionalSoftwareActive: function() {
-                    return this.get("AdditionalSoftware") && this.get("AdditionalSoftware.Product") && this.get("AdditionalSoftware.Product").length;
-                },
-                isvSoftwareActive: function() {
-                    return this.get("IsvSoftware") && this.get("IsvSoftware.Product") && this.get("IsvSoftware.Product").length;
-                },
-                educationActive: function() {
-                    return this.get("education") && this.get("education").length;
-                },
-                activeSections: function() {
-                    const activeSections = [];
-                    
-                    activeSections.push({ 
-                        id: 'info',
-                        name: 'Quote information',
-                        icon: 'person_pin',
-                    });
-                    if ( this.productSuiteActive() ) activeSections.push({ 
-                        id: 'productSuite',
-                        name: 'Product suite',
-                        icon: 'apps',
-                    });
-                    if ( this.additionalSoftwareActive() ) activeSections.push({ 
-                        id: 'additionalSoftware',
-                        name: 'Add-on software',
-                        icon: 'queue_play_next',
-                    });
-                    if ( this.isvSoftwareActive() ) activeSections.push({ 
-                        id: 'isvSoftware',
-                        name: 'ISV software',
-                        icon: 'power',
-                    });
-                    activeSections.push({ 
-                        id: 'infrastructure',
-                        name: 'Infrastructure',
-                        icon: 'dns',
-                    });
-                    if ( this.educationActive() ) activeSections.push({ 
-                        id: 'education',
-                        name: 'Education',
-                        icon: 'school',
-                    });
-                    
-                    return activeSections;
-                },
-                netGrandTotal: function() {
-                    const apiServicesNetTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                    const additionalSoftwareNetTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                    const isvSoftwareNetTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                    return apiServicesNetTotal + additionalSoftwareNetTotal + isvSoftwareNetTotal;
-                },
-                discountGrandTotal: function() {
-                    const apiServicesDiscountTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                    const additionalSoftwareDiscountTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                    const isvSoftwareDiscountTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                    return apiServicesDiscountTotal + additionalSoftwareDiscountTotal + isvSoftwareDiscountTotal;
-                },
-                discountGrandTotalWithCurrency: function() {
-                    return this.get("currency") + this.discountGrandTotal();
-                },
-                grandTotal: function() {
-                    const apiServicesGrandTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                    const additionalSoftwareGrandTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                    const isvSoftwareGrandTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                    return apiServicesGrandTotal + additionalSoftwareGrandTotal + isvSoftwareGrandTotal;
-                },
-                grandTotalWithCurrency: function() {
-                    return this.get("currency") + this.grandTotal();
-                },              
-                wizardTabsWidth: function() {
-                    console.log('ping');
-                    const $total = viewModel.activeSections().length;
-                    const $width = 100 / $total;
-                    console.log($total, $width);
-                    return $width + "%";
-                },
-                sysbgverylightgray: function() {
-                    return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("name"));
-                },
-                sysfginverse: function() {
-                    return this.sysbgverylightgray();
-                },
-                sysfgwhite: function() {
-                    return !this.sysbgverylightgray();
-                },
-                sysbginverse: function() {
-                    return ["Foundation", "Foundation+"].includes(this.get("name"));
-                },
-                sysbgsuccess: function() {
-                    return ["Financials", "Financials+"].includes(this.get("name"));
-                },
-                sysbginfo: function() {
-                    return ["Distribution", "Distribution+"].includes(this.get("name"));
-                },
-                sysbgprimary: function() {
-                    return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
-                },
-                isActive: function() {
-                    return (this.get("IsMandatory") || this.get("isSelected")) && this.get("userCount") > 0;
-                },
-                isProductSuite: function() {
-                    return this.get("category") === "productSuite";
-                },
-                isNotProductSuite: function() {
-                    return this.get("category") !== "productSuite";
-                },
-                isEmpty: function() {
-                    return this.get("default") === '';
-                },
-                isOutline: function() {
-                    // console.log(this.get("type"));
-                    // console.log(this.get("type") == "radio");
-                    return !(this.get("type") == 'radio');
-                },
-                sysfginverse: function() {
-                    return this.sysbgverylightgray();
-                },
-                totalNetCost: function() {
-                    // TODO: Get the active, checked item, and grab the cost of that
-                    return this.get("cost");
-                },
-                totalNetCostWithCurrency: function() {
-                    return this.get("DiscountAllowed") && this.hasDiscount() ? viewModel.currency + this.totalNetCost() : '';
-                },
-            }
-            
 
             kendo.data.ObservableObject.prototype.hasDiscount = function() {
                 return parseInt(this.get("DiscountValue")) > 0;
+            };
+            kendo.data.ObservableObject.prototype.lineItemHasDiscount = function() {
+                return parseInt(this.get("Discount")) > 0;
+            };
+            kendo.data.ObservableObject.prototype.costWithCurrency = function() {
+                return viewModel.SelectedCurrency.CurrencySymbol + this.get("Cost");
+            };
+            kendo.data.ObservableObject.prototype.totalWithCurrency = function() {
+                return viewModel.SelectedCurrency.CurrencySymbol + this.get("Total");
+            };
+            kendo.data.ObservableObject.prototype.priceWithCurrency = function() {
+                return viewModel.SelectedCurrency.CurrencySymbol + this.get("Price");
             };
             kendo.data.ObservableObject.prototype.hasOwnUserCount = function() {
                 return this.parent().parent() !== viewModel.CoreBundles;
             };
             kendo.data.ObservableObject.prototype.totalNetCost = function() {
                 return this.get("userCount") * this.get("perUserCost");
-            };
-            kendo.data.ObservableObject.prototype.totalNetCostWithCurrency = function() {
-                return this.get("DiscountAllowed") && this.hasDiscount() && this.get("userCount") > 0 ? this.get("currency") + this.totalNetCost() : '';
-            };
-            kendo.data.ObservableObject.prototype.totalCost = function() {
-                return this.totalNetCost() - this.totalDiscount();
-            };
-            kendo.data.ObservableObject.prototype.totalCostWithCurrency = function() {
-                return this.get("currency") + this.totalCost();
             };
             kendo.data.ObservableObject.prototype.totalDiscount = function() {
                 return this.totalNetCost() * (this.get("DiscountValue") / 100);
@@ -3493,13 +3176,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.productSuiteActive = function() {
                 return this.get("CoreBundles") && this.get("CoreBundles.Product") && this.get("CoreBundles.Product").length;
             };
-            kendo.data.ObservableObject.prototype.apiServicesActive = function() {
+            kendo.data.ObservableObject.prototype.ApiServicesActive = function() {
                 return this.get("ApiServices") && this.get("ApiServices.Product") && this.get("ApiServices.Product").length;
             };
-            kendo.data.ObservableObject.prototype.additionalSoftwareActive = function() {
+            kendo.data.ObservableObject.prototype.AdditionalSoftwareActive = function() {
                 return this.get("AdditionalSoftware") && this.get("AdditionalSoftware.Product") && this.get("AdditionalSoftware.Product").length;
             };
-            kendo.data.ObservableObject.prototype.isvSoftwareActive = function() {
+            kendo.data.ObservableObject.prototype.IsvSoftwareActive = function() {
                 return this.get("IsvSoftware") && this.get("IsvSoftware.Product") && this.get("IsvSoftware.Product").length;
             };
             kendo.data.ObservableObject.prototype.educationActive = function() {
@@ -3514,17 +3197,17 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     icon: 'person_pin',
                 });
                 if ( this.productSuiteActive() ) activeSections.push({ 
-                    id: 'productSuite',
+                    id: 'CoreBundles',
                     name: 'Product suite',
                     icon: 'apps',
                 });
-                if ( this.additionalSoftwareActive() ) activeSections.push({ 
-                    id: 'additionalSoftware',
+                if ( this.AdditionalSoftwareActive() ) activeSections.push({ 
+                    id: 'AdditionalSoftware',
                     name: 'Add-on software',
                     icon: 'queue_play_next',
                 });
-                if ( this.isvSoftwareActive() ) activeSections.push({ 
-                    id: 'isvSoftware',
+                if ( this.IsvSoftwareActive() ) activeSections.push({ 
+                    id: 'IsvSoftware',
                     name: 'ISV software',
                     icon: 'power',
                 });
@@ -3542,34 +3225,34 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return activeSections;
             };
             kendo.data.ObservableObject.prototype.netGrandTotal = function() {
-                const apiServicesNetTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+                const ApiServicesNetTotal = this.get("ApiServices").reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
 
-                const additionalSoftwareNetTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+                const AdditionalSoftwareNetTotal = this.get("AdditionalSoftware").reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
 
-                const isvSoftwareNetTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
+                const IsvSoftwareNetTotal = this.get("IsvSoftware").reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
 
-                return apiServicesNetTotal + additionalSoftwareNetTotal + isvSoftwareNetTotal;
+                return ApiServicesNetTotal + AdditionalSoftwareNetTotal + IsvSoftwareNetTotal;
             };
             kendo.data.ObservableObject.prototype.discountGrandTotal = function() {
-                const apiServicesDiscountTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+                const ApiServicesDiscountTotal = this.get("ApiServices").reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
 
-                const additionalSoftwareDiscountTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+                const AdditionalSoftwareDiscountTotal = this.get("AdditionalSoftware").reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
 
-                const isvSoftwareDiscountTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
+                const IsvSoftwareDiscountTotal = this.get("IsvSoftware").reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
 
-                return apiServicesDiscountTotal + additionalSoftwareDiscountTotal + isvSoftwareDiscountTotal;
+                return ApiServicesDiscountTotal + AdditionalSoftwareDiscountTotal + IsvSoftwareDiscountTotal;
             };
             kendo.data.ObservableObject.prototype.discountGrandTotalWithCurrency = function() {
                 return this.get("currency") + this.discountGrandTotal();
             };
             kendo.data.ObservableObject.prototype.grandTotal = function() {
-                const apiServicesGrandTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+                const ApiServicesGrandTotal = this.get("ApiServices").reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
 
-                const additionalSoftwareGrandTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+                const AdditionalSoftwareGrandTotal = this.get("AdditionalSoftware").reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
 
-                const isvSoftwareGrandTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
+                const IsvSoftwareGrandTotal = this.get("IsvSoftware").reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
 
-                return apiServicesGrandTotal + additionalSoftwareGrandTotal + isvSoftwareGrandTotal;
+                return ApiServicesGrandTotal + AdditionalSoftwareGrandTotal + IsvSoftwareGrandTotal;
             };
             kendo.data.ObservableObject.prototype.grandTotalWithCurrency = function() {
                 return this.get("currency") + this.grandTotal();
@@ -3582,7 +3265,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return $width + "%";
             };
             kendo.data.ObservableObject.prototype.sysbgverylightgray = function() {
-                return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("name"));
+                return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("Description"));
             };
             kendo.data.ObservableObject.prototype.sysfginverse = function() {
                 return this.sysbgverylightgray();
@@ -3591,28 +3274,32 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return !this.sysbgverylightgray();
             };
             kendo.data.ObservableObject.prototype.sysbginverse = function() {
-                return ["Foundation", "Foundation+"].includes(this.get("name"));
+                return ["Foundation", "Foundation+"].includes(this.get("Description"));
             };
             kendo.data.ObservableObject.prototype.sysbgsuccess = function() {
-                return ["Financials", "Financials+"].includes(this.get("name"));
+                return ["Financials", "Financials+"].includes(this.get("Description"));
             };
             kendo.data.ObservableObject.prototype.sysbginfo = function() {
-                return ["Distribution", "Distribution+"].includes(this.get("name"));
+                return ["Distribution", "Distribution+"].includes(this.get("Description"));
             };
             kendo.data.ObservableObject.prototype.sysbgprimary = function() {
-                return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
+                return ["Manufacturing", "Manufacturing+"].includes(this.get("Description"));
             };
             kendo.data.ObservableObject.prototype.isActive = function() {
                 return (this.get("IsMandatory") || this.get("isSelected")) && this.get("userCount") > 0;
             };
             kendo.data.ObservableObject.prototype.isProductSuite = function() {
-                return this.get("category") === "productSuite";
+                return this.parent().parent() === viewModel.CoreBundles;
             };
             kendo.data.ObservableObject.prototype.isNotProductSuite = function() {
-                return this.get("category") !== "productSuite";
+                return this.parent().parent() !== viewModel.CoreBundles;
             };
-            kendo.data.ObservableObject.prototype.isEmpty = function() {
-                return this.get("default") === '';
+            // kendo.data.ObservableObject.prototype.isEmpty = function() {
+            //     return this.get("default") === '';
+            // };
+            kendo.data.ObservableObject.prototype.isEmpty = function(e) {
+                console.log(e);
+                console.log(this);
             };
             kendo.data.ObservableObject.prototype.isOutline = function() {
                 // console.log(this.get("type"));
@@ -3635,1522 +3322,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 console.log(this);
             };
             
+            kendo.data.ObservableObject.prototype.onDropDownListChange = function(e) {
+                $(e.sender.element).closest('.form-group').removeClass('is-empty');
+            };
 
-            const viewModel = kendo.observable( Object.assign(data, viewModelMethods) );
-
-            
-            var Package = kendo.data.Model.define({
-                fields: {
-                    "name": {
-                        type: "string"
-                    },
-                    "perUserCost": {
-                        type: "number"
-                    },
-                    "userCount": {
-                        type: "number"
-                    },
-                    "mandatory": {
-                        type: "boolean"
-                    },
-                    isSelected: {
-                        type: "boolean"
-                    },
-                    "hasOwnUserCount": {
-                        type: "boolean"
-                    },
-                    "category": {
-                        type: "string"
-                    },
-                    // "discount": {
-                    //     type: "number"
-                    // },
-                    "currency": {
-                        type: "string"
-                    },
-                    "ProductLink": {
-                        type: "string"
-                    }
-                },
-                sysbgverylightgray: function() {
-                    return !["Foundation", "Foundation+", "Financials", "Financials+", "Distribution", "Distribution+", "Manufacturing", "Manufacturing+"].includes(this.get("name"));
-                },
-                sysfginverse: function() {
-                    return this.sysbgverylightgray();
-                },
-                sysfgwhite: function() {
-                    return !this.sysbgverylightgray();
-                },
-                sysbginverse: function() {
-                    return ["Foundation", "Foundation+"].includes(this.get("name"));
-                },
-                sysbgsuccess: function() {
-                    return ["Financials", "Financials+"].includes(this.get("name"));
-                },
-                sysbginfo: function() {
-                    return ["Distribution", "Distribution+"].includes(this.get("name"));
-                },
-                sysbgprimary: function() {
-                    return ["Manufacturing", "Manufacturing+"].includes(this.get("name"));
-                },
-                isActive: function() {
-                    return (this.get("IsMandatory") || this.get("isSelected")) && this.get("userCount") > 0;
-                },
-                isProductSuite: function() {
-                    return this.get("category") === "productSuite";
-                },
-                isNotProductSuite: function() {
-                    return this.get("category") !== "productSuite";
-                },
-                hasDiscount: viewModelMethods.hasDiscount,
-                totalNetCost: viewModelMethods.totalNetCost,
-                totalNetCostWithCurrency: viewModelMethods.totalNetCostWithCurrency,
-                totalCost: viewModelMethods.totalCost,
-                totalCostWithCurrency: viewModelMethods.totalCostWithCurrency,
-                totalDiscount: viewModelMethods.totalDiscount,
-                totalDiscountWithCurrency: viewModelMethods.totalDiscountWithCurrency,
-                perUserCostWithCurrency: viewModelMethods.perUserCostWithCurrency,
-                perUserCostWithCurrencyAndDiscount: viewModelMethods.perUserCostWithCurrencyAndDiscount,
-            });
-            
-            var EntryField = kendo.data.Model.define({
-                fields: {
-                    "name": {
-                        type: "string"
-                    },
-                    "id": {
-                        type: "string"
-                    },
-                    "label": {
-                        type: "string"
-                    },
-                    "required": {
-                        type: "boolean"
-                    },
-                    "readonly": {
-                        type: "string"
-                    },
-                    "default": {
-                        type: "string"
-                    },
-                    "type": {
-                        type: "string"
-                    },
-                    "isOutlined": {
-                        type: "boolean"
-                    },
-                    // "discount": {
-                    //     type: "number"
-                    // },
-                    "options": {
-                        type: "array"
-                    },
-                    "active": {
-                        type: "boolean"
-                    }
-                },
-                isEmpty: function() {
-                    return this.get("default") === '';
-                },
-                isOutline: function() {
-                    // console.log(this.get("type"));
-                    // console.log(this.get("type") == "radio");
-                    return !(this.get("type") == 'radio');
-                },
-                sysfginverse: function() {
-                    return this.sysbgverylightgray();
-                },
-
-            });
-
-            var InfrastructureItem = kendo.data.Model.define({
-                fields: {
-                    "name": {
-                        type: "string"
-                    },
-                    "id": {
-                        type: "string"
-                    },
-                    "label": {
-                        type: "string"
-                    },
-                    "required": {
-                        type: "boolean"
-                    },
-                    "readonly": {
-                        type: "string"
-                    },
-                    "default": {
-                        type: "string"
-                    },
-                    "cost": {
-                        type: "number"
-                    },
-                },
-                isEmpty: function() {
-                    return this.get("default") == '';
-                },
-                sysfginverse: function() {
-                    return this.sysbgverylightgray();
-                },
-                totalNetCost: function() {
-                    // TODO: Get the active, checked item, and grab the cost of that
-                    return this.get("cost");
-                },
-                totalNetCostWithCurrency: function() {
-                    return this.get("DiscountAllowed") && this.hasDiscount() ? viewModel.currency + this.totalNetCost() : '';
-                },
-                hasDiscount: viewModelMethods.hasDiscount,
-                totalCost: viewModelMethods.totalCost,
-                totalCostWithCurrency: viewModelMethods.totalCostWithCurrency,
-                totalDiscount: viewModelMethods.totalDiscount,
-                totalDiscountWithCurrency: viewModelMethods.totalDiscountWithCurrency,
-                perUserCostWithCurrency: viewModelMethods.perUserCostWithCurrency,
-                perUserCostWithCurrencyAndDiscount: viewModelMethods.perUserCostWithCurrencyAndDiscount,
-            });
-                        
-            const old_viewModel = kendo.observable({
-                change: function(e) {
-                    console.log(e);
-                    
-                },
-                currency: "$",
-                infoFields: new kendo.data.DataSource({
-                    schema: {
-                        model: EntryField
-                    },
-                    data: [
-                        {
-                            id: 'ferferfer',
-                            name: 'newOrExisting',
-                            label: '',
-                            type: 'radio',
-                            default: '',
-                            value: '',
-                            options: [
-                                {
-                                    value: 'new',
-                                    label: 'New quote',
-                                },
-                                {
-                                    value: 'existing',
-                                    label: 'Existing quote',
-                                }
-                            ],
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'dddferfer',
-                            name: 'quoteNumber',
-                            label: 'Quote number',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'pojpojp',
-                            name: 'refNumber',
-                            label: 'Reference number',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: 'readonly'
-                        },
-                        {
-                            id: 'xxxpojpojp',
-                            name: 'quoteDate',
-                            label: 'Quote date',
-                            type: 'date',
-                            default: new Date(),
-                            options: [],
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'xwxpojpojp',
-                            name: 'expiryDate',
-                            label: 'Expiry date',
-                            type: 'date',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'kkkdddeee',
-                            name: 'quoteVersion',
-                            label: 'Quote version',
-                            type: 'select',
-                            default: '',
-                            value: '',
-                            options: [
-                                {
-                                    value: 1,
-                                    label: 'v1'
-                                },
-                                {
-                                    value: 2,
-                                    label: 'v2'
-                                }
-                            ],
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'kkkddddddeee',
-                            name: 'customerNumber',
-                            label: 'Customer number',
-                            type: 'browse',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'kdddddeee',
-                            name: 'customerName',
-                            label: 'Customer name',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: false,
-                        },
-                        {
-                            id: 'kkkddfdfdfe',
-                            name: 'numberUsers',
-                            label: 'Number of users',
-                            type: 'number',
-                            default: 0,
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'sssssddeee',
-                            name: 'paymentCycle',
-                            label: 'Payment cycle',
-                            type: 'select',
-                            default: '',
-                            value: '',
-                            options: [
-                                {
-                                    value: 1,
-                                    label: 'Annual'
-                                },
-                                {
-                                    value: 2,
-                                    label: 'Bi-annual'
-                                },
-                                {
-                                    value: 3,
-                                    label: 'Quarterly'
-                                }
-                            ],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'pooioido',
-                            name: 'licenseStartDate',
-                            label: 'License start date',
-                            type: 'date',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'ffrrpopopooi',
-                            name: 'description',
-                            label: 'Description',
-                            type: 'textarea',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'kwddddeee',
-                            name: 'addressOne',
-                            label: 'Address line 1',
-                            type: 'text',
-                            default: '222333',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'kdddxxeee',
-                            name: 'addressTwo',
-                            label: 'Address line 2',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: false,
-                        },
-                        {
-                            id: 'kdzzddeee',
-                            name: 'city',
-                            label: 'City',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'kdhhjddeee',
-                            name: 'state',
-                            label: 'State/Province',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: false,
-                        },
-                        {
-                            id: 'country',
-                            name: 'country',
-                            label: 'Country',
-                            type: 'dropdownlist',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'postzip',
-                            name: 'postzip',
-                            label: 'Postal/Zip code',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'currency',
-                            name: 'currency',
-                            label: 'Currency',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'contactName',
-                            name: 'contactName',
-                            label: 'Contact name',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'contactPhone',
-                            name: 'contactPhone',
-                            label: 'Contact phone',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: false,
-                        },
-                        {
-                            id: 'contactEmail',
-                            name: 'contactEmail',
-                            label: 'Contact email',
-                            type: 'email',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'companyReg',
-                            name: 'companyReg',
-                            label: 'Company reg. no.',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'vatNumber',
-                            name: 'vatNumber',
-                            label: 'Company VAT no.',
-                            type: 'text',
-                            default: '',
-                            value: '',
-                            options: [],
-                            required: false,
-                            readonly: '',
-                            active: true,
-                        }
-                    ]
-                
-                }),
-                quoteInformationColumn1: new kendo.data.DataSource({
-                    data: [
-                        {
-                            id: 'ferferfer',
-                        },
-                        {
-                            id: 'dddferfer',   
-                        },
-                        {
-                            id: 'xxxpojpojp',
-                        },
-                        {
-                            id: 'xwxpojpojp',
-                        },
-                        {
-                            id: 'kkkdddeee',
-                        },
-                        {
-                            id: 'kkkddddddeee',
-                        },
-                        {
-                            id: 'kdddddeee',
-                        },
-                        {
-                            id: 'kkkddfdfdfe',
-                        },
-                        {
-                            id: 'sssssddeee',
-                        },
-
-                        {
-                            id: 'ffrrpopopooi',
-                        },
-                        
-                    ]
-                }),
-                quoteInformationColumn2: new kendo.data.DataSource({
-                    data: [
-                        {
-                            id: 'kwddddeee',
-                        },
-                        {
-                            id: 'kdzzddeee',
-                        },
-                        {
-                            id: 'country',
-                        },
-                        {
-                            id: 'postzip',
-                        },
-                        {
-                            id: 'currency',
-                        },
-                        {
-                            id: 'contactName',
-                        },
-                        {
-                            id: 'contactPhone',
-                        },
-                        {
-                            id: 'vatNumber',
-                        }
-                    ]
-                }),
-                netGrandTotal: function() {
-                    const apiServicesNetTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                    const additionalSoftwareNetTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                    const isvSoftwareNetTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                    return apiServicesNetTotal + additionalSoftwareNetTotal + isvSoftwareNetTotal;
-                },
-                discountGrandTotal: function() {
-                    const apiServicesDiscountTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                    const additionalSoftwareDiscountTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                    const isvSoftwareDiscountTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                    return apiServicesDiscountTotal + additionalSoftwareDiscountTotal + isvSoftwareDiscountTotal;
-                },
-                discountGrandTotalWithCurrency: function() {
-                    return this.get("currency") + this.discountGrandTotal();
-                },
-                grandTotal: function() {
-                    const apiServicesGrandTotal = this.get("apiServices").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                    const additionalSoftwareGrandTotal = this.get("additionalSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                    const isvSoftwareGrandTotal = this.get("isvSoftware").data().reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                    return apiServicesGrandTotal + additionalSoftwareGrandTotal + isvSoftwareGrandTotal;
-                },
-                grandTotalWithCurrency: function() {
-                    return this.get("currency") + this.grandTotal();
-                },
-                productSuite: new kendo.data.DataSource({
-                    schema: {
-                        model: Package
-                    },
-                    data: [
-                        {
-                            id: 'ffffouno',
-                            name: 'Foundation',
-                            ProductLink: 'https://google.com',
-                            mandatory: true,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: false,
-                            isSelected: true,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: false,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'fffffwfwouno',
-                            name: 'Foundation+',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: true,
-                            isSelected: true,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'fixed',
-                                max: 20,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'qvbffffouno',
-                            name: 'Financials',
-                            ProductLink: 'https://google.com',
-                            mandatory: true,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 10,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Financials',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'ddbffwfwouno',
-                            name: 'Financials+',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: true,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'fixed',
-                                max: 10,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'qwwwffouno',
-                            name: 'Distribution',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'fixed',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Distribution',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'ddbgggewuno',
-                            name: 'Distribution+',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: true,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'lpoouno',
-                            name: 'Manufacturing',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Manufacturing',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'ddbgggknkr',
-                            name: 'Manufacturing+',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'productSuite',
-                            hasOwnUserCount: false,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: true,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                    ]
-                }),
-                apiServices: new kendo.data.DataSource({
-                    schema: {
-                        model: Package
-                    },
-                    data: [
-                        {
-                            id: 'xxxssshhh',
-                            name: 'Financial Queries',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'dddoooawawa',
-                            name: 'Distribution Queries',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 12,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: false,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'hhhwhww8888wh',
-                            name: 'Operation Queries',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: false,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'wewiuhiwuehiu',
-                            name: 'Master Data Management',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: false,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'oioeroifer',
-                            name: 'Point of sale (POS)',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'qqhen',
-                            name: 'Procurement Management',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'erferiiii7',
-                            name: 'Sales Management',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                        {
-                            id: 'aaopoapwowow',
-                            name: 'Operation Management',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'apiServices',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: [
-                                'System Foundation',
-                                'System Administration',
-                                'Report Writer',
-                                'Reporting Services',
-                                'Office Automation',
-                                'Contact Management',
-                                'Executive Dashboards',
-                                'Interface System',
-                            ]
-                        },
-                    ]
-                }),
-                additionalSoftware: new kendo.data.DataSource({
-                    schema: {
-                        model: Package
-                    },
-                    change: function(e) {
-                        // console.log(e);
-                        setTimeout(function(){
-                            viewModelMethods.wizardTabsWidth();
-                        }, 300)
-                        
-                    },
-                    data: [
-                        {
-                            id: 'dsdxxxssshhh',
-                            name: 'Point of sale (POS)',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'additionalSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: []
-                        },
-                        {
-                            id: 'wefoooawawa',
-                            name: 'Espresso',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'additionalSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 12,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-
-                        },
-                        {
-                            id: 'oboe888wh',
-                            name: 'Manufacturing Operation Management (MOM)',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'additionalSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: []
-                        },
-                        {
-                            id: 'wwwwwwwiwuehiu',
-                            name: 'Additional designer seats',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'additionalSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                        },
-                        {
-                            id: 'foioeroifer',
-                            name: 'Additional analytics viewers',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'additionalSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                        },
-                        {
-                            id: 'ferferfqqhen',
-                            name: 'Additional Contact Management User',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'additionalSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 0,
-                            perUserCost: 15,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: false,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                            subItems: []
-                        }
-                    ]
-                }),
-                isvSoftware: new kendo.data.DataSource({
-                    schema: {
-                        model: Package
-                    },
-                    data: [
-                        {
-                            id: 'ooiwwwhn',
-                            name: 'Warehouse Management',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'isvSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 10,
-                            perUserCost: 14,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 5,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                        },
-                        {
-                            id: 'ooiwwdddwhn',
-                            name: 'Bartender',
-                            ProductLink: 'https://google.com',
-                            mandatory: false,
-                            category: 'isvSoftware',
-                            hasOwnUserCount: true,
-                            userCount: 30,
-                            perUserCost: 24,
-                            isPlusPackage: false,
-                            isSelected: false,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: false,
-                                value: 15,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            currency: "$",
-                        },
-                    ]
-                }),
-                infrastructure: new kendo.data.DataSource({
-                    schema: {
-                        model: InfrastructureItem,
-                    },
-                    data: [
-                        
-                        {
-                            id: 'databaseOption',
-                            name: 'databaseOptions',
-                            label: 'Database',
-                            ProductLink: 'https://google.com',
-                            type: 'select',
-                            default: '',
-                            value: '',
-                            cost: 22,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            options: [
-                                {
-                                    value: 'sqlwindows',
-                                    label: 'SQL on Windows',
-                                    cost: 12,
-                                },
-                                {
-                                    value: 'sqllinux',
-                                    label: 'SQL on Linux',
-                                    cost: 15,
-                                },
-                                {
-                                    value: 'sqlexpresslinux',
-                                    label: 'SQL Express on Linux',
-                                    cost: 10,
-                                },
-                                {
-                                    value: 'somethingelse',
-                                    label: 'Something on Linux',
-                                    cost: 20,
-                                },
-                                {
-                                    value: 'mongodb',
-                                    label: 'MongoDB on Something',
-                                    cost: 30,
-                                }
-                            ],
-                            selectedOption: 'sqlwindows',
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'backupFrequency',
-                            name: 'backupFrequency1',
-                            label: 'Backup frequency',
-                            ProductLink: 'https://google.com',
-                            type: 'select',
-                            default: '',
-                            value: '',
-                            cost: 32,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            options: [
-                                {
-                                    value: 'daily',
-                                    label: 'Daily',
-                                    cost: 15,
-                                },
-                                {
-                                    value: 'twodays',
-                                    label: 'Every two days',
-                                    cost: 20,
-                                },
-                                {
-                                    value: 'weekly',
-                                    label: 'Weekly',
-                                    cost: 25,
-                                },
-                                {
-                                    value: 'biweekly',
-                                    label: 'Bi-weekly',
-                                    cost: 30,
-                                },
-                                {
-                                    value: 'monthly',
-                                    label: 'Monthly',
-                                    cost: 35,
-                                }
-                            ],
-                            selectedOption: 'twodays',
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'highAvailability',
-                            name: 'highAvailability1',
-                            label: 'High availability',
-                            ProductLink: 'https://google.com',
-                            type: 'radioButton',
-                            default: '',
-                            value: '',
-                            cost: 32,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            options: [
-                                {
-                                    value: 'cold',
-                                    label: 'Cold',
-                                    cost: 15,
-                                },
-                                {
-                                    value: 'warm',
-                                    label: 'Warm',
-                                    cost: 20,
-                                },
-                                {
-                                    value: 'hot',
-                                    label: 'Hot',
-                                    cost: 25,
-                                }
-                            ],
-                            selectedOption: 'hot',
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        {
-                            id: 'infrastructureSize',
-                            name: 'infrastructureSize1',
-                            label: 'Infrastructure size',
-                            ProductLink: 'https://google.com',
-                            type: 'radioButton',
-                            default: '',
-                            value: '',
-                            cost: 32,
-                            discount: {
-                                hasDiscount: viewModelMethods.hasDiscount,
-                                discountAllowed: true,
-                                value: 0,
-                                type: 'percentage',
-                                max: 15,
-                            },
-                            options: [
-                                {
-                                    value: 'small',
-                                    label: 'Small',
-                                    cost: 15,
-                                },
-                                {
-                                    value: 'medium',
-                                    label: 'Medium',
-                                    cost: 20,
-                                },
-                                {
-                                    value: 'large',
-                                    label: 'Large',
-                                    cost: 25,
-                                }
-                            ],
-                            selectedOption: 'large',
-                            required: true,
-                            readonly: '',
-                            active: true,
-                        },
-                        
-                        
-                        
-                    ]
-                }),
-                productSuiteActive: function() {
-                    return this.get("productSuite") && this.get("productSuite").data().length;
-                },
-                apiServicesActive: function() {
-                    return this.get("apiServices") && this.get("apiServices").data().length;
-                },
-                additionalSoftwareActive: function() {
-                    return this.get("additionalSoftware") && this.get("additionalSoftware").data().length;
-                },
-                isvSoftwareActive: function() {
-                    return this.get("isvSoftware") && this.get("isvSoftware").data().length;
-                },
-                educationActive: function() {
-                    return this.get("education") && this.get("education").data().length;
-                },
-                activeSections: function() {
-                    const activeSections = [];
-                    
-                    activeSections.push({ 
-                        id: 'info',
-                        name: 'Quote information',
-                        icon: 'person_pin',
-                    });
-                    if ( this.productSuiteActive() ) activeSections.push({ 
-                        id: 'productSuite',
-                        name: 'Product suite',
-                        icon: 'apps',
-                    });
-                    if ( this.additionalSoftwareActive() ) activeSections.push({ 
-                        id: 'additionalSoftware',
-                        name: 'Add-on software',
-                        icon: 'queue_play_next',
-                    });
-                    if ( this.isvSoftwareActive() ) activeSections.push({ 
-                        id: 'isvSoftware',
-                        name: 'ISV software',
-                        icon: 'power',
-                    });
-                    activeSections.push({ 
-                        id: 'infrastructure',
-                        name: 'Infrastructure',
-                        icon: 'dns',
-                    });
-                    if ( this.educationActive() ) activeSections.push({ 
-                        id: 'education',
-                        name: 'Education',
-                        icon: 'school',
-                    });
-                    
-                    return activeSections;
-                },
-                
-                wizardTabsWidth: viewModelMethods.wizardTabsWidth,
-            });
+            const viewModel = kendo.observable(JSON.parse(data));
 
             const SAAS_QUOTE = {
                 tempDraggedItem: [],
@@ -5160,9 +3336,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     // viewModel.quoteInformationColumn1.read();
                     // viewModel.quoteInformationColumn2.read();
                     // viewModel.productSuite.read();
-                    // viewModel.apiServices.read();
-                    // viewModel.additionalSoftware.read();
-                    // viewModel.isvSoftware.read();
+                    // viewModel.ApiServices.read();
+                    // viewModel.AdditionalSoftware.read();
+                    // viewModel.IsvSoftware.read();
                     // viewModel.infrastructure.read();                    
 
                     kendo.bind($("body"), viewModel);
@@ -5170,7 +3346,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     SAAS_QUOTE.initFormFields();
                     SAAS_QUOTE.sizeLayout();
                     SAAS_QUOTE.uiInitExtras();
-                    SAAS_QUOTE.initInfoFieldWindow();
+                    // SAAS_QUOTE.initInfoFieldWindow();
                     SAAS_QUOTE.registerEventHandlers();
                     $.material.init();
                 },
@@ -5296,7 +3472,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     const tabHeight = $(window).height() - 200;
 
                     $("#isvFilter").on("keyup", function() {
-                        viewModel.isvSoftware.filter({ field: "name", operator: "contains", value: $(this).val() })
+                        viewModel.IsvSoftware.filter({ field: "name", operator: "contains", value: $(this).val() })
                     });
                     // $(".tab-content").height(tabHeight);
                     $(".tab-content").css({'maxHeight': tabHeight, 'height': tabHeight});
@@ -5312,125 +3488,17 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         zIndexOffset: 1000000
                     });
 
-                    
-                    var country = $("#country").kendoDropDownList({
-                        optionLabel: "Select country...",
-                        // dataTextField: "name",
-                        // dataValueField: "categoryID",
-                        filter: 'contains',
-                        dataSource: {
-                            data: ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]
-                        }
-                    }).data("kendoDropDownList");
 
-                    var region = $("#region").kendoDropDownList({
-                        // optionLabel: "Select region...",
-                        dataTextField: "name",
-                        dataValueField: "categoryID",
-                        dataSource: {
-                            data: [
-                                {
-                                    name: 'Africa',
-                                    categoryID: 'africa',
-                                },
-                                {
-                                    name: 'North America',
-                                    categoryID: 'northamerica',
-                                },
-                                {
-                                    name: 'South America',
-                                    categoryID: 'southamerica',
-                                },
-                                {
-                                    name: 'Europe',
-                                    categoryID: 'europe',
-                                },
-                                {
-                                    name: 'Australasia',
-                                    categoryID: 'australasia',
-                                },
-                                {
-                                    name: 'Asia',
-                                    categoryID: 'asia',
-                                },
-                            ]
-                        }
-                    }).data("kendoDropDownList");
-                    const regionData = [
-                            {
-                                name: 'South Africa',
-                                categoryID: 'africa',
-                            },
-                            {
-                                name: 'USA',
-                                categoryID: 'northamerica',
-                            },
-                            {
-                                name: 'Brazil',
-                                categoryID: 'southamerica',
-                            },
-                            {
-                                name: 'France',
-                                categoryID: 'europe',
-                            },
-                            {
-                                name: 'Australia',
-                                categoryID: 'australasia',
-                            },
-                            {
-                                name: 'China',
-                                categoryID: 'asia',
-                            },
-                            {
-                                name: 'Kenya',
-                                categoryID: 'africa',
-                            },
-                            {
-                                name: 'Mexico',
-                                categoryID: 'northamerica',
-                            },
-                            {
-                                name: 'Argentina',
-                                categoryID: 'southamerica',
-                            },
-                            {
-                                name: 'Italy',
-                                categoryID: 'europe',
-                            },
-                            {
-                                name: 'New Zealand',
-                                categoryID: 'australasia',
-                            },
-                            {
-                                name: 'Malaysia',
-                                categoryID: 'asia',
-                            },
-                    ];
-
-                    var subregion = $("#subregion").kendoDropDownList({
-                        autoBind: false,
-                        cascadeFrom: "region",
-                        // optionLabel: "Select sub-region...",
-                        dataTextField: "name",
-                        dataValueField: "name",
-                        select: function(e) {
-                            $('.customer-details').show();
-                        },
-                        dataSource: {
-                            data: regionData
-                        }
-                    }).data("kendoDropDownList");
-                    
-                    $("#georeplication").kendoMultiSelect({
-                        placeholder: "Select regions...",
-                        dataTextField: "name",
-                        dataValueField: "name",
-                        height: 400,
-                        dataSource: {
-                            data: regionData,
-                            group: { field: "categoryID" }
-                        }                    
-                    });
+                    // $("#georeplication").kendoMultiSelect({
+                    //     placeholder: "Select regions...",
+                    //     dataTextField: "name",
+                    //     dataValueField: "name",
+                    //     height: 400,
+                    //     dataSource: {
+                    //         data: regionData,
+                    //         group: { field: "categoryID" }
+                    //     }                    
+                    // });
                 },
                 uiInitExtras: function() {
                     $('[data-tooltip="tooltip"]').tooltip();
@@ -5458,10 +3526,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         const $this = $(this);
                         const $popover = $(e.target).data('bs.popover').$tip;
                         const $hiddenValueField = $this.siblings(".hidden-discount-field").find("input.discount-value");
-                        const $hiddenTypeField = $this.siblings(".hidden-discount-field").find("input.discount-type-value");
+                        // const $hiddenTypeField = $this.siblings(".hidden-discount-field").find("input.discount-type-value");
                         const $popoverInput = $popover.find("input.discount-amount-input");
                         const value = $hiddenValueField.val();
-                        const type = $hiddenTypeField.val();
+                        // const type = $hiddenTypeField.val();
                         $popoverInput.val(value);
                     
                         
@@ -5496,144 +3564,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     // infoField.isOutlined = infoField.isOutline();
                     return kendo.Template.compile($('#infoFieldTemplate').html())(infoField);
                 },
-                placeholder: function(element) {
-                    return element.clone().addClass('placeholderGhost');
-                },
-                hint: function(element) {
-                    return element
-                        .clone()
-                        .addClass('hint')
-                        .height(element.height())
-                        .width(element.width() + 25)
-                        .css('z-index', '9999999');
-                },
-                initEditLayout: function() {  
-                    $('.dragHandle').show(); 
-                    $('.removeField').show();  
-
-                    $("#quoteInformationColumn1").kendoSortable({
-                        connectWith: "#quoteInformationColumn2",
-                        placeholder: SAAS_QUOTE.placeholder,
-                        hint: SAAS_QUOTE.hint,
-                        //handle: '.dragHandle',
-                        filter: '>.form-group',
-                        ignore: '.removeField', 
-                        end(widget) {
-                            const fieldGuid = widget.item.data('guid');
-                            const columnDataSourceName = widget.sender.element.attr('id');
-                            const dataSource = viewModel[columnDataSourceName];
-                            const item = dataSource.get(fieldGuid);                       
-                            
-                            if (widget.action === 'sort') {  
-                                widget.preventDefault();                          
-                                dataSource.data();
-                                dataSource.remove(item);
-                                widget.item.remove();
-                                dataSource.insert(widget.newIndex, item);
-                                dataSource.data();
-                            } else if (widget.action === 'remove') {
-                                const itemClone = item.toJSON();
-                                SAAS_QUOTE.tempDraggedItem = [JSON.stringify(itemClone), item.id];
-                                widget.item.remove();
-                                dataSource.remove(item);
-                                dataSource.data();
-                            } else if (widget.action === 'receive') {
-                                widget.preventDefault(); 
-                                widget.item.remove();
-                                const itemToInsert = JSON.parse(SAAS_QUOTE.tempDraggedItem[0]);
-                                itemToInsert.id = SAAS_QUOTE.tempDraggedItem[1];
-                                dataSource.insert(widget.newIndex, itemToInsert);
-                                SAAS_QUOTE.tempDraggedItem = [];
-                                dataSource.data();
-                            }
-                            $.material.init();
-                            $(".dragHandle").show();
-                            $('.removeField').show(); 
-                        }
-                    });
-
-                    $("#quoteInformationColumn2").kendoSortable({
-                        connectWith: "#quoteInformationColumn1",
-                        placeholder: SAAS_QUOTE.placeholder,
-                        hint: SAAS_QUOTE.hint,
-                        // handler: '.dragHandle',
-                        // filter: '>.form-group',
-                        ignore: '.removeField',
-                        end(widget) {
-                            const fieldGuid = widget.item.data('guid');
-                            const columnDataSourceName = widget.sender.element.attr('id');
-                            const dataSource = viewModel[columnDataSourceName];
-                            const item = dataSource.get(fieldGuid);
-                            
-                            if (widget.action === 'sort') {
-                                widget.preventDefault();
-                                dataSource.data();
-                                dataSource.remove(item);
-                                widget.item.remove();
-                                dataSource.insert(widget.newIndex, item);
-                            } else if (widget.action === 'remove') {
-                                SAAS_QUOTE.tempDraggedItem = [JSON.stringify(item.toJSON()), item.id];
-                                widget.item.remove();
-                                dataSource.remove(item);
-                                dataSource.data();
-                            } else if (widget.action === 'receive') {
-                                widget.preventDefault(); 
-                                widget.item.remove();
-                                const itemToInsert = JSON.parse(SAAS_QUOTE.tempDraggedItem[0]);
-                                itemToInsert.id = SAAS_QUOTE.tempDraggedItem[1];
-                                dataSource.insert(widget.newIndex, itemToInsert);
-                                SAAS_QUOTE.tempDraggedItem = [];
-                                dataSource.data();
-                            }
-                            $.material.init();
-                            $(".dragHandle").show();
-                            $('.removeField').show(); 
-                        }
-                    });
-                    
-                    $(".removeField").on("click", function(e) {
-                        SAAS_QUOTE.removeInfoField(e.target);
-                    });
-                },
-                infoFieldWindowOpen: function() {
-                    console.log('open');
-                    
-                    $("input[name='infoFieldOptions']").on("change", function() {
-                        console.log('change');
-                        if ( $("input[name='infoFieldOptions']:checked").length ) {
-                            $("#addInfoFieldButton").removeAttr("disabled");
-                        } else {
-                            $("#addInfoFieldButton").prop("disabled", true);
-                        }
-                    });                    
-                    return null;
-                },
-                infoFieldWindowClose: function() {
-                    return null;
-                },
-                addInfoField: function() {
-                    if ( $("input[name='infoFieldOptions']:checked").length ) {
-                        const infoFieldId = $("input[name='infoFieldOptions']:checked").val();
-                        const infoFieldItem = viewModel.infoFields.get(infoFieldId);
-                        infoFieldItem.set('active', true);
-                        viewModel.quoteInformationColumn1.insert(0, { id: infoFieldId });
-                    }
-                    $.material.init();
-                    SAAS_QUOTE.infoFieldWindow.close();                    
-                },
-                removeInfoField: function(field) {
-                    const fieldGuid = $(field).closest('.form-group').data('guid');
-                    const columnDataSourceName = $(field).closest('.info-fields-column').attr('id');
-                    const dataSource = viewModel[columnDataSourceName];
-                    const item = dataSource.getByUid(fieldGuid);
-                    const fieldItem = viewModel.infoFields.get(item.id);
-                    dataSource.remove(item);
-                    fieldItem.set("active", false);
-                },
-                initInfoFieldWindow: function() {
-                    SYSPRO_VB.createKendoWindow('infoFieldWindow', 'Add new info field', SAAS_QUOTE.infoFieldWindowOpen, SAAS_QUOTE.infoFieldWindowClose, null, null, null, null, null, null, null, null, true);
-                    SAAS_QUOTE.infoFieldWindow = $('#infoFieldWindow').data('kendoWindow');
-                }
             }
              
             
@@ -5646,12 +3576,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 
 
                 // var lineItemTotalsTemplate = kendo.template($("#lineItemTotalsTemplate").html());
-                // console.log(viewModel.apiServices.data());
-                // viewModel.apiServices.data().forEach(lineItem => {
+                // console.log(viewModel.ApiServices);
+                // viewModel.ApiServices.forEach(lineItem => {
                 //     console.log(lineItem.isActive());
                 //     $("#lineItemsTotals").append(lineItemTotalsTemplate(lineItem));
                 // });
-                // viewModel.additionalSoftware.data().forEach(lineItem => {
+                // viewModel.AdditionalSoftware.forEach(lineItem => {
                 //     console.log(lineItem.isActive());
                 //     $("#lineItemsTotals").append(lineItemTotalsTemplate(lineItem));
                 // });
