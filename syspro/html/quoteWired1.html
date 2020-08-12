@@ -364,7 +364,7 @@
     .nav-pills > li + li {
         margin-left: 0;
     }
-    .nav-pills > li > a {
+    .nav-pills > li.wizard-tab > a {
         padding: 0;
         max-width: 120px;
         margin: 0 auto;
@@ -373,7 +373,7 @@
         position: relative;
         top: -29px;
         z-index: 100;
-        font-size: 14px;
+        font-size: 12px;
     line-height: 3;
     }
     .nav-pills > li > a:after {
@@ -415,11 +415,11 @@
         -ms-transition: all 0.2s linear;
         transition: all 0.2s linear;
     }
-    .nav-pills > li.active > a,
-    .nav-pills > li.active > a:hover,
-    .nav-pills > li.active > a:focus {
+    .nav-pills > li.wizard-tab.active > a,
+    .nav-pills > li.wizard-tab.active > a:hover,
+    .nav-pills > li.wizard-tab.active > a:focus {
         background-color: transparent;
-        font-size: 15px;
+        font-size: 13px;
         -webkit-transition: font-size 0.2s linear;
         -moz-transition: font-size 0.2s linear;
         -o-transition: font-size 0.2s linear;
@@ -1791,10 +1791,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         #} else {#
                             <div class="col-sm-1 text-left">
                                 <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r" data-bind="css: { 
-                                        active: IsSelectedBool,
-                                    }">
-                                    <input type="checkbox" autocomplete="off" data-bind="checked: IsSelectedBool">
+                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
+                                    <input type="checkbox" autocomplete="off" data-bind="radioButtonBind: IsSelectedBool, selectedValue: IsSelected">
                                     <i class="material-icons package-selected-icon pull-left" data-bind="css: { 
                                         sys-fg-gray: sysfginverse,
                                         sys-fg-white: sysfgwhite,
@@ -1845,13 +1843,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         min="0"
                                         max="2000"
                                         step="10" style="max-width: 70px;"
-                                        id="#: name #UserCount"
-                                        name="#: name #UserCount"
+                                        id="#: Description #UserCount"
+                                        name="#: Description #UserCount"
                                         class="form-control"
                                         data-bind="value: userCount"                                     
                                     />
                                     <label
-                                        for="#: name #UserCount"
+                                        for="#: Description #UserCount"
                                         class=""
                                         >Users </label
                                     >
@@ -1991,12 +1989,66 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         </script>
 
         <script>
-                        
+            // kendo.data.binders.numericValue = kendo.data.Binder.extend({
+            //     init: function(element, bindings, options) {
+            //         //call the base constructor
+            //         kendo.data.Binder.fn.init.call(this, element, bindings, options);
+
+            //         var that = this;
+            //         //listen for the change event of the element
+            //         $(that.element).on("change", function() {
+            //             that.change(); //call the change function
+            //         });
+            //     },
+            //     refresh: function() {
+            //         var that = this,
+            //             value = that.bindings["numericValue"].get(); //get the value from the View-Model
+
+            //         $(that.element).val(value); //update the HTML input element
+            //     },
+            //     change: function() {
+            //         var value = this.element.value;
+            //         //in this example the View-Model will be updated only if the value of the input is a number
+            //         if (!isNaN(value)) {
+            //             this.bindings["numericValue"].set(value); //update the View-Model
+            //         }
+            //     }
+            // });
+            
+            kendo.data.binders.radioButtonBind = kendo.data.Binder.extend({
+                init: function(element, bindings, options) {
+                    // call the base constructor
+                    kendo.data.Binder.fn.init.call(this, element, bindings, options);
+
+                    const that = this;
+                    // listen for the change event of the element
+                    $(that.element).on('change', () => {
+                        that.change(); // call the change function
+                    });
+                },
+                refresh: function() {
+                    const that = this;
+                    const value = that.bindings['radioButtonBind'].get();
+
+                    $(that.element).prop('checked', value === true);
+
+                    $(that.element).closest('label.btn').toggleClass('active', value === true);
+                },
+                change: function() {
+                    const value = $(this.element).prop('checked');
+
+                    // this.bindings['radioButton'].set(value); // update the View-Model
+                    this.bindings['selectedValue'].set(value); // update the View-Model
+                },
+            });
+            
+            kendo.data.binders.selectedValue = kendo.data.Binder.extend({
+                refresh: function() {
+                    
+                }
+            });
 
             kendo.data.ObservableObject.prototype.IsMandatoryBool = function() {
-                console.log('pip');
-                console.log(this.get("IsMandatory"));
-                console.log(this.get("IsMandatory") === "true");
                 return this.get("IsMandatory") === "true";
             };
             kendo.data.ObservableObject.prototype.IsSelectedBool = function() {
@@ -2191,7 +2243,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 $(e.sender.element).closest('.form-group').removeClass('is-empty');
             };
 
-            
 
             const SAAS_QUOTE = {
                 tempDraggedItem: [],
@@ -2429,16 +2480,41 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     // infoField.isOutlined = infoField.isOutline();
                     return kendo.Template.compile($('#infoFieldTemplate').html())(infoField);
                 },
+                sizeWizardTabs: function() {
+                    console.log('ping');
+                    const $total = viewModel.activeSections().length;
+                    const $width = 100 / $total;
+                    console.log($total, $width);
+                    // return $width + "%";
+                    $(".wizard-tab").css('width', $width + "%");
+                },
             }
              
             
-            
+            const vmChangeHandler = (e, category) => {
+                const changeData = {
+                    category: category,
+                    item: category = 'QuoteInformation' ? e.field : e.items[0].StockCode,
+                    field: e.field,
+                    newValue: category = 'QuoteInformation' ? e.sender[e.field] : e.items[0][e.field]
+                };
+                SAAS_QUOTE.sizeWizardTabs();
+                console.log(changeData);
+            }
+
+
             $(document).ready(function() {
                 
                 $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
-                    console.log(data);
+                    // console.log(data);
                     window.viewModel = kendo.observable(data);
-                    // window.viewModel = viewModel;
+
+                    viewModel.bind("change", (e) => vmChangeHandler(e, 'QuoteInformation'));
+                    viewModel.AdditionalSoftware.Product.bind("change", (e) => vmChangeHandler(e, 'AdditionalSoftware'));
+                    viewModel.CoreBundles.Product.bind("change", (e) => vmChangeHandler(e, 'CoreBundles'));
+                    // viewModel.IsvSoftware.Product.bind("change", vmChangeHandler);
+                    viewModel.ApiServices.Product.bind("change", (e) => vmChangeHandler(e, 'ApiServices'));
+
                     SAAS_QUOTE.init();
                     
                     $(".set-full-height").css("height", "auto");                
