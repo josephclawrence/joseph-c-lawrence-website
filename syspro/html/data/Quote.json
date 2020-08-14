@@ -2,8 +2,8 @@
 	"IsNewQuote": "true",
 	"QuoteNumber": "10A00000001",
 	"ReferenceNumber": "Reference Number",
-	"QuoteDate": "2020-08-03T10:29:13.6572737+02:00",
-	"ExpiryDate": "2020-08-03T10:29:13.6572737+02:00",
+	"QuoteDate": "2020-08-14T13:42:49.6241197+02:00",
+	"ExpiryDate": "2020-08-14T13:42:49.6241197+02:00",
 	"QuoteVersionList": {
 		"string": [
 			"V1",
@@ -377,77 +377,6 @@
 				"SubProductList": null
 			},
 			{
-				"IsSelected": "true",
-				"IsMandatory": "true",
-				"StockCode": "BUN-MANFIN",
-				"Description": "financials",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
-				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
-				"FeatureList": {
-					"string": [
-						"Accounts Receivable",
-						"Accounts Payable",
-						"General Ledger",
-						"Cash Book",
-						"Asset Register",
-						"Electronic Funds"
-					]
-				},
-				"SubProductList": null
-			},
-			{
-				"IsSelected": "false",
-				"IsMandatory": "false",
-				"StockCode": "BUN-CORDIS",
-				"Description": "Distribution",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
-				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
-				"FeatureList": {
-					"string": [
-						"Inventory Management",
-						"Sales Orders",
-						"Purchase Orders",
-						"Sales Analysis",
-						"Counter Sales"
-					]
-				},
-				"SubProductList": null
-			},
-			{
-				"IsSelected": "false",
-				"IsMandatory": "false",
-				"StockCode": "BUN-CORMAN",
-				"Description": "Manufacturing",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
-				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
-				"FeatureList": {
-					"string": [
-						"Inventory Management",
-						"Bill of Materials",
-						"Work in Progress",
-						"Factory Documentation",
-						"Product Configurator",
-						"Quotations and Estimates"
-					]
-				},
-				"SubProductList": null
-			},
-			{
 				"IsSelected": "false",
 				"IsMandatory": "false",
 				"StockCode": "BUN-ADVFND",
@@ -524,6 +453,53 @@
 						}
 					]
 				}
+			},
+			{
+				"IsSelected": "true",
+				"IsMandatory": "true",
+				"StockCode": "BUN-MANFIN",
+				"Description": "Financials",
+				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+				"NumberOfUsers": "0",
+				"Price": "18",
+				"DiscountValue": "0",
+				"DiscountPercentage": "0",
+				"MaxDiscountPercentage": "0",
+				"DiscountAllowed": "false",
+				"FeatureList": {
+					"string": [
+						"Accounts Receivable",
+						"Accounts Payable",
+						"General Ledger",
+						"Cash Book",
+						"Asset Register",
+						"Electronic Funds"
+					]
+				},
+				"SubProductList": null
+			},
+			{
+				"IsSelected": "false",
+				"IsMandatory": "false",
+				"StockCode": "BUN-CORDIS",
+				"Description": "Distribution",
+				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+				"NumberOfUsers": "0",
+				"Price": "18",
+				"DiscountValue": "0",
+				"DiscountPercentage": "0",
+				"MaxDiscountPercentage": "0",
+				"DiscountAllowed": "false",
+				"FeatureList": {
+					"string": [
+						"Inventory Management",
+						"Sales Orders",
+						"Purchase Orders",
+						"Sales Analysis",
+						"Counter Sales"
+					]
+				},
+				"SubProductList": null
 			},
 			{
 				"IsSelected": "false",
@@ -662,6 +638,30 @@
 						}
 					]
 				}
+			},
+			{
+				"IsSelected": "false",
+				"IsMandatory": "false",
+				"StockCode": "BUN-CORMAN",
+				"Description": "Manufacturing",
+				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+				"NumberOfUsers": "0",
+				"Price": "18",
+				"DiscountValue": "0",
+				"DiscountPercentage": "0",
+				"MaxDiscountPercentage": "0",
+				"DiscountAllowed": "false",
+				"FeatureList": {
+					"string": [
+						"Inventory Management",
+						"Bill of Materials",
+						"Work in Progress",
+						"Factory Documentation",
+						"Product Configurator",
+						"Quotations and Estimates"
+					]
+				},
+				"SubProductList": null
 			},
 			{
 				"IsSelected": "false",
@@ -1088,10 +1088,634 @@
 		]
 	},
 	"IsvSoftware": null,
+	"QuoteInfrastructure": {
+		"DeploymentRegionsList": {
+			"Region": [
+				{
+					"RegionName": "TBC",
+					"CategoryId": "TBC"
+				},
+				{
+					"RegionName": "TBC",
+					"CategoryId": "TBC"
+				},
+				{
+					"RegionName": "TBC",
+					"CategoryId": "TBC"
+				},
+				{
+					"RegionName": "TBC",
+					"CategoryId": "TBC"
+				},
+				{
+					"RegionName": "TBC",
+					"CategoryId": "TBC"
+				}
+			]
+		},
+		"SelectedDeploymentRegion": {
+			"RegionName": "TBC",
+			"CategoryId": "TBC"
+		},
+		"NumberOfDesktopUsers": "10",
+		"AdditionalEnvironmentTest": "true",
+		"AdditionalEnvironmentTestHighlyAvail": "true",
+		"AdditionalEnvironmentDev": "false",
+		"AdditionalEnvironmentDevHighlyAvail": "false",
+		"ShortDateFormatList": {
+			"string": [
+				"yyyy/MM/dd",
+				"dd MMM yyyy"
+			]
+		},
+		"SelectedShortDateFormat": "yyyy/MM/dd",
+		"LongDateFormatList": {
+			"string": [
+				"dddd, dd MMMM yyyy",
+				"dd MMMM yyyy"
+			]
+		},
+		"SelectedLongDateFormat": "dddd, dd MMMM yyyy",
+		"ReportDateFormatList": {
+			"string": [
+				"yyyy/MM/dd h:mm tt",
+				"dd MMM yyyy h:mm tt"
+			]
+		},
+		"SelectedReportDateFormat": "yyyy/MM/dd h:mm tt",
+		"ServerTimeZoneList": {
+			"TimeZone": [
+				{
+					"DisplayName": "(UTC-12:00) International Date Line West",
+					"TimeZoneId": "Dateline Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-11:00) Coordinated Universal Time-11",
+					"TimeZoneId": "UTC-11"
+				},
+				{
+					"DisplayName": "(UTC-10:00) Aleutian Islands",
+					"TimeZoneId": "Aleutian Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-10:00) Hawaii",
+					"TimeZoneId": "Hawaiian Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-09:30) Marquesas Islands",
+					"TimeZoneId": "Marquesas Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-09:00) Alaska",
+					"TimeZoneId": "Alaskan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-09:00) Coordinated Universal Time-09",
+					"TimeZoneId": "UTC-09"
+				},
+				{
+					"DisplayName": "(UTC-08:00) Baja California",
+					"TimeZoneId": "Pacific Standard Time (Mexico)"
+				},
+				{
+					"DisplayName": "(UTC-08:00) Coordinated Universal Time-08",
+					"TimeZoneId": "UTC-08"
+				},
+				{
+					"DisplayName": "(UTC-08:00) Pacific Time (US &amp; Canada)",
+					"TimeZoneId": "Pacific Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-07:00) Arizona",
+					"TimeZoneId": "US Mountain Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-07:00) Chihuahua, La Paz, Mazatlan",
+					"TimeZoneId": "Mountain Standard Time (Mexico)"
+				},
+				{
+					"DisplayName": "(UTC-07:00) Mountain Time (US &amp; Canada)",
+					"TimeZoneId": "Mountain Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-06:00) Central America",
+					"TimeZoneId": "Central America Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-06:00) Central Time (US &amp; Canada)",
+					"TimeZoneId": "Central Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-06:00) Easter Island",
+					"TimeZoneId": "Easter Island Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-06:00) Guadalajara, Mexico City, Monterrey",
+					"TimeZoneId": "Central Standard Time (Mexico)"
+				},
+				{
+					"DisplayName": "(UTC-06:00) Saskatchewan",
+					"TimeZoneId": "Canada Central Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-05:00) Bogota, Lima, Quito, Rio Branco",
+					"TimeZoneId": "SA Pacific Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-05:00) Chetumal",
+					"TimeZoneId": "Eastern Standard Time (Mexico)"
+				},
+				{
+					"DisplayName": "(UTC-05:00) Eastern Time (US &amp; Canada)",
+					"TimeZoneId": "Eastern Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-05:00) Haiti",
+					"TimeZoneId": "Haiti Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-05:00) Havana",
+					"TimeZoneId": "Cuba Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-05:00) Indiana (East)",
+					"TimeZoneId": "US Eastern Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-05:00) Turks and Caicos",
+					"TimeZoneId": "Turks And Caicos Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-04:00) Asuncion",
+					"TimeZoneId": "Paraguay Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-04:00) Atlantic Time (Canada)",
+					"TimeZoneId": "Atlantic Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-04:00) Caracas",
+					"TimeZoneId": "Venezuela Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-04:00) Cuiaba",
+					"TimeZoneId": "Central Brazilian Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-04:00) Georgetown, La Paz, Manaus, San Juan",
+					"TimeZoneId": "SA Western Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-04:00) Santiago",
+					"TimeZoneId": "Pacific SA Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:30) Newfoundland",
+					"TimeZoneId": "Newfoundland Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Araguaina",
+					"TimeZoneId": "Tocantins Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Brasilia",
+					"TimeZoneId": "E. South America Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Cayenne, Fortaleza",
+					"TimeZoneId": "SA Eastern Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) City of Buenos Aires",
+					"TimeZoneId": "Argentina Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Greenland",
+					"TimeZoneId": "Greenland Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Montevideo",
+					"TimeZoneId": "Montevideo Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Punta Arenas",
+					"TimeZoneId": "Magallanes Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Saint Pierre and Miquelon",
+					"TimeZoneId": "Saint Pierre Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-03:00) Salvador",
+					"TimeZoneId": "Bahia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-02:00) Coordinated Universal Time-02",
+					"TimeZoneId": "UTC-02"
+				},
+				{
+					"DisplayName": "(UTC-02:00) Mid-Atlantic - Old",
+					"TimeZoneId": "Mid-Atlantic Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-01:00) Azores",
+					"TimeZoneId": "Azores Standard Time"
+				},
+				{
+					"DisplayName": "(UTC-01:00) Cabo Verde Is.",
+					"TimeZoneId": "Cape Verde Standard Time"
+				},
+				{
+					"DisplayName": "(UTC) Coordinated Universal Time",
+					"TimeZoneId": "UTC"
+				},
+				{
+					"DisplayName": "(UTC+00:00) Dublin, Edinburgh, Lisbon, London",
+					"TimeZoneId": "GMT Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+00:00) Monrovia, Reykjavik",
+					"TimeZoneId": "Greenwich Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+00:00) Sao Tome",
+					"TimeZoneId": "Sao Tome Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+01:00) Casablanca",
+					"TimeZoneId": "Morocco Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna",
+					"TimeZoneId": "W. Europe Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague",
+					"TimeZoneId": "Central Europe Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris",
+					"TimeZoneId": "Romance Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb",
+					"TimeZoneId": "Central European Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+01:00) West Central Africa",
+					"TimeZoneId": "W. Central Africa Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Amman",
+					"TimeZoneId": "Jordan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Athens, Bucharest",
+					"TimeZoneId": "GTB Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Beirut",
+					"TimeZoneId": "Middle East Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Cairo",
+					"TimeZoneId": "Egypt Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Chisinau",
+					"TimeZoneId": "E. Europe Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Damascus",
+					"TimeZoneId": "Syria Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Gaza, Hebron",
+					"TimeZoneId": "West Bank Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Harare, Pretoria",
+					"TimeZoneId": "South Africa Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius",
+					"TimeZoneId": "FLE Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Jerusalem",
+					"TimeZoneId": "Israel Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Kaliningrad",
+					"TimeZoneId": "Kaliningrad Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Khartoum",
+					"TimeZoneId": "Sudan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Tripoli",
+					"TimeZoneId": "Libya Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+02:00) Windhoek",
+					"TimeZoneId": "Namibia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+03:00) Baghdad",
+					"TimeZoneId": "Arabic Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+03:00) Istanbul",
+					"TimeZoneId": "Turkey Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+03:00) Kuwait, Riyadh",
+					"TimeZoneId": "Arab Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+03:00) Minsk",
+					"TimeZoneId": "Belarus Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+03:00) Moscow, St. Petersburg",
+					"TimeZoneId": "Russian Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+03:00) Nairobi",
+					"TimeZoneId": "E. Africa Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+03:30) Tehran",
+					"TimeZoneId": "Iran Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Abu Dhabi, Muscat",
+					"TimeZoneId": "Arabian Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Astrakhan, Ulyanovsk",
+					"TimeZoneId": "Astrakhan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Baku",
+					"TimeZoneId": "Azerbaijan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Izhevsk, Samara",
+					"TimeZoneId": "Russia Time Zone 3"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Port Louis",
+					"TimeZoneId": "Mauritius Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Saratov",
+					"TimeZoneId": "Saratov Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Tbilisi",
+					"TimeZoneId": "Georgian Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Volgograd",
+					"TimeZoneId": "Volgograd Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:00) Yerevan",
+					"TimeZoneId": "Caucasus Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+04:30) Kabul",
+					"TimeZoneId": "Afghanistan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+05:00) Ashgabat, Tashkent",
+					"TimeZoneId": "West Asia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+05:00) Ekaterinburg",
+					"TimeZoneId": "Ekaterinburg Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+05:00) Islamabad, Karachi",
+					"TimeZoneId": "Pakistan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+05:00) Qyzylorda",
+					"TimeZoneId": "Qyzylorda Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi",
+					"TimeZoneId": "India Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+05:30) Sri Jayawardenepura",
+					"TimeZoneId": "Sri Lanka Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+05:45) Kathmandu",
+					"TimeZoneId": "Nepal Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+06:00) Astana",
+					"TimeZoneId": "Central Asia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+06:00) Dhaka",
+					"TimeZoneId": "Bangladesh Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+06:00) Omsk",
+					"TimeZoneId": "Omsk Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+06:30) Yangon (Rangoon)",
+					"TimeZoneId": "Myanmar Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+07:00) Bangkok, Hanoi, Jakarta",
+					"TimeZoneId": "SE Asia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+07:00) Barnaul, Gorno-Altaysk",
+					"TimeZoneId": "Altai Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+07:00) Hovd",
+					"TimeZoneId": "W. Mongolia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+07:00) Krasnoyarsk",
+					"TimeZoneId": "North Asia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+07:00) Novosibirsk",
+					"TimeZoneId": "N. Central Asia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+07:00) Tomsk",
+					"TimeZoneId": "Tomsk Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi",
+					"TimeZoneId": "China Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+08:00) Irkutsk",
+					"TimeZoneId": "North Asia East Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+08:00) Kuala Lumpur, Singapore",
+					"TimeZoneId": "Singapore Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+08:00) Perth",
+					"TimeZoneId": "W. Australia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+08:00) Taipei",
+					"TimeZoneId": "Taipei Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+08:00) Ulaanbaatar",
+					"TimeZoneId": "Ulaanbaatar Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+08:45) Eucla",
+					"TimeZoneId": "Aus Central W. Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+09:00) Chita",
+					"TimeZoneId": "Transbaikal Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+09:00) Osaka, Sapporo, Tokyo",
+					"TimeZoneId": "Tokyo Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+09:00) Pyongyang",
+					"TimeZoneId": "North Korea Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+09:00) Seoul",
+					"TimeZoneId": "Korea Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+09:00) Yakutsk",
+					"TimeZoneId": "Yakutsk Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+09:30) Adelaide",
+					"TimeZoneId": "Cen. Australia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+09:30) Darwin",
+					"TimeZoneId": "AUS Central Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+10:00) Brisbane",
+					"TimeZoneId": "E. Australia Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+10:00) Canberra, Melbourne, Sydney",
+					"TimeZoneId": "AUS Eastern Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+10:00) Guam, Port Moresby",
+					"TimeZoneId": "West Pacific Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+10:00) Hobart",
+					"TimeZoneId": "Tasmania Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+10:00) Vladivostok",
+					"TimeZoneId": "Vladivostok Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+10:30) Lord Howe Island",
+					"TimeZoneId": "Lord Howe Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+11:00) Bougainville Island",
+					"TimeZoneId": "Bougainville Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+11:00) Chokurdakh",
+					"TimeZoneId": "Russia Time Zone 10"
+				},
+				{
+					"DisplayName": "(UTC+11:00) Magadan",
+					"TimeZoneId": "Magadan Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+11:00) Norfolk Island",
+					"TimeZoneId": "Norfolk Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+11:00) Sakhalin",
+					"TimeZoneId": "Sakhalin Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+11:00) Solomon Is., New Caledonia",
+					"TimeZoneId": "Central Pacific Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky",
+					"TimeZoneId": "Russia Time Zone 11"
+				},
+				{
+					"DisplayName": "(UTC+12:00) Auckland, Wellington",
+					"TimeZoneId": "New Zealand Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+12:00) Coordinated Universal Time+12",
+					"TimeZoneId": "UTC+12"
+				},
+				{
+					"DisplayName": "(UTC+12:00) Fiji",
+					"TimeZoneId": "Fiji Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+12:00) Petropavlovsk-Kamchatsky - Old",
+					"TimeZoneId": "Kamchatka Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+12:45) Chatham Islands",
+					"TimeZoneId": "Chatham Islands Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+13:00) Coordinated Universal Time+13",
+					"TimeZoneId": "UTC+13"
+				},
+				{
+					"DisplayName": "(UTC+13:00) Nuku'alofa",
+					"TimeZoneId": "Tonga Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+13:00) Samoa",
+					"TimeZoneId": "Samoa Standard Time"
+				},
+				{
+					"DisplayName": "(UTC+14:00) Kiritimati Island",
+					"TimeZoneId": "Line Islands Standard Time"
+				}
+			]
+		},
+		"SelectedServerTimeZone": {
+			"DisplayName": "(UTC-12:00) International Date Line West",
+			"TimeZoneId": "Dateline Standard Time"
+		},
+		"ThousandSeparator": ",",
+		"DecimalSeparator": ".",
+		"CurrencySymbol": "R",
+		"ProvisioningStartDate": "2020-08-14T13:42:49.6501192+02:00"
+	},
 	"QuoteSummary": {
 		"QuoteNumber": "10A00000001",
 		"QuoteVersion": "V2",
-		"LastEdited": "2020-08-03T10:29:13.6832752+02:00",
+		"LastEdited": "2020-08-14T13:42:49.9651194+02:00",
 		"LastEditedBy": "Joe",
 		"NumberOfUsers": "42",
 		"CostPerUser": "56",
@@ -1106,7 +1730,13 @@
 					"Discount": "4"
 				},
 				{
-					"Description": "financials",
+					"Description": "Foundation+",
+					"Cost": "18",
+					"Total": "18",
+					"Discount": "4"
+				},
+				{
+					"Description": "Financials",
 					"Cost": "18",
 					"Total": "18",
 					"Discount": "0"
@@ -1118,22 +1748,16 @@
 					"Discount": "0"
 				},
 				{
-					"Description": "Manufacturing",
-					"Cost": "18",
-					"Total": "18",
-					"Discount": "0"
-				},
-				{
-					"Description": "Foundation+",
-					"Cost": "18",
-					"Total": "18",
-					"Discount": "4"
-				},
-				{
 					"Description": "Distribution+",
 					"Cost": "18",
 					"Total": "18",
 					"Discount": "4"
+				},
+				{
+					"Description": "Manufacturing",
+					"Cost": "18",
+					"Total": "18",
+					"Discount": "0"
 				},
 				{
 					"Description": "Manufacturing+",

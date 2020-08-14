@@ -780,7 +780,7 @@
     .discount-amount.discount-allowed {
         margin-right: 0px;
     }
-    #lineItemsTotals {
+    #lineItemsTotals, #quoteDetails {
         font-size: 12px !important;
     }
     .original-price {
@@ -789,6 +789,23 @@
     .md-outline {
     position: relative !important;
     
+}
+.md-outline.input-with-post-icon .input-prefix {
+    right: 16px;
+    left: initial;
+}
+.md-outline .input-prefix {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: color .2s;
+    transition: color .2s;
+    pointer-events: none;
+    cursor: pointer;
+}
+.md-outline.is-focused .input-prefix {
+    color: #0078d7;
 }
 .discount-type-option {
     width: 100%;
@@ -1201,7 +1218,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                             <span>Quote number</span>
                                                                                         </label>
                                                                                         <input type="text" class="form-control" 
-                                                                                        data-bind="value: QuoteNumber" id="QuoteNumber">
+                                                                                        data-bind="value: QuoteNumber" id="QuoteNumber"
+                                                                                        name="QuoteNumber">
                                                                                         <span class="input-group-btn">
                                                                                             <a class="syspro-browse-button" >
                                                                                                 <i class="material-icons">search</i>
@@ -1212,6 +1230,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                 </div>
                                                                                 <div class="form-group md-outline quote-field">
                                                                                     <input  class="form-control" id="ReferenceNumber" 
+                                                                                    name="ReferenceNumber" 
                                                                                     data-bind="value: ReferenceNumber" 
                                                                                     readonly>
                                                                                     <label for="ReferenceNumber" class="">
@@ -1219,17 +1238,19 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                     </label>
 
                                                                                 </div>
-                                                                                <div class="form-group md-outline quote-field">
+                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
                                                                                     <input  class="form-control date" 
-                                                                                    data-bind="value: QuoteDate" id="QuoteDate">
+                                                                                    data-bind="value: QuoteDate" id="QuoteDate" name="QuoteDate">
                                                                                     <label for="QuoteDate" class="">
                                                                                         <span>Quote date</span>
                                                                                         </label>
 
                                                                                 </div>
-                                                                                <div class="form-group md-outline quote-field">
+                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
                                                                                     <input  class="form-control date" 
-                                                                                    data-bind="value: ExpiryDate" id="ExpiryDate">
+                                                                                    data-bind="value: ExpiryDate" id="ExpiryDate" name="ExpiryDate">
                                                                                     <label for="ExpiryDate" class="">
                                                                                         <span>Expiry date</span>
                                                                                         </label>
@@ -1238,6 +1259,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                 </div>
                                                                                 <div class="form-group md-outline quote-field">
                                                                                     <select type="text" class="form-control" id="QuoteVersion"
+                                                                                    name="QuoteVersion"
                                                                                     data-bind="{source: QuoteVersionList.string, value: SelectedQuoteVersion}"></select>
                                                                                     <label for="QuoteVersion" class="">
                                                                                         <span>Quote version</span>
@@ -1248,14 +1270,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                                                                                 <div class="form-group existing-customer-field md-outline">
                                                                                     
-                                                                                    <label for="" class="">
-                                                                                        <span>Customer code</span>
-                                                                                    </label>
+                                                                                    
                                                                                     <div class=" syspro-entry-content">
                                                                                         <div class="input-group">
                                                                                             <span class="spinner"></span>
                                                                                             <input type="text" class="form-control" 
-                                                                                            data-bind="value: ExpiryDate" id="CustomerCode">
+                                                                                            data-bind="value: ExpiryDate" id="CustomerCode" name="CustomerCode">
                                                                                             <span class="input-group-btn">
                                                                                                 <a class="syspro-browse-button" >
                                                                                                     <i class="material-icons">search</i>
@@ -1264,27 +1284,28 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         </div>
 
                                                                                     </div>
-                                                                            
+                                                                                    <label for="" class="">
+                                                                                        <span>Customer code</span>
+                                                                                    </label>
                                                                             
                                                                                 </div>
                                                                                 <div class="form-group md-outline">
-                                                                                    <label for="CustomerName" class="">
-                                                                                        <span>Customer name</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control" 
+                                                                                    
+                                                                                    <input type="text" class="form-control" 
                                                                                         data-bind="value: CustomerName" 
-                                                                                        id="CustomerName" required />
-                                                                                        
+                                                                                        id="CustomerName" name="CustomerName" required />
+                                                                                        <label for="CustomerName" class="">
+                                                                                            <span>Customer name</span>
+                                                                                        </label>
                                                                                         
                                                                                 </div>
                                                                                 
                                                                                 <div class="form-group customer-details region-field md-outline">
                                                                                     
-                                                                                    <label for="Region" class="">
-                                                                                        <span>Region</span>
-                                                                                    </label>
+                                                                                    
                                                                                         <input 
                                                                                             id="Region"
+                                                                                            name="Region"
                                                                                             data-role="dropdownlist"
                                                                                             data-value-primitive="true"
                                                                                             data-text-field="RegionName"
@@ -1293,16 +1314,17 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                             source: RegionList.Region,
                                                                                             events: {change: onDropDownListChange}" class="form-control" required
                                                                                         >
-                                                                            
+                                                                                        <label for="Region" class="">
+                                                                                            <span>Region</span>
+                                                                                        </label>
                                                                                 </div>
 
                                                                                 <div class="form-group customer-details region-field md-outline">
                                                                                     
-                                                                                    <label for="SubRegion" class="">
-                                                                                        <span>Sub-region</span>
-                                                                                    </label>
+                                                                                    
                                                                                         <input 
                                                                                             id="SubRegion" 
+                                                                                            name="SubRegion" 
                                                                                             data-role="dropdownlist"
                                                                                             data-value-primitive="true"
                                                                                             data-text-field="RegionName"
@@ -1313,14 +1335,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                             events: {change: onDropDownListChange}" class="form-control"
                                                                                             disabled="disabled" required
                                                                                         >
-                                                                            
+                                                                                        <label for="SubRegion" class="">
+                                                                                            <span>Sub-region</span>
+                                                                                        </label>
                                                                                 </div>
 
                                                                                 <div class="form-group customer-details md-outline">
                                                                                     
-                                                                                    <label for="NumberOfUsers" class="">
-                                                                                        <span>Number of users</span>
-                                                                                    </label>
+                                                                                   
  
                                                                                         <input
                                                                                             type="number"
@@ -1329,33 +1351,37 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                             max="2000"
                                                                                             step="10"
                                                                                             id="NumberOfUsers"
+                                                                                            name="NumberOfUsers"
                                                                                             value=""
                                                                                             class="form-control"
                                                                                             required
                                                                                         />
-
+                                                                                        <label for="NumberOfUsers" class="">
+                                                                                            <span>Number of users</span>
+                                                                                        </label>
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline customer-details">
                                                                                     
-                                                                                    <label for="PaymentCycle" class="">
-                                                                                        <span>Payment cycle</span>
-                                                                                    </label>
+                                                                                    
                                                                                     <select type="text" 
-                                                                                        id="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
-                                                                                        
+                                                                                        id="PaymentCycle" name="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
+                                                                                        <label for="PaymentCycle" class="">
+                                                                                            <span>Payment cycle</span>
+                                                                                        </label>
                                                                                 </div>
 
-                                                                                <div class="form-group existing-customer-field md-outline">
+                                                                                <div class="form-group existing-customer-field md-outline input-with-post-icon">
+                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
                                                                                     
-                                                                                    <label for="" class="">
-                                                                                        <span>License start date</span>
-                                                                                    </label>
-                                                                                        <input class="form-control date">
-                                                                                        
+                                                                                        <input class="form-control date" id="LicenseStartDate" name="LicenseStartDate">
+                                                                                        <label for="LicenseStartDate" class="">
+                                                                                            <span>License start date</span>
+                                                                                        </label>
                                                                                 </div>
                                                                                 <div class="form-group md-outline customer-details">
                                                                                     <textarea class="form-control " id="QuoteDescription"
+                                                                                    name="QuoteDescription"
                                                                                     data-bind="value: QuoteDescription" rows="3"></textarea>
                                                                                     <label for="QuoteDescription" class="">
                                                                                         <span>Description</span>
@@ -1379,116 +1405,114 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                 
                                                                                 <div class="form-group md-outline">
                                                                                     
+                                                                                    
+                                                                                    <input type="text" id="AddressLine1" name="AddressLine1" data-bind="value: AddressLine1" class="form-control">
                                                                                     <label for="AddressLine1" class="">
                                                                                         <span>Address line 1</span>
                                                                                     </label>
-                                                                                    <input type="text" id="AddressLine1" data-bind="value: AddressLine1" class="form-control">
-                                                                                        
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline">
                                                                                     
+                                                                                    
+                                                                                    <input type="text" id="AddressLine2" name="AddressLine2" data-bind="value: AddressLine2" class="form-control">
                                                                                     <label for="AddressLine2" class="">
                                                                                         <span>Address line 2</span>
                                                                                     </label>
-                                                                                    <input type="text" id="AddressLine2" data-bind="value: AddressLine2" class="form-control">
-                                                                                        
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline">
                                                                                     
-                                                                                    <label for="City" class="">
-                                                                                        <span>City</span>
-                                                                                    </label>
+                                                                                    
                                                                                     <input type="text" 
-                                                                                        id="City" data-bind="value: City" class="form-control">
-                                                                                        
+                                                                                        id="City" name="City" data-bind="value: City" class="form-control">
+                                                                                        <label for="City" class="">
+                                                                                            <span>City</span>
+                                                                                        </label>
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline">
                                                                                     
-                                                                                    <label for="StateProvince" class="">
-                                                                                        <span>State/Province</span>
-                                                                                    </label>
+                                                                                    
                                                                                     <input type="text" 
-                                                                                        id="StateProvince" data-bind="value: StateProvince" class="form-control">
-                                                                                        
+                                                                                        id="StateProvince" name="StateProvince" data-bind="value: StateProvince" class="form-control">
+                                                                                        <label for="StateProvince" class="">
+                                                                                            <span>State/Province</span>
+                                                                                        </label>    
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline">
                                                                                     
-                                                                                    <label for="Country" class="">
-                                                                                        <span>Country</span>
-                                                                                    </label>
+                                                                                    
                                                                                         <input
-                                                                                            id="Country" 
+                                                                                            id="Country" name="Country" 
                                                                                             data-role="dropdownlist"
                                                                                             data-bind="value:       SelectedCountry,
                                                                                             source: CountryList.string,
                                                                                             events: {change: onDropDownListChange}" class="form-control"
                                                                                             required>
-                                                                            
+                                                                                            <label for="Country" class="">
+                                                                                                <span>Country</span>
+                                                                                            </label>
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline">
                                                                                     
+                                                                                    
+                                                                                    <input type="text" id="PostalZipCode" name="PostalZipCode" data-bind="value: PostalZipCode" class="form-control">
                                                                                     <label for="PostalZipCode" class="">
                                                                                         <span>Post/ZIP code</span>
                                                                                     </label>
-                                                                                    <input type="text" id="PostalZipCode" data-bind="value: PostalZipCode" class="form-control">
-                                                                                        
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline">
                                                                                     
-                                                                                    <label for="Currency" class="">
-                                                                                        <span>Currency</span>
-                                                                                    </label>
+                                                                                    
                                                                                     <select 
-                                                                                        id="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
-                                                                                        
+                                                                                        id="Currency" name="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
+                                                                                        <label for="Currency" class="">
+                                                                                            <span>Currency</span>
+                                                                                        </label>  
                                                                                 </div>
 
                                                                                 <div class="form-group md-outline">
                                                                                     
+                                                                                    
+                                                                                    <input id="ContactName" name="ContactName" data-bind="value: ContactName" type="text" class="form-control">
                                                                                     <label for="ContactName" class="">
                                                                                         <span>Contact name</span>
                                                                                     </label>
-                                                                                    <input id="ContactName" data-bind="value: ContactName" type="text" class="form-control">
-                                                                                        
                                                                                 </div>
                                                                                 <div class="form-group md-outline">
                                                                                         
+                                                                                    
+                                                                                    <input type="phone" class="form-control" id="ContactPhone" name="ContactPhone" data-bind="value: ContactPhone" >
                                                                                     <label for="ContactPhone" class="">
                                                                                         <span>Contact phone</span>
-                                                                                    </label>
-                                                                                        <input type="phone" class="form-control" id="ContactPhone" data-bind="value: ContactPhone" >
-                                                                                        
+                                                                                    </label> 
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
                                                                                     
+                                                                                    
+                                                                                    <input type="email" class="form-control" id="ContactEmail" name="ContactEmail" data-bind="value: ContactEmail">
                                                                                     <label for="ContactEmail" class="">
                                                                                         <span>Contact email</span>
                                                                                     </label>
-                                                                                        <input type="email" class="form-control" id="ContactEmail" data-bind="value: ContactEmail">
-                                                                                        
                                                                                 </div>
                                                                                 <div class="form-group existing-customer-field md-outline">
                                                                                     
+                                                                                    
+                                                                                    <input type="text" class="form-control">
                                                                                     <label for="" class="">
                                                                                         <span>Company Reg. No.</span>
-                                                                                    </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
+                                                                                    </label> 
                                                                                 </div>
 
                                                                                 <div class="form-group existing-customer-field md-outline">
-                                                                                    
+                                                                                    <input type="text" class="form-control">
                                                                                     <label for="" class="">
                                                                                         <span>VAT No.</span>
                                                                                     </label>
-                                                                                        <input type="text" class="form-control">
-                                                                                        
                                                                                 </div>
 
                                                                                 
@@ -1621,7 +1645,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                 <div id="quoteDetails" class="row collapse">
                                                     <div class="col-xs-12">
                                                         <table
-                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5 sys-txt-md"
+                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5"
                                                         >
                                                             <tr>
                                                                 <td>Quote ID</td>
@@ -1633,7 +1657,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                             </tr>
                                                             <tr>
                                                                 <td>Last edited</td>
-                                                                <td data-bind="text: QuoteSummary.LastEdited"></td>
+                                                                <td data-bind="text: parseEditDate"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Last edited by</td>
@@ -1651,7 +1675,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                         </h4>
                                                         <h4 class="sys-mg-b-5 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Per user cost</span
-                                                            ><span class="pull-right" data-bind="text: QuoteSummary.CostPerUser">$56.00</span>
+                                                            ><span class="pull-right" data-bind="text: costPerUserWithCurrency"></span>
                                                         </h4>
                                                         <a href="#costDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="costDetails">Cost breakdown <span class="sys-txt-sm">( per user / total )</span> <i class="material-icons sys-txt-sm">expand_more</i></a>
                                                     </div>
@@ -1676,11 +1700,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                         </h4> -->
                                                         <h4 class="sys-mg-b-15 clearfix sys-mg-t-10">
                                                             <span class="pull-left">Total discount</span
-                                                            ><span class="pull-right sys-fg-danger" data-bind="text: QuoteSummary.TotalDiscount">- $140.00</span>
+                                                            ><span class="pull-right sys-fg-danger" data-bind="text: grandDiscountWithCurrency"></span><span class="pull-right sys-fg-danger">-</span>
                                                         </h4>
                                                         <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Total</span
-                                                            ><span class="pull-right" data-bind="text: QuoteSummary.Total"></span>
+                                                            ><span class="pull-right" data-bind="text: grandTotalWithCurrency"></span>
                                                         </h3>
                                                         <button
                                                             id="createQuote"
@@ -1761,6 +1785,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         <!-- <script src="js/paper-bootstrap-wizard.js"></script> -->
         <script src="js/UX_JS_bootstrap-datepicker.js"></script>
         <script src="js/perfect-scrollbar.js"></script>
+        <script src="js/moment.min.js"></script>
         
         <script type="text/x-kendo-template" id="packageTemplate">            
             <div data-bind="css: { col-sm-6: isProductSuite, col-sm-12: isNotProductSuite }">
@@ -2047,7 +2072,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     
                 }
             });
-
+            kendo.data.ObservableObject.prototype.parseEditDate = function() {
+                return moment(this.get("QuoteSummary.LastEdited")).format("DD/MM/YYY, HH:mm");
+            };
             kendo.data.ObservableObject.prototype.IsMandatoryBool = function() {
                 return this.get("IsMandatory") === "true";
             };
@@ -2071,6 +2098,15 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             };
             kendo.data.ObservableObject.prototype.priceWithCurrency = function() {
                 return viewModel.SelectedCurrency.CurrencySymbol + this.get("Price");
+            };
+            kendo.data.ObservableObject.prototype.grandDiscountWithCurrency = function() {
+                return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.TotalDiscount")).toFixed(2);
+            };
+            kendo.data.ObservableObject.prototype.grandTotalWithCurrency = function() {
+                return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.Total")).toFixed(2);
+            };
+            kendo.data.ObservableObject.prototype.costPerUserWithCurrency = function() {
+                return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.CostPerUser")).toFixed(2);
             };
             kendo.data.ObservableObject.prototype.hasOwnUserCount = function() {
                 return this.parent().parent() !== viewModel.CoreBundles;
@@ -2141,44 +2177,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 
                 return activeSections;
             };
-            kendo.data.ObservableObject.prototype.netGrandTotal = function() {
-                const ApiServicesNetTotal = this.get("ApiServices").reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                const AdditionalSoftwareNetTotal = this.get("AdditionalSoftware").reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                const IsvSoftwareNetTotal = this.get("IsvSoftware").reduce((prev, curr) => { return prev + curr.totalNetCost()}, 0);
-
-                return ApiServicesNetTotal + AdditionalSoftwareNetTotal + IsvSoftwareNetTotal;
-            };
-            kendo.data.ObservableObject.prototype.discountGrandTotal = function() {
-                const ApiServicesDiscountTotal = this.get("ApiServices").reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                const AdditionalSoftwareDiscountTotal = this.get("AdditionalSoftware").reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                const IsvSoftwareDiscountTotal = this.get("IsvSoftware").reduce((prev, curr) => { return prev + curr.totalDiscount()}, 0);
-
-                return ApiServicesDiscountTotal + AdditionalSoftwareDiscountTotal + IsvSoftwareDiscountTotal;
-            };
-            kendo.data.ObservableObject.prototype.discountGrandTotalWithCurrency = function() {
-                return this.get("currency") + this.discountGrandTotal();
-            };
-            kendo.data.ObservableObject.prototype.grandTotal = function() {
-                const ApiServicesGrandTotal = this.get("ApiServices").reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                const AdditionalSoftwareGrandTotal = this.get("AdditionalSoftware").reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                const IsvSoftwareGrandTotal = this.get("IsvSoftware").reduce((prev, curr) => { return prev + curr.totalCost()}, 0);
-
-                return ApiServicesGrandTotal + AdditionalSoftwareGrandTotal + IsvSoftwareGrandTotal;
-            };
-            kendo.data.ObservableObject.prototype.grandTotalWithCurrency = function() {
-                return this.get("currency") + this.grandTotal();
-            };             
+            
             kendo.data.ObservableObject.prototype.wizardTabsWidth = function() {
-                console.log('ping');
                 const $total = viewModel.activeSections().length;
                 const $width = 100 / $total;
-                console.log($total, $width);
                 return $width + "%";
             };
             kendo.data.ObservableObject.prototype.sysbgverylightgray = function() {
@@ -2232,11 +2234,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             };
             kendo.data.ObservableObject.prototype.totalNetCostWithCurrency = function() {
                 return this.get("DiscountAllowed") && this.hasDiscount() ? viewModel.currency + this.totalNetCost() : '';
-            };
-
-            kendo.data.ObservableObject.prototype.testFunction = function() {
-                console.log('ping');
-                console.log(this);
             };
             
             kendo.data.ObservableObject.prototype.onDropDownListChange = function(e) {
@@ -2404,17 +2401,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         zIndexOffset: 1000000
                     });
 
-
-                    // $("#georeplication").kendoMultiSelect({
-                    //     placeholder: "Select regions...",
-                    //     dataTextField: "name",
-                    //     dataValueField: "name",
-                    //     height: 400,
-                    //     dataSource: {
-                    //         data: regionData,
-                    //         group: { field: "categoryID" }
-                    //     }                    
-                    // });
                 },
                 uiInitExtras: function() {
                     $('[data-tooltip="tooltip"]').tooltip();
@@ -2481,25 +2467,27 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     return kendo.Template.compile($('#infoFieldTemplate').html())(infoField);
                 },
                 sizeWizardTabs: function() {
-                    console.log('ping');
                     const $total = viewModel.activeSections().length;
                     const $width = 100 / $total;
-                    console.log($total, $width);
-                    // return $width + "%";
                     $(".wizard-tab").css('width', $width + "%");
                 },
             }
              
             
             const vmChangeHandler = (e, category) => {
+                console.log(e);
+                console.log(category);
+                // console.log(e.items[0]);
+                // console.log(e.items[0][e.field]);
                 const changeData = {
                     category: category,
-                    item: category = 'QuoteInformation' ? e.field : e.items[0].StockCode,
+                    item: category === 'QuoteInformation' ? e.field : e.items[0].StockCode,
                     field: e.field,
-                    newValue: category = 'QuoteInformation' ? e.sender[e.field] : e.items[0][e.field]
+                    newValue: category === 'QuoteInformation' ? e.sender[e.field] : e.items[0][e.field]
                 };
-                SAAS_QUOTE.sizeWizardTabs();
                 console.log(changeData);
+                SAAS_QUOTE.sizeWizardTabs();
+                
             }
 
 
@@ -2521,28 +2509,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                     
                 });
-
-                
-                
-                
-
-                // var lineItemTotalsTemplate = kendo.template($("#lineItemTotalsTemplate").html());
-                // console.log(viewModel.ApiServices);
-                // viewModel.ApiServices.forEach(lineItem => {
-                //     console.log(lineItem.isActive());
-                //     $("#lineItemsTotals").append(lineItemTotalsTemplate(lineItem));
-                // });
-                // viewModel.AdditionalSoftware.forEach(lineItem => {
-                //     console.log(lineItem.isActive());
-                //     $("#lineItemsTotals").append(lineItemTotalsTemplate(lineItem));
-                // });
-                
-                // kendo.bind("body", viewModel);
-                
-                            
-
-
-                
+       
 
             });
 
