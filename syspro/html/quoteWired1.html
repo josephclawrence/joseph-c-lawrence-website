@@ -673,8 +673,8 @@
 .package.sys-fg-white .checkbox .checkbox-material .check {
     border: 2px solid #ecf0f1;
 }
-.package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check,
-.checkbox input[type='checkbox']:checked + .checkbox-material .check:before {
+/* .checkbox input[type='checkbox']:checked + .checkbox-material .check:before */
+.package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check {
     color: #ffffff;
     border-color: #ffffff;
 }
@@ -1591,14 +1591,209 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="infrastructure">
+                                                        <div class="tab-pane" id="infrastructure" data-bind="visible: QuoteInfrastructureActive">
 
-                                                            <div class="row quote-scrollable-pane">
+                                                            <div class="row quote-scrollable-pane sys-pd-t-5">
                                                                 <div class="col-xs-12">
                                                                     <div class="form-horizontal">
                                                                         <div class="row">
-                                                                            <div class="col-sm-12 col-md-10 col-md-offset-1" data-template="infrastructureItemTemplate" data-bind="source: infrastructure"></div>
-                                                                            
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group md-outline">
+                                                                                    <input  
+                                                                                    class="form-control" 
+                                                                                    type="number"
+                                                                                    min="0"
+                                                                                    max="2000"
+                                                                                    step="10"
+                                                                                    id="NumberOfDesktopUsers" 
+                                                                                    name="NumberOfDesktopUsers" 
+                                                                                    data-bind="value: QuoteInfrastructure.NumberOfDesktopUsers" 
+                                                                                    >
+                                                                                    <label for="NumberOfDesktopUsers" class="">
+                                                                                        <span>Number of desktop users</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-group md-outline input-with-post-icon">
+                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                                    <input  class="form-control date" 
+                                                                                    data-bind="value: QuoteInfrastructure.ProvisioningStartDate" id="ProvisioningStartDate" name="ProvisioningStartDate">
+                                                                                    <label for="ProvisioningStartDate" class="">
+                                                                                        <span>Provisioning start date</span>
+                                                                                    </label>
+
+                                                                                </div>
+                                                                                <div class="form-group md-outline">
+                                                                                    <input
+                                                                                    id="DeploymentRegion" name="DeploymentRegion" 
+                                                                                    data-role="dropdownlist"
+                                                                                    data-value-primitive="true"
+                                                                                    data-text-field="RegionName"
+                                                                                    data-value-field="CategoryId"
+                                                                                    data-bind="value:       QuoteInfrastructure.SelectedDeploymentRegion,
+                                                                                    source: QuoteInfrastructure.DeploymentRegionsList.Region,
+                                                                                    events: {change: onDropDownListChange}" class="form-control"
+                                                                                    required>
+                                                                                    <label for="DeploymentRegion" class="">
+                                                                                        <span>Deployment Region</span>
+                                                                                    </label>
+                                                                                    
+                                                                                </div>
+
+                                                                                <div class="form-group md-outline">
+                                                                                    <input
+                                                                                    id="ServerTimezone" name="ServerTimezone" 
+                                                                                    data-role="dropdownlist"
+                                                                                    data-value-primitive="true"
+                                                                                    data-text-field="DisplayName"
+                                                                                    data-value-field="TimeZoneId"
+                                                                                    data-bind="value:       QuoteInfrastructure.SelectedServerTimeZone,
+                                                                                    source: QuoteInfrastructure.ServerTimeZoneList.TimeZone,
+                                                                                    events: {change: onDropDownListChange}" class="form-control"
+                                                                                    required>
+                                                                                    <label for="ServerTimezone" class="">
+                                                                                        <span>Server Timezone</span>
+                                                                                    </label>
+                                                                                    
+                                                                                </div>
+                                                                                
+                                                                                
+                                                                                <div class="form-group">
+                                                                                    
+                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                        <label>
+                                                                                            <input 
+                                                                                            type="checkbox" 
+                                                                                            id="AdditionalEnvironmentTest" 
+                                                                                            name="AdditionalEnvironmentTest"
+                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTest"
+                                                                                            >
+                                                                                            Additional environment: Test
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    
+                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                        <label>
+                                                                                            <input 
+                                                                                            type="checkbox" 
+                                                                                            id="AdditionalEnvironmentTestHighlyAvail" 
+                                                                                            name="AdditionalEnvironmentTestHighlyAvail"
+                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTestHighlyAvail"
+                                                                                            >
+                                                                                            Additional environment: Test - highly available?
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    
+                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                        <label>
+                                                                                            <input 
+                                                                                            type="checkbox" 
+                                                                                            id="AdditionalEnvironmentDev" 
+                                                                                            name="AdditionalEnvironmentDev"
+                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
+                                                                                            >
+                                                                                            Additional environment: Dev
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    
+                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                        <label>
+                                                                                            <input 
+                                                                                            type="checkbox" 
+                                                                                            id="AdditionalEnvironmentDevHighlyAvail" 
+                                                                                            name="AdditionalEnvironmentDevHighlyAvail"
+                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDevHighlyAvail"
+                                                                                            >
+                                                                                            Additional environment: Dev - highly available?
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                
+                                                                                <div class="form-group md-outline">
+                                                                                    <input
+                                                                                    id="ShortDateFormat" name="ShortDateFormat" 
+                                                                                    data-role="dropdownlist"
+                                                                                    data-bind="value:       QuoteInfrastructure.SelectedShortDateFormat,
+                                                                                    source: QuoteInfrastructure.ShortDateFormatList.string,
+                                                                                    events: {change: onDropDownListChange}" class="form-control"
+                                                                                    required>
+                                                                                    <label for="ShortDateFormat" class="">
+                                                                                        <span>Short date format</span>
+                                                                                    </label>
+                                                                                    
+                                                                                </div>
+                                                                                <div class="form-group md-outline">
+                                                                                    <input
+                                                                                    id="LongDateFormat" name="LongDateFormat" 
+                                                                                    data-role="dropdownlist"
+                                                                                    data-bind="value:       QuoteInfrastructure.SelectedLongDateFormat,
+                                                                                    source: QuoteInfrastructure.LongDateFormatList.string,
+                                                                                    events: {change: onDropDownListChange}" class="form-control"
+                                                                                    required>
+                                                                                    <label for="LongDateFormat" class="">
+                                                                                        <span>Long date format</span>
+                                                                                    </label>
+                                                                                    
+                                                                                </div>
+                                                                                <div class="form-group md-outline">
+                                                                                    <input
+                                                                                    id="ReportDateFormat" name="ReportDateFormat" 
+                                                                                    data-role="dropdownlist"
+                                                                                    data-bind="value:       QuoteInfrastructure.SelectedReportDateFormat,
+                                                                                    source: QuoteInfrastructure.ReportDateFormatList.string,
+                                                                                    events: {change: onDropDownListChange}" class="form-control"
+                                                                                    required>
+                                                                                    <label for="ReportDateFormat" class="">
+                                                                                        <span>Report date format</span>
+                                                                                    </label>
+                                                                                    
+                                                                                </div>
+                                                                                <div class="form-group md-outline">
+                                                                                    <input  
+                                                                                        class="form-control" 
+                                                                                        type="text"
+                                                                                        id="ThousandSeparator" 
+                                                                                        name="ThousandSeparator" 
+                                                                                        data-bind="value: QuoteInfrastructure.ThousandSeparator" 
+                                                                                    >
+                                                                                    <label for="ThousandSeparator" class="">
+                                                                                        <span>Thousand Separator</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-group md-outline">
+                                                                                    <input  
+                                                                                        class="form-control" 
+                                                                                        type="text"
+                                                                                        id="DecimalSeparator" 
+                                                                                        name="DecimalSeparator" 
+                                                                                        data-bind="value: QuoteInfrastructure.DecimalSeparator" 
+                                                                                    >
+                                                                                    <label for="DecimalSeparator" class="">
+                                                                                        <span>Decimal Separator</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-group md-outline">
+                                                                                    <input  
+                                                                                        class="form-control" 
+                                                                                        type="text"
+                                                                                        id="CurrencySymbol" 
+                                                                                        name="CurrencySymbol" 
+                                                                                        data-bind="value: QuoteInfrastructure.CurrencySymbol" 
+                                                                                    >
+                                                                                    <label for="CurrencySymbol" class="">
+                                                                                        <span>Thousand Separator</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1826,7 +2021,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     }"
                 >
                     <div class="row">
-                        #if (IsMandatoryBool()) {#
+                        #if (IsMandatory) {#
                             <div class="col-sm-1 text-left" data-toggle="tooltip" data-tooltip="tooltip" data-container="body" data-placement="auto top" title="" data-original-title="#: Description # is a mandatory package">
                                 <div class="btn-group" data-toggle="buttons">
                                     <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
@@ -1840,7 +2035,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             <div class="col-sm-1 text-left">
                                 <div class="btn-group" data-toggle="buttons">
                                     <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
-                                    <input type="checkbox" autocomplete="off" data-bind="radioButtonBind: IsSelectedBool, selectedValue: IsSelected">
+                                    <input type="checkbox" autocomplete="off" data-bind="checked: IsSelected">
                                     <i class="material-icons package-selected-icon pull-left" data-bind="css: { 
                                         sys-fg-gray: sysfginverse,
                                         sys-fg-white: sysfgwhite,
@@ -1909,12 +2104,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             <span data-bind="visible: hasDiscount">
                                 <small class="original-price sys-fg-danger" data-bind="text: priceWithCurrency"></small>
                             </span>                           
-                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: priceWithCurrency, css: { discount-allowed: DiscountAllowedBool }"></b>
+                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: priceWithCurrency, css: { discount-allowed: DiscountAllowed }"></b>
                             <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
                                 data-toggle="popover" 
                                 title="Apply discount"
                                 data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: MaxDiscountPercentage #%</span></div></div>'
-                                data-bind="visible: DiscountAllowedBool, css:{active: hasDiscount}">assignment_returned</i>
+                                data-bind="visible: DiscountAllowed, css:{active: hasDiscount}">assignment_returned</i>
                             <span class="hidden-discount-field" style="display: none;">
                                 
                             <input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-value" data-bind='value: DiscountValue'></input>
@@ -1930,7 +2125,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                             <div class="form-group checkbox-form-group sys-mg-t-5">
                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
                                                      <label class="sys-fg-white">
-                                                         <input type="checkbox" id="${item.StockCode}" data-bind="checkboxBind: IsSelectedBool, selectedValue: IsSelected">
+                                                         <input type="checkbox" id="${item.StockCode}" data-bind="checked: IsSelected">
                                                          ${item.Description}
                                                      </label>
                                                  </div>
@@ -1992,62 +2187,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             </li>
         </script>
 
-        <script id="infrastructureItemTemplate" type="text/x-kendo-template">
-            <div class="form-group ">
-                <label for="#: id #" class="col-md-3 control-label sys-mg-t-5 sys-pd-t-5">
-                    <span>#: label #</span>
-                    <p class="sys-mg-t-5">
-                        <a href="#: ProductLink #" class="package-title" data-toggle="tooltip" 
-                        data-tooltip="tooltip" data-container="body"
-                        data-placement="top" title="Download details document">
-                            <i class="material-icons sys-fg-primary">description</i>
-                        </a>
-                    </p>
-                </label>
-                #if ( type === 'text' ) {# 
-                #} else if ( type === 'radioButton' ) {#                             
-                    
-                    <div class="col-md-7 syspro-entry-content">
-                        <div class="btn-group quote-toggle-buttons" data-toggle="buttons">
-                            #   $.each(data.options, function (index, item) { #
-                                    <label class="btn btn-default sys-fg-inverse infrastructure-option sys-bg-white text-center">
-                                        <input type="radio" name="#: name #" autocomplete="off" value="${item.value}" data-bind="checked: selectedOption"> 
-                                        <b class="sys-txt-md">${item.label}</b>
-                                    </label>                       
-                                # }); 
-                            #
-                        </div>
-                        
-                    </div>
-                    
-                #} else if ( type === 'select' ) {#
-
-                    <div class="col-md-7 syspro-entry-content">
-                        <select class="form-control" id="#: id #" name="#: name #" data-value-field="value" data-text-field="label" data-value-primitive="false" data-bind="source: options, value: selectedOption, attr: { required: required }">
-
-                        </select>
-                    </div>
-                    
-                #}#
-                <div class="col-xs-2 infrastructure-pricing">
-                    <span data-bind="visible: hasDiscount">
-                        <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
-                    </span>                           
-                    + <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: totalCost, css: { discount-allowed: DiscountAllowedBool }"></b>
-                    <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
-                        data-toggle="popover" 
-                        title="Apply discount"
-                        data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: MaxDiscountPercentage #%</span></div></div>'
-                        data-bind="visible: DiscountAllowedBool, css:{active: hasDiscount}">assignment_returned</i>
-                    <span class="hidden-discount-field" style="display: none;">
-                        
-                        <input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-value" data-bind='value: DiscountValue'></input>
-                    </span>
-
-                </div>
-            </div>
-            <hr class="sys-fg-very-light-gray sys-bg-very-light-gray sys-mg-t-5 sys-mg-b-5" />
-        </script>
 
         <script>
             // kendo.data.binders.numericValue = kendo.data.Binder.extend({
@@ -2137,15 +2276,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.parseEditDate = function() {
                 return moment(this.get("QuoteSummary.LastEdited")).format("DD/MM/YYY, HH:mm");
             };
-            kendo.data.ObservableObject.prototype.IsMandatoryBool = function() {
-                return this.get("IsMandatory") === "true";
-            };
-            kendo.data.ObservableObject.prototype.IsSelectedBool = function() {
-                return this.get("IsSelected") === "true";
-            };
-            kendo.data.ObservableObject.prototype.DiscountAllowedBool = function() {
-                return this.get("DiscountAllowed") === "true";
-            };
+
             kendo.data.ObservableObject.prototype.hasDiscount = function() {
                 return parseInt(this.get("DiscountValue")) > 0;
             };
@@ -2199,6 +2330,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             };
             kendo.data.ObservableObject.prototype.IsvSoftwareActive = function() {
                 return this.get("IsvSoftware") && this.get("IsvSoftware.Product") && this.get("IsvSoftware.Product").length;
+            };
+            kendo.data.ObservableObject.prototype.QuoteInfrastructureActive = function() {
+                return this.get("QuoteInfrastructure") && this.get("QuoteInfrastructure") !== null;
             };
             kendo.data.ObservableObject.prototype.educationActive = function() {
                 return this.get("education") && this.get("education").length;
@@ -2537,29 +2671,53 @@ color:#fff;background-color:#428bca;border-color:#428bca;
              
             
             const vmChangeHandler = (e, category) => {
-                console.log(e);
-                console.log(category);
+                // console.log(e);
+                // console.log(category);
                 // console.log(e.items[0]);
                 // console.log(e.items[0][e.field]);
                 const changeData = {
                     category: category,
-                    item: category === 'QuoteInformation' ? e.field : e.items[0].StockCode,
+                    item: category === 'QuoteInformation' || category === 'QuoteInfrastructure' ? e.field : e.items[0].StockCode,
                     field: e.field,
-                    newValue: category === 'QuoteInformation' ? e.sender[e.field] : e.items[0][e.field]
+                    newValue: category === 'QuoteInformation' || category === 'QuoteInfrastructure' ? e.sender[e.field] : e.items[0][e.field]
                 };
-                console.log(changeData);
+                if (changeData.newValue !== undefined) console.log(changeData);
                 SAAS_QUOTE.sizeWizardTabs();
                 
             }
 
+            const truthify = (obj) => {
+                Object.keys(obj).forEach(key => {
+
+                    // console.log(`key: ${key}, value: ${obj[key]}`);
+
+                    if ( obj[key] === "true" ) {
+                        obj[key] = true;
+                        // console.log(`but now...key: ${key}, value: ${obj[key]}`);
+
+                    } else if ( obj[key] === "false" ) {
+                        obj[key] = false;
+                        // console.log(`but now...key: ${key}, value: ${obj[key]}`);
+
+                    }
+                    
+
+                    if (obj[key] !== null && obj[key] !== undefined && typeof obj[key] === 'object') {
+                        truthify(obj[key])
+                    }
+                })
+            }
 
             $(document).ready(function() {
                 
                 $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
-                    // console.log(data);
+                    // console.log(data.QuoteInfrastructure.AdditionalEnvironmentTest);
+                    truthify(data);
+                    // console.log(data.QuoteInfrastructure.AdditionalEnvironmentTest);
                     window.viewModel = kendo.observable(data);
 
                     viewModel.bind("change", (e) => vmChangeHandler(e, 'QuoteInformation'));
+                    viewModel.QuoteInfrastructure.bind("change", (e) => vmChangeHandler(e, 'QuoteInfrastructure'));
                     viewModel.AdditionalSoftware.Product.bind("change", (e) => vmChangeHandler(e, 'AdditionalSoftware'));
                     viewModel.CoreBundles.Product.bind("change", (e) => vmChangeHandler(e, 'CoreBundles'));
                     // viewModel.IsvSoftware.Product.bind("change", vmChangeHandler);
