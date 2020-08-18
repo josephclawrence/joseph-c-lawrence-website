@@ -1721,6 +1721,29 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                         >
                                                             Save & continue later
                                                         </button>
+                                                        <hr class="sys-mg-t-10 sys-mg-b-10"/>
+                                                        <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <button
+                                                                    id="rejectQuote"
+                                                                    class="btn btn-block btn-danger btn-md sys-txt-md sys-500"
+                                                                    type="button"
+                                                                >
+                                                                    Reject
+                                                                    <i class="material-icons pull-right">thumb_down</i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-xs-6">
+                                                                <button
+                                                                    id="approveQuote"
+                                                                    class="btn btn-block btn-success btn-md sys-txt-md sys-500"
+                                                                    type="button"
+                                                                >
+                                                                    Approve
+                                                                    <i class="material-icons pull-right">thumb_up</i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1901,7 +1924,20 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="#: StockCode #Details">
                                 <ul>
                                     #if ((data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
-                                        #= SAAS_QUOTE.renderPlusPackageSubItemsTemplate(SubProductList.Product) #
+                                        
+                                        # $.each(data.SubProductList.Product, function (index, item) {
+                                            #
+                                            <div class="form-group checkbox-form-group sys-mg-t-5">
+                                                 <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                     <label class="sys-fg-white">
+                                                         <input type="checkbox" id="${item.StockCode}" data-bind="checkboxBind: IsSelectedBool, selectedValue: IsSelected">
+                                                         ${item.Description}
+                                                     </label>
+                                                 </div>
+                                             </div>
+                                             #                    
+                                       }); 
+                                     #
                                     #} else {#
                                         #   $.each(FeatureList.string, function (index, item) {
                                                 # <li>${item}</li>  #                        
@@ -1918,13 +1954,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         </script>
 
         <script id="plusPackageSubItemsTemplate" type="text/x-kendo-template">
-            # $.each(data.subItems, function (index, item) {
+            # $.each(data.Product, function (index, item) {
                    #
                    <div class="form-group checkbox-form-group sys-mg-t-5">
                         <div class="checkbox sys-pd-t-5 sys-mg-off-t">
                             <label class="sys-fg-white">
-                                <input type="checkbox" id="${StockCode}" checked="checked"><span class="checkbox-material"><span class="check"></span></span>
-                                ${Description}
+                                <input type="checkbox" id="${item.StockCode}" checked="checked">
+                                ${item.Description}
                             </label>
                         </div>
                     </div>
@@ -2058,6 +2094,32 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     $(that.element).prop('checked', value === true);
 
                     $(that.element).closest('label.btn').toggleClass('active', value === true);
+                },
+                change: function() {
+                    const value = $(this.element).prop('checked');
+
+                    // this.bindings['radioButton'].set(value); // update the View-Model
+                    this.bindings['selectedValue'].set(value); // update the View-Model
+                },
+            });
+
+            kendo.data.binders.checkboxBind = kendo.data.Binder.extend({
+                init: function(element, bindings, options) {
+                    // call the base constructor
+                    kendo.data.Binder.fn.init.call(this, element, bindings, options);
+
+                    const that = this;
+                    // listen for the change event of the element
+                    $(that.element).on('change', () => {
+                        that.change(); // call the change function
+                    });
+                },
+                refresh: function() {
+                    const that = this;
+                    const value = that.bindings['checkboxBind'].get();
+
+                    $(that.element).prop('checked', value === true);
+
                 },
                 change: function() {
                     const value = $(this.element).prop('checked');
