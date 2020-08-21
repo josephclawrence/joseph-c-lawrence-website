@@ -673,7 +673,7 @@
 .package.sys-fg-white .checkbox .checkbox-material .check {
     border: 2px solid #ecf0f1;
 }
-/* .checkbox input[type='checkbox']:checked + .checkbox-material .check:before */
+.package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check:before,
 .package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check {
     color: #ffffff;
     border-color: #ffffff;
@@ -1211,8 +1211,18 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <!-- </div> -->
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="form-group existing-quote-field md-outline">                                 
-                                                                                    <div class="input-group">
+
+                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                                    <input type="text" class="form-control" 
+                                                                                    data-bind="value: QuoteNumber" id="QuoteNumber"
+                                                                                    name="QuoteNumber">
+                                                                                    <label for="QuoteNumber" class="">
+                                                                                        <span>Quote number</span>
+                                                                                    </label>
+
+                                                                                </div>                                
+                                                                                    <!-- <div class="input-group">
                                                                                         <span class="spinner"></span>
                                                                                         <label for="QuoteNumber" class="">
                                                                                             <span>Quote number</span>
@@ -1225,9 +1235,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                                 <i class="material-icons">search</i>
                                                                                             </a>
                                                                                         </span>
-                                                                                    </div>
+                                                                                    </div> -->
 
-                                                                                </div>
                                                                                 <div class="form-group md-outline quote-field">
                                                                                     <input  class="form-control" id="ReferenceNumber" 
                                                                                     name="ReferenceNumber" 
@@ -2125,7 +2134,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                             <div class="form-group checkbox-form-group sys-mg-t-5">
                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
                                                      <label class="sys-fg-white">
-                                                         <input type="checkbox" id="${item.StockCode}" data-bind="checked: IsSelected">
+                                                         <input type="checkbox" id="${item.StockCode}" data-bind="checked: SubProductList.Product[${index}].IsSelected">
                                                          ${item.Description}
                                                      </label>
                                                  </div>
@@ -2215,6 +2224,22 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             //     }
             // });
             
+            // A function to be able to pass string including an index based reference along with an object, as a property identifier on that object, as in: byString(someObj, 'part3[0].name')
+            const byString = function(o, s) {
+                s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+                s = s.replace(/^\./, '');           // strip a leading dot
+                var a = s.split('.');
+                for (var i = 0, n = a.length; i < n; ++i) {
+                    var k = a[i];
+                    if (k in o) {
+                        o = o[k];
+                    } else {
+                        return;
+                    }
+                }
+                return o;
+            }
+
             kendo.data.binders.radioButtonBind = kendo.data.Binder.extend({
                 init: function(element, bindings, options) {
                     // call the base constructor
@@ -2675,33 +2700,36 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 // console.log(category);
                 // console.log(e.items[0]);
                 // console.log(e.items[0][e.field]);
+                const regex = /\d/g;
+                const hasIndex = regex.test(e.field);
+                const newValue = category === 'QuoteInformation' || category === 'QuoteInfrastructure' 
+                    ? e.sender[e.field] 
+                    : hasIndex
+                    ? byString(e.items[0], e.field)
+                    : e.items[0][e.field]
+                
+                // const correctedCategory = hasIndex ? category + e.field : category;
+                
                 const changeData = {
                     category: category,
                     item: category === 'QuoteInformation' || category === 'QuoteInfrastructure' ? e.field : e.items[0].StockCode,
                     field: e.field,
-                    newValue: category === 'QuoteInformation' || category === 'QuoteInfrastructure' ? e.sender[e.field] : e.items[0][e.field]
+                    newValue: newValue
                 };
-                if (changeData.newValue !== undefined) console.log(changeData);
+                console.log(e, category);
+                if (changeData.newValue !== undefined) console.log('here', changeData);
                 SAAS_QUOTE.sizeWizardTabs();
                 
             }
 
             const truthify = (obj) => {
                 Object.keys(obj).forEach(key => {
-
-                    // console.log(`key: ${key}, value: ${obj[key]}`);
-
                     if ( obj[key] === "true" ) {
                         obj[key] = true;
-                        // console.log(`but now...key: ${key}, value: ${obj[key]}`);
-
                     } else if ( obj[key] === "false" ) {
                         obj[key] = false;
-                        // console.log(`but now...key: ${key}, value: ${obj[key]}`);
-
                     }
                     
-
                     if (obj[key] !== null && obj[key] !== undefined && typeof obj[key] === 'object') {
                         truthify(obj[key])
                     }
