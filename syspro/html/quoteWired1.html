@@ -22,6 +22,9 @@
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
 
         <style>
+            .progress-bar__steps--text {
+                font-size: 11px;
+            }
             .package.sys-bg-success {
                 background-color: #84BD00 !important;
             }
@@ -147,6 +150,9 @@
   list-style-type: none;
   padding: 4px 5px;
   text-align: center;
+  display: flex;
+  align-items: center;
+    justify-content: center;
 }
 @media screen and (min-width: 800px) {
   .progress-bar__steps {
@@ -1898,14 +1904,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <!-- <h4 class="sys-mg-b-15 clearfix sys-mg-t-10">
-                                                            <span class="pull-left">Service charge</span
-                                                            ><span class="pull-right">$560.00</span>
-                                                        </h4> -->
-                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-10">
-                                                            <span class="pull-left">Total discount</span
-                                                            ><span class="pull-right sys-fg-danger" data-bind="text: grandDiscountWithCurrency"></span><span class="pull-right sys-fg-danger">-</span>
-                                                        </h4>
+
                                                         <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
                                                             <span class="pull-left">Total</span
                                                             ><span class="pull-right" data-bind="text: grandTotalWithCurrency"></span>
@@ -1976,29 +1975,37 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             </ul> -->
 
             <ol class="overall-progress-bar">
-                <li class="progress-bar__steps">
-                    <span class="progress-bar__steps--numbers"></span>
-                    <span class="progress-bar__steps--text">A step</span>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.NewQuote}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">New Quote</span>
                 </li>
-                <li class="progress-bar__steps current">
-                    <span class="progress-bar__steps--numbers"></span>
-                    <span class="progress-bar__steps--text">Generate quote</span>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.QuoteMaintenance}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">Quote Maintenance</span>
                 </li>
-                <li class="progress-bar__steps">
-                    <span class="progress-bar__steps--numbers"></span>
-                    <span class="progress-bar__steps--text">A step</span>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.PendingCustomerApproval}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">Pending Customer Approval</span>
                 </li>
-                <li class="progress-bar__steps">
-                    <span class="progress-bar__steps--numbers"></span>
-                    <span class="progress-bar__steps--text">A step</span>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.QuoteAcceptedRejected}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">Quote Accepted/Rejected</span>
                 </li>
-                <li class="progress-bar__steps">
-                    <span class="progress-bar__steps--numbers"></span>
-                    <span class="progress-bar__steps--text">A step</span>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.PendingRegionalApproval}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">Pending Regional Approval</span>
                 </li>
-                <li class="progress-bar__steps">
-                    <span class="progress-bar__steps--numbers"></span>
-                    <span class="progress-bar__steps--text">A step</span>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.PendingCorporateApproval}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">Pending Coroprate Approval</span>
+                </li>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.ProvisioningInfrastructure}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">Provisioning Infrastructure</span>
+                </li>
+                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.InfrastructureHandover}">
+                    <!-- <span class="progress-bar__steps--numbers"></span> -->
+                    <span class="progress-bar__steps--text">Infrastructure Handover</span>
                 </li>
             </ol>
         </div>
@@ -2109,20 +2116,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             #}#
                         </div>
 
-                        <div class="col-sm-4 text-right">
-                            <span data-bind="visible: hasDiscount">
-                                <small class="original-price sys-fg-danger" data-bind="text: priceWithCurrency"></small>
-                            </span>                           
-                            <b data-bind="text: currency"></b><b class="discount-amount" data-bind="text: priceWithCurrency, css: { discount-allowed: DiscountAllowed }"></b>
-                            <i class="material-icons sys-fg-light-gray sys-txt-sm pull-right discount" 
-                                data-toggle="popover" 
-                                title="Apply discount"
-                                data-content='<div class="row sys-mg-t-10"><div class="col-xs-12"><div class="md-outline"><input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-amount-input"></input></div><span class="sys-txt-md sys-fg-inverse">max #: MaxDiscountPercentage #%</span></div></div>'
-                                data-bind="visible: DiscountAllowed, css:{active: hasDiscount}">assignment_returned</i>
-                            <span class="hidden-discount-field" style="display: none;">
-                                
-                            <input type="number" max="#: MaxDiscountPercentage #" class="form-control discount-value" data-bind='value: DiscountValue'></input>
-                            </span>
+                        <div class="col-sm-4 text-right">                         
+                            <b data-bind="text: currency"></b>
+                            <b class="discount-amount" data-bind="text: priceWithCurrency"></b>                            
                         </div>
                         #if ((data.FeatureList && data.FeatureList.string && data.FeatureList.string.length) || (data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
                             <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="#: StockCode #Details">
@@ -2177,9 +2173,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             <tr>
                 <td>#: Description #</td>
                 <td class="text-right">
-                    <small data-bind="visible: lineItemHasDiscount" class="original-price sys-fg-danger sys-mg-r-5">
-                        <span data-bind="text: Cost"></span> / <span data-bind="text: Discount"></span>
-                    </small>
                     <span data-bind="text: costWithCurrency"></span> / <span data-bind="text: totalWithCurrency"></span>
                 </td>
             </tr>
@@ -2626,54 +2619,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 uiInitExtras: function() {
                     $('[data-tooltip="tooltip"]').tooltip();
 
-                    // $("#quoteDate").val(new Date());
-                    
-                    $(".discount").popover({
-                        trigger : 'click',  
-                        placement : 'auto', 
-                        container: 'body',
-                        html: 'true',
-                        title: 'Add a comment',
-                        // content : '<span class="sys-txt-sm sys-fg-inverse">Percentage - max 12.5%</span><input type="text" class="form-control"></input>',
-                        // content: '<span class="sys-txt-md sys-fg-inverse">% - max 12.5%</span><input type="number" class="form-control"></input>',
-                        template: '<div class="popover textarea-popover"><div class="arrow"></div>'+
-                                '<h3 class="popover-title"></h3><div class="popover-content popover-textarea-content">xxx'+
-                                '</div><div class="popover-footer"><button type="button" class="btn btn-xs btn-default popover-cancel">'+
-                                '<i class="material-icons sys-txt-sm">cancel</i></button>&nbsp;'+
-                                '<button type="button" class="btn btn-primary btn-xs popover-submit pull-right">'+
-                                '<i class="material-icons sys-txt-sm">check</i></button></div></div>' 
-                    })
-                    .on('shown.bs.popover', function(e) {
-                        //hide any visible comment-popover
-                        $(".discount").not(this).popover('hide');
-                        const $this = $(this);
-                        const $popover = $(e.target).data('bs.popover').$tip;
-                        const $hiddenValueField = $this.siblings(".hidden-discount-field").find("input.discount-value");
-                        // const $hiddenTypeField = $this.siblings(".hidden-discount-field").find("input.discount-type-value");
-                        const $popoverInput = $popover.find("input.discount-amount-input");
-                        const value = $hiddenValueField.val();
-                        // const type = $hiddenTypeField.val();
-                        $popoverInput.val(value);
-                    
-                        
-                        // var $popover = $(e.target).data('bs.popover').$tip;
-                        // var $popoverTextarea = $popover.find('.popover-textarea');
-                        //attach link text
-                        // $popoverTextarea.val($comment.text().trim()).focus();
-                        //close on cancel
-                        $('.popover-cancel').click(function() {                              
-                            $this.popover('hide');
-                        });
-                        //update link text on submit
-                        $('.popover-submit').click(function() {
-                            // $comment.text($popoverTextarea.val().trim());
-                            // $this.parent().find(".truncatedComment").text(truncateWithEllipses($comment.text().trim()));
-                            // kendo.bind("body", viewModel);
-                            $hiddenValueField.val($popoverInput.val());
-                            $hiddenValueField.trigger("change");
-                            $this.popover('hide');
-                        });
-                    });
                     const ps = new PerfectScrollbar('.quote-scrollable-pane');
                 },
                 renderPlusPackageSubItemsTemplate: function(data) {
