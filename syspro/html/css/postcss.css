@@ -33,8 +33,12 @@
     --color_pickled_bluewood_approx: #2c3e50;
     --color_inverse_lightened: #415870;
     --color_snow_flurry_approx: #dbffcf;
+
+    /* very-light-gray */
     --color_athens_gray_approx: #ecf0f1;
     --color_default_hover: #e5e9ea;
+
+    /* The main blue, link colour */
     --color_lochmara_approx: #0078d7;
     --color_solitaire_approx: #fcf8e3;
     --color_regal_blue_approx: #014466;
@@ -43,6 +47,8 @@
     --color_san_juan_approx: #245269;
     --color_christine_approx: #e37a10;
     --color_pumpkin_skin_approx: #b3600d;
+
+    /* The main red */
     --color_cinnabar_approx: #e74c3c;
     --color_sunset_orange_approx: #ed5b48;
     --color_willow_brook_approx: #dff0d8;
@@ -52,7 +58,11 @@
     --color_french_pass_83_approx: rgba(198, 237, 255, .83);
     --color_pipi_approx: #faf2cc;
     --color_fuchsia_pink_approx: #d5b;
+
+    /* sys-bg-gray */
     --color_pewter_approx: #95a5a6;
+
+    /* The main green */
     --color_chateau_green_approx: #27ae60;
     --color_red_berry_approx: #990000;
     --color_vanilla_ice_approx: #f2dede;
@@ -77,6 +87,8 @@
     --red: #ff0000;
     --color_submarine_approx: #bdc3c7;
     --syspro_dark_green: #168846;
+
+    /* The main orange */
     --color_zest_approx: #e67e22;
     --white_1: rgba(255, 255, 255, .01);
     --color_romance_approx: #fdfdfd;
@@ -234,10 +246,12 @@
     --color_tapa_approx: #cccccc;
     /* --color_mine_shaft_approx: #333333; */
     --color_mine_shaft_approx: #fefefe;
+
     /* Input text colour */
     /* --color_fuscous_gray_approx: #555555; */
     --color_fuscous_gray_approx: #ffffff;
     --color_celeste_approx: #cccccc;
+
     /* Inverse Colour */
     /* --color_pickled_bluewood_approx: #2c3e50; */
     --color_pickled_bluewood_approx: #ffffff;
@@ -248,6 +262,7 @@
     --color_athens_gray_approx: #475b6f;
     /* --color_default_hover: #e5e9ea; */
     --color_default_hover: #6c839a;
+    
     /* Link colour */
     /* --color_lochmara_approx: #0078d7; */
     --color_lochmara_approx: #54c0ff;
@@ -535,6 +550,339 @@
     background-color: var(--color_black_haze_approx);
     border: none;
 }
+[data-theme='syspro-light'] {
+    /* Colours */
+    --black: #000;
+    --color_black_haze_approx: #f7f7f7;
+    --black_60: rgba(0, 0, 0, .6);
+    --black_0_01: rgba(0, 0, 0, .0001);
+    --black_5: rgba(0, 0, 0, .05);
+    --black_7_5: rgba(0, 0, 0, .075);
+    --black_10: rgba(0, 0, 0, .1);
+    --black_12: rgba(0, 0, 0, .12);
+    --black_15: rgba(0, 0, 0, .15);
+    --black_17_5: rgba(0, 0, 0, .175);
+    --black_18: rgba(0, 0, 0, .18);
+    --black_20: rgba(0, 0, 0, .2);
+    --black_25: rgba(0, 0, 0, .25);
+    --black_30: rgba(0, 0, 0, .3);
+    --black_40: rgba(0, 0, 0, .4);
+    --black_46: rgba(0, 0, 0, .46);
+    --black_50: rgba(0, 0, 0, .5);
+    --black_75: rgba(0, 0, 0, .75);
+    --black_85: rgba(0, 0, 0, .85);
+    --white: #fff;
+    --light_blue_grey: #c3dfe6;
+    --darker_blue_grey: #34495e;
+    --color_alto_approx: #ddd;
+    --color_geyser_approx: #dae0e4;
+    --color_alabaster_approx: #fbfbfb;
+    --color_tapa_approx: #777777;
+    --color_mine_shaft_approx: #333333;
+    --color_fuscous_gray_approx: #555555;
+    --color_celeste_approx: #cccccc;
+
+    /* sys-fg-inverse */
+    --color_pickled_bluewood_approx: #425563; /* changed to syspro grey (syspro primary dark blue NOT GOOD (#001A72)) */
+    --color_inverse_lightened: #415870;
+    --color_snow_flurry_approx: #dbffcf;
+
+    /* very-light-gray */
+    --color_athens_gray_approx: #E4EBED; /* changed to syspro neutral blue grey 30% */
+    --color_default_hover: #F6F8F9; /* changed to syspro blue grey 10% */
+
+    /* The main blue, link colour */
+    --color_lochmara_approx: #007FA3; /* changed to syspro primary teal */
+
+    /* Syspro Turquoise */
+    --color_syspro_turquoise: #05C3DE;
+    --color_solitaire_approx: #fcf8e3;
+    --color_regal_blue_approx: #014466;
+    --color_camarone_approx: #006622;
+    --color_calypso_approx: #31708f;
+    --color_san_juan_approx: #245269;
+    --color_christine_approx: #e37a10;
+    --color_pumpkin_skin_approx: #b3600d;
+
+    /* The main red */
+    --color_cinnabar_approx: #D50032; /* changed to syspro magenta */
+    --color_sunset_orange_approx: #ed5b48;
+    --color_willow_brook_approx: #dff0d8;
+    --color_pattens_blue_83_approx: rgba(224, 245, 255, .83);
+    --color_light_blue_hover: #e8f3f9;
+    --color_tea_green_approx: #d0e9c6;
+    --color_french_pass_83_approx: rgba(198, 237, 255, .83);
+    --color_pipi_approx: #faf2cc;
+    --color_fuchsia_pink_approx: #d5b;
+
+    /* sys-bg-gray */
+    --color_pewter_approx: #687782; /* changed to syspro grey 80% */
+
+    /* The main green */
+    --color_chateau_green_approx: #509E2F; /* changed to syspro primary green */
+    --color_red_berry_approx: #990000;
+    --color_vanilla_ice_approx: #f2dede;
+    --color_curious_blue_approx: #3498db;
+    --color_link_water_approx: #C4E6F2; /* changed to syspro turquoise 40% */
+    --color_picton_blue_approx: #49cfef;
+    --highlight-row-blue: #49abf9;
+    --color_fun_green_approx: #00802b;
+
+    /* sys-bg-info */
+    --color_mountain_meadow_approx: #05C3DE; /* changed to syspro turquoise */
+    --color_eastern_blue_approx: #29a3a3;
+    --color_java_approx: #2eb8b8;
+    --blaze_orange: #ff6600;
+    --color_burnt_orange_approx: #cc5200;
+    --color_fire_approx: #a84300;
+    --white_10: rgba(255, 255, 255, .1);
+    --color_chicago_approx: #5e5e5e;
+    --color_matisse_approx: #24648e;
+    --color_oyster_pink_approx: #ebcccc;
+    --white_15: rgba(255, 255, 255, .15);
+    --color_malibu_approx: #68ccfe;
+    --alabaster: #F6F8F9; /* changed to syspro blue grey 10% */
+    --red: #ff0000;
+
+    /* sys-light-grey */
+    --color_submarine_approx: #A4BCC4; /* changed to syspro  blue grey */
+    --syspro_dark_green: #509E2F; /* changed to syspro primary green */
+
+    /* The main orange */
+    --color_zest_approx: #E87722; /* changed to Syspro orange */
+    --white_1: rgba(255, 255, 255, .01);
+    --color_romance_approx: #fdfdfd;
+    --color_glacier_approx: #7da8ca;
+    --white_20: rgba(255, 255, 255, .2);
+    --syspro_light_green: #87c700;
+    --syspro_dark_blue: #001A72; /* Changed to syspro primary dark blue */
+    --color_color_oslo_gray_approx_approx: #aaa;
+    --white_90: rgba(255, 255, 255, .9);
+    --color_havelock_blue_approx: #3f96dc;
+    --color_log_cabin_approx: #222222;
+
+    /* form field underlines and focused label colour */
+    --color_boston_blue_approx: #007FA3; /* changed to syspro primary teal */
+    --color_shuttle_gray_approx: #5d6773;
+    --color_desert_storm_approx: #f8f8f8;
+    --color_oslo_gray_approx: #7f8c8d;
+    --color_white_60_approx: rgba(256, 256, 256, .6);
+    --color_robins_egg_blue_approx: #05c3dd;
+    --white_30: rgba(255, 255, 255, .3);
+    --color_fuscous_gray_70_approx: rgba(80, 80, 80, .7);
+    --color_gossamer_50_approx: rgba(0, 150, 136, .5);
+    --color_gossamer_10_approx: rgba(0, 150, 136, .1);
+
+
+    --color_quill_gray_approx: #E4EBED; /* changed to syspro neutral blue grey 30% */
+    --color_mountain_mist_approx: #909090;
+    --color_fog_approx: #d5d8ff;
+    --color_chathams_blue_approx: #0e5172;
+    --color_lily_white_approx: #e8f8ff;
+
+    /* fonts */
+    --font_0: 'Material Icons';
+    --font_1: 'Open Sans'; /* changed */
+    --font_2: 'themify';
+    --font_3: sans-serif;
+    --font_4: 'Open Sans';
+    --font_5: 'Helvetica Neue';
+    --font_6: Helvetica;
+    --font_7: Arial;
+    --font_8: monospace;
+    --font_9: 'Menlo';
+    --font_10: 'Monaco';
+    --font_11: 'Consolas';
+    --font_12: 'Courier New';
+    --font_13: serif;
+    --font_15: 'Segoe UI';
+
+    /* urls */
+    --url_0: url('../fonts/UX_FONTS_MaterialIcons-Regular.eot');
+    --url_1: url('../fonts/UX_FONTS_MaterialIcons-Regular.woff2');
+    --url_2: url('../fonts/UX_FONTS_MaterialIcons-Regular.woff');
+    --url_3: url('../fonts/UX_FONTS_MaterialIcons-Regular.ttf');
+    --url_4: url('../fonts/UX_FONTS_OpenSans-Regular.ttf'); /* changed */
+    --url_5: url('./../img/UX_IMG_home.png');
+    --url_6: url('../fonts/UX_FONTS_themify.eot?-fvbane');
+    --url_7: url('../fonts/UX_FONTS_themify.eot?#iefix-fvbane');
+    --url_8: url('../fonts/UX_FONTS_themify.woff?-fvbane');
+    --url_9: url('../fonts/UX_FONTS_themify.ttf?-fvbane');
+    --url_10: url('../fonts/UX_FONTS_themify.svg?-fvbane#themify');
+    --url_11: url('../fonts/UX_FONTS_icofont.eot');
+    --url_12: url('../fonts/UX_FONTS_icofont.woff2');
+    --url_13: url('../fonts/UX_FONTS_icofont.woff');
+    --url_14: url('../fonts/UX_FONTS_icofont.ttf');
+
+    --url_0b: url('UX_FONTS_MaterialIcons-Regular.eot');
+    --url_1b: url('UX_FONTS_MaterialIcons-Regular.woff2');
+    --url_2b: url('UX_FONTS_MaterialIcons-Regular.woff');
+    --url_3b: url('UX_FONTS_MaterialIcons-Regular.ttf');
+    --url_6b: url('UX_FONTS_themify.eot?-fvbane');
+    --url_7b: url('UX_FONTS_themify.eot?#iefix-fvbane');
+    --url_8b: url('UX_FONTS_themify.woff?-fvbane');
+    --url_9b: url('UX_FONTS_themify.ttf?-fvbane');
+    --url_10b: url('UX_FONTS_themify.svg?-fvbane#themify');
+    --url_11b: url('UX_FONTS_icofont.eot');
+    --url_12b: url('UX_FONTS_icofont.woff2');
+    --url_13b: url('UX_FONTS_icofont.woff');
+    --url_14b: url('UX_FONTS_icofont.ttf');
+
+    /* Layout */
+    --base-border-radius: 2px;
+
+    /* Box Shadow Variables */
+    --box-shadow-size-var-1: 2px;
+    --box-shadow-size-var-2: 5px;
+
+    /* box-shadow: none; */
+    --box-shadow-none: none;
+    --box-shadow-1: 0 var(--box-shadow-size-var-2) calc(var(--box-shadow-size-var-2) * 3)
+        calc(var(--box-shadow-size-var-1) * -1) var(--black_60);
+    --box-shadow-2: 0 calc(var(--box-shadow-size-var-2) * -3) calc(var(--box-shadow-size-var-2) * 8)
+        var(--box-shadow-size-var-1) var(--black_60);
+    --box-shadow-3: 0 calc(var(--box-shadow-size-var-1) * 2) calc(var(--box-shadow-size-var-1) * 4) 0 var(--black_20);
+    --box-shadow-4: 0 0 calc(var(--box-shadow-size-var-2) * 4) calc(var(--box-shadow-size-var-1) * -1 - 1px)
+        var(--black_75);
+    --box-shadow-5: 0 0 calc(var(--box-shadow-size-var-2) * 3) calc(var(--box-shadow-size-var-2) * -1) var(--black_75);
+    --box-shadow-6: 0 0 calc(var(--box-shadow-size-var-2) * 2) calc(var(--box-shadow-size-var-1) * -1) var(--black_10);
+    --box-shadow-7: 0 calc(var(--box-shadow-size-var-1) * 2) calc(var(--box-shadow-size-var-2) * 6) 0 var(--black_50);
+    --box-shadow-8: 0 var(--box-shadow-size-var-1) calc(var(--box-shadow-size-var-2) * 3)
+        calc(var(--box-shadow-size-var-1) - 3px) var(--black_46);
+    --box-shadow-9: var(--box-shadow-size-var-2) calc(var(--box-shadow-size-var-1) + 1px)
+        calc(var(--box-shadow-size-var-2) * 3) calc(var(--box-shadow-size-var-2) * -1) var(--black_46);
+    --box-shadow-10: 0 0 calc(var(--box-shadow-size-var-2) * 4) calc(var(--box-shadow-size-var-1) + 1px) var(--black_30);
+    --box-shadow-11: 0 0 calc(var(--box-shadow-size-var-2) * 6) calc(var(--box-shadow-size-var-1) * -4) var(--black);
+    --box-shadow-12: 0 0 calc(var(--box-shadow-size-var-2) * 5) calc(var(--box-shadow-size-var-2) * -1) var(--black_75);
+    --box-shadow-13: 0 0 calc(var(--box-shadow-size-var-2) * 5) calc(var(--box-shadow-size-var-2) * -1 - 1px)
+        var(--black);
+
+    /* --box-shadow-14: 0 calc(var(--box-shadow-size-var-1) * 2) calc(var(--box-shadow-size-var-1) * 4) 0 var(--black_20); */
+
+    --box-shadow-14: 0 0 calc(var(--box-shadow-size-var-2) * 3) calc(var(--box-shadow-size-var-2) * -2) var(--black_60);
+    --box-shadow-15: 0 0 calc(var(--box-shadow-size-var-2) * 5) calc(var(--box-shadow-size-var-2) * -2) var(--black_75);
+    --box-shadow-16: 0 calc(var(--box-shadow-size-var-2) * -2) calc(var(--box-shadow-size-var-2) * 3)
+        var(--box-shadow-size-var-1) var(--black_60);
+    --box-shadow-17: 0 0 calc(var(--box-shadow-size-var-2) * 6) calc(var(--box-shadow-size-var-2) * -1) var(--black_30);
+    --box-shadow-18: 0 0 calc(var(--box-shadow-size-var-2) * 3) var(--box-shadow-size-var-2) var(--black_25);
+    --box-shadow-19: var(--box-shadow-size-var-2) calc(var(--box-shadow-size-var-2) * -2)
+        calc(var(--box-shadow-size-var-2) * 5) calc(var(--box-shadow-size-var-2) * -2) var(--black_75);
+    --box-shadow-20: 0 0 calc(var(--box-shadow-size-var-2) * 12) var(--box-shadow-size-var-2) var(--black_30);
+    --box-shadow-21: 0 calc(var(--box-shadow-size-var-1) * -2) calc(var(--box-shadow-size-var-2) * 2)
+        calc(var(--box-shadow-size-var-1) * -1) var(--black_30);
+    --box-shadow-22: 0 calc(var(--box-shadow-size-var-1) * 2) calc(var(--box-shadow-size-var-2) * 2)
+        calc(var(--box-shadow-size-var-1) * -1) var(--black_30);
+    --box-shadow-23: inset calc(var(--box-shadow-size-var-2) * -1) calc(var(--box-shadow-size-var-2) * -2)
+        calc(var(--box-shadow-size-var-2) * 5) calc(var(--box-shadow-size-var-2) * -2) var(--black_75);
+    --box-shadow-24: 0 0 calc(var(--box-shadow-size-var-2) * 3) calc(var(--box-shadow-size-var-2) * -2) var(--black_20);
+
+    font-size: 14px;
+    &body {
+      font-size: 14px;
+    }
+}
+[data-theme='syspro-light'] .tile .sys-bg-primary, [data-theme='syspro-light'] .tile-background-colour .sys-bg-primary {
+    background-color: var(--color_lochmara_approx) !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-success, [data-theme='syspro-light'] .tile-background-colour .sys-bg-success {
+    background-color: var(--color_chateau_green_approx) !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-info, [data-theme='syspro-light'] .tile-background-colour .sys-bg-info {
+    background-color: var(--color_syspro_turquoise) !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-warning, [data-theme='syspro-light'] .tile-background-colour .sys-bg-warning {
+    background-color: var(--color_zest_approx) !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-danger, [data-theme='syspro-light'] .tile-background-colour .sys-bg-danger {
+    background-color: var(--color_cinnabar_approx) !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-white, [data-theme='syspro-light'] .tile-background-colour .sys-bg-white {
+    background-color: #ffffff !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-gray, [data-theme='syspro-light'] .tile-background-colour .sys-bg-gray {
+    background-color: var(--color_pewter_approx) !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-inverse, [data-theme='syspro-light'] .tile-background-colour .sys-bg-inverse {
+    background-color: var(--color_pickled_bluewood_approx) !important;
+}
+[data-theme='syspro-light'] .tile .sys-bg-very-light-gray, [data-theme='syspro-light'] .tile-background-colour .sys-bg-very-light-gray {
+    background-color: var(--color_athens_gray_approx) !important;
+}
+[data-theme='syspro-light'] .tile .sys-fg-primary, [data-theme='syspro-light'] .tile-background-colour .sys-fg-primary {
+    color: var(--color_lochmara_approx);
+}
+[data-theme='syspro-light'] .tile .sys-fg-success, [data-theme='syspro-light'] .tile-background-colour .sys-fg-success {
+    color: var(--color_chateau_green_approx);
+}
+[data-theme='syspro-light'] .tile .sys-fg-info, [data-theme='syspro-light'] .tile-background-colour .sys-fg-info {
+    color: var(--color_syspro_turquoise);
+}
+[data-theme='syspro-light'] .tile .sys-fg-warning, [data-theme='syspro-light'] .tile-background-colour .sys-fg-warning {
+    color: var(--color_zest_approx);
+}
+[data-theme='syspro-light'] .tile .sys-fg-danger, [data-theme='syspro-light'] .tile-background-colour .sys-fg-danger {
+    color: var(--color_cinnabar_approx);
+}
+[data-theme='syspro-light'] .tile .sys-fg-gray, [data-theme='syspro-light'] .tile-background-colour .sys-fg-gray {
+    color: var(--color_pewter_approx);
+}
+[data-theme='syspro-light'] .tile .sys-fg-white, [data-theme='syspro-light'] .tile-background-colour .sys-fg-white {
+    color: #ffffff;
+}
+[data-theme='syspro-light'] .tile .sys-fg-inverse, [data-theme='syspro-light'] .tile-background-colour .sys-fg-inverse {
+    color: var(--color_pickled_bluewood_approx);
+}
+[data-theme='syspro-light'] .tooltip-inner {
+    background-color: var(--color_pickled_bluewood_approx);
+}
+[data-theme='syspro-light'] h4, [data-theme='syspro-light'] .h4 {/* font-weight: 400; */
+    font-size: 16px;
+}
+[data-theme='syspro-light'] .tile-title {
+    font-size: 14px;
+    line-height: 1.1;
+}
+[data-theme='syspro-light'] .error-template h3 {
+    font-size: 1.1em;
+    line-height: 1.4em;
+}
+[data-theme='syspro-light'] .sys-txt-lg {
+    font-size: 17px;
+}
+[data-theme='syspro-light'] {
+    & .k-autocomplete, .k-draghandle, .k-dropdown-wrap, .k-grid-header, .k-grouping-header, .k-header, .k-numeric-wrap, .k-pager-wrap, .k-panelbar .k-tabstrip-items .k-item, .k-picker-wrap, .k-progressbar, .k-state-highlight, .k-tabstrip-items .k-item, .k-textbox, .k-toolbar {
+      background-position: 50% 50%;
+      background-color: #F6F8F9;
+    }
+}
+[data-theme='syspro-light'] .highlightedTerm {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 4px, #F3D03E 4px);
+}
+[data-theme='syspro-light'] .form-group.is-focused:not(.has-error) i.control-label {
+    color: var(--color_lochmara_approx);
+}
+[data-theme='syspro-light'] .form-group label.control-label {
+    font-size: 13px;
+}
+[data-theme='syspro-light'] .list-group-item {
+    font-size: 13px;
+}
+[data-theme='syspro-light'] .btn {
+    font-size: 14px;
+}
+[data-theme='syspro-light'] {
+    & #logonForm .form-horizontal .control-label, 
+    & #forgotPasswordForm .form-horizontal .control-label,
+    & #changePasswordForm .form-horizontal .control-label 
+    & #logonForm .form-group .form-control:not(.k-combobox),
+    & #forgotPasswordForm .form-group .form-control:not(.k-combobox),
+    & #changePasswordForm .form-group .form-control:not(.k-combobox) {
+      font-size: 15px;
+    }
+}
+[data-theme='syspro-light'] .fields-wrapper .list-group-item span.program-activity {
+    font-size: 10.5px;
+}
 /* Main styles */
 html {
     font-family: var(--font_3);
@@ -795,6 +1143,9 @@ hr {
 }
 .avanti-mode.body-edit-mode #main-container {
     padding-top: 49px;
+}
+#harness-container {
+    min-height: 100vh;
 }
 #wrapper .main-column.panel-body {
     -webkit-box-shadow: var(--box-shadow-24);
@@ -2617,6 +2968,7 @@ h4,
 }
 h4 .material-icons, .h4 .material-icons {
     font-size: 20px;
+    vertical-align: top;
 }
 h4 small, .h4 small {
     font-weight: normal;
@@ -4506,11 +4858,11 @@ th {
     border-bottom-color: var(--color_mine_shaft_approx);
 }
 body > .tooltip {
-    z-index: 1000005;
+    z-index: 1001000;
 }
 .compact-window .tooltip,
 .k-window .tooltip {
-    z-index: 1000005;
+    z-index: 1001000;
 }
 .tooltip-inner {
     max-width: 200px;
@@ -4550,7 +4902,7 @@ body > .tooltip {
             box-shadow: var(--box-shadow-7);
     white-space: normal;
     min-width: 60px;
-    pointer-events: none
+    pointer-events: auto
 }
 .popover.top {
     margin-top: -0px;
@@ -4687,7 +5039,7 @@ body > .tooltip {
 .popover.textarea-popover.left > .arrow:after {
     border-left-color: var(--color_black_haze_approx);
 }
-.layout-widget-options .popover, .data-widget-options .popover, .toolbar-widget-options .popover {
+.layout-widget-options .popover, .data-widget-options .popover, .toolbar-widget-options .popover, .colour-picker-dot + .popover {
     pointer-events: auto;
 }
 .popover-title {
@@ -5467,6 +5819,11 @@ a.list-group-item-danger.active:focus {
 }
 .widget-sysprodisabled .widget-overlay {
     display: block;
+    width: calc(100% - 40px);
+    height: calc(100% - 65px);
+}
+.widget-sysprodisabled .gridlist-cell-note {
+    border-top-color: var(--color_pewter_approx);
 }
 .widget-sysprodisabled .syspro-grid-row-hyperlink,
     .widget-sysprodisabled .k-grid-toolbar a.gridButton,
@@ -5478,8 +5835,7 @@ a.list-group-item-danger.active:focus {
     .widget-sysprodisabled .k-grouping-header,
     .widget-sysprodisabled input::-webkit-input-placeholder,
     .widget-sysprodisabled .table-striped > tbody > tr.k-state-selected {
-    color: var(--color_pewter_approx) !important;
-    pointer-events: none;
+    color: var(--color_pewter_approx) !important;/* pointer-events: none; */
 }
 .widget-sysprodisabled .syspro-grid-row-hyperlink,
     .widget-sysprodisabled .k-grid-toolbar a.gridButton,
@@ -5491,8 +5847,7 @@ a.list-group-item-danger.active:focus {
     .widget-sysprodisabled .k-grouping-header,
     .widget-sysprodisabled input::-ms-input-placeholder,
     .widget-sysprodisabled .table-striped > tbody > tr.k-state-selected {
-    color: var(--color_pewter_approx) !important;
-    pointer-events: none;
+    color: var(--color_pewter_approx) !important;/* pointer-events: none; */
 }
 .widget-sysprodisabled .syspro-grid-row-hyperlink,
     .widget-sysprodisabled .k-grid-toolbar a.gridButton,
@@ -5504,15 +5859,19 @@ a.list-group-item-danger.active:focus {
     .widget-sysprodisabled .k-grouping-header,
     .widget-sysprodisabled input::placeholder,
     .widget-sysprodisabled .table-striped > tbody > tr.k-state-selected {
-    color: var(--color_pewter_approx) !important;
-    pointer-events: none;
+    color: var(--color_pewter_approx) !important;/* pointer-events: none; */
 }
 .widget-sysprodisabled .table-striped > tbody > tr.k-state-selected {
     background-color: var(--color_black_haze_approx);
 }
+.widget-sysprodisabled tbody tr, .widget-sysprodisabled tbody tr td {
+    pointer-events: none;
+}
 #main-container {
     padding-top: 40px;
-    padding-bottom: 25px
+    padding-bottom: 25px;
+    position: relative;
+    min-height: 100vh
 }
 #main-container .navbar {
     border-radius: calc(var(--base-border-radius) + 1px);
@@ -5596,6 +5955,7 @@ a.list-group-item-danger.active:focus {
     text-align: left;
 }
 #wrapper {
+    min-height: 100vh;
     -webkit-transition: all 0.33s ease;
     transition: all 0.33s ease
 }
@@ -6508,6 +6868,11 @@ form .data-section {
 .navbar.navbar-controlbar .breadcrumb-separator .material-icons {
     vertical-align: bottom;
     padding-top: 3px;
+}
+.navbar.navbar-controlbar.filler-navbar {
+    position: relative !important;
+    z-index: -999 !important;
+    width: 100%;
 }
 .navbar:before {
     content: ' ';
@@ -9940,10 +10305,10 @@ td .btn.btn-delete {
             box-shadow: var(--box-shadow-10) !important;
 }
 .k-window.k-widget:not(.compact-window) {
-    z-index: 1000001 !important;
+    z-index: 1000001;
 }
 .k-window.k-widget:not(.compact-window).k-dialog {
-    z-index: 1000599 !important;
+    z-index: 1000599;
 }
 .k-window.k-state-focused {
     padding-top: 40px !important;
@@ -10138,6 +10503,9 @@ td .btn.btn-delete {
 }
 .k-combobox, .k-dropdown {
     border-radius: var(--base-border-radius)
+}
+.k-combobox.k-header, .k-dropdown.k-header {
+    background-color: transparent;
 }
 .k-combobox .k-dropdown-wrap, .k-dropdown .k-dropdown-wrap {
     border: none;
@@ -10729,7 +11097,7 @@ td .btn.btn-delete {
             box-sizing: border-box !important;
 }
 .k-animation-container.avantiNotification {
-    z-index: 1000599 !important;
+    z-index: 1000599;
 }
 .k-panelbar .k-state-selected,
     .k-panelbar .k-state-selected.k-state-focused {
@@ -10771,7 +11139,10 @@ td.k-state-focused.k-state-selected,
     vertical-align: middle;
 }
 .k-overlay {
-    z-index: 999999 !important
+    z-index: 999999;
+    background-color: #ffffff;
+    background: #ffffff;
+    opacity: 0.35 !important
 }
 .k-overlay.dialog-overlay {
     background-color: transparent;
@@ -11156,6 +11527,18 @@ td.k-state-focused.k-state-selected,
     -webkit-transition: all 0.15s;
     transition: all 0.15s;
     cursor: pointer;
+}
+.tile-inner:hover .tile-error.tile-error-short {
+    display: none;
+}
+.tile-inner:hover .tile-error.tile-error-long {
+    display: block;
+}
+.tile-inner .tile-error.tile-error-short {
+    display: block;
+}
+.tile-inner .tile-error.tile-error-long {
+    display: none;
 }
 .tile-inner > div {
     float: left;
@@ -12419,6 +12802,12 @@ a.grid-resize-toolbar .material-icons {
     height: 0.75em;
     line-height: 0.75em;
 }
+.window-footer > .col-sm-12 > .disabled {
+    cursor: not-allowed;
+}
+.window-footer > .col-sm-12 > .disabled > .btn[disabled] {
+    pointer-events: none;
+}
 .window-content {
     overflow: auto;
     height: calc(100% - 50px)
@@ -12565,11 +12954,9 @@ a.grid-resize-toolbar .material-icons {
     padding-top: 10px;
 }
 .column-parent.minimized {
-    -webkit-transition: all linear 0.25s;
-    transition: all linear 0.25s
-}
-.column-parent.minimized.col-sm-4 {
-    width: 8%;
+    width: 4%;
+    -webkit-transition: opacity linear 0.35s, width linear 0.15s;
+    transition: opacity linear 0.35s, width linear 0.15s
 }
 .column-parent.minimized i.material-icons.minimize-column {
     -webkit-transform: rotate(180deg);
@@ -12577,23 +12964,45 @@ a.grid-resize-toolbar .material-icons {
     -webkit-transition: all linear 0.25s;
     transition: all linear 0.25s;
 }
-.column-parent.minimized .card-bindable > *:not(.avanti-card-title) {
+.column-parent.minimized .card-bindable > *:not(.avanti-card-title), .column-parent.minimized .panel > *:not(.avanti-card-title) {
     opacity: 0;
 }
-.column-parent.minimized {/* & > .panel > .panel-body {
-        opacity: 0;
-    } */
-}
 .column-parent.minimized + .column-parent {
+    -webkit-transition: opacity linear 0.1s, width linear 0.3s;
+    transition: opacity linear 0.1s, width linear 0.3s;
+}
+.column-parent.minimized .main-column-minimize {
+    color: var(--color_lochmara_approx) !important;
+}
+.window-content .column-parent.minimized.col-sm-4 {
+    width: 8%;
+}
+.window-content .column-parent.minimized.col-sm-4 .avanti-card-title {
+    font-size: 0px;
+}
+.window-content .column-parent.minimized .panel > * {
+    opacity: 1;
+}
+.window-content .column-parent.minimized + .column-parent {
     -webkit-transition: all linear 0.25s;
     transition: all linear 0.25s;
 }
-.column-parent.minimized + .column-parent.col-sm-8 {
+.window-content .column-parent.minimized + .column-parent.col-sm-8 {
     width: 92%;
 }
 .minimize-column {
     cursor: pointer;
-    font-size: 20px !important;
+    font-size: 20px !important
+}
+.minimize-column.main-column-minimize {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    vertical-align: middle;
+    font-size: 8px !important;
+    color: var(--color_submarine_approx);
+    line-height: 1;
+    z-index: 999;
 }
 .special-notes-window .form-horizontal .col-sm-12 .col-md-5,
 .special-notes-window .form-horizontal .col-sm-12 .col-md-7 {
@@ -12627,7 +13036,7 @@ a.grid-resize-toolbar .material-icons {
 }
 .compact-window.k-window.k-widget {
     border-radius: var(--base-border-radius);
-    z-index: 1000000 !important;
+    z-index: 1000000;
     padding-top: 28px !important;
     overflow: hidden
 }
@@ -12654,6 +13063,13 @@ a.grid-resize-toolbar .material-icons {
 }
 .compact-window.k-window.k-widget .k-window-titlebar .k-window-title:hover {
     cursor: move;
+}
+.compact-window.k-window.k-widget.k-state-focused .k-window-titlebar {
+    background-color: var(--color_lochmara_approx) !important;
+    color: var(--white) !important;
+}
+.compact-window.k-window.k-widget.k-state-focused .k-window-titlebar .k-window-actions .k-icon {
+    color: var(--white) !important;
 }
 .compact-window.k-window.k-widget .k-window-title {
     left: 0.5em !important;
@@ -13164,7 +13580,8 @@ body {
 #fusion-wrapper {
     padding-left: 0;
     -webkit-transition: all 0.13s ease;
-    transition: all 0.13s ease
+    transition: all 0.13s ease;
+    min-height: 100vh
 }
 #fusion-wrapper.toggled {
     padding-left: 450px;
@@ -13730,6 +14147,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 textarea.special-text-notes {
     white-space: pre-line;
+}
+textarea[id*='IMPWEDF0NOTESMAIN'] {
+    height: 240px !important;
+    width: 100%;
 }
 input[type='reset'] {
     cursor: pointer
@@ -15578,7 +15999,7 @@ input[type='checkbox'][disabled] {
     padding-right: 0;
 }
 .navbar-controlbar .form-inline .form-group .control-label {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     margin-top: 0;
     margin-right: 4px;
     vertical-align: middle;
@@ -17075,6 +17496,9 @@ form[data-role='sortable'] {
 .btn-checkbox {
     border-width: 0px
 }
+.btn-checkbox .material-icons {
+    vertical-align: text-bottom !important;
+}
 .btn-checkbox .material-icons.text-muted {
     display: inline-block;
     font-size: 18px;
@@ -17179,10 +17603,76 @@ form[data-role='sortable'] {
     }
 }
 @media (min-width: 1092px) {
-    .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 {
+    .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7, .column-parent.col-sm-4 .form-horizontal .col-xs-12 .col-md-7 {
         width: 58.33333333%;
         float: left;
         padding-top: 5px;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-9, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-9 {
+        width: 100%;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-3, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-3 {
+        width: 100%;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-8, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-8 {
+        width: 100%;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-4, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-4 {
+        width: 100%;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-7, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 {
+        width: 100%;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-7 .radio, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio {
+        padding-left: 8px;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio:first-child {
+        padding-top: 2px;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-5, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-5, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-5 {
+        width: 100%;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .form-group, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .form-group, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .form-group, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .form-group {
+        min-height: 50px;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .control-label, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .control-label, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .control-label, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .control-label {
+        text-align: left;
+    }
+    .column-parent.col-sm-4 .form-horizontal .col-sm-4 .radio label, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .radio label, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .radio label, .column-parent.col-sm-4 .form-horizontal .col-sm-8 .radio label {
+        text-align: left;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-9 {
+        width: 100%;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-3 {
+        width: 100%;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-8 {
+        width: 100%;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-4 {
+        width: 100%;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 {
+        width: 100%;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio {
+        padding-left: 8px;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
+        padding-top: 2px;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-5 {
+        width: 100%;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .form-group, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .form-group, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .form-group {
+        min-height: 50px;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .control-label, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .control-label {
+        text-align: left;
+    }
+    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .radio label, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .radio label, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .radio label {
+        text-align: left;
     }
 }
 @media (min-width: 1000px) {
@@ -17259,215 +17749,199 @@ form[data-role='sortable'] {
     .form-horizontal .form-group-sm .control-label {
         padding-top: 4px;
     }
-    .column-parent.col-sm-4 .form-horizontal .col-md-3 {
+    .column-parent.col-sm-4 .form-horizontal .col-md-3, .column-parent.col-xs-4 .form-horizontal .col-md-3 {
         width: 100%;
     }
-    .column-parent.col-sm-4 .form-horizontal .col-md-9 {
+    .column-parent.col-sm-4 .form-horizontal .col-md-9, .column-parent.col-xs-4 .form-horizontal .col-md-9 {
         width: 100%;
     }
-    .column-parent.col-sm-4 .form-horizontal .col-md-4 {
+    .column-parent.col-sm-4 .form-horizontal .col-md-4, .column-parent.col-xs-4 .form-horizontal .col-md-4 {
         width: 100%;
     }
-    .column-parent.col-sm-4 .form-horizontal .col-md-8 {
-        width: 100%;
+    .column-parent.col-sm-4 .form-horizontal, .column-parent.col-xs-4 .form-horizontal {/* & .col-md-7 {
+                width: 100%;
+                & .radio {
+                    padding-left: 8px;
+                    &:first-child {
+                        padding-top: 2px;
+                    }
+                }
+            }
+            & .col-md-5 {
+                width: 100%;
+            }
+            & .col-md-8 {
+                width: 100%;
+            }
+            & .control-label {
+                text-align: left;
+            } */
     }
-    .column-parent.col-sm-4 .form-horizontal .control-label {
-        text-align: left;
-    }
-    .column-parent.col-sm-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+    .column-parent.col-sm-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-sm-4 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .column-parent.col-xs-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-xs-4 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-9 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-9, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-9, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-9 {
         width: 100%;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-3 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-3, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-3, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-3 {
         width: 100%;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-8 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-8, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-8, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-8 {
         width: 100%;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-4 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-4, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-4, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-4 {
         width: 100%;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-7, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-7 {
         width: 100%;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-7 .radio, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-7 .radio {
         padding-left: 8px;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
         padding-top: 2px;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-5, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .col-md-5, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .col-md-5 {
         width: 100%;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .form-group {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .form-group, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .form-group, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .form-group, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .form-group, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .form-group, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .form-group {
         min-height: 50px;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .control-label {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .control-label, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .control-label, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .control-label, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .control-label, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .control-label {
         text-align: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .radio label {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .radio label, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .radio label, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .radio label, .column-parent.col-xs-6 .form-horizontal .col-sm-6 .radio label, .column-parent.col-xs-6 .form-horizontal .col-sm-4 .radio label, .column-parent.col-xs-6 .form-horizontal .col-sm-3 .radio label {
         text-align: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9 {
-        width: 100%;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-3 {
-        width: 100%;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-8 {
-        width: 100%;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-4 {
-        width: 100%;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 {
-        width: 100%;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio {
-        padding-left: 8px;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
-        padding-top: 2px;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5 {
-        width: 100%;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .form-group {
-        min-height: 50px;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label {
-        text-align: left;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .radio label {
-        text-align: left;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-sm-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .column-parent.col-xs-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-xs-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-9 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-3 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-8 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-4 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 .radio {
         padding-left: 8px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
         padding-top: 2px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-5 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .form-group, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .form-group, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .form-group {
         min-height: 50px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .control-label, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .control-label, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .control-label {
         text-align: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .radio label, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .radio label, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .radio label {
         text-align: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-3 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .col-md-3 {
         width: 25%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-4 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .col-md-4 {
         width: 25%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .col-md-5 {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-9 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .col-md-9 {
         width: 75%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-8 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .col-md-8 {
         width: 75%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .col-md-7 {
         width: 58.33333333%;
         float: left;
         padding-top: 5px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .form-control, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .form-control, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .form-control {
         height: 28px;
         padding: 2px 0 0 4px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-btn {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-btn, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .input-group-btn, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .input-group-btn, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .input-group-btn {
         padding: 5px 3px 0;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-addon {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-addon, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .input-group-addon, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .input-group-addon, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .input-group-addon {
         padding: 5px 3px 0;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-3 {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-3, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-3, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-3, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-3 {
         width: 25%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-4 {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-4, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-4, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-4, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-4 {
         width: 25%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5 {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-5, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-5, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-5 {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-9 {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-9, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-9, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-9, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-9 {
         width: 75%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-8 {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-8, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-8, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-8, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-8 {
         width: 75%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7 {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-7, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-7, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-7 {
         width: 58.33333333%;
         float: left;
         padding-top: 5px;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .form-control, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-control, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .form-control {
         height: 28px;
         padding: 2px 0 0 4px;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-btn {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-btn, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .input-group-btn, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .input-group-btn, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .input-group-btn {
         padding: 5px 3px 0;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-addon {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-addon, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .input-group-addon, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .input-group-addon, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .input-group-addon {
         padding: 5px 3px 0;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control, .column-parent.col-sm-12 .form-horizontal .col-xs-6 .form-control, .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-control, .column-parent.col-xs-12 .form-horizontal .col-xs-6 .form-control {
         height: 28px;
         padding: 2px 0 0 4px;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-btn {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-btn, .column-parent.col-sm-12 .form-horizontal .col-xs-6 .input-group-btn, .column-parent.col-xs-12 .form-horizontal .col-sm-6 .input-group-btn, .column-parent.col-xs-12 .form-horizontal .col-xs-6 .input-group-btn {
         padding: 5px 3px 0;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-addon {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-addon, .column-parent.col-sm-12 .form-horizontal .col-xs-6 .input-group-addon, .column-parent.col-xs-12 .form-horizontal .col-sm-6 .input-group-addon, .column-parent.col-xs-12 .form-horizontal .col-xs-6 .input-group-addon {
         padding: 5px 3px 0;
+    }
+    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .column-parent.col-sm-12 .form-horizontal .col-xs-6 .checkbox-form-group .control-label, .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .column-parent.col-xs-12 .form-horizontal .col-xs-6 .checkbox-form-group .control-label {
+        width: 41.66666667%;
+        float: left;
     }
 }
 @media (min-width: 768px) {
@@ -17484,69 +17958,40 @@ form[data-role='sortable'] {
     }
 }
 @media (min-width: 540px) and (max-width: 999px) {
-    .column-parent.col-sm-4 .form-horizontal .col-md-3 {
+    .column-parent.col-sm-6 .form-horizontal .col-md-3, .column-parent.col-sm-4 .form-horizontal .col-md-3 {
         width: 25%;
         float: left;
     }
-    .column-parent.col-sm-4 .form-horizontal .col-md-9 {
-        width: 75%;
-        float: left;
-    }
-    .column-parent.col-sm-4 .form-horizontal .col-md-4 {
-        width: 33.33333333%;
-        float: left;
-    }
-    .column-parent.col-sm-4 .form-horizontal .col-md-8 {
-        width: 66.66666667%;
-        float: left;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-md-3 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-3, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-3, .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-3 {
         width: 25%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-3 {
-        width: 25%;
-        float: left;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-9 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-9, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-9, .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-9 {
         width: 75%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-4 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-4, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-4, .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-4 {
         width: 33.33333333%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-8 {
+    .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-8, .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-8, .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-8 {
         width: 66.66666667%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-3 {
-        width: 25%;
-        float: left;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-9 {
+    .column-parent.col-sm-6 .form-horizontal .col-md-9, .column-parent.col-sm-4 .form-horizontal .col-md-9 {
         width: 75%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-4 {
+    .column-parent.col-sm-6 .form-horizontal .col-md-4, .column-parent.col-sm-4 .form-horizontal .col-md-4 {
         width: 33.33333333%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-8 {
+    .column-parent.col-sm-6 .form-horizontal .col-md-8, .column-parent.col-sm-4 .form-horizontal .col-md-8 {
         width: 66.66666667%;
         float: left;
     }
-    .column-parent.col-sm-6 .form-horizontal .col-md-9 {
-        width: 75%;
-        float: left;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-md-4 {
-        width: 33.33333333%;
-        float: left;
-    }
-    .column-parent.col-sm-6 .form-horizontal .col-md-8 {
-        width: 66.66666667%;
-        float: left;
+    .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-sm-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .column-parent.col-sm-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .column-parent.col-sm-4 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
+        width: 60%;
     }
     .column-parent.col-sm-12 .form-horizontal .col-md-3 {
         width: 25%;
@@ -17564,35 +18009,19 @@ form[data-role='sortable'] {
         width: 66.66666667%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-3 {
         width: 25%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-9 {
         width: 75%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-4 {
         width: 33.33333333%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8 {
-        width: 66.66666667%;
-        float: left;
-    }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-3 {
-        width: 25%;
-        float: left;
-    }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-9 {
-        width: 75%;
-        float: left;
-    }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-4 {
-        width: 33.33333333%;
-        float: left;
-    }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-8 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-8 {
         width: 66.66666667%;
         float: left;
     }
@@ -17626,297 +18055,227 @@ form[data-role='sortable'] {
         float: left !important;
     }
 }
-.k-window[max-width~='539px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='539px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {/* float: right !important; *//* width: calc(100% - 30px); */
+.k-window[max-width~='539px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='539px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='539px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[max-width~='539px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {/* float: right !important; *//* width: calc(100% - 30px); */
     width: 60%;
 }
-.k-window[max-width~='767px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
-    width: 60%;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[max-width~='767px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-sm-12 .form-horizontal .col-xs-6 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-12 .form-horizontal .col-xs-6 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label, .k-window[max-width~='767px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .col-md-5 {
+    width: 41.66666667% !important;
+    float: left;
+}
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
     padding-top: 5px;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5 {
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-5 {
     width: 100% !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 {
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 {
     width: 100% !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio {
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 .radio {
     padding-left: 8px !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child {
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 .radio:first-child {
     padding-top: 2px !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .form-group {
+.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .form-group {
     min-height: 50px;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5 {
+.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .col-md-5 {
     width: 100% !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 {
+.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .col-md-7 {
     width: 100% !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio {
+.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .col-md-7 .radio {
     padding-left: 8px !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
+.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .col-md-7 .radio:first-child {
     padding-top: 2px !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .form-group {
+.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-3 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .form-group {
     min-height: 50px;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-5 {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-5 {
     width: 100% !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 {
     width: 100% !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 .radio {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio {
     padding-left: 8px !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .col-md-7 .radio:first-child {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
     padding-top: 2px !important;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-8 .form-group {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .form-group, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .form-group {
     min-height: 50px;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-5 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-6 .form-group {
-    min-height: 50px;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-5 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-8 .form-group {
-    min-height: 50px;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-5 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-4 .form-group {
-    min-height: 50px;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-5 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .form-group {
-    min-height: 50px;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group {
-    min-height: 50px;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-5 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7 {
-    width: 100% !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7 .radio {
-    padding-left: 8px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child {
-    padding-top: 2px !important;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-6 .form-group {
-    min-height: 50px;
-}
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-5 {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
     padding-top: 5px;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-5 {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
     padding-top: 5px;
 }
-.k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-5, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-5 {
+    width: 100% !important;
+}
+.k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-7, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-7 {
+    width: 100% !important;
+}
+.k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-7 .radio, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-7 .radio {
+    padding-left: 8px !important;
+}
+.k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
+    padding-top: 2px !important;
+}
+.k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .form-group, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .form-group {
+    min-height: 50px;
+}
+.k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-xs-6 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-xs-6 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label, .k-window[min-width~='540px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .col-md-5 {
+    width: 41.66666667% !important;
+    float: left;
+}
+.k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
     padding-top: 5px;
 }
-.k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .col-md-5, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-5 {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .col-md-7, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
     padding-top: 5px;
 }
-.k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .checkbox-form-group .control-label, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 {
+.k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-group, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-group, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .form-group, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-group, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-group, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .form-group, .k-window[min-width~='768px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-group, .k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .form-group {
+    min-height: auto;
+}
+.k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-5 {
     width: 100% !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio {
+.k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-7 {
+    width: 100% !important;
+}
+.k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-7 .radio {
     padding-left: 8px !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child {
+.k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
     padding-top: 2px !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5 {
+.k-window[min-width~='768px'] .column-parent.col-xs-12 .form-horizontal .col-sm-3 .form-group {
+    min-height: 50px;
+}
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 {
     width: 100% !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .control-label {
-    text-align: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .radio label {
-    text-align: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 {
-    width: 100% !important;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio {
     padding-left: 8px !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-7 .radio:first-child, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
     padding-top: 2px !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .col-md-5 {
     width: 100% !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .control-label {
     text-align: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .radio label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-6 .radio label, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-4 .radio label, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-3 .radio label {
     text-align: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .col-md-5 {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-6 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 {
     width: 100% !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio {
     padding-left: 8px !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
     padding-top: 2px !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-5 {
     width: 100% !important;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .control-label {
     text-align: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-3 .radio label {
     text-align: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-5 {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .form-control {
     height: 28px;
     padding: 2px 0 0 4px;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-btn {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .input-group-btn {
     padding: 5px 3px 0;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-addon {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .input-group-addon {
     padding: 5px 3px 0;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
@@ -17944,83 +18303,52 @@ form[data-role='sortable'] {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .col-md-5 {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .form-group {
+.k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-sm-12 .form-group, .k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .col-xs-12 .form-group {
     min-height: 0px;
 }
 .k-window[min-width~='1092px'] .column-parent.col-sm-4 .form-horizontal .control-label {
     text-align: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-5 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-5 {
     width: 41.66666667% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-7 {
+.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .col-md-7 {
     width: 58.33333333% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-control {
+.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .form-control {
     height: 28px;
     padding: 2px 0 0 4px;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .input-group-btn {
+.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .input-group-btn {
     padding: 5px 3px 0;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .input-group-addon {
+.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .input-group-addon {
     padding: 5px 3px 0;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label {
-    width: 41.66666667% !important;
-    float: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-5 {
-    width: 41.66666667% !important;
-    float: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .col-md-7 {
-    width: 58.33333333% !important;
-    float: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-control {
-    height: 28px;
-    padding: 2px 0 0 4px;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-btn, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .input-group-btn {
-    padding: 5px 3px 0;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .input-group-addon, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .input-group-addon {
-    padding: 5px 3px 0;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label {
-    width: 41.66666667% !important;
-    float: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .col-md-5, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .col-md-5 {
-    width: 41.66666667% !important;
-    float: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .col-md-7, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .col-md-7 {
-    width: 58.33333333% !important;
-    float: left;
-}
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label {
+.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .checkbox-form-group .control-label, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .checkbox-form-group .control-label {
     width: 41.66666667% !important;
     float: left;
 }
 @media (max-width: 539px) {
     .form-group {
         padding-right: 0;
+    }
+    .checkbox-form-group .control-label {
+        width: 60%;
     }
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
@@ -18123,7 +18451,7 @@ form[data-role='sortable'] {
     background: #0078d7;
 }
 .dropdown-menu.textcomplete-dropdown.syspro-field-search-dropdown {
-    z-index: 1000001 !important;
+    z-index: 1000001;
 }
 /* HTML5 Number polyfill | Jonathan Stipe | https://github.com/jonstipe/number-polyfill*/
 div.number-spin-btn-container {
