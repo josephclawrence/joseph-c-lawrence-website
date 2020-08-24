@@ -1769,13 +1769,13 @@
 		}
 	},
 	"QuoteProcess": {
-		"NewQuote": true,
-		"QuoteMaintenance": false,
-		"PendingCustomerApproval": false,
-		"QuoteAcceptedRejected": false,
-		"PendingRegionalApproval": false,
-		"PendingCorporateApproval": false,
-		"ProvisioningInfrastructure": false,
-		"InfrastructureHandover": false,
+		"NewQuote": "true",
+		"QuoteMaintenance": "false",
+		"PendingCustomerApproval": "false",
+		"QuoteAcceptedRejected": "false",
+		"PendingRegionalApproval": "false",
+		"PendingCorporateApproval": "false",
+		"ProvisioningInfrastructure": "false",
+		"InfrastructureHandover": "false"
 	}
 }

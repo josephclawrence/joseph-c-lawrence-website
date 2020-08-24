@@ -1924,8 +1924,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                         >
                                                             Save & continue later
                                                         </button>
-                                                        <hr class="sys-mg-t-10 sys-mg-b-10"/>
-                                                        <div class="row">
+                                                        <hr class="sys-mg-t-10 sys-mg-b-10" data-bind="visible: QuoteProcess.PendingCustomerApproval" />
+                                                        <div class="row" data-bind="visible: QuoteProcess.PendingCustomerApproval" >
                                                             <div class="col-xs-6">
                                                                 <button
                                                                     id="rejectQuote"
