@@ -701,18 +701,7 @@
     .k-dropdown-wrap.k-state-default, .k-numeric-wrap.k-state-default, .k-picker-wrap.k-state-default {
     background-color: transparent;
     }
-    .discount {
-        cursor: pointer;
-        margin-right: 7.5px;
-        margin-left: 5px;
-        margin-top: 3px;
-    }
-    .discount:hover, .discount.active:hover {
-        color: #fdda4c;;
-    }
-    .discount.active {
-        color: #e67e22;;
-    }
+
     .infrastructure-pricing {
         display: flex;
         align-items: center;
@@ -768,13 +757,7 @@
 .md-outline.is-focused .input-prefix {
     color: #0078d7;
 }
-.discount-type-option {
-    width: 100%;
-}
-.discount-type-option .btn.active {
-    background-color: #0078d7 !important;
-    color: #ffffff !important;
-}
+
 .package-title {
     font-size: 14px;
 }
@@ -1219,8 +1202,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                 <div class="form-group md-outline quote-field input-with-post-icon">
                                                                                     <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
                                                                                     <input type="text" class="form-control" 
-                                                                                            data-bind="value: ExpiryDate" id="CustomerCode" name="CustomerCode">
-                                                                                    <label for="CustomerCode" class="">
+                                                                                            data-bind="value: Customer" id="Customer" name="Customer">
+                                                                                    <label for="Customer" class="">
                                                                                         <span>Customer code</span>
                                                                                     </label>
 
@@ -2205,13 +2188,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.parseEditDate = function() {
                 return moment(this.get("QuoteSummary.LastEdited")).format("DD/MM/YYY, HH:mm");
             };
-
-            kendo.data.ObservableObject.prototype.hasDiscount = function() {
-                return parseInt(this.get("DiscountValue")) > 0;
-            };
-            kendo.data.ObservableObject.prototype.lineItemHasDiscount = function() {
-                return parseInt(this.get("Discount")) > 0;
-            };
             kendo.data.ObservableObject.prototype.costWithCurrency = function() {
                 return viewModel.SelectedCurrency.CurrencySymbol + this.get("Cost");
             };
@@ -2221,9 +2197,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.priceWithCurrency = function() {
                 return viewModel.SelectedCurrency.CurrencySymbol + this.get("Price");
             };
-            kendo.data.ObservableObject.prototype.grandDiscountWithCurrency = function() {
-                return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.TotalDiscount")).toFixed(2);
-            };
+
             kendo.data.ObservableObject.prototype.grandTotalWithCurrency = function() {
                 return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.Total")).toFixed(2);
             };
@@ -2232,21 +2206,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             };
             kendo.data.ObservableObject.prototype.hasOwnUserCount = function() {
                 return this.parent().parent() !== viewModel.CoreBundles;
-            };
-            kendo.data.ObservableObject.prototype.totalNetCost = function() {
-                return this.get("userCount") * this.get("perUserCost");
-            };
-            kendo.data.ObservableObject.prototype.totalDiscount = function() {
-                return this.totalNetCost() * (this.get("DiscountValue") / 100);
-            };
-            kendo.data.ObservableObject.prototype.totalDiscountWithCurrency = function() {
-                return this.get("currency") + this.totalDiscount();
-            };
-            kendo.data.ObservableObject.prototype.perUserCostWithCurrency = function() {
-                return this.get("currency") + this.get("perUserCost");
-            };
-            kendo.data.ObservableObject.prototype.perUserCostWithCurrencyAndDiscount = function() {
-                return this.get("currency") + (this.get("perUserCost") - (this.get("perUserCost") * this.get("DiscountValue") / 100));
             };
             kendo.data.ObservableObject.prototype.productSuiteActive = function() {
                 return this.get("CoreBundles") && this.get("CoreBundles.Product") && this.get("CoreBundles.Product").length;
@@ -2348,13 +2307,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.sysfginverse = function() {
                 return this.sysbgverylightgray();
             };
-            kendo.data.ObservableObject.prototype.totalNetCost = function() {
-                // TODO: Get the active, checked item, and grab the cost of that
-                return this.get("cost");
-            };
-            kendo.data.ObservableObject.prototype.totalNetCostWithCurrency = function() {
-                return this.get("DiscountAllowed") && this.hasDiscount() ? viewModel.currency + this.totalNetCost() : '';
-            };
+
             
             kendo.data.ObservableObject.prototype.onDropDownListChange = function(e) {
                 $(e.sender.element).closest('.form-group').removeClass('is-empty');
@@ -2569,7 +2522,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
             $(document).ready(function() {
                 
-                $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
+                $.getJSON( "https://raw.githubusercontent.com/josephclawrence/joseph-c-lawrence-website/master/syspro/html/data/Quote.json", function( data ) {
                     truthify(data);
                     window.viewModel = kendo.observable(data);
 
