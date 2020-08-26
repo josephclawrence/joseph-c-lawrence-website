@@ -9,19 +9,20 @@
 		"ProvisioningInfrastructure": "false",
 		"InfrastructureHandover": "false"
 	},
-	"QuoteNumber": "QUOTE FOR PROSPECT",
+	"IsNewQUote": "false",
+	"QuoteNumber": "Partner quote",
 	"ReferenceNumber": null,
-	"QuoteDate": "2020-06-26T00:00:00",
-	"ExpiryDate": "2020-07-31T00:00:00",
+	"QuoteDate": "2020-07-16T00:00:00",
+	"ExpiryDate": "2020-07-30T00:00:00",
 	"QuoteVersionList": {
 		"string": [
-			"0",
-			"1",
-			"2"
+			"000",
+			"001",
+			"002"
 		]
 	},
 	"SelectedQuoteVersion": "000",
-	"Customer": "A00001",
+	"Customer": null,
 	"CustomerName": null,
 	"RegionList": {
 		"Region": [
@@ -444,7 +445,7 @@
 				"IsSelected": "true",
 				"IsMandatory": "true",
 				"StockCode": "BUN-MANFIN",
-				"Description": "Financials",
+				"Description": "Fincancials",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
@@ -1560,12 +1561,12 @@
 		"ThousandSeparator": ",",
 		"DecimalSeparator": ".",
 		"CurrencySymbol": "R",
-		"ProvisioningStartDate": "2020-08-26T14:16:19.3195272+02:00"
+		"ProvisioningStartDate": "2020-08-26T15:57:27.5629411+02:00"
 	},
 	"QuoteSummary": {
-		"QuoteNumber": "QUOTE FOR PROSPECT",
+		"QuoteNumber": "Partner quote",
 		"QuoteVersion": "000",
-		"LastEdited": "2020-08-26T14:16:19.7585366+02:00",
+		"LastEdited": "2020-08-26T15:57:27.6799621+02:00",
 		"LastEditedBy": "Joe",
 		"NumberOfUsers": "42",
 		"CostPerUser": "56",
@@ -1583,7 +1584,7 @@
 					"Total": "18"
 				},
 				{
-					"Description": "Financials",
+					"Description": "Fincancials",
 					"Cost": "18",
 					"Total": "18"
 				},
