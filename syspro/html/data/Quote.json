@@ -444,7 +444,7 @@
 				"IsSelected": "true",
 				"IsMandatory": "true",
 				"StockCode": "BUN-MANFIN",
-				"Description": "Fincancials",
+				"Description": "Financials",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
@@ -1583,7 +1583,7 @@
 					"Total": "18"
 				},
 				{
-					"Description": "Fincancials",
+					"Description": "Financials",
 					"Cost": "18",
 					"Total": "18"
 				},
