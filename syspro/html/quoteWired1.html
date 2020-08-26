@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>SYSPRO Product Visual Builder</title>
+        <title>SYSPRO SAAS Quote UI</title>
 
         <!-- Bootstrap -->
 
@@ -22,6 +22,9 @@
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
 
         <style>
+            .k-popup .k-list .k-item {
+                cursor: pointer;
+            }
             .progress-bar__steps--text {
                 font-size: 11px;
             }
@@ -120,7 +123,7 @@
 
     #quoteOverallProgress {
         position: fixed;
-        bottom: 23px;
+        bottom: 22px;
         /* height: 40px; */
         width: 100%;
         padding: 0px;
@@ -156,16 +159,12 @@
 }
 @media screen and (min-width: 800px) {
   .progress-bar__steps {
-    padding: 4px 0 4px 65px;
-    text-align: left;
+    padding: 4px 5px 4px 55px;
+    text-align: center;
   }
-}
-@media screen and (min-width: 800px) {
   .progress-bar__steps:first-child {
-    padding: 4px 0 4px 30px;
+    padding: 4px 0 4px 20px;
   }
-}
-@media screen and (min-width: 800px) {
   .progress-bar__steps:after {
     border-bottom: 50px solid transparent;
     border-top: 50px solid transparent;
@@ -180,8 +179,6 @@
     border-left: 30px solid #34495e;
     z-index: 2;
   }
-}
-@media screen and (min-width: 800px) {
   .progress-bar__steps:before {
     border-bottom: 50px solid transparent;
     border-top: 50px solid transparent;
@@ -197,17 +194,10 @@
     z-index: 1;
     margin-left: 5px;
   }
-}
-.overall-progress-bar .current {
-  background: #e67e22;
-  color: #fff;
-}
-.overall-progress-bar .current:after {
-  border-left: 30px solid #e67e22;
-}
-
-@media screen and (min-width: 800px) {
-  .progress-bar__steps--numbers:before {
+  .progress-bar__steps--text {
+        font-size: 11px;
+    }
+    .progress-bar__steps--numbers:before {
     content: counter(li) " ";
     counter-increment: li;
     margin-right: 15px;
@@ -221,61 +211,25 @@
     width: 20px;
   }
 }
+
+@media screen and (max-width: 799px) {
+    .progress-bar__steps--text {
+        font-size: 9px;
+    }
+}
+.overall-progress-bar .current {
+  background: #e67e22;
+  color: #fff;
+}
+.overall-progress-bar .current:after {
+  border-left: 30px solid #e67e22;
+}
+
 .current .progress-bar__steps--numbers:before {
   background: white;
   color: #7f8c8d;
 }
 
-
-    /* #progressbar {
-        margin-bottom: 10px;
-        overflow: hidden;
-    }
-#progressbar li {
-  list-style-type: none;
-  color: #99a2a8;
-  font-size: 9px;
-  width: calc(100%/6);
-  float: left;
-  position: relative;
-}
-
-#progressbar li span {
-    width: 100px;
-    height: 20px;
-    border-radius: 4px;
-}
-
-#progressbar li:before {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  display: block;
-  background: #eaf0f4;
-  border-radius: 50%;
-  margin: 0 auto 10px auto;
-}
-#progressbar li:after {
-  content: '';
-  width: 100%;
-  height: 10px;
-  background: #eaf0f4;
-  position: absolute;
-  left: -50%;
-  top: 8px;
-  z-index: -1;
-}
-#progressbar li:last-child:after {
-  width: 150%;
-}
-#progressbar li.active {
-  color: #5cb85c;
-}
-#progressbar li.active:before, #progressbar li.active:after {
-  background: #5cb85c;
-  color: white;
-} */
-    /*************/
     /*!
 
 =========================================================
@@ -799,6 +753,7 @@
 .md-outline.input-with-post-icon .input-prefix {
     right: 16px;
     left: initial;
+    cursor: pointer;
 }
 .md-outline .input-prefix {
     position: absolute;
@@ -856,8 +811,6 @@
     padding-left: 5px !important;
     font-size: 1.2rem !important;
     background: #ecf0f1 !important; 
-    /* -webkit-transform: translateY(-5px) scale(0.8) !important;
-    transform: translateY(-5px) scale(0.8) !important; */
     -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out !important;
     transition: color .2s ease-out, -webkit-transform .2s ease-out !important;
     transition: transform .2s ease-out, color .2s ease-out !important;
@@ -899,42 +852,17 @@
     background: none !important;
     z-index: 9;
 }
-/* input[type="text"]:not(.browser-default)+label::after, input[type="password"]:not(.browser-default)+label::after, input[type="email"]:not(.browser-default)+label::after, input[type="url"]:not(.browser-default)+label::after, input[type="time"]:not(.browser-default)+label::after, input[type="date"]:not(.browser-default)+label::after, input[type="datetime"]:not(.browser-default)+label::after, input[type="datetime-local"]:not(.browser-default)+label::after, input[type="tel"]:not(.browser-default)+label::after, input[type="number"]:not(.browser-default)+label::after, input[type="search"]:not(.browser-default)+label::after, input[type="phone"]:not(.browser-default)+label::after, input[type="search-md"]+label::after, textarea.md-textarea+label::after {
-    position: absolute !important;
-    top: 65px !important;
-    display: block !important;
-    content: "" !important;
-    opacity: 0 !important;
-    -webkit-transition: 0.2s opacity ease-out,0.2s color ease-out !important;
-    transition: 0.2s opacity ease-out,0.2s color ease-out !important;
-} */
-/* .md-outline label.active {
-    left: 8px;
-    padding-right: 5px;
-    padding-left: 5px;
-    font-weight: 500;
-    background: #fff;
-    -webkit-transform: translateY(-13px) scale(0.8);
-    transform: translateY(-13px) scale(0.8);
-} */
 .md-outline.is-focused .form-control:not([readonly]), .md-outline input:focus:not([readonly]), .md-outline input[type="text"]:focus:not([readonly]), .md-outline input[type="password"]:focus:not([readonly]), .md-outline input[type="email"]:focus:not([readonly]), .md-outline input[type="url"]:focus:not([readonly]), .md-outline input[type="time"]:focus:not([readonly]), .md-outline input[type="date"]:focus:not([readonly]), .md-outline input[type="datetime-local"]:focus:not([readonly]), .md-outline input[type="tel"]:focus:not([readonly]), .md-outline input[type="number"]:focus:not([readonly]), .md-outline input[type="search-md"]:focus:not([readonly]), .md-outline input[type="search"]:focus:not([readonly]), .md-outline textarea:focus:not([readonly]) {
     border-color: #0078d7 !important;
     -webkit-box-shadow: inset 0 0 0 1px #0078d7 !important;
     box-shadow: inset 0 0 0 1px #0078d7 !important;
 }
-/* input:not([type]):focus:not([readonly]), input[type="text"]:not(.browser-default):focus:not([readonly]), input[type="password"]:not(.browser-default):focus:not([readonly]), input[type="email"]:not(.browser-default):focus:not([readonly]), input[type="url"]:not(.browser-default):focus:not([readonly]), input[type="time"]:not(.browser-default):focus:not([readonly]), input[type="date"]:not(.browser-default):focus:not([readonly]), input[type="datetime"]:not(.browser-default):focus:not([readonly]), input[type="datetime-local"]:not(.browser-default):focus:not([readonly]), input[type="tel"]:not(.browser-default):focus:not([readonly]), input[type="number"]:not(.browser-default):focus:not([readonly]), input[type="search"]:not(.browser-default):focus:not([readonly]), input[type="phone"]:not(.browser-default):focus:not([readonly]), input[type="search-md"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #0078d7 !important;
-    -webkit-box-shadow: 0 1px 0 0 #0078d7 !important;
-    box-shadow: 0 1px 0 0 #0078d7 !important;
-} */
-
 .md-outline.is-focused .form-control:not([readonly])+label, .md-outline input:focus:not([readonly])+label, .md-outline input[type="text"]:focus:not([readonly])+label, .md-outline input[type="password"]:focus:not([readonly])+label, .md-outline input[type="email"]:focus:not([readonly])+label, .md-outline input[type="url"]:focus:not([readonly])+label, .md-outline input[type="time"]:focus:not([readonly])+label, .md-outline input[type="date"]:focus:not([readonly])+label, .md-outline input[type="datetime-local"]:focus:not([readonly])+label, .md-outline input[type="tel"]:focus:not([readonly])+label, .md-outline input[type="number"]:focus:not([readonly])+label, .md-outline input[type="search-md"]:focus:not([readonly])+label, .md-outline input[type="search"]:focus:not([readonly])+label, .md-outline textarea:focus:not([readonly])+label {
     color: #0078d7 !important;
     left: 3px !important;
     padding-right: 5px !important;
     padding-left: 5px !important;
     font-weight: 500 !important;
-    /* background: #ecf0f1 !important; */
     -webkit-transform: translateY(-5px) scale(0.8) !important;
     transform: translateY(-5px) scale(0.8) !important;
     background: rgb(255,255,255) !important;
@@ -1053,6 +981,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
     height: 28px;
     display: inline-block;
     margin-right: 15px;
+}
+.radio {
+    display: inline-block;
+}
+.tooltip-inner {
+    background-color: #000000 !important;
 }
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
@@ -1200,7 +1134,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                     </label> -->
                                                                                     <div class="syspro-entry-content">
                                                                                         <!-- <div class="btn-group quote-toggle-buttons" data-toggle="buttons"> -->
-                                                                                        <div class="radio">
+                                                                                        <div class="radio sys-mg-r-15">
                                                                                             <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
                                                                                                 <input type="radio" name="quote_type" autocomplete="off" value="newquote"> 
                                                                                                 <b class="sys-txt-md">New Quote</b>
@@ -1282,28 +1216,16 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                    
                                                                                 </div>
 
-
-                                                                                <div class="form-group existing-customer-field md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <div class=" syspro-entry-content">
-                                                                                        <div class="input-group">
-                                                                                            <span class="spinner"></span>
-                                                                                            <input type="text" class="form-control" 
+                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                                    <input type="text" class="form-control" 
                                                                                             data-bind="value: ExpiryDate" id="CustomerCode" name="CustomerCode">
-                                                                                            <span class="input-group-btn">
-                                                                                                <a class="syspro-browse-button" >
-                                                                                                    <i class="material-icons">search</i>
-                                                                                                </a>
-                                                                                            </span>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                    <label for="" class="">
+                                                                                    <label for="CustomerCode" class="">
                                                                                         <span>Customer code</span>
                                                                                     </label>
-                                                                            
-                                                                                </div>
+
+                                                                                </div> 
+                                                                                
                                                                                 <div class="form-group md-outline">
                                                                                     
                                                                                     <input type="text" class="form-control" 
@@ -1963,17 +1885,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         </div>
 
         <div id="quoteOverallProgress">
-            <!-- <ul id="progressbar">
-                <li class="active">
-                    <span class="sys-bg-success sys-fg-white">Step 1</span>
-                </li>  
-                <li>Step 2</li> 
-                <li>Step 3</li>
-                <li>Step 4</li> 
-                <li>Step 5</li>
-                <li>Step 6</li>                 
-            </ul> -->
-
             <ol class="overall-progress-bar">
                 <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.NewQuote}">
                     <!-- <span class="progress-bar__steps--numbers"></span> -->
@@ -2427,16 +2338,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.isNotProductSuite = function() {
                 return this.parent().parent() !== viewModel.CoreBundles;
             };
-            // kendo.data.ObservableObject.prototype.isEmpty = function() {
-            //     return this.get("default") === '';
-            // };
             kendo.data.ObservableObject.prototype.isEmpty = function(e) {
                 console.log(e);
                 console.log(this);
             };
             kendo.data.ObservableObject.prototype.isOutline = function() {
-                // console.log(this.get("type"));
-                // console.log(this.get("type") == "radio");
                 return !(this.get("type") == 'radio');
             };
             kendo.data.ObservableObject.prototype.sysfginverse = function() {
@@ -2459,21 +2365,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 tempDraggedItem: [],
                 infoFieldWindow: null,
                 init: function() {
-                    // viewModel.infoFields.read();
-                    // viewModel.quoteInformationColumn1.read();
-                    // viewModel.quoteInformationColumn2.read();
-                    // viewModel.productSuite.read();
-                    // viewModel.ApiServices.read();
-                    // viewModel.AdditionalSoftware.read();
-                    // viewModel.IsvSoftware.read();
-                    // viewModel.infrastructure.read();                    
-
                     kendo.bind($("body"), viewModel);
                     SAAS_QUOTE.initWizard();
                     SAAS_QUOTE.initFormFields();
                     SAAS_QUOTE.sizeLayout();
                     SAAS_QUOTE.uiInitExtras();
-                    // SAAS_QUOTE.initInfoFieldWindow();
                     SAAS_QUOTE.registerEventHandlers();
                     $.material.init();
                 },
@@ -2601,7 +2497,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     $("#isvFilter").on("keyup", function() {
                         viewModel.IsvSoftware.filter({ field: "name", operator: "contains", value: $(this).val() })
                     });
-                    // $(".tab-content").height(tabHeight);
                     $(".tab-content").css({'maxHeight': tabHeight, 'height': tabHeight});
                     $(".quote-scrollable-pane").css({'maxHeight': tabHeight - 130, 'height': tabHeight - 130});
                     $("#isv .quote-scrollable-pane").css({'maxHeight': tabHeight - 160, 'height': tabHeight - 160});
@@ -2626,10 +2521,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 },
                 renderInfoFieldTemplate: function(data, uid) {
                     const infoField = viewModel.infoFields.get(data.id);
-                    // infoField.guid = uid;
-                    // console.log(data);
-                    console.log(infoField.isOutline());
-                    // infoField.isOutlined = infoField.isOutline();
                     return kendo.Template.compile($('#infoFieldTemplate').html())(infoField);
                 },
                 sizeWizardTabs: function() {
@@ -2641,10 +2532,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
              
             
             const vmChangeHandler = (e, category) => {
-                // console.log(e);
-                // console.log(category);
-                // console.log(e.items[0]);
-                // console.log(e.items[0][e.field]);
                 const regex = /\d/g;
                 const hasIndex = regex.test(e.field);
                 const newValue = category === 'QuoteInformation' || category === 'QuoteInfrastructure' 
@@ -2653,7 +2540,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     ? byString(e.items[0], e.field)
                     : e.items[0][e.field]
                 
-                // const correctedCategory = hasIndex ? category + e.field : category;
                 
                 const changeData = {
                     category: category,
@@ -2684,9 +2570,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             $(document).ready(function() {
                 
                 $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
-                    // console.log(data.QuoteInfrastructure.AdditionalEnvironmentTest);
                     truthify(data);
-                    // console.log(data.QuoteInfrastructure.AdditionalEnvironmentTest);
                     window.viewModel = kendo.observable(data);
 
                     viewModel.bind("change", (e) => vmChangeHandler(e, 'QuoteInformation'));
@@ -2702,7 +2586,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                     
                 });
-       
 
             });
 
