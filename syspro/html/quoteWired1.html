@@ -1119,7 +1119,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                         <!-- <div class="btn-group quote-toggle-buttons" data-toggle="buttons"> -->
                                                                                         <div class="radio sys-mg-r-15">
                                                                                             <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" value="newquote"> 
+                                                                                                <input type="radio" name="quote_type" autocomplete="off" 
+                                                                                                data-bind="checked: IsNewQuote" 
+                                                                                                value="true"> 
                                                                                                 <b class="sys-txt-md">New Quote</b>
                                                                                             </label>
                                                                                         </div>
@@ -1127,7 +1129,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                             <label class="sys-fg-inverse 
                                                                                             sys-mg-off-r
                                                                                             customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" value="existingquote"> 
+                                                                                                <input type="radio" name="quote_type" autocomplete="off" 
+                                                                                                data-bind="checked: IsNewQuote" 
+                                                                                                value="false"> 
                                                                                                 <b class="sys-txt-md">Existing Quote</b>
                                                                                             </label>
                                                                                         </div>
@@ -2522,7 +2526,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
             $(document).ready(function() {
                 
-                $.getJSON( "https://raw.githubusercontent.com/josephclawrence/joseph-c-lawrence-website/master/syspro/html/data/Quote.json", function( data ) {
+                $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
                     truthify(data);
                     window.viewModel = kendo.observable(data);
 
