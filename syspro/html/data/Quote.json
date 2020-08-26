@@ -445,7 +445,7 @@
 				"IsSelected": "true",
 				"IsMandatory": "true",
 				"StockCode": "BUN-MANFIN",
-				"Description": "Financials",
+				"Description": "Fincancials",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
@@ -1561,12 +1561,12 @@
 		"ThousandSeparator": ",",
 		"DecimalSeparator": ".",
 		"CurrencySymbol": "R",
-		"ProvisioningStartDate": "2020-08-26T15:57:27.5629411+02:00"
+		"ProvisioningStartDate": "2020-08-26T16:05:21.3428258+02:00"
 	},
 	"QuoteSummary": {
 		"QuoteNumber": "Partner quote",
 		"QuoteVersion": "000",
-		"LastEdited": "2020-08-26T15:57:27.6799621+02:00",
+		"LastEdited": "2020-08-26T16:05:21.4518281+02:00",
 		"LastEditedBy": "Joe",
 		"NumberOfUsers": "42",
 		"CostPerUser": "56",
@@ -1584,7 +1584,7 @@
 					"Total": "18"
 				},
 				{
-					"Description": "Financials",
+					"Description": "Fincancials",
 					"Cost": "18",
 					"Total": "18"
 				},
