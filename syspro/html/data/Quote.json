@@ -1,18 +1,28 @@
 {
-	"IsNewQuote": "true",
-	"QuoteNumber": "10A00000001",
-	"ReferenceNumber": "Reference Number",
-	"QuoteDate": "2020-08-14T13:42:49.6241197+02:00",
-	"ExpiryDate": "2020-08-14T13:42:49.6241197+02:00",
+	"QuoteProcess": {
+		"NewQuote": "true",
+		"QuoteMaintenance": "false",
+		"PendingCustomerApproval": "false",
+		"QuoteAcceptedRejected": "false",
+		"PendingRegionalApproval": "false",
+		"PendingCorporateApproval": "false",
+		"ProvisioningInfrastructure": "false",
+		"InfrastructureHandover": "false"
+	},
+	"QuoteNumber": "QUOTE FOR PROSPECT",
+	"ReferenceNumber": null,
+	"QuoteDate": "2020-06-26T00:00:00",
+	"ExpiryDate": "2020-07-31T00:00:00",
 	"QuoteVersionList": {
 		"string": [
-			"V1",
-			"V2",
-			"V3"
+			"0",
+			"1",
+			"2"
 		]
 	},
-	"SelectedQuoteVersion": "V2",
-	"CustomerName": "Customer Name",
+	"SelectedQuoteVersion": "000",
+	"Customer": "A00001",
+	"CustomerName": null,
 	"RegionList": {
 		"Region": [
 			{
@@ -42,8 +52,8 @@
 		]
 	},
 	"SelectedRegion": {
-		"RegionName": "Africa",
-		"CategoryId": "Africa"
+		"RegionName": null,
+		"CategoryId": null
 	},
 	"SubRegionList": {
 		"Region": [
@@ -98,8 +108,8 @@
 		]
 	},
 	"SelectedSubRegion": {
-		"RegionName": "South Africa",
-		"CategoryId": "Africa"
+		"RegionName": null,
+		"CategoryId": null
 	},
 	"NumberOfUsers": "10",
 	"PaymentCycleList": {
@@ -109,12 +119,12 @@
 			"Quarterly"
 		]
 	},
-	"SelectedPaymentCycle": "Annual",
-	"QuoteDescription": "This is a test quote description...",
-	"AddressLine1": "Address Line 1",
-	"AddressLine2": "Address Line 2",
-	"City": "City",
-	"StateProvince": "State / Province",
+	"SelectedPaymentCycle": null,
+	"QuoteDescription": null,
+	"AddressLine1": null,
+	"AddressLine2": null,
+	"City": null,
+	"StateProvince": null,
 	"CountryList": {
 		"string": [
 			"Afghanistan",
@@ -324,8 +334,8 @@
 			"Zimbabwe"
 		]
 	},
-	"SelectedCountry": "Afghanistan",
-	"PostalZipCode": "Postal / Zip Code",
+	"SelectedCountry": null,
+	"PostalZipCode": null,
 	"CurrencyList": {
 		"Currency": [
 			{
@@ -346,9 +356,9 @@
 		"CurrencySymbol": "ZAR",
 		"CurrencyDescription": "South African Rand"
 	},
-	"ContanctName": "Contanct Name",
-	"ContanctPhone": "Contanct Phone",
-	"ContanctEmail": "Contanct Email",
+	"ContanctName": null,
+	"ContanctPhone": null,
+	"ContanctEmail": null,
 	"CoreBundles": {
 		"Product": [
 			{
@@ -359,10 +369,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "4",
-				"DiscountPercentage": "22.2",
-				"MaxDiscountPercentage": "50",
-				"DiscountAllowed": "true",
 				"FeatureList": {
 					"string": [
 						"System Foundation",
@@ -384,10 +390,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "4",
-				"DiscountPercentage": "22.2",
-				"MaxDiscountPercentage": "50",
-				"DiscountAllowed": "true",
 				"FeatureList": null,
 				"SubProductList": {
 					"Product": [
@@ -399,10 +401,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -414,10 +412,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -429,10 +423,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -444,10 +434,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						}
@@ -458,14 +444,10 @@
 				"IsSelected": "true",
 				"IsMandatory": "true",
 				"StockCode": "BUN-MANFIN",
-				"Description": "Financials",
+				"Description": "Fincancials",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Accounts Receivable",
@@ -486,10 +468,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Inventory Management",
@@ -509,10 +487,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "4",
-				"DiscountPercentage": "22.2",
-				"MaxDiscountPercentage": "30",
-				"DiscountAllowed": "true",
 				"FeatureList": null,
 				"SubProductList": {
 					"Product": [
@@ -524,10 +498,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -539,10 +509,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -554,10 +520,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -569,10 +531,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -584,10 +542,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "4",
-							"DiscountPercentage": "22.2",
-							"MaxDiscountPercentage": "50",
-							"DiscountAllowed": "true",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -599,10 +553,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -614,10 +564,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -629,10 +575,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						}
@@ -647,10 +589,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Inventory Management",
@@ -671,10 +609,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "4",
-				"DiscountPercentage": "22.2",
-				"MaxDiscountPercentage": "40",
-				"DiscountAllowed": "true",
 				"FeatureList": null,
 				"SubProductList": {
 					"Product": [
@@ -686,10 +620,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -701,10 +631,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -716,10 +642,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -731,10 +653,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						},
@@ -746,10 +664,6 @@
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 							"NumberOfUsers": "0",
 							"Price": "18",
-							"DiscountValue": "0",
-							"DiscountPercentage": "0",
-							"MaxDiscountPercentage": "0",
-							"DiscountAllowed": "false",
 							"FeatureList": null,
 							"SubProductList": null
 						}
@@ -768,10 +682,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Accounts Payable Primary Query",
@@ -792,10 +702,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "4",
-				"DiscountPercentage": "22.2",
-				"MaxDiscountPercentage": "50",
-				"DiscountAllowed": "true",
 				"FeatureList": {
 					"string": [
 						"Inventory Management Primary Query",
@@ -817,10 +723,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Bill of Materials Primary Query",
@@ -841,10 +743,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Accounts Payable Primary Posting",
@@ -869,10 +767,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": null,
 				"SubProductList": null
 			},
@@ -884,10 +778,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Purchase Orders Primary Posting",
@@ -909,10 +799,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Sales Orders Primary Posting",
@@ -934,10 +820,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Work in Progress Primary Posting",
@@ -960,10 +842,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": {
 					"string": [
 						"Inventory Management Inspection System",
@@ -988,10 +866,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "4",
-				"DiscountPercentage": "22.2",
-				"MaxDiscountPercentage": "80",
-				"DiscountAllowed": "true",
 				"FeatureList": null,
 				"SubProductList": null
 			},
@@ -1003,10 +877,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": null,
 				"SubProductList": null
 			},
@@ -1018,10 +888,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": null,
 				"SubProductList": null
 			},
@@ -1033,10 +899,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": null,
 				"SubProductList": null
 			},
@@ -1048,10 +910,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": null,
 				"SubProductList": null
 			},
@@ -1063,10 +921,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": null,
 				"SubProductList": null
 			},
@@ -1078,10 +932,6 @@
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
 				"NumberOfUsers": "0",
 				"Price": "18",
-				"DiscountValue": "0",
-				"DiscountPercentage": "0",
-				"MaxDiscountPercentage": "0",
-				"DiscountAllowed": "false",
 				"FeatureList": null,
 				"SubProductList": null
 			}
@@ -1710,72 +1560,54 @@
 		"ThousandSeparator": ",",
 		"DecimalSeparator": ".",
 		"CurrencySymbol": "R",
-		"ProvisioningStartDate": "2020-08-14T13:42:49.6501192+02:00"
+		"ProvisioningStartDate": "2020-08-26T14:16:19.3195272+02:00"
 	},
 	"QuoteSummary": {
-		"QuoteNumber": "10A00000001",
-		"QuoteVersion": "V2",
-		"LastEdited": "2020-08-14T13:42:49.9651194+02:00",
+		"QuoteNumber": "QUOTE FOR PROSPECT",
+		"QuoteVersion": "000",
+		"LastEdited": "2020-08-26T14:16:19.7585366+02:00",
 		"LastEditedBy": "Joe",
 		"NumberOfUsers": "42",
 		"CostPerUser": "56",
-		"TotalDiscount": "16",
 		"Total": "126",
 		"CostBreakdownList": {
 			"CostItem": [
 				{
 					"Description": "Foundation",
 					"Cost": "18",
-					"Total": "18",
-					"Discount": "4"
+					"Total": "18"
 				},
 				{
 					"Description": "Foundation+",
 					"Cost": "18",
-					"Total": "18",
-					"Discount": "4"
+					"Total": "18"
 				},
 				{
-					"Description": "Financials",
+					"Description": "Fincancials",
 					"Cost": "18",
-					"Total": "18",
-					"Discount": "0"
+					"Total": "18"
 				},
 				{
 					"Description": "Distribution",
 					"Cost": "18",
-					"Total": "18",
-					"Discount": "0"
+					"Total": "18"
 				},
 				{
 					"Description": "Distribution+",
 					"Cost": "18",
-					"Total": "18",
-					"Discount": "4"
+					"Total": "18"
 				},
 				{
 					"Description": "Manufacturing",
 					"Cost": "18",
-					"Total": "18",
-					"Discount": "0"
+					"Total": "18"
 				},
 				{
 					"Description": "Manufacturing+",
 					"Cost": "18",
-					"Total": "18",
-					"Discount": "4"
+					"Total": "18"
 				}
 			]
 		}
-	},
-	"QuoteProcess": {
-		"NewQuote": "true",
-		"QuoteMaintenance": "false",
-		"PendingCustomerApproval": "false",
-		"QuoteAcceptedRejected": "false",
-		"PendingRegionalApproval": "false",
-		"PendingCorporateApproval": "false",
-		"ProvisioningInfrastructure": "false",
-		"InfrastructureHandover": "false"
 	}
 }

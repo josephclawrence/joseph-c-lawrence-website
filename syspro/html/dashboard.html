@@ -138,7 +138,7 @@
 
         <!-- container text templates -->
     <script id="linked-views" type="text/x-kendo-template">
-        <div class=" row widget layout-widget" data-guid="49cfb2d0-5bbf-4bd4-8d3a-d388565ae6c1" data-subtype="Seperate" data-border="None" data-displaystyle="Inline" data-collapsible="True">
+        <div class=" row widget layout-widget collapse" data-guid="49cfb2d0-5bbf-4bd4-8d3a-d388565ae6c1" data-subtype="Seperate" data-border="None" data-displaystyle="Inline" data-collapsible="True" id="collapseOne" style="height: 24px;">
             <div class="col-sm-12">
                         <div class="panel sys-widget sys-box-shadow-off   ">                        
                           <div class="panel-body sys-block sys-box-shadow-off sys-pd-off">
@@ -422,7 +422,7 @@
     <script id="customer-card-template" type="text/x-kendo-template">
         <div class=" row widget" data-guid="4cc936ba-c8e5-4a66-c492-c740d218a33d">
             <div class="col-xs-12">
-                <div class="panel sys-widget card-widget glyphicon-credit-card" data-cardtype="" data-cardtypedetail="Customer" data-parentfieldpath="Fields.SYSPROKeyData.Customer.Value" data-bindfunctionname="" data-afterbindfunctionname="" data-businessobject="ARSQCR">
+                <div class="panel sys-widget card-widget sys-box-shadow-off" data-cardtype="" data-cardtypedetail="Customer" data-parentfieldpath="Fields.SYSPROKeyData.Customer.Value" data-bindfunctionname="" data-afterbindfunctionname="" data-businessobject="ARSQCR">
                     
                     <!-- Version=001 -->
         <div id="4cc936ba-c8e5-4a66-c492-c740d218a33d" class="card-bindable panel-body sys-pd-off sys-rd-t" style="min-height: 741px;">
@@ -1432,6 +1432,7 @@
     </script>
 
     <script>
+        const rowsHeight = 50;
         $("#tilelayout").kendoTileLayout({
             containers: [{
                 colSpan: 2,
@@ -1475,7 +1476,7 @@
                 rowSpan: 4,
                 header: {
                     // text: 'Linked Views'
-                    template: "<span class='k-card-inner-header k-card-title'>Linked views</span>"
+                    template: "<span class='k-card-inner-header k-card-title' data-toggle='collapse' href='\\#collapseOne' aria-expanded='false' aria-controls='collapseOne'>Linked views</span>"
                 },
                 bodyTemplate: kendo.template($("#linked-views").html())
             }, {
@@ -1497,7 +1498,7 @@
             }],
             columns: 6,
             columnsWidth: '1fr',
-            rowsHeight: 50,
+            rowsHeight: rowsHeight,
             reorderable: true,
             resizable: true,
             resize: function (e) {
@@ -1524,6 +1525,20 @@
             }
         });
 
+        function changeContainerHeight(containerId) {
+            const contentHeight = $(`#${containerId}`).find('.k-card-body > .widget').outerHeight();
+            console.log(contentHeight);
+            const rowSpan = Math.round(contentHeight / rowsHeight);
+            const layout = $("#tilelayout").getKendoTileLayout();
+            layout.items.forEach((container, idx) => {
+                if (container.id === containerId) {
+                    container.rowSpan = rowSpan;
+                }
+            });
+            saveLayout();
+            updateLayout();
+        }
+
         function saveLayout() {
             //save the options
             var options = $("#tilelayout").getKendoTileLayout().getOptions();
@@ -1532,7 +1547,17 @@
             localStorage["kendo-tilelayout-options"] = stringOptions;
         };
         
-
+        function updateLayout() {
+            //  load the options
+            var options = localStorage["kendo-tilelayout-options"];
+            if (options) {
+                var deserializedOptions = JSON.parse(options, Function.deserialise);
+                var layout = $("#tilelayout").getKendoTileLayout();
+                //console.log(layout);
+                layout.setOptions(deserializedOptions);
+                createChart();
+            }
+        }
 
         $(window).on("resize", function () {
             kendo.resize($(".k-chart"));
@@ -1701,15 +1726,7 @@
                 
                 
                 //  load the options
-                var options = localStorage["kendo-tilelayout-options"];
-                console.log(options);
-                if (options) {
-                    var deserializedOptions = JSON.parse(options, Function.deserialise);
-                    var layout = $("#tilelayout").getKendoTileLayout();
-                    console.log(layout);
-                    layout.setOptions(deserializedOptions);
-                    createChart();
-                }
+                // updateLayout()
             });
         </script>
     </body>
