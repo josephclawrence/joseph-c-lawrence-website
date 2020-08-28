@@ -138,7 +138,7 @@
 
         <!-- container text templates -->
     <script id="linked-views" type="text/x-kendo-template">
-        <div class=" row widget layout-widget collapse" data-guid="49cfb2d0-5bbf-4bd4-8d3a-d388565ae6c1" data-subtype="Seperate" data-border="None" data-displaystyle="Inline" data-collapsible="True" id="collapseOne" style="height: 24px;">
+        <div class="row widget layout-widget collapse" data-subtype="Seperate" data-border="None" data-displaystyle="Inline" data-collapsible="True" id="collapseOne" style="height: 24px;">
             <div class="col-sm-12">
                         <div class="panel sys-widget sys-box-shadow-off   ">                        
                           <div class="panel-body sys-block sys-box-shadow-off sys-pd-off">
@@ -229,7 +229,7 @@
     </script>
 
     <script id="links" type="text/x-kendo-template">
-        <div class=" row widget layout-widget" data-guid="49cfb2d0-5bbf-4bd4-8d3a-d388565ae6c1" data-subtype="Seperate" data-border="None" data-displaystyle="Inline" data-collapsible="True">
+        <div class="row widget layout-widget collapse" data-subtype="Seperate" data-border="None" data-displaystyle="Inline" data-collapsible="True" id="collapseLinks" style="height: 24px;">
             <div class="col-sm-12">
                         <div class="panel sys-widget sys-box-shadow-off   ">                        
                           <div class="panel-body sys-block sys-box-shadow-off sys-pd-off">
@@ -1440,7 +1440,7 @@
                 // header: null,
                 header: {
                     template: '<div class="sys-widget"><div class="panel-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t"><div class="row" data-bind="source: ARCreditorsReport.CustomerItem.CustomerHeader" data-template="UX_CARD_Customer_Header_template"><div class="sys-mg-t-11 col-sm-10 col-xs-10 sys-fg-white"><span class="sys-mg-t-off sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left">Bayside Bikes</span><small class="text-left sys-fg-white sys-mg-b-15"><a class="text-left sys-fg-white" tabindex="0" onclick="sysproInterop.showSmartTag(this)" data-bind="attr: { data-fieldvalue: Customer }" data-fieldcaption="Customer" data-fieldvalue="0000001"><span class="sys-txt-md card-header-link">0000001</span></a></small></div>' + 
-                    '<div class="col-xs-2 col-sm-2 sys-mg-t-10 sys-mg-b-10"><div class="sys-avatar"><img src="http://localhost:40001/SYSPROWCFService/Rest/GetImage?FileName=c:RND800mmediaayside_bikes.bmp" class="img-rounded sys-bd-light-gray sys-bd-darken sys-bd-3x text-center img-responsive card-header-image "></div></div></div></div></div>'
+                    '<div class="col-xs-2 col-sm-2 sys-mg-t-10 sys-mg-b-10"><div class="sys-avatar"><img src="https://josephclawrence.com/syspro/html/img/bike.jpeg" class="img-rounded sys-bd-light-gray sys-bd-darken sys-bd-3x text-center img-responsive card-header-image "></div></div></div></div></div>'
                 },
                 bodyTemplate: kendo.template($("#customer-card-template").html())
             }, {
@@ -1451,10 +1451,10 @@
                 },
                 bodyTemplate: kendo.template($("#performance-metrics-template").html())
             }, {
-                colSpan: 1,
-                rowSpan: 4,
+                colSpan: 2,
+                rowSpan: 0,
                 header: {
-                    template: "<span class='k-card-inner-header k-card-title'>Links</span>"
+                    template: "<span class='k-card-inner-header k-card-title collapsed' data-toggle='collapse' href='\\#collapseLinks' aria-expanded='false' aria-controls='collapseLinks'>Links</span>"
                 },
                 bodyTemplate: kendo.template($("#links").html())
             }, {
@@ -1472,11 +1472,11 @@
                 },
                 bodyTemplate: kendo.template($("#month-to-date").html())
             }, {
-                colSpan: 1,
-                rowSpan: 4,
+                colSpan: 2,
+                rowSpan: 0,
                 header: {
                     // text: 'Linked Views'
-                    template: "<span class='k-card-inner-header k-card-title' data-toggle='collapse' href='\\#collapseOne' aria-expanded='false' aria-controls='collapseOne'>Linked views</span>"
+                    template: "<span class='k-card-inner-header k-card-title collapsed' data-toggle='collapse' href='\\#collapseOne' aria-expanded='false' aria-controls='collapseOne'>Linked views</span>"
                 },
                 bodyTemplate: kendo.template($("#linked-views").html())
             }, {
@@ -1525,19 +1525,35 @@
             }
         });
 
-        function changeContainerHeight(containerId) {
-            const contentHeight = $(`#${containerId}`).find('.k-card-body > .widget').outerHeight();
-            console.log(contentHeight);
-            const rowSpan = Math.round(contentHeight / rowsHeight);
+        function minimizeContainer(containerId) {
             const layout = $("#tilelayout").getKendoTileLayout();
             layout.items.forEach((container, idx) => {
                 if (container.id === containerId) {
-                    container.rowSpan = rowSpan;
+                    container.rowSpan = 0;
                 }
             });
-            saveLayout();
-            updateLayout();
+
         }
+
+        // function changeContainerHeight(containerId) {
+            
+
+        //     const contentHeight = $(`#${containerId}`).find('.k-card-body > .widget').outerHeight();
+        //     console.log(contentHeight);
+        //     const rowSpan = Math.round(contentHeight / rowsHeight);
+        //     const layout = $("#tilelayout").getKendoTileLayout();
+        //     layout.items.forEach((container, idx) => {
+        //         if (container.id === containerId) {
+        //             container.rowSpan = rowSpan;
+        //         }
+        //     });
+        //     console.log(rowSpan);
+        //     saveLayout();
+        //     updateLayout();
+        //     console.log(rowSpan);
+        //     $(`#${containerId}`).find('.k-card-header > .k-card-title').toggleClass("collapsed", rowSpan <= 1);
+        //     $(`#${containerId}`).find('.k-card-body > .widget').toggleClass("in", rowSpan > 1);
+        // }
 
         function saveLayout() {
             //save the options
@@ -1558,6 +1574,38 @@
                 createChart();
             }
         }
+
+        function setEvents() {
+            $('.collapse').on('hidden.bs.collapse', function () {
+                const container = $(this).closest('.k-tilelayout-item');
+                const containerId = container.attr('id');
+                const layout = $("#tilelayout").getKendoTileLayout();
+                // minimizeContainer(containerId);
+                $(`#${containerId}`).css({'grid-row-end': 'span 1'});
+                layout.items.forEach((container, idx) => {
+                    if (container.id === containerId) {
+                        container.rowSpan = 0;
+                    }
+                });
+            });
+            $('.collapse').on('shown.bs.collapse', function () {   
+                console.log('shownnnnnnnnn');         
+                const container = $(this).closest('.k-tilelayout-item');
+                const containerId = container.attr('id');
+                const contentHeight = $(`#${containerId}`).find('.k-card-body > .widget').outerHeight();
+                const rowSpan = Math.round(contentHeight / rowsHeight);
+                console.log(rowSpan);
+                // minimizeContainer(containerId);
+                $(`#${containerId}`).css({'grid-row-end': `span ${rowSpan}`});
+                const layout = $("#tilelayout").getKendoTileLayout();
+                layout.items.forEach((container, idx) => {
+                    if (container.id === containerId) {
+                        container.rowSpan = rowSpan;
+                    }
+                });
+            });
+        };
+        
 
         $(window).on("resize", function () {
             kendo.resize($(".k-chart"));
@@ -1726,7 +1774,8 @@
                 
                 
                 //  load the options
-                // updateLayout()
+                updateLayout();
+                setEvents();
             });
         </script>
     </body>
