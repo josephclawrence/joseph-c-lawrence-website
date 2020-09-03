@@ -1026,850 +1026,671 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
         <div id="wrapper" class="toggled">
             <div class="container-fluid" id="main-container">
-                <div class="row sys-mg-t-5">
-                    <div class="col-sm-12 col-xs-12 column-parent sys-mg-t-15">
-                        <div class="panel sys-bd-off sys-box-shadow-off">
-                            <div class="panel-body main-column">
-                                <div class="row widget layout-widget" id="">
-                                    <div class="col-md-9 col-sm-8 ">
-                                        <div class="panel sys-bd-off">
-                                            <!--      Wizard container        -->
-                                            <div class="card wizard-card sys-pd-b-10 sys-pd-t-10" id="quoteWizard">
-                                                <form action="" method="">
-                                                    <div class="wizard-navigation">
-                                                        <div class="progress-with-circle">
-                                                            <div
-                                                                class="progress-bar"
-                                                                role="progressbar"
-                                                                aria-valuenow="1"
-                                                                aria-valuemin="0"
-                                                                aria-valuemax="4"
-                                                                style="width: 15%;"
-                                                            ></div>
-                                                        </div>
-                                                        <ul data-template="quoteStepsTemplate" data-bind="source: activeSections"></ul>
-                                                        
-                                                        <!-- <ul>
-                                                            <li>
-                                                                <a href="#info" data-toggle="tab">
-                                                                    <div class="icon-circle">
-                                                                        <i class=" material-icons">person_pin</i>
-                                                                    </div>
-                                                                    Quote information
-                                                                </a>
-                                                            </li>
-                                                            <li data-bind="visible: productSuiteActive">
-                                                                <a href="#packages" data-toggle="tab">
-                                                                    <div class="icon-circle">
-                                                                        <i class=" material-icons">apps</i>
-                                                                    </div>
-                                                                    Product suite
-                                                                </a>
-                                                            </li>
-                                                            <li data-bind="visible: AdditionalSoftwareActive">
-                                                                <a href="#additional" data-toggle="tab">
-                                                                    <div class="icon-circle">
-                                                                        <i class=" material-icons">queue_play_next</i>
-                                                                    </div>
-                                                                    Additional software
-                                                                </a>
-                                                            </li>
-                                                            <li data-bind="visible: IsvSoftwareActive">
-                                                                <a href="#isv" data-toggle="tab">
-                                                                    <div class="icon-circle">
-                                                                        <i class=" material-icons">power</i>
-                                                                    </div>
-                                                                    ISV software
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#infrastructure" data-toggle="tab">
-                                                                    <div class="icon-circle">
-                                                                        <i class=" material-icons">dns</i>
-                                                                    </div>
-                                                                    Infrastructure
-                                                                </a>
-                                                            </li>
-                                                            <li data-bind="visible: edducationActive">
-                                                                <a href="#education" data-toggle="tab">
-                                                                    <div class="icon-circle">
-                                                                        <i class=" material-icons">dns</i>
-                                                                    </div>
-                                                                    Education
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                     -->
-                                                    </div>
-                                                    <div class="tab-content">
-                                                        <div class="tab-pane " id="info">
-                                                            <div class="row quote-scrollable-pane">
-                                                                <div class="col-xs-12">
-                                                                    <div class="form-horizontal">
-
-                                                                        <div class="row">
-                                                                    <!-- <div class="row"> -->
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    
-                                                                                    <!-- <label for="" class="col-xs-12">
-                                                                                        <span>Quote for</span>
-                                                                                    </label> -->
-                                                                                    <div class="syspro-entry-content">
-                                                                                        <!-- <div class="btn-group quote-toggle-buttons" data-toggle="buttons"> -->
-                                                                                        <div class="radio sys-mg-r-15">
-                                                                                            <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" 
-                                                                                                data-bind="checked: IsNewQuote" 
-                                                                                                value="true"> 
-                                                                                                <b class="sys-txt-md">New Quote</b>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                        <div class="radio">
-                                                                                            <label class="sys-fg-inverse 
-                                                                                            sys-mg-off-r
-                                                                                            customer-type-option sys-bg-white text-center">
-                                                                                                <input type="radio" name="quote_type" autocomplete="off" 
-                                                                                                data-bind="checked: IsNewQuote" 
-                                                                                                value="false"> 
-                                                                                                <b class="sys-txt-md">Existing Quote</b>
-                                                                                            </label>
-                                                                                        </div>
-                                                                                        <!-- </div> -->
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
-                                                                                    <input type="text" class="form-control" 
-                                                                                    data-bind="value: QuoteNumber" id="QuoteNumber"
-                                                                                    name="QuoteNumber">
-                                                                                    <label for="QuoteNumber" class="">
-                                                                                        <span>Quote number</span>
-                                                                                    </label>
-
-                                                                                </div>                                
-                                                                                    <!-- <div class="input-group">
-                                                                                        <span class="spinner"></span>
-                                                                                        <label for="QuoteNumber" class="">
-                                                                                            <span>Quote number</span>
-                                                                                        </label>
-                                                                                        <input type="text" class="form-control" 
-                                                                                        data-bind="value: QuoteNumber" id="QuoteNumber"
-                                                                                        name="QuoteNumber">
-                                                                                        <span class="input-group-btn">
-                                                                                            <a class="syspro-browse-button" >
-                                                                                                <i class="material-icons">search</i>
-                                                                                            </a>
-                                                                                        </span>
-                                                                                    </div> -->
-
-                                                                                <div class="form-group md-outline quote-field">
-                                                                                    <input  class="form-control" id="ReferenceNumber" 
-                                                                                    name="ReferenceNumber" 
-                                                                                    data-bind="value: ReferenceNumber" 
-                                                                                    readonly>
-                                                                                    <label for="ReferenceNumber" class="">
-                                                                                        <span>Reference number</span>
-                                                                                    </label>
-
-                                                                                </div>
-                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                                    <input  class="form-control date" 
-                                                                                    data-bind="value: QuoteDate" id="QuoteDate" name="QuoteDate">
-                                                                                    <label for="QuoteDate" class="">
-                                                                                        <span>Quote date</span>
-                                                                                        </label>
-
-                                                                                </div>
-                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                                    <input  class="form-control date" 
-                                                                                    data-bind="value: ExpiryDate" id="ExpiryDate" name="ExpiryDate">
-                                                                                    <label for="ExpiryDate" class="">
-                                                                                        <span>Expiry date</span>
-                                                                                        </label>
-                                                                                        
-                                                                            
-                                                                                </div>
-                                                                                <div class="form-group md-outline quote-field">
-                                                                                    <select type="text" class="form-control" id="QuoteVersion"
-                                                                                    name="QuoteVersion"
-                                                                                    data-bind="{source: QuoteVersionList.string, value: SelectedQuoteVersion}"></select>
-                                                                                    <label for="QuoteVersion" class="">
-                                                                                        <span>Quote version</span>
-                                                                                    </label>
-                                                                                   
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
-                                                                                    <input type="text" class="form-control" 
-                                                                                            data-bind="value: Customer" id="Customer" name="Customer">
-                                                                                    <label for="Customer" class="">
-                                                                                        <span>Customer code</span>
-                                                                                    </label>
-
-                                                                                </div> 
-                                                                                
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    <input type="text" class="form-control" 
-                                                                                        data-bind="value: CustomerName" 
-                                                                                        id="CustomerName" name="CustomerName" required />
-                                                                                        <label for="CustomerName" class="">
-                                                                                            <span>Customer name</span>
-                                                                                        </label>
-                                                                                        
-                                                                                </div>
-                                                                                
-                                                                                <div class="form-group customer-details region-field md-outline">
-                                                                                    
-                                                                                    
-                                                                                        <input 
-                                                                                            id="Region"
-                                                                                            name="Region"
-                                                                                            data-role="dropdownlist"
-                                                                                            data-value-primitive="true"
-                                                                                            data-text-field="RegionName"
-                                                                                            data-value-field="CategoryId"
-                                                                                            data-bind="value:       SelectedRegion,
-                                                                                            source: RegionList.Region,
-                                                                                            events: {change: onDropDownListChange}" class="form-control" required
-                                                                                        >
-                                                                                        <label for="Region" class="">
-                                                                                            <span>Region</span>
-                                                                                        </label>
-                                                                                </div>
-
-                                                                                <div class="form-group customer-details region-field md-outline">
-                                                                                    
-                                                                                    
-                                                                                        <input 
-                                                                                            id="SubRegion" 
-                                                                                            name="SubRegion" 
-                                                                                            data-role="dropdownlist"
-                                                                                            data-value-primitive="true"
-                                                                                            data-text-field="RegionName"
-                                                                                            data-value-field="CategoryId"
-                                                                                            data-cascade-from="Region"
-                                                                                            data-bind="value:       SelectedSubRegion,
-                                                                                            source: SubRegionList.Region,
-                                                                                            events: {change: onDropDownListChange}" class="form-control"
-                                                                                            disabled="disabled" required
-                                                                                        >
-                                                                                        <label for="SubRegion" class="">
-                                                                                            <span>Sub-region</span>
-                                                                                        </label>
-                                                                                </div>
-
-                                                                                <div class="form-group customer-details md-outline">
-                                                                                    
-                                                                                   
- 
-                                                                                        <input
-                                                                                            type="number"
-                                                                                            data-bind="value: NumberOfUsers"
-                                                                                            min="0"
-                                                                                            max="2000"
-                                                                                            step="10"
-                                                                                            id="NumberOfUsers"
-                                                                                            name="NumberOfUsers"
-                                                                                            value=""
-                                                                                            class="form-control"
-                                                                                            required
-                                                                                        />
-                                                                                        <label for="NumberOfUsers" class="">
-                                                                                            <span>Number of users</span>
-                                                                                        </label>
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline customer-details">
-                                                                                    
-                                                                                    
-                                                                                    <select type="text" 
-                                                                                        id="PaymentCycle" name="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
-                                                                                        <label for="PaymentCycle" class="">
-                                                                                            <span>Payment cycle</span>
-                                                                                        </label>
-                                                                                </div>
-
-                                                                                <div class="form-group existing-customer-field md-outline input-with-post-icon">
-                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                                    
-                                                                                        <input class="form-control date" id="LicenseStartDate" name="LicenseStartDate">
-                                                                                        <label for="LicenseStartDate" class="">
-                                                                                            <span>License start date</span>
-                                                                                        </label>
-                                                                                </div>
-                                                                                <div class="form-group md-outline customer-details">
-                                                                                    <textarea class="form-control " id="QuoteDescription"
-                                                                                    name="QuoteDescription"
-                                                                                    data-bind="value: QuoteDescription" rows="3"></textarea>
-                                                                                    <label for="QuoteDescription" class="">
-                                                                                        <span>Description</span>
-                                                                                    </label>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <!-- <div class="col-sm-4">
-
-                                                                                
-                                                                               
-                                                                            </div> -->
-                                                                            <div class="col-sm-6 customer-details sys-pd-t-5">
-                                                                                <!-- <div class="form-group md-outline">
-                                                                                        <input type="text" class="form-control" id="customerName" required />
-                                                                                        <label for="customerName" class="">
-                                                                                            Company name
-                                                                                        </label>
-                                                                                        
-                                                                                </div> -->
-                                                                                
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input type="text" id="AddressLine1" name="AddressLine1" data-bind="value: AddressLine1" class="form-control">
-                                                                                    <label for="AddressLine1" class="">
-                                                                                        <span>Address line 1</span>
-                                                                                    </label>
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input type="text" id="AddressLine2" name="AddressLine2" data-bind="value: AddressLine2" class="form-control">
-                                                                                    <label for="AddressLine2" class="">
-                                                                                        <span>Address line 2</span>
-                                                                                    </label>
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input type="text" 
-                                                                                        id="City" name="City" data-bind="value: City" class="form-control">
-                                                                                        <label for="City" class="">
-                                                                                            <span>City</span>
-                                                                                        </label>
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input type="text" 
-                                                                                        id="StateProvince" name="StateProvince" data-bind="value: StateProvince" class="form-control">
-                                                                                        <label for="StateProvince" class="">
-                                                                                            <span>State/Province</span>
-                                                                                        </label>    
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                        <input
-                                                                                            id="Country" name="Country" 
-                                                                                            data-role="dropdownlist"
-                                                                                            data-bind="value:       SelectedCountry,
-                                                                                            source: CountryList.string,
-                                                                                            events: {change: onDropDownListChange}" class="form-control"
-                                                                                            required>
-                                                                                            <label for="Country" class="">
-                                                                                                <span>Country</span>
-                                                                                            </label>
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input type="text" id="PostalZipCode" name="PostalZipCode" data-bind="value: PostalZipCode" class="form-control">
-                                                                                    <label for="PostalZipCode" class="">
-                                                                                        <span>Post/ZIP code</span>
-                                                                                    </label>
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <select 
-                                                                                        id="Currency" name="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
-                                                                                        <label for="Currency" class="">
-                                                                                            <span>Currency</span>
-                                                                                        </label>  
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input id="ContactName" name="ContactName" data-bind="value: ContactName" type="text" class="form-control">
-                                                                                    <label for="ContactName" class="">
-                                                                                        <span>Contact name</span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                        
-                                                                                    
-                                                                                    <input type="phone" class="form-control" id="ContactPhone" name="ContactPhone" data-bind="value: ContactPhone" >
-                                                                                    <label for="ContactPhone" class="">
-                                                                                        <span>Contact phone</span>
-                                                                                    </label> 
-                                                                                </div>
-                                                                                <div class="form-group  md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input type="email" class="form-control" id="ContactEmail" name="ContactEmail" data-bind="value: ContactEmail">
-                                                                                    <label for="ContactEmail" class="">
-                                                                                        <span>Contact email</span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div class="form-group existing-customer-field md-outline">
-                                                                                    
-                                                                                    
-                                                                                    <input type="text" class="form-control">
-                                                                                    <label for="" class="">
-                                                                                        <span>Company Reg. No.</span>
-                                                                                    </label> 
-                                                                                </div>
-
-                                                                                <div class="form-group existing-customer-field md-outline">
-                                                                                    <input type="text" class="form-control">
-                                                                                    <label for="" class="">
-                                                                                        <span>VAT No.</span>
-                                                                                    </label>
-                                                                                </div>
-
-                                                                                
-                                                                            
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- <div class="form-horizontal">
-
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6 info-fields-column"
-                                                                            id="quoteInformationColumn1" data-template="infoFieldParentTemplate" data-bind="source: quoteInformationColumn1"></div>
-                                                                            <div class="col-sm-6 info-fields-column" 
-                                                                            id="quoteInformationColumn2" data-template="infoFieldParentTemplate" data-bind="source: quoteInformationColumn2"></div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                </div>
+               <div class="row sys-mg-t-5">
+                  <div class="col-sm-12 col-xs-12 column-parent sys-mg-t-15">
+                     <div class="panel sys-bd-off sys-box-shadow-off">
+                        <div class="panel-body main-column">
+                           <div class="row widget layout-widget" id="">
+                              <div class="col-md-9 col-sm-8 ">
+                                 <div class="panel sys-bd-off">
+                                    <!--      Wizard container        -->
+                                    <div class="card wizard-card sys-pd-b-10 sys-pd-t-10" id="quoteWizard">
+                                       <form action="" method="">
+                                          <div class="wizard-navigation">
+                                             <div class="progress-with-circle">
+                                                <div
+                                                   class="progress-bar"
+                                                   role="progressbar"
+                                                   aria-valuenow="1"
+                                                   aria-valuemin="0"
+                                                   aria-valuemax="4"
+                                                   style="width: 15%;"
+                                                   ></div>
+                                             </div>
+                                             <ul data-template="quoteStepsTemplate" data-bind="source: activeSections"></ul>
+                                          </div>
+                                          <div class="tab-content">
+                                             <div class="tab-pane " id="info">
+                                                <div class="row quote-scrollable-pane">
+                                                   <div class="col-xs-12">
+                                                      <div class="form-horizontal">
+                                                         <div class="row">
+                                                            <div class="col-sm-6">
+                                                               <div class="form-group">
+                                                                  <div class="syspro-entry-content">
+                                                                     <div class="radio sys-mg-r-15">
+                                                                        <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
+                                                                        <input type="radio" name="quote_type" autocomplete="off" 
+                                                                           data-bind="checked: IsNewQuote" 
+                                                                           value="true"> 
+                                                                        <b class="sys-txt-md">New Quote</b>
+                                                                        </label>
+                                                                     </div>
+                                                                     <div class="radio">
+                                                                        <label class="sys-fg-inverse 
+                                                                           sys-mg-off-r
+                                                                           customer-type-option sys-bg-white text-center">
+                                                                        <input type="radio" name="quote_type" autocomplete="off" 
+                                                                           data-bind="checked: IsNewQuote" 
+                                                                           value="false"> 
+                                                                        <b class="sys-txt-md">Existing Quote</b>
+                                                                        </label>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                  <input type="text" class="form-control" 
+                                                                     data-bind="value: QuoteNumber" id="QuoteNumber"
+                                                                     name="QuoteNumber">
+                                                                  <label for="QuoteNumber" class="">
+                                                                  <span>Quote number</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline quote-field">
+                                                                  <input  class="form-control" id="ReferenceNumber" 
+                                                                     name="ReferenceNumber" 
+                                                                     data-bind="value: ReferenceNumber" 
+                                                                     readonly>
+                                                                  <label for="ReferenceNumber" class="">
+                                                                  <span>Reference number</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                  <input  class="form-control date" 
+                                                                     data-bind="value: QuoteDate" id="QuoteDate" name="QuoteDate">
+                                                                  <label for="QuoteDate" class="">
+                                                                  <span>Quote date</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                  <input  class="form-control date" 
+                                                                     data-bind="value: ExpiryDate" id="ExpiryDate" name="ExpiryDate">
+                                                                  <label for="ExpiryDate" class="">
+                                                                  <span>Expiry date</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline quote-field">
+                                                                  <select type="text" class="form-control" id="QuoteVersion"
+                                                                     name="QuoteVersion"
+                                                                     data-bind="{source: QuoteVersionList.string, value: SelectedQuoteVersion}"></select>
+                                                                  <label for="QuoteVersion" class="">
+                                                                  <span>Quote version</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                  <input type="text" class="form-control" 
+                                                                     data-bind="value: Customer" id="Customer" name="Customer">
+                                                                  <label for="Customer" class="">
+                                                                  <span>Customer code</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input type="text" class="form-control" 
+                                                                     data-bind="value: CustomerName" 
+                                                                     id="CustomerName" name="CustomerName" required />
+                                                                  <label for="CustomerName" class="">
+                                                                  <span>Customer name</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group customer-details region-field md-outline">
+                                                                  <input 
+                                                                     id="Region"
+                                                                     name="Region"
+                                                                     data-role="dropdownlist"
+                                                                     data-value-primitive="true"
+                                                                     data-text-field="RegionName"
+                                                                     data-value-field="CategoryId"
+                                                                     data-bind="value:       SelectedRegion,
+                                                                     source: RegionList.Region,
+                                                                     events: {change: onDropDownListChange}" class="form-control" required
+                                                                     >
+                                                                  <label for="Region" class="">
+                                                                  <span>Region</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group customer-details region-field md-outline">
+                                                                  <input 
+                                                                     id="SubRegion" 
+                                                                     name="SubRegion" 
+                                                                     data-role="dropdownlist"
+                                                                     data-value-primitive="true"
+                                                                     data-text-field="RegionName"
+                                                                     data-value-field="CategoryId"
+                                                                     data-cascade-from="Region"
+                                                                     data-bind="value:       SelectedSubRegion,
+                                                                     source: SubRegionList.Region,
+                                                                     events: {change: onDropDownListChange}" class="form-control"
+                                                                     disabled="disabled" required
+                                                                     >
+                                                                  <label for="SubRegion" class="">
+                                                                  <span>Sub-region</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group customer-details md-outline">
+                                                                  <input
+                                                                     type="number"
+                                                                     data-bind="value: NumberOfUsers"
+                                                                     min="0"
+                                                                     max="2000"
+                                                                     step="10"
+                                                                     id="NumberOfUsers"
+                                                                     name="NumberOfUsers"
+                                                                     value=""
+                                                                     class="form-control"
+                                                                     required
+                                                                     />
+                                                                  <label for="NumberOfUsers" class="">
+                                                                  <span>Number of users</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline customer-details">
+                                                                  <select type="text" 
+                                                                     id="PaymentCycle" name="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
+                                                                  <label for="PaymentCycle" class="">
+                                                                  <span>Payment cycle</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group existing-customer-field md-outline input-with-post-icon">
+                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                  <input class="form-control date" id="LicenseStartDate" name="LicenseStartDate">
+                                                                  <label for="LicenseStartDate" class="">
+                                                                  <span>License start date</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline customer-details">
+                                                                  <textarea class="form-control " id="QuoteDescription"
+                                                                     name="QuoteDescription"
+                                                                     data-bind="value: QuoteDescription" rows="3"></textarea>
+                                                                  <label for="QuoteDescription" class="">
+                                                                  <span>Description</span>
+                                                                  </label>
+                                                               </div>
                                                             </div>
-                                                        </div>
-
-                                                        <div class="tab-pane " id="CoreBundles" data-bind="visible: productSuiteActive">
-                                                            
-                                                            <div class="row quote-scrollable-pane">
-                                                                <div class="col-xs-12 other-column-width">
-                                                                    <div class="packages-options ">
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12">
-                                                                                <h3 class="sys-mg-off-t">
-                                                                                    Syspro software
-                                                                                </h3>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="row" data-template="packageTemplate" data-bind="source: CoreBundles.Product"></div>
-
-                                                                                                                           
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12">
-                                                                                <h3 class="">
-                                                                                    API Services
-                                                                                </h3>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row" data-template="packageTemplate" data-bind="source: ApiServices.Product"></div>
-
-                                                                    </div>
-                                                                </div>
+                                                            <div class="col-sm-6 customer-details sys-pd-t-5">
+                                                               <div class="form-group md-outline">
+                                                                  <input type="text" id="AddressLine1" name="AddressLine1" data-bind="value: AddressLine1" class="form-control">
+                                                                  <label for="AddressLine1" class="">
+                                                                  <span>Address line 1</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input type="text" id="AddressLine2" name="AddressLine2" data-bind="value: AddressLine2" class="form-control">
+                                                                  <label for="AddressLine2" class="">
+                                                                  <span>Address line 2</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input type="text" 
+                                                                     id="City" name="City" data-bind="value: City" class="form-control">
+                                                                  <label for="City" class="">
+                                                                  <span>City</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input type="text" 
+                                                                     id="StateProvince" name="StateProvince" data-bind="value: StateProvince" class="form-control">
+                                                                  <label for="StateProvince" class="">
+                                                                  <span>State/Province</span>
+                                                                  </label>    
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input
+                                                                     id="Country" name="Country" 
+                                                                     data-role="dropdownlist"
+                                                                     data-bind="value:       SelectedCountry,
+                                                                     source: CountryList.string,
+                                                                     events: {change: onDropDownListChange}" class="form-control"
+                                                                     required>
+                                                                  <label for="Country" class="">
+                                                                  <span>Country</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input type="text" id="PostalZipCode" name="PostalZipCode" data-bind="value: PostalZipCode" class="form-control">
+                                                                  <label for="PostalZipCode" class="">
+                                                                  <span>Post/ZIP code</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <select 
+                                                                     id="Currency" name="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
+                                                                  <label for="Currency" class="">
+                                                                  <span>Currency</span>
+                                                                  </label>  
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input id="ContactName" name="ContactName" data-bind="value: ContactName" type="text" class="form-control">
+                                                                  <label for="ContactName" class="">
+                                                                  <span>Contact name</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input type="phone" class="form-control" id="ContactPhone" name="ContactPhone" data-bind="value: ContactPhone" >
+                                                                  <label for="ContactPhone" class="">
+                                                                  <span>Contact phone</span>
+                                                                  </label> 
+                                                               </div>
+                                                               <div class="form-group  md-outline">
+                                                                  <input type="email" class="form-control" id="ContactEmail" name="ContactEmail" data-bind="value: ContactEmail">
+                                                                  <label for="ContactEmail" class="">
+                                                                  <span>Contact email</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group existing-customer-field md-outline">
+                                                                  <input type="text" class="form-control">
+                                                                  <label for="" class="">
+                                                                  <span>Company Reg. No.</span>
+                                                                  </label> 
+                                                               </div>
+                                                               <div class="form-group existing-customer-field md-outline">
+                                                                  <input type="text" class="form-control">
+                                                                  <label for="" class="">
+                                                                  <span>VAT No.</span>
+                                                                  </label>
+                                                               </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="AdditionalSoftware" data-bind="visible: AdditionalSoftwareActive">
-
-                                                            <div class="row quote-scrollable-pane">
-                                                                <div class="col-xs-12 other-column-width">
-                                                                    <div class="packages-options ">
-                                                                        <div class="row" data-template="packageTemplate" data-bind="source: AdditionalSoftware.Product"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="IsvSoftware" data-bind="visible: IsvSoftwareActive">
-                                                            <div class="row">
-                                                                <div class="col-sm-4 col-xs-12">
-                                                                    <div class="form-group md-outline">
-                                                                    <!-- <p class="lead text-center"> -->
-                                                                        <!-- A note about <b>Independent Software Vendors.</b> -->
-                                                                        <input class="form-control isv-filter" type="text" id="isvFilter" placeholder="Filter ISVs..." />
-                                                                    </div>
-                                                                    <!-- </p> -->
-                                                                </div>
-                                                            </div>
-                                                            <div class="row quote-scrollable-pane">
-                                                                <div class="col-xs-12 other-column-width">
-                                                                    <div class="packages-options ">
-                                                                        <div class="row" data-template="packageTemplate" data-bind="source: IsvSoftware.Product"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="infrastructure" data-bind="visible: QuoteInfrastructureActive">
-
-                                                            <div class="row quote-scrollable-pane sys-pd-t-5">
-                                                                <div class="col-xs-12">
-                                                                    <div class="form-horizontal">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group md-outline">
-                                                                                    <input  
-                                                                                    class="form-control" 
-                                                                                    type="number"
-                                                                                    min="0"
-                                                                                    max="2000"
-                                                                                    step="10"
-                                                                                    id="NumberOfDesktopUsers" 
-                                                                                    name="NumberOfDesktopUsers" 
-                                                                                    data-bind="value: QuoteInfrastructure.NumberOfDesktopUsers" 
-                                                                                    >
-                                                                                    <label for="NumberOfDesktopUsers" class="">
-                                                                                        <span>Number of desktop users</span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div class="form-group md-outline input-with-post-icon">
-                                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                                    <input  class="form-control date" 
-                                                                                    data-bind="value: QuoteInfrastructure.ProvisioningStartDate" id="ProvisioningStartDate" name="ProvisioningStartDate">
-                                                                                    <label for="ProvisioningStartDate" class="">
-                                                                                        <span>Provisioning start date</span>
-                                                                                    </label>
-
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                    <input
-                                                                                    id="DeploymentRegion" name="DeploymentRegion" 
-                                                                                    data-role="dropdownlist"
-                                                                                    data-value-primitive="true"
-                                                                                    data-text-field="RegionName"
-                                                                                    data-value-field="CategoryId"
-                                                                                    data-bind="value:       QuoteInfrastructure.SelectedDeploymentRegion,
-                                                                                    source: QuoteInfrastructure.DeploymentRegionsList.Region,
-                                                                                    events: {change: onDropDownListChange}" class="form-control"
-                                                                                    required>
-                                                                                    <label for="DeploymentRegion" class="">
-                                                                                        <span>Deployment Region</span>
-                                                                                    </label>
-                                                                                    
-                                                                                </div>
-
-                                                                                <div class="form-group md-outline">
-                                                                                    <input
-                                                                                    id="ServerTimezone" name="ServerTimezone" 
-                                                                                    data-role="dropdownlist"
-                                                                                    data-value-primitive="true"
-                                                                                    data-text-field="DisplayName"
-                                                                                    data-value-field="TimeZoneId"
-                                                                                    data-bind="value:       QuoteInfrastructure.SelectedServerTimeZone,
-                                                                                    source: QuoteInfrastructure.ServerTimeZoneList.TimeZone,
-                                                                                    events: {change: onDropDownListChange}" class="form-control"
-                                                                                    required>
-                                                                                    <label for="ServerTimezone" class="">
-                                                                                        <span>Server Timezone</span>
-                                                                                    </label>
-                                                                                    
-                                                                                </div>
-                                                                                
-                                                                                
-                                                                                <div class="form-group">
-                                                                                    
-                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                        <label>
-                                                                                            <input 
-                                                                                            type="checkbox" 
-                                                                                            id="AdditionalEnvironmentTest" 
-                                                                                            name="AdditionalEnvironmentTest"
-                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTest"
-                                                                                            >
-                                                                                            Additional environment: Test
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    
-                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                        <label>
-                                                                                            <input 
-                                                                                            type="checkbox" 
-                                                                                            id="AdditionalEnvironmentTestHighlyAvail" 
-                                                                                            name="AdditionalEnvironmentTestHighlyAvail"
-                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTestHighlyAvail"
-                                                                                            >
-                                                                                            Additional environment: Test - highly available?
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    
-                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                        <label>
-                                                                                            <input 
-                                                                                            type="checkbox" 
-                                                                                            id="AdditionalEnvironmentDev" 
-                                                                                            name="AdditionalEnvironmentDev"
-                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
-                                                                                            >
-                                                                                            Additional environment: Dev
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    
-                                                                                    <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                        <label>
-                                                                                            <input 
-                                                                                            type="checkbox" 
-                                                                                            id="AdditionalEnvironmentDevHighlyAvail" 
-                                                                                            name="AdditionalEnvironmentDevHighlyAvail"
-                                                                                            data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDevHighlyAvail"
-                                                                                            >
-                                                                                            Additional environment: Dev - highly available?
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                
-                                                                                <div class="form-group md-outline">
-                                                                                    <input
-                                                                                    id="ShortDateFormat" name="ShortDateFormat" 
-                                                                                    data-role="dropdownlist"
-                                                                                    data-bind="value:       QuoteInfrastructure.SelectedShortDateFormat,
-                                                                                    source: QuoteInfrastructure.ShortDateFormatList.string,
-                                                                                    events: {change: onDropDownListChange}" class="form-control"
-                                                                                    required>
-                                                                                    <label for="ShortDateFormat" class="">
-                                                                                        <span>Short date format</span>
-                                                                                    </label>
-                                                                                    
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                    <input
-                                                                                    id="LongDateFormat" name="LongDateFormat" 
-                                                                                    data-role="dropdownlist"
-                                                                                    data-bind="value:       QuoteInfrastructure.SelectedLongDateFormat,
-                                                                                    source: QuoteInfrastructure.LongDateFormatList.string,
-                                                                                    events: {change: onDropDownListChange}" class="form-control"
-                                                                                    required>
-                                                                                    <label for="LongDateFormat" class="">
-                                                                                        <span>Long date format</span>
-                                                                                    </label>
-                                                                                    
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                    <input
-                                                                                    id="ReportDateFormat" name="ReportDateFormat" 
-                                                                                    data-role="dropdownlist"
-                                                                                    data-bind="value:       QuoteInfrastructure.SelectedReportDateFormat,
-                                                                                    source: QuoteInfrastructure.ReportDateFormatList.string,
-                                                                                    events: {change: onDropDownListChange}" class="form-control"
-                                                                                    required>
-                                                                                    <label for="ReportDateFormat" class="">
-                                                                                        <span>Report date format</span>
-                                                                                    </label>
-                                                                                    
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                    <input  
-                                                                                        class="form-control" 
-                                                                                        type="text"
-                                                                                        id="ThousandSeparator" 
-                                                                                        name="ThousandSeparator" 
-                                                                                        data-bind="value: QuoteInfrastructure.ThousandSeparator" 
-                                                                                    >
-                                                                                    <label for="ThousandSeparator" class="">
-                                                                                        <span>Thousand Separator</span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                    <input  
-                                                                                        class="form-control" 
-                                                                                        type="text"
-                                                                                        id="DecimalSeparator" 
-                                                                                        name="DecimalSeparator" 
-                                                                                        data-bind="value: QuoteInfrastructure.DecimalSeparator" 
-                                                                                    >
-                                                                                    <label for="DecimalSeparator" class="">
-                                                                                        <span>Decimal Separator</span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div class="form-group md-outline">
-                                                                                    <input  
-                                                                                        class="form-control" 
-                                                                                        type="text"
-                                                                                        id="CurrencySymbol" 
-                                                                                        name="CurrencySymbol" 
-                                                                                        data-bind="value: QuoteInfrastructure.CurrencySymbol" 
-                                                                                    >
-                                                                                    <label for="CurrencySymbol" class="">
-                                                                                        <span>Thousand Separator</span>
-                                                                                    </label>
-                                                                                </div>
-                                                                                
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane " id="education" data-bind="visible: educationActive"></div>
-                                                    </div>
-                                                    <div class="wizard-footer">
-                                                        <div class="pull-right">
-                                                            <input
-                                                                type="button"
-                                                                class="btn btn-next btn-primary btn-wd"
-                                                                name="next"
-                                                                value="Next"
-                                                            />
-                                                            <input
-                                                                type="button"
-                                                                class="btn btn-finish btn-primary btn-wd"
-                                                                name="finish"
-                                                                value="Finish"
-                                                            />
-                                                        </div>
-
-                                                        <div class="pull-left">
-                                                            <input
-                                                                type="button"
-                                                                class="btn btn-previous btn-default btn-wd sys-bg-gray sys-fg-white"
-                                                                name="previous"
-                                                                value="Previous"
-                                                            />
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <!-- wizard container -->
-                                    </div>
-                                    <div class="col-md-3  col-sm-4">
-                                        <div class="panel sys-bd-off sys-bg-inverse sys-fg-white" id="finalQuoteCard">
-                                            <div class="loading-cover"><span class="spinner"></span></div>
-                                            <div class="panel-body sys-pd-15">
-                                                <a href="#quoteDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="quoteDetails">Quote ZX000011928273 details <i class="material-icons sys-txt-sm">expand_more</i></a>
-                                                <div id="quoteDetails" class="row collapse">
-                                                    <div class="col-xs-12">
-                                                        <table
-                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5"
-                                                        >
-                                                            <tr>
-                                                                <td>Quote ID</td>
-                                                                <td data-bind="text: QuoteSummary.QuoteNumber"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Quote version</td>
-                                                                <td data-bind="text: QuoteSummary.QuoteVersion"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Last edited</td>
-                                                                <td data-bind="text: parseEditDate"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Last edited by</td>
-                                                                <td data-bind="text: QuoteSummary.LastEditedBy"></td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
+                                                         </div>
+                                                      </div>
+                                                      <!-- <div class="form-horizontal">
+                                                         <div class="row">
+                                                             <div class="col-sm-6 info-fields-column"
+                                                             id="quoteInformationColumn1" data-template="infoFieldParentTemplate" data-bind="source: quoteInformationColumn1"></div>
+                                                             <div class="col-sm-6 info-fields-column" 
+                                                             id="quoteInformationColumn2" data-template="infoFieldParentTemplate" data-bind="source: quoteInformationColumn2"></div>
+                                                         </div>
+                                                         </div> -->
+                                                   </div>
                                                 </div>
+                                             </div>
+                                             <div class="tab-pane " id="CoreBundles" data-bind="visible: productSuiteActive">
+                                                <div class="row quote-scrollable-pane">
+                                                   <div class="col-xs-12 other-column-width">
+                                                      <div class="packages-options ">
+                                                         <div class="row">
+                                                            <div class="col-xs-12">
+                                                               <h3 class="sys-mg-off-t">
+                                                                  Syspro software
+                                                               </h3>
+                                                            </div>
+                                                         </div>
+                                                         <div class="row" data-template="packageTemplate" data-bind="source: CoreBundles.Product"></div>
+                                                         <div class="row">
+                                                            <div class="col-xs-12">
+                                                               <h3 class="">
+                                                                  API Services
+                                                               </h3>
+                                                            </div>
+                                                         </div>
+                                                         <div class="row" data-template="packageTemplate" data-bind="source: ApiServices.Product"></div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="tab-pane" id="AdditionalSoftware" data-bind="visible: AdditionalSoftwareActive">
+                                                <div class="row quote-scrollable-pane">
+                                                   <div class="col-xs-12 other-column-width">
+                                                      <div class="packages-options ">
+                                                         <div class="row" data-template="packageTemplate" data-bind="source: AdditionalSoftware.Product"></div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="tab-pane" id="IsvSoftware" data-bind="visible: IsvSoftwareActive">
                                                 <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <hr class="sys-mg-t-10 sys-mg-b-10" />
-                                                        <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
-                                                            <span class="pull-left">Number of users</span
-                                                            ><span class="pull-right" data-bind="text: QuoteSummary.NumberOfUsers"></span>
-                                                        </h4>
-                                                        <h4 class="sys-mg-b-5 clearfix sys-mg-t-5">
-                                                            <span class="pull-left">Per user cost</span
-                                                            ><span class="pull-right" data-bind="text: costPerUserWithCurrency"></span>
-                                                        </h4>
-                                                        <a href="#costDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="costDetails">Cost breakdown <span class="sys-txt-sm">( per user / total )</span> <i class="material-icons sys-txt-sm">expand_more</i></a>
-                                                    </div>
+                                                   <div class="col-sm-4 col-xs-12">
+                                                      <div class="form-group md-outline">
+                                                         <!-- <p class="lead text-center"> -->
+                                                         <!-- A note about <b>Independent Software Vendors.</b> -->
+                                                         <input class="form-control isv-filter" type="text" id="isvFilter" placeholder="Filter ISVs..." />
+                                                      </div>
+                                                      <!-- </p> -->
+                                                   </div>
                                                 </div>
-                                                
-                                                <div id="costDetails" class="row collapse in ">
-                                                    <div class="col-xs-12">
-                                                        <table
-                                                            class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5"
-                                                            id="lineItemsTotals"
-                                                        >
-                                                            <tbody data-template="lineItemTotalsTemplate" data-bind="source: QuoteSummary.CostBreakdownList.CostItem"></tbody>
-                  
-                                                        </table>
-                                                    </div>
+                                                <div class="row quote-scrollable-pane">
+                                                   <div class="col-xs-12 other-column-width">
+                                                      <div class="packages-options ">
+                                                         <div class="row" data-template="packageTemplate" data-bind="source: IsvSoftware.Product"></div>
+                                                      </div>
+                                                   </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-
-                                                        <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
-                                                            <span class="pull-left">Total</span
-                                                            ><span class="pull-right" data-bind="text: grandTotalWithCurrency"></span>
-                                                        </h3>
-                                                        <button
-                                                            id="createQuote"
-                                                            class="btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
-                                                            type="button"
-                                                        >
-                                                            Generate quote
-                                                        </button>
-                                                        <hr class="sys-mg-t-10 sys-mg-b-10"/>
-                                                        <button
-                                                            id="createQuote"
-                                                            class="btn btn-block btn-success btn-md sys-txt-md sys-500"
-                                                            type="button"
-                                                        >
-                                                            Save & continue later
-                                                        </button>
-                                                        <hr class="sys-mg-t-10 sys-mg-b-10" data-bind="visible: QuoteProcess.PendingCustomerApproval" />
-                                                        <div class="row" data-bind="visible: QuoteProcess.PendingCustomerApproval" >
-                                                            <div class="col-xs-6">
-                                                                <button
-                                                                    id="rejectQuote"
-                                                                    class="btn btn-block btn-danger btn-md sys-txt-md sys-500"
-                                                                    type="button"
-                                                                >
-                                                                    Reject
-                                                                    <i class="material-icons pull-right">thumb_down</i>
-                                                                </button>
+                                             </div>
+                                             <div class="tab-pane" id="infrastructure" data-bind="visible: QuoteInfrastructureActive">
+                                                <div class="row quote-scrollable-pane sys-pd-t-5">
+                                                   <div class="col-xs-12">
+                                                      <div class="form-horizontal">
+                                                         <div class="row">
+                                                            <div class="col-sm-6">
+                                                               <div class="form-group md-outline">
+                                                                  <input  
+                                                                     class="form-control" 
+                                                                     type="number"
+                                                                     min="0"
+                                                                     max="2000"
+                                                                     step="10"
+                                                                     id="NumberOfDesktopUsers" 
+                                                                     name="NumberOfDesktopUsers" 
+                                                                     data-bind="value: QuoteInfrastructure.NumberOfDesktopUsers" 
+                                                                     >
+                                                                  <label for="NumberOfDesktopUsers" class="">
+                                                                  <span>Number of desktop users</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline input-with-post-icon">
+                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                  <input  class="form-control date" 
+                                                                     data-bind="value: QuoteInfrastructure.ProvisioningStartDate" id="ProvisioningStartDate" name="ProvisioningStartDate">
+                                                                  <label for="ProvisioningStartDate" class="">
+                                                                  <span>Provisioning start date</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input
+                                                                     id="DeploymentRegion" name="DeploymentRegion" 
+                                                                     data-role="dropdownlist"
+                                                                     data-value-primitive="true"
+                                                                     data-text-field="RegionName"
+                                                                     data-value-field="CategoryId"
+                                                                     data-bind="value:       QuoteInfrastructure.SelectedDeploymentRegion,
+                                                                     source: QuoteInfrastructure.DeploymentRegionsList.Region,
+                                                                     events: {change: onDropDownListChange}" class="form-control"
+                                                                     required>
+                                                                  <label for="DeploymentRegion" class="">
+                                                                  <span>Deployment Region</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input
+                                                                     id="ServerTimezone" name="ServerTimezone" 
+                                                                     data-role="dropdownlist"
+                                                                     data-value-primitive="true"
+                                                                     data-text-field="DisplayName"
+                                                                     data-value-field="TimeZoneId"
+                                                                     data-bind="value:       QuoteInfrastructure.SelectedServerTimeZone,
+                                                                     source: QuoteInfrastructure.ServerTimeZoneList.TimeZone,
+                                                                     events: {change: onDropDownListChange}" class="form-control"
+                                                                     required>
+                                                                  <label for="ServerTimezone" class="">
+                                                                  <span>Server Timezone</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group">
+                                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                     <label>
+                                                                     <input 
+                                                                        type="checkbox" 
+                                                                        id="AdditionalEnvironmentTest" 
+                                                                        name="AdditionalEnvironmentTest"
+                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTest"
+                                                                        >
+                                                                     Additional environment: Test
+                                                                     </label>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="form-group">
+                                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                     <label>
+                                                                     <input 
+                                                                        type="checkbox" 
+                                                                        id="AdditionalEnvironmentTestHighlyAvail" 
+                                                                        name="AdditionalEnvironmentTestHighlyAvail"
+                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTestHighlyAvail"
+                                                                        >
+                                                                     Additional environment: Test - highly available?
+                                                                     </label>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="form-group">
+                                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                     <label>
+                                                                     <input 
+                                                                        type="checkbox" 
+                                                                        id="AdditionalEnvironmentDev" 
+                                                                        name="AdditionalEnvironmentDev"
+                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
+                                                                        >
+                                                                     Additional environment: Dev
+                                                                     </label>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="form-group">
+                                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                     <label>
+                                                                     <input 
+                                                                        type="checkbox" 
+                                                                        id="AdditionalEnvironmentDevHighlyAvail" 
+                                                                        name="AdditionalEnvironmentDevHighlyAvail"
+                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDevHighlyAvail"
+                                                                        >
+                                                                     Additional environment: Dev - highly available?
+                                                                     </label>
+                                                                  </div>
+                                                               </div>
                                                             </div>
-                                                            <div class="col-xs-6">
-                                                                <button
-                                                                    id="approveQuote"
-                                                                    class="btn btn-block btn-success btn-md sys-txt-md sys-500"
-                                                                    type="button"
-                                                                >
-                                                                    Approve
-                                                                    <i class="material-icons pull-right">thumb_up</i>
-                                                                </button>
+                                                            <div class="col-sm-6">
+                                                               <div class="form-group md-outline">
+                                                                  <input
+                                                                     id="ShortDateFormat" name="ShortDateFormat" 
+                                                                     data-role="dropdownlist"
+                                                                     data-bind="value:       QuoteInfrastructure.SelectedShortDateFormat,
+                                                                     source: QuoteInfrastructure.ShortDateFormatList.string,
+                                                                     events: {change: onDropDownListChange}" class="form-control"
+                                                                     required>
+                                                                  <label for="ShortDateFormat" class="">
+                                                                  <span>Short date format</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input
+                                                                     id="LongDateFormat" name="LongDateFormat" 
+                                                                     data-role="dropdownlist"
+                                                                     data-bind="value:       QuoteInfrastructure.SelectedLongDateFormat,
+                                                                     source: QuoteInfrastructure.LongDateFormatList.string,
+                                                                     events: {change: onDropDownListChange}" class="form-control"
+                                                                     required>
+                                                                  <label for="LongDateFormat" class="">
+                                                                  <span>Long date format</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input
+                                                                     id="ReportDateFormat" name="ReportDateFormat" 
+                                                                     data-role="dropdownlist"
+                                                                     data-bind="value:       QuoteInfrastructure.SelectedReportDateFormat,
+                                                                     source: QuoteInfrastructure.ReportDateFormatList.string,
+                                                                     events: {change: onDropDownListChange}" class="form-control"
+                                                                     required>
+                                                                  <label for="ReportDateFormat" class="">
+                                                                  <span>Report date format</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input  
+                                                                     class="form-control" 
+                                                                     type="text"
+                                                                     id="ThousandSeparator" 
+                                                                     name="ThousandSeparator" 
+                                                                     data-bind="value: QuoteInfrastructure.ThousandSeparator" 
+                                                                     >
+                                                                  <label for="ThousandSeparator" class="">
+                                                                  <span>Thousand Separator</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input  
+                                                                     class="form-control" 
+                                                                     type="text"
+                                                                     id="DecimalSeparator" 
+                                                                     name="DecimalSeparator" 
+                                                                     data-bind="value: QuoteInfrastructure.DecimalSeparator" 
+                                                                     >
+                                                                  <label for="DecimalSeparator" class="">
+                                                                  <span>Decimal Separator</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                  <input  
+                                                                     class="form-control" 
+                                                                     type="text"
+                                                                     id="CurrencySymbol" 
+                                                                     name="CurrencySymbol" 
+                                                                     data-bind="value: QuoteInfrastructure.CurrencySymbol" 
+                                                                     >
+                                                                  <label for="CurrencySymbol" class="">
+                                                                  <span>Thousand Separator</span>
+                                                                  </label>
+                                                               </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                             </div>
+                                             <div class="tab-pane " id="education" data-bind="visible: educationActive"></div>
+                                          </div>
+                                          <div class="wizard-footer">
+                                             <div class="pull-right">
+                                                <input
+                                                   type="button"
+                                                   class="btn btn-next btn-primary btn-wd"
+                                                   name="next"
+                                                   value="Next"
+                                                   />
+                                                <input
+                                                   type="button"
+                                                   class="btn btn-finish btn-primary btn-wd"
+                                                   name="finish"
+                                                   value="Finish"
+                                                   />
+                                             </div>
+                                             <div class="pull-left">
+                                                <input
+                                                   type="button"
+                                                   class="btn btn-previous btn-default btn-wd sys-bg-gray sys-fg-white"
+                                                   name="previous"
+                                                   value="Previous"
+                                                   />
+                                             </div>
+                                             <div class="clearfix"></div>
+                                          </div>
+                                       </form>
                                     </div>
-                                </div>
-                            </div>
+                                 </div>
+                                 <!-- wizard container -->
+                              </div>
+                              <div class="col-md-3  col-sm-4">
+                                 <div class="panel sys-bd-off sys-bg-inverse sys-fg-white" id="finalQuoteCard">
+                                    <div class="loading-cover"><span class="spinner"></span></div>
+                                    <div class="panel-body sys-pd-15">
+                                       <a href="#quoteDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="quoteDetails">Quote ZX000011928273 details <i class="material-icons sys-txt-sm">expand_more</i></a>
+                                       <div id="quoteDetails" class="row collapse">
+                                          <div class="col-xs-12">
+                                             <table
+                                                class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5"
+                                                >
+                                                <tr>
+                                                   <td>Quote ID</td>
+                                                   <td data-bind="text: QuoteSummary.QuoteNumber"></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Quote version</td>
+                                                   <td data-bind="text: QuoteSummary.QuoteVersion"></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Last edited</td>
+                                                   <td data-bind="text: parseEditDate"></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Last edited by</td>
+                                                   <td data-bind="text: QuoteSummary.LastEditedBy"></td>
+                                                </tr>
+                                             </table>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-xs-12">
+                                             <hr class="sys-mg-t-10 sys-mg-b-10" />
+                                             <h4 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                <span class="pull-left">Number of users</span
+                                                   ><span class="pull-right" data-bind="text: QuoteSummary.NumberOfUsers"></span>
+                                             </h4>
+                                             <h4 class="sys-mg-b-5 clearfix sys-mg-t-5">
+                                                <span class="pull-left">Per user cost</span
+                                                   ><span class="pull-right" data-bind="text: costPerUserWithCurrency"></span>
+                                             </h4>
+                                             <a href="#costDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="costDetails">Cost breakdown <span class="sys-txt-sm">( per user / total )</span> <i class="material-icons sys-txt-sm">expand_more</i></a>
+                                          </div>
+                                       </div>
+                                       <div id="costDetails" class="row collapse in ">
+                                          <div class="col-xs-12">
+                                             <table
+                                                class="table table-borderless table-condensed table-striped sys-mg-b-5 sys-mg-t-5"
+                                                id="lineItemsTotals"
+                                                >
+                                                <tbody data-template="lineItemTotalsTemplate" data-bind="source: QuoteSummary.CostBreakdownList.CostItem"></tbody>
+                                             </table>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-xs-12">
+                                             <h3 class="sys-mg-b-15 clearfix sys-mg-t-5">
+                                                <span class="pull-left">Total</span
+                                                   ><span class="pull-right" data-bind="text: grandTotalWithCurrency"></span>
+                                             </h3>
+                                             <button
+                                                id="createQuote"
+                                                class="btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
+                                                type="button"
+                                                >
+                                             Generate quote
+                                             </button>
+                                             <hr class="sys-mg-t-10 sys-mg-b-10"/>
+                                             <button
+                                                id="createQuote"
+                                                class="btn btn-block btn-success btn-md sys-txt-md sys-500"
+                                                type="button"
+                                                >
+                                             Save & continue later
+                                             </button>
+                                             <hr class="sys-mg-t-10 sys-mg-b-10" data-bind="visible: QuoteProcess.PendingCustomerApproval" />
+                                             <div class="row" data-bind="visible: QuoteProcess.PendingCustomerApproval" >
+                                                <div class="col-xs-6">
+                                                   <button
+                                                      id="rejectQuote"
+                                                      class="btn btn-block btn-danger btn-md sys-txt-md sys-500"
+                                                      type="button"
+                                                      >
+                                                   Reject
+                                                   <i class="material-icons pull-right">thumb_down</i>
+                                                   </button>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                   <button
+                                                      id="approveQuote"
+                                                      class="btn btn-block btn-success btn-md sys-txt-md sys-500"
+                                                      type="button"
+                                                      >
+                                                   Approve
+                                                   <i class="material-icons pull-right">thumb_up</i>
+                                                   </button>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-
             <div class="statusBar sys-bg-inverse" style="display: block;"><span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)           TUESDAY 8   JANUARY 2019</span></div>
-        </div>
+         </div>
 
         <div id="quoteOverallProgress">
             <ol class="overall-progress-bar">
@@ -2089,47 +1910,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
 
         <script>
-            // kendo.data.binders.numericValue = kendo.data.Binder.extend({
-            //     init: function(element, bindings, options) {
-            //         //call the base constructor
-            //         kendo.data.Binder.fn.init.call(this, element, bindings, options);
-
-            //         var that = this;
-            //         //listen for the change event of the element
-            //         $(that.element).on("change", function() {
-            //             that.change(); //call the change function
-            //         });
-            //     },
-            //     refresh: function() {
-            //         var that = this,
-            //             value = that.bindings["numericValue"].get(); //get the value from the View-Model
-
-            //         $(that.element).val(value); //update the HTML input element
-            //     },
-            //     change: function() {
-            //         var value = this.element.value;
-            //         //in this example the View-Model will be updated only if the value of the input is a number
-            //         if (!isNaN(value)) {
-            //             this.bindings["numericValue"].set(value); //update the View-Model
-            //         }
-            //     }
-            // });
             
-            // A function to be able to pass string including an index based reference along with an object, as a property identifier on that object, as in: byString(someObj, 'part3[0].name')
-            const byString = function(o, s) {
-                s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-                s = s.replace(/^\./, '');           // strip a leading dot
-                var a = s.split('.');
-                for (var i = 0, n = a.length; i < n; ++i) {
-                    var k = a[i];
-                    if (k in o) {
-                        o = o[k];
-                    } else {
-                        return;
-                    }
-                }
-                return o;
-            }
 
             kendo.data.binders.radioButtonBind = kendo.data.Binder.extend({
                 init: function(element, bindings, options) {
@@ -2487,7 +2268,21 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 },
             }
              
-            
+            const byString = function(o, s) {
+                s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+                s = s.replace(/^\./, '');           // strip a leading dot
+                var a = s.split('.');
+                for (var i = 0, n = a.length; i < n; ++i) {
+                    var k = a[i];
+                    if (k in o) {
+                        o = o[k];
+                    } else {
+                        return;
+                    }
+                }
+                return o;
+            }
+
             const vmChangeHandler = (e, category) => {
                 const regex = /\d/g;
                 const hasIndex = regex.test(e.field);

@@ -1695,36 +1695,134 @@
             #: item.name # 
         </script>
         <script>
-            var inline = new kendo.data.HierarchicalDataSource({
-                data: [
-                    { name: "Customer Name XXX0001 | 8833", type: "customer", subCategories: [
-                    { name: "Test environment", type: "environment", parentId: 1, subCategories: [
-                        // { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
-                            { name: "Request Id: 12345", type: "hotfix", status: 'pending' },
-                            { name: "Request Id: 6789", type: "hotfix", status: 'complete' },
-                        // ] },
-                    ] },
-                    { name: "Dev environment", type: "environment", parentId: 6, subCategories: [
-                        // { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
-                            { name: "Request Id: 12345", type: "hotfix", status: 'pending' },
-                        // ] },
-                    ] },
-                    { name: "Live environment", type: "environment", parentId: 11, subCategories: [
-                        // { name: "SYSPRO 8 2020 R1", type: "version", subCategories: [
-                            { name: "Request Id: 345", type: "hotfix", status: 'complete' },
-                            { name: "Request Id: 8910", type: "hotfix", status: 'complete' },
-                        // ] },
-                    ] },
+            // var inline = new kendo.data.HierarchicalDataSource({
+            //     data: [
+            //         { name: "Customer Name XXX0001 | 8833", type: "customer", subCategories: [
+            //         { name: "Test environment", type: "environment", parentId: 1, subCategories: [
+            //             // { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
+            //                 { name: "Request Id: 12345", type: "hotfix", status: 'pending' },
+            //                 { name: "Request Id: 6789", type: "hotfix", status: 'complete' },
+            //             // ] },
+            //         ] },
+            //         { name: "Dev environment", type: "environment", parentId: 6, subCategories: [
+            //             // { name: "SYSPRO 8 2020 R2", type: "version", subCategories: [
+            //                 { name: "Request Id: 12345", type: "hotfix", status: 'pending' },
+            //             // ] },
+            //         ] },
+            //         { name: "Live environment", type: "environment", parentId: 11, subCategories: [
+            //             // { name: "SYSPRO 8 2020 R1", type: "version", subCategories: [
+            //                 { name: "Request Id: 345", type: "hotfix", status: 'complete' },
+            //                 { name: "Request Id: 8910", type: "hotfix", status: 'complete' },
+            //             // ] },
+            //         ] },
                 
-                    ]
-                }],
-                schema: {
-                    model: {
-                        children: "subCategories"
+            //         ]
+            //     }],
+            //     schema: {
+            //         model: customerModel
+            //     }
+            // });
+            
+            const truthify = (obj) => {
+                Object.keys(obj).forEach(key => {
+                    if ( obj[key] === "true" ) {
+                        obj[key] = true;
+                    } else if ( obj[key] === "false" ) {
+                        obj[key] = false;
+                    }
+                    
+                    if (obj[key] !== null && obj[key] !== undefined && typeof obj[key] === 'object') {
+                        truthify(obj[key])
+                    }
+                })
+            }
+
+            const reFormatJSON = (data) => {
+                if ( data.Subscriptions && data.Subscriptions.Subscription ) {
+                    if ( Array.isArray(data.Subscriptions.Subscription) ) {
+                        data.Subscriptions = data.Subscriptions.Subscription;
+                    } else if ( data.Subscriptions.Subscription !== null && data.Subscriptions.Subscription !== undefined && typeof data.Subscriptions.Subscription === 'object' ) {
+                        data.Subscriptions = [data.Subscriptions.Subscription];
+                    }
+                    data.Subscriptions.forEach(sub => {
+                        if ( sub.HotfixRequests && sub.HotfixRequests.HotfixRequest ) {
+                            if ( Array.isArray(sub.HotfixRequests.HotfixRequest) ) {
+                                sub.HotfixRequests = sub.HotfixRequests.HotfixRequest;
+                            } else if ( sub.HotfixRequests.HotfixRequest !== null && sub.HotfixRequests.HotfixRequest !== undefined && typeof sub.HotfixRequests.HotfixRequest === 'object' ) {
+                                sub.HotfixRequests = [sub.HotfixRequests.HotfixRequest];
+                            }
+                            sub.HotfixRequests.forEach(hotfixRequest => {
+                                if ( hotfixRequest.Hotfixes && hotfixRequest.Hotfixes.HotfixItem ) {
+                                    if ( Array.isArray(hotfixRequest.Hotfixes.HotfixItem) ) {
+                                        hotfixRequest.Hotfixes = hotfixRequest.Hotfixes.HotfixItem;
+                                    } else if ( hotfixRequest.Hotfixes.HotfixItem !== null && hotfixRequest.Hotfixes.HotfixItem !== undefined && typeof hotfixRequest.Hotfixes.HotfixItem === 'object' ) {
+                                        hotfixRequest.Hotfixes = [hotfixRequest.Hotfixes.HotfixItem];
+                                    }
+                                }
+                            });
+                        }
+                        if ( sub.AllHotfixes && sub.AllHotfixes.HotfixItem ) {
+                            if ( Array.isArray(sub.AllHotfixes.HotfixItem) ) {
+                                sub.AllHotfixes = sub.AllHotfixes.HotfixItem;
+                            } else if ( sub.AllHotfixes.HotfixItem !== null && sub.AllHotfixes.HotfixItem !== undefined && typeof sub.AllHotfixes.HotfixItem === 'object' ) {
+                                sub.AllHotfixes = [sub.AllHotfixes.HotfixItem];
+                            }
+                        }
+                    });
+                }
+
+                if ( data.NewRequest && data.NewRequest.Hotfixes && data.NewRequest.Hotfixes.HotfixItem ) {
+                    if ( Array.isArray(data.NewRequest.Hotfixes.HotfixItem) ) {
+                        data.NewRequest.Hotfixes = data.NewRequest.Hotfixes.HotfixItem;
+                    } else if ( data.NewRequest.Hotfixes.HotfixItem !== null && data.NewRequest.Hotfixes.HotfixItem !== undefined && typeof data.NewRequest.Hotfixes.HotfixItem === 'object' ) {
+                        data.NewRequest.Hotfixes = [data.NewRequest.Hotfixes.HotfixItem];
                     }
                 }
+            };
+
+            const hotfixModel = kendo.data.Node.define({
+                id: 'HotfixId'
             });
+
+            const HotfixSchema = {
+                schema: {
+                    data: 'Hotfixes',
+                    model: hotfixModel,
+                },
+            };
+
+            const hotfixRequestsModel = kendo.data.Node.define({
+                id: 'ID',
+                children: HotfixSchema,
+            });
+
+            const HotfixRequestsSchema = {
+                schema: {
+                    data: 'HotfixRequests',
+                    model: hotfixRequestsModel,
+                },
+            };
+
+            const subscriptionsModel = kendo.data.Node.define({
+                id: 'ID',
+                children: HotfixRequestsSchema,
+            });
+
+            const SubscriptionsSchema = {
+                schema: {
+                    data: 'Subscriptions',
+                    model: subscriptionsModel,
+                },
+            };
+
+            const customerModel = kendo.data.Node.define({
+                id: 'CustomerCode',
+                children: SubscriptionsSchema,
+            });
+
             $(document).ready(function() {
+
+
                 $.material.init();
 
                 $("#hotfixWizard").bootstrapWizard({
@@ -1814,32 +1912,92 @@
                 $('[data-tooltip="tooltip"]').tooltip();
 
 
+
+                $.getJSON( "https://josephclawrence.com/syspro/html/data/HotfixPortalBindingModel.json", function( data ) {
+                    reFormatJSON(data);
+                    truthify(data);
+                    console.log(data);
+                    window.viewModel = kendo.observable(data);
+
+                    const treeView = $(".file-treeview").kendoTreeView({
+                        // template: kendo.template($("#treeview-template").html()),
+                        dataSource: new kendo.data.HierarchicalDataSource({
+                            data: [data],
+                            schema: {
+                                model: customerModel
+                            }
+                        }),                    
+                        dataTextField: [ "CustomerName", "Description", "ID", "HotfixId" ],
+                        select: function(e) {
+                            console.log(inline.getByUid($(e.node).data('uid')).parentId);
+                            const nodeId = $(e.node).data('uid');
+                            const node = inline.getByUid(nodeId);
+                            if (node && node.type && node.type === 'environment') {
+                                const id = inline.getByUid($(e.node).data('uid')).parentId;
+                                $("#grid").data('kendoGrid').dataSource.filter({ field: "id", operator: "eq", value: id });
+                                $(".rollback-request, .pending-request").hide();
+                                $(".btn-next").attr('disabled', false);
+                                $('#hotfixWizard').bootstrapWizard('enable',1);
+                                $('#hotfixWizard').bootstrapWizard('enable',2);
+                                $('#hotfixWizard').bootstrapWizard('enable',3);
+                            } else if (node && node.type && node.type === 'hotfix') {                            
+                                $(".btn-next").attr('disabled', true);
+                                $(".icon-circle").removeClass('checked');
+                                if (node.status === 'complete') {
+                                    $(".pending-request").hide();
+                                    $(".rollback-request").show();
+                                } else if (node.status === 'pending') {
+                                    $(".rollback-request").hide();
+                                    $(".pending-request").show();
+                                }
+                                $('#hotfixWizard').bootstrapWizard('show',0);
+                                $('#hotfixWizard').bootstrapWizard('disable',1);
+                                $('#hotfixWizard').bootstrapWizard('disable',2);
+                                $('#hotfixWizard').bootstrapWizard('disable',3);
+                            } else if (node && node.type && node.type === 'customer') {
+                                $("#grid").data('kendoGrid').dataSource.filter({});
+                                $('#hotfixWizard').bootstrapWizard('show',0);
+                                $('#hotfixWizard').bootstrapWizard('disable',1);
+                                $('#hotfixWizard').bootstrapWizard('disable',2);
+                                $('#hotfixWizard').bootstrapWizard('disable',3);
+                            }
+                            
+                        },
+                    }).data("kendoTreeView");
+                    treeView.expand(".k-item");
+                    treeView.expand(".k-item .k-item");
+                    
+
+                    
+                });
+
+
                 
                 var element = $("#grid").kendoGrid({
-          dataSource: {
-              data: [
-                  { id: 1, Name: "Installed Hotfixes - TEST", parentId: null },
-                  { id: 6, Name: "Installed Hotfixes - LIVE", parentId: null },
-                  { id: 11, Name: "Installed Hotfixes - DEV", parentId: null },
-              ],
+                    dataSource: {
+                        data: [
+                            { id: 1, Name: "Installed Hotfixes - TEST", parentId: null },
+                            { id: 6, Name: "Installed Hotfixes - LIVE", parentId: null },
+                            { id: 11, Name: "Installed Hotfixes - DEV", parentId: null },
+                        ],
 
-          },
-          height: 600,
-          sortable: false,
-          pageable: false,
-          detailInit: detailInit,
-          dataBound: function() {
-              this.expandRow(this.tbody.find("tr.k-master-row"));
-          },
-          columns: [
-              {
-                  field: "Name",
-                  title: "Deployment group",
-                  width: "100%"
-              },
+                    },
+                    height: 600,
+                    sortable: false,
+                    pageable: false,
+                    detailInit: detailInit,
+                    dataBound: function() {
+                        this.expandRow(this.tbody.find("tr.k-master-row"));
+                    },
+                    columns: [
+                        {
+                            field: "Name",
+                            title: "Deployment group",
+                            width: "100%"
+                        },
 
-          ]
-      });
+                    ]
+                });
 
                 function detailInit(e) {
                     $("<div/>").appendTo(e.detailCell).kendoGrid({
@@ -2012,48 +2170,7 @@
                     format: 'DD-MMM-YYYY HH:mm',
                 });
 
-                const treeView = $(".file-treeview").kendoTreeView({
-                    template: kendo.template($("#treeview-template").html()),
-                    dataSource: inline,                    
-                    dataTextField: [ "name" ],
-                    select: function(e) {
-                        console.log(inline.getByUid($(e.node).data('uid')).parentId);
-                        const nodeId = $(e.node).data('uid');
-                        const node = inline.getByUid(nodeId);
-                        if (node && node.type && node.type === 'environment') {
-                            const id = inline.getByUid($(e.node).data('uid')).parentId;
-                            $("#grid").data('kendoGrid').dataSource.filter({ field: "id", operator: "eq", value: id });
-                            $(".rollback-request, .pending-request").hide();
-                            $(".btn-next").attr('disabled', false);
-                            $('#hotfixWizard').bootstrapWizard('enable',1);
-                            $('#hotfixWizard').bootstrapWizard('enable',2);
-                            $('#hotfixWizard').bootstrapWizard('enable',3);
-                        } else if (node && node.type && node.type === 'hotfix') {                            
-                            $(".btn-next").attr('disabled', true);
-                            $(".icon-circle").removeClass('checked');
-                            if (node.status === 'complete') {
-                                $("..pending-request").hide();
-                                $(".rollback-request").show();
-                            } else if (node.status === 'pending') {
-                                $(".rollback-request").hide();
-                                $(".pending-request").show();
-                            }
-                            $('#hotfixWizard').bootstrapWizard('show',0);
-                            $('#hotfixWizard').bootstrapWizard('disable',1);
-                            $('#hotfixWizard').bootstrapWizard('disable',2);
-                            $('#hotfixWizard').bootstrapWizard('disable',3);
-                        } else if (node && node.type && node.type === 'customer') {
-                            $("#grid").data('kendoGrid').dataSource.filter({});
-                            $('#hotfixWizard').bootstrapWizard('show',0);
-                            $('#hotfixWizard').bootstrapWizard('disable',1);
-                            $('#hotfixWizard').bootstrapWizard('disable',2);
-                            $('#hotfixWizard').bootstrapWizard('disable',3);
-                        }
-                        
-                    },
-                }).data("kendoTreeView");
-                treeView.expand(".k-item");
-                treeView.expand(".k-item .k-item");
+                
             });
 
         </script>
