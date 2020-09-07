@@ -1769,7 +1769,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         #} else {#
                             <div class="col-sm-1 text-left">
                                 <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
+                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r" data-bind="css: {active: IsSelected}">
                                     <input type="checkbox" autocomplete="off" data-bind="checked: IsSelected">
                                     <i class="material-icons package-selected-icon pull-left" data-bind="css: { 
                                         sys-fg-gray: sysfginverse,
@@ -1824,7 +1824,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         id="#: Description #UserCount"
                                         name="#: Description #UserCount"
                                         class="form-control"
-                                        data-bind="value: userCount"                                     
+                                        data-bind="value: NumberOfUsers"                                     
                                     />
                                     <label
                                         for="#: Description #UserCount"
@@ -1848,7 +1848,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                             #
                                             <div class="form-group checkbox-form-group sys-mg-t-5">
                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                     <label class="sys-fg-white">
+                                                     <label class="sys-fg-white" data-bind="css: {active: IsSelected}">
                                                          <input type="checkbox" id="${item.StockCode}" data-bind="checked: SubProductList.Product[${index}].IsSelected">
                                                          ${item.Description}
                                                      </label>
@@ -2072,9 +2072,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             };
             kendo.data.ObservableObject.prototype.sysbgprimary = function() {
                 return ["Manufacturing", "Manufacturing+"].includes(this.get("Description"));
-            };
-            kendo.data.ObservableObject.prototype.isActive = function() {
-                return (this.get("IsMandatory") || this.get("isSelected")) && this.get("userCount") > 0;
             };
             kendo.data.ObservableObject.prototype.isProductSuite = function() {
                 return this.parent().parent() === viewModel.CoreBundles;

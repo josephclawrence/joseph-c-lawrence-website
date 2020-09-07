@@ -368,7 +368,7 @@
 				"StockCode": "BUN-MANFND",
 				"Description": "Foundation",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "10",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -574,7 +574,7 @@
 							"StockCode": "MOD-RMA",
 							"Description": "Return Merchandise Authorization",
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
+							"NumberOfUsers": "20",
 							"Price": "18",
 							"FeatureList": null,
 							"SubProductList": null
@@ -588,7 +588,7 @@
 				"StockCode": "BUN-CORMAN",
 				"Description": "Manufacturing",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "20",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -652,7 +652,7 @@
 							"StockCode": "MOD-PRJ",
 							"Description": "Projects and Contracts",
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
+							"NumberOfUsers": "30",
 							"Price": "18",
 							"FeatureList": null,
 							"SubProductList": null
@@ -663,7 +663,7 @@
 							"StockCode": "MOD-ABC",
 							"Description": "Activity Based Costing",
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
+							"NumberOfUsers": "10",
 							"Price": "18",
 							"FeatureList": null,
 							"SubProductList": null
@@ -681,7 +681,7 @@
 				"StockCode": "API-FINQRY",
 				"Description": "Financial Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "20",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -701,7 +701,7 @@
 				"StockCode": "API-DISQRY",
 				"Description": "Distribution Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "10",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -865,7 +865,7 @@
 				"StockCode": "USR-POS",
 				"Description": "Point of Sale",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "40",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": null
@@ -876,7 +876,7 @@
 				"StockCode": "USR-ESP",
 				"Description": "Espresso",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "20",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": null
