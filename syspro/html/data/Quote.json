@@ -677,7 +677,7 @@
 		"Product": [
 			{
 				"IsSelected": "true",
-				"IsMandatory": "true",
+				"IsMandatory": "false",
 				"StockCode": "API-FINQRY",
 				"Description": "Financial Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
@@ -696,8 +696,8 @@
 				"SubProductList": null
 			},
 			{
-				"IsSelected": "true",
-				"IsMandatory": "true",
+				"IsSelected": "false",
+				"IsMandatory": "false",
 				"StockCode": "API-DISQRY",
 				"Description": "Distribution Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
@@ -738,7 +738,7 @@
 			},
 			{
 				"IsSelected": "true",
-				"IsMandatory": "true",
+				"IsMandatory": "false",
 				"StockCode": "API-MSTMAN",
 				"Description": "Master Data Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
@@ -761,8 +761,8 @@
 				"SubProductList": null
 			},
 			{
-				"IsSelected": "true",
-				"IsMandatory": "true",
+				"IsSelected": "false",
+				"IsMandatory": "false",
 				"StockCode": "API-POS",
 				"Description": "Point of Sale API",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
@@ -893,7 +893,7 @@
 				"SubProductList": null
 			},
 			{
-				"IsSelected": "false",
+				"IsSelected": "true",
 				"IsMandatory": "false",
 				"StockCode": "USR-ESX",
 				"Description": "Espresso External Seats",
@@ -904,7 +904,7 @@
 				"SubProductList": null
 			},
 			{
-				"IsSelected": "false",
+				"IsSelected": "true",
 				"IsMandatory": "false",
 				"StockCode": "USR-DFM",
 				"Description": "DFM users",

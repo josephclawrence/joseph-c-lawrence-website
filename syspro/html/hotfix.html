@@ -1738,6 +1738,7 @@
             }
 
             const reFormatJSON = (data) => {
+                const gridData = [];
                 if ( data.Subscriptions && data.Subscriptions.Subscription ) {
                     if ( Array.isArray(data.Subscriptions.Subscription) ) {
                         data.Subscriptions = data.Subscriptions.Subscription;
@@ -1758,7 +1759,17 @@
                                     } else if ( hotfixRequest.Hotfixes.HotfixItem !== null && hotfixRequest.Hotfixes.HotfixItem !== undefined && typeof hotfixRequest.Hotfixes.HotfixItem === 'object' ) {
                                         hotfixRequest.Hotfixes = [hotfixRequest.Hotfixes.HotfixItem];
                                     }
+                                    hotfixRequest.Hotfixes.forEach(hotfix => {
+                                        hotfix.HotfixRequestId = hotfixRequest.ID;
+                                        gridData.push({
+                                            ...hotfix,
+                                            ...hotfixRequest,
+                                            SubDesc: sub.Description,
+                                        });
+                                    });
                                 }
+                                hotfixRequest.SubDesc = sub.Description;
+                                
                             });
                         }
                         if ( sub.AllHotfixes && sub.AllHotfixes.HotfixItem ) {
@@ -1778,6 +1789,10 @@
                         data.NewRequest.Hotfixes = [data.NewRequest.Hotfixes.HotfixItem];
                     }
                 }
+                return {
+                    treeData: data,
+                    gridData: gridData,
+                }
             };
 
             const hotfixModel = kendo.data.Node.define({
@@ -1793,7 +1808,7 @@
 
             const hotfixRequestsModel = kendo.data.Node.define({
                 id: 'ID',
-                children: HotfixSchema,
+                // children: HotfixSchema,
             });
 
             const HotfixRequestsSchema = {
@@ -1914,36 +1929,37 @@
 
 
                 $.getJSON( "https://josephclawrence.com/syspro/html/data/HotfixPortalBindingModel.json", function( data ) {
-                    reFormatJSON(data);
-                    truthify(data);
-                    console.log(data);
-                    window.viewModel = kendo.observable(data);
+                    const { treeData, gridData } =  reFormatJSON(data);
+                    // truthify(data);
+                    console.log(treeData);
+                    console.log(gridData);
+                    // window.viewModel = kendo.observable(data);
 
+                    const dataSource = new kendo.data.HierarchicalDataSource({
+                        data: [treeData],
+                        schema: {
+                            model: customerModel
+                        }
+                    });
                     const treeView = $(".file-treeview").kendoTreeView({
                         // template: kendo.template($("#treeview-template").html()),
-                        dataSource: new kendo.data.HierarchicalDataSource({
-                            data: [data],
-                            schema: {
-                                model: customerModel
-                            }
-                        }),                    
+                        dataSource: dataSource,                    
                         dataTextField: [ "CustomerName", "Description", "ID", "HotfixId" ],
                         select: function(e) {
-                            console.log(inline.getByUid($(e.node).data('uid')).parentId);
                             const nodeId = $(e.node).data('uid');
-                            const node = inline.getByUid(nodeId);
-                            if (node && node.type && node.type === 'environment') {
-                                const id = inline.getByUid($(e.node).data('uid')).parentId;
-                                $("#grid").data('kendoGrid').dataSource.filter({ field: "id", operator: "eq", value: id });
+                            const node = dataSource.getByUid(nodeId);
+                            if (node && node.HotfixRequests) {
+                                const description = dataSource.getByUid($(e.node).data('uid')).Description;
+                                $("#grid").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: description });
                                 $(".rollback-request, .pending-request").hide();
                                 $(".btn-next").attr('disabled', false);
                                 $('#hotfixWizard').bootstrapWizard('enable',1);
                                 $('#hotfixWizard').bootstrapWizard('enable',2);
                                 $('#hotfixWizard').bootstrapWizard('enable',3);
-                            } else if (node && node.type && node.type === 'hotfix') {                            
+                            } else if (node && node.Hotfixes) {                            
                                 $(".btn-next").attr('disabled', true);
                                 $(".icon-circle").removeClass('checked');
-                                if (node.status === 'complete') {
+                                if (node.Status === "Installed successfully") {
                                     $(".pending-request").hide();
                                     $(".rollback-request").show();
                                 } else if (node.status === 'pending') {
@@ -1954,7 +1970,7 @@
                                 $('#hotfixWizard').bootstrapWizard('disable',1);
                                 $('#hotfixWizard').bootstrapWizard('disable',2);
                                 $('#hotfixWizard').bootstrapWizard('disable',3);
-                            } else if (node && node.type && node.type === 'customer') {
+                            } else if (node && node.CustomerCode) {
                                 $("#grid").data('kendoGrid').dataSource.filter({});
                                 $('#hotfixWizard').bootstrapWizard('show',0);
                                 $('#hotfixWizard').bootstrapWizard('disable',1);
@@ -1965,120 +1981,53 @@
                         },
                     }).data("kendoTreeView");
                     treeView.expand(".k-item");
-                    treeView.expand(".k-item .k-item");
+                    treeView.expand(".k-item .k-item");                    
                     
+                    var element = $("#grid").kendoGrid({
+                        dataSource: dataSource.data()[0].Subscriptions,
+                        height: 600,
+                        sortable: false,
+                        pageable: false,
+                        detailInit: detailInit,
+                        dataBound: function() {
+                            this.expandRow(this.tbody.find("tr.k-master-row"));
+                        },
+                        columns: [
+                            {
+                                field: "Description",
+                                title: "Deployment group",
+                                width: "100%"
+                            },
 
-                    
+                        ]
+                    });
+
+                    function detailInit(e) {
+                        $("<div/>").appendTo(e.detailCell).kendoGrid({
+                            dataSource: {
+                                data: gridData,
+                                filter: { field: "SubDesc", operator: "eq", value: e.data.Description }
+                            },
+                            scrollable: false,
+                            sortable: false,
+                            pageable: false,
+                            columns: [
+                                { field: "HotfixRequestId", title: "Request ID" },
+                                { field: "HotfixId", title: "Hotfix ID", template: "<span class='sys-txt-sm'>#: HotfixId # </span>" },
+                                { field: "RequestDate", title: "Created", template: "#= kendo.toString(kendo.parseDate(RequestDate, 'yyyy-MM-dd'), 'MM/dd/yyyy') #" },
+                                { field: "InstalledDate", title: "Deployed", template: "#= kendo.toString(kendo.parseDate(RequestDate, 'yyyy-MM-dd'), 'MM/dd/yyyy') #" },
+                                { field: "Operator", title: "Approved by" },
+                                { field: "Status", title: "Status" },
+                                { field: "notes", title: "Notes" },
+                            ]
+                        });
+                    }
+
                 });
 
 
                 
-                var element = $("#grid").kendoGrid({
-                    dataSource: {
-                        data: [
-                            { id: 1, Name: "Installed Hotfixes - TEST", parentId: null },
-                            { id: 6, Name: "Installed Hotfixes - LIVE", parentId: null },
-                            { id: 11, Name: "Installed Hotfixes - DEV", parentId: null },
-                        ],
-
-                    },
-                    height: 600,
-                    sortable: false,
-                    pageable: false,
-                    detailInit: detailInit,
-                    dataBound: function() {
-                        this.expandRow(this.tbody.find("tr.k-master-row"));
-                    },
-                    columns: [
-                        {
-                            field: "Name",
-                            title: "Deployment group",
-                            width: "100%"
-                        },
-
-                    ]
-                });
-
-                function detailInit(e) {
-                    $("<div/>").appendTo(e.detailCell).kendoGrid({
-                        dataSource: {
-                            data: [
-                                { id: 2, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-                                { id: 3, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-                                { id: 4, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-                                { id: 5, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-
-                                { id: 7, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-                                { id: 8, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-                                { id: 9, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-                                { id: 10, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-
-                                { id: 12, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                                { id: 13, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                                { id: 14, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                                { id: 15, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                            ],
-
-                            filter: { field: "parentId", operator: "eq", value: e.data.id }
-                        },
-                        scrollable: false,
-                        sortable: false,
-                        pageable: false,
-                        columns: [
-                            { field: "requestId", title: "Request ID" },
-                            { field: "hotfixId", title: "Hotfix ID" },
-                            { field: "created", title: "Created" },
-                            { field: "deployed", title: "Deployed" },
-                            { field: "approvedBy", title: "Approved by" },
-                            { field: "status", title: "Status" },
-                            { field: "notes", title: "Notes" },
-                        ]
-                    });
-                }
-                            
-                var treeList = new kendo.data.TreeListDataSource({
-                    data: [
-                        { id: 1, Name: "Installed Hotfixes - TEST", parentId: null },
-                        { id: 2, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-                        { id: 3, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-                        { id: 4, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-                        { id: 5, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 1 },
-
-                        { id: 6, Name: "Installed Hotfixes - LIVE", parentId: null },
-                        { id: 7, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-                        { id: 8, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-                        { id: 9, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-                        { id: 10, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 6 },
-
-                        { id: 11, Name: "Installed Hotfixes - DEV", parentId: null },
-                        { id: 12, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                        { id: 13, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                        { id: 14, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                        { id: 15, requestId: "000001", hotfixId: "KBOT4474", created: "24/04/2020", deployed: "26/04/2020", approvedBy: "Kevin Dherman", status: "Installed successfully", notes: "", parentId: 11 },
-                    ],
-
-                    schema: {
-                        model: {
-                            id: "id",
-                            expanded: true
-                        }
-                    }
-                });
-
-                $("#treelist").kendoTreeList({
-                    dataSource: treeList,
-                    height: 540,
-                    columns: [
-                        { field: "requestId", title: "Request ID" },
-                        { field: "hotfixId", title: "Hotfix ID" },
-                        { field: "created", title: "Created" },
-                        { field: "deployed", title: "Deployed" },
-                        { field: "approvedBy", title: "Approved by" },
-                        { field: "status", title: "Status" },
-                        { field: "notes", title: "Notes" },
-                    ]
-                });
-
+                
                 var country = $("#country").kendoDropDownList({
                     optionLabel: "Select country...",
                     // dataTextField: "name",
