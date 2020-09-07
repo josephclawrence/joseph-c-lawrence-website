@@ -568,7 +568,7 @@
     color: inherit;
 }
 
-.packages-options .btn-group .btn:hover:not(.active) i.package-selected-icon {
+.packages-options .col-sm-1:hover:not(.active) i.package-selected-icon {
     color: #fdda4c;
 }
 
@@ -619,12 +619,13 @@
 .packages-options .package .package-selected-icon {
     /* color: #f3f2ee; */
     font-size: 24px;
+    cursor: pointer;
 }
-.packages-options .package .btn.active .package-selected-icon {
+.packages-options .package .active .package-selected-icon {
     color: #f1c40f;
 }
 
-.packages-options .package .btn.active .package-selected-icon.sys-fg-warning {
+.packages-options .package .active .package-selected-icon.sys-fg-warning {
     color: #e67e22;
 }
 .package .checkbox .checkbox-material {
@@ -786,6 +787,7 @@
     height: 25px;
 }
 .md-outline:not(.is-empty) label {
+    border-radius: 3px;
     position: absolute !important;
     top: -4px !important;
     left: 0px !important;
@@ -1766,17 +1768,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                 </div>
                             </div>
                         #} else {#
-                            <div class="col-sm-1 text-left">
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r" data-bind="css: {active: IsSelected}">
-                                    <input type="checkbox" autocomplete="off" data-bind="checked: IsSelected">
-                                    <i class="material-icons package-selected-icon pull-left" data-bind="css: { 
+                            <div class="col-sm-1 text-left" >
+
+                                    <i class="material-icons package-selected-icon pull-left sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r" data-bind="css: { 
                                         sys-fg-gray: sysfginverse,
                                         sys-fg-white: sysfgwhite,
-                                    }">check_circle</i>
+                                    }, checkboxBind: IsSelected">check_circle</i>
                                     
-                                    </label>
-                                </div>
                             </div>
                         #}#
                         <div class="col-sm-5 text-left">
@@ -1823,7 +1821,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         id="#: Description #UserCount"
                                         name="#: Description #UserCount"
                                         class="form-control"
-                                        data-bind="value: NumberOfUsers"                                     
+                                        data-bind="value: NumberOfUsers, attr: {readonly: isProductSuite}"                                     
                                     />
                                     <label
                                         for="#: Description #UserCount"
@@ -1911,64 +1909,30 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         <script>
             
 
-            kendo.data.binders.radioButtonBind = kendo.data.Binder.extend({
-                init: function(element, bindings, options) {
-                    // call the base constructor
-                    kendo.data.Binder.fn.init.call(this, element, bindings, options);
-
-                    const that = this;
-                    // listen for the change event of the element
-                    $(that.element).on('change', () => {
-                        that.change(); // call the change function
-                    });
-                },
-                refresh: function() {
-                    const that = this;
-                    const value = that.bindings['radioButtonBind'].get();
-
-                    $(that.element).prop('checked', value === true);
-
-                    $(that.element).closest('label.btn').toggleClass('active', value === true);
-                },
-                change: function() {
-                    const value = $(this.element).prop('checked');
-
-                    // this.bindings['radioButton'].set(value); // update the View-Model
-                    this.bindings['selectedValue'].set(value); // update the View-Model
-                },
-            });
-
             kendo.data.binders.checkboxBind = kendo.data.Binder.extend({
                 init: function(element, bindings, options) {
                     // call the base constructor
                     kendo.data.Binder.fn.init.call(this, element, bindings, options);
 
                     const that = this;
+                    console.log($(that.element));
                     // listen for the change event of the element
-                    $(that.element).on('change', () => {
+                    $(that.element).on('click', () => {
                         that.change(); // call the change function
                     });
                 },
                 refresh: function() {
                     const that = this;
                     const value = that.bindings['checkboxBind'].get();
-
-                    $(that.element).prop('checked', value === true);
+                    $(that.element).closest(".col-sm-1").toggleClass("active", value === true);
 
                 },
                 change: function() {
-                    const value = $(this.element).prop('checked');
-
-                    // this.bindings['radioButton'].set(value); // update the View-Model
-                    this.bindings['selectedValue'].set(value); // update the View-Model
+                    const value = $(this.element).closest(".col-sm-1").hasClass('active');
+                    this.bindings['checkboxBind'].set(!value); // update the View-Model
                 },
             });
-            
-            kendo.data.binders.selectedValue = kendo.data.Binder.extend({
-                refresh: function() {
-                    
-                }
-            });
+
             kendo.data.ObservableObject.prototype.parseEditDate = function() {
                 return moment(this.get("QuoteSummary.LastEdited")).format("DD/MM/YYY, HH:mm");
             };
@@ -2244,7 +2208,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         zIndexOffset: 1000000
                     });
                     $(".date").siblings(".input-prefix").click(function(e){
-                        $(this).siblings(".date").datepicker("open");
+                        $(this).siblings(".date").focus().datepicker("show");
                     });
 
                 },
