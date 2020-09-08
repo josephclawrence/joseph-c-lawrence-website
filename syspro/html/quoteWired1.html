@@ -1089,6 +1089,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   </label>
                                                                </div>
                                                                <div class="form-group md-outline quote-field">
+                                                                    <select type="text" class="form-control" id="QuoteVersion"
+                                                                    name="QuoteVersion"
+                                                                    data-bind="{source: QuoteVersionList.string, value: SelectedQuoteVersion}"></select>
+                                                                    <label for="QuoteVersion" class="">
+                                                                    <span>Quote version</span>
+                                                                    </label>
+                                                                </div>
+                                                               <div class="form-group md-outline quote-field">
                                                                   <input  class="form-control" id="ReferenceNumber" 
                                                                      name="ReferenceNumber" 
                                                                      data-bind="value: ReferenceNumber" 
@@ -1113,14 +1121,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>Expiry date</span>
                                                                   </label>
                                                                </div>
-                                                               <div class="form-group md-outline quote-field">
-                                                                  <select type="text" class="form-control" id="QuoteVersion"
-                                                                     name="QuoteVersion"
-                                                                     data-bind="{source: QuoteVersionList.string, value: SelectedQuoteVersion}"></select>
-                                                                  <label for="QuoteVersion" class="">
-                                                                  <span>Quote version</span>
-                                                                  </label>
-                                                               </div>
+                                                               
                                                                <div class="form-group md-outline quote-field input-with-post-icon">
                                                                   <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
                                                                   <input type="text" class="form-control" 
@@ -1212,6 +1213,25 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                </div>
                                                             </div>
                                                             <div class="col-sm-6 customer-details sys-pd-t-5">
+
+                                                                <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                    <input class="form-control date" 
+                                                                       data-bind="" id="ContractStartDate" name="ContractStartDate">
+                                                                    <label for="ContractStartDate" class="">
+                                                                        <span>Contract start date</span>
+                                                                    </label>
+                                                                 </div>
+
+                                                                 <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                    <input  class="form-control date" 
+                                                                       data-bind="" id="ContractEndDate" name="ContractEndDate">
+                                                                    <label for="ContractEndDate" class="">
+                                                                        <span>Contract end date</span>
+                                                                    </label>
+                                                                 </div>
+
                                                                <div class="form-group md-outline">
                                                                   <input type="text" id="AddressLine1" name="AddressLine1" data-bind="value: AddressLine1" class="form-control">
                                                                   <label for="AddressLine1" class="">
@@ -1472,6 +1492,98 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                </div>
                                                             </div>
                                                             <div class="col-sm-6">
+                                                                <div class="row sys-mg-b-10">
+                                                                    <a href="#EmailOptions" data-toggle="collapse" class="col-xs-12 sys-fg-primary sys-mg-b-5" aria-expanded="false" aria-controls="quoteDetails">Email options <i class="material-icons sys-txt-sm">expand_more</i></a>
+                                                                    <div id="EmailOptions" class="col-xs-12 collapse">
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="SMTPIP" name="SMTPIP" data-bind="value: SMTPIP">
+                                                                            <label for="SMTPIP" class="">
+                                                                                <span>SMTP IP</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                            <label for="SMTPEmail" class="">
+                                                                                <span>SMTP email</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="ServerPort" name="ServerPort" data-bind="value: ServerPort">
+                                                                            <label for="ServerPort" class="">
+                                                                                <span>Server port</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group checkbox-form-group">
+                                                                            <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                <label class="sys-fg-white" data-bind="css: {active: IsSelected}">
+                                                                                    <input type="checkbox" id="SystemWide" data-bind="checked: SystemWide">
+                                                                                    Use system wide
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="EmailUsername" name="EmailUsername" data-bind="value: EmailUsername">
+                                                                            <label for="EmailUsername" class="">
+                                                                                <span>Username</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="password" class="form-control" id="EmailPassword" name="EmailPassword" data-bind="value: EmailPassword">
+                                                                            <label for="EmailPassword" class="">
+                                                                                <span>Password</span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row sys-mg-b-10">
+                                                                    <a href="#Office365Options" data-toggle="collapse" class="sys-fg-primary col-xs-12 sys-mg-b-5" aria-expanded="false" aria-controls="quoteDetails">Office 365 options <i class="material-icons sys-txt-sm">expand_more</i></a>
+                                                                    <div id="Office365Options" class="col-xs-12 collapse">
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="TenantID" name="TenantID" data-bind="value: TenantID">
+                                                                            <label for="TenantID" class="">
+                                                                                <span>Tenant ID</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="ExchangeServerID" name="ExchangeServerID" data-bind="value: ExchangeServerID">
+                                                                            <label for="ExchangeServerID" class="">
+                                                                                <span>Exchange server ID</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="ClientID" name="ClientID" data-bind="value: ClientID">
+                                                                            <label for="ClientID" class="">
+                                                                                <span>Client ID</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="ResourceID" name="ResourceID" data-bind="value: ResourceID">
+                                                                            <label for="ResourceID" class="">
+                                                                                <span>Resource ID</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="TempFolder" name="TempFolder" data-bind="value: TempFolder">
+                                                                            <label for="TempFolder" class="">
+                                                                                <span>Temp folder</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="MultimediaFolder" name="MultimediaFolder" data-bind="value: MultimediaFolder">
+                                                                            <label for="MultimediaFolder" class="">
+                                                                                <span>Multimedia folder</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                            <input type="text" class="form-control" id="MRPSnapshotFolder" name="MRPSnapshotFolder" data-bind="value: MRPSnapshotFolder">
+                                                                            <label for="MRPSnapshotFolder" class="">
+                                                                                <span>MRP Snapshot Folder</span>
+                                                                            </label>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
                                                                <div class="form-group md-outline">
                                                                   <input
                                                                      id="ShortDateFormat" name="ShortDateFormat" 
@@ -1548,6 +1660,66 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                          </div>
                                                       </div>
                                                    </div>
+                                                </div>
+                                             </div>
+                                             <div class="tab-pane" id="sysprolicensedcompanies">
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-sm-offset-2">
+                                                        <table class="table table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Company name</th>
+                                                                    <th>NAICS code</th>
+                                                                    <th style="width: 30px;"></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
+                                                                            <!-- <label for="xxx" class="">
+                                                                            <span>Post/ZIP code</span>
+                                                                            </label> -->
+                                                                         </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
+                                                                            <!-- <label for="xxx" class="">
+                                                                            <span>Post/ZIP code</span>
+                                                                            </label> -->
+                                                                         </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <i class="material-icons sys-fg-danger">delete_forever</i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
+                                                                            <!-- <label for="xxx" class="">
+                                                                            <span>Post/ZIP code</span>
+                                                                            </label> -->
+                                                                         </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
+                                                                            <!-- <label for="xxx" class="">
+                                                                            <span>Post/ZIP code</span>
+                                                                            </label> -->
+                                                                         </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <i class="material-icons sys-fg-danger">delete_forever</i>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <button class="btn btn-primary">Add row</button>
+                                                    </div>
                                                 </div>
                                              </div>
                                              <div class="tab-pane " id="education" data-bind="visible: educationActive"></div>
@@ -1895,6 +2067,23 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 </td>
             </tr>
         </script>
+        <script id="licensedCompanyTemplate" type="text/x-kendo-template">
+            <tr data-naics=""NAICS#: NAICSCode #"">
+                <td>
+                    <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                        <input type="text" id="#: CompanyName #" name="#: CompanyName #" data-bind="value: CompanyName" class="form-control">
+                     </div>
+                </td>
+                <td>
+                    <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                        <input type="text" id="NAICS#: NAICSCode #" name="NAICS#: NAICSCode #" data-bind="value: NAICSCode" class="form-control">
+                     </div>
+                </td>
+                <td>
+                    <i class="material-icons sys-fg-danger remove-company" data-naics=""NAICS#: NAICSCode #"">delete_forever</i>
+                </td>
+            </tr>
+        </script>
 
         <script id="quoteStepsTemplate" type="text/x-kendo-template">
             <li class="wizard-tab" data-bind="style: { width: wizardTabsWidth }">
@@ -1916,21 +2105,20 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     // call the base constructor
                     kendo.data.Binder.fn.init.call(this, element, bindings, options);
 
-                    const that = this;
-                    console.log($(that.element));
+                    var that = this;
                     // listen for the change event of the element
                     $(that.element).on('click', () => {
                         that.change(); // call the change function
                     });
                 },
                 refresh: function() {
-                    const that = this;
-                    const value = that.bindings['checkboxBind'].get();
+                    var that = this;
+                    var value = that.bindings['checkboxBind'].get();
                     $(that.element).closest(".col-sm-1").toggleClass("active", value === true);
 
                 },
                 change: function() {
-                    const value = $(this.element).closest(".col-sm-1").hasClass('active');
+                    var value = $(this.element).closest(".col-sm-1").hasClass('active');
                     this.bindings['checkboxBind'].set(!value); // update the View-Model
                 },
             });
@@ -1955,8 +2143,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.CostPerUser")).toFixed(2);
             };
             kendo.data.ObservableObject.prototype.hasOwnUserCount = function() {
-                // return this.parent().parent() !== viewModel.CoreBundles;
-                return true;
+                return !["API-POS", "USR-ESL"].includes(this.get("StockCode"));
             };
             kendo.data.ObservableObject.prototype.productSuiteActive = function() {
                 return this.get("CoreBundles") && this.get("CoreBundles.Product") && this.get("CoreBundles.Product").length;
@@ -1977,7 +2164,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return this.get("education") && this.get("education").length;
             };
             kendo.data.ObservableObject.prototype.activeSections = function() {
-                const activeSections = [];
+                var activeSections = [];
                 
                 activeSections.push({ 
                     id: 'info',
@@ -2004,6 +2191,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     name: 'Infrastructure',
                     icon: 'dns',
                 });
+                activeSections.push({
+                    id: 'sysprolicensedcompanies',
+                    name: 'Syspro Licensed Companies',
+                    icon: 'business',
+                });
                 if ( this.educationActive() ) activeSections.push({ 
                     id: 'education',
                     name: 'Education',
@@ -2014,8 +2206,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             };
             
             kendo.data.ObservableObject.prototype.wizardTabsWidth = function() {
-                const $total = viewModel.activeSections().length;
-                const $width = 100 / $total;
+                var $total = viewModel.activeSections().length;
+                var $width = 100 / $total;
                 return $width + "%";
             };
             kendo.data.ObservableObject.prototype.sysbgverylightgray = function() {
@@ -2062,7 +2254,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             };
 
 
-            const SAAS_QUOTE = {
+            var SAAS_QUOTE = {
                 tempDraggedItem: [],
                 infoFieldWindow: null,
                 init: function() {
@@ -2071,18 +2263,23 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     SAAS_QUOTE.initFormFields();
                     SAAS_QUOTE.sizeLayout();
                     SAAS_QUOTE.uiInitExtras();
-                    SAAS_QUOTE.registerEventHandlers();
                     $.material.init();
-                    $("input").each(function(idx, input){
+                    $("input, textarea, select").each(function(idx, input){
                         var $formGroup = $(input).closest(".form-group");
                         if ($(input).val() !== "") {
+                            $formGroup.removeClass("is-empty");
+                        }
+                    });
+                    $(".k-dropdown .k-input").each(function(idx, input){
+                        var $formGroup = $(input).closest(".form-group");
+                        if ($(input).text().length > 0) {
                             $formGroup.removeClass("is-empty");
                         }
                     });
 
                 },
                 initWizard: function() {
-                    const wizard = $(".wizard-card").bootstrapWizard({
+                    var wizard = $(".wizard-card").bootstrapWizard({
                         tabClass: "nav nav-pills",
                         nextSelector: ".btn-next",
                         previousSelector: ".btn-previous",
@@ -2148,59 +2345,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     });
 
                 },
-                registerEventHandlers: function() {
-                    $("input[name='quote_type']").on("change", function(e) {
-                        const value = $(this).val();
-                        if ( value === 'existingquote' ) {
-                            $('.existing-quote-field').show();
-                        } else if ( value === 'newquote' ) {
-                            // $('.customer-details input').each((idx, field) => {
-                            //     $(field).val('');
-                            // });
-                            $('.existing-quote-field').hide();
-                            $('.quote-field').show();
-                            $('.customer-type-field').show();
-                            
-                            // $('.customer-details').show();
-                            // $(".region-field").show();
-                        }
-                        
-                        
-                    });
-
-                    $("#customerCode").on("keydown", function() {
-                        $('.customer-details input').each((idx, field) => {
-                            $(field).val('customer info');
-                            $(field).closest(".form-group").removeClass("is-empty");
-                        });
-                        $('.customer-details').show();
-                        
-                    });
-
-                    $("#quoteNumber").on("keydown", function() {
-                        // $('.customer-details input').each((idx, field) => {
-                        //     $(field).val('customer info');
-                        //     $(field).closest(".form-group").removeClass("is-empty");
-                        // });
-                        $('.quote-field').show();
-                        $('.customer-type-field').show();
-                        $(".existing-customer").addClass("active");
-                        $('.customer-details input').each((idx, field) => {
-                            $(field).val('customer info');
-                            $(field).closest(".form-group").removeClass("is-empty");
-                        });
-                        $('.customer-details').show();
-                    });
-
-                    $(".fusion-current-account").click(function(){
-                        $(".form-group").show();
-                        $(".customer-details").show();
-                    });
-
-                },
                 sizeLayout: function() {
                     // TODO: Maybe handle wizard tep sizing here somehow
-                    const tabHeight = $(window).height() - 200;
+                    var tabHeight = $(window).height() - 200;
 
                     $("#isvFilter").on("keyup", function() {
                         viewModel.IsvSoftware.filter({ field: "name", operator: "contains", value: $(this).val() })
@@ -2217,6 +2364,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         todayHighlight: true,
                         zIndexOffset: 1000000
                     });
+                    $("#ContractStartDate").datepicker().on('changeDate', function(e) {
+                        console.log(e);
+                        console.log(moment(e.date).add(3, 'Y').toDate());
+                        $("#ContractEndDate").datepicker('update', moment(e.date).add(3, 'Y').toDate());
+                    });
                     $(".date").siblings(".input-prefix").click(function(e){
                         $(this).siblings(".date").focus().datepicker("show");
                     });
@@ -2225,23 +2377,16 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 uiInitExtras: function() {
                     $('[data-tooltip="tooltip"]').tooltip();
 
-                    const ps = new PerfectScrollbar('.quote-scrollable-pane');
-                },
-                renderPlusPackageSubItemsTemplate: function(data) {
-                    return kendo.Template.compile($('#plusPackageSubItemsTemplate').html())(data);
-                },
-                renderInfoFieldTemplate: function(data, uid) {
-                    const infoField = viewModel.infoFields.get(data.id);
-                    return kendo.Template.compile($('#infoFieldTemplate').html())(infoField);
+                    var ps = new PerfectScrollbar('.quote-scrollable-pane');
                 },
                 sizeWizardTabs: function() {
-                    const $total = viewModel.activeSections().length;
-                    const $width = 100 / $total;
+                    var $total = viewModel.activeSections().length;
+                    var $width = 100 / $total;
                     $(".wizard-tab").css('width', $width + "%");
                 },
             }
              
-            const byString = function(o, s) {
+            var byString = function(o, s) {
                 s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
                 s = s.replace(/^\./, '');           // strip a leading dot
                 var a = s.split('.');
@@ -2256,29 +2401,28 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return o;
             }
 
-            const vmChangeHandler = (e, category) => {
-                const regex = /\d/g;
-                const hasIndex = regex.test(e.field);
-                const newValue = category === 'QuoteInformation' || category === 'QuoteInfrastructure' 
+            var vmChangeHandler = (e, category) => {
+                var regex = /\d/g;
+                var hasIndex = regex.test(e.field);
+                var newValue = category === 'QuoteInformation' || category === 'QuoteInfrastructure' 
                     ? e.sender[e.field] 
                     : hasIndex
                     ? byString(e.items[0], e.field)
                     : e.items[0][e.field]
                 
                 
-                const changeData = {
+                var changeData = {
                     category: category,
                     item: category === 'QuoteInformation' || category === 'QuoteInfrastructure' ? e.field : e.items[0].StockCode,
                     field: e.field,
                     newValue: newValue
                 };
-                console.log(e, category);
                 if (changeData.newValue !== undefined) console.log('here', changeData);
                 SAAS_QUOTE.sizeWizardTabs();
                 
             }
 
-            const truthify = (obj) => {
+            var truthify = (obj) => {
                 Object.keys(obj).forEach(key => {
                     if ( obj[key] === "true" ) {
                         obj[key] = true;
@@ -2294,7 +2438,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
             $(document).ready(function() {
                 
-                $.getJSON( "https://josephclawrence.com/syspro/html/data/NewQuote.json", function( data ) {
+                $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
                     truthify(data);
                     window.viewModel = kendo.observable(data);
 
@@ -2308,8 +2452,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     SAAS_QUOTE.init();
                     
                     $(".set-full-height").css("height", "auto");                
-
-                    
                 });
 
             });

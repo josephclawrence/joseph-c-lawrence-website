@@ -1610,5 +1610,13 @@
 				}
 			]
 		}
+	},
+	"SysproLicensedCompanies": {
+		"Company": [
+			{
+				"CompanyName": "The Outdoors Company",
+				"NAICSCode": "999999"
+			}
+		]
 	}
 }
