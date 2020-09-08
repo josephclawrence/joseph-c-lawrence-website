@@ -1177,7 +1177,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      data-bind="value: NumberOfUsers"
                                                                      min="0"
                                                                      max="2000"
-                                                                     step="10"
+                                                                     step="1"
                                                                      id="NumberOfUsers"
                                                                      name="NumberOfUsers"
                                                                      value=""
@@ -1371,7 +1371,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      type="number"
                                                                      min="0"
                                                                      max="2000"
-                                                                     step="10"
+                                                                     step="1"
                                                                      id="NumberOfDesktopUsers" 
                                                                      name="NumberOfDesktopUsers" 
                                                                      data-bind="value: QuoteInfrastructure.NumberOfDesktopUsers" 
@@ -1586,7 +1586,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                  <div class="panel sys-bd-off sys-bg-inverse sys-fg-white" id="finalQuoteCard">
                                     <div class="loading-cover"><span class="spinner"></span></div>
                                     <div class="panel-body sys-pd-15">
-                                       <a href="#quoteDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="quoteDetails">Quote ZX000011928273 details <i class="material-icons sys-txt-sm">expand_more</i></a>
+                                       <a href="#quoteDetails" data-toggle="collapse" class="sys-fg-info " aria-expanded="false" aria-controls="quoteDetails">Quote details <i class="material-icons sys-txt-sm">expand_more</i></a>
                                        <div id="quoteDetails" class="row collapse">
                                           <div class="col-xs-12">
                                              <table
@@ -1811,17 +1811,19 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         </div>
 
                         <div class="col-sm-2">
-                            #if (hasOwnUserCount) {#
+                            #if (hasOwnUserCount()) {#
                                 <div class="form-group md-outline">
                                     <input
                                         type="number"
                                         min="0"
                                         max="2000"
-                                        step="10" style="max-width: 70px;"
+                                        step="1" style="max-width: 70px;"
                                         id="#: Description #UserCount"
                                         name="#: Description #UserCount"
                                         class="form-control"
-                                        data-bind="value: NumberOfUsers, attr: {readonly: isProductSuite}"                                     
+                                        data-bind="value: NumberOfUsers" 
+                                        #: isProductSuite() #
+                                        #if (isProductSuite()) {# readonly #}#                            
                                     />
                                     <label
                                         for="#: Description #UserCount"
@@ -1953,7 +1955,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.CostPerUser")).toFixed(2);
             };
             kendo.data.ObservableObject.prototype.hasOwnUserCount = function() {
-                return this.parent().parent() !== viewModel.CoreBundles;
+                // return this.parent().parent() !== viewModel.CoreBundles;
+                return true;
             };
             kendo.data.ObservableObject.prototype.productSuiteActive = function() {
                 return this.get("CoreBundles") && this.get("CoreBundles.Product") && this.get("CoreBundles.Product").length;
@@ -2070,6 +2073,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     SAAS_QUOTE.uiInitExtras();
                     SAAS_QUOTE.registerEventHandlers();
                     $.material.init();
+                    $("input").each(function(idx, input){
+                        var $formGroup = $(input).closest(".form-group");
+                        if ($(input).val() !== "") {
+                            $formGroup.removeClass("is-empty");
+                        }
+                    });
+
                 },
                 initWizard: function() {
                     const wizard = $(".wizard-card").bootstrapWizard({
@@ -2284,7 +2294,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
             $(document).ready(function() {
                 
-                $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
+                $.getJSON( "https://josephclawrence.com/syspro/html/data/NewQuote.json", function( data ) {
                     truthify(data);
                     window.viewModel = kendo.observable(data);
 
