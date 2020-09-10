@@ -1673,52 +1673,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     <th style="width: 30px;"></th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
-                                                                            <!-- <label for="xxx" class="">
-                                                                            <span>Post/ZIP code</span>
-                                                                            </label> -->
-                                                                         </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
-                                                                            <!-- <label for="xxx" class="">
-                                                                            <span>Post/ZIP code</span>
-                                                                            </label> -->
-                                                                         </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="material-icons sys-fg-danger">delete_forever</i>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
-                                                                            <!-- <label for="xxx" class="">
-                                                                            <span>Post/ZIP code</span>
-                                                                            </label> -->
-                                                                         </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                                                                            <input type="text" id="xxx" name="PostalZipCode" data-bind="value: xxx" class="form-control">
-                                                                            <!-- <label for="xxx" class="">
-                                                                            <span>Post/ZIP code</span>
-                                                                            </label> -->
-                                                                         </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="material-icons sys-fg-danger">delete_forever</i>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
+                                                            <tbody data-template="licensedCompanyTemplate" data-bind="source: SysproLicensedCompanies.Company"></tbody>
                                                         </table>
-                                                        <button class="btn btn-primary">Add row</button>
+                                                        <button class="btn btn-primary" id="addLicensedCompany">Add row</button>
                                                     </div>
                                                 </div>
                                              </div>
@@ -2068,7 +2025,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             </tr>
         </script>
         <script id="licensedCompanyTemplate" type="text/x-kendo-template">
-            <tr data-naics=""NAICS#: NAICSCode #"">
+            <tr data-naics="NAICS#: NAICSCode #"">
                 <td>
                     <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
                         <input type="text" id="#: CompanyName #" name="#: CompanyName #" data-bind="value: CompanyName" class="form-control">
@@ -2080,7 +2037,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                      </div>
                 </td>
                 <td>
-                    <i class="material-icons sys-fg-danger remove-company" data-naics=""NAICS#: NAICSCode #"">delete_forever</i>
+                    <i class="material-icons sys-fg-danger remove-company" data-naics="#: NAICSCode #">delete_forever</i>
                 </td>
             </tr>
         </script>
@@ -2263,6 +2220,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     SAAS_QUOTE.initFormFields();
                     SAAS_QUOTE.sizeLayout();
                     SAAS_QUOTE.uiInitExtras();
+                    SAAS_QUOTE.initEventListeners();
                     $.material.init();
                     $("input, textarea, select").each(function(idx, input){
                         var $formGroup = $(input).closest(".form-group");
@@ -2345,6 +2303,30 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     });
 
                 },
+                initEventListeners: function() {
+                    // TODO: create temp NAICS? ID?
+                    $(document).on("click", "#addLicensedCompany", function() {
+                        viewModel.SysproLicensedCompanies.set("Company", [
+                            ...viewModel.SysproLicensedCompanies.get("Company"),
+                            {
+                                "CompanyName": "",
+                                "NAICSCode": "",
+                            }
+                        ]);
+                    });
+                    $(document).on("click", ".remove-company", function() {
+                        var naics = $(this).data("naics");
+                        var companiesArray = [...viewModel.SysproLicensedCompanies.Company];
+                        companiesArray.forEach(function(company, idx) {
+                            if ( company.NAICSCode.toString() === naics.toString() ) {
+                                if (idx > -1) {
+                                    companiesArray.splice(idx, 1);
+                                }
+                            }
+                        });
+                        viewModel.SysproLicensedCompanies.set("Company", companiesArray);
+                    });
+                },
                 sizeLayout: function() {
                     // TODO: Maybe handle wizard tep sizing here somehow
                     var tabHeight = $(window).height() - 200;
@@ -2362,6 +2344,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         todayBtn: 'linked',
                         autoclose: true,
                         todayHighlight: true,
+                        format: 'mm/dd/yyyy',
                         zIndexOffset: 1000000
                     });
                     $("#ContractStartDate").datepicker().on('changeDate', function(e) {
@@ -2422,12 +2405,19 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 
             }
 
+            var isDate = function(date) {
+                return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
+            }
+
             var truthify = (obj) => {
                 Object.keys(obj).forEach(key => {
                     if ( obj[key] === "true" ) {
                         obj[key] = true;
                     } else if ( obj[key] === "false" ) {
                         obj[key] = false;
+                    } else if ( isDate(obj[key]) ) {
+                        console.log(obj[key]);
+                        obj[key] = moment(obj[key]).format("DD/MM/YYY")
                     }
                     
                     if (obj[key] !== null && obj[key] !== undefined && typeof obj[key] === 'object') {

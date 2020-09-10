@@ -1,10 +1,10 @@
 {
 	"QuoteProcess": {
-		"NewQuote": "true",
+		"NewQuote": "false",
 		"QuoteMaintenance": "false",
 		"PendingCustomerApproval": "false",
 		"QuoteAcceptedRejected": "false",
-		"PendingRegionalApproval": "false",
+		"PendingRegionalApproval": "true",
 		"PendingCorporateApproval": "false",
 		"ProvisioningInfrastructure": "false",
 		"InfrastructureHandover": "false"
