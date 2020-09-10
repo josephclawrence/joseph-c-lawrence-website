@@ -1172,37 +1172,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>Sub-region</span>
                                                                   </label>
                                                                </div>
-                                                               <div class="form-group customer-details md-outline">
-                                                                  <input
-                                                                     type="number"
-                                                                     data-bind="value: NumberOfUsers"
-                                                                     min="0"
-                                                                     max="2000"
-                                                                     step="1"
-                                                                     id="NumberOfUsers"
-                                                                     name="NumberOfUsers"
-                                                                     value=""
-                                                                     class="form-control"
-                                                                     required
-                                                                     />
-                                                                  <label for="NumberOfUsers" class="">
-                                                                  <span>Number of users</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline customer-details">
-                                                                  <select type="text" 
-                                                                     id="PaymentCycle" name="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
-                                                                  <label for="PaymentCycle" class="">
-                                                                  <span>Payment cycle</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group existing-customer-field md-outline input-with-post-icon">
-                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                  <input class="form-control date" id="LicenseStartDate" name="LicenseStartDate">
-                                                                  <label for="LicenseStartDate" class="">
-                                                                  <span>License start date</span>
-                                                                  </label>
-                                                               </div>
+                                                               <div class="form-group md-outline">
+                                                                    <select 
+                                                                    id="Currency" name="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
+                                                                    <label for="Currency" class="">
+                                                                    <span>Currency</span>
+                                                                    </label>  
+                                                                </div>
+                                                               
                                                                <div class="form-group md-outline customer-details">
                                                                   <textarea class="form-control " id="QuoteDescription"
                                                                      name="QuoteDescription"
@@ -1213,7 +1190,37 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                </div>
                                                             </div>
                                                             <div class="col-sm-6 customer-details sys-pd-t-5">
-
+                                                                <div class="form-group customer-details md-outline">
+                                                                    <input
+                                                                       type="number"
+                                                                       data-bind="value: NumberOfUsers"
+                                                                       min="0"
+                                                                       max="2000"
+                                                                       step="1"
+                                                                       id="NumberOfUsers"
+                                                                       name="NumberOfUsers"
+                                                                       value=""
+                                                                       class="form-control"
+                                                                       required
+                                                                       />
+                                                                    <label for="NumberOfUsers" class="">
+                                                                    <span>Number of users</span>
+                                                                    </label>
+                                                                 </div>
+                                                                 <div class="form-group md-outline customer-details">
+                                                                    <select type="text" 
+                                                                       id="PaymentCycle" name="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
+                                                                    <label for="PaymentCycle" class="">
+                                                                    <span>Payment cycle</span>
+                                                                    </label>
+                                                                 </div>
+                                                                 <div class="form-group existing-customer-field md-outline input-with-post-icon">
+                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                    <input class="form-control date" id="LicenseStartDate" name="LicenseStartDate">
+                                                                    <label for="LicenseStartDate" class="">
+                                                                    <span>License start date</span>
+                                                                    </label>
+                                                                 </div>
                                                                 <div class="form-group md-outline quote-field input-with-post-icon">
                                                                     <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
                                                                     <input class="form-control date" 
@@ -1276,13 +1283,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>Post/ZIP code</span>
                                                                   </label>
                                                                </div>
-                                                               <div class="form-group md-outline">
-                                                                  <select 
-                                                                     id="Currency" name="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
-                                                                  <label for="Currency" class="">
-                                                                  <span>Currency</span>
-                                                                  </label>  
-                                                               </div>
+                                                               
                                                                <div class="form-group md-outline">
                                                                   <input id="ContactName" name="ContactName" data-bind="value: ContactName" type="text" class="form-control">
                                                                   <label for="ContactName" class="">
@@ -1835,10 +1836,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.PendingCustomerApproval}">
                     <!-- <span class="progress-bar__steps--numbers"></span> -->
                     <span class="progress-bar__steps--text">Pending Customer Approval</span>
-                </li>
-                <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.QuoteAcceptedRejected}">
-                    <!-- <span class="progress-bar__steps--numbers"></span> -->
-                    <span class="progress-bar__steps--text">Quote Accepted/Rejected</span>
                 </li>
                 <li class="progress-bar__steps" data-bind="css: {current: QuoteProcess.PendingRegionalApproval}">
                     <!-- <span class="progress-bar__steps--numbers"></span> -->
@@ -2405,9 +2402,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 
             }
 
-            var isDate = function(date) {
-                return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
-            }
 
             var truthify = (obj) => {
                 Object.keys(obj).forEach(key => {
@@ -2415,8 +2409,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         obj[key] = true;
                     } else if ( obj[key] === "false" ) {
                         obj[key] = false;
-                    } else if ( isDate(obj[key]) ) {
-                        console.log(obj[key]);
+                    } else if ( (obj[key] !== null && obj[key] !== undefined) && (key === "QuoteDate" || key === "ExpiryDate" || key === "LicenseStartDate" || key === "ContractStartDate" || key === "ContractEndDate" )) {
                         obj[key] = moment(obj[key]).format("DD/MM/YYY")
                     }
                     
