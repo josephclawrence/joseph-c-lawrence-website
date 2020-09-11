@@ -621,12 +621,25 @@
     font-size: 24px;
     cursor: pointer;
 }
-.packages-options .package .active .package-selected-icon {
+.packages-options .package .active .package-selected-icon, .packages-options .package .active {
     color: #f1c40f;
 }
-
-.packages-options .package .active .package-selected-icon.sys-fg-warning {
+.package.sys-fg-white .checkbox .checkbox-material .check {
+    border: 2px solid #ecf0f1;
+}
+.packages-options .package .active .package-selected-icon.sys-fg-warning,
+.package.sys-fg-white .mandatory-package .checkbox input[type='checkbox']:checked + .checkbox-material .check:before, 
+.package.sys-fg-white .mandatory-package .checkbox input[type='checkbox']:checked + .checkbox-material .check {
     color: #e67e22;
+    border-color: #e67e22 !important;
+}
+.packages-options .package .package-selected-check .mandatory-package .checkbox-material .check {
+    border: 2px solid #e67e22 !important;
+    color: #e67e22;
+}
+.package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check:before, .package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check {
+    color: #ffffff;
+    border-color: #ffffff;
 }
 .package .checkbox .checkbox-material {
     top: 1px;
@@ -1017,6 +1030,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         <a
                             href="#"
                             class="text-primary fusion-main-page-buttons nav-link fusion-current-account"
+                            data-notes-id="AcceptNotes"
+                            data-show-reject-reasons="true"
                         >
                             <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
                         </a>
@@ -1339,7 +1354,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                </h3>
                                                             </div>
                                                          </div>
-                                                         <div class="row" data-template="packageTemplate" data-bind="source: CoreBundles.Product"></div>
+                                                         <div class="row" data-template="packageTemplate" data-bind="source: CoreBundles.Product" data-test="some"></div>
                                                          <div class="row">
                                                             <div class="col-xs-12">
                                                                <h3 class="">
@@ -1448,7 +1463,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         name="AdditionalEnvironmentTest"
                                                                         data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTest"
                                                                         >
-                                                                     Additional environment: Test
+                                                                        Include Test Environment
                                                                      </label>
                                                                   </div>
                                                                </div>
@@ -1459,9 +1474,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         type="checkbox" 
                                                                         id="AdditionalEnvironmentTestHighlyAvail" 
                                                                         name="AdditionalEnvironmentTestHighlyAvail"
-                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTestHighlyAvail"
+                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTestHighlyAvail, disabled: disableTestHighlyAvailable"
                                                                         >
-                                                                     Additional environment: Test - highly available?
+                                                                     Make highly available
                                                                      </label>
                                                                   </div>
                                                                </div>
@@ -1474,7 +1489,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         name="AdditionalEnvironmentDev"
                                                                         data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
                                                                         >
-                                                                     Additional environment: Dev
+                                                                        Include Dev Environment
                                                                      </label>
                                                                   </div>
                                                                </div>
@@ -1485,9 +1500,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         type="checkbox" 
                                                                         id="AdditionalEnvironmentDevHighlyAvail" 
                                                                         name="AdditionalEnvironmentDevHighlyAvail"
-                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDevHighlyAvail"
+                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDevHighlyAvail, disabled: disableDevHighlyAvailable"
                                                                         >
-                                                                     Additional environment: Dev - highly available?
+                                                                        Make highly available
                                                                      </label>
                                                                   </div>
                                                                </div>
@@ -1775,37 +1790,57 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                 id="createQuote"
                                                 class="btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
                                                 type="button"
+                                                data-notes-id="ApproveNotes"
+                                                data-show-reject-reasons="false"
                                                 >
                                              Generate quote
                                              </button>
                                              <hr class="sys-mg-t-10 sys-mg-b-10"/>
                                              <button
-                                                id="createQuote"
+                                                id=""
                                                 class="btn btn-block btn-success btn-md sys-txt-md sys-500"
                                                 type="button"
+                                                data-notes-id="SaveNotes"
+                                                data-show-reject-reasons="false"
                                                 >
                                              Save & continue later
                                              </button>
                                              <hr class="sys-mg-t-10 sys-mg-b-10" data-bind="visible: QuoteProcess.PendingCustomerApproval" />
                                              <div class="row" data-bind="visible: QuoteProcess.PendingCustomerApproval" >
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-4">
+                                                    <button
+                                                       id="rejectQuote"
+                                                       class="btn btn-block btn-info btn-md sys-pd-l-5 sys-pd-r-5"
+                                                       type="button"
+                                                       data-notes-id="AmendNotes"
+                                                        data-show-reject-reasons="false"
+                                                       >
+                                                    Amend
+                                                    <!-- <i class="material-icons pull-right">thumb_down</i> -->
+                                                    </button>
+                                                 </div>
+                                                <div class="col-xs-4">
                                                    <button
                                                       id="rejectQuote"
-                                                      class="btn btn-block btn-danger btn-md sys-txt-md sys-500"
+                                                      class="btn btn-block btn-danger btn-md sys-pd-l-5 sys-pd-r-5"
                                                       type="button"
+                                                      data-notes-id="RejectNotes"
+                                                        data-show-reject-reasons="true"
                                                       >
                                                    Reject
-                                                   <i class="material-icons pull-right">thumb_down</i>
+                                                   <!-- <i class="material-icons pull-right">thumb_down</i> -->
                                                    </button>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-4">
                                                    <button
                                                       id="approveQuote"
-                                                      class="btn btn-block btn-success btn-md sys-txt-md sys-500"
+                                                      class="btn btn-block btn-success btn-md sys-pd-l-5 sys-pd-r-5"
                                                       type="button"
+                                                      data-notes-id="ApproveNotes"
+                                                        data-show-reject-reasons="false"
                                                       >
                                                    Approve
-                                                   <i class="material-icons pull-right">thumb_up</i>
+                                                   <!-- <i class="material-icons pull-right">thumb_up</i> -->
                                                    </button>
                                                 </div>
                                              </div>
@@ -1867,7 +1902,50 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         <script src="js/perfect-scrollbar.js"></script>
         <script src="js/moment.min.js"></script>
         
-        <script type="text/x-kendo-template" id="packageTemplate">            
+        <div id="notesWindow">
+            
+        </div>
+
+        <script id="notesWindowTemplate" type="text/x-kendo-template">
+            <div class="container-fluid window-container">
+                <div class="row window-content">
+                    <div class="col-sm-12">
+                        # if ( rejectReasonsVisible ) { #
+                        <div class="form-group md-outline">
+                            <input
+                               id="Country" name="Country" 
+                               data-role="dropdownlist"
+                               data-bind="value:       SelectedCountry,
+                               source: CountryList.string,
+                               events: {change: onDropDownListChange}" class="form-control"
+                               required>
+                            <label for="Country" class="">
+                            <span>Country</span>
+                            </label>
+                        </div>
+                        # } #
+                        <div class="form-group md-outline">
+                            <textarea class="form-control " id="#: notesID #"
+                               name="#: notesID #"
+                               data-bind="value: #: notesID #" rows="3"></textarea>
+                            <label for="#: notesID #" class="">
+                            <span>Description</span>
+                            </label>
+                         </div>
+                    </div>
+                </div>
+                <div class="row window-footer" style="width: auto !important">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-default pull-left closeWindow">Cancel</button>
+                        <button type="button" id="saveNotes" class="btn btn-primary pull-right sys-mg-l-5">Save notes</button>
+                    </div>
+                </div>
+            </div>
+            
+        </script>
+
+        <script type="text/x-kendo-template" id="packageTemplate"> 
+            # console.log(data); #
             <div data-bind="css: { col-sm-6: isProductSuite, col-sm-12: isNotProductSuite }">
                 <div 
                     class="package"
@@ -1885,22 +1963,29 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     <div class="row">
                         #if (IsMandatory) {#
                             <div class="col-sm-1 text-left" data-toggle="tooltip" data-tooltip="tooltip" data-container="body" data-placement="auto top" title="" data-original-title="#: Description # is a mandatory package">
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
-                                    <input type="checkbox" autocomplete="off" checked="true" disabled>
-                                    <i class="material-icons package-selected-icon pull-left sys-fg-warning">check_circle</i>
-                                    
-                                    </label>
+
+                                <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check mandatory-package">
+                                    <div class="checkbox sys-mg-off">
+                                        <label class="sys-fg-warning" data-bind="css: {active: IsSelected}">
+                                            <input class="sys-fg-warning" type="checkbox" id="#: StockCode #" readonly checked="true" disabled>
+                                        </label>
+                                    </div>
                                 </div>
+
                             </div>
                         #} else {#
                             <div class="col-sm-1 text-left" >
+                                <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check">
+                                    <div class="checkbox sys-mg-off">
+                                        <label class="sys-fg-white" data-bind="css: {active: IsSelected}">
+                                            <input type="checkbox" id="#: StockCode #" data-bind="checked: IsSelected, css: { 
+                                                sys-fg-gray: sysfginverse,
+                                                sys-fg-white: sysfgwhite,
+                                            }">
+                                        </label>
+                                    </div>
+                                </div>
 
-                                    <i class="material-icons package-selected-icon pull-left sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r" data-bind="css: { 
-                                        sys-fg-gray: sysfginverse,
-                                        sys-fg-white: sysfgwhite,
-                                    }, checkboxBind: IsSelected">check_circle</i>
-                                    
                             </div>
                         #}#
                         <div class="col-sm-5 text-left">
@@ -1937,7 +2022,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         </div>
 
                         <div class="col-sm-2">
-                            #if (hasOwnUserCount()) {#
+                            #if (hasOwnUserCount() && !isProductSuite()) {#
                                 <div class="form-group md-outline">
                                     <input
                                         type="number"
@@ -1947,9 +2032,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         id="#: Description #UserCount"
                                         name="#: Description #UserCount"
                                         class="form-control"
-                                        data-bind="value: NumberOfUsers" 
-                                        #: isProductSuite() #
-                                        #if (isProductSuite()) {# readonly #}#                            
+                                        data-bind="value: NumberOfUsers"                                                               
                                     />
                                     <label
                                         for="#: Description #UserCount"
@@ -1957,6 +2040,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                         >Users </label
                                     >
                                 </div>
+                            #} else if (isProductSuite()) {#
+                                <span>#: NumberOfUsers # Users</span>
                             #}#
                         </div>
 
@@ -1966,9 +2051,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         </div>
                         #if ((data.FeatureList && data.FeatureList.string && data.FeatureList.string.length) || (data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
                             <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="#: StockCode #Details">
-                                <ul>
+                                <ul> 
                                     #if ((data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
-                                        
+                                       
                                         # $.each(data.SubProductList.Product, function (index, item) {
                                             #
                                             <div class="form-group checkbox-form-group sys-mg-t-5">
@@ -1984,11 +2069,11 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                      #
                                     #} else {#
                                         #   $.each(FeatureList.string, function (index, item) {
-                                                # <li>${item}</li>  #                        
+                                                # <p><i class="material-icons sys-fg-white">check_box</i> ${item}</p>#                        
                                             }); 
                                         #
                                     #}#
-                                </ul>
+                                 </ul> 
                             </div>
                         #}#
                     </div>
@@ -2053,30 +2138,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
         <script>
             
-
-            kendo.data.binders.checkboxBind = kendo.data.Binder.extend({
-                init: function(element, bindings, options) {
-                    // call the base constructor
-                    kendo.data.Binder.fn.init.call(this, element, bindings, options);
-
-                    var that = this;
-                    // listen for the change event of the element
-                    $(that.element).on('click', () => {
-                        that.change(); // call the change function
-                    });
-                },
-                refresh: function() {
-                    var that = this;
-                    var value = that.bindings['checkboxBind'].get();
-                    $(that.element).closest(".col-sm-1").toggleClass("active", value === true);
-
-                },
-                change: function() {
-                    var value = $(this.element).closest(".col-sm-1").hasClass('active');
-                    this.bindings['checkboxBind'].set(!value); // update the View-Model
-                },
-            });
-
             kendo.data.ObservableObject.prototype.parseEditDate = function() {
                 return moment(this.get("QuoteSummary.LastEdited")).format("DD/MM/YYY, HH:mm");
             };
@@ -2089,7 +2150,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.priceWithCurrency = function() {
                 return viewModel.SelectedCurrency.CurrencySymbol + this.get("Price");
             };
-
             kendo.data.ObservableObject.prototype.grandTotalWithCurrency = function() {
                 return viewModel.SelectedCurrency.CurrencySymbol + parseInt(this.get("QuoteSummary.Total")).toFixed(2);
             };
@@ -2147,7 +2207,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 });
                 activeSections.push({
                     id: 'sysprolicensedcompanies',
-                    name: 'Syspro Licensed Companies',
+                    name: 'Company list',
                     icon: 'business',
                 });
                 if ( this.educationActive() ) activeSections.push({ 
@@ -2157,8 +2217,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 });
                 
                 return activeSections;
-            };
-            
+            };            
             kendo.data.ObservableObject.prototype.wizardTabsWidth = function() {
                 var $total = viewModel.activeSections().length;
                 var $width = 100 / $total;
@@ -2191,26 +2250,26 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             kendo.data.ObservableObject.prototype.isNotProductSuite = function() {
                 return this.parent().parent() !== viewModel.CoreBundles;
             };
-            kendo.data.ObservableObject.prototype.isEmpty = function(e) {
-                console.log(e);
-                console.log(this);
-            };
             kendo.data.ObservableObject.prototype.isOutline = function() {
                 return !(this.get("type") == 'radio');
             };
             kendo.data.ObservableObject.prototype.sysfginverse = function() {
                 return this.sysbgverylightgray();
             };
-
-            
+            kendo.data.ObservableObject.prototype.disableTestHighlyAvailable = function() {
+                return !this.get('QuoteInfrastructure.AdditionalEnvironmentTest');
+            };
+            kendo.data.ObservableObject.prototype.disableDevHighlyAvailable = function() {
+                return !this.get('QuoteInfrastructure.AdditionalEnvironmentDev');
+            };            
             kendo.data.ObservableObject.prototype.onDropDownListChange = function(e) {
                 $(e.sender.element).closest('.form-group').removeClass('is-empty');
             };
 
-
             var SAAS_QUOTE = {
                 tempDraggedItem: [],
                 infoFieldWindow: null,
+                notesWindow: null,
                 init: function() {
                     kendo.bind($("body"), viewModel);
                     SAAS_QUOTE.initWizard();
@@ -2218,6 +2277,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     SAAS_QUOTE.sizeLayout();
                     SAAS_QUOTE.uiInitExtras();
                     SAAS_QUOTE.initEventListeners();
+
+                    SAAS_QUOTE.notesWindow = $('#notesWindow').kendoWindow({
+                        title:'Add notes',
+                        width: 300,
+                        visible: false,
+                        modal: true,
+                    }).data('kendoWindow');
+
                     $.material.init();
                     $("input, textarea, select").each(function(idx, input){
                         var $formGroup = $(input).closest(".form-group");
@@ -2323,6 +2390,25 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         });
                         viewModel.SysproLicensedCompanies.set("Company", companiesArray);
                     });
+
+                    $(document).on("click", ".fusion-main-page-buttons", function() {
+                        var notesID = $(this).data('notes-id');
+                        var rejectReasonsVisible = $(this).data('show-reject-reasons');
+                        var notesWindowTemplate = kendo.template($("#notesWindowTemplate").html());
+                        SAAS_QUOTE.notesWindow.center().open();
+                        SAAS_QUOTE.notesWindow.content(notesWindowTemplate({ notesID: notesID, rejectReasonsVisible: rejectReasonsVisible }));
+                        kendo.bind($("#notesWindow"), viewModel);
+                    });
+
+                    $(document).on("click", "#notesWindow .closeWindow", function() {
+                        // TODO: undo changes that occurred via binding
+                        SAAS_QUOTE.notesWindow.close();
+                    });
+                    
+                    $(document).on("click", "#saveNotes", function() {
+                        SAAS_QUOTE.notesWindow.close();
+                    });
+                    
                 },
                 sizeLayout: function() {
                     // TODO: Maybe handle wizard tep sizing here somehow
