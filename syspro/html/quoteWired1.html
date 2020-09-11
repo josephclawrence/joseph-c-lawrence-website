@@ -1669,7 +1669,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      data-bind="value: QuoteInfrastructure.CurrencySymbol" 
                                                                      >
                                                                   <label for="CurrencySymbol" class="">
-                                                                  <span>Thousand Separator</span>
+                                                                  <span>Currency symbol</span>
                                                                   </label>
                                                                </div>
                                                             </div>
@@ -1689,7 +1689,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     <th style="width: 30px;"></th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody data-template="licensedCompanyTemplate" data-bind="source: SysproLicensedCompanies.Company"></tbody>
+                                                            <tbody data-template="licensedCompanyTemplate" data-bind="source: CompanyList.Company"></tbody>
                                                         </table>
                                                         <button class="btn btn-primary" id="addLicensedCompany">Add row</button>
                                                     </div>
@@ -1790,7 +1790,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                 id="createQuote"
                                                 class="btn btn-block btn-primary btn-lg sys-txt-lg sys-600"
                                                 type="button"
-                                                data-notes-id="ApproveNotes"
+                                                data-notes-id="AcceptNotes"
                                                 data-show-reject-reasons="false"
                                                 >
                                              Generate quote
@@ -1913,14 +1913,17 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         # if ( rejectReasonsVisible ) { #
                         <div class="form-group md-outline">
                             <input
-                               id="Country" name="Country" 
+                               id="Reason" name="Reason" 
                                data-role="dropdownlist"
-                               data-bind="value:       SelectedCountry,
-                               source: CountryList.string,
+                               data-value-primitive="true"
+                               data-text-field="Description"
+                               data-value-field="Code"
+                               data-bind="value: SelectedReasonCode,
+                               source: ReasonCodeList.ReasonCode,
                                events: {change: onDropDownListChange}" class="form-control"
                                required>
-                            <label for="Country" class="">
-                            <span>Country</span>
+                            <label for="Reason" class="">
+                            <span>Reason</span>
                             </label>
                         </div>
                         # } #
@@ -1945,7 +1948,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         </script>
 
         <script type="text/x-kendo-template" id="packageTemplate"> 
-            # console.log(data); #
             <div data-bind="css: { col-sm-6: isProductSuite, col-sm-12: isNotProductSuite }">
                 <div 
                     class="package"
@@ -2107,10 +2109,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             </tr>
         </script>
         <script id="licensedCompanyTemplate" type="text/x-kendo-template">
-            <tr data-naics="NAICS#: NAICSCode #"">
+            <tr data-uid="#: uid #"">
                 <td>
                     <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                        <input type="text" id="#: CompanyName #" name="#: CompanyName #" data-bind="value: CompanyName" class="form-control">
+                        <input type="text" id="#: CompanyCode #" name="#: CompanyCode #" data-bind="value: CompanyCode" class="form-control">
                      </div>
                 </td>
                 <td>
@@ -2119,7 +2121,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                      </div>
                 </td>
                 <td>
-                    <i class="material-icons sys-fg-danger remove-company" data-naics="#: NAICSCode #">delete_forever</i>
+                    <i class="material-icons sys-fg-danger remove-company" data-uid="#: uid #">delete_forever</i>
                 </td>
             </tr>
         </script>
@@ -2370,25 +2372,28 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 initEventListeners: function() {
                     // TODO: create temp NAICS? ID?
                     $(document).on("click", "#addLicensedCompany", function() {
-                        viewModel.SysproLicensedCompanies.set("Company", [
-                            ...viewModel.SysproLicensedCompanies.get("Company"),
+                        var companyList = viewModel.CompanyList.get("Company");
+                        var companyListArray = companyList.length ? companyList : [companyList];
+                        viewModel.CompanyList.set("Company", [
+                            ...companyListArray,
                             {
-                                "CompanyName": "",
+                                "CompanyCode": "",
                                 "NAICSCode": "",
                             }
                         ]);
                     });
                     $(document).on("click", ".remove-company", function() {
-                        var naics = $(this).data("naics");
-                        var companiesArray = [...viewModel.SysproLicensedCompanies.Company];
-                        companiesArray.forEach(function(company, idx) {
-                            if ( company.NAICSCode.toString() === naics.toString() ) {
+                        var uid = $(this).data("uid");
+                        var companyList = viewModel.CompanyList.get("Company");
+                        var companyListArray = companyList.length ? companyList : [companyList];
+                        companyListArray.forEach(function(company, idx) {
+                            if ( company.uid === uid ) {
                                 if (idx > -1) {
-                                    companiesArray.splice(idx, 1);
+                                    companyListArray.splice(idx, 1);
                                 }
                             }
                         });
-                        viewModel.SysproLicensedCompanies.set("Company", companiesArray);
+                        viewModel.CompanyList.set("Company", companyListArray);
                     });
 
                     $(document).on("click", ".fusion-main-page-buttons", function() {
@@ -2431,8 +2436,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         zIndexOffset: 1000000
                     });
                     $("#ContractStartDate").datepicker().on('changeDate', function(e) {
-                        console.log(e);
-                        console.log(moment(e.date).add(3, 'Y').toDate());
                         $("#ContractEndDate").datepicker('update', moment(e.date).add(3, 'Y').toDate());
                     });
                     $(".date").siblings(".input-prefix").click(function(e){
@@ -2470,16 +2473,15 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             var vmChangeHandler = (e, category) => {
                 var regex = /\d/g;
                 var hasIndex = regex.test(e.field);
-                var newValue = category === 'QuoteInformation' || category === 'QuoteInfrastructure' 
+                var newValue = category === 'QuoteInformation' || category === 'QuoteInfrastructure' || category === 'CompanyList' 
                     ? e.sender[e.field] 
                     : hasIndex
                     ? byString(e.items[0], e.field)
                     : e.items[0][e.field]
-                
-                
+                                
                 var changeData = {
                     category: category,
-                    item: category === 'QuoteInformation' || category === 'QuoteInfrastructure' ? e.field : e.items[0].StockCode,
+                    item: category === 'QuoteInformation' || category === 'QuoteInfrastructure' || category === 'CompanyList' ? e.field : e.items[0].StockCode,
                     field: e.field,
                     newValue: newValue
                 };
@@ -2517,6 +2519,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     viewModel.CoreBundles.Product.bind("change", (e) => vmChangeHandler(e, 'CoreBundles'));
                     // viewModel.IsvSoftware.Product.bind("change", vmChangeHandler);
                     viewModel.ApiServices.Product.bind("change", (e) => vmChangeHandler(e, 'ApiServices'));
+                    viewModel.CompanyList.bind("change", (e) => vmChangeHandler(e, 'CompanyList'));
 
                     SAAS_QUOTE.init();
                     
