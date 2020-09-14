@@ -1159,8 +1159,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      name="Region"
                                                                      data-role="dropdownlist"
                                                                      data-value-primitive="true"
-                                                                     data-text-field="RegionName"
-                                                                     data-value-field="CategoryId"
+                                                                     data-text-field="Description"
+                                                                     data-value-field="RegionCode"
                                                                      data-bind="value:       SelectedRegion,
                                                                      source: RegionList.Region,
                                                                      events: {change: onDropDownListChange}" class="form-control" required
@@ -1175,10 +1175,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      name="SubRegion" 
                                                                      data-role="dropdownlist"
                                                                      data-value-primitive="true"
-                                                                     data-text-field="RegionName"
-                                                                     data-value-field="CategoryId"
+                                                                     data-text-field="Description"
+                                                                     data-value-field="RegionCode"
                                                                      data-cascade-from="Region"
-                                                                     data-bind="value:       SelectedSubRegion,
+                                                                     data-bind="value: SelectedSubRegion,
                                                                      source: SubRegionList.Region,
                                                                      events: {change: onDropDownListChange}" class="form-control"
                                                                      disabled="disabled" required
@@ -1356,10 +1356,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                          </div>
                                                          <div class="row">
                                                             <div class="col-sm-6">
-                                                                <div class="row" data-template="packageTemplate" data-bind="source: CoreBundles.Product" data-test="some"></div>
+                                                                <div class="row" data-template="packageTemplate" data-bind="source: CoreBundles.Product"></div>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <div class="row" data-template="packageTemplate" data-bind="source: CoreBundlesPlus.Product" data-test="some"></div>
+                                                                <div class="row" data-template="packageTemplate" data-bind="source: CoreBundlesPlus.Product"></div>
                                                             </div>
                                                          </div>
                                                          
@@ -1955,124 +1955,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             
         </script>
 
-        <script type="text/x-kendo-template" id="coreBundleTemplate"> 
-
-            <div data-bind="col-sm-12">
-                <div 
-                    class="package"
-                    data-sku="#: StockCode #"
-                    data-bind="css: { 
-                        sys-bg-inverse: sysbginverse,
-                        sys-bg-success: sysbgsuccess,
-                        sys-bg-info: sysbginfo,
-                        sys-bg-primary: sysbgprimary,
-                        sys-bg-very-light-gray: sysbgverylightgray,
-                        sys-fg-inverse: sysfginverse,
-                        sys-fg-white: sysfgwhite,
-                    }"
-                >
-                    <div class="row">
-                        #if (IsMandatory) {#
-                            <div class="col-sm-1 text-left" data-toggle="tooltip" data-tooltip="tooltip" data-container="body" data-placement="auto top" title="" data-original-title="#: Description # is a mandatory package">
-
-                                <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check mandatory-package">
-                                    <div class="checkbox sys-mg-off">
-                                        <label class="sys-fg-warning" data-bind="css: {active: IsSelected}">
-                                            <input class="sys-fg-warning" type="checkbox" id="#: StockCode #" readonly checked="true" disabled>
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div>
-                        #} else {#
-                            <div class="col-sm-1 text-left" >
-                                <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check">
-                                    <div class="checkbox sys-mg-off">
-                                        <label class="sys-fg-white" data-bind="css: {active: IsSelected}">
-                                            <input type="checkbox" id="#: StockCode #" data-bind="checked: IsSelected, css: { 
-                                                sys-fg-gray: sysfginverse,
-                                                sys-fg-white: sysfgwhite,
-                                            }">
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div>
-                        #}#
-                        <div class="col-sm-5 text-left">
-                            <a href="#: ProductLink #" class="package-title" data-toggle="tooltip" 
-                            data-tooltip="tooltip" data-container="body"
-                            data-placement="top" title="Download details document">
-                                <i class="material-icons sys-txt-sm" data-bind="css: { 
-                                    sys-fg-inverse: sysfginverse,
-                                    sys-fg-white: sysfgwhite,
-                                }">description</i>
-                            </a>
-                            #if ((data.FeatureList && data.FeatureList.string && data.FeatureList.string.length) || (data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
-                                <a href="\\##: StockCode #Details" role="button" data-toggle="collapse" class="package-title sys-mg-r-5" aria-expanded="false" aria-controls="#: StockCode #Details"
-                                data-toggle="tooltip" 
-                                    data-tooltip="tooltip" data-container="body"
-                                    data-placement="top" title="View details" data-bind="css: { 
-                                        sys-fg-inverse: sysfginverse,
-                                        sys-fg-white: sysfgwhite,
-                                    }">
-                                    <b>#: Description #</b>
-                                    <!-- <i class="material-icons sys-txt-sm" data-bind="css: { 
-                                        sys-fg-inverse: sysfginverse,
-                                        sys-fg-white: sysfgwhite,
-                                    }"
-                                    >info</i> -->
-                                    <i class="material-icons sys-txt-sm package-title-arrow" data-bind="css: { 
-                                        sys-fg-inverse: sysfginverse,
-                                        sys-fg-white: sysfgwhite,
-                                    }">expand_more</i>
-                                </a>
-                            #} else {#
-                                <b>#: Description #</b>
-                            #}#
-                        </div>
-
-                        <div class="col-sm-2">
-                            <span>#: NumberOfUsers # Users</span>
-                        </div>
-
-                        <div class="col-sm-4 text-right">                         
-                            <b data-bind="text: currency"></b>
-                            <b class="discount-amount" data-bind="text: priceWithCurrency"></b>                            
-                        </div>
-                        #if ((data.FeatureList && data.FeatureList.string && data.FeatureList.string.length) || (data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
-                            <div class="col-xs-12 text-left sys-pd-t-10 collapse" id="#: StockCode #Details">
-                                <ul> 
-                                    #if ((data.SubProductList && data.SubProductList.Product && data.SubProductList.Product.length)) {#
-                                       
-                                        # $.each(data.SubProductList.Product, function (index, item) {
-                                            #
-                                            <div class="form-group checkbox-form-group sys-mg-t-5">
-                                                 <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                     <label class="sys-fg-white" data-bind="css: {active: IsSelected}">
-                                                         <input type="checkbox" id="${item.StockCode}" data-bind="checked: SubProductList.Product[${index}].IsSelected">
-                                                         ${item.Description}
-                                                     </label>
-                                                 </div>
-                                             </div>
-                                             #                    
-                                       }); 
-                                     #
-                                    #} else {#
-                                        #   $.each(FeatureList.string, function (index, item) {
-                                                # <p><i class="material-icons sys-fg-white">check_box</i> ${item}</p>#                        
-                                            }); 
-                                        #
-                                    #}#
-                                 </ul> 
-                            </div>
-                        #}#
-                    </div>
-                </div>
-            </div>
-
-        </script>
-
         <script type="text/x-kendo-template" id="packageTemplate"> 
 
             <div class="col-sm-12">
@@ -2539,7 +2421,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     
                     $(document).off("click", "#saveNotes").on("click", "#saveNotes", function() {
                         var notesID = $(SAAS_QUOTE.notesWindow.element).find('textarea').attr('id');
-                        console.log(notesID);
                         SAAS_QUOTE.notesWindow.close();
                     });
                     
@@ -2648,7 +2529,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     viewModel.QuoteInfrastructure.bind("change", (e) => vmChangeHandler(e, 'QuoteInfrastructure'));
                     viewModel.AdditionalSoftware.Product.bind("change", (e) => vmChangeHandler(e, 'AdditionalSoftware'));
                     viewModel.CoreBundles.Product.bind("change", (e) => vmChangeHandler(e, 'CoreBundles'));
-                    viewModel.CoreBundlesPlus.Product.bind("change", (e) => vmChangeHandler(e, 'CoreBundles'));
+                    viewModel.CoreBundlesPlus.Product.bind("change", (e) => vmChangeHandler(e, 'CoreBundlesPlus'));
                     // viewModel.IsvSoftware.Product.bind("change", vmChangeHandler);
                     viewModel.ApiServices.Product.bind("change", (e) => vmChangeHandler(e, 'ApiServices'));
                     viewModel.CompanyList.bind("change", (e) => vmChangeHandler(e, 'CompanyList'));

@@ -30,90 +30,90 @@
 	"RegionList": {
 		"Region": [
 			{
-				"RegionName": "Africa",
-				"CategoryId": "Africa"
+				"Description": "Africa",
+				"RegionCode": "Africa"
 			},
 			{
-				"RegionName": "North America",
-				"CategoryId": "North America"
+				"Description": "North America",
+				"RegionCode": "North America"
 			},
 			{
-				"RegionName": "South America",
-				"CategoryId": "South America"
+				"Description": "South America",
+				"RegionCode": "South America"
 			},
 			{
-				"RegionName": "Europe",
-				"CategoryId": "Europe"
+				"Description": "Europe",
+				"RegionCode": "Europe"
 			},
 			{
-				"RegionName": "Australasia",
-				"CategoryId": "Australasia"
+				"Description": "Australasia",
+				"RegionCode": "Australasia"
 			},
 			{
-				"RegionName": "Asia",
-				"CategoryId": "Asia"
+				"Description": "Asia",
+				"RegionCode": "Asia"
 			}
 		]
 	},
 	"SelectedRegion": {
-		"RegionName": "RSA",
-		"CategoryId": "RSA"
+		"Description": "RSA",
+		"RegionCode": "RSA"
 	},
 	"SubRegionList": {
 		"Region": [
 			{
-				"RegionName": "South Africa",
-				"CategoryId": "Africa"
+				"Description": "South Africa",
+				"RegionCode": "Africa"
 			},
 			{
-				"RegionName": "Kenya",
-				"CategoryId": "Africa"
+				"Description": "Kenya",
+				"RegionCode": "Africa"
 			},
 			{
-				"RegionName": "USA",
-				"CategoryId": "North America"
+				"Description": "USA",
+				"RegionCode": "North America"
 			},
 			{
-				"RegionName": "Mexico",
-				"CategoryId": "North America"
+				"Description": "Mexico",
+				"RegionCode": "North America"
 			},
 			{
-				"RegionName": "Brazil",
-				"CategoryId": "South America"
+				"Description": "Brazil",
+				"RegionCode": "South America"
 			},
 			{
-				"RegionName": "Argentina",
-				"CategoryId": "South America"
+				"Description": "Argentina",
+				"RegionCode": "South America"
 			},
 			{
-				"RegionName": "France",
-				"CategoryId": "Europe"
+				"Description": "France",
+				"RegionCode": "Europe"
 			},
 			{
-				"RegionName": "Italy",
-				"CategoryId": "Europe"
+				"Description": "Italy",
+				"RegionCode": "Europe"
 			},
 			{
-				"RegionName": "Australia",
-				"CategoryId": "Australasia"
+				"Description": "Australia",
+				"RegionCode": "Australasia"
 			},
 			{
-				"RegionName": "New Zealand",
-				"CategoryId": "Australasia"
+				"Description": "New Zealand",
+				"RegionCode": "Australasia"
 			},
 			{
-				"RegionName": "China",
-				"CategoryId": "Asia"
+				"Description": "China",
+				"RegionCode": "Asia"
 			},
 			{
-				"RegionName": "Malaysia",
-				"CategoryId": "Asia"
+				"Description": "Malaysia",
+				"RegionCode": "Asia"
 			}
 		]
 	},
 	"SelectedSubRegion": {
-		"RegionName": "RSA-SA",
-		"CategoryId": "RSA"
+		"Description": "RSA-SA",
+		"RegionCode": "RSA"
 	},
 	"NumberOfUsers": "0",
 	"PaymentCycleList": {
@@ -1010,30 +1010,30 @@
 		"DeploymentRegionsList": {
 			"Region": [
 				{
-					"RegionName": "TBC",
-					"CategoryId": "TBC"
+					"Description": "TBC",
+					"RegionCode": "TBC"
 				},
 				{
-					"RegionName": "TBC",
-					"CategoryId": "TBC"
+					"Description": "TBC",
+					"RegionCode": "TBC"
 				},
 				{
-					"RegionName": "TBC",
-					"CategoryId": "TBC"
+					"Description": "TBC",
+					"RegionCode": "TBC"
 				},
 				{
-					"RegionName": "TBC",
-					"CategoryId": "TBC"
+					"Description": "TBC",
+					"RegionCode": "TBC"
 				},
 				{
-					"RegionName": "TBC",
-					"CategoryId": "TBC"
+					"Description": "TBC",
+					"RegionCode": "TBC"
 				}
 			]
 		},
 		"SelectedDeploymentRegion": {
-			"RegionName": null,
-			"CategoryId": null
+			"Description": null,
+			"RegionCode": null
 		},
 		"NumberOfDesktopUsers": "0",
 		"AdditionalEnvironmentTest": false,
