@@ -12,8 +12,8 @@
 	"IsNewQuote": false,
 	"QuoteNumber": "00000012",
 	"ReferenceNumber": "Description for Quote 12",
-	"QuoteDate": "03/09/202020",
-	"ExpiryDate": "10/09/202020",
+	"QuoteDate": "03/09/2020",
+	"ExpiryDate": "10/09/2020",
 	"QuoteVersionList": {
 		"string": [
 			"000",
