@@ -1,5 +1,5 @@
 {
-	"DummyField": "40c3c10c-8eae-4218-bf15-e30618476d1b",
+	"DummyField": "a03b7d51-68fd-4d10-bd07-654228fc628a",
 	"QuoteProcess": {
 		"NewQuote": false,
 		"QuoteMaintenance": true,
@@ -12,8 +12,8 @@
 	"IsNewQuote": false,
 	"QuoteNumber": "00000012",
 	"ReferenceNumber": "Description for Quote 12",
-	"QuoteDate": "2020-09-03T00:00:00",
-	"ExpiryDate": "2020-09-10T00:00:00",
+	"QuoteDate": "03/09/202020",
+	"ExpiryDate": "10/09/202020",
 	"QuoteVersionList": {
 		"string": [
 			"000",
@@ -115,15 +115,15 @@
 		"RegionName": "RSA-SA",
 		"CategoryId": "RSA"
 	},
-	"NumberOfUsers": "10",
+	"NumberOfUsers": "0",
 	"PaymentCycleList": {
 		"string": [
-			"Annual",
-			"Bi-annual",
-			"Quarterly"
+			"12",
+			"6",
+			"3"
 		]
 	},
-	"SelectedPaymentCycle": "Annual",
+	"SelectedPaymentCycle": "12",
 	"QuoteDescription": "Description for Quote 12",
 	"AddressLine1": "1 Witkoppen Road",
 	"AddressLine2": "Sunninghill",
@@ -371,8 +371,8 @@
 				"StockCode": "BUN-MANFND",
 				"Description": "Foundation",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "10",
-				"Price": "180",
+				"NumberOfUsers": "30",
+				"Price": "0",
 				"FeatureList": {
 					"string": [
 						"System Foundation",
@@ -384,73 +384,16 @@
 						"Interface System"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "7"
 			},
 			{
-				"IsSelected": false,
-				"IsMandatory": false,
-				"StockCode": "BUN-ADVFND",
-				"Description": "Foundation+",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "10",
-				"Price": "18",
-				"FeatureList": null,
-				"SubProductList": {
-					"Product": [
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-SPM",
-							"Description": "Process Modelling",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "10",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-SWP",
-							"Description": "Workflow Services Professional",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-NETSYS",
-							"Description": "e.net System Manager",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-NETDFM",
-							"Description": "Document Flow Manager",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						}
-					]
-				}
-			},
-			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "BUN-CORDIS",
 				"Description": "Distribution",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "10",
+				"NumberOfUsers": "30",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -461,117 +404,16 @@
 						"Counter Sales"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "4"
 			},
 			{
-				"IsSelected": false,
-				"IsMandatory": false,
-				"StockCode": "BUN-ADVDIS",
-				"Description": "Distribution+",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "10",
-				"Price": "18",
-				"FeatureList": null,
-				"SubProductList": {
-					"Product": [
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-LOT",
-							"Description": "Lot Traceability",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "10",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-MRP",
-							"Description": "Requirements Planning",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-BSO",
-							"Description": "Blanket Sales Orders and Releases",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-LCT",
-							"Description": "Landed Cost Tracking",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-TPM",
-							"Description": "Trade Promotions",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-OPT",
-							"Description": "Inventory Optimization",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-RTS",
-							"Description": "Return to Supplier",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						},
-						{
-							"IsSelected": true,
-							"IsMandatory": true,
-							"StockCode": "MOD-RMA",
-							"Description": "Return Merchandise Authorization",
-							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
-							"Price": "18",
-							"FeatureList": null,
-							"SubProductList": null
-						}
-					]
-				}
-			},
-			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "BUN-CORMAN",
 				"Description": "Manufacturing",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "10",
+				"NumberOfUsers": "30",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -583,15 +425,104 @@
 						"Quotations and Estimates"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "5"
 			},
 			{
-				"IsSelected": false,
-				"IsMandatory": false,
-				"StockCode": "BUN-ADVMAN",
-				"Description": "Manufacturing+",
+				"IsSelected": true,
+				"IsMandatory": true,
+				"StockCode": "BUN-MANFIN",
+				"Description": "Financials",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "10",
+				"NumberOfUsers": "30",
+				"Price": "18",
+				"FeatureList": {
+					"string": [
+						"Accounts Receivable",
+						"Accounts Payable",
+						"General Ledger",
+						"Cash Book",
+						"Asset Register",
+						"Electronic Funds"
+					]
+				},
+				"SubProductList": null,
+				"OriginalLineNumber": "6"
+			}
+		]
+	},
+	"CoreBundlesPlus": {
+		"Product": [
+			{
+				"IsSelected": true,
+				"IsMandatory": false,
+				"StockCode": "BUN-ADVFND",
+				"Description": "Foundation+",
+				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+				"NumberOfUsers": "30",
+				"Price": "18",
+				"FeatureList": null,
+				"SubProductList": {
+					"Product": [
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-SPM",
+							"Description": "Process Modelling",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-SWP",
+							"Description": "Workflow Services Professional",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-NETSYS",
+							"Description": "e.net System Manager",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-NETDFM",
+							"Description": "Document Flow Manager",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						}
+					]
+				},
+				"OriginalLineNumber": "2"
+			},
+			{
+				"IsSelected": true,
+				"IsMandatory": false,
+				"StockCode": "BUN-ADVDIS",
+				"Description": "Distribution+",
+				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+				"NumberOfUsers": "30",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": {
@@ -605,7 +536,8 @@
 							"NumberOfUsers": "0",
 							"Price": "18",
 							"FeatureList": null,
-							"SubProductList": null
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
 						},
 						{
 							"IsSelected": true,
@@ -616,7 +548,119 @@
 							"NumberOfUsers": "0",
 							"Price": "18",
 							"FeatureList": null,
-							"SubProductList": null
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-BSO",
+							"Description": "Blanket Sales Orders and Releases",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-LCT",
+							"Description": "Landed Cost Tracking",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-TPM",
+							"Description": "Trade Promotions",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-OPT",
+							"Description": "Inventory Optimization",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-RTS",
+							"Description": "Return to Supplier",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-RMA",
+							"Description": "Return Merchandise Authorization",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						}
+					]
+				},
+				"OriginalLineNumber": "1"
+			},
+			{
+				"IsSelected": true,
+				"IsMandatory": false,
+				"StockCode": "BUN-ADVMAN",
+				"Description": "Manufacturing+",
+				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+				"NumberOfUsers": "30",
+				"Price": "18",
+				"FeatureList": null,
+				"SubProductList": {
+					"Product": [
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-LOT",
+							"Description": "Lot Traceability",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
+						},
+						{
+							"IsSelected": true,
+							"IsMandatory": true,
+							"StockCode": "MOD-MRP",
+							"Description": "Requirements Planning",
+							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
+							"NumberOfUsers": "0",
+							"Price": "18",
+							"FeatureList": null,
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
 						},
 						{
 							"IsSelected": true,
@@ -627,7 +671,8 @@
 							"NumberOfUsers": "0",
 							"Price": "18",
 							"FeatureList": null,
-							"SubProductList": null
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
 						},
 						{
 							"IsSelected": true,
@@ -638,7 +683,8 @@
 							"NumberOfUsers": "0",
 							"Price": "18",
 							"FeatureList": null,
-							"SubProductList": null
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
 						},
 						{
 							"IsSelected": true,
@@ -649,30 +695,12 @@
 							"NumberOfUsers": "0",
 							"Price": "18",
 							"FeatureList": null,
-							"SubProductList": null
+							"SubProductList": null,
+							"OriginalLineNumber": "0"
 						}
 					]
-				}
-			},
-			{
-				"IsSelected": true,
-				"IsMandatory": true,
-				"StockCode": "BUN-MANFIN",
-				"Description": "Financials",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "10",
-				"Price": "18",
-				"FeatureList": {
-					"string": [
-						"Accounts Receivable",
-						"Accounts Payable",
-						"General Ledger",
-						"Cash Book",
-						"Asset Register",
-						"Electronic Funds"
-					]
 				},
-				"SubProductList": null
+				"OriginalLineNumber": "3"
 			}
 		]
 	},
@@ -696,7 +724,8 @@
 						"Report Writer Primary Query"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "9"
 			},
 			{
 				"IsSelected": true,
@@ -717,7 +746,8 @@
 						"Return to Supplier Primary Query"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "8"
 			},
 			{
 				"IsSelected": true,
@@ -737,7 +767,8 @@
 						"Report Writer Primary Query"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "13"
 			},
 			{
 				"IsSelected": true,
@@ -761,7 +792,8 @@
 						"Bill of Materials Engineering Change Control"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "11"
 			},
 			{
 				"IsSelected": false,
@@ -782,7 +814,8 @@
 						"Lot Traceability Primary Query"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": false,
@@ -803,7 +836,8 @@
 						"Return to Supplier Primary Posting"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": true,
@@ -825,7 +859,8 @@
 						"Requirements Planning Primary Posting"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "12"
 			},
 			{
 				"IsSelected": true,
@@ -845,7 +880,8 @@
 						"Inventory Product Configurator"
 					]
 				},
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "10"
 			}
 		]
 	},
@@ -860,7 +896,8 @@
 				"NumberOfUsers": "20",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "16"
 			},
 			{
 				"IsSelected": false,
@@ -871,7 +908,8 @@
 				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": false,
@@ -882,7 +920,8 @@
 				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": true,
@@ -893,7 +932,8 @@
 				"NumberOfUsers": "2",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "18"
 			},
 			{
 				"IsSelected": true,
@@ -904,7 +944,8 @@
 				"NumberOfUsers": "2",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "14"
 			},
 			{
 				"IsSelected": true,
@@ -915,7 +956,8 @@
 				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "15"
 			},
 			{
 				"IsSelected": false,
@@ -926,7 +968,8 @@
 				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": true,
@@ -937,7 +980,8 @@
 				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": null,
-				"SubProductList": null
+				"SubProductList": null,
+				"OriginalLineNumber": "17"
 			}
 		]
 	},
@@ -1007,7 +1051,7 @@
 				"yy / MM / dd"
 			]
 		},
-		"SelectedShortDateFormat": "dd/MM/yyyy",
+		"SelectedShortDateFormat": null,
 		"LongDateFormatList": {
 			"string": [
 				"dddd D MMMM yyyy",
@@ -1019,7 +1063,7 @@
 				"yyy MMM D"
 			]
 		},
-		"SelectedLongDateFormat": "dddd D MMMM yyyy",
+		"SelectedLongDateFormat": null,
 		"ReportDateFormatList": {
 			"string": [
 				"dd/MM/yyyy HH:mm",
@@ -1031,7 +1075,7 @@
 				"yy / MM / dd HH: mm"
 			]
 		},
-		"SelectedReportDateFormat": "dd/MM/yyyy HH:mm",
+		"SelectedReportDateFormat": null,
 		"ServerTimeZoneList": {
 			"TimeZone": [
 				{
@@ -1599,7 +1643,7 @@
 		"ThousandSeparator": null,
 		"DecimalSeparator": null,
 		"CurrencySymbol": null,
-		"ProvisioningStartDate": "2020-09-11T00:00:00+02:00",
+		"ProvisioningStartDate": "2020-09-14T00:00:00+02:00",
 		"SmtpIp": null,
 		"SmtpEmail": null,
 		"ServerPort": "0",
@@ -1617,22 +1661,47 @@
 	"QuoteSummary": {
 		"QuoteNumber": "00000012",
 		"QuoteVersion": "0",
-		"LastEdited": "2020-09-11T11:51:23.0755406+02:00",
+		"LastEdited": "2020-09-14T15:31:11.8256735+02:00",
 		"LastEditedBy": "Joe",
-		"NumberOfUsers": "10",
+		"NumberOfUsers": "0",
 		"CostPerUser": "56",
-		"Total": "2988",
+		"Total": "4248",
 		"CostBreakdownList": {
 			"CostItem": [
 				{
 					"Description": "Foundation",
-					"Cost": "180",
-					"Total": "1800"
+					"Cost": "0",
+					"Total": "0"
+				},
+				{
+					"Description": "Distribution",
+					"Cost": "18",
+					"Total": "540"
+				},
+				{
+					"Description": "Manufacturing",
+					"Cost": "18",
+					"Total": "540"
 				},
 				{
 					"Description": "Financials",
 					"Cost": "18",
-					"Total": "180"
+					"Total": "540"
+				},
+				{
+					"Description": "Foundation+",
+					"Cost": "18",
+					"Total": "540"
+				},
+				{
+					"Description": "Distribution+",
+					"Cost": "18",
+					"Total": "540"
+				},
+				{
+					"Description": "Manufacturing+",
+					"Cost": "18",
+					"Total": "540"
 				},
 				{
 					"Description": "Financial Queries",
@@ -1692,7 +1761,7 @@
 			]
 		}
 	},
-	"AcceptNotes": null,
+	"ApproveNotes": null,
 	"RejectNotes": null,
 	"AmendNotes": null,
 	"SaveNotes": null,
