@@ -1,24 +1,21 @@
 {
-	"DummyField": "a03b7d51-68fd-4d10-bd07-654228fc628a",
+	"DummyField": "177b5092-5bde-438a-89cb-b5453f4b9b65",
 	"QuoteProcess": {
-		"NewQuote": false,
-		"QuoteMaintenance": true,
+		"NewQuote": true,
+		"QuoteMaintenance": false,
 		"PendingCustomerApproval": false,
 		"PendingRegionalApproval": false,
 		"PendingCorporateApproval": false,
 		"ProvisioningInfrastructure": false,
 		"InfrastructureHandover": false
 	},
-	"IsNewQuote": false,
-	"QuoteNumber": "00000012",
-	"ReferenceNumber": "Description for Quote 12",
-	"QuoteDate": "03/09/2020",
-	"ExpiryDate": "10/09/2020",
+	"IsNewQuote": true,
+	"QuoteNumber": null,
+	"ReferenceNumber": null,
+	"QuoteDate": "14/09/202020",
+	"ExpiryDate": "14/10/202020",
 	"QuoteVersionList": {
 		"string": [
-			"000",
-			"001",
-			"002",
 			"000",
 			"001",
 			"002"
@@ -30,90 +27,90 @@
 	"RegionList": {
 		"Region": [
 			{
-				"Description": "Africa",
-				"RegionCode": "Africa"
+				"RegionCode": "Africa",
+				"Description": "Africa"
 			},
 			{
-				"Description": "North America",
-				"RegionCode": "North America"
+				"RegionCode": "North America",
+				"Description": "North America"
 			},
 			{
-				"Description": "South America",
-				"RegionCode": "South America"
+				"RegionCode": "South America",
+				"Description": "South America"
 			},
 			{
-				"Description": "Europe",
-				"RegionCode": "Europe"
+				"RegionCode": "Europe",
+				"Description": "Europe"
 			},
 			{
-				"Description": "Australasia",
-				"RegionCode": "Australasia"
+				"RegionCode": "Australasia",
+				"Description": "Australasia"
 			},
 			{
-				"Description": "Asia",
-				"RegionCode": "Asia"
+				"RegionCode": "Asia",
+				"Description": "Asia"
 			}
 		]
 	},
 	"SelectedRegion": {
-		"Description": "RSA",
-		"RegionCode": "RSA"
+		"RegionCode": null,
+		"Description": null
 	},
 	"SubRegionList": {
 		"Region": [
 			{
-				"Description": "South Africa",
-				"RegionCode": "Africa"
+				"RegionCode": "South Africa",
+				"Description": "Africa"
 			},
 			{
-				"Description": "Kenya",
-				"RegionCode": "Africa"
+				"RegionCode": "Kenya",
+				"Description": "Africa"
 			},
 			{
-				"Description": "USA",
-				"RegionCode": "North America"
+				"RegionCode": "USA",
+				"Description": "North America"
 			},
 			{
-				"Description": "Mexico",
-				"RegionCode": "North America"
+				"RegionCode": "Mexico",
+				"Description": "North America"
 			},
 			{
-				"Description": "Brazil",
-				"RegionCode": "South America"
+				"RegionCode": "Brazil",
+				"Description": "South America"
 			},
 			{
-				"Description": "Argentina",
-				"RegionCode": "South America"
+				"RegionCode": "Argentina",
+				"Description": "South America"
 			},
 			{
-				"Description": "France",
-				"RegionCode": "Europe"
+				"RegionCode": "France",
+				"Description": "Europe"
 			},
 			{
-				"Description": "Italy",
-				"RegionCode": "Europe"
+				"RegionCode": "Italy",
+				"Description": "Europe"
 			},
 			{
-				"Description": "Australia",
-				"RegionCode": "Australasia"
+				"RegionCode": "Australia",
+				"Description": "Australasia"
 			},
 			{
-				"Description": "New Zealand",
-				"RegionCode": "Australasia"
+				"RegionCode": "New Zealand",
+				"Description": "Australasia"
 			},
 			{
-				"Description": "China",
-				"RegionCode": "Asia"
+				"RegionCode": "China",
+				"Description": "Asia"
 			},
 			{
-				"Description": "Malaysia",
-				"RegionCode": "Asia"
+				"RegionCode": "Malaysia",
+				"Description": "Asia"
 			}
 		]
 	},
 	"SelectedSubRegion": {
-		"Description": "RSA-SA",
-		"RegionCode": "RSA"
+		"RegionCode": null,
+		"Description": null
 	},
 	"NumberOfUsers": "0",
 	"PaymentCycleList": {
@@ -123,12 +120,12 @@
 			"3"
 		]
 	},
-	"SelectedPaymentCycle": "12",
-	"QuoteDescription": "Description for Quote 12",
-	"AddressLine1": "1 Witkoppen Road",
-	"AddressLine2": "Sunninghill",
-	"City": "Johannesburg",
-	"StateProvince": "Gauteng",
+	"SelectedPaymentCycle": null,
+	"QuoteDescription": null,
+	"AddressLine1": null,
+	"AddressLine2": null,
+	"City": null,
+	"StateProvince": null,
 	"CountryList": {
 		"string": [
 			"Afghanistan",
@@ -338,8 +335,8 @@
 			"Zimbabwe"
 		]
 	},
-	"SelectedCountry": "South Africa",
-	"PostalZipCode": "2191",
+	"SelectedCountry": null,
+	"PostalZipCode": null,
 	"CurrencyList": {
 		"Currency": [
 			{
@@ -360,9 +357,9 @@
 		"CurrencySymbol": "ZAR",
 		"CurrencyDescription": "South African Rand"
 	},
-	"ContanctName": "Contact name of prospect",
-	"ContanctPhone": "0114611000",
-	"ContanctEmail": "contactemail@prospect.com",
+	"ContanctName": null,
+	"ContanctPhone": null,
+	"ContanctEmail": null,
 	"CoreBundles": {
 		"Product": [
 			{
@@ -371,7 +368,7 @@
 				"StockCode": "BUN-MANFND",
 				"Description": "Foundation",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "30",
+				"NumberOfUsers": "0",
 				"Price": "0",
 				"FeatureList": {
 					"string": [
@@ -385,15 +382,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "7"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "BUN-CORDIS",
 				"Description": "Distribution",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "30",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -405,15 +402,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "4"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "BUN-CORMAN",
 				"Description": "Manufacturing",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "30",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -426,7 +423,7 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "5"
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": true,
@@ -434,7 +431,7 @@
 				"StockCode": "BUN-MANFIN",
 				"Description": "Financials",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "30",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -447,19 +444,19 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "6"
+				"OriginalLineNumber": "0"
 			}
 		]
 	},
 	"CoreBundlesPlus": {
 		"Product": [
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "BUN-ADVFND",
 				"Description": "Foundation+",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "30",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": {
@@ -514,15 +511,15 @@
 						}
 					]
 				},
-				"OriginalLineNumber": "2"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "BUN-ADVDIS",
 				"Description": "Distribution+",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "30",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": {
@@ -625,15 +622,15 @@
 						}
 					]
 				},
-				"OriginalLineNumber": "1"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "BUN-ADVMAN",
 				"Description": "Manufacturing+",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "30",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": {
@@ -700,19 +697,19 @@
 						}
 					]
 				},
-				"OriginalLineNumber": "3"
+				"OriginalLineNumber": "0"
 			}
 		]
 	},
 	"ApiServices": {
 		"Product": [
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "API-FINQRY",
 				"Description": "Financial Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "5",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -725,15 +722,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "9"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "API-DISQRY",
 				"Description": "Distribution Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "5",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -747,15 +744,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "8"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "API-OPEQRY",
 				"Description": "Operation Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "5",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -768,15 +765,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "13"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "API-MSTMAN",
 				"Description": "Master Data Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "5",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -793,7 +790,7 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "11"
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": false,
@@ -840,12 +837,12 @@
 				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "API-OPEMAN",
 				"Description": "Operation Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "5",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -860,15 +857,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "12"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "API-INVMAN",
 				"Description": "Inventory Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "5",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -881,23 +878,23 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "10"
+				"OriginalLineNumber": "0"
 			}
 		]
 	},
 	"AdditionalSoftware": {
 		"Product": [
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "USR-POS",
 				"Description": "Point of Sale",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "20",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": null,
-				"OriginalLineNumber": "16"
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": false,
@@ -929,35 +926,35 @@
 				"StockCode": "USR-SRS",
 				"Description": "Report designer seats",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "2",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": null,
-				"OriginalLineNumber": "18"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "USR-ESP",
 				"Description": "Espresso",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "2",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": null,
-				"OriginalLineNumber": "14"
+				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "USR-ESX",
 				"Description": "Espresso External Seats",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "1",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": null,
-				"OriginalLineNumber": "15"
+				"OriginalLineNumber": "0"
 			},
 			{
 				"IsSelected": false,
@@ -972,16 +969,16 @@
 				"OriginalLineNumber": "0"
 			},
 			{
-				"IsSelected": true,
+				"IsSelected": false,
 				"IsMandatory": false,
 				"StockCode": "API-POS",
 				"Description": "Point of Sale API",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "1",
+				"NumberOfUsers": "0",
 				"Price": "18",
 				"FeatureList": null,
 				"SubProductList": null,
-				"OriginalLineNumber": "17"
+				"OriginalLineNumber": "0"
 			}
 		]
 	},
@@ -1010,30 +1007,30 @@
 		"DeploymentRegionsList": {
 			"Region": [
 				{
-					"Description": "TBC",
-					"RegionCode": "TBC"
+					"RegionCode": "TBC",
+					"Description": "TBC"
 				},
 				{
-					"Description": "TBC",
-					"RegionCode": "TBC"
+					"RegionCode": "TBC",
+					"Description": "TBC"
 				},
 				{
-					"Description": "TBC",
-					"RegionCode": "TBC"
+					"RegionCode": "TBC",
+					"Description": "TBC"
 				},
 				{
-					"Description": "TBC",
-					"RegionCode": "TBC"
+					"RegionCode": "TBC",
+					"Description": "TBC"
 				},
 				{
-					"Description": "TBC",
-					"RegionCode": "TBC"
+					"RegionCode": "TBC",
+					"Description": "TBC"
 				}
 			]
 		},
 		"SelectedDeploymentRegion": {
-			"Description": null,
-			"RegionCode": null
+			"RegionCode": null,
+			"Description": null
 		},
 		"NumberOfDesktopUsers": "0",
 		"AdditionalEnvironmentTest": false,
@@ -1643,7 +1640,7 @@
 		"ThousandSeparator": null,
 		"DecimalSeparator": null,
 		"CurrencySymbol": null,
-		"ProvisioningStartDate": "2020-09-14T00:00:00+02:00",
+		"ProvisioningStartDate": "0001-01-01T00:00:00",
 		"SmtpIp": null,
 		"SmtpEmail": null,
 		"ServerPort": "0",
@@ -1659,13 +1656,13 @@
 		"MrpSnapshotFolder": null
 	},
 	"QuoteSummary": {
-		"QuoteNumber": "00000012",
+		"QuoteNumber": null,
 		"QuoteVersion": "0",
-		"LastEdited": "2020-09-14T15:31:11.8256735+02:00",
+		"LastEdited": "2020-09-14T18:33:27.9971718+02:00",
 		"LastEditedBy": "Joe",
 		"NumberOfUsers": "0",
 		"CostPerUser": "56",
-		"Total": "4248",
+		"Total": "0",
 		"CostBreakdownList": {
 			"CostItem": [
 				{
@@ -1674,89 +1671,14 @@
 					"Total": "0"
 				},
 				{
-					"Description": "Distribution",
-					"Cost": "18",
-					"Total": "540"
-				},
-				{
-					"Description": "Manufacturing",
-					"Cost": "18",
-					"Total": "540"
-				},
-				{
 					"Description": "Financials",
 					"Cost": "18",
-					"Total": "540"
-				},
-				{
-					"Description": "Foundation+",
-					"Cost": "18",
-					"Total": "540"
-				},
-				{
-					"Description": "Distribution+",
-					"Cost": "18",
-					"Total": "540"
-				},
-				{
-					"Description": "Manufacturing+",
-					"Cost": "18",
-					"Total": "540"
-				},
-				{
-					"Description": "Financial Queries",
-					"Cost": "18",
-					"Total": "90"
-				},
-				{
-					"Description": "Distribution Queries",
-					"Cost": "18",
-					"Total": "90"
-				},
-				{
-					"Description": "Operation Queries",
-					"Cost": "18",
-					"Total": "90"
-				},
-				{
-					"Description": "Master Data Management",
-					"Cost": "18",
-					"Total": "90"
-				},
-				{
-					"Description": "Operation Management",
-					"Cost": "18",
-					"Total": "90"
-				},
-				{
-					"Description": "Inventory Management",
-					"Cost": "18",
-					"Total": "90"
-				},
-				{
-					"Description": "Point of Sale",
-					"Cost": "18",
-					"Total": "360"
+					"Total": "0"
 				},
 				{
 					"Description": "Report designer seats",
 					"Cost": "18",
-					"Total": "36"
-				},
-				{
-					"Description": "Espresso",
-					"Cost": "18",
-					"Total": "36"
-				},
-				{
-					"Description": "Espresso External Seats",
-					"Cost": "18",
-					"Total": "18"
-				},
-				{
-					"Description": "Point of Sale API",
-					"Cost": "18",
-					"Total": "18"
+					"Total": "0"
 				}
 			]
 		}
