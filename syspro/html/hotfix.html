@@ -658,11 +658,11 @@
 .package.sys-fg-white .checkbox .checkbox-material .check {
     border: 2px solid #ecf0f1;
 }
-.package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check,
+/* .package.sys-fg-white .checkbox input[type='checkbox']:checked + .checkbox-material .check,
 .checkbox input[type='checkbox']:checked + .checkbox-material .check:before {
     color: #ffffff;
     border-color: #ffffff;
-}
+} */
 .noUi-horizontal {
     height: 10px;
     height: 3px;
@@ -1122,7 +1122,7 @@
                                                                     <p>
                                                                         <b class="">My hotfixes</b>
                                                                     </p>
-                                                                    <div  id="myHotfixes"></div>
+                                                                    <div id="myHotfixes"></div>
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div class="sys-fg-inverse package sys-bg-very-light-gray">
@@ -1204,6 +1204,7 @@
                                                                     <p>
                                                                         <b class="">General</b>
                                                                     </p>
+                                                                    <div id="generalHotfixes"></div>
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div class="sys-fg-inverse package sys-bg-very-light-gray">
@@ -1223,76 +1224,6 @@
                                                                                             data-tooltip="tooltip" data-container="body"
                                                                                             data-placement="top" title="View details">
                                                                                             <b>Update for SYSPRO 8 2018 RC (KB000009)</b>
-
-                                                                                            <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
-                                                                                        </a>
-
-                                                                                    </div>
-                                                                                    <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-15 sys-pd-r-15">
-                                                                                        <p class="hotfix-short-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-                                                                                    </div>
-                                                                                    <div class="col-xs-12 text-left  collapse sys-pd-l-15" id="finQDetails">
-                                                                                        <p>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="sys-fg-inverse package sys-bg-very-light-gray">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-1 text-left">
-                                                                                        <div class="btn-group" data-toggle="buttons">
-                                                                                            <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
-                                                                                            <input type="checkbox" autocomplete="off">
-                                                                                            <i class="material-icons package-selected-icon pull-left sys-fg-gray">check_circle</i>
-                                                                                            
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
-                                                                                        data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="View details">
-                                                                                            <b>Update for SYSPRO 8 2018 RC (KB000009)</b>
-
-                                                                                            <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
-                                                                                        </a>
-
-                                                                                    </div>
-                                                                                    <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-15 sys-pd-r-15">
-                                                                                        <p class="hotfix-short-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-                                                                                    </div>
-                                                                                    <div class="col-xs-12 text-left  collapse sys-pd-l-15" id="finQDetails">
-                                                                                        <p>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="sys-fg-inverse package sys-bg-very-light-gray">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-1 text-left">
-                                                                                        <div class="btn-group" data-toggle="buttons">
-                                                                                            <label class="btn sys-pd-l-5 sys-pd-off-t sys-pd-off-b sys-pd-off-r">
-                                                                                            <input type="checkbox" autocomplete="off">
-                                                                                            <i class="material-icons package-selected-icon pull-left sys-fg-success">check_circle</i>
-                                                                                            
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
-                                                                                        data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="View details">
-                                                                                            <span class="sys-fg-success">[Installed] </span><b>Update for SYSPRO 8 2018 RC (KB000009)</b>
 
                                                                                             <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                                                                         </a>
@@ -1523,8 +1454,18 @@
                         <div class="row">
                             <div class="col-sm-1 text-left">
                                 <div class="checkbox sys-mg-off-t sys-mg-l-5">
-                                    <label class="sys-fg-white" data-bind="css: {active: HotfixSelected}">
-                                        <input type="checkbox" id="checkbox#: HotfixId #" data-bind="checked: HotfixSelected">
+                                    <label class=" 
+                                    # if ( HotfixSelected || HotfixMandatory === "Y" ) { #
+                                        active
+                                    # } #
+                                    ">
+                                        <input type="checkbox" id="checkbox#: HotfixId #" # if ( HotfixSelected ) { #
+                                            checked 
+                                        # } #
+                                        # if ( HotfixMandatory === "Y" ) { #
+                                             &nbsp; readonly
+                                        # } #
+                                        >
                                     </label>
                                 </div>
                             </div>
@@ -1533,13 +1474,16 @@
                                 data-toggle="tooltip" 
                                     data-tooltip="tooltip" data-container="body"
                                     data-placement="top" title="View details">
-                                    <span class="sys-fg-success" data-bind="visible: HotfixInstalled">[Installed] </span>
-                                    <b><span data-bind="text: HotfixFileName"></span></b>
+                                    # if ( HotfixInstalled ) { #
+                                        <span class="sys-fg-success">[Installed] </span>
+                                    # } #
+                                    
+                                    <b>#: HotfixFileName #</b>
                                     <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                 </a>
                             </div>
                             <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-15 sys-pd-r-15">
-                                <p class="hotfix-short-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                                <p class="hotfix-short-description">#: shortHotfixSynopsis() #...</p>
                             </div>
                             <div class="col-xs-12 text-left  collapse sys-pd-l-15" id="hotfix#: HotfixId #">
                                 <p>#: HotfixSynopsis #</p>
@@ -1594,10 +1538,8 @@
             kendo.data.ObservableObject.prototype.sysproVersion = function() {
                 return this.parent().parent().get('SoftwareVersionName');
             };
-            kendo.data.ObservableObject.prototype.hotfixRequestId = function() {
-                if ( this.parent().get ) {
-                    return this.parent().get('ID');
-                }
+            kendo.data.ObservableObject.prototype.shortHotfixSynopsis = function() {
+                return this.get('HotfixSynopsis').substring(0, 36);
             };
             
             var truthify = (obj) => {
@@ -1809,7 +1751,7 @@
                 $('[data-tooltip="tooltip"]').tooltip();
 
 
-                $.getJSON( "https://josephclawrence.com/syspro/html/data/HotfixPortalBindingModel.json", function( data ) {
+                $.getJSON( "https://josephclawrence.com/syspro/html/data/HotfixModel.json", function( data ) {
                     truthify(data);
                     const { treeData, gridData } =  reFormatJSON(data);
                     console.log(treeData);
@@ -1822,7 +1764,7 @@
                         schema: {
                             model: customerModel
                         }
-                    });
+                    });                    
 
                     const treeView = $(".file-treeview").kendoTreeView({
                         // template: kendo.template($("#treeview-template").html()),
@@ -1840,8 +1782,28 @@
                                 $('#hotfixWizard').bootstrapWizard('enable',2);
                                 $('#hotfixWizard').bootstrapWizard('enable',3);
 
-                                kendo.bind($("#myHotfixes"), node);
-                                kendo.bind($("#mandatoryHotfixes"), node);
+                                $("#myHotfixes").kendoListView({
+                                    dataSource: node.AllHotfixes,
+                                    pageable: false,
+                                    template: kendo.template($("#hotfixTemplate").html())
+                                }); 
+                                $("#myHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMyHotfix", operator: "eq", value: true });
+
+                                $("#mandatoryHotfixes").kendoListView({
+                                    dataSource: node.AllHotfixes,
+                                    pageable: false,
+                                    template: kendo.template($("#hotfixTemplate").html())
+                                }); 
+                                $("#mandatoryHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMandatory", operator: "eq", value: "Y" });
+
+                                $("#generalHotfixes").kendoListView({
+                                    dataSource: node.AllHotfixes,
+                                    pageable: false,
+                                    template: kendo.template($("#hotfixTemplate").html())
+                                }); 
+                                $("#generalHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixGeneral", operator: "eq", value: true });
+                                $.material.init();
+                                kendo.bind();
                             } else if (node && node.Hotfixes) {                            
                                 $(".btn-next").attr('disabled', true);
                                 $(".icon-circle").removeClass('checked');

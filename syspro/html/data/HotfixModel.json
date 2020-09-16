@@ -142,10 +142,10 @@
 							"HotfixId": "4AA15106-D9CA-4A95-AC5C-A53601121652",
 							"HotfixFileName": "SYSPRO.8.2020.R1.KB8050002.msp",
 							"HotfixSynopsis": "Asset Movement Schedule: The sub asset and description is not listed under the master asset when the List sub assets under master option is selected.",
-							"HotfixMandatory": "N",
+							"HotfixMandatory": "Y",
 							"HotfixMyHotfix": "false",
 							"HotfixGeneral": "true",
-							"HotfixInstalled": "false",
+							"HotfixInstalled": "true",
 							"HotfixSelected": "false"
 						},
 						{
@@ -162,11 +162,11 @@
 							"HotfixId": "C0485CE2-F0B1-4FCD-B466-1A222348C259",
 							"HotfixFileName": "SYSPRO.8.2020.R1.KB8050004.msp",
 							"HotfixSynopsis": "Requisition Entry Maintenance : The VB script wasnt executed when added to the OnSubmit event for routing a requisition and the user name wasnt populated when browsing and selecting a user.",
-							"HotfixMandatory": "N",
+							"HotfixMandatory": "Y",
 							"HotfixMyHotfix": "false",
 							"HotfixGeneral": "true",
 							"HotfixInstalled": "false",
-							"HotfixSelected": "false"
+							"HotfixSelected": "true"
 						},
 						{
 							"HotfixId": "54D24DF0-A3F4-4D13-8C04-9F7E4F7D88DF",
