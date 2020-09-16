@@ -123,7 +123,7 @@
 							"HotfixFileName": "SYSPRO.8.2020.R1.KB8050002.msp",
 							"HotfixSynopsis": "Asset Movement Schedule: The sub asset and description is not listed under the master asset when the List sub assets under master option is selected.",
 							"HotfixMandatory": "N",
-							"HotfixInstalled": "false",
+							"HotfixInstalled": "true",
 							"HotfixSelected": "false"
 						},
 						{
