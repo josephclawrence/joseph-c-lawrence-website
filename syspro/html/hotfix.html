@@ -1118,11 +1118,11 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row packages-options">
-                                                                <div class="col-sm-4" id="myHotfixes">
+                                                                <div class="col-sm-4">
                                                                     <p>
                                                                         <b class="">My hotfixes</b>
                                                                     </p>
-                                                                    <div data-template="hotfixTemplate" data-bind="source: Subscriptions[0].AllHotfixes"></div>
+                                                                    <div  id="myHotfixes"></div>
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div class="sys-fg-inverse package sys-bg-very-light-gray">
@@ -1157,44 +1157,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="sys-fg-inverse package sys-bg-very-light-gray">
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-1 text-left">
-                                                                                        <div class="checkbox sys-mg-off">
-                                                                                            <label class="sys-fg-white" >
-                                                                                                <input type="checkbox" >
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm-11 text-left">
-                                                                                        <a href="#finQDetails" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="finQDetails"
-                                                                                        data-toggle="tooltip" 
-                                                                                            data-tooltip="tooltip" data-container="body"
-                                                                                            data-placement="top" title="View details">
-                                                                                            <span class="sys-fg-success">[Installed] </span><b>Update for SYSPRO 8 2018 RC (KB000009)</b>
 
-                                                                                            <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
-                                                                                        </a>
-
-                                                                                    </div>
-                                                                                    <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-15 sys-pd-r-15">
-                                                                                        <p class="hotfix-short-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-                                                                                    </div>
-                                                                                    <div class="col-xs-12 text-left  collapse sys-pd-l-15" id="finQDetails">
-                                                                                        <p>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-4" id="mandatoryHotfixes">
+                                                                <div class="col-sm-4">
                                                                     <p>
                                                                         <b class="">Mandatory</b>
                                                                     </p>
-                                                                    <div data-template="hotfixTemplate" data-bind="source: AllHotfixes"></div>
+                                                                    <div id="mandatoryHotfixes"></div>
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div class="sys-fg-inverse package sys-bg-very-light-gray">
@@ -1566,10 +1535,8 @@
                                     data-placement="top" title="View details">
                                     <span class="sys-fg-success" data-bind="visible: HotfixInstalled">[Installed] </span>
                                     <b><span data-bind="text: HotfixFileName"></span></b>
-
                                     <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                 </a>
-
                             </div>
                             <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-15 sys-pd-r-15">
                                 <p class="hotfix-short-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
@@ -1850,7 +1817,7 @@
                     window.viewModel = kendo.observable(data);
                     kendo.bind($("body"), viewModel);
                     $.material.init();
-                    const dataSource = new kendo.data.HierarchicalDataSource({
+                    window.dataSource = new kendo.data.HierarchicalDataSource({
                         data: [treeData],
                         schema: {
                             model: customerModel
