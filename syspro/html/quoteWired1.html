@@ -985,6 +985,54 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 .tooltip-inner {
     background-color: #000000 !important;
 }
+.form-group-section {
+    background: #fbfbfb;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin-bottom: 10px;
+}
+.noUi-pips-horizontal {
+    padding: 0px 0;
+    height: 30px;
+    top: 100%;
+    left: 0;
+    width: 100%;
+}
+.noUi-handle {
+    left: -9px;
+}
+.noUi-pips {
+    position: absolute;
+    color: #999;
+}
+.noUi-pips, .noUi-pips * {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+    height: 15px;
+}
+.noUi-marker-horizontal.noUi-marker {
+    margin-left: -1px;
+    width: 2px;
+    height: 5px;
+}
+.noUi-marker-large {
+    background: #AAA;
+}
+.noUi-marker {
+    position: absolute;
+    background: #CCC;
+}
+.noUi-value-horizontal {
+    -webkit-transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%);
+}
+.noUi-value {
+    position: absolute;
+    white-space: nowrap;
+    text-align: center;
+}
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
         <script>
@@ -1145,6 +1193,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>Customer code</span>
                                                                   </label>
                                                                </div>
+                                                               <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                <input type="text" class="form-control" 
+                                                                   data-bind="value: Customer" id="Customer" name="Customer">
+                                                                <label for="Customer" class="">
+                                                                <span>Prospect</span>
+                                                                </label>
+                                                             </div>
                                                                <div class="form-group md-outline">
                                                                   <input type="text" class="form-control" 
                                                                      data-bind="value: CustomerName" 
@@ -1461,6 +1517,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>Server Timezone</span>
                                                                   </label>
                                                                </div>
+                                                               <div class="form-group  md-outline">
+                                                                    <input type="text" class="form-control" id="SMTPIP" name="SMTPIP" data-bind="value: SMTPIP">
+                                                                    <label for="SMTPIP" class="">
+                                                                        <span>DNS name</span>
+                                                                    </label>
+                                                                </div>
                                                                <div class="form-group">
                                                                   <div class="checkbox sys-pd-t-5 sys-mg-off-t">
                                                                      <label>
@@ -1474,7 +1536,31 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      </label>
                                                                   </div>
                                                                </div>
-                                                               <div class="form-group">
+                                                               <div class="form-group sys-mg-b-15 sys-pd-b-15">
+                                                                    <label for="" class="">
+                                                                        <span>Some label</span>
+                                                                    </label>
+                                                                    <div style="position: relative;" class="sys-mg-5">
+                                                                        <div 
+                                                                            id="test-env-slider" 
+                                                                            class="test-env-slider slider nonbound-slider"
+                                                                            data-slider-endvalue="25"
+                                                                            data-slider-min="0"
+                                                                            data-slider-max="100"
+                                                                            data-avanti-slider-tooltip-format="n0"
+                                                                            data-avanti-slider-steps="25"
+                                                                            data-bind="disabled: disableTestHighlyAvailable"
+                                                                        ></div>
+                                                                        <input
+                                                                            type="number"
+                                                                            id="test-env-slider-input"
+                                                                            name="test-env-slider-input"
+                                                                            class="hidden"
+                                                                            value="25"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                               <!-- <div class="form-group">
                                                                   <div class="checkbox sys-pd-t-5 sys-mg-off-t">
                                                                      <label>
                                                                      <input 
@@ -1486,21 +1572,76 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      Make highly available
                                                                      </label>
                                                                   </div>
-                                                               </div>
-                                                               <div class="form-group">
-                                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                     <label>
-                                                                     <input 
-                                                                        type="checkbox" 
-                                                                        id="AdditionalEnvironmentDev" 
-                                                                        name="AdditionalEnvironmentDev"
-                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
-                                                                        >
-                                                                        Include Dev Environment
-                                                                     </label>
-                                                                  </div>
-                                                               </div>
-                                                               <div class="form-group">
+                                                               </div> -->
+                                                                    <div class="form-group">
+                                                                        <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                            <label>
+                                                                            <input 
+                                                                                type="checkbox" 
+                                                                                id="AdditionalEnvironmentDev" 
+                                                                                name="AdditionalEnvironmentDev"
+                                                                                data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
+                                                                                >
+                                                                                Include Dev Environment
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group sys-mg-b-15 sys-pd-b-15">
+                                                                        <label for="" class="">
+                                                                            <span>Some label</span>
+                                                                        </label>
+                                                                        <div style="position: relative;" class="sys-mg-5">
+                                                                            <div 
+                                                                                id="dev-env-slider" 
+                                                                                class="dev-env-slider slider nonbound-slider"
+                                                                                data-slider-endvalue="25"
+                                                                                data-slider-min="0"
+                                                                                data-slider-max="100"
+                                                                                data-avanti-slider-tooltip-format="n0"
+                                                                                data-avanti-slider-steps="25"
+                                                                                data-bind="disabled: disableDevHighlyAvailable"
+                                                                            ></div>
+                                                                            <input
+                                                                                type="number"
+                                                                                id="dev-env-slider-input"
+                                                                                name="dev-env-slider-input"
+                                                                                class="hidden"
+                                                                                value="25"
+                                                                            />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row sys-mg-b-10">
+
+                                                                        <div class="form-group-section col-xs-12">
+                                                                            <h4>Invite email addresses</h4>
+                                                                            <div class="form-group  md-outline">
+                                                                                <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                            </div>
+                                                                            <div class="form-group  md-outline">
+                                                                                <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                            </div>
+                                                                            <div class="form-group  md-outline">
+                                                                                <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row sys-mg-b-10">
+
+                                                                        <div class="form-group-section col-xs-12">
+                                                                            <h4>Notification email addresses</h4>
+                                                                            <div class="form-group  md-outline">
+                                                                                <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                            </div>
+                                                                            <div class="form-group  md-outline">
+                                                                                <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                            </div>
+                                                                            <div class="form-group  md-outline">
+                                                                                <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                               <!-- <div class="form-group">
                                                                   <div class="checkbox sys-pd-t-5 sys-mg-off-t">
                                                                      <label>
                                                                      <input 
@@ -1512,12 +1653,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         Make highly available
                                                                      </label>
                                                                   </div>
-                                                               </div>
+                                                               </div> -->
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <div class="row sys-mg-b-10">
-                                                                    <a href="#EmailOptions" data-toggle="collapse" class="col-xs-12 sys-fg-primary sys-mg-b-5" aria-expanded="false" aria-controls="quoteDetails">Email options <i class="material-icons sys-txt-sm">expand_more</i></a>
-                                                                    <div id="EmailOptions" class="col-xs-12 collapse">
+
+                                                                    <div class="form-group-section col-xs-12">
+                                                                        <h4>Email options</h4>
                                                                         <div class="form-group  md-outline">
                                                                             <input type="text" class="form-control" id="SMTPIP" name="SMTPIP" data-bind="value: SMTPIP">
                                                                             <label for="SMTPIP" class="">
@@ -1559,8 +1701,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     </div>
                                                                 </div>
                                                                 <div class="row sys-mg-b-10">
-                                                                    <a href="#Office365Options" data-toggle="collapse" class="sys-fg-primary col-xs-12 sys-mg-b-5" aria-expanded="false" aria-controls="quoteDetails">Office 365 options <i class="material-icons sys-txt-sm">expand_more</i></a>
-                                                                    <div id="Office365Options" class="col-xs-12 collapse">
+                                                                    <div class="form-group-section col-xs-12">
+                                                                        <h4>Office 365 options</h4>
                                                                         <div class="form-group  md-outline">
                                                                             <input type="text" class="form-control" id="TenantID" name="TenantID" data-bind="value: TenantID">
                                                                             <label for="TenantID" class="">
@@ -1585,24 +1727,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                 <span>Resource ID</span>
                                                                             </label>
                                                                         </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="TempFolder" name="TempFolder" data-bind="value: TempFolder">
-                                                                            <label for="TempFolder" class="">
-                                                                                <span>Temp folder</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="MultimediaFolder" name="MultimediaFolder" data-bind="value: MultimediaFolder">
-                                                                            <label for="MultimediaFolder" class="">
-                                                                                <span>Multimedia folder</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="MRPSnapshotFolder" name="MRPSnapshotFolder" data-bind="value: MRPSnapshotFolder">
-                                                                            <label for="MRPSnapshotFolder" class="">
-                                                                                <span>MRP Snapshot Folder</span>
-                                                                            </label>
-                                                                        </div>
+                                                                        
 
                                                                     </div>
                                                                 </div>
@@ -1687,12 +1812,16 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                              </div>
                                              <div class="tab-pane" id="sysprolicensedcompanies">
                                                 <div class="row">
-                                                    <div class="col-sm-8 col-sm-offset-2">
+                                                    <div class="col-sm-12">
                                                         <table class="table table-condensed">
                                                             <thead>
                                                                 <tr>
+                                                                    <th style="width: 80px;">Company</th>
                                                                     <th>Company name</th>
                                                                     <th>NAICS code</th>
+                                                                    <th>Database</th>
+                                                                    <th style="width: 40px;">Test</th>
+                                                                    <th style="width: 40px;">Live</th>
                                                                     <th style="width: 30px;"></th>
                                                                 </tr>
                                                             </thead>
@@ -2121,12 +2250,40 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 <td>
                     <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
                         <input type="text" id="#: CompanyCode #" name="#: CompanyCode #" data-bind="value: CompanyCode" class="form-control">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                        <input type="text" id="#: CompanyCode #" name="#: CompanyCode #" data-bind="value: CompanyCode" class="form-control">
                      </div>
                 </td>
                 <td>
                     <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
                         <input type="text" id="NAICS#: NAICSCode #" name="NAICS#: NAICSCode #" data-bind="value: NAICSCode" class="form-control">
                      </div>
+                </td>
+                <td>
+                    <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
+                        <input type="text" id="#: CompanyCode #" name="#: CompanyCode #" data-bind="value: CompanyCode" class="form-control" readonly>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check">
+                        <div class="checkbox sys-mg-off">
+                            <label class="" ">
+                                <input type="checkbox" id="#:  #" data-bind="">
+                            </label>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check">
+                        <div class="checkbox sys-mg-off">
+                            <label class="" >
+                                <input type="checkbox" id="#:  #" data-bind="">
+                            </label>
+                        </div>
+                    </div>
                 </td>
                 <td>
                     <i class="material-icons sys-fg-danger remove-company" data-uid="#: uid #">delete_forever</i>
@@ -2389,6 +2546,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                 "NAICSCode": "",
                             }
                         ]);
+                        $.material.init();
                     });
                     $(document).off("click", ".remove-company").on("click", ".remove-company", function() {
                         var uid = $(this).data("uid");
@@ -2449,6 +2607,62 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     });
                     $(".date").siblings(".input-prefix").click(function(e){
                         $(this).siblings(".date").focus().datepicker("show");
+                    });
+
+                    var testSlider = document.getElementById('test-env-slider');
+                    noUiSlider.create(testSlider, {
+                        start: 25,
+                        step: 25,
+                        connect: [true, false],
+                        range: {
+                            'min': 0,
+                            'max': 100
+                        },
+                        pips: {
+                            mode: 'steps',
+                            density: 25,
+                            // format: wNumb({
+                            //     decimals: 0,
+                            //     suffix: '%'
+                            // })
+                        }
+                    });
+                    var testSliderInput = document.getElementById('test-env-slider-input');
+                    testSlider.noUiSlider.on('update', function( values, handle ) {
+                        var value = values[handle];
+                        testSliderInput.value = value;
+                    });
+                    
+                    testSliderInput.addEventListener('change', function(){
+                        slider.noUiSlider.set([null, this.value]);
+                    });
+
+                    var devSlider = document.getElementById('dev-env-slider');
+                    noUiSlider.create(devSlider, {
+                        start: 25,
+                        step: 25,
+                        connect: [true, false],
+                        range: {
+                            'min': 0,
+                            'max': 100
+                        },
+                        pips: {
+                            mode: 'steps',
+                            density: 25,
+                            // format: wNumb({
+                            //     decimals: 0,
+                            //     suffix: '%'
+                            // })
+                        }
+                    });
+                    var devSliderInput = document.getElementById('dev-env-slider-input');
+                    devSlider.noUiSlider.on('update', function( values, handle ) {
+                        var value = values[handle];
+                        devSliderInput.value = value;
+                    });
+                    
+                    devSliderInput.addEventListener('change', function(){
+                        slider.noUiSlider.set([null, this.value]);
                     });
 
                 },

@@ -942,6 +942,9 @@
 .form-control:not(.k-combobox) {
     height: 30px;
 }
+#mandatoryHotfixes, #generalHotfixes, #myHotfixes {
+    border-width: 0px;
+}
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
         <script>
@@ -1459,11 +1462,11 @@
                                         active
                                     # } #
                                     ">
-                                        <input type="checkbox" id="checkbox#: HotfixId #" # if ( HotfixSelected ) { #
+                                        <input type="checkbox" id="checkbox#: HotfixId #" # if ( HotfixSelected || HotfixMandatory === "Y" ) { #
                                             checked 
                                         # } #
-                                        # if ( HotfixMandatory === "Y" ) { #
-                                             &nbsp; readonly
+                                        # if ( HotfixMandatory === "Y" || HotfixReadOnly ) { #
+                                            readonly disabled
                                         # } #
                                         >
                                     </label>
@@ -1473,13 +1476,12 @@
                                 <a href="\\#hotfix#: HotfixId #" role="button" data-toggle="collapse" class="package-title sys-fg-inverse sys-mg-r-5 sys-mg-l-5" aria-expanded="false" aria-controls="hotfix#: HotfixId #"
                                 data-toggle="tooltip" 
                                     data-tooltip="tooltip" data-container="body"
-                                    data-placement="top" title="View details">
+                                    data-placement="top" title="View details">                                                                        
+                                    <b>#: HotfixFileName #</b>
+                                    <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                     # if ( HotfixInstalled ) { #
                                         <span class="sys-fg-success">[Installed] </span>
                                     # } #
-                                    
-                                    <b>#: HotfixFileName #</b>
-                                    <i class="material-icons sys-txt-sm sys-fg-inverse package-title-arrow">expand_more</i>
                                 </a>
                             </div>
                             <div class="col-xs-12 text-left sys-pd-t-10 sys-pd-l-15 sys-pd-r-15">
@@ -1774,8 +1776,9 @@
                             const nodeId = $(e.node).data('uid');
                             const node = dataSource.getByUid(nodeId);
                             if (node && node.HotfixRequests) {
-                                const description = dataSource.getByUid($(e.node).data('uid')).Description;
-                                $("#grid").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: description });
+                                console.log(node.Description);
+                                //const description = dataSource.getByUid($(e.node).data('uid')).Description;
+                                $("#grid").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: node.Description });
                                 $(".rollback-request, .pending-request").hide();
                                 $(".btn-next").attr('disabled', false);
                                 $('#hotfixWizard').bootstrapWizard('enable',1);
@@ -1804,7 +1807,23 @@
                                 $("#generalHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixGeneral", operator: "eq", value: true });
                                 $.material.init();
                                 kendo.bind();
-                            } else if (node && node.Hotfixes) {                            
+                            } else if (node && node.Hotfixes) {  
+                                console.log(node, node.ID);
+                                console.log(node.parent().parent().Description);
+                                console.log(node.parent().parent().uid);
+                                // console.log(
+                                //     $(".k-master-row[data-uid='" + node.parent().parent().uid + "']").next('.k-detail-row').find('.k-detail-cell > .k-grid').data('kendoGrid').dataSource
+                                // );
+                                $("#grid").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: node.parent().parent().Description });
+                                setTimeout(function(){
+                                    $(".k-master-row[data-uid='" + node.parent().parent().uid + "']").next('.k-detail-row').find('.k-detail-cell > .k-grid')
+                                    .data('kendoGrid').dataSource
+                                        .filter([
+                                            { field: "SubDesc", operator: "eq", value: node.parent().parent().Description },
+                                            { field: "HotfixRequestId", operator: "eq", value: node.ID },
+                                        ]);
+                                }, 200);
+                                                       
                                 $(".btn-next").attr('disabled', true);
                                 $(".icon-circle").removeClass('checked');
                                 if (node.Status === "Installed successfully") {
@@ -1851,13 +1870,21 @@
                     });
 
                     function detailInit(e) {
+                        console.log(e);
+                        console.log($(e.detailCell).children());
+                        console.log($(e.detailCell).find('> div').data('kendoGrid'));
+                        if ($(e.detailCell).find('> div').data('kendoGrid')) {
+                            console.log($(e.detailCell).find('> div').data('kendoGrid').dataSource.filter);
+                        }
+                        
                         $("<div/>").appendTo(e.detailCell).kendoGrid({
                             dataSource: {
                                 data: gridData,
+                                sort: { field: "InstalledDate", dir: "desc" },
                                 filter: { field: "SubDesc", operator: "eq", value: e.data.Description }
                             },
                             scrollable: false,
-                            sortable: false,
+                            sortable: true,
                             pageable: false,
                             columns: [
                                 { field: "HotfixRequestId", title: "Request ID" },
