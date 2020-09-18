@@ -974,7 +974,7 @@
 		},
 		"NumberOfDesktopUsers": "0",
 		"AdditionalEnvironmentTest": false,
-		"AdditionalEnvironmentTestRatio": "0",
+		"AdditionalEnvironmentTestRatio": "50",
 		"AdditionalEnvironmentDev": false,
 		"AdditionalEnvironmentDevRatio": "0",
 		"ShortDateFormatList": {

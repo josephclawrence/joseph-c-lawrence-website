@@ -22,6 +22,9 @@
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
 
         <style>
+            .noUi-horizontal {
+                background: #A4BCC4
+            }
             .k-popup .k-list .k-item {
                 cursor: pointer;
             }
@@ -89,7 +92,7 @@
                 left: -18px;
                 top: -9px;
             }
-            .slider .noUi-handle {
+            .noUi-handle {
                 background-color: #0078d7;
                 border-color: #0078d7;
             }
@@ -1196,8 +1199,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                <div class="form-group md-outline quote-field input-with-post-icon">
                                                                 <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
                                                                 <input type="text" class="form-control" 
-                                                                   data-bind="value: Customer" id="Customer" name="Customer">
-                                                                <label for="Customer" class="">
+                                                                   data-bind="value: RegionCustomerCode" id="RegionCustomerCode" name="RegionCustomerCode">
+                                                                <label for="RegionCustomerCode" class="">
                                                                 <span>Prospect</span>
                                                                 </label>
                                                              </div>
@@ -1543,19 +1546,19 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     <div style="position: relative;" class="sys-mg-5">
                                                                         <div 
                                                                             id="test-env-slider" 
-                                                                            class="test-env-slider slider nonbound-slider"
+                                                                            class="test-env-slider  nonbound-slider"
                                                                             data-slider-endvalue="25"
                                                                             data-slider-min="0"
                                                                             data-slider-max="100"
                                                                             data-avanti-slider-tooltip-format="n0"
-                                                                            data-bind="disabled: disableTestHighlyAvailable, attr: {data-slider-endvalue: AdditionalEnvironmentTestRatio}"
+                                                                            data-bind="disabled: disableTestHighlyAvailable, attr: {data-slider-endvalue: QuoteInfrastructure.AdditionalEnvironmentTestRatio}"
                                                                         ></div>
                                                                         <input
                                                                             type="number"
                                                                             id="test-env-slider-input"
                                                                             name="test-env-slider-input"
                                                                             class="hidden"
-                                                                            data-bind="value: AdditionalEnvironmentTestRatio"
+                                                                            data-bind="value: QuoteInfrastructure.AdditionalEnvironmentTestRatio"
                                                                         />
                                                                     </div>
                                                                 </div>
@@ -1592,20 +1595,20 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         <div style="position: relative;" class="sys-mg-5">
                                                                             <div 
                                                                                 id="dev-env-slider" 
-                                                                                class="dev-env-slider slider nonbound-slider"
+                                                                                class="dev-env-slider  nonbound-slider"
                                                                                 data-slider-endvalue="25"
                                                                                 data-slider-min="0"
                                                                                 data-slider-max="100"
                                                                                 data-avanti-slider-tooltip-format="n0"
                                                                                 data-avanti-slider-steps="25"
-                                                                                data-bind="disabled: disableDevHighlyAvailable, attr: {data-slider-endvalue: AdditionalEnvironmentDevRatio}"
+                                                                                data-bind="disabled: disableDevHighlyAvailable, attr: {data-slider-endvalue: QuoteInfrastructure.AdditionalEnvironmentDevRatio}"
                                                                             ></div>
                                                                             <input
                                                                                 type="number"
                                                                                 id="dev-env-slider-input"
                                                                                 name="dev-env-slider-input"
                                                                                 class="hidden"
-                                                                                data-bind="value: AdditionalEnvironmentDevRatio"
+                                                                                data-bind="value: QuoteInfrastructure.AdditionalEnvironmentDevRatio"
                                                                             />
                                                                         </div>
                                                                     </div>
@@ -2543,8 +2546,16 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                         viewModel.CompanyList.set("Company", [
                             ...companyListArray,
                             {
+                                "Customer": "",
+                                "Quote": "",
+                                "QuoteVersion": "",
                                 "CompanyCode": "",
+                                "CompanyName": null,
                                 "NAICSCode": "",
+                                "DatabaseName": null,
+                                "Collation": null,
+                                "Dev": false,
+                                "Test": false
                             }
                         ]);
                         $.material.init();
@@ -2611,60 +2622,60 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     });
 
                     var testSlider = document.getElementById('test-env-slider');
-                    noUiSlider.create(testSlider, {
-                        start: viewModel.QuoteInfrastructure.AdditionalEnvironmentTestRatio || 0,
-                        step: 25,
-                        connect: [true, false],
-                        range: {
-                            'min': 0,
-                            'max': 100
-                        },
-                        pips: {
-                            mode: 'steps',
-                            density: 25,
-                            // format: wNumb({
-                            //     decimals: 0,
-                            //     suffix: '%'
-                            // })
-                        }
-                    });
-                    var testSliderInput = document.getElementById('test-env-slider-input');
-                    testSlider.noUiSlider.on('update', function( values, handle ) {
-                        var value = values[handle];
-                        testSliderInput.value = value;
-                    });
-                    
-                    testSliderInput.addEventListener('change', function(){
-                        slider.noUiSlider.set([null, this.value]);
-                    });
+                    if ( !$(testSlider).hasClass('noUi-horizontal') ) {
+                        noUiSlider.create(testSlider, {
+                            start: viewModel.QuoteInfrastructure.AdditionalEnvironmentTestRatio || 0,
+                            step: 25,
+                            connect: [true, false],
+                            range: {
+                                'min': 0,
+                                'max': 100
+                            },
+                            pips: {
+                                mode: 'steps',
+                                density: 25,
+                                // format: wNumb({
+                                //     decimals: 0,
+                                //     suffix: '%'
+                                // })
+                            }
+                        });
+                        var testSliderInput = document.getElementById('test-env-slider-input');
+                        testSlider.noUiSlider.on('slide', function( values, handle ) {
+                            var value = values[handle];
+                            testSliderInput.value = value;
+                            $(testSliderInput).change();
+                        });                        
+
+                    }
 
                     var devSlider = document.getElementById('dev-env-slider');
-                    noUiSlider.create(devSlider, {
-                        start: viewModel.QuoteInfrastructure.AdditionalEnvironmentDevRatio || 0,
-                        step: 25,
-                        connect: [true, false],
-                        range: {
-                            'min': 0,
-                            'max': 100
-                        },
-                        pips: {
-                            mode: 'steps',
-                            density: 25,
-                            // format: wNumb({
-                            //     decimals: 0,
-                            //     suffix: '%'
-                            // })
-                        }
-                    });
-                    var devSliderInput = document.getElementById('dev-env-slider-input');
-                    devSlider.noUiSlider.on('update', function( values, handle ) {
-                        var value = values[handle];
-                        devSliderInput.value = value;
-                    });
-                    
-                    devSliderInput.addEventListener('change', function(){
-                        slider.noUiSlider.set([null, this.value]);
-                    });
+                    if ( !$(devSlider).hasClass('noUi-horizontal') ) {
+                        noUiSlider.create(devSlider, {
+                            start: viewModel.QuoteInfrastructure.AdditionalEnvironmentDevRatio || 0,
+                            step: 25,
+                            connect: [true, false],
+                            range: {
+                                'min': 0,
+                                'max': 100
+                            },
+                            pips: {
+                                mode: 'steps',
+                                density: 25,
+                                // format: wNumb({
+                                //     decimals: 0,
+                                //     suffix: '%'
+                                // })
+                            }
+                        });
+                        var devSliderInput = document.getElementById('dev-env-slider-input');
+                        devSlider.noUiSlider.on('update', function( values, handle ) {
+                            var value = values[handle];
+                            devSliderInput.value = value;
+                            $(devSliderInput).change();
+                        });
+
+                    }
 
                 },
                 uiInitExtras: function() {
