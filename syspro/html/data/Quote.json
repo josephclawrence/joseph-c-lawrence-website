@@ -1,118 +1,82 @@
 {
-	"DummyField": "177b5092-5bde-438a-89cb-b5453f4b9b65",
+	"DummyField": "59a3d069-5983-4330-837d-f4cd108f9863",
 	"QuoteProcess": {
-		"NewQuote": true,
-		"QuoteMaintenance": false,
+		"NewQuote": false,
+		"QuoteMaintenance": true,
 		"PendingCustomerApproval": false,
 		"PendingRegionalApproval": false,
 		"PendingCorporateApproval": false,
 		"ProvisioningInfrastructure": false,
 		"InfrastructureHandover": false
 	},
-	"IsNewQuote": true,
-	"QuoteNumber": null,
-	"ReferenceNumber": null,
-	"QuoteDate": "14/09/202020",
-	"ExpiryDate": "14/10/202020",
+	"IsNewQuote": false,
+	"QuoteNumber": "00000014",
+	"ReferenceNumber": "Cloud Central Test Quote",
+	"QuoteDate": "09/09/202020",
+	"ExpiryDate": "24/09/202020",
 	"QuoteVersionList": {
 		"string": [
+			"000",
+			"001",
+			"002",
 			"000",
 			"001",
 			"002"
 		]
 	},
 	"SelectedQuoteVersion": "0",
-	"Customer": null,
+	"Customer": "E225",
+	"RegionCustomerCode": null,
 	"CustomerName": null,
 	"RegionList": {
 		"Region": [
 			{
-				"RegionCode": "Africa",
-				"Description": "Africa"
+				"RegionCode": "ASA",
+				"Description": "ASIA"
 			},
 			{
-				"RegionCode": "North America",
-				"Description": "North America"
+				"RegionCode": "AUS",
+				"Description": "AUSTRALIA"
 			},
 			{
-				"RegionCode": "South America",
-				"Description": "South America"
+				"RegionCode": "CAN",
+				"Description": "CANADA"
 			},
 			{
-				"RegionCode": "Europe",
-				"Description": "Europe"
+				"RegionCode": "GBR",
+				"Description": "UNITED KINGDOM"
 			},
 			{
-				"RegionCode": "Australasia",
-				"Description": "Australasia"
+				"RegionCode": "RSA",
+				"Description": "AFRICA"
 			},
 			{
-				"RegionCode": "Asia",
-				"Description": "Asia"
+				"RegionCode": "USA",
+				"Description": "UNITED STATES OF AMERICA"
 			}
 		]
 	},
 	"SelectedRegion": {
-		"RegionCode": null,
-		"Description": null
+		"RegionCode": "RSA",
+		"Description": "RSA"
 	},
 	"SubRegionList": {
 		"Region": [
 			{
-				"RegionCode": "South Africa",
-				"Description": "Africa"
+				"RegionCode": "RSA-OTHER",
+				"Description": "Rest of Africa"
 			},
 			{
-				"RegionCode": "Kenya",
-				"Description": "Africa"
-			},
-			{
-				"RegionCode": "USA",
-				"Description": "North America"
-			},
-			{
-				"RegionCode": "Mexico",
-				"Description": "North America"
-			},
-			{
-				"RegionCode": "Brazil",
-				"Description": "South America"
-			},
-			{
-				"RegionCode": "Argentina",
-				"Description": "South America"
-			},
-			{
-				"RegionCode": "France",
-				"Description": "Europe"
-			},
-			{
-				"RegionCode": "Italy",
-				"Description": "Europe"
-			},
-			{
-				"RegionCode": "Australia",
-				"Description": "Australasia"
-			},
-			{
-				"RegionCode": "New Zealand",
-				"Description": "Australasia"
-			},
-			{
-				"RegionCode": "China",
-				"Description": "Asia"
-			},
-			{
-				"RegionCode": "Malaysia",
-				"Description": "Asia"
+				"RegionCode": "RSA-SA",
+				"Description": "South Africa"
 			}
 		]
 	},
 	"SelectedSubRegion": {
-		"RegionCode": null,
-		"Description": null
+		"RegionCode": "RSA-SA",
+		"Description": "RSA"
 	},
-	"NumberOfUsers": "0",
+	"NumberOfUsers": "10",
 	"PaymentCycleList": {
 		"string": [
 			"12",
@@ -120,12 +84,12 @@
 			"3"
 		]
 	},
-	"SelectedPaymentCycle": null,
-	"QuoteDescription": null,
-	"AddressLine1": null,
-	"AddressLine2": null,
-	"City": null,
-	"StateProvince": null,
+	"SelectedPaymentCycle": "0",
+	"QuoteDescription": "Cloud Central Test Quote",
+	"AddressLine1": "1 Witkoppen Road",
+	"AddressLine2": "Sunninghill",
+	"City": "Johannesburg",
+	"StateProvince": "Gauteng",
 	"CountryList": {
 		"string": [
 			"Afghanistan",
@@ -335,8 +299,8 @@
 			"Zimbabwe"
 		]
 	},
-	"SelectedCountry": null,
-	"PostalZipCode": null,
+	"SelectedCountry": "South Africa",
+	"PostalZipCode": "2191",
 	"CurrencyList": {
 		"Currency": [
 			{
@@ -357,9 +321,9 @@
 		"CurrencySymbol": "ZAR",
 		"CurrencyDescription": "South African Rand"
 	},
-	"ContanctName": null,
-	"ContanctPhone": null,
-	"ContanctEmail": null,
+	"ContactName": "MacKenzie van Tonder",
+	"ContactPhone": "0114611000",
+	"ContactEmail": "contactemail@prospect.com",
 	"CoreBundles": {
 		"Product": [
 			{
@@ -368,8 +332,8 @@
 				"StockCode": "BUN-MANFND",
 				"Description": "Foundation",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
-				"Price": "0",
+				"NumberOfUsers": "10",
+				"Price": "180",
 				"FeatureList": {
 					"string": [
 						"System Foundation",
@@ -382,15 +346,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "1"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "BUN-CORDIS",
 				"Description": "Distribution",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "10",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -402,15 +366,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "3"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "BUN-CORMAN",
 				"Description": "Manufacturing",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "10",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -423,7 +387,7 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "4"
 			},
 			{
 				"IsSelected": true,
@@ -431,7 +395,7 @@
 				"StockCode": "BUN-MANFIN",
 				"Description": "Financials",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "10",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -444,7 +408,7 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "2"
 			}
 		]
 	},
@@ -467,7 +431,7 @@
 							"StockCode": "MOD-SPM",
 							"Description": "Process Modelling",
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
+							"NumberOfUsers": "10",
 							"Price": "18",
 							"FeatureList": null,
 							"SubProductList": null,
@@ -530,7 +494,7 @@
 							"StockCode": "MOD-LOT",
 							"Description": "Lot Traceability",
 							"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-							"NumberOfUsers": "0",
+							"NumberOfUsers": "10",
 							"Price": "18",
 							"FeatureList": null,
 							"SubProductList": null,
@@ -704,12 +668,12 @@
 	"ApiServices": {
 		"Product": [
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-FINQRY",
 				"Description": "Financial Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -722,15 +686,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "6"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-DISQRY",
 				"Description": "Distribution Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -744,15 +708,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "5"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-OPEQRY",
 				"Description": "Operation Queries",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -765,15 +729,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "10"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-MSTMAN",
 				"Description": "Master Data Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -790,15 +754,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "9"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-PROMAN",
 				"Description": "Procurement Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -812,15 +776,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "11"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-SALMAN",
 				"Description": "Sales Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -834,15 +798,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "12"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-OPEMAN",
 				"Description": "Operation Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -857,15 +821,15 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "8"
 			},
 			{
-				"IsSelected": false,
+				"IsSelected": true,
 				"IsMandatory": false,
 				"StockCode": "API-INVMAN",
 				"Description": "Inventory Management",
 				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
+				"NumberOfUsers": "1",
 				"Price": "18",
 				"FeatureList": {
 					"string": [
@@ -878,24 +842,12 @@
 					]
 				},
 				"SubProductList": null,
-				"OriginalLineNumber": "0"
+				"OriginalLineNumber": "7"
 			}
 		]
 	},
 	"AdditionalSoftware": {
 		"Product": [
-			{
-				"IsSelected": false,
-				"IsMandatory": false,
-				"StockCode": "USR-POS",
-				"Description": "Point of Sale",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
-				"Price": "18",
-				"FeatureList": null,
-				"SubProductList": null,
-				"OriginalLineNumber": "0"
-			},
 			{
 				"IsSelected": false,
 				"IsMandatory": false,
@@ -967,18 +919,6 @@
 				"FeatureList": null,
 				"SubProductList": null,
 				"OriginalLineNumber": "0"
-			},
-			{
-				"IsSelected": false,
-				"IsMandatory": false,
-				"StockCode": "API-POS",
-				"Description": "Point of Sale API",
-				"ProductLink": "http://wwww.syspro.com/SomePdf.pdf",
-				"NumberOfUsers": "0",
-				"Price": "18",
-				"FeatureList": null,
-				"SubProductList": null,
-				"OriginalLineNumber": "0"
 			}
 		]
 	},
@@ -1034,9 +974,9 @@
 		},
 		"NumberOfDesktopUsers": "0",
 		"AdditionalEnvironmentTest": false,
-		"AdditionalEnvironmentTestHighlyAvail": false,
+		"AdditionalEnvironmentTestRatio": "0",
 		"AdditionalEnvironmentDev": false,
-		"AdditionalEnvironmentDevHighlyAvail": false,
+		"AdditionalEnvironmentDevRatio": "0",
 		"ShortDateFormatList": {
 			"string": [
 				"dd/MM/yyyy",
@@ -1640,7 +1580,7 @@
 		"ThousandSeparator": null,
 		"DecimalSeparator": null,
 		"CurrencySymbol": null,
-		"ProvisioningStartDate": "0001-01-01T00:00:00",
+		"ProvisioningStartDate": "2020-09-17T00:00:00",
 		"SmtpIp": null,
 		"SmtpEmail": null,
 		"ServerPort": "0",
@@ -1651,29 +1591,83 @@
 		"ExchangeServer": null,
 		"ClientID": null,
 		"ResourceID": null,
-		"TempFolder": null,
-		"MultiMediaFolder": null,
-		"MrpSnapshotFolder": null
+		"InviteEmail1": null,
+		"InviteEmail2": null,
+		"InviteEmail3": null,
+		"NotificationEmail1": null,
+		"NotificationEmail2": null,
+		"NotificationEmail3": null,
+		"DnsName": null
 	},
 	"QuoteSummary": {
-		"QuoteNumber": null,
+		"QuoteNumber": "00000014",
 		"QuoteVersion": "0",
-		"LastEdited": "2020-09-14T18:33:27.9971718+02:00",
+		"LastEdited": "2020-09-18T09:43:01.1274241+02:00",
 		"LastEditedBy": "Joe",
-		"NumberOfUsers": "0",
+		"NumberOfUsers": "10",
 		"CostPerUser": "56",
-		"Total": "0",
+		"Total": "2484",
 		"CostBreakdownList": {
 			"CostItem": [
 				{
 					"Description": "Foundation",
-					"Cost": "0",
-					"Total": "0"
+					"Cost": "180",
+					"Total": "1800"
+				},
+				{
+					"Description": "Distribution",
+					"Cost": "18",
+					"Total": "180"
+				},
+				{
+					"Description": "Manufacturing",
+					"Cost": "18",
+					"Total": "180"
 				},
 				{
 					"Description": "Financials",
 					"Cost": "18",
-					"Total": "0"
+					"Total": "180"
+				},
+				{
+					"Description": "Financial Queries",
+					"Cost": "18",
+					"Total": "18"
+				},
+				{
+					"Description": "Distribution Queries",
+					"Cost": "18",
+					"Total": "18"
+				},
+				{
+					"Description": "Operation Queries",
+					"Cost": "18",
+					"Total": "18"
+				},
+				{
+					"Description": "Master Data Management",
+					"Cost": "18",
+					"Total": "18"
+				},
+				{
+					"Description": "Procurement Management",
+					"Cost": "18",
+					"Total": "18"
+				},
+				{
+					"Description": "Sales Management",
+					"Cost": "18",
+					"Total": "18"
+				},
+				{
+					"Description": "Operation Management",
+					"Cost": "18",
+					"Total": "18"
+				},
+				{
+					"Description": "Inventory Management",
+					"Cost": "18",
+					"Total": "18"
 				},
 				{
 					"Description": "Report designer seats",
@@ -1687,10 +1681,57 @@
 	"RejectNotes": null,
 	"AmendNotes": null,
 	"SaveNotes": null,
+	"QuoteApprovalCode": null,
 	"CompanyList": {
-		"Company": {
-			"CompanyCode": "The Outdoors Company",
-			"NAICSCode": "999999"
-		}
+		"Company": [
+			{
+				"Customer": "E225",
+				"Quote": "000000000000014",
+				"QuoteVersion": "0",
+				"CompanyCode": "1231",
+				"CompanyName": null,
+				"NAICSCode": "132131    ",
+				"DatabaseName": null,
+				"Collation": null,
+				"Dev": false,
+				"Test": false
+			},
+			{
+				"Customer": "E225",
+				"Quote": "000000000000014",
+				"QuoteVersion": "0",
+				"CompanyCode": "2132",
+				"CompanyName": null,
+				"NAICSCode": "12312     ",
+				"DatabaseName": null,
+				"Collation": null,
+				"Dev": false,
+				"Test": false
+			},
+			{
+				"Customer": "E225",
+				"Quote": "000000000000014",
+				"QuoteVersion": "0",
+				"CompanyCode": "The ",
+				"CompanyName": null,
+				"NAICSCode": "999999    ",
+				"DatabaseName": null,
+				"Collation": null,
+				"Dev": false,
+				"Test": false
+			},
+			{
+				"Customer": "E225",
+				"Quote": "000000000000014",
+				"QuoteVersion": "0",
+				"CompanyCode": "werw",
+				"CompanyName": null,
+				"NAICSCode": "werwe     ",
+				"DatabaseName": null,
+				"Collation": null,
+				"Dev": false,
+				"Test": false
+			}
+		]
 	}
 }

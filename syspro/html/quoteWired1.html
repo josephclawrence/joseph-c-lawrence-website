@@ -1518,8 +1518,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   </label>
                                                                </div>
                                                                <div class="form-group  md-outline">
-                                                                    <input type="text" class="form-control" id="SMTPIP" name="SMTPIP" data-bind="value: SMTPIP">
-                                                                    <label for="SMTPIP" class="">
+                                                                    <input type="text" class="form-control" id="DnsName" name="DnsName" data-bind="value: DnsName">
+                                                                    <label for="DnsName" class="">
                                                                         <span>DNS name</span>
                                                                     </label>
                                                                 </div>
@@ -1548,15 +1548,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                             data-slider-min="0"
                                                                             data-slider-max="100"
                                                                             data-avanti-slider-tooltip-format="n0"
-                                                                            data-avanti-slider-steps="25"
-                                                                            data-bind="disabled: disableTestHighlyAvailable"
+                                                                            data-bind="disabled: disableTestHighlyAvailable, attr: {data-slider-endvalue: AdditionalEnvironmentTestRatio}"
                                                                         ></div>
                                                                         <input
                                                                             type="number"
                                                                             id="test-env-slider-input"
                                                                             name="test-env-slider-input"
                                                                             class="hidden"
-                                                                            value="25"
+                                                                            data-bind="value: AdditionalEnvironmentTestRatio"
                                                                         />
                                                                     </div>
                                                                 </div>
@@ -1599,14 +1598,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                                 data-slider-max="100"
                                                                                 data-avanti-slider-tooltip-format="n0"
                                                                                 data-avanti-slider-steps="25"
-                                                                                data-bind="disabled: disableDevHighlyAvailable"
+                                                                                data-bind="disabled: disableDevHighlyAvailable, attr: {data-slider-endvalue: AdditionalEnvironmentDevRatio}"
                                                                             ></div>
                                                                             <input
                                                                                 type="number"
                                                                                 id="dev-env-slider-input"
                                                                                 name="dev-env-slider-input"
                                                                                 class="hidden"
-                                                                                value="25"
+                                                                                data-bind="value: AdditionalEnvironmentDevRatio"
                                                                             />
                                                                         </div>
                                                                     </div>
@@ -1616,13 +1615,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                             <div class="form-group-section ">
                                                                                 <h4>Invite email addresses</h4>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                                    <input type="email" class="form-control" id="InviteEmail1" name="InviteEmail1" data-bind="value: InviteEmail1">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                                    <input type="email" class="form-control" id="InviteEmail2" name="InviteEmail2" data-bind="value: InviteEmail2">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                                    <input type="email" class="form-control" id="InviteEmail3" name="InviteEmail3" data-bind="value: InviteEmail3">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1632,13 +1631,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                             <div class="form-group-section">
                                                                                 <h4>Notification email addresses</h4>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                                    <input type="email" class="form-control" id="NotificationEmail1" name="NotificationEmail1" data-bind="value: NotificationEmail1">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                                    <input type="email" class="form-control" id="NotificationEmail2" name="NotificationEmail2" data-bind="value: NotificationEmail2">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                                    <input type="email" class="form-control" id="NotificationEmail3" name="NotificationEmail3" data-bind="value: NotificationEmail3">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1823,7 +1822,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     <th>NAICS code</th>
                                                                     <th>Database</th>
                                                                     <th style="width: 40px;">Test</th>
-                                                                    <th style="width: 40px;">Live</th>
+                                                                    <th style="width: 40px;">Dev</th>
                                                                     <th style="width: 30px;"></th>
                                                                 </tr>
                                                             </thead>
@@ -2251,12 +2250,12 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             <tr data-uid="#: uid #"">
                 <td>
                     <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                        <input type="text" id="#: CompanyCode #" name="#: CompanyCode #" data-bind="value: CompanyCode" class="form-control">
+                        <input type="text" id="CompanyCode#: CompanyCode #" name="CompanyCode#: CompanyCode #" data-bind="value: CompanyCode" class="form-control">
                     </div>
                 </td>
                 <td>
                     <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                        <input type="text" id="#: CompanyCode #" name="#: CompanyCode #" data-bind="value: CompanyCode" class="form-control">
+                        <input type="text" id="CompanyName#: CompanyName #" name="CompanyName#: CompanyName #" data-bind="value: CompanyName" class="form-control">
                      </div>
                 </td>
                 <td>
@@ -2266,14 +2265,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 </td>
                 <td>
                     <div class="form-group md-outline sys-mg-b-5 sys-mg-t-5">
-                        <input type="text" id="#: CompanyCode #" name="#: CompanyCode #" data-bind="value: CompanyCode" class="form-control" readonly>
+                        <input type="text" id="DatabaseName#: DatabaseName #" name="DatabaseName#: DatabaseName #" data-bind="value: DatabaseName" class="form-control" readonly>
                     </div>
                 </td>
                 <td>
                     <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check">
                         <div class="checkbox sys-mg-off">
                             <label class="" ">
-                                <input type="checkbox" id="#:  #" data-bind="">
+                                <input type="checkbox" id="#:  #" data-bind="checked: Test">
                             </label>
                         </div>
                     </div>
@@ -2282,7 +2281,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check">
                         <div class="checkbox sys-mg-off">
                             <label class="" >
-                                <input type="checkbox" id="#:  #" data-bind="">
+                                <input type="checkbox" id="#:  #" data-bind="checked: Dev">
                             </label>
                         </div>
                     </div>
@@ -2613,7 +2612,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                     var testSlider = document.getElementById('test-env-slider');
                     noUiSlider.create(testSlider, {
-                        start: 25,
+                        start: viewModel.AdditionalEnvironmentTestRatio,
                         step: 25,
                         connect: [true, false],
                         range: {
@@ -2641,7 +2640,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                     var devSlider = document.getElementById('dev-env-slider');
                     noUiSlider.create(devSlider, {
-                        start: 25,
+                        start: viewModel.AdditionalEnvironmentDevRatio,
                         step: 25,
                         connect: [true, false],
                         range: {
