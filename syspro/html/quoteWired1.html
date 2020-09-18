@@ -2612,7 +2612,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                     var testSlider = document.getElementById('test-env-slider');
                     noUiSlider.create(testSlider, {
-                        start: viewModel.AdditionalEnvironmentTestRatio,
+                        start: viewModel.QuoteInfrastructure.AdditionalEnvironmentTestRatio || 0,
                         step: 25,
                         connect: [true, false],
                         range: {
@@ -2640,7 +2640,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
                     var devSlider = document.getElementById('dev-env-slider');
                     noUiSlider.create(devSlider, {
-                        start: viewModel.AdditionalEnvironmentDevRatio,
+                        start: viewModel.QuoteInfrastructure.AdditionalEnvironmentDevRatio || 0,
                         step: 25,
                         connect: [true, false],
                         range: {

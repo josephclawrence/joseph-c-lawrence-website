@@ -1705,7 +1705,7 @@
 				"NAICSCode": "12312     ",
 				"DatabaseName": null,
 				"Collation": null,
-				"Dev": false,
+				"Dev": true,
 				"Test": false
 			},
 			{
@@ -1718,7 +1718,7 @@
 				"DatabaseName": null,
 				"Collation": null,
 				"Dev": false,
-				"Test": false
+				"Test": true
 			},
 			{
 				"Customer": "E225",
@@ -1730,7 +1730,7 @@
 				"DatabaseName": null,
 				"Collation": null,
 				"Dev": false,
-				"Test": false
+				"Test": "true"
 			}
 		]
 	}
