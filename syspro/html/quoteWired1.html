@@ -2812,7 +2812,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 
                 $.getJSON( "https://josephclawrence.com/syspro/html/data/Quote.json", function( data ) {
                     truthify(data);
-
+                    arrayify(data);
                     window.viewModel = kendo.observable(data);
 
                     viewModel.bind("change", (e) => vmChangeHandler(e, 'QuoteInformation'));

@@ -1,5 +1,6 @@
 {
 	"DummyField": "59a3d069-5983-4330-837d-f4cd108f9863",
+	"IsProspect": false,
 	"QuoteProcess": {
 		"NewQuote": false,
 		"QuoteMaintenance": true,
