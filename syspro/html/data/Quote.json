@@ -61,16 +61,11 @@
 		"Description": "RSA"
 	},
 	"SubRegionList": {
-		"Region": [
+		"Region":
 			{
 				"RegionCode": "RSA-OTHER",
 				"Description": "Rest of Africa"
-			},
-			{
-				"RegionCode": "RSA-SA",
-				"Description": "South Africa"
 			}
-		]
 	},
 	"SelectedSubRegion": {
 		"RegionCode": "RSA-SA",

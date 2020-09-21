@@ -23,7 +23,13 @@
 
         <style>
             .noUi-horizontal {
-                background: #A4BCC4
+                background: #A4BCC4;
+            }
+            .noUi-horizontal[disabled] .noUi-connect {
+                background: #A4BCC4;
+            }
+            .noUi-horizontal[disabled], .noUi-horizontal[disabled] .noUi-handle {
+                cursor: not-allowed;
             }
             .k-popup .k-list .k-item {
                 cursor: pointer;
@@ -1187,31 +1193,65 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>Expiry date</span>
                                                                   </label>
                                                                </div>
-                                                               
-                                                               <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
-                                                                  <input type="text" class="form-control" 
-                                                                     data-bind="value: Customer" id="Customer" name="Customer">
-                                                                  <label for="Customer" class="">
-                                                                  <span>Customer code</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
-                                                                <input type="text" class="form-control" 
-                                                                   data-bind="value: RegionCustomerCode" id="RegionCustomerCode" name="RegionCustomerCode">
-                                                                <label for="RegionCustomerCode" class="">
-                                                                <span>Prospect</span>
-                                                                </label>
+                                                               <div class="form-group">
+                                                                <div class="syspro-entry-content">
+                                                                   <div class="radio sys-mg-r-15">
+                                                                      <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
+                                                                      <input type="radio" name="IsProspect" autocomplete="off" 
+                                                                         data-bind="checked: IsProspect" 
+                                                                         value="true"> 
+                                                                      <b class="sys-txt-md">Prospect</b>
+                                                                      </label>
+                                                                   </div>
+                                                                   <div class="radio">
+                                                                      <label class="sys-fg-inverse 
+                                                                         sys-mg-off-r
+                                                                         customer-type-option sys-bg-white text-center">
+                                                                      <input type="radio" name="IsProspect" autocomplete="off" 
+                                                                         data-bind="checked: IsCustomer" 
+                                                                         value="true"> 
+                                                                      <b class="sys-txt-md">Customer</b>
+                                                                      </label>
+                                                                   </div>
+                                                                </div>
                                                              </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input type="text" class="form-control" 
-                                                                     data-bind="value: CustomerName" 
-                                                                     id="CustomerName" name="CustomerName" required />
-                                                                  <label for="CustomerName" class="">
-                                                                  <span>Customer name</span>
-                                                                  </label>
+                                                               <div data-bind="visible: IsCustomer">
+                                                                <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                    <input type="text" class="form-control" 
+                                                                        data-bind="value: Customer" id="Customer" name="Customer">
+                                                                    <label for="Customer" class="">
+                                                                    <span>Customer code</span>
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="form-group md-outline">
+                                                                    <input type="text" class="form-control" 
+                                                                        data-bind="value: CustomerName" 
+                                                                        id="CustomerName" name="CustomerName" required />
+                                                                    <label for="CustomerName" class="">
+                                                                    <span>Customer name</span>
+                                                                    </label>
+                                                                </div>
                                                                </div>
+                                                               <div data-bind="visible: IsProspect">
+                                                                    <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                        <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                        <input type="text" class="form-control" 
+                                                                        data-bind="value: RegionCustomerCode" id="RegionCustomerCode" name="RegionCustomerCode">
+                                                                        <label for="RegionCustomerCode" class="">
+                                                                        <span>Prospect</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                        <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                        <input type="text" class="form-control" 
+                                                                        data-bind="value: RegionCustomerName" id="RegionCustomerName" name="RegionCustomerName">
+                                                                        <label for="RegionCustomerName" class="">
+                                                                        <span>Prospect name</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
                                                                <div class="form-group customer-details region-field md-outline">
                                                                   <input 
                                                                      id="Region"
@@ -1618,13 +1658,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                             <div class="form-group-section ">
                                                                                 <h4>Invite email addresses</h4>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="InviteEmail1" name="InviteEmail1" data-bind="value: InviteEmail1">
+                                                                                    <input type="email" class="form-control" id="InviteEmail1" name="InviteEmail1" data-bind="value: QuoteInfrastructure.InviteEmail1">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="InviteEmail2" name="InviteEmail2" data-bind="value: InviteEmail2">
+                                                                                    <input type="email" class="form-control" id="InviteEmail2" name="InviteEmail2" data-bind="value: QuoteInfrastructure.InviteEmail2">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="InviteEmail3" name="InviteEmail3" data-bind="value: InviteEmail3">
+                                                                                    <input type="email" class="form-control" id="InviteEmail3" name="InviteEmail3" data-bind="value: QuoteInfrastructure.InviteEmail3">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1634,13 +1674,13 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                             <div class="form-group-section">
                                                                                 <h4>Notification email addresses</h4>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="NotificationEmail1" name="NotificationEmail1" data-bind="value: NotificationEmail1">
+                                                                                    <input type="email" class="form-control" id="NotificationEmail1" name="NotificationEmail1" data-bind="value: QuoteInfrastructure.NotificationEmail1">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="NotificationEmail2" name="NotificationEmail2" data-bind="value: NotificationEmail2">
+                                                                                    <input type="email" class="form-control" id="NotificationEmail2" name="NotificationEmail2" data-bind="value: QuoteInfrastructure.NotificationEmail2">
                                                                                 </div>
                                                                                 <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="NotificationEmail3" name="NotificationEmail3" data-bind="value: NotificationEmail3">
+                                                                                    <input type="email" class="form-control" id="NotificationEmail3" name="NotificationEmail3" data-bind="value: QuoteInfrastructure.NotificationEmail3">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -2309,6 +2349,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
 
         <script>
             
+            kendo.data.ObservableObject.prototype.IsCustomer = function() {
+                return !this.get("IsProspect");
+            };
             kendo.data.ObservableObject.prototype.parseEditDate = function() {
                 return moment(this.get("QuoteSummary.LastEdited")).format("DD/MM/YYY, HH:mm");
             };
@@ -2634,10 +2677,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             pips: {
                                 mode: 'steps',
                                 density: 25,
-                                // format: wNumb({
-                                //     decimals: 0,
-                                //     suffix: '%'
-                                // })
+
                             }
                         });
                         var testSliderInput = document.getElementById('test-env-slider-input');
@@ -2669,7 +2709,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             }
                         });
                         var devSliderInput = document.getElementById('dev-env-slider-input');
-                        devSlider.noUiSlider.on('update', function( values, handle ) {
+                        devSlider.noUiSlider.on('slide', function( values, handle ) {
                             var value = values[handle];
                             devSliderInput.value = value;
                             $(devSliderInput).change();
@@ -2705,7 +2745,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                 return o;
             }
 
-            var vmChangeHandler = (e, category) => {
+            var vmChangeHandler = function(e, category) {
                 var regex = /\d/g;
                 var hasIndex = regex.test(e.field);
                 var newValue = category === 'QuoteInformation' || category === 'QuoteInfrastructure' || category === 'CompanyList' 
@@ -2726,8 +2766,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
             }
 
 
-            var truthify = (obj) => {
-                Object.keys(obj).forEach(key => {
+            var truthify = function(obj) {
+                Object.keys(obj).forEach(function(key) {
                     if ( obj[key] === "true" ) {
                         obj[key] = true;
                     } else if ( obj[key] === "false" ) {
@@ -2739,8 +2779,33 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                     if (obj[key] !== null && obj[key] !== undefined && typeof obj[key] === 'object') {
                         truthify(obj[key])
                     }
-                });
-                
+                });                
+            }
+            
+            var arrayify = function(obj) {
+                if ( obj.RegionList && obj.RegionList.Region ) {
+                    obj.RegionList.Region = Array.isArray(obj.RegionList.Region) ? obj.RegionList.Region : [obj.RegionList.Region]
+                }
+
+                if ( obj.SubRegionList && obj.SubRegionList.Region ) {
+                    obj.SubRegionList.Region = Array.isArray(obj.SubRegionList.Region) ? obj.SubRegionList.Region : [obj.SubRegionList.Region]
+                }
+
+                if ( obj.QuoteVersionList && obj.QuoteVersionList.string ) {
+                    obj.QuoteVersionList.string = Array.isArray(obj.QuoteVersionList.string) ? obj.QuoteVersionList.string : [obj.QuoteVersionList.string]
+                }
+
+                if ( obj.QuoteInfrastructure.DeploymentRegionsList && obj.QuoteInfrastructure.DeploymentRegionsList.Region ) {
+                    obj.QuoteInfrastructure.DeploymentRegionsList.Region = Array.isArray(obj.QuoteInfrastructure.DeploymentRegionsList.Region) ? obj.QuoteInfrastructure.DeploymentRegionsList.Region : [obj.QuoteInfrastructure.DeploymentRegionsList.Region]
+                }
+
+                if ( obj.CompanyList && obj.CompanyList.Company ) {
+                    obj.CompanyList.Company = Array.isArray(obj.CompanyList.Company) ? obj.CompanyList.Company : [obj.CompanyList.Company]
+                }
+
+                if ( obj.QuoteSummary.CostBreakdownList && obj.QuoteSummary.CostBreakdownList.CostItem ) {
+                    obj.QuoteSummary.CostBreakdownList.CostItem = Array.isArray(obj.QuoteSummary.CostBreakdownList.CostItem) ? obj.QuoteSummary.CostBreakdownList.CostItem : [obj.QuoteSummary.CostBreakdownList.CostItem]
+                }
             }
 
             $(document).ready(function() {

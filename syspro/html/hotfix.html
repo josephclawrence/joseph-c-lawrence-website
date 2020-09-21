@@ -100,7 +100,9 @@
         </style>
 
 <style>
-
+    .hotfix-request-actions {
+        display: none;
+    }
     #quoteOverallProgress {
         position: fixed;
         bottom: 23px;
@@ -1078,7 +1080,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="#packages" data-toggle="tab">
+                                                        <a href="#confirm" data-toggle="tab">
                                                             <div class="icon-circle">
                                                                 <i class=" material-icons">thumb_up</i>
                                                             </div>
@@ -1248,7 +1250,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane " id="packages">
+                                                <div class="tab-pane " id="confirm">
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <p class="lead text-center">
@@ -1282,7 +1284,7 @@
                                                                                     <b>Deployment group</b>
                                                                                 </label>
                                                                                 <div class="col-md-7 syspro-entry-content sys-pd-t-5">
-                                                                                    <span class="">TEST</span>
+                                                                                    <span class="" data-bind="text: NewRequest.DeploymentGroup"></span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group sys-mg-b-15">
@@ -1291,7 +1293,7 @@
                                                                                     <b>Request ID</b>
                                                                                 </label>
                                                                                 <div class="col-md-7 syspro-entry-content sys-pd-t-5">
-                                                                                    <span class="">XXX2020R1223v8</span>
+                                                                                    <span class=""data-bind="text: NewRequest.ID"></span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group is-empty sys-mg-b-15">
@@ -1300,20 +1302,13 @@
                                                                                     <b>Update hotfixes on</b>
                                                                                 </label>
                                                                                 <div class="col-md-7 syspro-entry-content">
-                                                                                    <input type="text" class="form-control date" id="">
+                                                                                    <input type="text" class="form-control date" id="" data-bind="value: NewRequest.RequestDate">
                                                                                 </div>
                                                                             </div>
                                         
                                                                             <table class="table table-responsive table-bordered">
-                                                                                <tr>
-                                                                                    <td><b>Update for SYSPRO 8 2018 RC (KB000009)</b></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Update for SYSPRO 8 2018 RC (KB000009)</b></td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><b>Update for SYSPRO 8 2018 RC (KB000009)</b></td>
-                                                                                </tr>
+                                                                                <tbody data-template="newRequestHotfixTemplate" data-bind="source: NewRequest.Hotfixes"></tbody>
+                                                                                
                                                                             </table>
                                         
                                                                             <div class="form-group sys-mg-b-15">
@@ -1450,6 +1445,12 @@
         <script src="js/UX_JS_moment.min.js"></script>
         <script src="js/UX_JS_bootstrap-datetimepicker.js"></script>
         
+        <script id="newRequestHotfixTemplate" type="text/kendo-ui-template">
+            <tr>
+                <td><b>#: HotfixFileName #</b></td>
+            </tr>
+        </script>
+
         <script id="hotfixTemplate" type="text/kendo-ui-template">
             <div class="row">
                 <div class="col-sm-12">
@@ -1791,6 +1792,9 @@
                                     template: kendo.template($("#hotfixTemplate").html())
                                 }); 
                                 $("#myHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMyHotfix", operator: "eq", value: true });
+                                $("#myHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
+                                    console.log(e);
+                                });
 
                                 $("#mandatoryHotfixes").kendoListView({
                                     dataSource: node.AllHotfixes,
@@ -1802,9 +1806,15 @@
                                 $("#generalHotfixes").kendoListView({
                                     dataSource: node.AllHotfixes,
                                     pageable: false,
-                                    template: kendo.template($("#hotfixTemplate").html())
+                                    template: kendo.template($("#hotfixTemplate").html()),
+                                    change: function(e) {
+                                        console.log(e);
+                                    }
                                 }); 
                                 $("#generalHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixGeneral", operator: "eq", value: true });
+                                $("#generalHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
+                                    console.log(e);
+                                })
                                 $.material.init();
                                 kendo.bind();
                             } else if (node && node.Hotfixes) {  
@@ -1870,12 +1880,6 @@
                     });
 
                     function detailInit(e) {
-                        console.log(e);
-                        console.log($(e.detailCell).children());
-                        console.log($(e.detailCell).find('> div').data('kendoGrid'));
-                        if ($(e.detailCell).find('> div').data('kendoGrid')) {
-                            console.log($(e.detailCell).find('> div').data('kendoGrid').dataSource.filter);
-                        }
                         
                         $("<div/>").appendTo(e.detailCell).kendoGrid({
                             dataSource: {
@@ -1886,6 +1890,43 @@
                             scrollable: false,
                             sortable: true,
                             pageable: false,
+                            dataBound: function(e) {
+                                console.log(e);
+                                console.log(e.sender.element.find('tr'));
+                                // e.sender.element.find('tr').each(function(idx, row) {
+
+                                // });
+                                e.sender.dataSource.data().forEach(function(item, idx) {
+                                    var buttonCell = e.sender.element
+                                        .find('tr[data-hotfix-request-id="' + item.HotfixRequestId + '"]')
+                                        .first().find('td > .hotfix-request-actions');
+                                    buttonCell.show();
+                                    buttonCell.find('.rollback-button').off('click').on('click', function(e) {
+                                        var hotfixRequestId = $(this).parent('.hotfix-request-actions').attr('data-hotfix-request-id');
+                                        console.log({
+                                            action: 'rollback',
+                                            hotfixRequestId: hotfixRequestId,
+                                        });
+                                    });
+                                    buttonCell.find('.deploy-button').off('click').on('click', function(e) {
+                                        var hotfixRequestId = $(this).parent('.hotfix-request-actions').attr('data-hotfix-request-id');
+                                        console.log({
+                                            action: 'deploy',
+                                            hotfixRequestId: hotfixRequestId,
+                                        });
+                                    });
+                                });
+                            },
+                            rowTemplate: '<tr data-uid="#= uid #" data-hotfix-request-id="#: HotfixRequestId #">'
+                                + '<td>#: HotfixRequestId #</td>'
+                                + '<td><span class="sys-txt-sm">#: HotfixId # </span></td>'
+                                + '<td>#= kendo.toString(kendo.parseDate(RequestDate, "yyyy-MM-dd"), "MM/dd/yyyy") #</td>'
+                                + '<td>#= kendo.toString(kendo.parseDate(RequestDate, "yyyy-MM-dd"), "MM/dd/yyyy") #</td>'
+                                + '<td>#: Operator #</td>'
+                                + '<td>#: Status #</td>'
+                                + '<td></td>'
+                                + '<td><span data-hotfix-request-id="#: HotfixRequestId #" class="hotfix-request-actions"><button class="btn btn-danger btn-xs sys-pd-5 sys-mg-r-5 rollback-button">Rollback</button><button class="btn btn-success btn-xs sys-pd-5 deploy-button">Deploy</button></span></td>'                          
+                            + '</tr>',
                             columns: [
                                 { field: "HotfixRequestId", title: "Request ID" },
                                 { field: "HotfixId", title: "Hotfix ID", template: "<span class='sys-txt-sm'>#: HotfixId # </span>" },
@@ -1894,13 +1935,11 @@
                                 { field: "Operator", title: "Approved by" },
                                 { field: "Status", title: "Status" },
                                 { field: "notes", title: "Notes" },
+                                { title: "", template: "<span data-hotfix-request-id='#: HotfixRequestId #' class='hotfix-request-actions'><button class='btn btn-danger btn-xs sys-pd-5 sys-mg-r-5'>Rollback</button><button class='btn btn-success btn-xs sys-pd-5'>Deploy</button></span>" }
                             ]
                         });
                     }
-
                 });
-
-
                 
                 
                 var country = $("#country").kendoDropDownList({
