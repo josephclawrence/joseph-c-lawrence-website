@@ -1042,6 +1042,9 @@ color:#fff;background-color:#428bca;border-color:#428bca;
     white-space: nowrap;
     text-align: center;
 }
+.column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-control {
+    width: 100%;
+}
 </style>
         <script src="js/UX_JS_jquery.min.js"></script>
         <script>
@@ -1129,7 +1132,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                       <div class="form-horizontal">
                                                          <div class="row">
                                                             <div class="col-sm-6">
-                                                               <div class="form-group">
+                                                               <div class="form-group sys-mg-off">
                                                                   <div class="syspro-entry-content">
                                                                      <div class="radio sys-mg-r-15">
                                                                         <label class=" sys-fg-inverse  customer-type-option sys-bg-white text-center">
@@ -1151,48 +1154,6 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                      </div>
                                                                   </div>
                                                                </div>
-                                                               <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
-                                                                  <input type="text" class="form-control" 
-                                                                     data-bind="value: QuoteNumber" id="QuoteNumber"
-                                                                     name="QuoteNumber">
-                                                                  <label for="QuoteNumber" class="">
-                                                                  <span>Quote number</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline quote-field">
-                                                                    <select type="text" class="form-control" id="QuoteVersion"
-                                                                    name="QuoteVersion"
-                                                                    data-bind="{source: QuoteVersionList.string, value: SelectedQuoteVersion}"></select>
-                                                                    <label for="QuoteVersion" class="">
-                                                                    <span>Quote version</span>
-                                                                    </label>
-                                                                </div>
-                                                               <div class="form-group md-outline quote-field">
-                                                                  <input  class="form-control" id="ReferenceNumber" 
-                                                                     name="ReferenceNumber" 
-                                                                     data-bind="value: ReferenceNumber" 
-                                                                     readonly>
-                                                                  <label for="ReferenceNumber" class="">
-                                                                  <span>Reference number</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                  <input  class="form-control date" 
-                                                                     data-bind="value: QuoteDate" id="QuoteDate" name="QuoteDate">
-                                                                  <label for="QuoteDate" class="">
-                                                                  <span>Quote date</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                  <input  class="form-control date" 
-                                                                     data-bind="value: ExpiryDate" id="ExpiryDate" name="ExpiryDate">
-                                                                  <label for="ExpiryDate" class="">
-                                                                  <span>Expiry date</span>
-                                                                  </label>
-                                                               </div>
                                                                <div class="form-group">
                                                                 <div class="syspro-entry-content">
                                                                    <div class="radio sys-mg-r-15">
@@ -1208,14 +1169,46 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                          sys-mg-off-r
                                                                          customer-type-option sys-bg-white text-center">
                                                                       <input type="radio" name="IsProspect" autocomplete="off" 
-                                                                         data-bind="checked: IsCustomer" 
-                                                                         value="true"> 
+                                                                         data-bind="checked: IsProspect" 
+                                                                         value="false"> 
                                                                       <b class="sys-txt-md">Customer</b>
                                                                       </label>
                                                                    </div>
                                                                 </div>
                                                              </div>
-                                                               <div data-bind="visible: IsCustomer">
+                                                             
+                                                               <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                  <input type="text" class="form-control" 
+                                                                     data-bind="value: QuoteNumber" id="QuoteNumber"
+                                                                     name="QuoteNumber">
+                                                                  <label for="QuoteNumber" class="">
+                                                                  <span>Quote number</span>
+                                                                  </label>
+                                                               </div>
+                                                               <div class="row">
+                                                                <div class="col-sm-6">
+                                                                     <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                         <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                         <input  class="form-control date" 
+                                                                         data-bind="value: QuoteDate" id="QuoteDate" name="QuoteDate">
+                                                                         <label for="QuoteDate" class="">
+                                                                         <span>Quote date</span>
+                                                                         </label>
+                                                                     </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                     <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                         <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                         <input  class="form-control date" 
+                                                                         data-bind="value: ExpiryDate" id="ExpiryDate" name="ExpiryDate">
+                                                                         <label for="ExpiryDate" class="">
+                                                                         <span>Expiry date</span>
+                                                                         </label>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
+                                                            <div data-bind="visible: IsCustomer">
                                                                 <div class="form-group md-outline quote-field input-with-post-icon">
                                                                     <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
                                                                     <input type="text" class="form-control" 
@@ -1225,7 +1218,8 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     </label>
                                                                 </div>
                                                                 
-                                                                <div class="form-group md-outline">
+                                                                <div class="form-group md-outline input-with-post-icon">
+                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse" >search</i>
                                                                     <input type="text" class="form-control" 
                                                                         data-bind="value: CustomerName" 
                                                                         id="CustomerName" name="CustomerName" required />
@@ -1234,7 +1228,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                     </label>
                                                                 </div>
                                                                </div>
-                                                               <div data-bind="visible: IsProspect">
+                                                               <div data-bind="visible: IsProspectBool">
                                                                     <div class="form-group md-outline quote-field input-with-post-icon">
                                                                         <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
                                                                         <input type="text" class="form-control" 
@@ -1244,7 +1238,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                        <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">search</i>
+                                                                        
                                                                         <input type="text" class="form-control" 
                                                                         data-bind="value: RegionCustomerName" id="RegionCustomerName" name="RegionCustomerName">
                                                                         <label for="RegionCustomerName" class="">
@@ -1252,105 +1246,187 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                         </label>
                                                                     </div>
                                                                 </div>
-                                                               <div class="form-group customer-details region-field md-outline">
-                                                                  <input 
-                                                                     id="Region"
-                                                                     name="Region"
-                                                                     data-role="dropdownlist"
-                                                                     data-value-primitive="true"
-                                                                     data-text-field="Description"
-                                                                     data-value-field="RegionCode"
-                                                                     data-bind="value:       SelectedRegion,
-                                                                     source: RegionList.Region,
-                                                                     events: {change: onDropDownListChange}" class="form-control" required
-                                                                     >
-                                                                  <label for="Region" class="">
-                                                                  <span>Region</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group customer-details region-field md-outline">
-                                                                  <input 
-                                                                     id="SubRegion" 
-                                                                     name="SubRegion" 
-                                                                     data-role="dropdownlist"
-                                                                     data-value-primitive="true"
-                                                                     data-text-field="Description"
-                                                                     data-value-field="RegionCode"
-                                                                     data-bind="value: SelectedSubRegion,
-                                                                     source: SubRegionList.Region,
-                                                                     events: {change: onDropDownListChange}" class="form-control"
-                                                                     required
-                                                                     >
-                                                                  <label for="SubRegion" class="">
-                                                                  <span>Sub-region</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                    <select 
-                                                                    id="Currency" name="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
-                                                                    <label for="Currency" class="">
-                                                                    <span>Currency</span>
-                                                                    </label>  
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group md-outline">
+                                                                            <input id="ContactName" name="ContactName" data-bind="value: ContactName" type="text" class="form-control">
+                                                                            <label for="ContactName" class="">
+                                                                            <span>Contact name</span>
+                                                                            </label>
+                                                                         </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group md-outline">
+                                                                            <input type="phone" class="form-control" id="ContactPhone" name="ContactPhone" data-bind="value: ContactPhone" >
+                                                                            <label for="ContactPhone" class="">
+                                                                            <span>Contact phone</span>
+                                                                            </label> 
+                                                                         </div>
+                                                                    </div>
                                                                 </div>
-                                                               
-                                                               <div class="form-group md-outline customer-details">
-                                                                  <textarea class="form-control " id="QuoteDescription"
-                                                                     name="QuoteDescription"
-                                                                     data-bind="value: QuoteDescription" rows="3"></textarea>
-                                                                  <label for="QuoteDescription" class="">
-                                                                  <span>Description</span>
+                                                                                                                             
+                                                                 <div class="form-group  md-outline">
+                                                                    <input type="email" class="form-control" id="ContactEmail" name="ContactEmail" data-bind="value: ContactEmail">
+                                                                    <label for="ContactEmail" class="">
+                                                                    <span>Contact email</span>
+                                                                    </label>
+                                                                 </div>
+
+                                                                 <div class="row">
+                                                                     <div class="col-sm-4">
+                                                                        <div class="form-group customer-details region-field md-outline">
+                                                                            <input 
+                                                                               id="Region"
+                                                                               name="Region"
+                                                                               data-role="dropdownlist"
+                                                                               data-value-primitive="true"
+                                                                               data-text-field="Description"
+                                                                               data-value-field="RegionCode"
+                                                                               data-bind="value:       SelectedRegion,
+                                                                               source: RegionList.Region,
+                                                                               events: {change: onDropDownListChange}" class="form-control" required
+                                                                               >
+                                                                            <label for="Region" class="">
+                                                                            <span>Region</span>
+                                                                            </label>
+                                                                         </div>
+                                                                     </div>
+                                                                     <div class="col-sm-4">
+                                                                        <div class="form-group customer-details region-field md-outline">
+                                                                            <input 
+                                                                               id="SubRegion" 
+                                                                               name="SubRegion" 
+                                                                               data-role="dropdownlist"
+                                                                               data-value-primitive="true"
+                                                                               data-text-field="Description"
+                                                                               data-value-field="RegionCode"
+                                                                               data-bind="value: SelectedSubRegion,
+                                                                               source: SubRegionList.Region,
+                                                                               events: {change: onDropDownListChange}" class="form-control"
+                                                                               required
+                                                                               >
+                                                                            <label for="SubRegion" class="">
+                                                                            <span>Sub-region</span>
+                                                                            </label>
+                                                                         </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group md-outline">
+                                                                            <select 
+                                                                            id="Currency" name="Currency" data-value-field="CurrencySymbol" data-text-field="CurrencyDescription" data-bind="{source: CurrencyList.Currency, value: SelectedCurrency}" class="form-control"></select>
+                                                                            <label for="Currency" class="">
+                                                                            <span>Currency</span>
+                                                                            </label>  
+                                                                        </div>
+                                                                    </div>
+                                                                 </div>
+                                                                 
+                                                                 <div class="row">
+                                                                     <div class="col-sm-4">
+                                                                        <div class="form-group customer-details md-outline">
+                                                                            <input
+                                                                               type="number"
+                                                                               data-bind="value: NumberOfUsers"
+                                                                               min="0"
+                                                                               max="2000"
+                                                                               step="1"
+                                                                               id="NumberOfUsers"
+                                                                               name="NumberOfUsers"
+                                                                               value=""
+                                                                               class="form-control"
+                                                                               required
+                                                                               />
+                                                                            <label for="NumberOfUsers" class="">
+                                                                            <span>Number of users</span>
+                                                                            </label>
+                                                                         </div>
+                                                                         
+                                                                     </div>
+                                                                     <div class="col-sm-4">
+                                                                        <div class="form-group md-outline">
+                                                                            <input
+                                                                                id="DeploymentRegion" name="DeploymentRegion" 
+                                                                                data-role="dropdownlist"
+                                                                                data-value-primitive="true"
+                                                                                data-text-field="RegionName"
+                                                                                data-value-field="CategoryId"
+                                                                                data-bind="value:       QuoteInfrastructure.SelectedDeploymentRegion,
+                                                                                source: QuoteInfrastructure.DeploymentRegionsList.Region,
+                                                                                events: {change: onDropDownListChange}" class="form-control"
+                                                                                required>
+                                                                            <label for="DeploymentRegion" class="">
+                                                                            <span>Deployment Region</span>
+                                                                            </label>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="col-sm-4">
+                                                                        <div class="form-group md-outline customer-details">
+                                                                            <select type="text" 
+                                                                               id="PaymentCycle" name="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
+                                                                            <label for="PaymentCycle" class="">
+                                                                            <span>Payment cycle</span>
+                                                                            </label>
+                                                                         </div>
+                                                                     </div>
+                                                                     
+                                                                 </div>
+                                                                 <div class="row">
+                                                                     <div class="col-sm-6">
+                                                                        <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                            <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                            <input class="form-control date" 
+                                                                               data-bind="" id="ContractStartDate" name="ContractStartDate">
+                                                                            <label for="ContractStartDate" class="">
+                                                                                <span>Contract start date</span>
+                                                                            </label>
+                                                                         </div>
+        
+                                                                         
+                                                                     </div>
+                                                                     <div class="col-sm-6">
+                                                                        <div class="form-group md-outline quote-field input-with-post-icon">
+                                                                            <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                            <input  class="form-control date" 
+                                                                               data-bind="" id="ContractEndDate" name="ContractEndDate">
+                                                                            <label for="ContractEndDate" class="">
+                                                                                <span>Contract end date</span>
+                                                                            </label>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                               <!-- <div class="form-group md-outline quote-field">
+                                                                    <select type="text" class="form-control" id="QuoteVersion"
+                                                                    name="QuoteVersion"
+                                                                    data-bind="{source: QuoteVersionList.string, value: SelectedQuoteVersion}"></select>
+                                                                    <label for="QuoteVersion" class="">
+                                                                    <span>Quote version</span>
+                                                                    </label>
+                                                                </div> -->
+                                                               <div class="form-group md-outline quote-field">
+                                                                  <input  class="form-control" id="ReferenceNumber" 
+                                                                     name="ReferenceNumber" 
+                                                                     data-bind="value: ReferenceNumber" 
+                                                                     readonly>
+                                                                  <label for="ReferenceNumber" class="">
+                                                                  <span>Reference number</span>
                                                                   </label>
                                                                </div>
+                                                               
+                                                                                                                              
                                                             </div>
                                                             <div class="col-sm-6 customer-details sys-pd-t-5">
-                                                                <div class="form-group customer-details md-outline">
-                                                                    <input
-                                                                       type="number"
-                                                                       data-bind="value: NumberOfUsers"
-                                                                       min="0"
-                                                                       max="2000"
-                                                                       step="1"
-                                                                       id="NumberOfUsers"
-                                                                       name="NumberOfUsers"
-                                                                       value=""
-                                                                       class="form-control"
-                                                                       required
-                                                                       />
-                                                                    <label for="NumberOfUsers" class="">
-                                                                    <span>Number of users</span>
-                                                                    </label>
-                                                                 </div>
-                                                                 <div class="form-group md-outline customer-details">
-                                                                    <select type="text" 
-                                                                       id="PaymentCycle" name="PaymentCycle" data-bind="{source: PaymentCycleList.string, value: SelectedPaymentCycle}" class="form-control"></select>
-                                                                    <label for="PaymentCycle" class="">
-                                                                    <span>Payment cycle</span>
-                                                                    </label>
-                                                                 </div>
+                                                               
+                                                               
+<!--                                                             
+                                                                
                                                                  <div class="form-group existing-customer-field md-outline input-with-post-icon">
                                                                     <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
                                                                     <input class="form-control date" id="LicenseStartDate" name="LicenseStartDate">
                                                                     <label for="LicenseStartDate" class="">
                                                                     <span>License start date</span>
                                                                     </label>
-                                                                 </div>
-                                                                <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                    <input class="form-control date" 
-                                                                       data-bind="" id="ContractStartDate" name="ContractStartDate">
-                                                                    <label for="ContractStartDate" class="">
-                                                                        <span>Contract start date</span>
-                                                                    </label>
-                                                                 </div>
-
-                                                                 <div class="form-group md-outline quote-field input-with-post-icon">
-                                                                    <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                    <input  class="form-control date" 
-                                                                       data-bind="" id="ContractEndDate" name="ContractEndDate">
-                                                                    <label for="ContractEndDate" class="">
-                                                                        <span>Contract end date</span>
-                                                                    </label>
-                                                                 </div>
+                                                                 </div> -->
+                                                                
 
                                                                <div class="form-group md-outline">
                                                                   <input type="text" id="AddressLine1" name="AddressLine1" data-bind="value: AddressLine1" class="form-control">
@@ -1397,24 +1473,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   </label>
                                                                </div>
                                                                
-                                                               <div class="form-group md-outline">
-                                                                  <input id="ContactName" name="ContactName" data-bind="value: ContactName" type="text" class="form-control">
-                                                                  <label for="ContactName" class="">
-                                                                  <span>Contact name</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input type="phone" class="form-control" id="ContactPhone" name="ContactPhone" data-bind="value: ContactPhone" >
-                                                                  <label for="ContactPhone" class="">
-                                                                  <span>Contact phone</span>
-                                                                  </label> 
-                                                               </div>
-                                                               <div class="form-group  md-outline">
-                                                                  <input type="email" class="form-control" id="ContactEmail" name="ContactEmail" data-bind="value: ContactEmail">
-                                                                  <label for="ContactEmail" class="">
-                                                                  <span>Contact email</span>
-                                                                  </label>
-                                                               </div>
+                                                               
                                                                <div class="form-group existing-customer-field md-outline">
                                                                   <input type="text" class="form-control">
                                                                   <label for="" class="">
@@ -1427,6 +1486,14 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>VAT No.</span>
                                                                   </label>
                                                                </div>
+                                                               <div class="form-group md-outline customer-details">
+                                                                    <textarea class="form-control " id="QuoteDescription"
+                                                                    name="QuoteDescription"
+                                                                    data-bind="value: QuoteDescription" rows="3"></textarea>
+                                                                    <label for="QuoteDescription" class="">
+                                                                    <span>Description</span>
+                                                                    </label>
+                                                                </div>
                                                             </div>
                                                          </div>
                                                       </div>
@@ -1522,169 +1589,133 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                   <span>Number of desktop users</span>
                                                                   </label>
                                                                </div>
-                                                               <div class="form-group md-outline input-with-post-icon">
-                                                                  <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
-                                                                  <input  class="form-control date" 
-                                                                     data-bind="value: QuoteInfrastructure.ProvisioningStartDate" id="ProvisioningStartDate" name="ProvisioningStartDate">
-                                                                  <label for="ProvisioningStartDate" class="">
-                                                                  <span>Provisioning start date</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input
-                                                                     id="DeploymentRegion" name="DeploymentRegion" 
-                                                                     data-role="dropdownlist"
-                                                                     data-value-primitive="true"
-                                                                     data-text-field="RegionName"
-                                                                     data-value-field="CategoryId"
-                                                                     data-bind="value:       QuoteInfrastructure.SelectedDeploymentRegion,
-                                                                     source: QuoteInfrastructure.DeploymentRegionsList.Region,
-                                                                     events: {change: onDropDownListChange}" class="form-control"
-                                                                     required>
-                                                                  <label for="DeploymentRegion" class="">
-                                                                  <span>Deployment Region</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input
-                                                                     id="ServerTimezone" name="ServerTimezone" 
-                                                                     data-role="dropdownlist"
-                                                                     data-value-primitive="true"
-                                                                     data-text-field="DisplayName"
-                                                                     data-value-field="TimeZoneId"
-                                                                     data-bind="value:       QuoteInfrastructure.SelectedServerTimeZone,
-                                                                     source: QuoteInfrastructure.ServerTimeZoneList.TimeZone,
-                                                                     events: {change: onDropDownListChange}" class="form-control"
-                                                                     required>
-                                                                  <label for="ServerTimezone" class="">
-                                                                  <span>Server Timezone</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group  md-outline">
-                                                                    <input type="text" class="form-control" id="DnsName" name="DnsName" data-bind="value: DnsName">
-                                                                    <label for="DnsName" class="">
-                                                                        <span>DNS name</span>
-                                                                    </label>
-                                                                </div>
                                                                <div class="form-group">
-                                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                     <label>
-                                                                     <input 
-                                                                        type="checkbox" 
-                                                                        id="AdditionalEnvironmentTest" 
-                                                                        name="AdditionalEnvironmentTest"
-                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTest"
-                                                                        >
-                                                                        Include Test Environment
-                                                                     </label>
-                                                                  </div>
-                                                               </div>
-                                                               <div class="form-group sys-mg-b-15 sys-pd-b-15">
-                                                                    <label for="" class="">
-                                                                        <span>Some label</span>
-                                                                    </label>
-                                                                    <div style="position: relative;" class="sys-mg-5">
-                                                                        <div 
-                                                                            id="test-env-slider" 
-                                                                            class="test-env-slider  nonbound-slider"
-                                                                            data-slider-endvalue="25"
-                                                                            data-slider-min="0"
-                                                                            data-slider-max="100"
-                                                                            data-avanti-slider-tooltip-format="n0"
-                                                                            data-bind="disabled: disableTestHighlyAvailable, attr: {data-slider-endvalue: QuoteInfrastructure.AdditionalEnvironmentTestRatio}"
-                                                                        ></div>
-                                                                        <input
-                                                                            type="number"
-                                                                            id="test-env-slider-input"
-                                                                            name="test-env-slider-input"
-                                                                            class="hidden"
-                                                                            data-bind="value: QuoteInfrastructure.AdditionalEnvironmentTestRatio"
-                                                                        />
-                                                                    </div>
+                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                   <label>
+                                                                   <input 
+                                                                      type="checkbox" 
+                                                                      id="AdditionalEnvironmentTest" 
+                                                                      name="AdditionalEnvironmentTest"
+                                                                      data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTest"
+                                                                      >
+                                                                      Include Test Environment
+                                                                   </label>
                                                                 </div>
-                                                               <!-- <div class="form-group">
-                                                                  <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                     <label>
-                                                                     <input 
-                                                                        type="checkbox" 
-                                                                        id="AdditionalEnvironmentTestHighlyAvail" 
-                                                                        name="AdditionalEnvironmentTestHighlyAvail"
-                                                                        data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTestHighlyAvail, disabled: disableTestHighlyAvailable"
-                                                                        >
-                                                                     Make highly available
-                                                                     </label>
+                                                             </div>
+                                                             <div class="form-group sys-mg-b-15 sys-pd-b-15">
+                                                                  <label for="" class="">
+                                                                      <span>Size of environment for users</span>
+                                                                  </label>
+                                                                  <div style="position: relative;" class="sys-mg-5">
+                                                                      <div 
+                                                                          id="test-env-slider" 
+                                                                          class="test-env-slider  nonbound-slider"
+                                                                          data-slider-endvalue="25"
+                                                                          data-slider-min="0"
+                                                                          data-slider-max="100"
+                                                                          data-avanti-slider-tooltip-format="n0"
+                                                                          data-bind="disabled: disableTestHighlyAvailable, attr: {data-slider-endvalue: QuoteInfrastructure.AdditionalEnvironmentTestRatio}"
+                                                                      ></div>
+                                                                      <input
+                                                                          type="number"
+                                                                          id="test-env-slider-input"
+                                                                          name="test-env-slider-input"
+                                                                          class="hidden"
+                                                                          data-bind="value: QuoteInfrastructure.AdditionalEnvironmentTestRatio"
+                                                                      />
                                                                   </div>
-                                                               </div> -->
-                                                                    <div class="form-group">
-                                                                        <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                            <label>
-                                                                            <input 
-                                                                                type="checkbox" 
-                                                                                id="AdditionalEnvironmentDev" 
-                                                                                name="AdditionalEnvironmentDev"
-                                                                                data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
-                                                                                >
-                                                                                Include Dev Environment
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group sys-mg-b-15 sys-pd-b-15">
-                                                                        <label for="" class="">
-                                                                            <span>Some label</span>
-                                                                        </label>
-                                                                        <div style="position: relative;" class="sys-mg-5">
-                                                                            <div 
-                                                                                id="dev-env-slider" 
-                                                                                class="dev-env-slider  nonbound-slider"
-                                                                                data-slider-endvalue="25"
-                                                                                data-slider-min="0"
-                                                                                data-slider-max="100"
-                                                                                data-avanti-slider-tooltip-format="n0"
-                                                                                data-avanti-slider-steps="25"
-                                                                                data-bind="disabled: disableDevHighlyAvailable, attr: {data-slider-endvalue: QuoteInfrastructure.AdditionalEnvironmentDevRatio}"
-                                                                            ></div>
-                                                                            <input
-                                                                                type="number"
-                                                                                id="dev-env-slider-input"
-                                                                                name="dev-env-slider-input"
-                                                                                class="hidden"
-                                                                                data-bind="value: QuoteInfrastructure.AdditionalEnvironmentDevRatio"
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row sys-mg-b-10">
-                                                                        <div class="col-xs-12">
-                                                                            <div class="form-group-section ">
-                                                                                <h4>Invite email addresses</h4>
-                                                                                <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="InviteEmail1" name="InviteEmail1" data-bind="value: QuoteInfrastructure.InviteEmail1">
+                                                              </div>
+                                                             <!-- <div class="form-group">
+                                                                <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                   <label>
+                                                                   <input 
+                                                                      type="checkbox" 
+                                                                      id="AdditionalEnvironmentTestHighlyAvail" 
+                                                                      name="AdditionalEnvironmentTestHighlyAvail"
+                                                                      data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentTestHighlyAvail, disabled: disableTestHighlyAvailable"
+                                                                      >
+                                                                   Make highly available
+                                                                   </label>
+                                                                </div>
+                                                             </div> -->
+                                                                  <div class="form-group">
+                                                                      <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                          <label>
+                                                                          <input 
+                                                                              type="checkbox" 
+                                                                              id="AdditionalEnvironmentDev" 
+                                                                              name="AdditionalEnvironmentDev"
+                                                                              data-bind="checked: QuoteInfrastructure.AdditionalEnvironmentDev"
+                                                                              >
+                                                                              Include Dev Environment
+                                                                          </label>
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="form-group sys-mg-b-15 sys-pd-b-15">
+                                                                      <label for="" class="">
+                                                                          <span>Size of environment for users</span>
+                                                                      </label>
+                                                                      <div style="position: relative;" class="sys-mg-5">
+                                                                          <div 
+                                                                              id="dev-env-slider" 
+                                                                              class="dev-env-slider  nonbound-slider"
+                                                                              data-slider-endvalue="25"
+                                                                              data-slider-min="0"
+                                                                              data-slider-max="100"
+                                                                              data-avanti-slider-tooltip-format="n0"
+                                                                              data-avanti-slider-steps="25"
+                                                                              data-bind="disabled: disableDevHighlyAvailable, attr: {data-slider-endvalue: QuoteInfrastructure.AdditionalEnvironmentDevRatio}"
+                                                                          ></div>
+                                                                          <input
+                                                                              type="number"
+                                                                              id="dev-env-slider-input"
+                                                                              name="dev-env-slider-input"
+                                                                              class="hidden"
+                                                                              data-bind="value: QuoteInfrastructure.AdditionalEnvironmentDevRatio"
+                                                                          />
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="row">
+                                                                      <div class="col-xs-12">
+                                                                        <h4><a href="#provNotDetails" data-toggle="collapse" class="sys-fg-primary" aria-expanded="false" aria-controls="provNotDetails">Provisioning notification details <i class="material-icons sys-txt-sm">expand_more</i></a></h4>
+                                                                        <div id="provNotDetails" class="collapse in">
+                                                                            <div class="row sys-mg-b-10">
+                                                                                <div class="col-xs-12">
+                                                                                    <div class="form-group-section ">
+                                                                                        <h4>Invite email addresses</h4>
+                                                                                        <div class="form-group  md-outline">
+                                                                                            <input type="email" class="form-control" id="InviteEmail1" name="InviteEmail1" data-bind="value: QuoteInfrastructure.InviteEmail1">
+                                                                                        </div>
+                                                                                        <div class="form-group  md-outline">
+                                                                                            <input type="email" class="form-control" id="InviteEmail2" name="InviteEmail2" data-bind="value: QuoteInfrastructure.InviteEmail2">
+                                                                                        </div>
+                                                                                        <div class="form-group  md-outline">
+                                                                                            <input type="email" class="form-control" id="InviteEmail3" name="InviteEmail3" data-bind="value: QuoteInfrastructure.InviteEmail3">
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="InviteEmail2" name="InviteEmail2" data-bind="value: QuoteInfrastructure.InviteEmail2">
-                                                                                </div>
-                                                                                <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="InviteEmail3" name="InviteEmail3" data-bind="value: QuoteInfrastructure.InviteEmail3">
+                                                                            </div>
+                                                                            <div class="row sys-mg-b-10">
+                                                                                <div class="col-xs-12">
+                                                                                    <div class="form-group-section">
+                                                                                        <h4>Notification email addresses</h4>
+                                                                                        <div class="form-group  md-outline">
+                                                                                            <input type="email" class="form-control" id="NotificationEmail1" name="NotificationEmail1" data-bind="value: QuoteInfrastructure.NotificationEmail1">
+                                                                                        </div>
+                                                                                        <div class="form-group  md-outline">
+                                                                                            <input type="email" class="form-control" id="NotificationEmail2" name="NotificationEmail2" data-bind="value: QuoteInfrastructure.NotificationEmail2">
+                                                                                        </div>
+                                                                                        <div class="form-group  md-outline">
+                                                                                            <input type="email" class="form-control" id="NotificationEmail3" name="NotificationEmail3" data-bind="value: QuoteInfrastructure.NotificationEmail3">
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row sys-mg-b-10">
-                                                                        <div class="col-xs-12">
-                                                                            <div class="form-group-section">
-                                                                                <h4>Notification email addresses</h4>
-                                                                                <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="NotificationEmail1" name="NotificationEmail1" data-bind="value: QuoteInfrastructure.NotificationEmail1">
-                                                                                </div>
-                                                                                <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="NotificationEmail2" name="NotificationEmail2" data-bind="value: QuoteInfrastructure.NotificationEmail2">
-                                                                                </div>
-                                                                                <div class="form-group  md-outline">
-                                                                                    <input type="email" class="form-control" id="NotificationEmail3" name="NotificationEmail3" data-bind="value: QuoteInfrastructure.NotificationEmail3">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                  </div>
+                                                                  
+                                                                    
                                                                <!-- <div class="form-group">
                                                                   <div class="checkbox sys-pd-t-5 sys-mg-off-t">
                                                                      <label>
@@ -1700,154 +1731,198 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                                                </div> -->
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <div class="row sys-mg-b-10">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                      <h4 class="sys-mg-off-t"><a href="#defaultSystemDetails" data-toggle="collapse" class="sys-fg-primary" aria-expanded="false" aria-controls="defaultSystemDetails">Default system details <i class="material-icons sys-txt-sm">expand_more</i></a></h4>
+                                                                      <div id="defaultSystemDetails" class="collapse in">
+                                                                            <div class="row sys-mg-b-10">
 
-                                                                    <div class="form-group-section col-xs-12">
-                                                                        <h4>Email options</h4>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="SMTPIP" name="SMTPIP" data-bind="value: SMTPIP">
-                                                                            <label for="SMTPIP" class="">
-                                                                                <span>SMTP IP</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
-                                                                            <label for="SMTPEmail" class="">
-                                                                                <span>SMTP email</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="ServerPort" name="ServerPort" data-bind="value: ServerPort">
-                                                                            <label for="ServerPort" class="">
-                                                                                <span>Server port</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group checkbox-form-group">
-                                                                            <div class="checkbox sys-pd-t-5 sys-mg-off-t">
-                                                                                <label class="sys-fg-white" data-bind="css: {active: IsSelected}">
-                                                                                    <input type="checkbox" id="SystemWide" data-bind="checked: SystemWide">
-                                                                                    Use system wide
-                                                                                </label>
+                                                                                <div class="form-group-section col-xs-12">
+                                                                                    <h4>Email options</h4>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="text" class="form-control" id="SMTPIP" name="SMTPIP" data-bind="value: SMTPIP">
+                                                                                        <label for="SMTPIP" class="">
+                                                                                            <span>SMTP IP</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="email" class="form-control" id="SMTPEmail" name="SMTPEmail" data-bind="value: SMTPEmail">
+                                                                                        <label for="SMTPEmail" class="">
+                                                                                            <span>SMTP email</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="text" class="form-control" id="ServerPort" name="ServerPort" data-bind="value: ServerPort">
+                                                                                        <label for="ServerPort" class="">
+                                                                                            <span>Server port</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <!-- <div class="form-group checkbox-form-group">
+                                                                                        <div class="checkbox sys-pd-t-5 sys-mg-off-t">
+                                                                                            <label class="sys-fg-white" data-bind="css: {active: IsSelected}">
+                                                                                                <input type="checkbox" id="SystemWide" data-bind="checked: SystemWide">
+                                                                                                Use system wide
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div> -->
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="text" class="form-control" id="EmailUsername" name="EmailUsername" data-bind="value: EmailUsername">
+                                                                                        <label for="EmailUsername" class="">
+                                                                                            <span>Username</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="password" class="form-control" id="EmailPassword" name="EmailPassword" data-bind="value: EmailPassword">
+                                                                                        <label for="EmailPassword" class="">
+                                                                                            <span>Password</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row sys-mg-b-10">
+                                                                                <div class="form-group-section col-xs-12">
+                                                                                    <h4>Office 365 options</h4>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="text" class="form-control" id="TenantID" name="TenantID" data-bind="value: TenantID">
+                                                                                        <label for="TenantID" class="">
+                                                                                            <span>Tenant ID</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="text" class="form-control" id="ExchangeServerID" name="ExchangeServerID" data-bind="value: ExchangeServerID">
+                                                                                        <label for="ExchangeServerID" class="">
+                                                                                            <span>Exchange server ID</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="text" class="form-control" id="ClientID" name="ClientID" data-bind="value: ClientID">
+                                                                                        <label for="ClientID" class="">
+                                                                                            <span>Client ID</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="form-group  md-outline">
+                                                                                        <input type="text" class="form-control" id="ResourceID" name="ResourceID" data-bind="value: ResourceID">
+                                                                                        <label for="ResourceID" class="">
+                                                                                            <span>Resource ID</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    
+
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="EmailUsername" name="EmailUsername" data-bind="value: EmailUsername">
-                                                                            <label for="EmailUsername" class="">
-                                                                                <span>Username</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="password" class="form-control" id="EmailPassword" name="EmailPassword" data-bind="value: EmailPassword">
-                                                                            <label for="EmailPassword" class="">
-                                                                                <span>Password</span>
-                                                                            </label>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row sys-mg-b-10">
-                                                                    <div class="form-group-section col-xs-12">
-                                                                        <h4>Office 365 options</h4>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="TenantID" name="TenantID" data-bind="value: TenantID">
-                                                                            <label for="TenantID" class="">
-                                                                                <span>Tenant ID</span>
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                      <h4><a href="#regionSettings" data-toggle="collapse" class="sys-fg-primary " aria-expanded="false" aria-controls="regionSettings">Region settings <i class="material-icons sys-txt-sm">expand_more</i></a></h4>
+                                                                      <div id="regionSettings" class="collapse in">
+                                                                        <!-- <div class="form-group md-outline input-with-post-icon">
+                                                                            <i class="material-icons input-prefix sys-txt-sm sys-fg-inverse">calendar_today</i>
+                                                                            <input  class="form-control date" 
+                                                                                data-bind="value: QuoteInfrastructure.ProvisioningStartDate" id="ProvisioningStartDate" name="ProvisioningStartDate">
+                                                                            <label for="ProvisioningStartDate" class="">
+                                                                            <span>Provisioning start date</span>
                                                                             </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="ExchangeServerID" name="ExchangeServerID" data-bind="value: ExchangeServerID">
-                                                                            <label for="ExchangeServerID" class="">
-                                                                                <span>Exchange server ID</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="ClientID" name="ClientID" data-bind="value: ClientID">
-                                                                            <label for="ClientID" class="">
-                                                                                <span>Client ID</span>
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-group  md-outline">
-                                                                            <input type="text" class="form-control" id="ResourceID" name="ResourceID" data-bind="value: ResourceID">
-                                                                            <label for="ResourceID" class="">
-                                                                                <span>Resource ID</span>
-                                                                            </label>
-                                                                        </div>
+                                                                        </div> -->
                                                                         
-
+                                                                        <div class="form-group md-outline">
+                                                                            <input
+                                                                                id="ServerTimezone" name="ServerTimezone" 
+                                                                                data-role="dropdownlist"
+                                                                                data-value-primitive="true"
+                                                                                data-text-field="DisplayName"
+                                                                                data-value-field="TimeZoneId"
+                                                                                data-bind="value:       QuoteInfrastructure.SelectedServerTimeZone,
+                                                                                source: QuoteInfrastructure.ServerTimeZoneList.TimeZone,
+                                                                                events: {change: onDropDownListChange}" class="form-control"
+                                                                                required>
+                                                                            <label for="ServerTimezone" class="">
+                                                                            <span>Server Timezone</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-group  md-outline">
+                                                                                <input type="text" class="form-control" id="DnsName" name="DnsName" data-bind="value: DnsName">
+                                                                                <label for="DnsName" class="">
+                                                                                    <span>DNS name</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-group md-outline">
+                                                                                <input
+                                                                                   id="ShortDateFormat" name="ShortDateFormat" 
+                                                                                   data-role="dropdownlist"
+                                                                                   data-bind="value:       QuoteInfrastructure.SelectedShortDateFormat,
+                                                                                   source: QuoteInfrastructure.ShortDateFormatList.string,
+                                                                                   events: {change: onDropDownListChange}" class="form-control"
+                                                                                   required>
+                                                                                <label for="ShortDateFormat" class="">
+                                                                                <span>Short date format</span>
+                                                                                </label>
+                                                                             </div>
+                                                                             <div class="form-group md-outline">
+                                                                                <input
+                                                                                   id="LongDateFormat" name="LongDateFormat" 
+                                                                                   data-role="dropdownlist"
+                                                                                   data-bind="value:       QuoteInfrastructure.SelectedLongDateFormat,
+                                                                                   source: QuoteInfrastructure.LongDateFormatList.string,
+                                                                                   events: {change: onDropDownListChange}" class="form-control"
+                                                                                   required>
+                                                                                <label for="LongDateFormat" class="">
+                                                                                <span>Long date format</span>
+                                                                                </label>
+                                                                             </div>
+                                                                             <div class="form-group md-outline">
+                                                                                <input
+                                                                                   id="ReportDateFormat" name="ReportDateFormat" 
+                                                                                   data-role="dropdownlist"
+                                                                                   data-bind="value:       QuoteInfrastructure.SelectedReportDateFormat,
+                                                                                   source: QuoteInfrastructure.ReportDateFormatList.string,
+                                                                                   events: {change: onDropDownListChange}" class="form-control"
+                                                                                   required>
+                                                                                <label for="ReportDateFormat" class="">
+                                                                                <span>Report date format</span>
+                                                                                </label>
+                                                                             </div>
+                                                                             <div class="form-group md-outline">
+                                                                                <input  
+                                                                                   class="form-control" 
+                                                                                   type="text"
+                                                                                   id="ThousandSeparator" 
+                                                                                   name="ThousandSeparator" 
+                                                                                   data-bind="value: QuoteInfrastructure.ThousandSeparator" 
+                                                                                   >
+                                                                                <label for="ThousandSeparator" class="">
+                                                                                <span>Thousand Separator</span>
+                                                                                </label>
+                                                                             </div>
+                                                                             <div class="form-group md-outline">
+                                                                                <input  
+                                                                                   class="form-control" 
+                                                                                   type="text"
+                                                                                   id="DecimalSeparator" 
+                                                                                   name="DecimalSeparator" 
+                                                                                   data-bind="value: QuoteInfrastructure.DecimalSeparator" 
+                                                                                   >
+                                                                                <label for="DecimalSeparator" class="">
+                                                                                <span>Decimal Separator</span>
+                                                                                </label>
+                                                                             </div>
+                                                                             <div class="form-group md-outline">
+                                                                                <input  
+                                                                                   class="form-control" 
+                                                                                   type="text"
+                                                                                   id="CurrencySymbol" 
+                                                                                   name="CurrencySymbol" 
+                                                                                   data-bind="value: QuoteInfrastructure.CurrencySymbol" 
+                                                                                   >
+                                                                                <label for="CurrencySymbol" class="">
+                                                                                <span>Currency symbol</span>
+                                                                                </label>
+                                                                             </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-
-                                                               <div class="form-group md-outline">
-                                                                  <input
-                                                                     id="ShortDateFormat" name="ShortDateFormat" 
-                                                                     data-role="dropdownlist"
-                                                                     data-bind="value:       QuoteInfrastructure.SelectedShortDateFormat,
-                                                                     source: QuoteInfrastructure.ShortDateFormatList.string,
-                                                                     events: {change: onDropDownListChange}" class="form-control"
-                                                                     required>
-                                                                  <label for="ShortDateFormat" class="">
-                                                                  <span>Short date format</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input
-                                                                     id="LongDateFormat" name="LongDateFormat" 
-                                                                     data-role="dropdownlist"
-                                                                     data-bind="value:       QuoteInfrastructure.SelectedLongDateFormat,
-                                                                     source: QuoteInfrastructure.LongDateFormatList.string,
-                                                                     events: {change: onDropDownListChange}" class="form-control"
-                                                                     required>
-                                                                  <label for="LongDateFormat" class="">
-                                                                  <span>Long date format</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input
-                                                                     id="ReportDateFormat" name="ReportDateFormat" 
-                                                                     data-role="dropdownlist"
-                                                                     data-bind="value:       QuoteInfrastructure.SelectedReportDateFormat,
-                                                                     source: QuoteInfrastructure.ReportDateFormatList.string,
-                                                                     events: {change: onDropDownListChange}" class="form-control"
-                                                                     required>
-                                                                  <label for="ReportDateFormat" class="">
-                                                                  <span>Report date format</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input  
-                                                                     class="form-control" 
-                                                                     type="text"
-                                                                     id="ThousandSeparator" 
-                                                                     name="ThousandSeparator" 
-                                                                     data-bind="value: QuoteInfrastructure.ThousandSeparator" 
-                                                                     >
-                                                                  <label for="ThousandSeparator" class="">
-                                                                  <span>Thousand Separator</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input  
-                                                                     class="form-control" 
-                                                                     type="text"
-                                                                     id="DecimalSeparator" 
-                                                                     name="DecimalSeparator" 
-                                                                     data-bind="value: QuoteInfrastructure.DecimalSeparator" 
-                                                                     >
-                                                                  <label for="DecimalSeparator" class="">
-                                                                  <span>Decimal Separator</span>
-                                                                  </label>
-                                                               </div>
-                                                               <div class="form-group md-outline">
-                                                                  <input  
-                                                                     class="form-control" 
-                                                                     type="text"
-                                                                     id="CurrencySymbol" 
-                                                                     name="CurrencySymbol" 
-                                                                     data-bind="value: QuoteInfrastructure.CurrencySymbol" 
-                                                                     >
-                                                                  <label for="CurrencySymbol" class="">
-                                                                  <span>Currency symbol</span>
-                                                                  </label>
-                                                               </div>
+                                                               
                                                             </div>
                                                          </div>
                                                       </div>
@@ -2350,7 +2425,10 @@ color:#fff;background-color:#428bca;border-color:#428bca;
         <script>
             
             kendo.data.ObservableObject.prototype.IsCustomer = function() {
-                return !this.get("IsProspect");
+                return this.get("IsProspect") === false || this.get("IsProspect") === "false";
+            };
+            kendo.data.ObservableObject.prototype.IsProspectBool = function() {
+                return this.get("IsProspect") === true || this.get("IsProspect") === "true";
             };
             kendo.data.ObservableObject.prototype.parseEditDate = function() {
                 return moment(this.get("QuoteSummary.LastEdited")).format("DD/MM/YYY, HH:mm");
