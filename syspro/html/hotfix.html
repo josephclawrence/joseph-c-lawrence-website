@@ -1108,20 +1108,19 @@
                                                 </div>
 
                                                 <div class="tab-pane " id="hotfixes">
-                                                    <div class="row quote-scrollable-pane">
-
-                                                        <div class="col-xs-12">
-
-                                                            <div class="row">
-                                                                <div class="col-sm-4 col-xs-12">
-                                                                    <div class="form-group md-outline">
-                                                                    <!-- <p class="lead text-center"> -->
-                                                                        <!-- A note about <b>Independent Software Vendors.</b> -->
-                                                                        <input class="form-control isv-filter" type="text" placeholder="Filter hotfixes..." />
-                                                                    </div>
-                                                                    <!-- </p> -->
-                                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4 col-xs-12">
+                                                            <div class="form-group md-outline">
+                                                            <!-- <p class="lead text-center"> -->
+                                                                <!-- A note about <b>Independent Software Vendors.</b> -->
+                                                                <input id="isvFilter" class="form-control isv-filter" type="text" placeholder="Filter hotfixes..." />
                                                             </div>
+                                                            <!-- </p> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="row quote-scrollable-pane">
+                                                        <div class="col-xs-12">
+                                                            
                                                             <div class="row packages-options">
                                                                 <div class="col-sm-4">
                                                                     <p>
@@ -1680,6 +1679,7 @@
                         select: function(e) {
                             const nodeId = $(e.node).data('uid');
                             const node = dataSource.getByUid(nodeId);
+                            $("#isvFilter").val('');
                             if (node && node.HotfixRequests) {
                                 console.log(node.Description);
                                 //const description = dataSource.getByUid($(e.node).data('uid')).Description;
@@ -1696,9 +1696,10 @@
                                     template: kendo.template($("#hotfixTemplate").html())
                                 }); 
                                 $("#myHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMyHotfix", operator: "eq", value: true });
-                                $("#myHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
-                                    console.log(e);
-                                });
+
+                                // $("#myHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
+                                //     console.log(e);
+                                // });
 
                                 $("#mandatoryHotfixes").kendoListView({
                                     dataSource: node.AllHotfixes,
@@ -1716,9 +1717,9 @@
                                     }
                                 }); 
                                 $("#generalHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixGeneral", operator: "eq", value: true });
-                                $("#generalHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
-                                    console.log(e);
-                                });
+                                // $("#generalHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
+                                //     console.log(e);
+                                // });
 
                                 $("#hotfixes input[type='checkbox'").off('change').on('change', function(e) {
                                     var eventData = {
@@ -1894,6 +1895,41 @@
                     });
                 });
 
+                $("#isvFilter").off("input").on("input", function(e) { 
+                    var inputValue = $("#isvFilter").val();
+
+                    $("#myHotfixes").data('kendoListView').dataSource.filter([
+                        { field: "HotfixMyHotfix", operator: "eq", value: true },
+                        { field: "HotfixSynopsis", operator: "contains", value: inputValue },                       
+                    ]);
+
+                    // $("#myHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
+                    //     console.log(e);
+                    // });
+
+                    $("#mandatoryHotfixes").data('kendoListView').dataSource.filter([
+                        { field: "HotfixMandatory", operator: "eq", value: "Y" },
+                        { field: "HotfixSynopsis", operator: "contains", value: inputValue },
+                    ]);
+
+                    $("#generalHotfixes").data('kendoListView').dataSource.filter([
+                        { field: "HotfixGeneral", operator: "eq", value: true },
+                        { field: "HotfixSynopsis", operator: "contains", value: inputValue },
+                    ]);
+                    
+                    // $("#generalHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
+                    //     console.log(e);
+                    // });
+                    $("#hotfixes input[type='checkbox'").off('change').on('change', function(e) {
+                        var eventData = {
+                            hotfixID: $(this).val(),
+                            checked: $(this).prop('checked'),
+                        };
+                        console.log(eventData);
+                    });
+                    $.material.init();
+                });
+                
                 // var inline = new kendo.data.HierarchicalDataSource({
                 //     data: [
                 //         { name: "Customer Name XXX0001 | 8833", type: "customer", subCategories: [
