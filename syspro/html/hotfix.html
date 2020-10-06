@@ -1108,18 +1108,12 @@
                                                 </div>
 
                                                 <div class="tab-pane " id="hotfixes">
-                                                    <div class="row">
-                                                        <div class="col-sm-4 col-xs-12">
-                                                            <div class="form-group md-outline">
-                                                            <!-- <p class="lead text-center"> -->
-                                                                <!-- A note about <b>Independent Software Vendors.</b> -->
-                                                                <input id="isvFilter" class="form-control isv-filter" type="text" placeholder="Filter hotfixes..." />
-                                                            </div>
-                                                            <!-- </p> -->
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="row quote-scrollable-pane">
                                                         <div class="col-xs-12">
+                                                            <div id="availableHotfixesGrid"></div>
+                                                        </div>
+                                                        <!-- <div class="col-xs-12">
                                                             
                                                             <div class="row packages-options">
                                                                 <div class="col-sm-4">
@@ -1145,7 +1139,7 @@
                                                                 </div>
                                                             </div>
                                                             
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane " id="confirm">
@@ -1407,6 +1401,34 @@
             # } #
             #: item.name # 
         </script>
+
+        <!-- <script type="text/x-kendo-template" id="hotfixToolbarFilterTemplate">
+            <div class="toolbar">
+               <label class="list-label" for="list">Get full list:</label>
+               <input type="checkbox" id="list" style="width: 75px"/>
+            </div>
+         </script> -->
+         <script type="text/x-kendo-template" id="hotfixToolbarFilterTemplate">
+            <button class="btn btn-default">Clear filters</button>
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary">
+                  <input type="radio" name="hotfixGridFilter" id="myhotfixes" value="HotfixMyHotfix"> My hotfixes
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="hotfixGridFilter" id="general" value="HotfixGeneral"> General
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="hotfixGridFilter" id="mandatory" value="HotfixMandatory"> Mandatory
+                </label>
+            </div>
+            <span class="k-textbox k-grid-search k-display-flex">
+                <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input">
+                <span class="k-input-icon">
+                    <span class="k-icon k-i-search"></span>
+                </span>
+            </span>
+        </script>
+
         <script>
             // var inline = new kendo.data.HierarchicalDataSource({
             //     data: [
@@ -1690,44 +1712,101 @@
                                 $('#hotfixWizard').bootstrapWizard('enable',2);
                                 $('#hotfixWizard').bootstrapWizard('enable',3);
 
-                                $("#myHotfixes").kendoListView({
+                                var availableHotfixesGrid = $("#availableHotfixesGrid").kendoGrid({
                                     dataSource: node.AllHotfixes,
-                                    pageable: false,
-                                    template: kendo.template($("#hotfixTemplate").html())
-                                }); 
-                                $("#myHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMyHotfix", operator: "eq", value: true });
+                                    height: 600,
+                                    sortable: true,
+                                    toolbar: [
+                                        { template: kendo.template($("#hotfixToolbarFilterTemplate").html())}
+                                    ],
+                                    search: {
+                                        fields: ["HotfixFileName", "HotfixId", "HotfixSynopsis"]
+                                    },
+                                    columns: [
+                                        { field: "HotfixSelected", width: 50, template: "<input type='checkbox' data-bind='checked:HotfixSelected' />", headerTemplate: "<input id='checkAll' type='checkbox' onclick='checkAll(this)'/>" },
+                                        {
+                                            field: "HotfixFileName",
+                                            title: "Filename",
+                                        },
+                                        {
+                                            field: "HotfixId",
+                                            title: "ID",
+                                        },
+                                        {
+                                            field: "HotfixSynopsis",
+                                            title: "Synopsis",
+                                        },
+                                        {
+                                            field: "HotfixInstalled",
+                                            title: "Installed?",
+                                        },
+                                        {
+                                            field: "HotfixFileName",
+                                            title: "Filename",
+                                        },
+                                    ],
+                                    dataBound: function(e){
+                                        e.sender.items().each(function(){
+                                            var dataItem = e.sender.dataItem(this);
+                                            kendo.bind(this, dataItem);
+                                            if(dataItem.HotfixSelected){
+                                                $(this).addClass("k-state-selected");
+                                            }
+                                        });
+
+                                        $("#checkAll")[0].checked = e.sender.items().find(":checked").length == e.sender.dataSource.view().length;
+
+                                        $("input[name='hotfixGridFilter']").off('change').on('change', function(d) {
+                                            console.log(d);
+                                            console.log($(this).val());
+                                            e.sender.dataSource.filter({
+                                                field: $(this).val(),
+                                                operator: "eq",
+                                                value: true
+                                            })
+
+                                        });
+                                    }
+                                });
+                                
+                                // $("#myHotfixes").kendoListView({
+                                //     dataSource: node.AllHotfixes,
+                                //     pageable: false,
+                                //     template: kendo.template($("#hotfixTemplate").html())
+                                // }); 
+                                
 
                                 // $("#myHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
                                 //     console.log(e);
                                 // });
 
-                                $("#mandatoryHotfixes").kendoListView({
-                                    dataSource: node.AllHotfixes,
-                                    pageable: false,
-                                    template: kendo.template($("#hotfixTemplate").html())
-                                }); 
-                                $("#mandatoryHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMandatory", operator: "eq", value: "Y" });
+                                // $("#mandatoryHotfixes").kendoListView({
+                                //     dataSource: node.AllHotfixes,
+                                //     pageable: false,
+                                //     template: kendo.template($("#hotfixTemplate").html())
+                                // }); 
+                                // $("#mandatoryHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMandatory", operator: "eq", value: "Y" });
 
-                                $("#generalHotfixes").kendoListView({
-                                    dataSource: node.AllHotfixes,
-                                    pageable: false,
-                                    template: kendo.template($("#hotfixTemplate").html()),
-                                    change: function(e) {
-                                        console.log(e);
-                                    }
-                                }); 
-                                $("#generalHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixGeneral", operator: "eq", value: true });
+                                // $("#generalHotfixes").kendoListView({
+                                //     dataSource: node.AllHotfixes,
+                                //     pageable: false,
+                                //     template: kendo.template($("#hotfixTemplate").html()),
+                                //     change: function(e) {
+                                //         console.log(e);
+                                //     }
+                                // }); 
+                                // $("#generalHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixGeneral", operator: "eq", value: true });
                                 // $("#generalHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
                                 //     console.log(e);
                                 // });
 
-                                $("#hotfixes input[type='checkbox'").off('change').on('change', function(e) {
-                                    var eventData = {
-                                        hotfixID: $(this).val(),
-                                        checked: $(this).prop('checked'),
-                                    };
-                                    console.log(eventData);
-                                });
+                                // $("#hotfixes input[type='checkbox'").off('change').on('change', function(e) {
+                                //     var eventData = {
+                                //         hotfixID: $(this).val(),
+                                //         checked: $(this).prop('checked'),
+                                //     };
+                                //     console.log(eventData);
+                                // });
                                 $.material.init();
                                 kendo.bind();
                             } else if (node && node.Hotfixes) {  
@@ -1845,6 +1924,7 @@
                             ]
                         });
                     }
+
                 });
                 
                 
