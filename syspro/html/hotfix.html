@@ -1020,8 +1020,8 @@
                                                         <!-- <label for="quoteNumber" class="">
                                                             <span>Customer</span>
                                                         </label> -->
-                                                        <input type="text" class="form-control" id="quoteNumber" placeholder="Customer">
-                                                        <span class="input-group-btn">
+                                                        <input type="text" class="form-control" id="quoteNumber" placeholder="Customer" data-bind="value: CustomerCode, disabled: DisableCustomerSelection">
+                                                        <span class="input-group-btn" data-bind="invisible: DisableCustomerSelection">
                                                             <a class="syspro-browse-button" >
                                                                 <i class="material-icons">search</i>
                                                             </a>
@@ -1409,7 +1409,7 @@
             </div>
          </script> -->
          <script type="text/x-kendo-template" id="hotfixToolbarFilterTemplate">
-            <button class="btn btn-default">Clear filters</button>
+            <button class="btn btn-default" id="clearHotfixFilters">Clear filters</button>
             <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary">
                   <input type="radio" name="hotfixGridFilter" id="myhotfixes" value="HotfixMyHotfix"> My hotfixes
@@ -1422,7 +1422,7 @@
                 </label>
             </div>
             <span class="k-textbox k-grid-search k-display-flex">
-                <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input">
+                <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input" id="hotfixGridSearch">
                 <span class="k-input-icon">
                     <span class="k-icon k-i-search"></span>
                 </span>
@@ -1580,7 +1580,18 @@
                 children: SubscriptionsSchema,
             });
 
-            
+            function checkAll(input){
+                var grid = $("#availableHotfixesGrid").data("kendoGrid");
+                var items = grid.items();
+                items.each(function(){
+                var dataItem = grid.dataItem(this);
+                if(dataItem.HotfixSelected != input.checked){
+                    dataItem.HotfixSelected = input.checked;
+                    dataItem.dirty = true;
+                }
+                })
+                grid.dataSource.sync();
+            }
 
             $(document).ready(function() {
 
@@ -1680,11 +1691,14 @@
 
                 $('[data-tooltip="tooltip"]').tooltip();
 
+                
 
                 $.getJSON( "https://josephclawrence.com/syspro/html/data/HotfixModel.json", function( data ) {
                     truthify(data);
                     const { treeData, gridData } =  reFormatJSON(data);
+                    console.log(gridData);
                     window.viewModel = kendo.observable(data);
+                    viewModel.DisableCustomerSelection = true;
                     kendo.bind($("body"), viewModel);
                     $.material.init();
                     window.dataSource = new kendo.data.HierarchicalDataSource({
@@ -1712,7 +1726,11 @@
                                 $('#hotfixWizard').bootstrapWizard('enable',2);
                                 $('#hotfixWizard').bootstrapWizard('enable',3);
 
-                                var availableHotfixesGrid = $("#availableHotfixesGrid").kendoGrid({
+                                if ($("#availableHotfixesGrid").data("kendoGrid")) {
+                                    $("#availableHotfixesGrid").data("kendoGrid").destroy();
+                                }
+                                    
+                                $("#availableHotfixesGrid").kendoGrid({
                                     dataSource: node.AllHotfixes,
                                     height: 600,
                                     sortable: true,
@@ -1756,57 +1774,26 @@
 
                                         $("#checkAll")[0].checked = e.sender.items().find(":checked").length == e.sender.dataSource.view().length;
 
+                                        $("#clearHotfixFilters").off("click").on("click", function(b) {
+                                            b.preventDefault();
+                                            $("input[name='hotfixGridFilter']").prop("checked", false);
+                                            $("input[name='hotfixGridFilter']").parent('.active').removeClass('active');
+                                            e.sender.dataSource.filter({});
+                                            $("#hotfixGridSearch").val('');
+                                        });
+
                                         $("input[name='hotfixGridFilter']").off('change').on('change', function(d) {
-                                            console.log(d);
-                                            console.log($(this).val());
+                                            
                                             e.sender.dataSource.filter({
                                                 field: $(this).val(),
                                                 operator: "eq",
                                                 value: true
-                                            })
-
+                                            });
+                                            $("#hotfixGridSearch").val('');
                                         });
                                     }
                                 });
                                 
-                                // $("#myHotfixes").kendoListView({
-                                //     dataSource: node.AllHotfixes,
-                                //     pageable: false,
-                                //     template: kendo.template($("#hotfixTemplate").html())
-                                // }); 
-                                
-
-                                // $("#myHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
-                                //     console.log(e);
-                                // });
-
-                                // $("#mandatoryHotfixes").kendoListView({
-                                //     dataSource: node.AllHotfixes,
-                                //     pageable: false,
-                                //     template: kendo.template($("#hotfixTemplate").html())
-                                // }); 
-                                // $("#mandatoryHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixMandatory", operator: "eq", value: "Y" });
-
-                                // $("#generalHotfixes").kendoListView({
-                                //     dataSource: node.AllHotfixes,
-                                //     pageable: false,
-                                //     template: kendo.template($("#hotfixTemplate").html()),
-                                //     change: function(e) {
-                                //         console.log(e);
-                                //     }
-                                // }); 
-                                // $("#generalHotfixes").data('kendoListView').dataSource.filter({ field: "HotfixGeneral", operator: "eq", value: true });
-                                // $("#generalHotfixes").data('kendoListView').dataSource.bind("change", function(e) {
-                                //     console.log(e);
-                                // });
-
-                                // $("#hotfixes input[type='checkbox'").off('change').on('change', function(e) {
-                                //     var eventData = {
-                                //         hotfixID: $(this).val(),
-                                //         checked: $(this).prop('checked'),
-                                //     };
-                                //     console.log(eventData);
-                                // });
                                 $.material.init();
                                 kendo.bind();
                             } else if (node && node.Hotfixes) {  
@@ -1846,6 +1833,9 @@
                             
                         },
                     }).data("kendoTreeView");
+
+                    
+
                     treeView.expand(".k-item");
                     treeView.expand(".k-item .k-item");                    
                     
@@ -1910,7 +1900,7 @@
                                 + '<td>#: Operator #</td>'
                                 + '<td>#: Status #</td>'
                                 + '<td></td>'
-                                + '<td><span data-hotfix-request-id="#: HotfixRequestId #" class="hotfix-request-actions"><button class="btn btn-danger btn-xs sys-pd-5 sys-mg-r-5 rollback-button">Rollback</button><button class="btn btn-success btn-xs sys-pd-5 deploy-button">Deploy</button></span></td>'                          
+                                + '<td><span data-hotfix-request-id="#: HotfixRequestId #" class="hotfix-request-actions"><button data-bind="invisible: CanCancel" class="btn btn-danger btn-xs sys-pd-5 sys-mg-r-5 rollback-button">Rollback</button><button data-bind="invisible: CanCancel" class="btn btn-success btn-xs sys-pd-5 deploy-button">Deploy</button><button data-bind="visible: CanCancel" class="btn btn-danger btn-xs sys-pd-5">Cancelo</button></span></td>'                          
                             + '</tr>',
                             columns: [
                                 { field: "HotfixRequestId", title: "Request ID" },
@@ -1920,7 +1910,7 @@
                                 { field: "Operator", title: "Approved by" },
                                 { field: "Status", title: "Status" },
                                 { field: "notes", title: "Notes" },
-                                { title: "", template: "<span data-hotfix-request-id='#: HotfixRequestId #' class='hotfix-request-actions'><button class='btn btn-danger btn-xs sys-pd-5 sys-mg-r-5'>Rollback</button><button class='btn btn-success btn-xs sys-pd-5'>Deploy</button></span>" }
+                                { title: "" }
                             ]
                         });
                     }

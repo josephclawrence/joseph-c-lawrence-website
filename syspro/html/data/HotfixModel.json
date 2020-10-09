@@ -89,6 +89,7 @@
 										"HotfixMyHotfix": "false",
 										"HotfixGeneral": "true",
 										"HotfixInstalled": "false",
+										"CanCancel": true,
 										"HotfixSelected": "false",
 										"HotfixReadOnly": "false"
 									},
@@ -97,6 +98,7 @@
 										"HotfixFileName": "SYSPRO.8.2020.R1.KB8050014.msp",
 										"HotfixSynopsis": "Setup Options: The toggle view of the Categories option displays links to forms that dont exist and cause a blank form to be displayed.",
 										"HotfixMandatory": "N",
+										"CanCancel": false,
 										"HotfixMyHotfix": "false",
 										"HotfixGeneral": "true",
 										"HotfixInstalled": "false",
@@ -110,6 +112,7 @@
 										"HotfixMandatory": "N",
 										"HotfixMyHotfix": "false",
 										"HotfixGeneral": "true",
+										"CanCancel": true,
 										"HotfixInstalled": "false",
 										"HotfixSelected": "false",
 										"HotfixReadOnly": "false"
