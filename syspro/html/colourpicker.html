@@ -96,6 +96,14 @@
     transform: rotate(-90deg);
     
 }
+.k-chart-crosshair-tooltip, .k-chart-shared-tooltip, .k-widget.k-tooltip {
+    border-color: #95a5a6;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+.k-callout-s {
+    border-top-color: #ecf0f1;
+}
         </style>
 
         <script>
@@ -176,44 +184,45 @@
                                                         <div id="SomeID" class="collapse in">
                                                             <div class="form-group  checkbox-form-group" data-guid="7692c9c7-216f-440b-bffc-f12d578a7624">
                                                                             <label for="IMPCFGF0ConsolidateBroughtForwardCustomers" class="pull-left control-label sys-mg-t-5 sys-pd-t-5" >
-                                                                            <span data-bind="htmltextnonull: Fields.IMPCFGF0ConsolidateBroughtForwardCustomers.Caption">IMPCFGF0ConsolidateBroughtForwardCustomers</span>
+                                                                            <span >IMPCFGF0ConsolidateBroughtForwardCustomers</span>
                                                                         </label>
                                                                     
                                                                 <div class="pull-left sys-pd-l-10 syspro-entry-content">
                                                                                     
                                                                     <div class="checkbox sys-pd-t-5">
                                                                                         <label>
-                                                                                            <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.IMPCFGF0ConsolidateBroughtForwardCustomers" data-fieldname="Fields.IMPCFGF0ConsolidateBroughtForwardCustomers" data-bind="checked: Fields.IMPCFGF0ConsolidateBroughtForwardCustomers.Value">
+                                                                                            <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.IMPCFGF0ConsolidateBroughtForwardCustomers" data-fieldname="Fields.IMPCFGF0ConsolidateBroughtForwardCustomers" >
                                                                                         </label>
                                                                                     
                                                                     </div>
                                                                         
                                                                 </div>
-                                                                    
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-container="body" data-bind="visible: Fields.IMPCFGF0ConsolidateBroughtForwardCustomers.Help, attr: { data-content: Fields.IMPCFGF0ConsolidateBroughtForwardCustomers.Help }">
+
+
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-container="body" >
                                                                             <i class="material-icons sys-fg-primary popover-trigger sys-txt-md sys-pd-t-5">info</i>
                                                                         
                                                                 </div>
                                                             </div>
                                                             <div class="form-group  " data-guid="c131a6ff-59af-4c29-b673-52aa67509a9c">
                                                                             <label for="IMPCFGF0InvoiceAgeingMethod" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5" >
-                                                                            <span data-bind="htmltextnonull: Fields.IMPCFGF0InvoiceAgeingMethod.Caption">IMPCFGF0InvoiceAgeingMethod</span>
+                                                                            <span >IMPCFGF0InvoiceAgeingMethod</span>
                                                                         </label>
                                                                     
                                                                 <div class="col-md-6 col-xs-11 syspro-entry-content">
                                                                                     
-                                                                    <div id="Fields.IMPCFGF0InvoiceAgeingMethod" data-fieldname="Fields.IMPCFGF0InvoiceAgeingMethod" class="syspro-databound-radiobutton" data-template="radiobuttonTemplate" data-bind="value: Fields.IMPCFGF0InvoiceAgeingMethod.Value, source: Fields.IMPCFGF0InvoiceAgeingMethod.Items.Item"></div>
+                                                                    <div id="Fields.IMPCFGF0InvoiceAgeingMethod" data-fieldname="Fields.IMPCFGF0InvoiceAgeingMethod" class="syspro-databound-radiobutton" data-template="radiobuttonTemplate" ></div>
                                                                         
                                                                 </div>
                                                                     
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-container="body" data-bind="visible: Fields.IMPCFGF0InvoiceAgeingMethod.Help, attr: { data-content: Fields.IMPCFGF0InvoiceAgeingMethod.Help }">
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-container="body" >
                                                                             <i class="material-icons sys-fg-primary popover-trigger sys-txt-md">info</i>
                                                                         
                                                                 </div>
                                                             </div>
                                                             <div class="form-group  " data-guid="9e17833a-c3a5-4c07-a536-a986b19bfcfe">
                                                                             <label for="IMPCFGF0ARInvoiceTerms" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5" >
-                                                                            <span data-bind="htmltextnonull: Fields.IMPCFGF0ARInvoiceTerms.Caption">IMPCFGF0ARInvoiceTerms</span>
+                                                                            <span >IMPCFGF0ARInvoiceTerms</span>
                                                                         </label>
                                                                     
                                                                 <div class="col-md-6 col-xs-11 syspro-entry-content">
@@ -222,20 +231,20 @@
                                                                                         <span class="spinner"></span>
                                                                                         <input type="text" class="form-control syspro-trackfield-change syspro-browse-input syspro-focusable syspro-trackfield-keydown" id="Fields.IMPCFGF0ARInvoiceTerms"
                                                                                                 data-fieldname="Fields.IMPCFGF0ARInvoiceTerms" data-inputmask-greedy="false" data-inputmask-tabthrough="true" data-inputmask-clearmaskonlostfocus="false" data-input-clearincomplete="false" data-inputmask-escapechar="~"
-                                                                                                data-bind="inputmask: Fields.IMPCFGF0ARInvoiceTerms.InputMask, entryvalue: Fields.IMPCFGF0ARInvoiceTerms.Value, predictivesearch: Fields.IMPCFGF0ARInvoiceTerms.PredictiveSearch, entryfieldevents: Fields.IMPCFGF0ARInvoiceTerms.EntryFieldEvents">
+                                                                                                >
                                                                                         <span class="input-group-btn">
-                                                                                            <a class="syspro-browse-button" data-fieldname="Fields.IMPCFGF0ARInvoiceTerms" data-bind="attr: { data-fieldvalue: Fields.IMPCFGF0ARInvoiceTerms.Value, data-predictivesearchfield: Fields.IMPCFGF0ARInvoiceTerms.PredictiveSearch  }">
+                                                                                            <a class="syspro-browse-button" data-fieldname="Fields.IMPCFGF0ARInvoiceTerms" >
                                                                                                 <i class="material-icons">search</i>
                                                                                             </a>
                                                                                         </span>
                                                                                     
                                                                     </div>
                                                                                     
-                                                                    <p class="help-block always-show syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.IMPCFGF0ARInvoiceTerms.Description"></p>
+                                                                    <p class="help-block always-show syspro-help-block disabled-help-block" ></p>
                                                                         
                                                                 </div>
                                                                     
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-container="body" data-bind="visible: Fields.IMPCFGF0ARInvoiceTerms.Help, attr: { data-content: Fields.IMPCFGF0ARInvoiceTerms.Help }">
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-container="body" >
                                                                             <i class="material-icons sys-fg-primary popover-trigger sys-txt-md">info</i>
                                                                         
                                                                 </div>
@@ -247,72 +256,72 @@
                                                         <div id="SomeID2" class="collapse in">
                                                             <div class="form-group  " data-guid="b14a9a40-a195-44e9-9c31-67368c2053ba">
                                                                     <label for="IMPCFGF0PrintCreditOrDebitNotes" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5" >
-                                                                            <span data-bind="htmltextnonull: Fields.IMPCFGF0PrintCreditOrDebitNotes.Caption">IMPCFGF0PrintCreditOrDebitNotes</span>
+                                                                            <span >IMPCFGF0PrintCreditOrDebitNotes</span>
                                                                         </label>
                                                                     
                                                                 <div class="col-md-6 col-xs-11 syspro-entry-content">
-                                                                                    <select id="Fields.IMPCFGF0PrintCreditOrDebitNotes" data-fieldname="Fields.IMPCFGF0PrintCreditOrDebitNotes" class="form-control dropdown-select syspro-trackfield-change" data-template="selectTemplate" data-bind="source: Fields.IMPCFGF0PrintCreditOrDebitNotes.Items.Item, value: Fields.IMPCFGF0PrintCreditOrDebitNotes.Value"></select>
+                                                                                    <select id="Fields.IMPCFGF0PrintCreditOrDebitNotes" data-fieldname="Fields.IMPCFGF0PrintCreditOrDebitNotes" class="form-control dropdown-select syspro-trackfield-change" data-template="selectTemplate" ></select>
                                                                         
                                                                 </div>
                                                                     
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-container="body" data-bind="visible: Fields.IMPCFGF0PrintCreditOrDebitNotes.Help, attr: { data-content: Fields.IMPCFGF0PrintCreditOrDebitNotes.Help }">
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-container="body" >
                                                                             <i class="material-icons sys-fg-primary popover-trigger sys-txt-md">info</i>
                                                                         
                                                                 </div>
                                                             </div>
                                                             <div class="form-group  " data-guid="531eef79-3180-4165-976e-3694cf5aecef">
                                                                         <label for="IMPCFGF0AccountsReceivableLinkToCashBook" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5" >
-                                                                            <span data-bind="htmltextnonull: Fields.IMPCFGF0AccountsReceivableLinkToCashBook.Caption">IMPCFGF0AccountsReceivableLinkToCashBook</span>
+                                                                            <span >IMPCFGF0AccountsReceivableLinkToCashBook</span>
                                                                         </label>
                                                                     
                                                                 <div class="col-md-6 col-xs-11 syspro-entry-content">
-                                                                                    <select id="Fields.IMPCFGF0AccountsReceivableLinkToCashBook" data-fieldname="Fields.IMPCFGF0AccountsReceivableLinkToCashBook" class="form-control dropdown-select syspro-trackfield-change" data-template="selectTemplate" data-bind="source: Fields.IMPCFGF0AccountsReceivableLinkToCashBook.Items.Item, value: Fields.IMPCFGF0AccountsReceivableLinkToCashBook.Value"></select>
+                                                                                    <select id="Fields.IMPCFGF0AccountsReceivableLinkToCashBook" data-fieldname="Fields.IMPCFGF0AccountsReceivableLinkToCashBook" class="form-control dropdown-select syspro-trackfield-change" data-template="selectTemplate" ></select>
                                                                         
                                                                 </div>
                                                                     
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-container="body" data-bind="visible: Fields.IMPCFGF0AccountsReceivableLinkToCashBook.Help, attr: { data-content: Fields.IMPCFGF0AccountsReceivableLinkToCashBook.Help }">
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-container="body" >
                                                                             <i class="material-icons sys-fg-primary popover-trigger sys-txt-md">info</i>
                                                                         
                                                                 </div>
                                                             </div>
                                                             <div class="form-group  checkbox-form-group" data-guid="220964e7-a09e-4fbd-91ee-7a1af0359bb7">
                                                                         <label for="IMPCFGF0AllowOperatorOverrideInARPayments" class="pull-left control-label sys-mg-t-5 sys-pd-t-5" >
-                                                                            <span data-bind="htmltextnonull: Fields.IMPCFGF0AllowOperatorOverrideInARPayments.Caption">IMPCFGF0AllowOperatorOverrideInARPayments</span>
+                                                                            <span >IMPCFGF0AllowOperatorOverrideInARPayments</span>
                                                                         </label>
                                                                     
                                                                 <div class="pull-left sys-pd-l-10 syspro-entry-content">
                                                                                     
                                                                     <div class="checkbox sys-pd-t-5">
                                                                                         <label>
-                                                                                            <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.IMPCFGF0AllowOperatorOverrideInARPayments" data-fieldname="Fields.IMPCFGF0AllowOperatorOverrideInARPayments" data-bind="checked: Fields.IMPCFGF0AllowOperatorOverrideInARPayments.Value">
+                                                                                            <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.IMPCFGF0AllowOperatorOverrideInARPayments" data-fieldname="Fields.IMPCFGF0AllowOperatorOverrideInARPayments" >
                                                                                         </label>
                                                                                     
                                                                     </div>
                                                                         
                                                                 </div>
                                                                     
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-container="body" data-bind="visible: Fields.IMPCFGF0AllowOperatorOverrideInARPayments.Help, attr: { data-content: Fields.IMPCFGF0AllowOperatorOverrideInARPayments.Help }">
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-container="body" >
                                                                             <i class="material-icons sys-fg-primary popover-trigger sys-txt-md sys-pd-t-5">info</i>
                                                                         
                                                                 </div>
                                                             </div>
                                                             <div class="form-group  checkbox-form-group" data-guid="d4970efe-38fa-46a8-a4e3-e8274f06391b">
                                                                         <label for="IMPCFGF0ConsolidatePaymentTypesAtLineLevel" class="pull-left control-label sys-mg-t-5 sys-pd-t-5" >
-                                                                            <span data-bind="htmltextnonull: Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel.Caption">IMPCFGF0ConsolidatePaymentTypesAtLineLevel</span>
+                                                                            <span >IMPCFGF0ConsolidatePaymentTypesAtLineLevel</span>
                                                                         </label>
                                                                     
                                                                 <div class="pull-left sys-pd-l-10 syspro-entry-content">
                                                                                     
                                                                     <div class="checkbox sys-pd-t-5">
                                                                                         <label>
-                                                                                            <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel" data-fieldname="Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel" data-bind="checked: Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel.Value">
+                                                                                            <input class="syspro-trackfield-change syspro-focusable" type="checkbox" id="Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel" data-fieldname="Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel" >
                                                                                         </label>
                                                                                     
                                                                     </div>
                                                                         
                                                                 </div>
                                                                     
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-container="body" data-bind="visible: Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel.Help, attr: { data-content: Fields.IMPCFGF0ConsolidatePaymentTypesAtLineLevel.Help }">
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-container="body" >
                                                                             <i class="material-icons sys-fg-primary popover-trigger sys-txt-md">info</i>
                                                                         
                                                                 </div>
@@ -343,7 +352,7 @@
                                                 <div class="form-horizontal">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <div class="form-group is-empty" data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse. Lomo photo booth raw denim chillwave, distillery flannel narwhal messenger bag lo-fi quinoa authentic migas.">
+                                                            <div class="form-group is-empty" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse. Lomo photo booth raw denim chillwave, distillery flannel narwhal messenger bag lo-fi quinoa authentic migas.">
                     
                                                                 <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
                                                                     <span>Colour</span>
@@ -354,7 +363,7 @@
                                                                       
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group is-empty" data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse. Lomo photo booth raw denim chillwave, distillery flannel narwhal messenger bag lo-fi quinoa authentic migas.">
+                                                            <div class="form-group is-empty" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse. Lomo photo booth raw denim chillwave, distillery flannel narwhal messenger bag lo-fi quinoa authentic migas.">
                     
                                                                 <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
                                                                     <span>Colour</span>
@@ -369,7 +378,7 @@
                                                                 </div>
                                                             </div>
 <!-- 
-                                                            <div class="form-group is-empty" data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse.">
+                                                            <div class="form-group is-empty" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-content="Slow-carb woke everyday carry green juice locavore. Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse.">
                     
                                                                 <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
                                                                     <span>Colour</span>
@@ -388,7 +397,7 @@
                                                                 <div class="col-md-6 col-xs-11 syspro-entry-content">
                                                                     <input type="text" class="form-control" />
                                                                 </div>
-                                                                <div class="col-md-1 col-xs-1" data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="The content of the popover" data-container="body">
+                                                                <div class="col-md-1 col-xs-1" data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-content="The content of the popover" data-container="body">
                                                                     <i class="material-icons sys-fg-primary popover-trigger sys-txt-md"  >info</i>
                                                                 </div>
                                                             </div>
@@ -404,7 +413,7 @@
                                                                       
                                                                 </div>
                                                                 <div class="col-sm-1 col-xs-1">
-                                                                    <i class="material-icons sys-fg-primary popover-trigger"   data-toggle="popover" data-placement="auto" data-trigger="hover" data-content="Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse." data-container="body">info</i>
+                                                                    <i class="material-icons sys-fg-primary popover-trigger"   data-role="tooltip" data-position="top" data-width="300" data-hide-after="10" title="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit"  data-content="Aesthetic pickled neutra williamsburg actually. Roof party pork belly artisan, godard normcore squid letterpress 8-bit occupy marfa etsy master cleanse." data-container="body">info</i>
                                                                 </div>
                                                             </div>
 
@@ -417,7 +426,7 @@
                                                                 <div class="col-md-7 syspro-entry-content">
                                                                     <input data-role="dropdownlist"
                                                                         class="form-control" 
-                                                                        data-bind="value: selectedItem, source: items"
+                                                                        
                                                                     />
                                                                     <!-- data-text-field="ItemName"
                                                                     data-value-field="ItemID" -->
@@ -454,7 +463,7 @@
                 $.material.init();
 
                 kendo.bind($("body"), viewModel);
-                $('[data-toggle="popover"]').popover();
+                // $('[data-role="tooltip"]').popover();
             });
             var country = $("#country").kendoDropDownList({
                     optionLabel: "Select country...",
