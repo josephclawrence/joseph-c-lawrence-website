@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual fiber_manual_recorder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/postcss.css" rel="stylesheet" />
+
+
+        <style>
+            .popover {
+  pointer-events: none;
+}
+.k-flatcolorpicker .k-slider-horizontal .k-slider-track {
+    box-shadow: none;
+    border-width: 0;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle {
+    margin-top: 0px;
+    border: 9px solid #fff;
+    width: 10px;
+    height: 10px;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle:focus, .k-flatcolorpicker .k-hue-slider .k-draghandle:hover {
+    border-width: 10px;
+    margin-top: -1px;
+}
+/* .k-flatcolorpicker .k-hue-slider .k-draghandle:hover {
+    border-width: 11px;
+    margin-top: -2px;
+} */
+
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle,
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle:focus,
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle:hover {
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #eee;
+    margin-left: -7px;
+    margin-top: -7px;
+    border-radius: 9px;
+    /* -webkit-box-shadow: 0 1px 2px #444; */
+    box-shadow: none;
+    /* background: 0 0; */
+    background-color: transparent !important;
+}
+
+.k-slider-horizontal .k-slider-track {
+    top: 50%;
+    left: 0;
+    height: 10px;
+    border-radius: 5px;
+}
+.k-colorpicker .k-selected-color {
+    width: 2em;
+    height: 2em;
+}
+.k-picker-wrap .k-select {
+    line-height: 2em;
+}
+.k-colorpicker .k-picker-wrap {
+    line-height: 2em;
+}
+.form-group + .popover, .form-group .control-label + .popover {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.form-group-section {
+    background: #fbfbfb;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin-bottom: 10px;
+}
+.collapse-icon {
+    transition: all linear 0.2s;
+    vertical-align: middle !important;
+}
+.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+    
+}
+.k-chart-crosshair-tooltip, .k-chart-shared-tooltip, .k-widget.k-tooltip {
+    border-color: #95a5a6;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+.k-callout-s {
+    border-top-color: #ecf0f1;
+}
+#main-container {
+    background-color: var(--color_athens_gray_approx);
+}
+        </style>
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
+                        >
+                            <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid " id="main-container">
+                <div class="row sys-mg-t-15">
+
+                    <div class="col-sm-3">
+                        <div id="desSysMenu">
+                            <ul class="sidebar-menu tree">
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">palette</span>Colour<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Primary</a></li>
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Secondary</a></li>                                     
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">format_size</span>Typography<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Something</a></li>
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Something</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">border_style</span>Shadow & border<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Shadows</a></li>
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Borders & corners</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">check_box</span>Inputs & buttons<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Buttons</a></li>
+                                        <li class="treeview">
+                                            <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">folder_open</span>Form inputs<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                            <ul class="treeview-menu">
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Text & number</a></li>
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Checkbox & radio buttons</a></li>
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Date/time pickers</a></li>
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Colour pickers</a></li>
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Sliders</a></li>
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Rich text/Notepad</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">table_chart</span>Data display<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Grid lists</a></li>
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Treeviews</a></li>
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Treelists</a></li>
+                                        <li class="treeview">
+                                            <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">folder_open</span>Layout widgets<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                            <ul class="treeview-menu">
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Standard types</a></li>
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>List views</a></li>
+                                                <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Link lists</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">insert_chart</span>Charts<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                    <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Line charts</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">contact_mail</span>Cards<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Large cards</a></li>  
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Small cards</a></li>                                     
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">view_carousel</span>Off canvas<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Side panels</a></li>
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Modal windows</a></li>                                     
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">view_comfy</span>Tiles<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <!-- <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>AI Administrator</a></li>                                     
+                                    </ul> -->
+                                </li>
+                                <li class="treeview">
+                                    <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">feedback</span>Notifications & dialogs<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
+                                    <ul class="treeview-menu">
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Dialog boxes</a></li>   
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Notifications</a></li>   
+                                        <li><a class="syspro-program-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Error notifications</a></li>                                     
+                                    </ul>
+                                </li>
+                            </ul>
+                         </div>
+                    </div>
+                    <div class="col-sm-9 sys-mg-t-15">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column" id="contentSpace">
+
+
+
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Off Canvas menus -->
+
+        <script src="js/UX_JS_bootstrap.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+        <script src="js/UX_JS_Tree.js"></script>
+        <script>
+        
+            $(document).ready(function() {
+                $.material.init();
+                $("#desSysMenu").tree();
+                kendo.bind($("body"), viewModel);
+                // $('[data-role="tooltip"]').popover();
+            });
+
+        </script>
+    </body>
+</html>
