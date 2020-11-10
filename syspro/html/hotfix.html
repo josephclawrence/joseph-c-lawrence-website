@@ -1657,12 +1657,12 @@
                 $(".quote-scrollable-pane").css({'maxHeight': tabHeight - 100, 'height': tabHeight - 100});
                 if ($("#availableHotfixesGrid").data("kendoGrid")) {
                     $("#availableHotfixesGrid").data("kendoGrid").setOptions({
-                        height: tabHeight - 110,
+                        height: tabHeight - 130,
                     });
                 }
                 if ($("#installedHotfixes").data("kendoGrid")) {
                     $("#installedHotfixes").data("kendoGrid").setOptions({
-                        height: tabHeight - 110,
+                        height: tabHeight - 130,
                     });
                 }
                 
@@ -1806,7 +1806,7 @@
                                     
                                 $("#availableHotfixesGrid").kendoGrid({
                                     dataSource: node.AllHotfixes,
-                                    height: $(window).height() - 310,
+                                    height: $(window).height() - 330,
                                     sortable: true,
                                     toolbar: [
                                         { template: kendo.template($("#hotfixToolbarFilterTemplate").html())}
