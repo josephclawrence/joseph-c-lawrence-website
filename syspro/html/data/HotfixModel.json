@@ -159,7 +159,7 @@
 							"HotfixGeneral": "true",
 							"HotfixInstalled": "false",
 							"HotfixSelected": "false",
-							"HotfixReadOnly": "false"
+							"HotfixReadOnly": "true"
 						},
 						{
 							"HotfixId": "2E0A2769-47CC-4675-9338-D302C77BDE6A",
@@ -170,7 +170,7 @@
 							"HotfixGeneral": "true",
 							"HotfixInstalled": "false",
 							"HotfixSelected": "false",
-							"HotfixReadOnly": "false"
+							"HotfixReadOnly": "true"
 						},
 						{
 							"HotfixId": "C0485CE2-F0B1-4FCD-B466-1A222348C259",

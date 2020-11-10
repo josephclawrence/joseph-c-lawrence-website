@@ -22,7 +22,12 @@
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
 
         <style>
-
+            .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+                border-left: 1px solid;
+            }
+            .k-grid-content {
+                border-bottom: 1px solid var(--color_geyser_approx);
+            }
             .form-group {
                 margin-top: 10px;
                 margin-bottom: 15px;
@@ -1100,9 +1105,9 @@
                                             </div>
                                             <div class="tab-content">
                                                 <div class="tab-pane " id="info">
-                                                    <div class="row">
+                                                    <div class="row quote-scrollable-pane">
                                                         <div class="col-xs-12">
-                                                            <div id="grid"></div>
+                                                            <div id="installedHotfixes"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1420,6 +1425,9 @@
                 <label class="btn btn-primary">
                   <input type="radio" name="hotfixGridFilter" id="mandatory" value="HotfixMandatory"> Mandatory
                 </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="hotfixGridFilter" id="consolidated" value="HotfixMandatory"> Consolidated
+                </label>
             </div>
             <span class="k-textbox k-grid-search k-display-flex">
                 <input autocomplete="off" placeholder="Search..." title="Search..." class="k-input" id="hotfixGridSearch">
@@ -1580,21 +1588,93 @@
                 children: SubscriptionsSchema,
             });
 
-            function checkAll(input){
-                var grid = $("#availableHotfixesGrid").data("kendoGrid");
-                var items = grid.items();
-                items.each(function(){
-                var dataItem = grid.dataItem(this);
-                if(dataItem.HotfixSelected != input.checked){
-                    dataItem.HotfixSelected = input.checked;
-                    dataItem.dirty = true;
+            // function checkAll(input) {
+            //     console.log('start');
+            //     var grid = $("#availableHotfixesGrid").data("kendoGrid");
+            //     var items = grid.items();
+            //     console.log(items);
+            //     items.each(function(){
+            //         console.log(this);
+            //         var dataItem = grid.dataItem(this);
+            //         console.log(dataItem);
+            //         if(dataItem.HotfixSelected != input.checked){
+            //             dataItem.HotfixSelected = input.checked;
+            //             dataItem.dirty = true;
+            //         }
+            //     })
+            //     grid.dataSource.sync();
+            // }
+
+            function selectRow() {
+                var checked = this.checked,
+                    row = $(this).closest("tr"),
+                    grid = $("#availableHotfixesGrid").data("kendoGrid"),
+                    dataItem = grid.dataItem(row);
+
+
+                if (checked) {
+                    //-select the row
+                    row.addClass("k-state-selected");
+
+                    var checkHeader = true;
+
+                    $.each(grid.items(), function (index, item) {
+                        if (!($(item).hasClass("k-state-selected"))) {
+                            checkHeader = false;
+                        }
+                    });
+
+                    $("#header-chb")[0].checked = checkHeader;
+                } else {
+                    //-remove selection
+                    row.removeClass("k-state-selected");
+                    $("#header-chb")[0].checked = false;
                 }
-                })
-                grid.dataSource.sync();
             }
 
-            $(document).ready(function() {
+            $(document).on('change', '#header-chb', function (ev) {
+                var checked = ev.target.checked;
+                $('.row-checkbox').each(function (idx, item) {
+                    if (checked) {
+                        if (!($(item).closest('tr').is('.k-state-selected'))) {
+                            $(item).prop('checked', true);
+                            $(item).closest('tr').addClass('k-state-selected');
+                        }
+                    } else {
+                        if ($(item).closest('tr').is('.k-state-selected')) {
+                            $(item).prop('checked', false);
+                            $(item).closest('tr').removeClass('k-state-selected');
+                        }
+                    }
+                });
+            });
 
+            var gridElement = $("#installedHotfixes");
+
+            function resizeUi() {
+                const tabHeight = $(window).height() - 200;                
+                // $(".tab-content").height(tabHeight);
+                $(".tab-content").css({'maxHeight': tabHeight, 'height': tabHeight});
+                $(".quote-scrollable-pane").css({'maxHeight': tabHeight - 100, 'height': tabHeight - 100});
+                if ($("#availableHotfixesGrid").data("kendoGrid")) {
+                    $("#availableHotfixesGrid").data("kendoGrid").setOptions({
+                        height: tabHeight - 110,
+                    });
+                }
+                if ($("#installedHotfixes").data("kendoGrid")) {
+                    $("#installedHotfixes").data("kendoGrid").setOptions({
+                        height: tabHeight - 110,
+                    });
+                }
+                
+
+            }
+
+            $(window).resize(function() {
+                resizeUi();
+            });
+
+            $(document).ready(function() {
 
                 $.material.init();
 
@@ -1610,15 +1690,13 @@
                             return false;
                         }
                         var checkedHotfixes = [];
-                        if ( $(tab).data('step') === "availableHotfixes" ) {
-                            
+                        if ( $(tab).data('step') === "availableHotfixes" ) {                           
                             $("#hotfixes input[type='checkbox']:checked").each(function(idx, hotfix) {
                                 checkedHotfixes.push({
                                     hotfixID: $(this).val(),
                                 });
                             });
                         }
-                        console.log(checkedHotfixes);
                     },
 
                     onInit: function(tab, navigation, index) {
@@ -1642,7 +1720,10 @@
                     onTabShow: function(tab, navigation, index) {
                         var $total = navigation.find("li").length;
                         var $current = index + 1;
-
+                        if ( $(tab).data('step') === "availableHotfixes" ) {                            
+                            resizeUi();
+                            $("#availableHotfixesGrid").data('kendoGrid').resize();
+                        }
                         var $wizard = navigation.closest(".wizard-card");
                         // If it's the last tab then hide the last button and show the finish instead
                         if ($current >= $total) {
@@ -1683,11 +1764,7 @@
                 $('#hotfixWizard').bootstrapWizard('disable',2);
                 $('#hotfixWizard').bootstrapWizard('disable',3);
 
-                const tabHeight = $(window).height() - 200;
-                
-                // $(".tab-content").height(tabHeight);
-                $(".tab-content").css({'maxHeight': tabHeight, 'height': tabHeight});
-                $(".quote-scrollable-pane").css({'maxHeight': tabHeight - 130, 'height': tabHeight - 130});
+                resizeUi();
 
                 $('[data-tooltip="tooltip"]').tooltip();
 
@@ -1696,7 +1773,6 @@
                 $.getJSON( "https://josephclawrence.com/syspro/html/data/HotfixModel.json", function( data ) {
                     truthify(data);
                     const { treeData, gridData } =  reFormatJSON(data);
-                    console.log(gridData);
                     window.viewModel = kendo.observable(data);
                     viewModel.DisableCustomerSelection = true;
                     kendo.bind($("body"), viewModel);
@@ -1717,9 +1793,8 @@
                             const node = dataSource.getByUid(nodeId);
                             $("#isvFilter").val('');
                             if (node && node.HotfixRequests) {
-                                console.log(node.Description);
                                 //const description = dataSource.getByUid($(e.node).data('uid')).Description;
-                                $("#grid").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: node.Description });
+                                $("#installedHotfixes").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: node.Description });
                                 $(".rollback-request, .pending-request").hide();
                                 $(".btn-next").attr('disabled', false);
                                 $('#hotfixWizard').bootstrapWizard('enable',1);
@@ -1732,7 +1807,7 @@
                                     
                                 $("#availableHotfixesGrid").kendoGrid({
                                     dataSource: node.AllHotfixes,
-                                    height: 600,
+                                    height: $(window).height() - 310,
                                     sortable: true,
                                     toolbar: [
                                         { template: kendo.template($("#hotfixToolbarFilterTemplate").html())}
@@ -1741,14 +1816,19 @@
                                         fields: ["HotfixFileName", "HotfixId", "HotfixSynopsis"]
                                     },
                                     columns: [
-                                        { field: "HotfixSelected", width: 50, template: "<input type='checkbox' data-bind='checked:HotfixSelected' />", headerTemplate: "<input id='checkAll' type='checkbox' onclick='checkAll(this)'/>" },
+                                        { 
+                                            field: "HotfixSelected",
+                                            width: 50,
+                                            template: function (dataItem) {
+                                                return "<input type='checkbox' id='checkbox-" + dataItem.HotfixId + "' data-bind='checked:HotfixSelected, disabled: HotfixReadOnly' class='row-checkbox'>";
+                                            },
+                                            headerTemplate: "<input id='header-chb' type='checkbox' class='header-checkbox'/>",
+                                            sortable: false 
+                                        },
+                                        // { selectable: true, width: "50px" },
                                         {
                                             field: "HotfixFileName",
                                             title: "Filename",
-                                        },
-                                        {
-                                            field: "HotfixId",
-                                            title: "ID",
                                         },
                                         {
                                             field: "HotfixSynopsis",
@@ -1757,10 +1837,6 @@
                                         {
                                             field: "HotfixInstalled",
                                             title: "Installed?",
-                                        },
-                                        {
-                                            field: "HotfixFileName",
-                                            title: "Filename",
                                         },
                                     ],
                                     dataBound: function(e){
@@ -1772,7 +1848,7 @@
                                             }
                                         });
 
-                                        $("#checkAll")[0].checked = e.sender.items().find(":checked").length == e.sender.dataSource.view().length;
+                                        $("#header-chb")[0].checked = e.sender.items().find(":checked").length == e.sender.dataSource.view().length;
 
                                         $("#clearHotfixFilters").off("click").on("click", function(b) {
                                             b.preventDefault();
@@ -1783,24 +1859,38 @@
                                         });
 
                                         $("input[name='hotfixGridFilter']").off('change').on('change', function(d) {
-                                            
+                                            var field = $(this).val();
+                                            var value;
+                                            if (field === 'HotfixMandatory') {
+                                                if ($(this).attr('id') === 'mandatory') {
+                                                    value = 'C';
+                                                } else {
+                                                    value = 'Y';
+                                                }
+                                            } else {
+                                                value = true;
+                                            }
                                             e.sender.dataSource.filter({
-                                                field: $(this).val(),
+                                                field: field,
                                                 operator: "eq",
-                                                value: true
+                                                value: value
                                             });
                                             $("#hotfixGridSearch").val('');
                                         });
+
+                                        $("#availableHotfixesGrid").data("kendoGrid").table.on("click", ".row-checkbox", selectRow);
                                     }
                                 });
-                                
+                                                                
                                 $.material.init();
+                                resizeUi();
                                 kendo.bind();
+                                
                             } else if (node && node.Hotfixes) {  
                                 // console.log(
                                 //     $(".k-master-row[data-uid='" + node.parent().parent().uid + "']").next('.k-detail-row').find('.k-detail-cell > .k-grid').data('kendoGrid').dataSource
                                 // );
-                                $("#grid").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: node.parent().parent().Description });
+                                $("#installedHotfixes").data('kendoGrid').dataSource.filter({ field: "Description", operator: "eq", value: node.parent().parent().Description });
                                 setTimeout(function(){
                                     $(".k-master-row[data-uid='" + node.parent().parent().uid + "']").next('.k-detail-row').find('.k-detail-cell > .k-grid')
                                     .data('kendoGrid').dataSource
@@ -1824,7 +1914,7 @@
                                 $('#hotfixWizard').bootstrapWizard('disable',2);
                                 $('#hotfixWizard').bootstrapWizard('disable',3);
                             } else if (node && node.CustomerCode) {
-                                $("#grid").data('kendoGrid').dataSource.filter({});
+                                $("#installedHotfixes").data('kendoGrid').dataSource.filter({});
                                 $('#hotfixWizard').bootstrapWizard('show',0);
                                 $('#hotfixWizard').bootstrapWizard('disable',1);
                                 $('#hotfixWizard').bootstrapWizard('disable',2);
@@ -1839,7 +1929,7 @@
                     treeView.expand(".k-item");
                     treeView.expand(".k-item .k-item");                    
                     
-                    var element = $("#grid").kendoGrid({
+                    var element = $("#installedHotfixes").kendoGrid({
                         dataSource: dataSource.data()[0].Subscriptions,
                         height: 600,
                         sortable: false,
@@ -1851,7 +1941,7 @@
                         columns: [
                             {
                                 field: "Description",
-                                title: "Deployment group",
+                                title: "Scheduled / installed hotfixes",
                                 width: "100%"
                             },
 
@@ -1900,7 +1990,7 @@
                                 + '<td>#: Operator #</td>'
                                 + '<td>#: Status #</td>'
                                 + '<td></td>'
-                                + '<td><span data-hotfix-request-id="#: HotfixRequestId #" class="hotfix-request-actions"># if ( CanCancel ) { # <button class="btn btn-danger btn-xs sys-pd-5">Cancel</button> # } else { # <button class="btn btn-danger btn-xs sys-pd-5 sys-mg-r-5 rollback-button">Rollback</button><button class="btn btn-success btn-xs sys-pd-5 deploy-button">Deploy</button> # } #</span></td>'                          
+                                + '<td><span data-hotfix-request-id="#: HotfixRequestId #" class="hotfix-request-actions"># if ( data.CanCancel ) { # <button class="btn btn-danger btn-xs sys-pd-5">Cancel</button> # } else { # <button class="btn btn-danger btn-xs sys-pd-5 sys-mg-r-5 rollback-button">Rollback</button><button class="btn btn-success btn-xs sys-pd-5 deploy-button">Deploy</button> # } #</span></td>'                          
                             + '</tr>',
                             columns: [
                                 { field: "HotfixRequestId", title: "Request ID" },
@@ -1914,20 +2004,9 @@
                             ]
                         });
                     }
-
+                    resizeUi();
                 });
                 
-                
-                var country = $("#country").kendoDropDownList({
-                    optionLabel: "Select country...",
-                    // dataTextField: "name",
-                    // dataValueField: "categoryID",
-                    filter: 'contains',
-                    dataSource: {
-                        data: ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]
-                    }
-                }).data("kendoDropDownList");
-
                 $(".discount").popover({
                     trigger : 'click',  
                     placement : 'auto', 
