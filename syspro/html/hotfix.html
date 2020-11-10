@@ -1615,9 +1615,7 @@
                 if (checked) {
                     //-select the row
                     row.addClass("k-state-selected");
-
                     var checkHeader = true;
-
                     $.each(grid.items(), function (index, item) {
                         if (!($(item).hasClass("k-state-selected"))) {
                             checkHeader = false;
@@ -1625,6 +1623,7 @@
                     });
 
                     $("#header-chb")[0].checked = checkHeader;
+                    console.log(dataItem.HotfixId);
                 } else {
                     //-remove selection
                     row.removeClass("k-state-selected");
