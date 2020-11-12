@@ -1862,9 +1862,9 @@
                                             var value;
                                             if (field === 'HotfixMandatory') {
                                                 if ($(this).attr('id') === 'mandatory') {
-                                                    value = 'C';
-                                                } else {
                                                     value = 'Y';
+                                                } else {
+                                                    value = 'C';
                                                 }
                                             } else {
                                                 value = true;
@@ -1877,7 +1877,7 @@
                                             $("#hotfixGridSearch").val('');
                                         });
 
-                                        $("#availableHotfixesGrid").data("kendoGrid").table.on("click", ".row-checkbox", selectRow);
+                                        $("#availableHotfixesGrid").data("kendoGrid").table.off('click', ".row-checkbox").on("click", ".row-checkbox", selectRow);
                                     }
                                 });
                                                                 
