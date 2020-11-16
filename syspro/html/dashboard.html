@@ -418,12 +418,12 @@
           </div>
     </script>
 
-    <script id="tilesWidget" type="text/x-kendo-template">
+    <!-- <script id="tilesWidget" type="text/x-kendo-template">
         <div class="row widget layout-widget tile-widget" id="tileWidget">
 
         </div>
 
-    </script>
+    </script> -->
     <!-- container chart templates -->
     <script id="customer-card-template" type="text/x-kendo-template">
         <div class=" row widget" data-guid="4cc936ba-c8e5-4a66-c492-c740d218a33d">
@@ -1460,13 +1460,6 @@
                     template: "<span class='k-card-inner-header k-card-title'>Metrics</span>"
                 },
                 bodyTemplate: kendo.template($("#performance-metrics-template").html())
-            }, {
-                colSpan: 2, 
-                rowSpan: 3,
-                header: {
-                    template: "<span class='k-card-inner-header k-card-title'>Tiles</span>"
-                },
-                bodyTemplate: kendo.template($("#tilesWidget").html())
             }, {
                 colSpan: 2,
                 rowSpan: 0,

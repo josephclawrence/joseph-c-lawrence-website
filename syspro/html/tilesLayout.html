@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <!-- <link href="css/UX_CSS_kendo.common-material.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.material.min.css" rel="stylesheet" /> -->
+        <!-- <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" /> -->
+        <link href="css/new_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/new_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/new_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/new_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
+        <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/UX_JS_velocity.min.js"></script>
+        <script src="js/new_kendo.all.min.js"></script>
+        <script src="js/UX_JS_immutable.min.js"></script>
+        <style>
+
+            .syspro-search-button {
+                border-radius: 50%;
+                padding: 8px;
+                background: #303f9f !important;
+                display: block !important;
+            }
+            .syspro-search-button i {
+            }
+
+    .k-card {
+        border-width: 0px;
+    }
+    .k-card-body {
+        overflow: hidden;
+        padding: 0px;
+    }
+    .k-card-body .layout-widget {
+        padding: 12px;
+    }
+    .k-card-header {
+        flex: 0 0 auto;
+        padding: 0px;
+        border-color: #E4EBED;
+        color: #333;
+        background-color: #E4EBED;
+    }
+    .k-card-header .k-card-inner-header {
+        padding: 3px 12px;
+        display: block;
+        margin: 0px;
+    }
+    @media screen and (max-width: 960px) {
+        #tilelayout {
+          grid-template-columns: repeat(4, minmax(0px, 1fr)) !important;
+        }
+      }
+    @media screen and (max-width: 768px) {
+        #tilelayout {
+          grid-template-columns: repeat(2, minmax(0px, 1fr)) !important;
+        }
+      }
+        </style>
+
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+        <div id="invisibleNode" style="display: none;"></div>
+        <div id="invisibleToolbarNode" style="display: none;"></div>
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav  sys-fg-primary">
+                    <li>
+                        <a class="navbar-brand" href="#">
+                            <img alt="Brand" src="img/UX_IMG_SYSPROLogo.png" style="height: 35px">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid sys-mg-t-15" id="main-container">
+                <div class="row sys-mg-t-15">
+                    <div class="col-xs-12">
+                        <div id="tilelayout"></div>
+
+    
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <!-- Off Canvas menus -->
+        <script src="data/dashboardData.js"></script>
+        <script src="js/UX_JS_bootstrap.min.js"></script>
+        <script src="js/UX_JS_bootstrap-3-typeahead.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+
+        <!-- container text templates -->
+
+    <script id="singleTile" type="text/x-kendo-template">
+        <div class="tile-inner sys-bg-primary">
+        </div>
+    </script>
+    <script>
+        const rowsHeight = 142;
+        $("#tilelayout").kendoTileLayout({
+            containers: [
+                {
+                    colSpan: 1,
+                    rowSpan: 1,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                },
+                {
+                    colSpan: 1,
+                    rowSpan: 1,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                },
+                {
+                    colSpan: 1,
+                    rowSpan: 1,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                },
+                {
+                    colSpan: 2,
+                    rowSpan: 2,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                },
+                {
+                    colSpan: 1,
+                    rowSpan: 1,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                },
+                {
+                    colSpan: 2,
+                    rowSpan: 1,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                },
+                {
+                    colSpan: 1,
+                    rowSpan: 1,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                },
+                {
+                    colSpan: 1,
+                    rowSpan: 1,
+                    header: {
+                text: "Item one"
+            },                
+                    bodyTemplate: kendo.template($("#singleTile").html())
+                }, 
+            ],
+            columns: 6,
+            columnsWidth: 142,
+            rowsHeight: rowsHeight,
+            reorderable: true,
+            resizable: false,
+            gap: {
+                columns: 10,
+                rows: 10,
+            },
+            resize: function (e) {
+                var rowSpan = e.container.css("grid-column-end");
+                var chart = e.container.find(".k-chart").data("kendoChart");
+
+                
+                // for widgets that do not auto resize
+                // https://docs.telerik.com/kendo-ui/styles-and-layout/using-kendo-in-responsive-web-pages
+                kendo.resize(e.container, true);
+                // saveLayout();
+            },
+            reorder: function(e) {
+                // saveLayout();
+            }
+        });
+
+        
+
+        function minimizeContainer(containerId) {
+            const layout = $("#tilelayout").getKendoTileLayout();
+            layout.items.forEach((container, idx) => {
+                if (container.id === containerId) {
+                    container.rowSpan = 0;
+                }
+            });
+
+        }
+
+        // function changeContainerHeight(containerId) {
+            
+
+        //     const contentHeight = $(`#${containerId}`).find('.k-card-body > .widget').outerHeight();
+        //     console.log(contentHeight);
+        //     const rowSpan = Math.round(contentHeight / rowsHeight);
+        //     const layout = $("#tilelayout").getKendoTileLayout();
+        //     layout.items.forEach((container, idx) => {
+        //         if (container.id === containerId) {
+        //             container.rowSpan = rowSpan;
+        //         }
+        //     });
+        //     console.log(rowSpan);
+        //     saveLayout();
+        //     updateLayout();
+        //     console.log(rowSpan);
+        //     $(`#${containerId}`).find('.k-card-header > .k-card-title').toggleClass("collapsed", rowSpan <= 1);
+        //     $(`#${containerId}`).find('.k-card-body > .widget').toggleClass("in", rowSpan > 1);
+        // }
+
+        function saveLayout() {
+            //save the options
+            var options = $("#tilelayout").getKendoTileLayout().getOptions();
+            
+            var stringOptions = JSON.stringify(options);
+            localStorage["kendo-tilelayout-options"] = stringOptions;
+        };
+        
+        function updateLayout() {
+            //  load the options
+            var options = localStorage["kendo-tilelayout-options"];
+            if (options) {
+                var deserializedOptions = JSON.parse(options, Function.deserialise);
+                var layout = $("#tilelayout").getKendoTileLayout();
+                //console.log(layout);
+                layout.setOptions(deserializedOptions);
+                
+            }
+            createChart();
+        }
+        
+
+        $(window).on("resize", function () {
+            kendo.resize($(".k-chart"));
+        });
+        </script>
+        <script>
+
+
+            kendo.ui.TileLayout.fn.setOptions = function (options) {
+
+                this.destroy();
+                this.items = [];
+                this.itemsMap = {};
+                this.options.containers = [];
+                kendo.deepExtend(this.options, options);
+                this.element.empty();
+                this.init(this.element, this.options);
+            };
+
+            kendo.ui.TileLayout.fn._addContainer = function (element, item, index, id) {
+                var that = this;
+                item.order = typeof item.order == 'number' ? item.order : index;
+                element.attr(kendo.attr("index"), item.order);
+                item.id = id;
+                that._setContainerCoordinates(element, item);
+                that.itemsMap[id] = item;
+                that.items.push(that.itemsMap[id]);
+            }
+
+            Function.prototype.toJSON = function () {
+                var output = this.toString();
+                if (
+                    this.name &&
+                    (new RegExp('^\\s*' + this.name + '\\s*([(])')).test(output)
+                )
+                    output = 'function ' + output;
+                return Function.prototype.toJSON.flag + output;
+            };
+            Function.prototype.toJSON.flag = '_FUNC';
+            Function.deserialise = function (key, data) {
+                if (!Function.deserialise.check.test(data))
+                    return data;
+
+                data = data.replace(Function.deserialise.check, '');
+                return new Function(
+                    'return (' + data + ').apply(this, arguments);'
+                );
+            };
+            Function.deserialise.check = new RegExp('^' + Function.prototype.toJSON.flag);
+
+            $(document).ready(function() {
+                $.material.init();            
+                
+                //  load the options
+                //updateLayout();
+            });
+        </script>
+    </body>
+</html>
