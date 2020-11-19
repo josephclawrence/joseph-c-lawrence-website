@@ -1,0 +1,69 @@
+<style>
+.gridlist-cell-note {
+  width: 0;
+  height: 0;
+  border-top: 10px solid #e74c3c;
+  border-left: 10px solid transparent;
+  top:0;
+  right:0;
+  position:absolute;
+  cursor: pointer;
+}
+    .gridlist-cell-comment {
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #0078d7;
+  border-left: 10px solid transparent;
+  bottom:0;
+  right:0;
+  position:absolute;
+  cursor: pointer;
+}
+td {
+  position: relative;
+}
+    .popover.textarea-popover {
+      padding: 0px;
+      border: 0px solid #fff;
+      border-radius: 4px;
+      max-width: 100%;
+      resize: horizontal;
+      /* overflow: auto; */
+      width: 300px;
+      /* transition: top 0.2s; */
+    }
+    .popover-textarea-content {
+      height: 180px;  
+      width: 100%;  
+      }
+
+      textarea.popover-textarea {
+          border: 0px;   
+          margin: 0px; 
+          width: 100%;
+          height: 100%;
+          padding: 0px;  
+          box-shadow: none;
+          resize: none;
+
+      }
+      .textarea-popover .popover-title {
+          border-radius: 4px 4px 0 0;
+          border-bottom-color: #f7f7f7;
+      }
+    .textarea-popover .popover-footer {
+      margin: 0;
+      padding: 8px 14px;
+      font-weight: 400;
+      line-height: 18px;
+      background-color: #F7F7F7;
+      border-bottom: 1px solid #EBEBEB;
+      border-radius: 0 0 4px 4px;
+    }
+    .popover.textarea-popover.bottom > .arrow:after, .popover.textarea-popover.bottom > .arrow {
+      border-bottom-color: #f7f7f7;
+    }
+    td span.comment {
+      display: none;
+    }
+</style>
