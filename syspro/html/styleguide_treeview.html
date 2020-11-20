@@ -1,0 +1,124 @@
+<style>
+  .file-treeview.k-treeview {
+      overflow: hidden;
+  }
+.file-treeview .k-item, 
+.file-treeview.k-treeview span.k-in {
+  cursor: pointer;
+  width: 100%;
+}
+.file-treeview.k-treeview .k-in {
+  margin: 0px;
+  padding: 4px 7px 4px 4px;
+}
+.file-treeview.k-treeview .k-in {
+  color: #34495e;
+}
+.file-treeview.k-treeview .k-in.k-state-selected {
+  background-color: #e8f3f9;
+  color: #34495e;
+}
+.file-treeview.k-treeview .k-in .material-icons {
+  color: #7f8c8d;
+}
+.file-treeview.k-treeview .k-in.k-state-selected .material-icons {
+  color: #34495e;
+}
+.file-treeview.k-treeview:not(.file-explorer) .k-item:not([data-expanded]) .k-in:only-child.k-state-selected, #fileGrid tr.k-state-selected, #fileGrid tr.k-state-selected td a {
+      background-color: #0b9c2b;
+      color: #fff;
+  }
+
+
+  .file-treeview.k-treeview:not(.file-explorer) .k-item:not([data-expanded]) .k-in:only-child.k-state-selected::after, #fileGrid tr.k-state-selected::after {
+      font-family: "Material Icons";
+      font-weight: normal;
+      font-style: normal;
+      font-size: 19px;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-feature-settings: "liga";
+      font-feature-settings: "liga";
+      content: "check_circle";
+      float: right;
+  }
+
+
+  .file-treeview.k-treeview:not(.file-explorer) .k-in .material-icons {
+      color: #7f8c8d;
+  }
+  .file-treeview.k-treeview:not(.file-explorer) .k-in.k-state-selected .material-icons {
+      color: #34495e;
+  }
+  .file-treeview.k-treeview:not(.file-explorer) .k-in.k-state-selected {
+      background-color: #e8f3f9;
+      color: #34495e;
+  }
+  .file-treeview.k-treeview:not(.file-explorer) .k-in .material-icons {
+      color: #7f8c8d;
+  }
+  </style>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="file-treeview"></div>
+    </div>
+  </div>
+
+  <script id="treeview-template" type="text/kendo-ui-template">
+    # if (item.subCategories) { #
+        <i class="material-icons">folder</i>
+    # } #
+    # if (item.name === 'Recent') { #
+        <i class="material-icons">access_time</i>
+    # } #
+    # if (item.name === 'Starred') { #
+        <i class="material-icons">star</i>
+    # } #
+    #: item.name # 
+</script>
+
+<script>
+  var inline = new kendo.data.HierarchicalDataSource({
+      data: [
+          { name: "Accounts receivable", subCategories: [
+              { name: "Customers" },
+              { name: "Branches" },
+              { name: "Something", subCategories: [
+              { name: "Something" },
+              { name: "Something" },
+              { name: "Something" }
+          ] }
+          ] },
+          { name: "Inventory", subCategories: [
+              { name: "Stock codes" },
+              { name: "Price codes" },
+              { name: "Something" }
+          ] },
+          { name: "Recent" },
+          { name: "Starred" }
+      ],
+      schema: {
+          model: {
+              children: "subCategories"
+          }
+      }
+  });
+
+  $(".file-treeview").kendoTreeView({
+      template: kendo.template($("#treeview-template").html()),
+      dataSource: inline,                    
+      dataTextField: [ "name" ]
+  });
+</script>
