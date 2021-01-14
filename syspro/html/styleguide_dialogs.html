@@ -1,0 +1,207 @@
+<div id="dialog"></div>
+<div class="row sys-mg-t-5">
+
+  <div class="col-sm-12">
+
+    <button type="button" class="btn btn-default" id="dialog-1">Dialog 1</button>
+    <button type="button" class="btn btn-default" id="dialog-2">Dialog 2</button>
+    <button type="button" class="btn btn-default" id="dialog-3">Dialog 3</button>
+    <button type="button" class="btn btn-default" id="dialog-4">Dialog 4</button>
+  </div>
+  
+</div>
+
+<script>
+    
+  $.material.init();
+          
+  var dialog1 = {
+    title: "Create New View",
+    header: null,
+    content: "Select the template to be used as the basis for your view:",
+    mainIcon: "warning",
+    actions: [
+      {
+        text: "Cancel", 
+        primary: true,
+        action: function(e) {
+          console.log('Cancel action');
+          return true;
+        }
+        
+    }
+    ],
+    options: {
+      type: 'link',
+      values: [
+        { 
+        caption: "Use blank template",
+        value: "http://google.com"
+      },
+      {
+        caption: "Use application template",
+        value: "http://google.com"
+      }
+      ]
+    },
+    footer: null,
+    footerIcon: null
+  }
+
+  var dialog2 = {
+    title: "Delete Web View",
+    header: null,
+    content: "Are you sure you want to delete this Web View?",
+    mainIcon: "warning",
+    actions: [
+      {
+        text: "Yes", 
+        primary: true,
+        action: function(e) {
+          console.log('Yes action');
+          return true;
+        }
+    },
+      {
+        text: "No",
+        action: function(e) {
+          console.log('No action');
+          return true;
+        }
+    }
+    ],
+    options: null,
+    footer: null,
+    footerIcon: null
+  }
+
+  var dialog3 = {
+    title: "Reset Form",
+    header: "Do you want to reset this form?",
+    content: "Resetting the form will restore all captions, restore any properties assigned to fields, remove all form actions, and remove any standard fields added to the form.",
+    mainIcon: "warning",
+    actions: [
+      {
+        text: "OK", 
+        primary: true,
+        action: function(e) {
+          console.log('OK action');
+          return true;
+        }
+    },
+      {
+        text: "Cancel",
+        action: function(e) {
+          console.log('Cancel action');
+          return true;
+        }
+    }
+    ],
+    options: {
+      type: 'radio',
+      values: [
+        { 
+        caption: "Restore captions only",
+        value: "restore"
+      },
+      {
+        caption: "Reset the form",
+        value: "reset"
+      }
+      ]
+    },
+    footer: "This will not remove any custom form fields, multimedia objects or user-defined groups for this form.",
+    footerIcon: "info"
+  }
+
+  function createDialog(dialogObject) {
+    
+    content = $('<div class="row dialog-wrapper"></div>');
+    
+    if ( dialogObject.mainIcon ) {
+      content.html('<div class="col-xs-2"><i class="material-icons text-warning fa-3x">' + dialogObject.mainIcon + '</i></div><div class="col-xs-10 dialogBody"></div>');
+    } else {
+      content.html('<div class="col-xs-12 dialogBody"></div>');
+    }
+    
+    if ( dialogObject.header ) {
+      content.find(".dialogBody").html('<h3 class="sys-mg-t-5">' + dialogObject.header + '</h3>');
+    }
+    
+    content.find(".dialogBody").append('<p>' + dialogObject.content + '</p>');
+    
+    if ( dialogObject.options ) {
+      
+      optionsHtml = "";
+      
+      switch ( dialogObject.options.type ) {
+            case "link":
+                for (var i = 0, len = dialogObject.options.values.length; i < len; i++) {
+          optionsHtml += '<a class="dialoglink sys-mg-t-5" href="' + dialogObject.options.values[i].value + '">' + dialogObject.options.values[i].caption + '<i class="material-icons">keyboard_arrow_right</i></a>';
+        }
+                break;
+            case "radio":
+              
+              optionsHtml += '<div class="form-group">';
+              
+              for (var i = 0, len = dialogObject.options.values.length; i < len; i++) {
+          optionsHtml += '<div class="radio radio primary"><label><input type="radio" name="dialogOptions" id="dialogOptions" value="' + dialogObject.options.values[i].value + '">' + dialogObject.options.values[i].caption + '</label></div>';
+        }
+        
+        optionsHtml += '</div>';
+        }
+        
+        content.find(".dialogBody").append(optionsHtml);
+        
+    }
+    if ( dialogObject.footer ) {
+      
+      var footerContent = '<div class="col-xs-12 dialogFooter sys-pd-t-5"><div class="row">';
+      
+      
+      if ( dialogObject.footerIcon ) {
+        footerContent += '<div class="col-xs-2 text-right"><i class="material-icons text-info">' + dialogObject.footerIcon + '</i></div><div class="col-xs-10">' + dialogObject.footer + '</div>';
+      } else {
+        footerContent += '<div class="col-xs-12">' + dialogObject.footer + '</div>';
+      }
+      
+      footerContent += '</div></div>';
+      
+      content.append(footerContent);
+      
+    }
+
+  var kendoDialog = $("#dialog").kendoDialog({
+          width: "400px",
+          title: dialogObject.title,
+          closable: true,
+          modal: true,
+          content: content,
+          actions: dialogObject.actions,
+          open: function() {
+            $.material.init();
+          }
+          //close: 
+      });
+      
+      return kendoDialog;
+    
+  }
+
+  $("#dialog-1").click(function (e) {
+    var dialog = createDialog(dialog1);
+      dialog.data("kendoDialog").open();
+  });
+  
+  $("#dialog-2").click(function (e) {
+    var dialog = createDialog(dialog2);
+      dialog.data("kendoDialog").open();
+  });
+  
+  $("#dialog-3").click(function (e) {
+    var dialog = createDialog(dialog3);
+      dialog.data("kendoDialog").open();
+  });
+
+
+</script>

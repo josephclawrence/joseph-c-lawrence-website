@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-xs-12">
+    <a href="#" class="sys-mg-r-15 btn btn-primary btn-lg" onclick="uploadFileWindow.center().open()">
+      Open modal window
+    </a>
+  </div>
+</div>
+
+<div id="uploadFileWindow">
+  <div class="container-fluid window-container">
+      <div class="row window-content sys-pd-t-15">
+          <div class="col-sm-6">
+              <input name="files" id="files" type="file" />
+          </div>
+          <div class="col-sm-6 file-upload-details">
+              <div class="form-group label-floating">
+                  <label for="DocName" class="control-label">Document name</label>
+                  <input type="text" class="form-control" id="DocName" maxlength="256">
+                  <p class="help-block error-message"></p>
+              </div>
+              <div class="form-group label-floating">
+                  <label for="DocName" class="control-label">Comment</label>
+                  <textarea class="form-control" id="DocName" maxlength="256"></textarea>
+                  <p class="help-block error-message"></p>
+              </div>
+              <div class="form-group label-floating">
+                  <label for="tagsInput" class="control-label">Tags</label>
+                  <input class="form-control" type="text" value="" data-role="tagsinput" id="tagsInput" name="tagsInput">
+                  <p class="help-block error-message"></p>
+              </div>
+              
+          </div>
+          <div class="col-sm-12">
+              <span id="" class="pull-right">
+                  <button type="button" id="" class="btn btn-primary pull-right sys-mg-l-5 disabled" disabled>Complete</button>
+              </span>
+              <button type="button" class="btn btn-default pull-right closeWindow">Cancel</button>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+<script>
+  const uploadFileWindow = $("#uploadFileWindow").kendoWindow({ //create a window
+    actions: ["close"],
+    draggable: true,
+    minHeight: "200px",
+    minWidth: "200px",
+    width: "900px",
+    height: "550px",
+    modal: true,
+    position: {
+        top: "50%",
+        left: "50%"
+    },
+    animation: {
+        open: {
+            effects: "fadeIn",
+            duration: 100
+        },
+        close: {
+            effects: "fadeOut",
+            duration: 80
+        }
+    },
+    resizable: true,
+    title: "Add new document",
+    visible: false,
+    open: function() {
+      const windowHolder = $('#uploadFileWindow').data('kendoWindow');
+      windowHolder.wrapper.addClass('compact-window');
+    }
+}).data("kendoWindow");
+</script>

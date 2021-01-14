@@ -80,6 +80,8 @@
 				    </div>
 				    
 				</div>
+
+				
 				<div class="row sys-mg-t-5">
 				    <div class="col-sm-4 column-parent">
 					    <div class="panel sys-bd-off sys-box-shadow-off">
@@ -135,8 +137,8 @@
 	    
 		
 		<!-- Off Canvas menus -->
-<!-- 		<nav class="navbar navbar-default" role="navigation"> -->
-<!--
+		<nav class="navbar navbar-default" role="navigation">
+
 		    <div class="navbar-offcanvas-right navbar-offcanvas navbar-offcanvas-touch" id="offcanvas-1">
 			    <header class="offcanvas-header">
 				    <h4 class="pull-left sys-mg-t-10 sys-mg-b-5">The header of the Off canvas panel</h4>
@@ -568,11 +570,11 @@
 				    
 			    </div>
 		    </div>
--->
-<!-- 		</nav> -->
 
-<!--         <nav class="navbar navbar-default" role="navigation"> -->
-<!--
+		</nav>
+
+        <nav class="navbar navbar-default" role="navigation">
+
 		    <div class="navbar-offcanvas-right navbar-offcanvas navbar-offcanvas-touch" id="offcanvas-2">
 		        <div class="row sys-mg-t-5">
 				    <div class="col-sm-4 column-parent">
@@ -619,10 +621,10 @@
 				    </div>
 			    </div>
 		    </div>
--->
+
 		    
 		    
-<!--
+
 		    <div class="navbar-offcanvas-bottom navbar-offcanvas navbar-offcanvas-touch" id="offcanvas-3">
 			    <header class="offcanvas-header">
 				    <h4 class="pull-left sys-mg-t-10 sys-mg-b-5">The header of the Off canvas panel</h4>
@@ -673,66 +675,23 @@
 				    </div>
 			    </div>
 		    </div>
--->
-<!-- 		</nav> -->
+
+		</nav>
         		
 	    <script src="js/UX_JS_bootstrap.js"></script>
 
 		<script src="js/UX_JS_forms.js"></script>
 		<script src="js/UX_JS_ripples.min.js"></script>
 		<script src="js/bootstrap.offcanvas.js"></script>
-		<script src="../products.js"></script>
 	     
 	    <script>
             $(document).ready(function() {
 	            
 	            $.material.init();
 	            
-                $("#grid").kendoGrid({
-                    dataSource: {
-                        data: products,
-                        schema: {
-                            model: {
-                                fields: {
-                                    ProductName: { type: "string" },
-                                    UnitPrice: { type: "number" },
-                                    UnitsInStock: { type: "number" },
-                                    Discontinued: { type: "boolean" }
-                                }
-                            }
-                        },
-                        pageSize: 20
-                    },
-                    height: 550,
-                    scrollable: true,
-                    sortable: true,
-                    filterable: true,
-                    columnMenu: true,
-                    resizable: true,
-                    reorderable: true,
-                    selectable: "multiple",
-                    pageable: {
-                        input: true,
-                        numeric: false
-                    },
-                    columns: [
-                        { field: "ProductName", title: "Product Name"},
-                        { field: "ProductID", title: "Product ID"},
-                        { field: "SupplierID", title: "Supplier ID"},
-                        { field: "UnitPrice", title: "Unit Price", format: "{0:c}"},
-                        { field: "UnitsInStock", title: "Units In Stock"},
-                        { field: "ReorderLevel", title: "Reorder Level"},
-                        { field: "Discontinued"}
-                    ]
-                });
                 
-                var gridWidget = $("#grid").data("kendoGrid");
-                
-                $(window).on("resize", function() {
-			    	gridWidget.resize(true);
-			    });
 			    
-/*
+
 			    var dialog1 = {
 				    title: "Create New View",
 				    header: null,
@@ -792,9 +751,7 @@
 				    footer: null,
 				    footerIcon: null
 			    }
-*/
-			    
-/*
+
 			    var dialog3 = {
 				    title: "Reset Form",
 				    header: "Do you want to reset this form?",
@@ -833,9 +790,7 @@
 				    footer: "This will not remove any custom form fields, multimedia objects or user-defined groups for this form.",
 				    footerIcon: "info"
 			    }
-*/
-			    
-/*
+
 			    
 			    function createDialog(dialogObject) {
 				    
@@ -911,10 +866,10 @@
 				    
 			    }
 			    
-*/
+
 			    
 		
-/*
+
 		        $("#dialog-1").click(function (e) {
 			        var dialog = createDialog(dialog1);
 		            dialog.data("kendoDialog").open();
@@ -929,7 +884,7 @@
 			        var dialog = createDialog(dialog3);
 		            dialog.data("kendoDialog").open();
 		        });
-*/
+
 
             });
         </script>

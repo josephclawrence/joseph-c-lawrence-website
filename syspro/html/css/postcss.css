@@ -2619,6 +2619,102 @@ hr {
     -webkit-box-shadow: 0 0 1px 1px var(--black_25);
             box-shadow: 0 0 1px 1px var(--black_25);
 }
+.sys-box-shadow-1 {
+    -webkit-box-shadow: var(--box-shadow-1);
+            box-shadow: var(--box-shadow-1);
+}
+.sys-box-shadow-2 {
+    -webkit-box-shadow: var(--box-shadow-2);
+            box-shadow: var(--box-shadow-2);
+}
+.sys-box-shadow-3 {
+    -webkit-box-shadow: var(--box-shadow-3);
+            box-shadow: var(--box-shadow-3);
+}
+.sys-box-shadow-4 {
+    -webkit-box-shadow: var(--box-shadow-4);
+            box-shadow: var(--box-shadow-4);
+}
+.sys-box-shadow-5 {
+    -webkit-box-shadow: var(--box-shadow-5);
+            box-shadow: var(--box-shadow-5);
+}
+.sys-box-shadow-6 {
+    -webkit-box-shadow: var(--box-shadow-6);
+            box-shadow: var(--box-shadow-6);
+}
+.sys-box-shadow-7 {
+    -webkit-box-shadow: var(--box-shadow-7);
+            box-shadow: var(--box-shadow-7);
+}
+.sys-box-shadow-8 {
+    -webkit-box-shadow: var(--box-shadow-8);
+            box-shadow: var(--box-shadow-8);
+}
+.sys-box-shadow-9 {
+    -webkit-box-shadow: var(--box-shadow-9);
+            box-shadow: var(--box-shadow-9);
+}
+.sys-box-shadow-10 {
+    -webkit-box-shadow: var(--box-shadow-10);
+            box-shadow: var(--box-shadow-10);
+}
+.sys-box-shadow-11 {
+    -webkit-box-shadow: var(--box-shadow-11);
+            box-shadow: var(--box-shadow-11);
+}
+.sys-box-shadow-12 {
+    -webkit-box-shadow: var(--box-shadow-12);
+            box-shadow: var(--box-shadow-12);
+}
+.sys-box-shadow-13 {
+    -webkit-box-shadow: var(--box-shadow-13);
+            box-shadow: var(--box-shadow-13);
+}
+.sys-box-shadow-14 {
+    -webkit-box-shadow: var(--box-shadow-14);
+            box-shadow: var(--box-shadow-14);
+}
+.sys-box-shadow-15 {
+    -webkit-box-shadow: var(--box-shadow-15);
+            box-shadow: var(--box-shadow-15);
+}
+.sys-box-shadow-16 {
+    -webkit-box-shadow: var(--box-shadow-16);
+            box-shadow: var(--box-shadow-16);
+}
+.sys-box-shadow-17 {
+    -webkit-box-shadow: var(--box-shadow-17);
+            box-shadow: var(--box-shadow-17);
+}
+.sys-box-shadow-18 {
+    -webkit-box-shadow: var(--box-shadow-18);
+            box-shadow: var(--box-shadow-18);
+}
+.sys-box-shadow-19 {
+    -webkit-box-shadow: var(--box-shadow-19);
+            box-shadow: var(--box-shadow-19);
+}
+.sys-box-shadow-20 {
+    -webkit-box-shadow: var(--box-shadow-20);
+            box-shadow: var(--box-shadow-20);
+}
+.sys-box-shadow-21 {
+    -webkit-box-shadow: var(--box-shadow-21);
+            box-shadow: var(--box-shadow-21);
+}
+.sys-box-shadow-22 {
+    -webkit-box-shadow: var(--box-shadow-22);
+            box-shadow: var(--box-shadow-22);
+}
+.sys-box-shadow-23 {
+    -webkit-box-shadow: var(--box-shadow-23);
+            box-shadow: var(--box-shadow-23);
+}
+.sys-box-shadow-24 {
+    -webkit-box-shadow: var(--box-shadow-24);
+            box-shadow: var(--box-shadow-24);
+}
 .sys-ltr {
     padding: 0
 }
@@ -3216,13 +3312,12 @@ a.sys-opacity-inv:hover {
 a.sys-opacity-inv img {
     background-color: var(--white_1);
 }
-a.disabled {
+a.disabled, a[disabled] {
     color: var(--color_pewter_approx);
     cursor: not-allowed !important;
 }
-a[disabled] {
-    color: var(--color_pewter_approx);
-    cursor: not-allowed !important;
+a.btn-primary.disabled, a.btn-primary[disabled], a.btn-success.disabled, a.btn-success[disabled] {
+    color: var(--color_default_hover);
 }
 a.dialoglink {
     float: left;
@@ -4540,6 +4635,16 @@ th {
 }
 .panel-heading > .material-icons {
     vertical-align: top;
+}
+.collapse-icon {
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+    vertical-align: middle !important;
+}
+.collapsed .collapse-icon {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+   
 }
 .panel-title {
     margin-top: 0;
@@ -6892,6 +6997,10 @@ form .data-section {
 .navbar .form-group .form-control {
     margin-bottom: 5px;
 }
+.navbar .form-group .form-control:not(.k-combobox):not(.k-dropdown) {
+    margin-bottom: 5px;
+    background-color: transparent;
+}
 .navbar .form-group label.control-label {
     margin-top: 0;
     margin-bottom: 4px;
@@ -7034,6 +7143,9 @@ form .data-section {
     padding: 8px 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+}
+.navbar-nav > li .dropdown-menu .avanti-checked ::after {
+    border-bottom-width: 0px;
 }
 .dropup {
     position: relative
@@ -9983,7 +10095,7 @@ td .btn.btn-delete {
     font-style: normal;
     font-weight: 400;
     /* src: var(--url_1); */
-    src: url('../fonts/MaterialIcons-Regular.ttf');
+    src: url('../fonts/UX_FONTS_MaterialIcons-Regular.woff2');
     /* src: local('Material Icons'), local('UX_FONTS_MaterialIcons-Regular'), var(--url_1) format('woff2'),
         var(--url_2) format('woff'), var(--url_3) format('truetype'); */
 }
@@ -10318,9 +10430,6 @@ td .btn.btn-delete {
 .k-window.k-window-maximized {
     max-width: 100%;
 }
-.k-drag-clue {
-    z-index: 1000003 !important;
-}
 .k-alt {
     background-color: var(--alabaster);
     background-color: var(--color_black_haze_approx)
@@ -10453,6 +10562,10 @@ td .btn.btn-delete {
 }
 .k-drag-clue {
     border-radius: var(--base-border-radius);
+    z-index: 1000003 !important
+}
+.k-drag-clue.k-reorder-clue {
+    z-index: 1000500 !important;
 }
 .k-touch-scrollbar {
     border-radius: var(--base-border-radius);
@@ -10516,10 +10629,11 @@ td .btn.btn-delete {
     background-color: var(--color_athens_gray_approx);/* background-size: 0 2px, 100% 1px;
             background-repeat: no-repeat;
             background-position: center bottom, center calc(100% - 1px); */
-    border-radius: 0 4px 0px 0;
+    border-radius: var(--base-border-radius);
 }
 .k-combobox .k-dropdown-wrap .k-select .k-icon, .k-dropdown .k-dropdown-wrap .k-select .k-icon {
-    top: -5px;
+    top: -3px;
+    right: -2px;
 }
 .k-combobox .k-dropdown-wrap.k-state-default, .k-dropdown .k-dropdown-wrap.k-state-default {
     background-color: transparent;
@@ -10588,6 +10702,46 @@ td .btn.btn-delete {
 .k-colorpicker .k-selected-color .k-i-line {
     font-size: 2em;
     vertical-align: top;
+}
+.navbar .k-combobox, .navbar .k-dropdown {
+    min-width: 155px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color_boston_blue_approx)), to(var(--color_boston_blue_approx))), -webkit-gradient(linear, left top, left bottom, from(var(--color_quill_gray_approx)), to(var(--color_quill_gray_approx)));
+    background-image: linear-gradient(var(--color_boston_blue_approx), var(--color_boston_blue_approx)), linear-gradient(var(--color_quill_gray_approx), var(--color_quill_gray_approx));
+    background-size: 0 2px, 100% 1px;
+    background-repeat: no-repeat;
+    background-position: center bottom, center calc(100% - 1px);
+    background-color: transparent;
+    -webkit-transition: background 0s ease-out;
+    transition: background 0s ease-out;
+}
+.navbar .k-combobox.k-header, .navbar .k-dropdown.k-header {
+    background-color: transparent;
+}
+.navbar .k-combobox .k-dropdown-wrap, .navbar .k-dropdown .k-dropdown-wrap {
+    border: none;
+    border-width: 0px;
+}
+.navbar .k-combobox .k-dropdown-wrap .k-select, .navbar .k-dropdown .k-dropdown-wrap .k-select {
+    width: 1.38571428em;
+    background-color: transparent;
+}
+.navbar .k-combobox .k-dropdown-wrap .k-select .k-icon, .navbar .k-dropdown .k-dropdown-wrap .k-select .k-icon {
+    top: -1px;
+}
+.navbar .k-combobox .k-dropdown-wrap.k-state-default, .navbar .k-dropdown .k-dropdown-wrap.k-state-default {
+    background-color: transparent;
+}
+.navbar .k-combobox .k-dropdown-wrap .k-input, .navbar .k-dropdown .k-dropdown-wrap .k-input {
+    line-height: 2;
+    font-size: 13px;
+    height: 23px;
+    background: transparent;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+.navbar .k-combobox .k-state-hover:hover, .navbar .k-dropdown .k-state-hover:hover {
+    color: var(--color_pickled_bluewood_approx);
+    background-color: transparent;
 }
 .k-datetimepicker {
     border-radius: var(--base-border-radius);
@@ -10664,9 +10818,27 @@ td .btn.btn-delete {
 .k-editor-inline {
     border-radius: var(--base-border-radius);
 }
-.k-tooltip {
-    border-radius: var(--base-border-radius);
+.k-widget.k-tooltip {
+    border-radius: calc(2 * var(--base-border-radius));
     z-index: 1000002;
+    text-align: left;
+    border-color: var(--color_black_haze_approx);
+    background-color: var(--color_black_haze_approx);
+    color: var(--color_pickled_bluewood_approx);
+    -webkit-box-shadow: var(--box-shadow-4) !important;
+            box-shadow: var(--box-shadow-4) !important;
+    text-align: left;
+    padding: 15px;
+    max-width: 300px;
+}
+.k-callout-n {
+    border-bottom-color: var(--color_black_haze_approx);
+}
+.k-callout-s {
+    border-top-color: var(--color_black_haze_approx);
+}
+.k-tooltip-content {
+    /* max-width: 200px; */
 }
 .k-slider-track {
     border-radius: var(--base-border-radius);
@@ -12861,6 +13033,9 @@ a.grid-resize-toolbar .material-icons {
     left: auto;
     right: -65%;
 }
+.navbar-offcanvas.navbar-offcanvas-right.offcanvas-card-container {
+    z-index: 1300000;
+}
 .navbar-offcanvas.navbar-offcanvas-right.offcanvas-transform.in {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
@@ -14517,7 +14692,7 @@ output {
 .label.label-danger {
     background-color: var(--color_cinnabar_approx);
 }
-.form-control:not(.k-combobox) {
+.form-control:not(.k-combobox):not(.k-dropdown) {
     display: block;
     width: 100%;
     color: var(--color_fuscous_gray_approx);
@@ -14542,13 +14717,13 @@ output {
             box-shadow: none;
     border-radius: 0
 }
-.form-control:not(.k-combobox):focus {
+.form-control:not(.k-combobox):not(.k-dropdown):focus {
     border-color: var(--color_lochmara_approx);
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px var(--black_7_5), 0 0 8px var(--color_calypso_approx);
             box-shadow: inset 0 1px 1px var(--black_7_5), 0 0 8px var(--color_calypso_approx);
 }
-.form-control:not(.k-combobox):-ms-input-placeholder {
+.form-control:not(.k-combobox):not(.k-dropdown):-ms-input-placeholder {
     font-size: 14px;
     line-height: 1.42857143;
     color: var(--color_submarine_approx);
@@ -14959,7 +15134,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .form-group.is-focused label.control-label {
     color: var(--color_boston_blue_approx);
 }
-.form-group.is-focused .form-control:not(.k-combobox) {
+.form-group.is-focused .form-control:not(.k-combobox):not(.k-dropdown) {
     outline: none;
     background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color_boston_blue_approx)), to(var(--color_boston_blue_approx))),
                 -webkit-gradient(linear, left top, left bottom, from(var(--color_quill_gray_approx)), to(var(--color_quill_gray_approx)));
@@ -14971,15 +15146,15 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     -webkit-transition-duration: 0.3s;
             transition-duration: 0.3s;
 }
-.form-group.is-focused .form-control:not(.k-combobox) .material-input:after {
+.form-group.is-focused .form-control:not(.k-combobox):not(.k-dropdown) .material-input:after {
     background-color: var(--color_boston_blue_approx);
 }
 .form-group.is-focused .help-block {
     -webkit-transition: all 0.12s linear;
     transition: all 0.12s linear;
     visibility: visible;
-    opacity: 1;
-    height: 18px;
+    opacity: 1;/* height: 18px; */
+    height: auto;
 }
 .form-group.is-focused .help-block.disabled-help-block {
     -webkit-transition: none;
@@ -15037,7 +15212,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .form-group.is-focused.label-placeholder label.control-label {
     color: var(--color_submarine_approx);
 }
-.form-group .form-control:not(.k-combobox) {
+.form-group .form-control:not(.k-combobox):not(.k-dropdown) {
     border: 0;
     background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color_boston_blue_approx)), to(var(--color_boston_blue_approx))),
             -webkit-gradient(linear, left top, left bottom, from(var(--color_quill_gray_approx)), to(var(--color_quill_gray_approx)));
@@ -15059,13 +15234,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     border-top-left-radius: var(--base-border-radius);
     border-top-right-radius: var(--base-border-radius);
 }
-.form-group .form-control:not(.k-combobox):-ms-input-placeholder {
+.form-group .form-control:not(.k-combobox):not(.k-dropdown):-ms-input-placeholder {
     font-size: 14px;
     line-height: 1.42857143;
     color: var(--color_submarine_approx);
     font-weight: 400;
 }
-.form-group .form-control:not(.k-combobox).k-dropdown {
+.form-group .form-control:not(.k-combobox):not(.k-dropdown).k-dropdown {
     padding-top: 0px;
 }
 .form-group .form-control::-moz-placeholder {
@@ -15103,8 +15278,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .form-group .help-block.always-show {
     visibility: visible;
-    opacity: 1;
-    height: 18px;
+    opacity: 1;/* height: 18px; */
+    height: auto;
     -webkit-transition: visibility 0s, opacity 0s linear, height 0s linear;
     transition: visibility 0s, opacity 0s linear, height 0s linear;
     margin-bottom: 0;
@@ -15116,8 +15291,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     -webkit-transition: all 0.12s linear;
     transition: all 0.12s linear;
     visibility: visible;
-    opacity: 1;
-    height: 18px;
+    opacity: 1;/* height: 18px; */
+    height: auto;
 }
 .form-group.has-error .form-control {
     -webkit-box-shadow: none;
@@ -15429,11 +15604,42 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     background: var(--color_athens_gray_approx);
     border-color: var(--color_athens_gray_approx);
 }
-.form-group.disabled .dropdownjs, .form-group.disabled .dropdownjs::after {
+.form-group.disabled .dropdownjs, .form-group.disabled .dropdownjs::after, .form-group.disabled .k-dropdown, .form-group.disabled .k-dropdown-wrap, .form-group.disabled .k-dropdown .k-select, .form-group.disabled .k-dropdown .k-select .k-icon, .form-group.disabled .k-dropdown-wrap .k-input {
     cursor: not-allowed;
+    color: var(--color_pewter_approx);
+}
+.form-group .k-combobox, .form-group .k-dropdown {
+    width: 100%;
 }
 .form-group .k-combobox .k-dropdown-wrap .k-input, .form-group .k-dropdown .k-dropdown-wrap .k-input {
+    line-height: 1.82857143;
     text-indent: 0;
+    border: 0;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color_boston_blue_approx)), to(var(--color_boston_blue_approx))),
+                -webkit-gradient(linear, left top, left bottom, from(var(--color_quill_gray_approx)), to(var(--color_quill_gray_approx)));
+    background-image: linear-gradient(var(--color_boston_blue_approx), var(--color_boston_blue_approx)),
+                linear-gradient(var(--color_quill_gray_approx), var(--color_quill_gray_approx));
+    background-size: 0 2px, 100% 1px;
+    background-repeat: no-repeat;
+    background-position: center bottom, center calc(100% - 1px);/* background-color: rgba(0, 0, 0, 0); */
+    background-color: var(--color_athens_gray_approx);
+    -webkit-transition: background 0s ease-out;
+    transition: background 0s ease-out;
+    float: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding-left: 4px;
+    padding-top: 2px;
+    border-top-left-radius: var(--base-border-radius);
+    border-top-right-radius: var(--base-border-radius);
+}
+.form-group .k-combobox .k-dropdown-wrap .k-input:-ms-input-placeholder, .form-group .k-dropdown .k-dropdown-wrap .k-input:-ms-input-placeholder {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: var(--color_submarine_approx);
+    font-weight: 400;
 }
 .radio {
     position: relative;
@@ -16422,6 +16628,12 @@ input[type='number']::-ms-clear {
 .form-horizontal .has-feedback .form-control-feedback {
     right: 7.5px;
 }
+.form-horizontal table tbody.data-section a .panel-body.data-widget {
+    padding: 0;
+}
+.form-horizontal table.table-striped tr:nth-of-type(even) {
+    background: var(--color_black_haze_approx);
+}
 .togglebutton {
     vertical-align: middle;
     -webkit-user-select: none;
@@ -16822,90 +17034,90 @@ input[type='number']::-ms-clear {
 .noUi-origin[style^='left: 0'] .noUi-handle.noUi-active {
     border-width: 1px;
 }
-.slider {
+.slider, .noUi-horizontal {
     background: var(--color_submarine_approx)
 }
-.slider.noUi-connect {
+.slider.noUi-connect, .noUi-horizontal.noUi-connect {
     background-color: var(--color_boston_blue_approx);
 }
-.slider.slider-default.noUi-connect {
+.slider.slider-default.noUi-connect, .noUi-horizontal.slider-default.noUi-connect {
     background-color: var(--color_boston_blue_approx);
 }
-.slider.slider-default .noUi-connect {
+.slider.slider-default .noUi-connect, .noUi-horizontal.slider-default .noUi-connect {
     background-color: var(--color_boston_blue_approx);
 }
-.slider.slider-default .noUi-handle {
+.slider.slider-default .noUi-handle, .noUi-horizontal.slider-default .noUi-handle {
     background-color: var(--color_boston_blue_approx);
     border-color: var(--color_boston_blue_approx);
 }
-.slider.slider-inverse.noUi-connect {
+.slider.slider-inverse.noUi-connect, .noUi-horizontal.slider-inverse.noUi-connect {
     background-color: var(--color_pickled_bluewood_approx);
 }
-.slider.slider-inverse .noUi-connect {
+.slider.slider-inverse .noUi-connect, .noUi-horizontal.slider-inverse .noUi-connect {
     background-color: var(--color_pickled_bluewood_approx);
 }
-.slider.slider-inverse .noUi-handle {
+.slider.slider-inverse .noUi-handle, .noUi-horizontal.slider-inverse .noUi-handle {
     background-color: var(--color_pickled_bluewood_approx);
     border-color: var(--color_pickled_bluewood_approx);
 }
-.slider.slider-primary.noUi-connect {
+.slider.slider-primary.noUi-connect, .noUi-horizontal.slider-primary.noUi-connect {
     background-color: var(--color_boston_blue_approx);
 }
-.slider.slider-primary .noUi-connect {
+.slider.slider-primary .noUi-connect, .noUi-horizontal.slider-primary .noUi-connect {
     background-color: var(--color_boston_blue_approx);
 }
-.slider.slider-primary .noUi-handle {
+.slider.slider-primary .noUi-handle, .noUi-horizontal.slider-primary .noUi-handle {
     background-color: var(--color_boston_blue_approx);
     border-color: var(--color_boston_blue_approx);
 }
-.slider.slider-success.noUi-connect {
+.slider.slider-success.noUi-connect, .noUi-horizontal.slider-success.noUi-connect {
     background-color: var(--color_chateau_green_approx);
 }
-.slider.slider-success .noUi-connect {
+.slider.slider-success .noUi-connect, .noUi-horizontal.slider-success .noUi-connect {
     background-color: var(--color_chateau_green_approx);
 }
-.slider.slider-success .noUi-handle {
+.slider.slider-success .noUi-handle, .noUi-horizontal.slider-success .noUi-handle {
     background-color: var(--color_chateau_green_approx);
     border-color: var(--color_chateau_green_approx);
 }
-.slider.slider-info.noUi-connect {
+.slider.slider-info.noUi-connect, .noUi-horizontal.slider-info.noUi-connect {
     background-color: var(--color_mountain_meadow_approx);
 }
-.slider.slider-info .noUi-connect {
+.slider.slider-info .noUi-connect, .noUi-horizontal.slider-info .noUi-connect {
     background-color: var(--color_mountain_meadow_approx);
 }
-.slider.slider-info .noUi-handle {
+.slider.slider-info .noUi-handle, .noUi-horizontal.slider-info .noUi-handle {
     background-color: var(--color_mountain_meadow_approx);
     border-color: var(--color_mountain_meadow_approx);
 }
-.slider.slider-warning.noUi-connect {
+.slider.slider-warning.noUi-connect, .noUi-horizontal.slider-warning.noUi-connect {
     background-color: var(--color_zest_approx);
 }
-.slider.slider-warning .noUi-connect {
+.slider.slider-warning .noUi-connect, .noUi-horizontal.slider-warning .noUi-connect {
     background-color: var(--color_zest_approx);
 }
-.slider.slider-warning .noUi-handle {
+.slider.slider-warning .noUi-handle, .noUi-horizontal.slider-warning .noUi-handle {
     background-color: var(--color_zest_approx);
     border-color: var(--color_zest_approx);
 }
-.slider.slider-danger.noUi-connect {
+.slider.slider-danger.noUi-connect, .noUi-horizontal.slider-danger.noUi-connect {
     background-color: var(--color_cinnabar_approx);
 }
-.slider.slider-danger .noUi-connect {
+.slider.slider-danger .noUi-connect, .noUi-horizontal.slider-danger .noUi-connect {
     background-color: var(--color_cinnabar_approx);
 }
-.slider.slider-danger .noUi-handle {
+.slider.slider-danger .noUi-handle, .noUi-horizontal.slider-danger .noUi-handle {
     background-color: var(--color_cinnabar_approx);
     border-color: var(--color_cinnabar_approx);
 }
-.slider .noUi-handle {
+.slider .noUi-handle, .noUi-horizontal .noUi-handle {
     background-color: var(--color_boston_blue_approx);
     border-color: var(--color_boston_blue_approx);
 }
-.slider[disabled].noUi-slider {
+.slider[disabled].noUi-slider, .noUi-horizontal[disabled].noUi-slider {
     opacity: 0.5;
 }
-.slider[disabled] .noUi-handle {
+.slider[disabled] .noUi-handle, .noUi-horizontal[disabled] .noUi-handle {
     cursor: not-allowed;
     background-color: var(--color_submarine_approx);
     border-color: var(--color_submarine_approx);
@@ -17540,6 +17752,18 @@ form[data-role='sortable'] {
 .btn-checkbox:hover i {
     color: var(--syspro_dark_green);
 }
+.form-group + .popover, .form-group .control-label + .popover {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.form-group-section {
+    background: var(--color_alabaster_approx);
+    border-radius: calc(var(--base-border-radius) * 2);
+    padding: 2px 12px;
+    margin-bottom: 10px;
+}
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     input[type='date'].form-control {
         line-height: 38px;
@@ -17818,37 +18042,29 @@ form[data-role='sortable'] {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-9 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-6, .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-6, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-6, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-6, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-9, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-6, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-6, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-6, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-6, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-6, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-9, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-6, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-5 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-3 {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-7 {
         width: 100%;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-8, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-8 {
-        width: 100%;
-    }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-4, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-4 {
-        width: 100%;
-    }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 {
-        width: 100%;
-    }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 .radio {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-7 .radio, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-7 .radio, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-7 .radio {
         padding-left: 8px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .col-md-7 .radio:first-child, .column-parent.col-sm-8 .form-horizontal .col-md-5 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .col-md-7 .radio:first-child, .column-parent.col-xs-8 .form-horizontal .col-md-5 .col-md-7 .radio:first-child {
         padding-top: 2px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .col-md-5, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .col-md-5 {
-        width: 100%;
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-control:not(.k-dropdown), .column-parent.col-sm-8 .form-horizontal .col-sm-4 .k-dropdown .k-input, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .form-control:not(.k-dropdown), .column-parent.col-sm-8 .form-horizontal .col-sm-3 .k-dropdown .k-input, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .form-control:not(.k-dropdown), .column-parent.col-sm-8 .form-horizontal .col-xs-4 .k-dropdown .k-input, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .form-control:not(.k-dropdown), .column-parent.col-sm-8 .form-horizontal .col-xs-3 .k-dropdown .k-input, .column-parent.col-sm-8 .form-horizontal .col-md-5 .form-control:not(.k-dropdown), .column-parent.col-sm-8 .form-horizontal .col-md-5 .k-dropdown .k-input, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .form-control:not(.k-dropdown), .column-parent.col-xs-8 .form-horizontal .col-sm-4 .k-dropdown .k-input, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .form-control:not(.k-dropdown), .column-parent.col-xs-8 .form-horizontal .col-sm-3 .k-dropdown .k-input, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .form-control:not(.k-dropdown), .column-parent.col-xs-8 .form-horizontal .col-xs-4 .k-dropdown .k-input, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .form-control:not(.k-dropdown), .column-parent.col-xs-8 .form-horizontal .col-xs-3 .k-dropdown .k-input, .column-parent.col-xs-8 .form-horizontal .col-md-5 .form-control:not(.k-dropdown), .column-parent.col-xs-8 .form-horizontal .col-md-5 .k-dropdown .k-input {
+        height: 28px;
+        padding: 2px 0 0 4px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .form-group, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .form-group, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .form-group {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .form-group, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .form-group, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .form-group, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .form-group, .column-parent.col-sm-8 .form-horizontal .col-md-5 .form-group, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .form-group, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .form-group, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .form-group, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .form-group, .column-parent.col-xs-8 .form-horizontal .col-md-5 .form-group {
         min-height: 50px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .control-label, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .control-label, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .control-label {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .control-label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .control-label, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .control-label, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .control-label, .column-parent.col-sm-8 .form-horizontal .col-md-5 .control-label, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .control-label, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .control-label, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .control-label, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .control-label, .column-parent.col-xs-8 .form-horizontal .col-md-5 .control-label {
         text-align: left;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .radio label, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .radio label, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .radio label {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-4 .radio label, .column-parent.col-sm-8 .form-horizontal .col-sm-3 .radio label, .column-parent.col-sm-8 .form-horizontal .col-xs-4 .radio label, .column-parent.col-sm-8 .form-horizontal .col-xs-3 .radio label, .column-parent.col-sm-8 .form-horizontal .col-md-5 .radio label, .column-parent.col-xs-8 .form-horizontal .col-sm-4 .radio label, .column-parent.col-xs-8 .form-horizontal .col-sm-3 .radio label, .column-parent.col-xs-8 .form-horizontal .col-xs-4 .radio label, .column-parent.col-xs-8 .form-horizontal .col-xs-3 .radio label, .column-parent.col-xs-8 .form-horizontal .col-md-5 .radio label {
         text-align: left;
     }
     .column-parent.col-sm-8 .form-horizontal .col-sm-12 .col-md-3, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .col-md-3, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .col-md-3 {
@@ -17876,7 +18092,7 @@ form[data-role='sortable'] {
         float: left;
         padding-top: 5px;
     }
-    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .form-control, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .form-control, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .form-control {
+    .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control:not(.k-dropdown), .column-parent.col-sm-8 .form-horizontal .col-sm-12 .k-dropdown .k-input, .column-parent.col-sm-8 .form-horizontal .col-xs-12 .form-control:not(.k-dropdown), .column-parent.col-sm-8 .form-horizontal .col-xs-12 .k-dropdown .k-input, .column-parent.col-xs-8 .form-horizontal .col-sm-12 .form-control:not(.k-dropdown), .column-parent.col-xs-8 .form-horizontal .col-sm-12 .k-dropdown .k-input, .column-parent.col-xs-8 .form-horizontal .col-xs-12 .form-control:not(.k-dropdown), .column-parent.col-xs-8 .form-horizontal .col-xs-12 .k-dropdown .k-input {
         height: 28px;
         padding: 2px 0 0 4px;
     }
@@ -17915,7 +18131,7 @@ form[data-role='sortable'] {
         float: left;
         padding-top: 5px;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .form-control, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-control, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .form-control {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control:not(.k-dropdown):not(.k-combobox), .column-parent.col-sm-12 .form-horizontal .col-sm-12 .k-dropdown .k-input, .column-parent.col-sm-12 .form-horizontal .col-sm-12 .k-combobox .k-input, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .form-control:not(.k-dropdown):not(.k-combobox), .column-parent.col-sm-12 .form-horizontal .col-xs-12 .k-dropdown .k-input, .column-parent.col-sm-12 .form-horizontal .col-xs-12 .k-combobox .k-input, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-control:not(.k-dropdown):not(.k-combobox), .column-parent.col-xs-12 .form-horizontal .col-sm-12 .k-dropdown .k-input, .column-parent.col-xs-12 .form-horizontal .col-sm-12 .k-combobox .k-input, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .form-control:not(.k-dropdown):not(.k-combobox), .column-parent.col-xs-12 .form-horizontal .col-xs-12 .k-dropdown .k-input, .column-parent.col-xs-12 .form-horizontal .col-xs-12 .k-combobox .k-input {
         height: 28px;
         padding: 2px 0 0 4px;
     }
@@ -17929,7 +18145,7 @@ form[data-role='sortable'] {
         width: 41.66666667%;
         float: left;
     }
-    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control, .column-parent.col-sm-12 .form-horizontal .col-xs-6 .form-control, .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-control, .column-parent.col-xs-12 .form-horizontal .col-xs-6 .form-control {
+    .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control:not(.k-dropdown), .column-parent.col-sm-12 .form-horizontal .col-sm-6 .k-dropdown .k-input, .column-parent.col-sm-12 .form-horizontal .col-xs-6 .form-control:not(.k-dropdown), .column-parent.col-sm-12 .form-horizontal .col-xs-6 .k-dropdown .k-input, .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-control:not(.k-dropdown), .column-parent.col-xs-12 .form-horizontal .col-sm-6 .k-dropdown .k-input, .column-parent.col-xs-12 .form-horizontal .col-xs-6 .form-control:not(.k-dropdown), .column-parent.col-xs-12 .form-horizontal .col-xs-6 .k-dropdown .k-input {
         height: 28px;
         padding: 2px 0 0 4px;
     }
@@ -18265,7 +18481,7 @@ form[data-role='sortable'] {
     width: 58.33333333% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .form-control {
+.k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-sm-12 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-sm-8 .form-horizontal .col-xs-12 .k-dropdown .k-input {
     height: 28px;
     padding: 2px 0 0 4px;
 }
@@ -18329,7 +18545,7 @@ form[data-role='sortable'] {
     width: 58.33333333% !important;
     float: left;
 }
-.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .form-control, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .form-control, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .form-control {
+.k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-12 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-xs-12 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-6 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-8 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-sm-12 .form-horizontal .col-sm-4 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-12 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-xs-12 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-6 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-8 .k-dropdown .k-input, .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .form-control:not(.k-dropdown), .k-window[min-width~='1092px'] .column-parent.col-xs-12 .form-horizontal .col-sm-4 .k-dropdown .k-input {
     height: 28px;
     padding: 2px 0 0 4px;
 }

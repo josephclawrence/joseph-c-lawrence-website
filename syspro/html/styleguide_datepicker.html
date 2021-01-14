@@ -1,0 +1,119 @@
+<link href="css/daterangepicker.css" rel="stylesheet" />
+<link href="css/UX_CSS_bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<style>
+.bootstrap-datetimepicker-widget .picker-switch td span {
+    width: 86%;
+    background: #ecf0f1;
+}
+.bootstrap-datetimepicker-widget .timepicker-picker table td {
+    height: 30px;
+    line-height: 30px;
+    width: 0px;
+}
+.bootstrap-datetimepicker-widget .timepicker-picker table td span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+</style>
+<div class="form-horizontal">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group is-empty">
+        <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+            <span>Date time</span>
+        </label>
+        <div class="col-md-7 syspro-entry-content">
+            <div class="input-group date" id='optiontwo'>
+                <input type="text" class="form-control date-input syspro-focusable syspro-trackfield-change" placeholder="Enter date">
+                <span class="input-group-addon">
+                    <i class="material-icons text-primary">access_time</i>
+                </span>
+            </div>                                        
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+          <span>Date time</span>
+        </label>
+        <div class="col-md-7 syspro-entry-content">
+          <div class='input-group date' id='optionone'>
+              <input type='text' class="form-control" />
+              <span class="input-group-addon">
+                  <span class="material-icons">calendar_today</span>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/moment.min.js"></script>
+<script src="js/daterangepicker.js"></script>
+<script src="js/UX_JS_bootstrap-datetimepicker.js"></script>
+
+<script>
+  $('#optiontwo').datetimepicker({
+      icons: {
+          time: "material-icons",
+          date: "material-icons",
+          up: "material-icons",
+          down: "material-icons",
+          previous: "material-icons",
+          next: "material-icons",
+          close: 'material-icons'
+      },
+      sideBySide: false,
+      showClose: true,
+      keepOpen: true,
+      allowInputToggle: true,
+      format: 'DD-MMM-YYYY HH:mm',
+  });
+
+  $('#optionone').daterangepicker({
+      "singleDatePicker": true,
+      "showDropdowns": false,
+      "timePicker": true,
+      "timePicker24Hour": true,
+      "locale": {
+          "format": 'M/DD/YY HH:mm',
+          "separator": " - ",
+          "applyLabel": "Apply",
+          "cancelLabel": "Cancel",
+          "fromLabel": "From",
+          "toLabel": "To",
+          "customRangeLabel": "Custom",
+          "weekLabel": "W",
+          "daysOfWeek": [
+              "Su",
+              "Mo",
+              "Tu",
+              "We",
+              "Th",
+              "Fr",
+              "Sa"
+          ],
+          "monthNames": [
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December"
+          ],
+          "firstDay": 1
+      },
+      "linkedCalendars": false,
+      "showCustomRangeLabel": false,
+  }, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+  });
+</script>
