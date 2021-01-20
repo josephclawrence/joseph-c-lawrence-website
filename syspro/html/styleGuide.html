@@ -168,7 +168,7 @@
                                     <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">palette</span>Colour<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
                                     <ul class="treeview-menu">
                                         <li><a class="style-guide-link" data-section="colour" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Primary</a></li>
-                                        <li><a class="style-guide-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Secondary</a></li>                                     
+                                        <li><a class="style-guide-link" href="#" data-section="colour2"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Secondary</a></li>                                     
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -193,11 +193,11 @@
                                             <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">folder_open</span>Form inputs<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
                                             <ul class="treeview-menu">
                                                 <li><a class="style-guide-link" data-section="textnumber" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Text & number</a></li>
-                                                <li><a class="style-guide-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Checkbox & radio buttons</a></li>
+                                                <li><a class="style-guide-link" href="#" data-section="checkbox"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Checkbox & radio buttons</a></li>
                                                 <li><a class="style-guide-link" data-section="datepicker" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Date/time pickers</a></li>
                                                 <li><a class="style-guide-link" data-section="colourpicker" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Colour pickers</a></li>
                                                 <li><a class="style-guide-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Sliders</a></li>
-                                                <li><a class="style-guide-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Rich text/Notepad</a></li>
+                                                <li><a class="style-guide-link" href="#" data-section="notepad"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Rich text/Notepad</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -221,7 +221,9 @@
                                 <li class="treeview">
                                     <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">insert_chart</span>Charts<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
                                     <ul class="treeview-menu">
-                                    <li><a class="style-guide-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Line charts</a></li>
+                                        <li><a class="style-guide-link" href="#" data-section="linechart"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Line charts</a></li>
+                                        <li><a class="style-guide-link" href="#" data-section="columnchart"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Column charts</a></li>
+                                        <li><a class="style-guide-link" href="#" data-section="piechart"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Pie charts</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -248,8 +250,8 @@
                                     <a href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">feedback</span>Notifications & dialogs<span class="material-icons treeview-menu-expand-indicator pull-right ">chevron_right</span></a>
                                     <ul class="treeview-menu">
                                         <li><a class="style-guide-link" href="#" data-section="dialogs"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Dialog boxes</a></li>   
-                                        <li><a class="style-guide-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Notifications</a></li>   
-                                        <li><a class="style-guide-link" href="#"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Error notifications</a></li>                                     
+                                        <li><a class="style-guide-link" href="#" data-section="notifications"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Notifications</a></li>   
+                                        <li><a class="style-guide-link" href="#" data-section="errors"><span class="material-icons treeview-menu-icon pull-left sys-mg-r-5">fiber_manual_record</span>Error notifications</a></li>                                     
                                     </ul>
                                 </li>
                             </ul>
@@ -275,7 +277,8 @@
         <script src="js/UX_JS_bootstrap.js"></script>
         <script src="js/UX_JS_forms.js"></script>
         <script src="js/UX_JS_Tree.js"></script>
-        
+        <script src="js/UX_JS_SYSPROUXQueryUi.js" ></script>
+        <script src="js/bundle.js"></script>
         <script>
         
             $(document).ready(function() {

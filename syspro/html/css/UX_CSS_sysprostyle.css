@@ -11422,11 +11422,11 @@ td.k-state-focused.k-state-selected,
     padding-right: 2.5px;
     cursor: pointer
 }
-.tile.col-sm-8 {
+/* .tile.col-sm-8 {
     min-width: 284px !important;
     max-width: 284px !important;
     height: 142px !important;
-}
+} */
 .tile.col-sm-8 .wide-tile {
     display: block;
     height: 100%;
@@ -11435,19 +11435,19 @@ td.k-state-focused.k-state-selected,
         .tile.col-sm-8 .big-tile {
     display: none;
 }
-.tile.col-sm-8.big-square-tile {
+/* .tile.col-sm-8.big-square-tile {
     min-width: 284px !important;
     max-width: 284px !important;
     height: 289px !important;
-}
+} */
 .tile.col-sm-8.big-square-tile .big-tile {
     display: block;
 }
-.tile.col-sm-4 {
+/* .tile.col-sm-4 {
     min-width: 142px !important;
     max-width: 142px !important;
     height: 142px !important;
-}
+} */
 .tile.col-sm-4 .small-tile {
     display: block;
     height: 100%;
