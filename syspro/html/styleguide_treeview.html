@@ -74,6 +74,43 @@
     <div class="col-sm-6">
       <div class="file-treeview"></div>
     </div>
+    <div class="col-sm-6">
+      <div class="alert alert-info">
+        The main green interface colour, used for buttons, positive actions and success messaging.
+      </div>
+<pre><code data-language="javascript">var inline = new kendo.data.HierarchicalDataSource({
+      data: [
+          { name: "Accounts receivable", subCategories: [
+              { name: "Customers" },
+              { name: "Branches" },
+              { name: "Something", subCategories: [
+              { name: "Something" },
+              { name: "Something" },
+              { name: "Something" }
+          ] }
+          ] },
+          { name: "Inventory", subCategories: [
+              { name: "Stock codes" },
+              { name: "Price codes" },
+              { name: "Something" }
+          ] },
+          { name: "Recent" },
+          { name: "Starred" }
+      ],
+      schema: {
+          model: {
+              children: "subCategories"
+          }
+      }
+  });
+
+  $(".file-treeview").kendoTreeView({
+      template: kendo.template($("#treeview-template").html()),
+      dataSource: inline,                    
+      dataTextField: [ "name" ]
+  });
+</code></pre>
+    </div>
   </div>
 
   <script id="treeview-template" type="text/kendo-ui-template">
@@ -121,4 +158,7 @@
       dataSource: inline,                    
       dataTextField: [ "name" ]
   });
+</script>
+<script>
+  Rainbow.color();
 </script>

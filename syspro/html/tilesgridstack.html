@@ -2000,6 +2000,13 @@
 				
 			  grid.on('resizestop', function(event, el) {
 					initCharts(); 
+					grid.compact();
+					// or all values...
+				});
+
+				grid.on('dragstop', function(event, el) {
+					initCharts(); 
+					grid.compact();
 					// or all values...
 				});
 

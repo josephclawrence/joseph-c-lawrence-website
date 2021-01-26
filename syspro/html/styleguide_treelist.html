@@ -1,4 +1,41 @@
-<div id="treelist"></div>
+<div class="row">
+    <div class="col-sm-6">
+        <div id="treelist"></div>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="alert alert-info">
+            The main green interface colour, used for buttons, positive actions and success messaging.
+          </div>
+    <pre><code data-language="javascript">
+var dataSource = new kendo.data.TreeListDataSource({
+    data: [
+        { id: 1, Name: "Daryl Sweeney", Position: "CEO", Phone: "(555) 924-9726", parentId: null },
+        { id: 2, Name: "Guy Wooten", Position: "Chief Technical Officer", Phone: "(438) 738-4935", parentId: 1 },
+        { id: 32, Name: "Buffy Weber", Position: "VP, Engineering", Phone: "(699) 838-6121", parentId: 2 },
+        ...
+    ],
+
+    schema: {
+        model: {
+            id: "id",
+            expanded: true
+        }
+    }
+});
+
+$("#treelist").kendoTreeList({
+    dataSource: dataSource,
+    height: 540,
+    columns: [
+        { field: "Position" },
+        { field: "Name" },
+        { field: "Phone" }
+    ]
+});
+    </code></pre>
+    </div>
+</div>
 
 <script>
 var dataSource = new kendo.data.TreeListDataSource({
@@ -66,3 +103,6 @@ $("#treelist").kendoTreeList({
     ]
 });
 </script>
+<script>
+    Rainbow.color();
+  </script>
