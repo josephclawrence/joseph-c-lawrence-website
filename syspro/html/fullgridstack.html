@@ -2202,7 +2202,7 @@
 
               $gridStack.find('.tile').each(function(idx, tile) {
                 const $tile = $(tile);
-                $tile.addClass('grid-stack-item').attr('gs-max-h', 2).attr('gs-max-w', 2).attr('gs-id', (Math.floor(Math.random() * 1000)));
+                $tile.addClass('grid-stack-item').attr('gs-max-h', 2).attr('gs-max-w', 2).attr('gs-id', idx * 100 + idx * 10);
                 $tile.find('> div').addClass('grid-stack-item-content');
                 if ( $tile.hasClass('col-sm-4') ) {
                   $tile.attr('gs-w', 1).attr('gs-h', 1).removeClass('col-sm-4 col-xs-12 col-xs-6');
@@ -2264,23 +2264,56 @@
         const jsgridlayout = JSON.parse(gridlayout);
         for (let i = 0; i < jsgridlayout.length; i++) {
           console.log(jsgridlayout[i].id);
-          $(`[data-guid='${jsgridlayout[i].id}'`)
-            .closest('.grid-stack-item')
-            .attr('gs-w', jsgridlayout[i].w)
-            .attr('gs-h', jsgridlayout[i].h)
-            .attr('gs-x', jsgridlayout[i].x)
-            .attr('gs-y', jsgridlayout[i].y);
+          const gridStackWidget = $(`[data-guid='${jsgridlayout[i].id}'`).closest('.grid-stack-item')[0];
+          grid.update(gridStackWidget, {
+            h: jsgridlayout[i].h,
+            w: jsgridlayout[i].w,
+            x: jsgridlayout[i].x,
+            y: jsgridlayout[i].y,
+          });
+          // $(`[data-guid='${jsgridlayout[i].id}'`)
+          //   .closest('.grid-stack-item')
+          //   .attr('gs-w', jsgridlayout[i].w)
+          //   .attr('gs-h', jsgridlayout[i].h)
+          //   .attr('gs-x', jsgridlayout[i].x)
+          //   .attr('gs-y', jsgridlayout[i].y);
+        }        
+      }
+
+      const tilegridlayout = localStorage.getItem("tilegridlayout");
+
+      if (tilegridlayout) {
+        const jstilegridlayout = JSON.parse(tilegridlayout);
+        for (let i = 0; i < jstilegridlayout.length; i++) {
+          console.log(jstilegridlayout[i].id);
+
+          const gridStackWidget = $(`[gs-id='${jstilegridlayout[i].id}'`)[0];
+          tilegrid.update(gridStackWidget, {
+            h: jstilegridlayout[i].h,
+            w: jstilegridlayout[i].w,
+            x: jstilegridlayout[i].x,
+            y: jstilegridlayout[i].y,
+          });
+
+          // $(`[gs-id='${jstilegridlayout[i].id}'`)
+          //   //.closest('.grid-stack-item')
+          //   .attr('gs-w', jstilegridlayout[i].w)
+          //   .attr('gs-h', jstilegridlayout[i].h)
+          //   .attr('gs-x', jstilegridlayout[i].x)
+          //   .attr('gs-y', jstilegridlayout[i].y);
         }        
       }
 
       tilegrid.on('resizestop', function(event, el) {
         initCharts(); 
         tilegrid.compact();
+        localStorage.setItem("tilegridlayout", JSON.stringify(cleanGridLayout(tilegrid.save(false))));
       });
 
       tilegrid.on('dragstop', function(event, el) {
 					initCharts(); 
-					tilegrid.compact();
+          tilegrid.compact();
+          localStorage.setItem("tilegridlayout", JSON.stringify(cleanGridLayout(tilegrid.save(false))));
         });
         
       grid.on('resizestop', function(event, el) {
