@@ -54,14 +54,6 @@
     right: 15px;
     top: 15px;
 }
-
-.grid-stack-pin {
-    z-index: 9999;
-    left: 15px;
-    position: absolute;
-    top: 15px;
-    cursor: pointer;
-}
           .full-grid-stack > .grid-stack-item > .grid-stack-item-content {
             background: white;
             border-radius: 4px;
@@ -368,14 +360,6 @@
                 </a>
             </li>
 
-            <li class=" nav-item newWidget grid-stack-item grid-stack-drag-handle">
-              Here is something
-            </li>
-
-            <li class=" nav-item newWidget grid-stack-item grid-stack-drag-handle">
-              Drag me
-            </li>
-
             <li class="dropdown nav-item">
                 <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account" data-toggle="dropdown" style=""><i class="material-icons">account_circle</i>
                     <span class="hidden-xs fusion-current-account-name">SYSPRO Administrator</span></a>
@@ -594,9 +578,7 @@
 
 
                 <div class="grid-stack-item" gs-w="3" gs-h="4" gs-x="3" gs-y="0" >
-                  <span class="grid-stack-pin pull-left "> <i class="material-icons">lock</i> </span>
                   <span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i> </span>
-                  
                   <div class=" row widget layout-widget grid-stack-item-content" data-guid="eb65fb8f-e3d3-4cc5-dc52-5003df0d111d" data-subtype="Joined" data-border="Internal" data-displaystyle="Inline" data-collapsible="True">
                     <div class="col-sm-12">
 
@@ -718,7 +700,6 @@
 
 
                 <div class="grid-stack-item" gs-w="3" gs-h="12" gs-x="0" gs-y="0">
-                  <span class="grid-stack-pin pull-left "> <i class="material-icons">lock</i> </span>
                   <span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i> </span>
               <div class="row widget layout-widget grid-stack-item-content" data-guid="96f10001-7101-49b3-9c77-2d0508c533db" data-subtype="Joined" data-border="None" data-displaystyle="EntryForm" data-collapsible="False">
     <div class="col-sm-12">
@@ -889,7 +870,6 @@
 </div>
 </div>
 <div class="grid-stack-item" gs-w="3" gs-h="37" gs-x="0" gs-y="9"><div class="row widget layout-widget grid-stack-item-content" data-guid="180d8887-5b51-4ed4-feee-7f679cb1c826" data-subtype="" data-border="Internal" data-displaystyle="Tiles" data-collapsible="False">
-  <span class="grid-stack-pin pull-left "> <i class="material-icons">lock</i> </span>
   <span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i> </span>
     <div class="col-sm-12 tile-widget-wrapper">
 
@@ -1311,7 +1291,6 @@
     </div>
 </div>
 </div><div class="grid-stack-item " gs-w="3" gs-h="12" gs-x="3" gs-y="0"><div class="row widget layout-widget grid-stack-item-content" data-guid="6af12e8d-bb0a-4a41-aea0-6e239af067eb" data-subtype="" data-border="None" data-displaystyle="TabControl" data-collapsible="False">
-  <span class="grid-stack-pin pull-left "> <i class="material-icons">lock</i> </span>
   <span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i> </span>
     <div class="col-sm-12">
 
@@ -2188,7 +2167,6 @@
           const colMargin = 4;
 
           function gridStackWidth($element, colWidth, margin) {
-            console.log('gridstackwidth');
             const width = $element.width();
             const grossColWidth = colWidth + (margin * 2);
             const columns = Math.floor(width / grossColWidth);
@@ -2199,7 +2177,6 @@
           } 
 
           function initGridStack() {
-            console.log('initgridstack');
             $('.full-grid-stack > .grid-stack-item').each(function(idx, elem) {
               $(elem).attr('gs-id', $(elem).find('.layout-widget').attr('data-guid'));
             });
@@ -2212,7 +2189,7 @@
           }
 
           function initTilesGridStack() {
-            console.log('inittilesgridstack');
+              
               const $gridStack = $('.tile-grid-stack');
               // TODO: Need to always check for width of .grid-stack and then divide by 142, fix width and fix number of columns.
               const [columns, fullWidth] = gridStackWidth($gridStack, colHeight, colMargin);
@@ -2237,15 +2214,13 @@
               });
 
               return GridStack.init({
-                  acceptWidgets: true,
                   column: columns,
                   cellHeight: colHeight + (colMargin * 2),
                   margin: colMargin,
                   class: 'tile-grid-stack',
                   handle: '.grid-stack-drag-handle',
                   disableOneColumnMode: true,
-                  dragIn: '.newWidget',
-                  dragInOptions: { revert: 'invalid', scroll: false, appendTo: 'body', helper: 'clone' },
+                  // itemClass: tile
               }, document.querySelector('.tile-grid-stack'));
 
               
@@ -2263,7 +2238,6 @@
     $(document).ready(createGauge).bind("kendo:skinChange", createGauge);
     
     function cleanGridLayout(gridlayout) {
-      console.log('cleanGridLayout');
       if (!gridlayout.length) return;
       
       for (let i = 0; i < gridlayout.length; i++) {
@@ -2277,29 +2251,13 @@
      
       $('.tile, .tile *').off('click');
 
-      $('.grid-stack-pin').on('click', function(e) {
-        console.log('clickpin');
-        const isPinned = $(this).hasClass('pinned');
-        const gridWidget = $(this).closest('.grid-stack-item')[0];
-        grid.update(gridWidget, {
-          locked: !isPinned,
-          noResize: !isPinned,
-          noMove: !isPinned,
-          h: gridWidget.h,
-          w: gridWidget.w,
-          x: gridWidget.x,
-          y: gridWidget.y,
-        });
-        localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
-        $(this).toggleClass('pinned', !isPinned);
-      });
-
       window.grid = initGridStack();
 
       window.tilegrid = initTilesGridStack();
 
       initCharts();
       
+
       const gridlayout = localStorage.getItem("gridlayout");
 
       if (gridlayout) {
@@ -2313,7 +2271,12 @@
             x: jsgridlayout[i].x,
             y: jsgridlayout[i].y,
           });
-
+          // $(`[data-guid='${jsgridlayout[i].id}'`)
+          //   .closest('.grid-stack-item')
+          //   .attr('gs-w', jsgridlayout[i].w)
+          //   .attr('gs-h', jsgridlayout[i].h)
+          //   .attr('gs-x', jsgridlayout[i].x)
+          //   .attr('gs-y', jsgridlayout[i].y);
         }        
       }
 
@@ -2331,63 +2294,29 @@
             x: jstilegridlayout[i].x,
             y: jstilegridlayout[i].y,
           });
+
+          // $(`[gs-id='${jstilegridlayout[i].id}'`)
+          //   //.closest('.grid-stack-item')
+          //   .attr('gs-w', jstilegridlayout[i].w)
+          //   .attr('gs-h', jstilegridlayout[i].h)
+          //   .attr('gs-x', jstilegridlayout[i].x)
+          //   .attr('gs-y', jstilegridlayout[i].y);
         }        
       }
 
       tilegrid.on('resizestop', function(event, el) {
-        console.log('tile resizestop');
         initCharts(); 
         tilegrid.compact();
         localStorage.setItem("tilegridlayout", JSON.stringify(cleanGridLayout(tilegrid.save(false))));
       });
 
       tilegrid.on('dragstop', function(event, el) {
-        console.log('tile dragstop');
 					initCharts(); 
           tilegrid.compact();
           localStorage.setItem("tilegridlayout", JSON.stringify(cleanGridLayout(tilegrid.save(false))));
         });
-
-      tilegrid.on('added', function(event, items) {
-        console.log('tile added');
-          const addedItem = items[0];
-          if (event.detail.length > 1) return;
-                    
-          const newTile = '<div class="tile grid-stack-item"><span class="grid-stack-drag-handle pull-right"><i class="material-icons">open_with</i></span><div class="tile-loading-cover"><div class="loader"><div class="square"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square"></div><div class="square last"></div><div class="square clear"></div><div class="square "></div><div class="square last"></div></div></div><div class="grid-stack-item-content"><div class="tile-inner sys-fg-white sys-bg-warning"><div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off"><div class="small-tile row"><div class="col-xs-12"> <div class="tile-top-half"><div class=""><span class="text-left tile-title ">A new tile</span></div><span class="tile-subtitle">Subtitle</span></div><div class="tile-bottom-half flex-column chart-tile"><div class="valueWrapper"><span class="tile-main-value text-right ">Value</span><span class="tile-value-label text-right ">A label</span></div></div></div></div></div></div></div></div>';
-
-          const numNodes = addedItem.grid.engine.nodes.length - 1;
-          const newId = (numNodes * 100) + (numNodes * 10);
-
-          tilegrid.removeWidget(addedItem.el);
-          tilegrid.addWidget(newTile, {
-            id: newId,
-            h: addedItem.h,
-            w: addedItem.w,
-            x: addedItem.x,
-            y: addedItem.y,
-          });
-
-          tilegrid.compact();   
-          localStorage.setItem("tilegridlayout", JSON.stringify(cleanGridLayout(tilegrid.save(false))));       
-      });
-      
-      grid.on('change', function(event, items) {
-        console.log('change event');
-        console.log(event);
-        console.log(items);
-        // items.forEach(function(item) {
-
-        // });
-      });
-
-      grid.on('resizestart', function(event, el) {
-        console.log('resizeStart event');
-        console.log(event);
-        console.log(el);
-      });
-
+        
       grid.on('resizestop', function(event, el) {
-        console.log('resizeStop');
           grid.compact();
           const $gridStack = $('.tile-grid-stack');
           
@@ -2400,7 +2329,6 @@
       });
 
       grid.on('dragstop', function(event, el) {
-        console.log('dragstop');
           grid.compact();
           localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
         });
@@ -2416,7 +2344,6 @@
           grid.update(gridStackWidget, {
             h: gridHeight
           });
-          localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
           // gridStackWidget.height(height);
           // grid.compact();
         });
