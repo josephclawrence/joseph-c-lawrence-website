@@ -361,18 +361,17 @@
             <li class="nav-item sys-pd-l-10 application-sub-title fusion-main-page-buttons" style="">HOME MENU</li>
         </ul>
         <ul class="nav navbar-nav navbar-right sys-fg-primary">
-            <li class=" nav-item">
-                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle js-offcanvas-has-events" onclick="sysproInterop.bindAvantiNotifications($('#fusion-sidebar-wrapper2'));" style="" data-toggle="offcanvas" data-target="#offcanvas-avanti-notifications">
-                    <i class="material-icons">notifications</i>
-                    <span class="badge sys-bg-danger avanti-notifications-count" style="display: none;"></span>
-                </a>
+
+
+            <li class=" nav-item ">
+              <a href="#" class="text-primary nav-link add-to-grid">Click to add</a>
             </li>
 
-            <li class=" nav-item newWidget grid-stack-item grid-stack-drag-handle">
+            <li class=" nav-item newWidget grid-stack-item grid-stack-drag-handle" style="top: 0px; right: 0px; padding: 5px;">
               Here is something
             </li>
 
-            <li class=" nav-item newWidget grid-stack-item grid-stack-drag-handle">
+            <li class=" nav-item newWidget grid-stack-item grid-stack-drag-handle" style="top: 0px; right: 0px; padding: 5px;">
               Drag me
             </li>
 
@@ -2159,98 +2158,107 @@
           // 		// $(this).closest(".tile-inner").removeClass("inner-shadow");
           // 	}
           // )
-          $(".small-tile .tile-title").each(function() {
-            var that = this;
-            if ( $(that).get(0).scrollHeight > 33 && $(that).siblings(".tile-subtitle").text().length > 0 ) {
-              $(that).css("height", "32px");
-              $(that).addClass("show-more-icon");
-              $(that).hover(
-                function() {
-                  // $(this).css({"height": "auto"});
-                  //$(this).animate({height:'auto'},200);
-                  $(that).removeClass("show-more-icon");
-                  $(that).animate({height: $(that).get(0).scrollHeight}, 120 );
-                  // $(this).closest(".tile-inner").addClass("inner-shadow");
-                },
-                function() {
-                  // $(this).css({"height": "30px"});
-                  $(that).animate({height:32},60);
-                  $(that).addClass("show-more-icon");
-                  // $(this).closest(".tile-inner").removeClass("inner-shadow");
-                }
-              );
-            }
-          });
-        }
-    
-
-          const colHeight = 142;
-          const colMargin = 4;
-
-          function gridStackWidth($element, colWidth, margin) {
-            console.log('gridstackwidth');
-            const width = $element.width();
-            const grossColWidth = colWidth + (margin * 2);
-            const columns = Math.floor(width / grossColWidth);
-            return [
-              columns,
-              columns * grossColWidth,
-            ];
-          } 
-
-          function initGridStack() {
-            console.log('initgridstack');
-            $('.full-grid-stack > .grid-stack-item').each(function(idx, elem) {
-              $(elem).attr('gs-id', $(elem).find('.layout-widget').attr('data-guid'));
-            });
-            return GridStack.init({
-                column: 6,
-                cellHeight: 15,
-                class: 'full-grid-stack',
-                handle: '.grid-stack-drag-handle',
-            }, document.querySelector('.full-grid-stack'));
+    $(".small-tile .tile-title").each(function() {
+      var that = this;
+      if ( $(that).get(0).scrollHeight > 33 && $(that).siblings(".tile-subtitle").text().length > 0 ) {
+        $(that).css("height", "32px");
+        $(that).addClass("show-more-icon");
+        $(that).hover(
+          function() {
+            // $(this).css({"height": "auto"});
+            //$(this).animate({height:'auto'},200);
+            $(that).removeClass("show-more-icon");
+            $(that).animate({height: $(that).get(0).scrollHeight}, 120 );
+            // $(this).closest(".tile-inner").addClass("inner-shadow");
+          },
+          function() {
+            // $(this).css({"height": "30px"});
+            $(that).animate({height:32},60);
+            $(that).addClass("show-more-icon");
+            // $(this).closest(".tile-inner").removeClass("inner-shadow");
           }
+        );
+      }
+    });
+  }
 
-          function initTilesGridStack() {
-            console.log('inittilesgridstack');
-              const $gridStack = $('.tile-grid-stack');
-              // TODO: Need to always check for width of .grid-stack and then divide by 142, fix width and fix number of columns.
-              const [columns, fullWidth] = gridStackWidth($gridStack, colHeight, colMargin);
 
-              $gridStack.addClass(`grid-stack-${columns}`);
+    const colHeight = 142;
+    const colMargin = 4;
 
-              $gridStack.width(fullWidth);
+    function gridStackWidth($element, colWidth, margin) {
+      console.log('gridstackwidth');
+      const width = $element.width();
+      const grossColWidth = colWidth + (margin * 2);
+      const columns = Math.floor(width / grossColWidth);
+      return [
+        columns,
+        columns * grossColWidth,
+      ];
+    } 
 
-              // TODO: Then on resize also need to  recalculate all that (keep in its own function.)
+    function initGridStack() {
+      console.log('initgridstack');
+      const grid = GridStack.init({
+          column: 6,
+          cellHeight: 15,
+          class: 'full-grid-stack',
+          handle: '.grid-stack-drag-handle',
+      }, document.querySelector('.full-grid-stack'));
 
-              $gridStack.find('.tile').each(function(idx, tile) {
-                const $tile = $(tile);
-                $tile.addClass('grid-stack-item').attr('gs-max-h', 2).attr('gs-max-w', 2).attr('gs-id', idx * 100 + idx * 10);
-                $tile.find('> div').addClass('grid-stack-item-content');
-                if ( $tile.hasClass('col-sm-4') ) {
-                  $tile.attr('gs-w', 1).attr('gs-h', 1).removeClass('col-sm-4 col-xs-12 col-xs-6');
-                } else if ( $tile.hasClass('col-sm-8') && $tile.hasClass('big-square-tile') ) {
-                  $tile.attr('gs-w', 2).attr('gs-h', 2).removeClass('col-sm-8 col-xs-12 col-xs-6');
-                }  else if ( $tile.hasClass('col-sm-8') ) {
-                  $tile.attr('gs-w', 2).attr('gs-h', 1).removeClass('col-sm-8 col-xs-12 col-xs-6');
-                }
-              });
+      $('.full-grid-stack > .grid-stack-item').each(function(idx, elem) {
+        $(elem).attr('gs-id', $(elem).find('.layout-widget').attr('data-guid'));
+        grid.update(elem, {
+          id: $(elem).attr('gs-id'),
+          h: parseInt($(elem).attr('gs-h')),
+          w: parseInt($(elem).attr('gs-w')),
+          x: parseInt($(elem).attr('gs-x')),
+          y: parseInt($(elem).attr('gs-y')),
+        });
+      });
+      
+      console.log('grid', grid);
+      return grid;
+    }
 
-              return GridStack.init({
-                  acceptWidgets: true,
-                  column: columns,
-                  cellHeight: colHeight + (colMargin * 2),
-                  margin: colMargin,
-                  class: 'tile-grid-stack',
-                  handle: '.grid-stack-drag-handle',
-                  disableOneColumnMode: true,
-                  dragIn: '.newWidget',
-                  dragInOptions: { revert: 'invalid', scroll: false, appendTo: 'body', helper: 'clone' },
-              }, document.querySelector('.tile-grid-stack'));
+    function initTilesGridStack() {
+      console.log('inittilesgridstack');
+        const $gridStack = $('.tile-grid-stack');
+        // TODO: Need to always check for width of .grid-stack and then divide by 142, fix width and fix number of columns.
+        const [columns, fullWidth] = gridStackWidth($gridStack, colHeight, colMargin);
 
-              
+        $gridStack.addClass(`grid-stack-${columns}`);
+
+        $gridStack.width(fullWidth);
+
+        // TODO: Then on resize also need to  recalculate all that (keep in its own function.)
+
+        $gridStack.find('.tile').each(function(idx, tile) {
+          const $tile = $(tile);
+          $tile.addClass('grid-stack-item').attr('gs-max-h', 2).attr('gs-max-w', 2).attr('gs-id', idx * 100 + idx * 10);
+          $tile.find('> div').addClass('grid-stack-item-content');
+          if ( $tile.hasClass('col-sm-4') ) {
+            $tile.attr('gs-w', 1).attr('gs-h', 1).removeClass('col-sm-4 col-xs-12 col-xs-6');
+          } else if ( $tile.hasClass('col-sm-8') && $tile.hasClass('big-square-tile') ) {
+            $tile.attr('gs-w', 2).attr('gs-h', 2).removeClass('col-sm-8 col-xs-12 col-xs-6');
+          }  else if ( $tile.hasClass('col-sm-8') ) {
+            $tile.attr('gs-w', 2).attr('gs-h', 1).removeClass('col-sm-8 col-xs-12 col-xs-6');
           }
+        });
 
+        return GridStack.init({
+            acceptWidgets: true,
+            column: columns,
+            cellHeight: colHeight + (colMargin * 2),
+            margin: colMargin,
+            class: 'tile-grid-stack',
+            handle: '.grid-stack-drag-handle',
+            disableOneColumnMode: true,
+            dragIn: '.newWidget',
+            dragInOptions: { revert: 'invalid', scroll: false, appendTo: 'body', helper: 'clone' },
+        }, document.querySelector('.tile-grid-stack'));
+        
+    }
 
 
     function createGauge() {
@@ -2264,12 +2272,13 @@
     
     function cleanGridLayout(gridlayout) {
       console.log('cleanGridLayout');
+      console.log(gridlayout);
       if (!gridlayout.length) return;
       
       for (let i = 0; i < gridlayout.length; i++) {
         if (gridlayout[i].subGrid) delete gridlayout[i].subGrid;
       };
-
+      console.log(gridlayout);
       return gridlayout;
     };
 
@@ -2281,17 +2290,33 @@
         console.log('clickpin');
         const isPinned = $(this).hasClass('pinned');
         const gridWidget = $(this).closest('.grid-stack-item')[0];
+        console.log(gridWidget);
         grid.update(gridWidget, {
           locked: !isPinned,
           noResize: !isPinned,
           noMove: !isPinned,
-          h: gridWidget.h,
-          w: gridWidget.w,
-          x: gridWidget.x,
-          y: gridWidget.y,
+          h: gridWidget.getAttribute('gs-h'),
+          w: gridWidget.getAttribute('gs-w'),
+          x: gridWidget.getAttribute('gs-x'),
+          y: gridWidget.getAttribute('gs-y'),
         });
         localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
         $(this).toggleClass('pinned', !isPinned);
+      });
+
+      $('.add-to-grid').off('click').on('click', function() {
+        console.log(grid);
+        grid.addWidget(
+          '<div class="grid-stack-item" ><span class="grid-stack-pin pull-left "> <i class="material-icons">lock</i> </span><span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i></span><div class="row widget layout-widget grid-stack-item-content" data-guid="96f10001-7101-49b3-9c77-2d0508c533db" data-subtype="Joined" data-border="None" data-displaystyle="EntryForm" data-collapsible="False"><div class="col-sm-12"><h4 class="sys-mg-off-t sys-mg-b-5">New widget</h4><div class="panel sys-widget sys-box-shadow-off"><div class="panel-body sys-pd-off"></div></div></div></div></div>', 
+          {
+            x: 0,
+            y: 0,
+            w: 3,
+            h: 10,
+            id: "4kf18ijd-bb0a-4a41-aea0-6e239af067eb",
+          }
+        );
+        localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
       });
 
       window.grid = initGridStack();
@@ -2299,41 +2324,7 @@
       window.tilegrid = initTilesGridStack();
 
       initCharts();
-      
-      const gridlayout = localStorage.getItem("gridlayout");
-
-      if (gridlayout) {
-        const jsgridlayout = JSON.parse(gridlayout);
-        for (let i = 0; i < jsgridlayout.length; i++) {
-          console.log(jsgridlayout[i].id);
-          const gridStackWidget = $(`[data-guid='${jsgridlayout[i].id}'`).closest('.grid-stack-item')[0];
-          grid.update(gridStackWidget, {
-            h: jsgridlayout[i].h,
-            w: jsgridlayout[i].w,
-            x: jsgridlayout[i].x,
-            y: jsgridlayout[i].y,
-          });
-
-        }        
-      }
-
-      const tilegridlayout = localStorage.getItem("tilegridlayout");
-
-      if (tilegridlayout) {
-        const jstilegridlayout = JSON.parse(tilegridlayout);
-        for (let i = 0; i < jstilegridlayout.length; i++) {
-          console.log(jstilegridlayout[i].id);
-
-          const gridStackWidget = $(`[gs-id='${jstilegridlayout[i].id}'`)[0];
-          tilegrid.update(gridStackWidget, {
-            h: jstilegridlayout[i].h,
-            w: jstilegridlayout[i].w,
-            x: jstilegridlayout[i].x,
-            y: jstilegridlayout[i].y,
-          });
-        }        
-      }
-
+            
       tilegrid.on('resizestop', function(event, el) {
         console.log('tile resizestop');
         initCharts(); 
@@ -2380,6 +2371,12 @@
         // });
       });
 
+      grid.on('added', function(event, items) {
+        console.log('grid added');
+        // console.log(JSON.stringify(items));
+        console.log(items);
+      });
+
       grid.on('resizestart', function(event, el) {
         console.log('resizeStart event');
         console.log(event);
@@ -2405,22 +2402,81 @@
           localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
         });
         
-        $('.collapse').on('shown.bs.collapse hidden.bs.collapse', function () {
-          // do something…
-          console.log('ping');
-          const height = $(this).closest('.panel').outerHeight() + 36;
-          console.log(height);
-          const gridHeight = Math.ceil(height / 15);
-          console.log(gridHeight);
-          const gridStackWidget = $(this).closest('.grid-stack-item')[0];
-          grid.update(gridStackWidget, {
-            h: gridHeight
-          });
-          localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
-          // gridStackWidget.height(height);
-          // grid.compact();
+      $('.collapse').on('shown.bs.collapse hidden.bs.collapse', function () {
+        // do something…
+        console.log('ping');
+        const height = $(this).closest('.panel').outerHeight() + 36;
+        console.log(height);
+        const gridHeight = Math.ceil(height / 15);
+        console.log(gridHeight);
+        const gridStackWidget = $(this).closest('.grid-stack-item')[0];
+        grid.update(gridStackWidget, {
+          h: gridHeight
         });
-      
+        localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
+        // gridStackWidget.height(height);
+        // grid.compact();
+      });
+    
+
+      const gridlayout = localStorage.getItem("gridlayout");
+
+      if (gridlayout) {
+        console.log('yep', gridlayout);
+        const jsgridlayout = JSON.parse(gridlayout);
+        for (let i = 0; i < jsgridlayout.length; i++) {
+          console.log(jsgridlayout[i].id);
+          const gridStackWidget = $(`[data-guid='${jsgridlayout[i].id}'`).closest('.grid-stack-item')[0];
+          console.log(gridStackWidget);
+          grid.update(gridStackWidget, {
+            h: jsgridlayout[i].h,
+            w: jsgridlayout[i].w,
+            x: jsgridlayout[i].x,
+            y: jsgridlayout[i].y,
+          });
+
+        }        
+      } 
+      // else {
+      //     console.log(grid);
+      //     $('.full-grid-stack > .grid-stack-item').each(function(idx, elem) {
+      //       console.log(elem);
+      //       console.log({
+      //         h: parseInt($(elem).attr('gs-h')),
+      //         w: parseInt($(elem).attr('gs-w')),
+      //         x: parseInt($(elem).attr('gs-x')),
+      //         y: parseInt($(elem).attr('gs-y')),
+      //       });
+      //       grid.update(elem, {
+      //         h: parseInt($(elem).attr('gs-h')),
+      //         w: parseInt($(elem).attr('gs-w')),
+      //         x: parseInt($(elem).attr('gs-x')),
+      //         y: parseInt($(elem).attr('gs-y')),
+      //       });
+      //     });
+      //     // console.log(grid.save());
+      //     localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
+
+        
+      // }
+
+      const tilegridlayout = localStorage.getItem("tilegridlayout");
+
+      if (tilegridlayout) {
+        const jstilegridlayout = JSON.parse(tilegridlayout);
+        for (let i = 0; i < jstilegridlayout.length; i++) {
+          // console.log(jstilegridlayout[i].id);
+
+          const gridStackWidget = $(`[gs-id='${jstilegridlayout[i].id}'`)[0];
+          tilegrid.update(gridStackWidget, {
+            h: jstilegridlayout[i].h,
+            w: jstilegridlayout[i].w,
+            x: jstilegridlayout[i].x,
+            y: jstilegridlayout[i].y,
+          });
+        }        
+      }
+
     });
     </script>
     

@@ -1772,8 +1772,34 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                                 </div>
                             #}#
                         </div>
-
-                        <div class="col-sm-4 text-right">
+                        <div class="col-sm-2">
+                            <span 
+                                class="pull-left"
+                                data-toggle="tooltip" 
+                                data-tooltip="tooltip" 
+                                data-container="body"
+                                data-placement="top" 
+                                title="Additional environments">
+                                <i class="material-icons sys-txt-sm">help</i>
+                            </span>
+                            <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check pull-left" style="width: auto !important">
+                                <div class="checkbox sys-mg-off">
+                                    <label class="sys-fg-primary">
+                                        Test
+                                        <input type="checkbox" id=""">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group checkbox-form-group sys-mg-off-b sys-mg-t-2 sys-pd-l-10 sys-pd-off-r package-selected-check pull-left" style="width: auto !important">
+                                <div class="checkbox sys-mg-off">
+                                    <label class="sys-fg-primary">
+                                        Dev
+                                        <input type="checkbox" id=""">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 text-right">
                             <span data-bind="visible: discount.hasDiscount">
                                 <small class="original-price sys-fg-danger" data-bind="text: totalNetCostWithCurrency"></small>
                             </span>                           
@@ -3866,6 +3892,7 @@ color:#fff;background-color:#428bca;border-color:#428bca;
                             $this.popover('hide');
                         });
                     });
+                    
                     const ps = new PerfectScrollbar('.quote-scrollable-pane');
                 },
                 renderPlusPackageSubItemsTemplate: function(data) {
