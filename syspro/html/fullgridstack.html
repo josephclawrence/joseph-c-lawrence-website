@@ -45,6 +45,44 @@
         <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
         <script src="js/kendo.all.min.js"></script>
         <style>
+
+          .widget-dock-wrapper {
+            position: absolute;
+            width: 300px;
+            right: -285px;
+            top: 0px;
+            background: transparent;
+            height: 100%;
+            z-index: 9;
+            transition: all 0.5s;
+            transition-delay: 0.15s;
+          }
+          .widget-dock-wrapper:hover {
+            right: -0px;
+            transition-delay: 0.75s;
+          }
+          .dock-indicator {
+            /* position: absolute; */
+            float: left;
+            width: 15px;
+            left: 0px;
+            top: 0px;
+            background: transparent;
+            height: 100%;
+            z-index: 9;
+            transition: all 0.2s;
+          }
+
+          .dock-indicator:hover {
+            background: red;
+          }
+          .widget-dock {
+            background: #ffffff;
+            float: left;
+            width: 285px;
+            height: 100%;
+          }
+
           .tile-grid-stack {
             width: 100% !important;
           }
@@ -471,8 +509,11 @@
             <div id="harness-container">
               <div id="wrapper" class="toggled">
 
-
-    
+                <div class="widget-dock-wrapper">
+                  <div class="dock-indicator"></div>
+                  <div class="widget-dock grid-stack grid-stack-1"></div>
+                </div>
+                
 
     <nav nav="" id="navbar-toolbar" class="navbar navbar-default navbar-static-top navbar-controlbar sys-mg-off-b syspro-toolbar ">
         <div class="container-fluid">
