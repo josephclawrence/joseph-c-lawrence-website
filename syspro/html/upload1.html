@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+				<link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
+				<link rel="stylesheet" href="css/gridstack.min.css">
+				<link rel="stylesheet" href="css/gridstack-extra.css">
+        <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
+        <script src="js/kendo.all.min.js"></script>
+        <style>
+            .dropZoneElement {
+                position: relative;
+                display: inline-block;
+                background-color: #f8f8f8;
+                border: 1px solid #c7c7c7;
+                width: 230px;
+                height: 110px;
+                text-align: center;
+            }
+    
+            .textWrapper {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                font-size: 24px;
+                line-height: 1.2em;
+                font-family: Arial,Helvetica,sans-serif;
+                color: #000;
+            }
+    
+            .dropImageHereText {
+                color: #c7c7c7;
+                text-transform: uppercase;
+                font-size: 12px;
+            }
+    
+            .product {
+                float: left;
+                position: relative;
+                margin: 0 10px 10px 0;
+                padding: 0;
+            }
+            .product img {
+                width: 110px;
+                height: 110px;
+            }
+    
+            .wrapper:after {
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+        </style>
+    </head>
+
+<body data-theme="syspro-light" data-column-layout="2colequal" class="light-gradient-background body-view-mode avanti-mode">
+  <nav id="fusion-toolbar" class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar toolbar-loaded">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="nav-item">
+                <a href="#" class="text-primary offcanvas-toggle fusion-main-page-buttons fusion-maininstance-buttons nav-link js-offcanvas-has-events" data-toggle="offcanvas" data-target="#fusion-sidebar-wrapper2" onclick="sysproInterop.bindProgramList($('#fusion-sidebar-wrapper2'));" style=""><i class="material-icons">menu</i></a>
+            </li>
+            <li>
+                <a class="navbar-brand" href="#" onclick="sysproInterop.backToMenu();">
+                    <img alt="Brand" src="img/UX_IMG_SYSPROLogo.png" style="height: 35px">
+                </a>
+            </li>
+            <li class="nav-item back-to-menu">
+                <a href="#" onclick="sysproInterop.backToMenu();" class="text-primary fusion-main-page-buttons fusion-maininstance-buttons nav-link" style=""><span class="hidden-xs">Home</span><i class="material-icons visible-xs">home</i></a>
+            </li>
+            <li class="nav-item breadcrumb-separator fusion-main-page-buttons" style="">
+                <i class="material-icons">chevron_right</i>
+            </li>
+            <li class="nav-item sys-pd-l-10 application-sub-title fusion-main-page-buttons" style="">HOME MENU</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right sys-fg-primary">
+            <li class=" nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle js-offcanvas-has-events" onclick="sysproInterop.bindAvantiNotifications($('#fusion-sidebar-wrapper2'));" style="" data-toggle="offcanvas" data-target="#offcanvas-avanti-notifications">
+                    <i class="material-icons">notifications</i>
+                    <span class="badge sys-bg-danger avanti-notifications-count" style="display: none;"></span>
+                </a>
+            </li>
+
+            <li class="dropdown nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account" data-toggle="dropdown" style=""><i class="material-icons">account_circle</i>
+                    <span class="hidden-xs fusion-current-account-name">SYSPRO Administrator</span></a>
+                <ul class="dropdown-menu multi-level nav sys-pd-t-5" role="menu">
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.callPlugin('SRSMain', 'SRSQUE');"><i class="material-icons">list</i>Report Queue</a>
+                    </li>
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.showHelp();"><i class="material-icons">help</i>Help</a>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Themes</a>
+                        <ul class="dropdown-menu sys-pd-t-5">
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Light</a>
+                            </li>
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="dark" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Dark</a>
+                            </li>
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="syspro-light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>Pastel</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.closeSYSPROFusion(true);"><i class="material-icons">power_settings_new</i> Sign out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+
+  <span id="errorNotification" style="display:none;"></span>
+  <span id="taskdialognotification" style="display:none;"></span>
+  <span id="aiSuggestionNotification" style="display:none;"></span>
+  <div id="dialog"></div>
+  <div id="invisibleNodes"></div>
+
+  <div id="fusion-wrapper">
+    <div id="harness-container">
+      <div id="wrapper" class="toggled">
+        <nav nav="" id="navbar-toolbar" class="navbar navbar-default navbar-static-top navbar-controlbar sys-mg-off-b syspro-toolbar ">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav " data-column="0">
+              <li data-guid="089924f1-ce90-4fad-856b-738e19f754bf" class="navbar-form form-inline" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="" data-container="body">
+                  
+
+
+                          <div class="form-group is-empty">
+                              <span class="spinner"></span>
+                              <label class="control-label" data-bind="htmltext:  Toolbar.IMPMENTB29001.Caption">ENTER PROGRAM</label>
+                              <input id="Toolbar.IMPMENTB29001" type="text" tabindex="-1" class="form-control syspro-toolbar-widget syspro-toolbar-widget-change syspro-toolbar-widget-editfield syspro-trackfield-keydown" data-fieldname="Toolbar.IMPMENTB29001" data-bind="entryvalue: Toolbar.IMPMENTB29001.Value, predictivesearch: Toolbar.IMPMENTB29001.PredictiveSearch, entryfieldevents: Toolbar.IMPMENTB29001.EntryFieldEvents" data-entryfieldevents="Tab,Focus">
+                              <span class="syspro-browse-button-container">
+                                  <a class="syspro-browse-button" data-fieldname="Toolbar.IMPMENTB29001" data-bind="attr: { data-fieldvalue: Toolbar.IMPMENTB29001.Value, data-predictivesearchfield: Toolbar.IMPMENTB29001.PredictiveSearch  }" data-fieldvalue="" data-predictivesearchfield="undefined">
+                                      <i class="material-icons">search</i>
+                                  </a>
+                              </span>
+                          </div>
+              </li>
+
+              <li data-guid="94de2e6c-da7f-4ed2-8702-098f65b9b594" data-tooltip="tooltip" data-placement="bottom" data-original-title="a tooltip">
+                  
+
+
+                  <a class="btn btn-default navbar-btn internal-offcanvas-toggle in-modal-window" data-toggle="offcanvas" data-target="#offcanvas-e6cd80f0-6685-45c0-d2fd-903e90c2912a" data-fieldname="">
+                          <i class="material-icons sys-fg-primary">adb</i>
+                      
+                  </a>
+
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" data-column="1">
+                
+
+
+
+
+
+    <li data-guid="34e479c1-d81a-4b4d-e1f3-5f6d79dcebdb" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="" data-container="body">
+        
+
+
+                <a id="Toolbar.IMPMENT200008" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.IMPMENT200008">
+                        <i class="material-icons sys-fg-primary">refresh</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.IMPMENT200008.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+
+
+
+
+
+
+    <li data-guid="4190b40e-10e3-461b-b30c-2445b9000054" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Show Favorites" data-container="body">
+        
+
+
+                <a id="Toolbar.IMPMENTB01236" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.IMPMENTB01236">
+                        <i class="material-icons sys-fg-primary">star</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.IMPMENTB01236.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+
+
+
+
+
+
+    <li data-guid="60a7de29-80ff-491d-af18-fe01266610eb" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Customize" data-container="body">
+        
+
+
+                <a id="Toolbar.xxxxxxxx11002" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.xxxxxxxx11002">
+                        <i class="material-icons sys-fg-primary">settings</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.xxxxxxxx11002.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+
+
+
+
+
+
+    <li data-guid="daccbcd1-aaf5-4520-b75a-bedf1030290c" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Customize" data-container="body">
+        
+
+
+                <a id="Toolbar.xxxxxxxx11002" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.xxxxxxxx11002">
+                        <i class="material-icons sys-fg-primary">settings</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.xxxxxxxx11002.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
+           
+          <!-- Error Notification empty element -->
+          <span id="errorNotification" style="display:none;"></span>
+          <div class="row sys-mg-t-15">            
+            <div id="example" class="k-content">
+              <div class="demo-section k-content wide">
+                <div class="wrapper">
+                    <div id="products"></div>
+                    <div class="dropZoneElement">
+                        <div class="textWrapper">
+                        <p><span>+</span>Add Image</p>
+                        <p class="dropImageHereText">Drop image here to upload</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+          
+              <input name="files" id="files" type="file" />
+          
+              <script type="text/x-kendo-template" id="template">
+                  <div class="product">
+                      <img src="../content/web/foods/#= name #" alt="#: name # image" />
+                  </div>       
+              </script>
+          
+              <script>
+                  $(function () {
+                      // var template = kendo.template($("#template").html());
+                      // var initialFiles = [{ name: "1.jpg" }, { name: "2.jpg" }, { name: "3.jpg" }, { name: "4.jpg" }, { name: "5.jpg" }, { name: "6.jpg" }];
+          
+                      // $("#products").html(kendo.render(template, initialFiles));
+          
+                      $("#files").kendoUpload({
+                          async: {
+                              saveUrl: "save",
+                              removeUrl: "remove",
+                              autoUpload: true
+                          },
+                          validation: {
+                              allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif"]
+                          },
+                          upload: onUpload,
+                          success: onSuccess,
+                          showFileList: false,
+                          dropZone: ".dropZoneElement"
+                      });
+                      
+                      function onUpload(e) {
+
+                      }
+                      
+                      function onSuccess(e) {
+                          if (e.operation == "upload") {
+                              for (var i = 0; i < e.files.length; i++) {
+                                  var file = e.files[i].rawFile;
+          
+                                  if (file) {
+                                      var reader = new FileReader();
+          
+                                      reader.onloadend = function () {
+                                          $("<div class='product'><img src=" + this.result + " /></div>").appendTo($("#products"));
+                                      };
+          
+                                      reader.readAsDataURL(file);
+                                  }
+                              }
+                          }
+                      }
+                  });
+              </script>  
+          </div>
+        </div>
+      </div>
+      <div class="statusBar sys-bg-inverse" style="display: block;">
+        <span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)  Your license expires February 1st           TUESDAY 8   JANUARY 2019</span>
+      </div>
+    </div>
+    <footer id="thefooter" style="background-image: url('../../Samples/UX_IMG_cloud_erp_light_footer.png');">
+      <span id="copyrightfooter">© SYSPRO All Rights Reserved. All trademarks are recognized.</span><span id="sysprofooter">Powered by SYSPRO ERP</span>
+    </footer>
+
+  </div>
+
+  <script src="js/UX_JS_bootstrap.js"></script>
+  <script src="js/UX_JS_forms.js"></script>
+  <!-- <script src="js/UX_JS_packery.min.js"></script> -->
+  <script src="js/fitty.min.js"></script>
+  <script src="js/jQuery.hoverForMore.js"></script>
+      
+      
+  <script type="text/javascript">
+    $.material.init();
+
+    $(document).ready(function() {
+
+    });
+  </script>
+  
+  </body>
+</html>
