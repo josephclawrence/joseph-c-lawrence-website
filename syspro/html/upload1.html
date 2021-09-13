@@ -301,6 +301,7 @@
           
                       $("#files").kendoUpload({
                           async: {
+                              withCredentials: false,
                               saveUrl: "https://duffssuitcase.com/upload.php",
                               removeUrl: "https://duffssuitcase.com/remove.php",
                               autoUpload: true
