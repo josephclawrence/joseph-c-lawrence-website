@@ -284,7 +284,7 @@
                 </div>
               </div>
           
-              <input name="files" id="files" type="file" />
+              <!-- <input name="files" id="files" type="file" /> -->
           
               <script type="text/x-kendo-template" id="template">
                   <div class="product">
@@ -301,7 +301,7 @@
           
                       $("#files").kendoUpload({
                           async: {
-                              saveUrl: "save",
+                              saveUrl: "http://rootandstemhealth.com/index.php",
                               removeUrl: "remove",
                               autoUpload: true
                           },
@@ -317,7 +317,7 @@
                       function onUpload(e) {
 
                       }
-                      
+
                       function onSuccess(e) {
                           if (e.operation == "upload") {
                               for (var i = 0; i < e.files.length; i++) {
