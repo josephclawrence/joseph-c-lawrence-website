@@ -2131,22 +2131,22 @@ p {
     color: var(--white);
 }
 .text-muted {
-    color: var(--color_oslo_gray_approx) !important;
+    color: var(--color_oslo_gray_approx);
 }
 .text-primary {
     color: var(--color_lochmara_approx) !important;
 }
 .text-success {
-    color: var(--color_chateau_green_approx) !important;
+    color: var(--color_chateau_green_approx);
 }
 .text-info {
-    color: var(--color_calypso_approx) !important;
+    color: var(--color_calypso_approx);
 }
 .text-warning {
-    color: var(--color_christine_approx) !important;
+    color: var(--color_christine_approx);
 }
 .text-danger {
-    color: var(--color_cinnabar_approx) !important;
+    color: var(--color_cinnabar_approx);
 }
 b {
     font-weight: bold;
@@ -9285,8 +9285,6 @@ td .btn.btn-delete {
 }
 .k-dropzone {
     border-radius: 0;
-    color: var(--color_pickled_bluewood_approx);
-    background-color: var(--color_default_hover);
 }
 .k-textbox {
     border-radius: var(--base-border-radius);
@@ -9703,10 +9701,6 @@ td .btn.btn-delete {
 .k-filter-row > th:last-child {
     border-right-width: 1px;
 }
-.k-file {
-    background-color: var(--color_athens_gray_approx);
-    color: var(--color_pickled_bluewood_approx);
-}
 .k-filebrowser-dropzone {
     color: var(--color_pickled_bluewood_approx);
     background-color: var(--color_athens_gray_approx);
@@ -9823,21 +9817,14 @@ td .btn.btn-delete {
     color: var(--color_pickled_bluewood_approx);
     background-color: var(--color_athens_gray_approx);
 }
-.k-splitbar-horizontal, .k-splitbar-vertical {
-    color: var(--color_pickled_bluewood_approx);
-    background-color: var(--color_athens_gray_approx)
-}
-.k-splitbar-horizontal.k-splitbar-horizontal:hover, .k-splitbar-horizontal.k-splitbar-vertical-hover:hover, .k-splitbar-vertical.k-splitbar-horizontal:hover, .k-splitbar-vertical.k-splitbar-vertical-hover:hover {
-    background-color: var(--color_default_hover);
-}
-/* .k-splitbar-horizontal-hover:hover {
+.k-splitbar-horizontal-hover:hover {
     color: var(--color_pickled_bluewood_approx);
     background-color: var(--color_athens_gray_approx);
 }
 .k-splitbar-vertical-hover:hover {
     color: var(--color_pickled_bluewood_approx);
     background-color: var(--color_athens_gray_approx);
-} */
+}
 .k-panel > .k-state-selected {
     border-color: var(--color_curious_blue_approx);
     color: var(--white);
@@ -12906,11 +12893,10 @@ body {
     transition: transform 0.2s;
     transition: transform 0.2s, -webkit-transform 0.2s;
 }
-.k-treeview span.k-in {
-    cursor: pointer;
+.k-treeview .k-in {
     margin: 1px 0 1px -4px;
 }
-.k-treeview span.k-in .material-icons {
+.k-treeview .k-in .material-icons {
     font-size: 18px;
     margin-right: 0px;
     vertical-align: top;
@@ -12924,21 +12910,16 @@ body {
 .k-treeview .k-item > div > span:only-child {
     margin-left: 7px;
 }
-.k-filemanager {
-  border-color: var(--color_athens_gray_approx);
-  background: var(--color_alabaster_approx)
-}
-.k-filemanager .k-filemanager-listview .k-listview-item {
+.k-filemanager-listview .k-listview-item {
     padding: 10px 10px;
     width: 90px;
     height: 90px;
-    cursor: pointer;
 }
-.k-filemanager .k-filemanager-listview .k-listview-item .k-file-icon {
+.k-filemanager-listview .k-listview-item .k-file-icon {
     font-size: 36px;
 }
-.k-filemanager .k-filemanager-listview .k-listview-item .k-file-name {
-    margin-top: 0px;
+.k-filemanager-listview .k-listview-item .k-file-name {
+    margin-top: 3px;
     display: block;
     font-size: 13px;
     text-align: center;
@@ -12948,25 +12929,14 @@ body {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    height: 30px;
-    word-break: break-word;
 }
-.k-filemanager .k-filemanager-listview .k-listview-item .k-file-preview {
-    height: 42px;
-}
-.k-filemanager .k-filemanager-view-grid .file-group-icon {
+.k-filemanager-view-grid .file-group-icon {
     float: left;
     margin-right: 3px;
 }
-.k-filemanager .k-filemanager-toolbar.k-toolbar {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-.k-filemanager .k-breadcrumb .k-breadcrumb-icon-link {
-    padding: 6px 6px;
-}
-.k-filemanager .k-breadcrumb .k-breadcrumb-link, .k-filemanager .k-breadcrumb .k-breadcrumb-root-link {
-    padding: 3px 6px;
+.k-filemanager-toolbar.k-toolbar {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 /* Forms */
 .cs-select {
