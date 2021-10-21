@@ -557,14 +557,14 @@ margin-left:7px;
                     <div class="col-12">
                       <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs sys-fg-primary" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#recordfiles">Files</a>
+                            <a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="#recordfiles">Files</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="#voicenotes">Voice notes </a>
+                            <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#voicenotes">Voice notes </a>
                         </li>
                       </ul>
                       <div class="tab-content">
-                        <div id="recordfiles" class="tab-pane fade sys-pd-t-5" role="tabpanel">
+                        <div id="recordfiles" class="tab-pane fade active show sys-pd-t-5" role="tabpanel">
                           <div class="list-group voicenoteslist">
                             <div class="list-group-item">
                               <div class="d-flex align-items-center">
@@ -618,14 +618,14 @@ margin-left:7px;
                                     <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
                                     <small class="sys-mg-r-10">12 Feb 2020</small>
                                   </div>
-                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="Interopception.pptx"  data-extension="pptx">Interopception.pptx</a>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="Interoception.pptx"  data-extension="pptx">Interoception.pptx</a>
                                 </div>
                               </div>
                             </div>
                           </div>
                           
                         </div>
-                        <div id="voicenotes" class="tab-pane fade active show sys-pd-t-5" role="tabpanel">
+                        <div id="voicenotes" class="tab-pane fade sys-pd-t-5" role="tabpanel">
                           <div class="list-group voicenoteslist">
                             <div class="list-group-item">
                               <div class="d-flex align-items-center">
@@ -859,6 +859,7 @@ margin-left:7px;
         var fileWindow = $("#fileWindow");
         
         $(document).on("click", ".fileviewerlink", function(e) {
+          e.preventDefault();
             const fileName = $(this).data("filename");
             const fileExtension = $(this).data("extension");;
             // fileWindow.data("kendoWindow").setOptions({
@@ -897,6 +898,12 @@ margin-left:7px;
                     "Maximize",
                     "Close"
                 ],
+                close: function() {
+                  fileWindow.data("kendoWindow").refresh({
+                    url: '',
+                    iframe: true,
+                  });
+                }
                 // close: onClose
             });
 
