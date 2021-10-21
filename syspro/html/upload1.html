@@ -569,34 +569,6 @@ margin-left:7px;
                             <div class="list-group-item">
                               <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0">
-                                  <span class="k-file-icon k-icon k-i-file-pdf"></span>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                  <div class="d-flex w-100 justify-content-between">                                  
-                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
-                                    <small class="sys-mg-r-10">12 Feb 2020</small>
-                                  </div>
-                                  <a href="" class="sys-txt-lg">Name_of_the_file.pdf</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="list-group-item">
-                              <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                  <span class="k-file-icon k-icon k-i-file-pdf"></span>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                  <div class="d-flex w-100 justify-content-between">                                  
-                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
-                                    <small class="sys-mg-r-10">12 Feb 2020</small>
-                                  </div>
-                                  <a href="" class="sys-txt-lg">Name_of_the_file.pdf</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="list-group-item">
-                              <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
                                   <span class="k-file-icon k-icon k-i-file-doc"></span>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
@@ -604,7 +576,21 @@ margin-left:7px;
                                     <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
                                     <small class="sys-mg-r-10">12 Feb 2020</small>
                                   </div>
-                                  <a href="" class="sys-txt-lg">Name_of_the_file.doc</a>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="doc.docx"  data-extension="docx">doc.docx</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <span class="k-file-icon k-icon k-i-file-pdf"></span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">                                  
+                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
+                                    <small class="sys-mg-r-10">12 Feb 2020</small>
+                                  </div>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="invoice.pdf"  data-extension="pdf">invoice.pdf</a>
                                 </div>
                               </div>
                             </div>
@@ -618,7 +604,21 @@ margin-left:7px;
                                     <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
                                     <small class="sys-mg-r-10">12 Feb 2020</small>
                                   </div>
-                                  <a href="" class="sys-txt-lg">Name_of_the_file.xls</a>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="testspread.xlsx"  data-extension="xlsx">testspread.xlsx</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <span class="k-file-icon k-icon k-i-file-ppt"></span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">                                  
+                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
+                                    <small class="sys-mg-r-10">12 Feb 2020</small>
+                                  </div>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="Interopception.pptx"  data-extension="pptx">Interopception.pptx</a>
                                 </div>
                               </div>
                             </div>
@@ -858,6 +858,31 @@ margin-left:7px;
     // File viewer window
         var fileWindow = $("#fileWindow");
         
+        $(document).on("click", ".fileviewerlink", function(e) {
+            const fileName = $(this).data("filename");
+            const fileExtension = $(this).data("extension");;
+            // fileWindow.data("kendoWindow").setOptions({
+            //   content: {
+            //     url: "https://duffssuitcase.com/upl/" + fileName},
+            //     iframe: true,
+            //   }
+            // );
+            let url;
+            if (["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "svg"].includes(fileExtension)) {
+              url = "https://duffssuitcase.com/upl/" + fileName;
+            } else if (["doc", "docx", "xls", "xlsx", "ppt", "pptx"].includes(fileExtension)) {
+              url = "https://view.officeapps.live.com/op/embed.aspx?src=https://duffssuitcase.com/upl/" + fileName;
+            } else if (fileExtension === "pdf") {
+              url = "https://docs.google.com/viewer?embedded=true&url=https://duffssuitcase.com/upl/" + fileName +  "&chrome=true";
+            } else {
+              url = "https://duffssuitcase.com/upl/" + fileName;
+            }
+            fileWindow.data("kendoWindow").refresh({
+              url: url,
+              iframe: true,
+            });
+            fileWindow.data("kendoWindow").maximize().open();
+          });
         
         fileWindow.kendoWindow({
                 width: "900px",
