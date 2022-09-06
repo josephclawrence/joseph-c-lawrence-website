@@ -1,0 +1,104 @@
+<style>
+.popover {
+pointer-events: none;
+}
+.k-flatcolorpicker .k-slider-horizontal .k-slider-track {
+box-shadow: none;
+border-width: 0;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle {
+margin-top: 0px;
+border: 9px solid #fff;
+width: 10px;
+height: 10px;
+}
+.k-flatcolorpicker .k-hue-slider .k-draghandle:focus, .k-flatcolorpicker .k-hue-slider .k-draghandle:hover {
+border-width: 10px;
+margin-top: -1px;
+}
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle,
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle:focus,
+.k-flatcolorpicker .k-hsv-rectangle .k-draghandle:hover {
+cursor: pointer;
+position: absolute;
+z-index: 10;
+left: 50%;
+top: 50%;
+width: 14px;
+height: 14px;
+border: 1px solid #eee;
+margin-left: -7px;
+margin-top: -7px;
+border-radius: 9px;
+/* -webkit-box-shadow: 0 1px 2px #444; */
+box-shadow: none;
+/* background: 0 0; */
+background-color: transparent !important;
+}
+
+.k-slider-horizontal .k-slider-track {
+top: 50%;
+left: 0;
+height: 10px;
+border-radius: 5px;
+}
+.k-colorpicker .k-selected-color {
+width: 2em;
+height: 2em;
+}
+.k-picker-wrap .k-select {
+line-height: 2em;
+}
+.k-colorpicker .k-picker-wrap {
+line-height: 2em;
+}
+.form-group + .popover, .form-group .control-label + .popover {
+width: 100%;
+max-width: 100%;
+margin-top: 15px;
+margin-bottom: 15px;
+}
+.form-group-section {
+background: #fbfbfb;
+border-radius: 4px;
+padding: 2px 12px;
+margin-bottom: 10px;
+}
+.collapse-icon {
+transition: all linear 0.2s;
+vertical-align: middle !important;
+}
+.collapsed .collapse-icon {
+transform: rotate(-90deg);
+
+}
+.k-chart-crosshair-tooltip, .k-chart-shared-tooltip, .k-widget.k-tooltip {
+border-color: #95a5a6;
+background-color: #ecf0f1;
+color: #2c3e50;
+}
+.k-callout-s {
+border-top-color: #ecf0f1;
+}
+</style>
+
+<div class="form-horizontal">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group is-empty">                    
+        <label for="  Order date" class="col-md-5 control-label sys-mg-t-5 sys-pd-t-5">
+            <span>Colour</span>
+        </label>
+        <div class="col-md-7 syspro-entry-content">
+            <input                 
+                data-role="colorpicker" 
+                data-value="#ccc000"
+                data-preview="false" />              
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  kendo.bind($("body"));
+</script>

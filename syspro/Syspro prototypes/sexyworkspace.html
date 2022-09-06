@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>SYSPRO Product Visual Builder</title>
+      <!-- Bootstrap -->
+      <link href="css/UX_CSS_bootstrap.css" rel="stylesheet" />
+      <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+      <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+      <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+      <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/gridstack.min.css">
+      <link rel="stylesheet" href="css/gridstack-extra.css">
+      <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+      <script>
+         window.MSPointerEvent = null;
+         window.PointerEvent = null;
+      </script>
+      <script type="text/javascript">
+         WebFontConfig = {
+             google: {
+                 families: [
+                     "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                 ],
+             },
+         };
+         (function() {
+             var wf = document.createElement("script");
+             wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+             wf.type = "text/javascript";
+             wf.async = "true";
+             var s = document.getElementsByTagName("script")[0];
+             s.parentNode.insertBefore(wf, s);
+         })();
+      </script>
+      <script src="js/UX_JS_jquery.min.js"></script>
+      <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
+      <script src="js/kendo.all.min.js"></script>
+      <style>
+         body {
+            background-image: none !important;
+            background: #f2f8fc;
+         }
+         .navbar-default {
+            background: #ffffff;
+            box-shadow: none !important;
+         }
+         #wrapper > #navbar-toolbar {
+            background: #007fa3;
+         }
+         .tile-grid-stack {
+         width: 100% !important;
+         }
+         .grid-stack-drag-handle {
+         z-index: 999999999;
+         position: absolute;
+         right: 15px;
+         top: 15px;
+         }
+         .full-grid-stack > .grid-stack-item > .grid-stack-item-content {
+         background: white;
+         border-radius: 4px;
+         padding-top: 7.5px;
+         padding-bottom: 7.5px;
+         /* box-shadow: 0px 0px 15px 5px rgb(0, 0, 0, 0.05); */
+         }
+         span.text-left.tile-title.show-more-icon:after {
+         content: 'more_horiz';
+         font-family: 'Material Icons';
+         position: absolute;
+         bottom: 3px;
+         right: -2px;
+         color: #ffffff;
+         background: rgba(0,0,0,0.35);
+         font-size: 18px;
+         display: inline-block;
+         width: 1.05em;
+         height: 0.45em;
+         line-height: 0.5;
+         text-transform: none;
+         letter-spacing: normal;
+         word-wrap: normal;
+         white-space: nowrap;
+         direction: ltr;
+         -webkit-font-smoothing: antialiased;
+         text-rendering: optimizeLegibility;
+         transition: all 0.15s;
+         }
+         .tile-title {
+         /* max-height: 30px; */
+         /* height: 32px; */
+         position: relative;
+         overflow: hidden;
+         line-height: 1.08em;
+         }
+         .tile-subtitle {
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         overflow: hidden;
+         margin-top: 2px;
+         }
+         .sys-bg-success {
+         background-color: #388E3C !important;
+         }
+         .sys-bg-warning {
+         background-color: #F57C00 !important;
+         }
+         .sys-bg-info {
+         background-color: #0097A7 !important;
+         }
+         .sys-bg-primary {
+         background-color: #303F9F !important;
+         }
+         .sys-bg-teal {
+         background-color: #00897B !important;
+         }
+         .sys-bg-magenta {
+         background-color: #C2185B !important;
+         }
+         .sys-bg-danger {
+         background-color: #D32F2F !important;
+         }
+         .sys-bg-gray {
+         background-color: #78909C !important;
+         }
+         /* .tile.col-sm-8.big-square-tile {
+         min-width: auto !important;
+         max-width: auto !important;
+         height: auto !important;
+         } */
+         .tile-inner {
+         padding: 9px;
+         }
+         .big-square-tile .tile-inner {
+         padding: 14px;
+         }
+         .big-square-tile .tile-bottom-half, .small-tile .tile-bottom-half, .tile-bottom-half.flex-column {
+         flex-direction: column;
+         align-items: flex-start;
+         justify-content: flex-end;
+         display: flex;
+         }
+         .big-square-tile .tile-main-value {
+         font-size: 46px;
+         }
+         /* .big-square-tile .metric-only .tile-main-value { */
+         .big-square-tile .tile-main-value {
+         font-size: 56px;
+         }
+         .big-square-tile .tile-value-label {
+         font-size: 15px;
+         }
+         .big-square-tile .valueWrapper .material-icons, .flex-column .valueWrapper .material-icons {
+         vertical-align: bottom;
+         }
+         .small-tile .chart-tile .material-icons {
+         font-size: 22px;
+         }
+         .big-square-tile .valueWrapper, .flex-column .valueWrapper {
+         /* flex-grow: 1;
+         padding-top: 3px; */
+         /* display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center; */
+         display: flex;
+         flex-direction: column;
+         }
+         .small-tile .valueWrapper, .small-tile .mainIconLabelWrapper {
+         width: 100%;
+         }
+         .small-tile .mainIconLabelWrapper {
+         display: flex;
+         flex-direction: row;
+         align-items: flex-end;
+         justify-content: space-between;
+         }
+         /* .big-square-tile .tile-main-value, .flex-column .tile-main-value {
+         width: auto;
+         } */
+         .big-square-tile .valueIconWrapper .tile-main-value, .flex-column .valueIconWrapper .tile-main-value {
+         /* max-width: 80%; */
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: normal !important;
+         /* max-height: 52px; */
+         }
+         .gauge {
+         width: 121px;
+         height: 52px;
+         bottom: -10px;
+         }
+         .big-square-tile .gauge {
+         width: 260px;
+         height: 130px;
+         }
+         .wide-tile > .col-xs-12, .big-tile > .col-xs-12 {
+         justify-content: space-between;
+         }
+         .tile-top-half {
+         flex-shrink: 1;
+         flex-grow: 0;
+         }
+         .tile-bottom-half {
+         flex-grow: 1;
+         align-items: flex-end;
+         }
+         .tile-sparkline {
+         height: 100%;
+         width: 100%;
+         display: flex;
+         align-items: flex-end;
+         }
+         .tile-sparkline:not(.line-sparkline):not(.bullet-sparkline) {
+         bottom: -11px;
+         }
+         .wide-tile .tile-icon, .big-tile .tile-icon {
+         font-size: 40px;
+         flex-shrink: 1;
+         }
+         .wide-tile .tile-sparkline, .big-tile .tile-sparkline {
+         flex-basis: 50%;
+         flex-grow: 2;
+         }
+         .wide-tile.chart-only .tile-sparkline, .big-tile.chart-only .tile-sparkline {
+         flex-basis: 100%;
+         }
+         .tile-icon {
+         margin-right: 5px;
+         }
+         .tile-value-label {
+         width: 100%;
+         /* float: none; */
+         padding-bottom: 1px;
+         padding-top: 0px;
+         font-size: 10.5px;
+         }
+         .tile-main-value {
+         display: inline-block;
+         width: auto;
+         max-width: 100%;
+         white-space: nowrap;
+         }
+         .sys-bg-danger i.sys-fg-danger {
+         color: #ffffff !important;
+         }
+         /* .metric-only .tile-value-label.pull-right { */
+         .tile-value-label.pull-right {
+         clear: both;
+         /* padding-top: 4px; */
+         }
+         .program-tile-icon-title .tile-title {
+         font-size: 22px;
+         font-weight: bold;
+         }
+         .ai-tile-icon-title {
+         display: flex;
+         }
+         .ai-tile-icon-title i {
+         padding-left: 3px;
+         }
+         i.material-icons.tile-icon.main-tile-icon {
+         font-size: 35px;
+         }
+         .big-square-tile i.material-icons.tile-icon.main-tile-icon {
+         font-size: 65px;
+         }
+         .tile-icon.main-tile-icon.align-flex-start {
+         align-self: flex-start;
+         }
+         .mainIconWrapper {
+         flex-grow: 1;
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: space-around;
+         }
+         .valueIconWrapper {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 100%;
+         /* overflow: hidden; */
+         }
+         .small-tile .tile-icon {
+         align-self: inherit;
+         }
+         /* .big-square-tile .valueWrapper.metric-only { */
+         .big-square-tile .valueWrapper {				
+         width: 100%;
+         }
+         .wide-tile .valueWrapper, .big-tile .valueWrapper {
+         overflow: hidden;
+         }
+         .wide-tile .tile-title, .big-tile .tile-title {
+         line-height: 1.15;
+         }
+         .flex-row {
+         flex-direction: row;
+         display: flex;
+         width: 100%;
+         align-items: center;
+         justify-content: space-between;
+         }
+         .wide-tile .tile-main-value, .big-tile .tile-main-value {
+         width: 100%;
+         }
+         .wide-tile .tile-value-label, .big-tile .tile-value-label {
+         font-size: 12px;
+         width: 100%;
+         }
+         .big-square-tile .tile-sparkline {
+         max-width: 260px;
+         max-height: 130px;
+         }
+         /* .tile.col-sm-4 {
+         min-width: auto !important;
+         max-width: auto !important;
+         height: auto !important;
+         }
+         .tile.col-sm-8 {
+         min-width: auto !important;
+         max-width: auto !important;
+         height: auto !important;
+         } */
+         .tile {
+         margin-bottom: 0px;
+         }
+         .tile > div {
+         height: auto;
+         }
+      </style>
+   </head>
+   <body data-theme="syspro-light" data-column-layout="2colequal" class="light-gradient-background body-view-mode avanti-mode">
+      <nav id="fusion-toolbar" class="navbar navbar-expand navbar-default navbar-light navbar-fixed-top fixed-top  navbar-controlbar sys-mg-b-5 fusion-top-toolbar">
+         <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left me-auto">
+               <li class="nav-item">
+                  <a href="#" class="text-primary offcanvas-toggle fusion-main-page-buttons fusion-maininstance-buttons nav-link js-offcanvas-has-events" data-bs-toggle="offcanvas" data-bs-target="#fusion-sidebar-wrapper2" onclick="sysproInterop.bindProgramList($('#fusion-sidebar-wrapper2'));" style=""><i class="material-icons">menu</i></a>
+               </li>
+               <li>
+                  <a class="navbar-brand" href="#" onclick="sysproInterop.backToMenu();">
+                  <img alt="Brand" src="img/UX_IMG_SYSPROLogo.png" style="height: 35px">
+                  </a>
+               </li>
+               <li class="nav-item back-to-menu">
+                  <a href="#" onclick="sysproInterop.backToMenu();" class="text-primary fusion-main-page-buttons fusion-maininstance-buttons nav-link" style=""><span class="hidden-xs">Home</span><i class="material-icons visible-xs">home</i></a>
+               </li>
+               <li class="nav-item breadcrumb-separator fusion-main-page-buttons" style="">
+                  <a href="#" onclick="sysproInterop.backToMenu();" class="text-primary fusion-main-page-buttons fusion-maininstance-buttons nav-link" style=""><i class="material-icons">chevron_right</i></a>
+               </li>
+               <li class="nav-item sys-pd-l-10 application-sub-title fusion-main-page-buttons" style="">
+                  <a href="#" onclick="sysproInterop.backToMenu();" class="text-primary fusion-main-page-buttons fusion-maininstance-buttons nav-link" style="">HOME MENU</a>
+               </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right ml-auto sys-fg-primary">
+               <li class=" nav-item">
+                  <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle js-offcanvas-has-events" onclick="sysproInterop.bindAvantiNotifications($('#fusion-sidebar-wrapper2'));" style="" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-avanti-notifications">
+                  <i class="material-icons">notifications</i>
+                  <span class="badge sys-bg-danger avanti-notifications-count" style="display: none;"></span>
+                  </a>
+               </li>
+               <li class="dropdown nav-item">
+                  <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account" data-bs-toggle="dropdown" style=""><i class="material-icons">account_circle</i>
+                  <span class="hidden-xs fusion-current-account-name">SYSPRO Administrator</span></a>
+                  <ul class="dropdown-menu multi-level nav sys-pd-t-5" role="menu">
+                     <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.callPlugin('SRSMain', 'SRSQUE');"><i class="material-icons">list</i>Report Queue</a>
+                     </li>
+                     <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.showHelp();"><i class="material-icons">help</i>Help</a>
+                     </li>
+                     <li class="dropdown-submenu">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Themes</a>
+                        <ul class="dropdown-menu sys-pd-t-5">
+                           <li>
+                              <a href="#" class="avant-theme-switch" data-themename="light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Light</a>
+                           </li>
+                           <li>
+                              <a href="#" class="avant-theme-switch" data-themename="dark" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Dark</a>
+                           </li>
+                           <li>
+                              <a href="#" class="avant-theme-switch" data-themename="syspro-light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>Pastel</a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.closeSYSPROFusion(true);"><i class="material-icons">power_settings_new</i> Sign out</a>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+      </nav>
+      <span id="errorNotification" style="display:none;"></span>
+      <span id="taskdialognotification" style="display:none;"></span>
+      <span id="aiSuggestionNotification" style="display:none;"></span>
+      <div id="dialog"></div>
+      <div id="invisibleNodes"></div>
+      </div>
+      <div id="fusion-wrapper">
+         <div id="harness-container">
+            <div id="wrapper" class="toggled">
+               <nav nav="" id="navbar-toolbar" class="navbar navbar-expand navbar-default navbar-static-top navbar-controlbar sys-mg-off-b syspro-toolbar ">
+                  <div class="container-fluid">
+                     <ul class="nav navbar-nav navbar-left me-auto" data-column="0">
+                        <li data-guid="94de2e6c-da7f-4ed2-8702-098f65b9b594" class="nav-item" data-tooltip="tooltip" data-placement="bottom" data-original-title="a tooltip">
+                           <a class="nav-link btn btn-default navbar-btn internal-offcanvas-toggle in-modal-window" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-e6cd80f0-6685-45c0-d2fd-903e90c2912a" data-fieldname="">
+                           <i class="material-icons sys-fg-primary">adb</i>
+                           </a>
+                        </li>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right ml-auto" data-column="1">
+                        <li data-guid="34e479c1-d81a-4b4d-e1f3-5f6d79dcebdb" class="nav-item" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="" data-container="body">
+                           <a id="Toolbar.IMPMENT200008" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button nav-link" data-fieldname="Toolbar.IMPMENT200008">
+                           <i class="material-icons sys-fg-primary">refresh</i>
+                           <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.IMPMENT200008.ManualCaption">
+                           </span>
+                           </a>
+                        </li>
+                        <li data-guid="4190b40e-10e3-461b-b30c-2445b9000054" class="nav-item" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Show Favorites" data-container="body">
+                           <a id="Toolbar.IMPMENTB01236" tabindex="-1" href="#" class="nav-link syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.IMPMENTB01236">
+                           <i class="material-icons sys-fg-primary">star</i>
+                           <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.IMPMENTB01236.ManualCaption">
+                           </span>
+                           </a>
+                        </li>
+                        <li data-guid="60a7de29-80ff-491d-af18-fe01266610eb" class="nav-item" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Customize" data-container="body">
+                           <a id="Toolbar.xxxxxxxx11002" tabindex="-1" href="#" class="nav-link syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.xxxxxxxx11002">
+                           <i class="material-icons sys-fg-primary">settings</i>
+                           <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.xxxxxxxx11002.ManualCaption">
+                           </span>
+                           </a>
+                        </li>
+                        <li data-guid="daccbcd1-aaf5-4520-b75a-bedf1030290c" class="nav-item" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Customize" data-container="body">
+                           <a id="Toolbar.xxxxxxxx11002" tabindex="-1" href="#" class="nav-link syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.xxxxxxxx11002">
+                           <i class="material-icons sys-fg-primary">settings</i>
+                           <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.xxxxxxxx11002.ManualCaption">
+                           </span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+               <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
+                  <!-- Error Notification empty element -->
+                  <span id="errorNotification" style="display:none;"></span>
+                  <div class=" sys-mg-t-15">
+                     <div class="full-grid-stack grid-stack grid-stack-6 col-12">
+                        <div class="grid-stack-item" gs-w="6" gs-h="9" gs-x="0" gs-y="0">
+                           <!-- <span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i> </span> -->
+                           <div class="row widget layout-widget grid-stack-item-content" data-guid="96f10001-7101-49b3-9c77-2d0508c533db" data-subtype="Joined" data-border="None" data-displaystyle="EntryForm" data-collapsible="False">
+                              <div class="col-sm-12">
+                                 <div class="panel sys-widget sys-box-shadow-off sys-mg-off-b">
+                                    <div class="panel-body sys-pd-off">
+                                      <div class="row">
+                                        <div class="col-12">
+                                          <p class="lead">
+                                            August sales have increased <span class="text-success">12%</span> month on month, but decreased <span class="text-danger">5%</span> year on year.
+                                          </p>
+                                          <p class="lead">
+                                            Supplier account <a href="#" class="text-primary">Worldwide Bikes</a> is <span class="text-danger">$10,450.00</span> in arrears.
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="grid-stack-item" gs-w="2" gs-h="9" gs-x="0" gs-y="10">
+                           <div class="row widget layout-widget grid-stack-item-content" data-guid="96f10001-7101-49b3-9c77-2d0508c533db" data-border="None" data-collapsible="False">
+                           </div>
+                        </div>
+                        <div class="grid-stack-item" gs-w="2" gs-h="9" gs-x="2" gs-y="10">
+                           <div class="row widget layout-widget grid-stack-item-content" data-guid="96f10001-7101-49b3-9c77-2d0508c533db" data-border="None" data-collapsible="False">
+                           </div>
+                        </div>
+                        <div class="grid-stack-item" gs-w="2" gs-h="9" gs-x="4" gs-y="10">
+                           <div class="row widget layout-widget grid-stack-item-content" data-guid="96f10001-7101-49b3-9c77-2d0508c533db" data-border="None" data-collapsible="False">
+                           </div>
+                        </div>
+                        <div class="grid-stack-item" gs-w="3" gs-h="37" gs-x="0" gs-y="21">
+                           <div class="row widget layout-widget grid-stack-item-content" data-guid="180d8887-5b51-4ed4-feee-7f679cb1c826" data-subtype="" data-border="Internal" data-displaystyle="Tiles" data-collapsible="False">
+                              <!-- <span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i> </span> -->
+                           </div>
+                        </div>
+                        <div class="grid-stack-item " gs-w="3" gs-h="12" gs-x="3" gs-y="21">
+                           <div class="row widget layout-widget grid-stack-item-content" data-guid="6af12e8d-bb0a-4a41-aea0-6e239af067eb" data-subtype="" data-border="None" data-displaystyle="TabControl" data-collapsible="False">
+                              <!-- <span class="grid-stack-drag-handle pull-right"> <i class="material-icons">open_with</i> </span> -->
+                              <div class="col-sm-12">
+                                 <h4 class="sys-mg-off-t sys-mg-b-5">
+                                 </h4>
+                                 <div class="panel sys-widget sys-box-shadow-off    ">
+                                    <div class="panel-body sys-pd-off">
+                                       <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs sys-fg-primary avanti-tab-links-holder" role="tablist">
+                                          <li class="nav-item    ">
+                                             <a class="nav-link  active  avanti-tab-link" data-bs-toggle="tab" href="#bb78c6b2-5373-4cb4-b453-186eca3036f1" aria-expanded="aria-expanded" data-tabidentifier="Tab1title">Tab 1 title</a>
+                                          </li>
+                                          <li class="nav-item  ">
+                                             <a class="nav-link  avanti-tab-link" data-bs-toggle="tab" href="#dc0c36d8-0ed5-49e2-9a85-ed8f462580a8" data-tabidentifier="Tab2title">Tab 2 title</a>
+                                          </li>
+                                       </ul>
+                                       <div class="tab-content">
+                                          <div id="bb78c6b2-5373-4cb4-b453-186eca3036f1" class="tab-pane fade sys-pd-t-5 avanti-tab-pane   active show " role="tabpanel">
+                                             <div class="col-xs-12 column-parent">
+                                                <div class="panel sys-bd-off sys-box-shadow-off">
+                                                   <div class="panel-body main-column" id="bb78c6b2-5373-4cb4-b453-186eca3036f1main_column_0" data-column="0">
+                                                      <div class=" row widget layout-widget" data-guid="0f823078-d175-4d95-dd44-ecf835d3d75d" data-subtype="Joined" data-border="None" data-displaystyle="Heading" data-collapsible="False">
+                                                         <div class="col-sm-12">
+                                                            <div class="panel sys-widget sys-box-shadow-off   sys-mg-off ">
+                                                               <div class="panel-body sys-pd-off">
+                                                                  <div class="row sys-tbl" data-row="0">
+                                                                     <div class="col-xs-12 sys-bg-white sys-pd-off data-section" data-section="0">
+                                                                        <h4 class="sys-mg-off-t sys-mg-b-5">
+                                                                           Custom text!
+                                                                        </h4>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div id="dc0c36d8-0ed5-49e2-9a85-ed8f462580a8" class="tab-pane fade sys-pd-t-5 avanti-tab-pane  " role="tabpanel">
+                                             <div class="col-xs-12 column-parent">
+                                                <div class="panel sys-bd-off sys-box-shadow-off">
+                                                   <div class="panel-body main-column" id="dc0c36d8-0ed5-49e2-9a85-ed8f462580a8main_column_1" data-column="1">
+                                                      <div class=" row widget layout-widget" data-guid="f7120fd4-6f8d-42cd-fcbd-33a144784e50" data-subtype="Joined" data-border="None" data-displaystyle="Heading" data-collapsible="False">
+                                                         <div class="col-sm-12">
+                                                            <div class="panel sys-widget sys-box-shadow-off   sys-mg-off ">
+                                                               <div class="panel-body sys-pd-off">
+                                                                  <div class="row sys-tbl" data-row="0">
+                                                                     <div class="col-xs-12 sys-bg-white sys-pd-off data-section" data-section="0">
+                                                                        <h4 class="sys-mg-off-t sys-mg-b-5">
+                                                                           More stuff
+                                                                        </h4>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="statusBar sys-bg-inverse" style="display: block;"><span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)  Your license expires February 1st           TUESDAY 8   JANUARY 2019</span></div>
+         </div>
+      </div>
+      </div>
+      <div id="syspro-context-menu-generic"></div>
+      <!-- Error Notification Kendo Template -->
+      <script id="errorTemplate" type="text/x-kendo-template">
+         <div class="error-template">
+         	<i class="material-icons close-error-notification">close</i>
+         	<i class="material-icons">error</i>
+         	<h3>#= title #</h3>
+         	<p>#= message #</p>
+         </div>
+      </script>
+      <script id="taskDialogTemplate" type="text/x-kendo-template">
+         <div class="#= BackgroundColor # error-template notification-template">
+         	<i class="material-icons #= IconColor #">#= Icon #</i>
+         	<h3 class="sys-fg-white">#= Title #</h3>
+         	<p class="sys-fg-white">#= MainInstruction #</p>
+         	<p class="sys-fg-white">#= Content #</p>
+                #if ((typeof Hyperlink !== 'undefined') && Hyperlink) { #
+                <a class="sys-fg-white task-dialog-hyperlink" data-hyperlinkid="#= HyperlinkId #">#= Hyperlink #</a>
+                #}#
+         </div>
+      </script>
+      <!-- Tile Template -->
+      <script type="text/x-kendo-template" id="tileTemplate">
+         #if(Widgets[0].TileWidth == 7){#
+             <div data-guid="#: Id #" class="col-sm-8 col-xs-12 tile" data-tiletype="#=Widgets[0].TileType#" data-tiletypedetail="#=Widgets[0].TileTypeDetail#" data-tiletypename="#=Widgets[0].TileTypeDetail#" data-parentfieldpath="#=Widgets[0].ParentFieldPath#">
+         #}else if(Widgets[0].TileWidth == 5){#
+             <div data-guid="#: Id #" class="col-sm-4 col-xs-6 tile big-square-tile" data-tiletype="#=Widgets[0].TileType#" data-tiletypedetail="#=Widgets[0].TileTypeDetail#" data-tiletypename="#=Widgets[0].TileTypeDetail#" data-parentfieldpath="#=Widgets[0].ParentFieldPath#">
+         #}else if(Widgets[0].TileWidth == 2){#
+         	<div data-guid="#: Id #" class="col-sm-4 col-xs-6 tile" data-tiletype="#=Widgets[0].TileType#" data-tiletypedetail="#=Widgets[0].TileTypeDetail#" data-tiletypename="#=Widgets[0].TileTypeDetail#" data-parentfieldpath="#=Widgets[0].ParentFieldPath#">
+         #}#
+         		<div class="data-widget-options text-center">
+         			<div class="row sys-tbl">
+         				<div class="col-xs-6 sys-bd-very-light-gray-right">
+         					<i class="material-icons text-primary drag-row-section">open_with</i>
+         				</div>
+         				<div class="col-xs-6">
+         					<i class="material-icons text-primary" data-original-title="" title="">more_vert</i>
+         				</div>
+         			</div>
+         		</div>
+         		<div class="tile-inner">
+         			#= Widgets[0].HTMLContent() #
+         		</div>
+         
+         	</div>
+      </script>
+      <script type="text/x-kendo-template" id="gridToolbarTemplate">
+         <!-- Grid More Button --->
+         #if(type == "more"){#
+         <a class="gridButton grid-button-align-right" data-gridbuttoneventid="more"><i class="material-icons">more_horiz</i>#=caption#</a>
+         #}#
+         <!-- Grid LabelTextBox --->
+         #if(type == "labeltextbox"){#
+         <input class="gridLabelTextBox grid-button-align-left" type="text" placeholder="#=caption#" data-gridbuttoneventid="#=eventid#" />
+         #}#
+         <!-- Grid SearchTextBox --->
+         #if(type == "searchtext"){#
+         <input class="gridSearchTextBox grid-button-align-right" type="text" placeholder="#=caption#" />
+         #}#
+         <!-- Grid Paste Button --->
+         #if(type == "getclipboardtext"){#
+         <a class="gridButton grid-button-align-right" data-gridbuttoneventid="getclipboardtext" data-tooltip="tooltip" data-original-title="#=tooltip#"><i class="material-icons">content_paste</i>#=caption#</a>
+         #}#
+         <!-- Grid ExportToExcel Button --->
+         #if(type == "excelexport"){#
+         <a class="gridButton grid-button-align-right" data-gridbuttoneventid="excelexport"><i class="material-icons">file_download</i>#=caption#</a>
+         #}#
+         <!-- Grid ExportToPDF Button --->
+         #if(type == "pdfexport"){#
+         <a class="gridButton grid-button-align-right" data-gridbuttoneventid="pdfexport"><i class="material-icons">picture_as_pdf</i>#=caption#</a>
+         #}#
+         <!-- Grid ExpandAll Button --->
+         #if(type == "expandall"){#
+         <a class="gridButton grid-button-align-right" data-gridbuttoneventid="expandall">#=caption#</a>
+         #}#
+         <!-- Grid CollapseAll Button --->
+         #if(type == "collapseall"){#
+         <a class="gridButton grid-button-align-right" data-gridbuttoneventid="collapseall">#=caption#</a>
+         #}#
+         <!-- Other Events -->
+         #if(type ==
+         "button"){#
+         <a id="gridtoolbar.#=eventid#" class="gridButton #if ((typeof checked !== 'undefined') && checked){# avanti-checked #}# #if
+         ((typeof disabled !== 'undefined') && disabled){# disabled #}#" data-gridbuttoneventid="#=eventid#"
+            data-tooltip="tooltip" data-placement="bottom" data-original-title="#=tooltip#" data-trigger="hover"
+            data-container="body">
+             #if (typeof icon !== "undefined" ){#
+             #if (icon != ""){#
+             <i class="material-icons">#=icon#</i>
+             #}#
+             #}#
+             #=caption#
+         </a>
+         #}#
+      </script>
+      <script id="selectTemplate" type="text/x-kendo-template">
+         <option value="#= Value #">#= Description #</option>
+      </script>
+      <script id="radiobuttonTemplate" type="text/x-kendo-template">
+         <div class="radio radio-primary sys-mg-off-b">
+             <label>
+                 <input class="syspro-trackfield-change syspro-radiobutton-option syspro-focusable" type="radio" name="#= ParentName #" value="#= Value #" data-bind="checked: Fields.#= ParentName #.Value" # if (typeof(Disabled) !=='undefined' && Disabled){ # disabled="disabled" # } #><span class="circle"></span><span class="check"></span>
+                 #= Description #
+             </label>
+         </div>
+      </script>
+      <script id="radiobuttonGridTemplate" type="text/x-kendo-template">
+         <div class="radio radio-primary syspro-radiobutton-option-ingrid">
+             <label>
+                 <input data-columnname="#= ParentName #"  onclick="sysproInterop.gridHelpers.gridCellRadioClick(event);" onchange="sysproInterop.gridHelpers.gridCellRadioChange(this);" class="syspro-radiobutton-option" type="radio" value="#= Value #" data-bind="checked: #= ParentName #.value" # if (typeof(Disabled) !=='undefined' && Disabled){ # disabled="disabled" # } #><span class="circle"></span><span class="check"></span>
+                 #= Description #
+             </label>
+         </div>
+      </script>
+      <script id="treeViewContextMenuTemplate" type="text/kendo-ui-template">
+         #: item.text #
+         # if (item.showContextMenu) { #
+         &nbsp;
+         <a class='k-icon k-i-more-horizontal' href='\#'></a>
+         # } #
+      </script>
+      <script id="aiSuggestionTemplate" type="text/x-kendo-template">
+         <div class="suggestion-template">
+             <div class="row">
+                 <div class="col-xs-12">
+                     <h4 class="sys-mg-b-5 sys-mg-t-5"><strong>Smart suggestions</strong> <i style="font-size: 40px" class="sys-fg-info icofont-brain-alt text-right pull-right"></i></h4>
+                     <small>Learned from your usage</small>
+                 </div>
+             </div>
+             # for (var i = 0; i < suggestions.length; i++) { #
+                 <a class="suggestion-link" href="#= suggestions[i].link #">
+                     <div class="row sys-mg-t-10" style="display: flex; align-items: center; align-content: stretch">
+                         <div class="">
+                             <i class="material-icons sys-txt-lg sys-mg-r-5" style="color: #= suggestions[i].icon.colour #">#= suggestions[i].icon.name #</i>
+                         </div>
+                         <div class="" style="flex-grow: 2">
+                             <h4 class="sys-mg-off sys-fg-inverse">#= suggestions[i].title #</h4>
+                             <p class="sys-txt-sm">#= suggestions[i].message #</p>
+                         </div>
+                         <div class="pull-right">
+                             <i class="material-icons sys-txt-md text-right pull-right" style="color: #303F9F;">arrow_forward</i>
+                         </div>
+                     </div>
+                 </a>
+             # } #
+         </div>
+      </script>
+      <footer id="thefooter" style="background-image: url('../../Samples/UX_IMG_cloud_erp_light_footer.png');">
+         &nbsp;&nbsp;&nbsp; <span id="copyrightfooter">
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; © SYSPRO All Rights Reserved. All trademarks are recognized.
+         &nbsp;&nbsp;&nbsp; </span>
+         &nbsp;&nbsp;&nbsp; <span id="sysprofooter">
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Powered by SYSPRO ERP
+         &nbsp;&nbsp;&nbsp; </span>
+      </footer>
+      <div class="k-widget k-window compact-window" data-role="draggable" style="visibility: visible; display: none; padding-top: 46px; min-width: 200px; min-height: 200px; width: 900px; height: 590px; top: 50%; left: 50%;">
+         <div class="k-window-titlebar k-header" style="margin-top: -46px;">
+            <span class="k-window-title" id="offcanvas-ed7d8287-49a0-4aaf-ef3c-fe4a210bd477_wnd_title">bingo</span>
+            <div class="k-window-actions"><a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div>
+         </div>
+         <div id="offcanvas-ed7d8287-49a0-4aaf-ef3c-fe4a210bd477" class="modal-center k-window-content k-content" data-modaltitle="bingo" data-parentwindowid="7afff081-8d08-427b-bfd9-2e4c82db0130" data-role="window" tabindex="0" role="dialog" aria-labelledby="offcanvas-ed7d8287-49a0-4aaf-ef3c-fe4a210bd477_wnd_title">
+            <div class="container-fluid window-container">
+               <div class="row window-content">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-xs-12 column-parent">
+                           <div class="panel sys-bd-off sys-box-shadow-off">
+                              <div class="panel-body main-column" id="offcanvas_ed7d8287-49a0-4aaf-ef3c-fe4a210bd477_main_column_0" data-column="0">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="k-resize-handle k-resize-n"></div>
+         <div class="k-resize-handle k-resize-e"></div>
+         <div class="k-resize-handle k-resize-s"></div>
+         <div class="k-resize-handle k-resize-w"></div>
+         <div class="k-resize-handle k-resize-se"></div>
+         <div class="k-resize-handle k-resize-sw"></div>
+         <div class="k-resize-handle k-resize-ne"></div>
+         <div class="k-resize-handle k-resize-nw"></div>
+      </div>
+      <div class="k-widget k-window compact-window" data-role="draggable" style="visibility: visible; display: none; padding-top: 46px; min-width: 200px; min-height: 200px; width: 900px; height: 590px; top: 50%; left: 50%;">
+         <div class="k-window-titlebar k-header" style="margin-top: -46px;">
+            <span class="k-window-title" id="offcanvas-94e08adc-cdde-4280-afc9-d1e7222f1748_wnd_title"></span>
+            <div class="k-window-actions"><a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div>
+         </div>
+         <div id="offcanvas-94e08adc-cdde-4280-afc9-d1e7222f1748" class="modal-center k-window-content k-content" data-modaltitle="" data-parentwindowid="7afff081-8d08-427b-bfd9-2e4c82db0130" data-role="window" tabindex="0" role="dialog" aria-labelledby="offcanvas-94e08adc-cdde-4280-afc9-d1e7222f1748_wnd_title">
+            <div class="container-fluid window-container">
+               <div class="row window-content">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-xs-12 column-parent">
+                           <div class="panel sys-bd-off sys-box-shadow-off">
+                              <div class="panel-body main-column" id="offcanvas_94e08adc-cdde-4280-afc9-d1e7222f1748_main_column_0" data-column="0">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="k-resize-handle k-resize-n"></div>
+         <div class="k-resize-handle k-resize-e"></div>
+         <div class="k-resize-handle k-resize-s"></div>
+         <div class="k-resize-handle k-resize-w"></div>
+         <div class="k-resize-handle k-resize-se"></div>
+         <div class="k-resize-handle k-resize-sw"></div>
+         <div class="k-resize-handle k-resize-ne"></div>
+         <div class="k-resize-handle k-resize-nw"></div>
+      </div>
+      <div class="k-widget k-window compact-window" data-role="draggable" style="visibility: visible; display: none; padding-top: 46px; min-width: 200px; min-height: 200px; width: 900px; height: 590px; top: 50%; left: 50%;">
+         <div class="k-window-titlebar k-header" style="margin-top: -46px;">
+            <span class="k-window-title" id="offcanvas-e6cd80f0-6685-45c0-d2fd-903e90c2912a_wnd_title"></span>
+            <div class="k-window-actions"><a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div>
+         </div>
+         <div id="offcanvas-e6cd80f0-6685-45c0-d2fd-903e90c2912a" class="modal-center k-window-content k-content" data-modaltitle="" data-parentwindowid="7afff081-8d08-427b-bfd9-2e4c82db0130" data-role="window" tabindex="0" role="dialog" aria-labelledby="offcanvas-e6cd80f0-6685-45c0-d2fd-903e90c2912a_wnd_title">
+            <div class="container-fluid window-container">
+               <div class="row window-content">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-xs-12 column-parent">
+                           <div class="panel sys-bd-off sys-box-shadow-off">
+                              <div class="panel-body main-column" id="offcanvas_e6cd80f0-6685-45c0-d2fd-903e90c2912a_main_column_0" data-column="0">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="k-resize-handle k-resize-n"></div>
+         <div class="k-resize-handle k-resize-e"></div>
+         <div class="k-resize-handle k-resize-s"></div>
+         <div class="k-resize-handle k-resize-w"></div>
+         <div class="k-resize-handle k-resize-se"></div>
+         <div class="k-resize-handle k-resize-sw"></div>
+         <div class="k-resize-handle k-resize-ne"></div>
+         <div class="k-resize-handle k-resize-nw"></div>
+      </div>
+      <div class="k-widget k-window compact-window" data-role="draggable" style="visibility: visible; display: none; padding-top: 46px; min-width: 200px; min-height: 200px; width: 900px; height: 590px; top: 50%; left: 50%;">
+         <div class="k-window-titlebar k-header" style="margin-top: -46px;">
+            <span class="k-window-title" id="offcanvas-57ee9596-4f06-4899-d581-256f552ec2b9_wnd_title"></span>
+            <div class="k-window-actions"><a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div>
+         </div>
+         <div id="offcanvas-57ee9596-4f06-4899-d581-256f552ec2b9" class="modal-center k-window-content k-content" data-modaltitle="" data-parentwindowid="7afff081-8d08-427b-bfd9-2e4c82db0130" data-role="window" tabindex="0" role="dialog" aria-labelledby="offcanvas-57ee9596-4f06-4899-d581-256f552ec2b9_wnd_title">
+            <div class="container-fluid window-container">
+               <div class="row window-content">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-xs-12 column-parent">
+                           <div class="panel sys-bd-off sys-box-shadow-off">
+                              <div class="panel-body main-column" id="offcanvas_57ee9596-4f06-4899-d581-256f552ec2b9_main_column_0" data-column="0">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="k-resize-handle k-resize-n"></div>
+         <div class="k-resize-handle k-resize-e"></div>
+         <div class="k-resize-handle k-resize-s"></div>
+         <div class="k-resize-handle k-resize-w"></div>
+         <div class="k-resize-handle k-resize-se"></div>
+         <div class="k-resize-handle k-resize-sw"></div>
+         <div class="k-resize-handle k-resize-ne"></div>
+         <div class="k-resize-handle k-resize-nw"></div>
+      </div>
+      <div class="k-widget k-window compact-window" data-role="draggable" style="visibility: visible; display: none; padding-top: 46px; min-width: 200px; min-height: 200px; width: 900px; height: 590px; top: 50%; left: 50%;">
+         <div class="k-window-titlebar k-header" style="margin-top: -46px;">
+            <span class="k-window-title" id="offcanvas-054d019a-afad-4f4f-eaef-61d721c55f0f_wnd_title"></span>
+            <div class="k-window-actions"><a role="button" href="#" class="k-button k-bare k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div>
+         </div>
+         <div id="offcanvas-054d019a-afad-4f4f-eaef-61d721c55f0f" class="modal-center k-window-content k-content" data-modaltitle="" data-parentwindowid="7afff081-8d08-427b-bfd9-2e4c82db0130" data-role="window" tabindex="0" role="dialog" aria-labelledby="offcanvas-054d019a-afad-4f4f-eaef-61d721c55f0f_wnd_title">
+            <div class="container-fluid window-container">
+               <div class="row window-content">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-xs-12 column-parent">
+                           <div class="panel sys-bd-off sys-box-shadow-off">
+                              <div class="panel-body main-column" id="offcanvas_054d019a-afad-4f4f-eaef-61d721c55f0f_main_column_0" data-column="0">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="js/UX_JS_bootstrap.js"></script>
+      <script src="js/UX_JS_forms.js"></script>
+      <!-- <script src="js/UX_JS_packery.min.js"></script> -->
+      <script src="js/fitty.min.js"></script>
+      <script src="js/jQuery.hoverForMore.js"></script>
+      <script src="js/gridstack-h5.js"></script>
+      <script type="text/javascript">
+         $.material.init();
+         $(function() {
+             $('#loading-cover').hide();
+         });
+         
+         const daysToPayData = [
+         {
+         date: new Date("2018/01/01"),
+         value: 254119.67
+         },
+         {
+         date: new Date("2018/02/01"),
+         value: 154119.67
+         },
+         {
+         date: new Date("2018/03/01"),
+         value: 214119.67
+         },
+         {
+         date: new Date("2018/04/01"),
+         value: 54119.67
+         },
+         {
+         date: new Date("2018/05/01"),
+         value: 253219.67
+         },
+         {
+         date: new Date("2018/06/01"),
+         value: 27119.67
+         },
+         {
+         date: new Date("2018/07/01"),
+         value: 324119.67
+         },
+         {
+         date: new Date("2018/08/01"),
+         value: 304119.67
+         },
+         {
+         date: new Date("2018/09/01"),
+         value: 318119.67
+         },
+         {
+         date: new Date("2018/10/01"),
+         value: 298119.67
+         },
+         {
+         date: new Date("2018/11/01"),
+         value: 400119.67
+         },
+         {
+         date: new Date("2018/12/01"),
+         value: 384119.67
+         },
+         {
+         date: new Date("2019/01/01"),
+         value: 290119.67
+         },
+         {
+         date: new Date("2019/02/01"),
+         value: 301119.67
+         }
+         ];
+         
+         
+         
+         function initCharts() {
+           // sparkline chart example
+           $("#avgDaysToPay").kendoSparkline({
+                     type: "column",
+                     autoBind: false,
+                     series: [{
+               data: daysToPayData,
+                         categoryField: "date",
+                         color: "#1996e4",
+                         gap: 0.2,
+                         field: "value"
+                     }],
+                     categoryAxis: {
+                         type: "date",
+                         baseUnit: "months"
+                     },
+                     tooltip: {
+               template: "#=kendo.toString(value, 'c2')# ",
+               background: "black",
+               color: "white",
+               border: {
+                 width: 0
+               },
+             },
+             plotArea: {
+               margin: 0
+             },
+             chartArea: {
+               background: "transparent",
+               opacity: 0,
+               margin: {
+                 top: 0,
+                 bottom: 0,
+                 left: 0,
+                 right: 5
+               }
+             }
+           });
+         
+           // sparkline chart example
+           $("#avgDaysToPay4, #avgDaysToPay7").kendoSparkline({
+                     type: "column",
+                     autoBind: false,
+                     series: [{
+               data: daysToPayData,
+                         categoryField: "date",
+                         color: "#ffffff",
+                         gap: 0.2,
+                         field: "value"
+                     }],
+                     categoryAxis: {
+                         type: "date",
+                         baseUnit: "months"
+                     },
+                     tooltip: {
+               template: "#=kendo.toString(value, 'c2')# ",
+               background: "black",
+               color: "white",
+               border: {
+                 width: 0
+               },
+             },
+             plotArea: {
+               margin: 0
+             },
+             chartArea: {
+               background: "transparent",
+               opacity: 0,
+               margin: {
+                 top: 0,
+                 bottom: 0,
+                 left: 0,
+                 right: 5
+               }
+             }
+           });
+         
+           // sparkline chart example
+           $("#avgDaysToPay2, #avgDaysToPay5, #avgDaysToPay8").kendoSparkline({
+                     type: "line",
+                     autoBind: false,
+                     series: [{
+               data: daysToPayData,
+                           categoryField: "date",
+                           color: "#fff",
+                           // gap: 0.2,
+                 field: "value",
+                 style: 'smooth',
+                 width: '2px',
+                 line: {
+                   style: 'smooth',
+                   width: '2px',
+                   color: "#fff"
+                 }
+                     }],
+                     categoryAxis: {
+                         type: "date",
+                         baseUnit: "months"
+             },
+             valueAxis: {
+               min: 0,
+               narrowRange: false
+             },
+                     tooltip: {
+               template: "#=kendo.toString(value, 'c2')# ",
+               background: "black",
+               color: "white",
+               border: {
+                 width: 0
+               },
+             },
+             plotArea: {
+               margin: 0
+             },
+             chartArea: {
+               background: "transparent",
+               opacity: 0,
+               margin: {
+                 top: 0,
+                 bottom: 0,
+                 left: 0,
+                 right: 5
+               }
+             }
+           });
+         
+           // sparkline chart example
+           $("#avgDaysToPay3, #avgDaysToPay6").kendoSparkline({
+                     type: "line",
+                     autoBind: false,
+                     series: [{
+               data: daysToPayData,
+                           categoryField: "date",
+                           color: "#fff",
+                           // gap: 0.2,
+                 field: "value",
+                 style: 'smooth',
+                 width: '2px',
+                 line: {
+                   style: 'smooth',
+                   width: '2px',
+                   color: "#fff"
+                 }
+                     }],
+                     categoryAxis: {
+                         type: "date",
+                         baseUnit: "months"
+             },
+             valueAxis: {
+               min: 0,
+               narrowRange: false
+             },
+                     tooltip: {
+               template: "#=kendo.toString(value, 'c2')# ",
+               background: "black",
+               color: "white",
+               border: {
+                 width: 0
+               },
+             },
+             plotArea: {
+               margin: 0
+             },
+             chartArea: {
+               background: "transparent",
+               opacity: 0,
+               margin: {
+                 top: 0,
+                 bottom: 0,
+                 left: 0,
+                 right: 5
+               }
+             }
+           });
+         
+           // sparkline chart example
+           $("#customersOnHold, #customersOnHold2").kendoSparkline({
+                     type: "pie",
+                     autoBind: false,
+                     series: [{
+               data: [120, 80, 30],
+                         categoryField: "date",
+                         color: "#1996e4",
+                         gap: 0.2,
+                         field: "value"
+                     }],
+                     categoryAxis: {
+                         type: "date",
+                         baseUnit: "months"
+                     },
+                     tooltip: {
+               template: "#=kendo.toString(value, 'c2')# ",
+               background: "black",
+               color: "white",
+               border: {
+                 width: 0
+               },
+             },
+             plotArea: {
+               margin: 0
+             },
+             seriesColors: ['#303F9F', '#D32F2F', '#F57C00', '#0097A7', '#388E3C'],
+             chartArea: {
+               background: "transparent",
+               opacity: 0,
+               margin: {
+                 top: 0,
+                 bottom: 0,
+                 left: 0,
+                 right: 5
+               }
+             }
+           });
+         
+         
+           // Bullet chart
+           $("#bulletChart").kendoSparkline({
+                   type: "bullet",
+           data: [21, 23],
+           seriesColors: ['#D32F2F'],
+                   valueAxis: {
+                       min: 0,
+                       max: 30,
+                       plotBands: [{
+                           from: 0, to: 15, color: "#fff", opacity: 0.15
+                       }, {
+                           from: 15, to: 22, color: "#fff", opacity: 0.3
+                       }, {
+                           from: 22, to: 30, color: "#fff", opacity: 0.15
+                       }]
+                   },
+                   tooltip: {
+             visible: true,
+             background: "black",
+               color: "white",
+               border: {
+                 width: 0
+               },
+           },
+           chartArea: {
+               background: "transparent",
+               opacity: 0,
+               margin: {
+                 top: 0,
+                 bottom: 0,
+                 left: 0,
+                 right: 5
+               }
+             }
+         });
+         
+         // Bullet chart
+         $("#bulletChart2").kendoSparkline({
+                   type: "bullet",
+           data: [21, 23],
+           seriesColors: ['#fff'],
+                   valueAxis: {
+                       min: 0,
+                       max: 30,
+                       plotBands: [{
+                           from: 0, to: 15, color: "#fff", opacity: 0.15
+                       }, {
+                           from: 15, to: 22, color: "#fff", opacity: 0.3
+                       }, {
+                           from: 22, to: 30, color: "#fff", opacity: 0.15
+                       }]
+                   },
+                   tooltip: {
+             visible: true,
+             background: "black",
+               color: "white",
+               border: {
+                 width: 0
+               },
+           },
+           chartArea: {
+               background: "transparent",
+               opacity: 0,
+               margin: {
+                 top: 0,
+                 bottom: 0,
+                 left: 0,
+                 right: 5
+               }
+             }
+               });
+         
+         fitty('.small-tile .metric-only .tile-main-value', {
+           minSize: 16,
+           maxSize: 35,
+           multiLine: true
+         });
+         
+         fitty('.wide-tile .tile-main-value, .big-tile .tile-main-value', {
+           minSize: 22,
+           maxSize: 56,
+           multiLine: true
+         });
+         
+         // fitty('.big-tile .tile-main-value', {
+         // 	minSize: 22,
+         // 	maxSize: 56,
+         // 	multiLine: true
+         // });
+         
+         
+         // Javascript
+         $(".overflowing").hoverForMore({
+           speed: 60.0,		// Measured in pixels-per-second
+           loop: true,		// Scroll to the end and stop, or loop continuously?
+           gap: 20,		// When looping, insert this many pixels of blank space
+           target: false,		// Hover on this CSS selector instead of the text line itself
+           removeTitle: true,	// By default, remove the title attribute, as a tooltip is redundant
+           snapback: true,		// Animate when de-activating, as opposed to instantly reverting
+           addStyles: true,	// Auto-add CSS; leave this on unless you need to override default styles
+           alwaysOn: false,	// If you're insane, you can turn this into a <marquee> tag. (Please don't.)
+         
+           // In case you want to alter the events which activate and de-activate the effect:
+           startEvent: "mouseenter",
+           stopEvent: "mouseleave"
+         });
+         // $(".").hover(
+         // 	function() {
+         // 		// $(this).css({"height": "auto"});
+         // 		//$(this).animate({height:'auto'},200);
+         // 		$(this).animate({height: $(this).get(0).scrollHeight}, 120 );
+         // 		// $(this).closest(".tile-inner").addClass("inner-shadow");
+         // 	},
+         // 	function() {
+         // 		// $(this).css({"height": "30px"});
+         // 		$(this).animate({height:32},60);
+         // 		// $(this).closest(".tile-inner").removeClass("inner-shadow");
+         // 	}
+         // )
+         $(".small-tile .tile-title").each(function() {
+           var that = this;
+           if ( $(that).get(0).scrollHeight > 33 && $(that).siblings(".tile-subtitle").text().length > 0 ) {
+             $(that).css("height", "32px");
+             $(that).addClass("show-more-icon");
+             $(that).hover(
+               function() {
+                 // $(this).css({"height": "auto"});
+                 //$(this).animate({height:'auto'},200);
+                 $(that).removeClass("show-more-icon");
+                 $(that).animate({height: $(that).get(0).scrollHeight}, 120 );
+                 // $(this).closest(".tile-inner").addClass("inner-shadow");
+               },
+               function() {
+                 // $(this).css({"height": "30px"});
+                 $(that).animate({height:32},60);
+                 $(that).addClass("show-more-icon");
+                 // $(this).closest(".tile-inner").removeClass("inner-shadow");
+               }
+             );
+           }
+         });
+         }
+         
+         
+         const colHeight = 142;
+         const colMargin = 4;
+         
+         function gridStackWidth($element, colWidth, margin) {
+           const width = $element.width();
+           const grossColWidth = colWidth + (margin * 2);
+           const columns = Math.floor(width / grossColWidth);
+           return [
+             columns,
+             columns * grossColWidth,
+           ];
+         } 
+         
+         function initGridStack() {
+           $('.full-grid-stack > .grid-stack-item').each(function(idx, elem) {
+             $(elem).attr('gs-id', $(elem).find('.layout-widget').attr('data-guid'));
+           });
+           return GridStack.init({
+               column: 6,
+               cellHeight: 15,
+               class: 'full-grid-stack',
+               handle: '.grid-stack-drag-handle',
+           }, document.querySelector('.full-grid-stack'));
+         }
+         
+         function initTilesGridStack() {
+             
+             const $gridStack = $('.tile-grid-stack');
+             // TODO: Need to always check for width of .grid-stack and then divide by 142, fix width and fix number of columns.
+             const [columns, fullWidth] = gridStackWidth($gridStack, colHeight, colMargin);
+         
+             $gridStack.addClass(`grid-stack-${columns}`);
+         
+             $gridStack.width(fullWidth);
+         
+             // TODO: Then on resize also need to  recalculate all that (keep in its own function.)
+         
+             $gridStack.find('.tile').each(function(idx, tile) {
+               const $tile = $(tile);
+               $tile.addClass('grid-stack-item').attr('gs-max-h', 2).attr('gs-max-w', 2).attr('gs-id', idx * 100 + idx * 10);
+               $tile.find('> div').addClass('grid-stack-item-content');
+               if ( $tile.hasClass('col-sm-4') ) {
+                 $tile.attr('gs-w', 1).attr('gs-h', 1).removeClass('col-sm-4 col-xs-12 col-xs-6');
+               } else if ( $tile.hasClass('col-sm-8') && $tile.hasClass('big-square-tile') ) {
+                 $tile.attr('gs-w', 2).attr('gs-h', 2).removeClass('col-sm-8 col-xs-12 col-xs-6');
+               }  else if ( $tile.hasClass('col-sm-8') ) {
+                 $tile.attr('gs-w', 2).attr('gs-h', 1).removeClass('col-sm-8 col-xs-12 col-xs-6');
+               }
+             });
+         
+             return GridStack.init({
+                 column: columns,
+                 cellHeight: colHeight + (colMargin * 2),
+                 margin: colMargin,
+                 class: 'tile-grid-stack',
+                 handle: '.grid-stack-drag-handle',
+                 disableOneColumnMode: true,
+                 // itemClass: tile
+             }, document.querySelector('.tile-grid-stack'));
+         
+             
+         }
+         
+         
+         function cleanGridLayout(gridlayout) {
+          if (!gridlayout.length) return;
+          
+          for (let i = 0; i < gridlayout.length; i++) {
+          if (gridlayout[i].subGrid) delete gridlayout[i].subGrid;
+          };
+          
+          return gridlayout;
+         };
+         
+         $(document).ready(function() {
+         
+         $('.tile, .tile *').off('click');
+         
+         window.grid = initGridStack();
+         
+         // window.tilegrid = initTilesGridStack();
+         
+         initCharts();
+         
+         
+         const gridlayout = localStorage.getItem("gridlayout");
+         
+         if (gridlayout) {
+         const jsgridlayout = JSON.parse(gridlayout);
+         for (let i = 0; i < jsgridlayout.length; i++) {
+         const gridStackWidget = $(`[data-guid='${jsgridlayout[i].id}'`).closest('.grid-stack-item')[0];
+         grid.update(gridStackWidget, {
+           h: jsgridlayout[i].h,
+           w: jsgridlayout[i].w,
+           x: jsgridlayout[i].x,
+           y: jsgridlayout[i].y,
+         });
+         // $(`[data-guid='${jsgridlayout[i].id}'`)
+         //   .closest('.grid-stack-item')
+         //   .attr('gs-w', jsgridlayout[i].w)
+         //   .attr('gs-h', jsgridlayout[i].h)
+         //   .attr('gs-x', jsgridlayout[i].x)
+         //   .attr('gs-y', jsgridlayout[i].y);
+         }        
+         }
+         
+        //  const tilegridlayout = localStorage.getItem("tilegridlayout");
+         
+        //  if (tilegridlayout) {
+        //   const jstilegridlayout = JSON.parse(tilegridlayout);
+        //   for (let i = 0; i < jstilegridlayout.length; i++) {
+        //     console.log(jstilegridlayout[i].id);
+            
+        //     const gridStackWidget = $(`[gs-id='${jstilegridlayout[i].id}'`)[0];
+        //     tilegrid.update(gridStackWidget, {
+        //       h: jstilegridlayout[i].h,
+        //       w: jstilegridlayout[i].w,
+        //       x: jstilegridlayout[i].x,
+        //       y: jstilegridlayout[i].y,
+        //     });
+
+        //   }        
+        //  }
+         
+        //  tilegrid.on('resizestop', function(event, el) {
+        //   initCharts(); 
+        //   tilegrid.compact();
+        //   localStorage.setItem("tilegridlayout", JSON.stringify(cleanGridLayout(tilegrid.save(false))));
+        //  });
+         
+        //  tilegrid.on('dragstop', function(event, el) {
+        //   initCharts(); 
+        //   tilegrid.compact();
+        //   localStorage.setItem("tilegridlayout", JSON.stringify(cleanGridLayout(tilegrid.save(false))));
+        //  });
+         
+         grid.on('resizestop', function(event, el) {
+          grid.compact();
+          const $gridStack = $('.tile-grid-stack');
+          
+          const [columns, fullWidth] = gridStackWidth($gridStack, colHeight, colMargin);
+          // tilegrid.column(columns, 'move');
+          // tilegrid.compact();
+          
+          localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
+         });
+         
+         grid.on('dragstop', function(event, el) {
+          grid.compact();
+          localStorage.setItem("gridlayout", JSON.stringify(cleanGridLayout(grid.save(false))));
+         });
+         
+         $('.collapse').on('shown.bs.collapse hidden.bs.collapse', function () {
+          // do something…
+            const height = $(this).closest('.panel').outerHeight() + 36;
+            const gridHeight = Math.ceil(height / 15);
+            const gridStackWidget = $(this).closest('.grid-stack-item')[0];
+            grid.update(gridStackWidget, {
+              h: gridHeight
+            });
+            // gridStackWidget.height(height);
+            // grid.compact();
+          });
+         
+         });
+      </script>
+   </body>
+</html>

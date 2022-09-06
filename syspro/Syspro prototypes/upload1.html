@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+        <link href="css/UX_CSS_bootstrap.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+				<link href="css/postcss.css" rel="stylesheet" />
+				<link rel="stylesheet" href="css/gridstack.min.css">
+				<link rel="stylesheet" href="css/gridstack-extra.css">
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css">
+        <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+        
+        <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+        <script id="treeview-template" type="text/kendo-ui-template">
+          # if (item.subCategories || item.isDirectory) { #
+              <i class="material-icons">folder</i>
+          # } #
+          # if (item.name === 'Recent') { #
+              <i class="material-icons">access_time</i>
+          # } #
+          # if (item.name === 'Starred') { #
+              <i class="material-icons">star</i>
+          # } #
+          #: item.name # 
+      </script>
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
+        <script src="js/UX_JS_kendo.all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
+        <style>
+          /* Audio player */
+
+          /* Setup
+================================================== */
+
+.audio-container { position:relative; margin:0 auto; max-width:800px; width:100%; }
+.column { width:inherit; }
+
+
+/* Typography / Links
+================================================== */
+
+/* p {  display:block; font-size:.9rem; font-weight:400; margin:0 0 2px; } */
+
+
+
+/* Misc.
+================================================== */
+
+.add-bottom { margin-bottom:2rem !important; }
+.left { float:left; }
+.right { float:right; }
+.center { text-align:center; }
+.hidden { display:none; }
+
+.no-support {
+margin:2rem auto;
+text-align:center;
+width:90%;
+}
+
+
+/* Audio Player Styles
+================================================== */
+
+/* audio {
+display:none;
+} */
+
+#audiowrap,
+#plwrap {
+margin:0 auto;
+}
+
+#tracks {
+font-size:0;
+position:relative;
+text-align:center;
+}
+
+#nowPlay {
+display:block;
+font-size:0;
+}
+
+#nowPlay span {
+display:inline-block;
+font-size:1.05rem;
+vertical-align:top;
+}
+
+#nowPlay span#npAction {
+padding:21px;
+width:30%;
+}
+
+#nowPlay span#npTitle {
+padding:21px;
+text-align:right;
+width:70%;
+}
+
+#plList li {
+cursor:pointer;
+display:block;
+margin:0;
+padding:21px 0;
+}
+
+#plList li:hover {
+background-color:rgba(0, 0, 0, .1);
+}
+
+.plItem {
+position:relative;
+}
+
+.plTitle {
+left:50px;
+overflow:hidden;
+position:absolute;
+right:65px;
+text-overflow:ellipsis;
+top:0;
+white-space:nowrap;
+}
+
+.plNum {
+padding-left:21px;
+width:25px;
+}
+
+.plLength {
+padding-left:21px;
+position:absolute;
+right:21px;
+top:0;
+}
+
+.plSel,
+.plSel:hover {
+background-color:rgba(0, 0, 0, .1);
+/* color:#fff; */
+cursor:default !important;
+}
+
+#tracks a {
+border-radius:3px;
+/* color:#fff; */
+cursor:pointer;
+display:inline-block;
+font-size:2.3rem;
+height:40px;
+line-height:.2;
+margin:0 5px 30px;
+padding:12px;
+text-decoration:none;
+transition:background .3s ease;
+}
+
+#tracks a:hover,
+#tracks a:active {
+background-color:rgba(0, 0, 0, .1);
+/* color:#fff; */
+}
+
+#tracks a::-moz-focus-inner {
+border:0;
+padding:0;
+}
+
+.plyr__control svg {
+    height: 12px;
+    width: 12px;
+}
+.voicenoteslist .list-group-item {
+  background: #fbfbfb;
+  border-bottom: 1px solid #e5e9ea;
+  margin-bottom: 0px;
+}
+.voicenoteslist .k-icon {
+  font-size: 35px;
+}
+
+/* Plyr Overrides
+================================================== */
+
+.plyr--audio .plyr__controls {
+/* background-color:transparent; */
+border:none;
+/* color:#fff; */
+font-family:"Source Sans Pro", arial, sans-serif;
+ padding: 20px;
+ width:100%;
+}
+
+a.plyr__controls__item.plyr__control:hover,
+.plyr--audio .plyr__controls button:hover,
+.plyr--audio .plyr__controls button.tab-focus:focus,
+.plyr__play-large {
+background-color:rgba(0, 0, 0, .1);
+}
+
+.plyr__progress--played,
+.plyr__volume--display {
+color:rgba(0, 0, 0, .1);
+}
+
+.plyr--audio .plyr__progress--buffer,
+.plyr--audio .plyr__volume--display {
+background-color:rgba(0, 0, 0, .1);
+}
+
+.plyr--audio .plyr__progress--buffer {
+color:rgba(0, 0, 0, .1);
+}
+
+.plyr--full-ui input[type="range"] {
+width:calc(100% - 39px);
+}
+
+.plyr__controls .plyr__controls__item.plyr__time {
+font-size:14px;
+margin-left:7px;
+}
+.plyr--audio .plyr__controls {
+    background: #e5e9ea;
+    /* background: var(--plyr-audio-controls-background,#fff); */
+    border-radius: 20px;
+    padding: 3px 20px;
+}
+
+.plyr button {
+
+    padding: 5px;
+}
+
+          .k-treeview {
+                overflow: hidden;
+            }
+         .k-item, 
+        .k-treeview span.k-in {
+            cursor: pointer;
+            width: 100%;
+        }
+        .k-treeview .k-in {
+            margin: 0px;
+            padding: 4px 7px 4px 4px;
+        }
+        .k-treeview .k-in {
+            color: #34495e;
+        }
+        .k-treeview .k-in.k-state-selected {
+            background-color: #e8f3f9;
+            color: #34495e;
+        }
+        .k-treeview .k-in .material-icons {
+            color: #7f8c8d;
+        }
+        .k-treeview .k-in.k-state-selected .material-icons {
+            color: #34495e;
+        }
+
+            
+            .dropZoneElement {
+                position: relative;
+                display: inline-block;
+                background-color: #ffffff;
+                /* border: 1px solid #c7c7c7; */
+                width: 300px;
+                height: 300px;
+                border-radius: 6px;
+            }
+    
+            .textWrapper {
+                /* position: absolute;
+                top: 50%;
+                transform: translateY(-50%); */
+                text-align: center;
+
+                width: 100%;
+                font-size: 17px;
+                line-height: 1.2em;
+            }
+
+    
+            .product {
+                float: left;
+                position: relative;
+                margin: 0 10px 10px 0;
+                padding: 0;
+            }
+            .product img {
+                width: 110px;
+                height: 110px;
+            }
+/*     
+            .wrapper:after {
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            } */
+        </style>
+    </head>
+
+<body data-theme="" data-column-layout="" class="light-gradient-background body-view-mode">
+  <nav id="fusion-toolbar" class="navbar navbar-default fixed-top navbar-controlbar fusion-top-toolbar toolbar-loaded">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="nav-item">
+                <a href="#" class="text-primary offcanvas-toggle fusion-main-page-buttons fusion-maininstance-buttons nav-link js-offcanvas-has-events" data-toggle="offcanvas" data-target="#fusion-sidebar-wrapper2" onclick="sysproInterop.bindProgramList($('#fusion-sidebar-wrapper2'));" style=""><i class="material-icons">menu</i></a>
+            </li>
+            <li>
+                <a class="navbar-brand" href="#" onclick="sysproInterop.backToMenu();">
+                    <img alt="Brand" src="img/UX_IMG_SYSPROLogo.png" style="height: 35px">
+                </a>
+            </li>
+            <li class="nav-item back-to-menu">
+                <a href="#" onclick="sysproInterop.backToMenu();" class="text-primary fusion-main-page-buttons fusion-maininstance-buttons nav-link" style=""><span class="hidden-xs">Home</span><i class="material-icons visible-xs">home</i></a>
+            </li>
+            <li class="nav-item breadcrumb-separator fusion-main-page-buttons" style="">
+                <i class="material-icons">chevron_right</i>
+            </li>
+            <li class="nav-item sys-pd-l-10 application-sub-title fusion-main-page-buttons" style="">HOME MENU</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right sys-fg-primary">
+            <li class=" nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle js-offcanvas-has-events" onclick="sysproInterop.bindAvantiNotifications($('#fusion-sidebar-wrapper2'));" style="" data-toggle="offcanvas" data-target="#offcanvas-avanti-notifications">
+                    <i class="material-icons">notifications</i>
+                    <span class="badge sys-bg-danger avanti-notifications-count" style="display: none;"></span>
+                </a>
+            </li>
+
+            <li class="dropdown nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account" data-toggle="dropdown" style=""><i class="material-icons">account_circle</i>
+                    <span class="hidden-xs fusion-current-account-name">SYSPRO Administrator</span></a>
+                <ul class="dropdown-menu multi-level nav sys-pd-t-5" role="menu">
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.callPlugin('SRSMain', 'SRSQUE');"><i class="material-icons">list</i>Report Queue</a>
+                    </li>
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.showHelp();"><i class="material-icons">help</i>Help</a>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Themes</a>
+                        <ul class="dropdown-menu sys-pd-t-5">
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Light</a>
+                            </li>
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="dark" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Dark</a>
+                            </li>
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="syspro-light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>Pastel</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.closeSYSPROFusion(true);"><i class="material-icons">power_settings_new</i> Sign out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+
+  <span id="errorNotification" style="display:none;"></span>
+  <span id="taskdialognotification" style="display:none;"></span>
+  <span id="aiSuggestionNotification" style="display:none;"></span>
+  <div id="dialog"></div>
+  <div id="invisibleNodes"></div>
+
+  <div id="fusion-wrapper">
+    <div id="harness-container">
+      <div id="wrapper" class="toggled">
+        <nav nav="" id="navbar-toolbar" class="navbar navbar-default navbar-static-top navbar-controlbar sys-mg-off-b syspro-toolbar ">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav " data-column="0">
+              <li data-guid="089924f1-ce90-4fad-856b-738e19f754bf" class="navbar-form form-inline" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="" data-container="body">
+                  
+
+
+                          <div class="form-group is-empty">
+                              <span class="spinner"></span>
+                              <label class="control-label" data-bind="htmltext:  Toolbar.IMPMENTB29001.Caption">ENTER PROGRAM</label>
+                              <input id="Toolbar.IMPMENTB29001" type="text" tabindex="-1" class="form-control syspro-toolbar-widget syspro-toolbar-widget-change syspro-toolbar-widget-editfield syspro-trackfield-keydown" data-fieldname="Toolbar.IMPMENTB29001" data-bind="entryvalue: Toolbar.IMPMENTB29001.Value, predictivesearch: Toolbar.IMPMENTB29001.PredictiveSearch, entryfieldevents: Toolbar.IMPMENTB29001.EntryFieldEvents" data-entryfieldevents="Tab,Focus">
+                              <span class="syspro-browse-button-container">
+                                  <a class="syspro-browse-button" data-fieldname="Toolbar.IMPMENTB29001" data-bind="attr: { data-fieldvalue: Toolbar.IMPMENTB29001.Value, data-predictivesearchfield: Toolbar.IMPMENTB29001.PredictiveSearch  }" data-fieldvalue="" data-predictivesearchfield="undefined">
+                                      <i class="material-icons">search</i>
+                                  </a>
+                              </span>
+                          </div>
+              </li>
+
+              <li data-guid="94de2e6c-da7f-4ed2-8702-098f65b9b594" data-tooltip="tooltip" data-placement="bottom" data-original-title="a tooltip">
+                  
+
+
+                  <a class="btn btn-default navbar-btn internal-offcanvas-toggle in-modal-window" data-toggle="offcanvas" data-target="#offcanvas-e6cd80f0-6685-45c0-d2fd-903e90c2912a" data-fieldname="">
+                          <i class="material-icons sys-fg-primary">adb</i>
+                      
+                  </a>
+
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" data-column="1">
+                
+
+
+
+
+
+    <li data-guid="34e479c1-d81a-4b4d-e1f3-5f6d79dcebdb" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="" data-container="body">
+        
+
+
+                <a id="Toolbar.IMPMENT200008" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.IMPMENT200008">
+                        <i class="material-icons sys-fg-primary">refresh</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.IMPMENT200008.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+
+
+
+
+
+
+    <li data-guid="4190b40e-10e3-461b-b30c-2445b9000054" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Show Favorites" data-container="body">
+        
+
+
+                <a id="Toolbar.IMPMENTB01236" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.IMPMENTB01236">
+                        <i class="material-icons sys-fg-primary">star</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.IMPMENTB01236.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+
+
+
+
+
+
+    <li data-guid="60a7de29-80ff-491d-af18-fe01266610eb" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Customize" data-container="body">
+        
+
+
+                <a id="Toolbar.xxxxxxxx11002" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.xxxxxxxx11002">
+                        <i class="material-icons sys-fg-primary">settings</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.xxxxxxxx11002.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+
+
+
+
+
+
+    <li data-guid="daccbcd1-aaf5-4520-b75a-bedf1030290c" class="" data-tooltip="tooltip" data-placement="bottom" data-trigger="hover" data-original-title="Customize" data-container="body">
+        
+
+
+                <a id="Toolbar.xxxxxxxx11002" tabindex="-1" href="#" class="syspro-toolbar-widget syspro-toolbar-widget-button" data-fieldname="Toolbar.xxxxxxxx11002">
+                        <i class="material-icons sys-fg-primary">settings</i>
+                    <span class="avanti-toolbar-button-caption" data-bind="htmltextnonull:  Toolbar.xxxxxxxx11002.ManualCaption">
+                        
+                    </span>
+                </a>
+    </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
+           
+          <!-- Error Notification empty element -->
+          <span id="errorNotification" style="display:none;"></span>
+          <div class="row sys-mg-t-15">    
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  <div class=" row widget layout-widget">     
+                    <div class="col-12">
+                      <div id="products"></div>
+                      <div class="dropZoneElement">
+                          <!-- File tree -->
+                          <div class="row sys-mg-t-10">
+                            <div class="col-xs-12">
+                                <div class="file-treeview file-explorer"></div>
+                            </div>
+                          </div>
+                          <div class="textWrapper">
+                            <p class="lead text-muted">Drag here to upload</p>
+                          </div>
+                      </div>
+              
+                      <input name="files" id="files" type="file" style="display: none;" />
+                    </div>   
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  <div class=" row widget layout-widget"> 
+                    <div class="col-12">
+                      <input name="files2" id="files2" type="file" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  <div class=" row widget layout-widget"> 
+                    <div class="col-12">
+                      <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs sys-fg-primary" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="#recordfiles">Files</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#voicenotes">Voice notes </a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div id="recordfiles" class="tab-pane fade active show sys-pd-t-5" role="tabpanel">
+                          <div class="list-group voicenoteslist">
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <span class="k-file-icon k-icon k-i-file-doc"></span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">                                  
+                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
+                                    <small class="sys-mg-r-10">12 Feb 2020</small>
+                                  </div>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="doc.docx"  data-extension="docx">doc.docx</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <span class="k-file-icon k-icon k-i-file-pdf"></span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">                                  
+                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
+                                    <small class="sys-mg-r-10">12 Feb 2020</small>
+                                  </div>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="invoice.pdf"  data-extension="pdf">invoice.pdf</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <span class="k-file-icon k-icon k-i-file-xls"></span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">                                  
+                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
+                                    <small class="sys-mg-r-10">12 Feb 2020</small>
+                                  </div>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="testspread.xlsx"  data-extension="xlsx">testspread.xlsx</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <span class="k-file-icon k-icon k-i-file-ppt"></span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">                                  
+                                    <h6 class="sys-mg-off-t sys-mg-off-b">James Mason</h6>
+                                    <small class="sys-mg-r-10">12 Feb 2020</small>
+                                  </div>
+                                  <a href="" class="sys-txt-lg fileviewerlink" data-filename="Interoception.pptx"  data-extension="pptx">Interoception.pptx</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        <div id="voicenotes" class="tab-pane fade sys-pd-t-5" role="tabpanel">
+                          <div class="list-group voicenoteslist">
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <div class="avatar-initials" width="46" height="46" data-name="James Mason"></div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">
+                                  
+                                    <h6 class="sys-mg-off-t sys-mg-b-5">James Mason</h6>
+                                    <small class="sys-mg-r-10">12 Feb 2020</small>
+                                  </div>
+                                  <audio
+                                      controls
+                                      src="https://ia802900.us.archive.org/16/items/mythium/JLS_ATI.mp3">
+                                          Your browser does not support the
+                                          <code>audio</code> element.
+                                  </audio>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <div class="avatar-initials" width="46" height="46" data-name="Felipe Pucinelli"></div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">
+                                  
+                                    <h6 class="sys-mg-off-t sys-mg-b-5">Felipe Pucinelli</h6>
+                                    <small class="sys-mg-r-10">3 days ago</small>
+                                  </div>
+                                  <audio
+                                      controls
+                                      src="https://ia802900.us.archive.org/16/items/mythium/JLS_ATI.mp3">
+                                          Your browser does not support the
+                                          <code>audio</code> element.
+                                  </audio>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="list-group-item">
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <div class="avatar-initials" width="46" height="46" data-name="Patrick Deloitte"></div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                  <div class="d-flex w-100 justify-content-between">
+                                  
+                                    <h6 class="sys-mg-off-t sys-mg-b-5">Patrick Deloitte</h5>
+                                    <small class="sys-mg-r-10">27 Oct, 10:15</small>
+                                  </div>
+                                  <audio
+                                      controls
+                                      src="https://ia802900.us.archive.org/16/items/mythium/JLS_ATI.mp3">
+                                          Your browser does not support the
+                                          <code>audio</code> element.
+                                  </audio>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  <div class=" row widget layout-widget"> 
+                    <div class="col-12">
+                      <div id="filemanager"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                    <script type="text/x-kendo-template" id="template">
+                  <div class="product">
+                      <img src="../content/web/foods/#= name #" alt="#: name # image" />
+                  </div>       
+              </script>
+          
+              <script>
+                  $(function () {
+                      // var template = kendo.template($("#template").html());
+                      // var initialFiles = [{ name: "1.jpg" }, { name: "2.jpg" }, { name: "3.jpg" }, { name: "4.jpg" }, { name: "5.jpg" }, { name: "6.jpg" }];
+          
+                      // $("#products").html(kendo.render(template, initialFiles));
+
+                      
+                    });
+              </script>  
+        </div>
+      </div>
+      <div class="statusBar sys-bg-inverse" style="display: block;">
+        <span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)  Your license expires February 1st           TUESDAY 8   JANUARY 2019</span>
+      </div>
+    </div>
+    <footer id="thefooter" style="background-image: url('../../Samples/UX_IMG_cloud_erp_light_footer.png');">
+      <span id="copyrightfooter">© SYSPRO All Rights Reserved. All trademarks are recognized.</span><span id="sysprofooter">Powered by SYSPRO ERP</span>
+    </footer>
+
+  </div>
+  <div id="fileWindow"></div>
+  <script src="js/UX_JS_bootstrap.js"></script>
+  <script src="js/UX_JS_forms.js"></script>
+  <!-- <script src="js/UX_JS_packery.min.js"></script> -->
+  <script src="js/fitty.min.js"></script>
+  <script src="js/jQuery.hoverForMore.js"></script>
+      
+  <script id="fileTemplate" type="text/x-kendo-template">
+    <div>
+        <p>Name: #=name#</p>
+        <p>Size: #=size# bytes</p>
+        <p>Extension: #=files[0].extension#</p>
+        <strong class='k-upload-status'>
+            <button type='button' class='k-upload-action'></button>
+            <button type='button' class='k-upload-action'></button>
+        </strong>
+    </div>
+  </script>      
+  <script type="text/javascript">
+    $.material.init();
+
+    $(document).ready(function() {
+
+
+// Kendo media player
+    $("#mediaplayer").kendoMediaPlayer({
+                autoPlay: false,
+                navigatable: true,
+                media: {
+                    title: "The title of the voice note",
+                    source: "https://archive.org/download/mythium/JLS_ATI.mp3"
+                }
+            });
+
+
+      $("#files2").kendoUpload({
+          async: {
+            withCredentials: false,
+            saveUrl: "https://duffssuitcase.com/upload.php",
+            removeUrl: "https://duffssuitcase.com/remove.php",
+            autoUpload: true
+          },
+          error: function(e) {
+            console.log(e);
+          },
+      });
+      var inline = new kendo.data.HierarchicalDataSource({
+        data: [
+            { name: "Accounts receivable", subCategories: [
+                { name: "Customers" },
+                { name: "Branches" },
+                { name: "Something", subCategories: [
+                { name: "Something" },
+                { name: "Something" },
+                { name: "Something" }
+            ] }
+            ] },
+            { name: "Inventory", subCategories: [
+                { name: "Stock codes" },
+                { name: "Price codes" },
+                { name: "Something" }
+            ] },
+            // { name: "Recent" },
+            // { name: "Starred" }
+        ],
+        schema: {
+            model: {
+                children: "subCategories"
+            }
+        }
+    });
+
+    $(".file-treeview").kendoTreeView({
+        template: kendo.template($("#treeview-template").html()),
+        dataSource: inline,                    
+        dataTextField: [ "name" ]
+    });
+
+
+    $("#files").kendoUpload({
+        async: {
+            withCredentials: false,
+            saveUrl: "https://duffssuitcase.com/upload.php",
+            removeUrl: "https://duffssuitcase.com/remove.php",
+            autoUpload: true
+        },
+        validation: {
+            allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif"]
+        },        
+        upload: onUpload,
+        success: onSuccess,
+        showFileList: false,
+        dropZone: ".dropZoneElement",
+        error: function(e) {
+          console.log(e);
+        },
+    });
+    
+    function onUpload(e) {
+      console.log(e);
+    }
+
+    function onSuccess(e) {
+        if (e.operation == "upload") {
+            for (var i = 0; i < e.files.length; i++) {
+                var file = e.files[i].rawFile;
+
+                if (file) {
+                    var reader = new FileReader();
+
+                    reader.onloadend = function () {
+                        $("<div class='product'><img src=" + this.result + " /></div>").appendTo($("#products"));
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+    }
+      
+    
+    // File viewer window
+        var fileWindow = $("#fileWindow");
+        
+        $(document).on("click", ".fileviewerlink", function(e) {
+          e.preventDefault();
+            const fileName = $(this).data("filename");
+            const fileExtension = $(this).data("extension");;
+            // fileWindow.data("kendoWindow").setOptions({
+            //   content: {
+            //     url: "https://duffssuitcase.com/upl/" + fileName},
+            //     iframe: true,
+            //   }
+            // );
+            let url;
+            if (["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "svg"].includes(fileExtension)) {
+              url = "https://duffssuitcase.com/upl/" + fileName;
+            } else if (["doc", "docx", "xls", "xlsx", "ppt", "pptx"].includes(fileExtension)) {
+              url = "https://view.officeapps.live.com/op/embed.aspx?src=https://duffssuitcase.com/upl/" + fileName;
+            } else if (fileExtension === "pdf") {
+              url = "https://docs.google.com/viewer?embedded=true&url=https://duffssuitcase.com/upl/" + fileName +  "&chrome=true";
+            } else {
+              url = "https://duffssuitcase.com/upl/" + fileName;
+            }
+            fileWindow.data("kendoWindow").refresh({
+              url: url,
+              iframe: true,
+            });
+            fileWindow.data("kendoWindow").maximize().open();
+          });
+        
+        fileWindow.kendoWindow({
+                width: "900px",
+                height: "800px",
+                visible: false,
+                content: {
+                  url: "",
+                  iframe: true
+                },
+                actions: [
+                    "Minimize",
+                    "Maximize",
+                    "Close"
+                ],
+                close: function() {
+                  fileWindow.data("kendoWindow").refresh({
+                    url: '',
+                    iframe: true,
+                  });
+                }
+                // close: onClose
+            });
+
+          $(document).on("click", ".k-file-success", function(e) {
+            const fileName = $(this).find(".k-file-name").attr("title");
+            const fileExtension = $(this).find(".k-file-extension").text();
+            // fileWindow.data("kendoWindow").setOptions({
+            //   content: {
+            //     url: "https://duffssuitcase.com/upl/" + fileName},
+            //     iframe: true,
+            //   }
+            // );
+            let url;
+            if (["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "svg"].includes(fileExtension)) {
+              url = "https://duffssuitcase.com/upl/" + fileName;
+            } else if (["doc", "docx", "xls", "xlsx", "ppt", "pptx"].includes(fileExtension)) {
+              url = "https://view.officeapps.live.com/op/embed.aspx?src=https://duffssuitcase.com/upl/" + fileName;
+            } else if (fileExtension === "pdf") {
+              url = "https://docs.google.com/viewer?embedded=true&url=https://duffssuitcase.com/upl/" + fileName +  "&chrome=true";
+            } else {
+              url = "https://duffssuitcase.com/upl/" + fileName;
+            }
+            fileWindow.data("kendoWindow").refresh({
+              url: url,
+              iframe: true,
+            });
+            fileWindow.data("kendoWindow").maximize().open();
+          });
+
+
+
+          var myData = [
+            {
+              name: "Images",
+              isDirectory: true,
+              hasDirectories: false,
+              path: "folder",
+              extension: "",
+              size: 0,
+              created: new Date(),
+              items: [
+                {
+                  name: "Images",
+                  isDirectory: false,
+                  hasDirectories: false,
+                  path: "https://duffssuitcase.com/upl/images.jpg",
+                  extension: ".jpg",
+                  size: 20,
+                  created: new Date(),
+                },
+                {
+                  name: "Images",
+                  isDirectory: false,
+                  hasDirectories: false,
+                  path: "https://duffssuitcase.com/upl/images.jpg",
+                  extension: ".jpg", 
+                  size: 20,
+                  created: new Date(),
+                }
+              ]        
+            },
+            {
+              name: "Contracts",
+              isDirectory: true,
+              hasDirectories: true,
+              path: "contracts",
+              extension: "",
+              size: 0,
+              created: new Date(),
+              items: [
+                {
+                  name: "Customers",
+                  isDirectory: true,
+                  hasDirectories: false,
+                  path: "contracts/customers",
+                  extension: "",
+                  size: 0,
+                  created: new Date(),
+                  items: [
+                    {
+                      name: "contract_1",
+                      isDirectory: false,
+                      hasDirectories: false,
+                      path: "https://duffssuitcase.com/upl/invoice.pdf",
+                      extension: ".pdf",
+                      size: 20,
+                      created: new Date(),
+                    },
+                    {
+                      name: "contract_2",
+                      isDirectory: false,
+                      hasDirectories: false,
+                      path: "https://duffssuitcase.com/upl/invoice.pdf",
+                      extension: ".pdf",
+                      size: 20,
+                      created: new Date(),
+                    }
+                  ]
+                },
+                {
+                  name: "Suppliers",
+                  isDirectory: true,
+                  hasDirectories: false,
+                  path: "contracts/suppliers",
+                  extension: "", 
+                  size: 0,
+                  createdUtc: new Date(),
+                  items: [
+                    {
+                      name: "contract_1",
+                      isDirectory: false,
+                      hasDirectories: false,
+                      path: "https://duffssuitcase.com/upl/invoice.pdf",
+                      extension: ".pdf",
+                      size: 20,
+                      createdUtc: new Date(),
+                    },
+                    {
+                      name: "contract_2",
+                      isDirectory: false,
+                      hasDirectories: false,
+                      path: "https://duffssuitcase.com/upl/invoice.pdf",
+                      extension: ".pdf",
+                      size: 20,
+                      createdUtc: new Date(),
+                    }
+                  ]
+                }
+              ]        
+            }
+          ];
+
+          $("#filemanager").kendoFileManager({
+            dataSource: {
+              schema: kendo.data.schemas.filemanager,
+              data: myData,
+            },
+            uploadUrl: "https://duffssuitcase.com/upload.php",
+            toolbar: {
+                items: [
+                    { name: "createFolder" },
+                    { name: "upload" },
+                    { name: "sortDirection" },
+                    { name: "sortField" },
+                    { name: "changeView" },
+                    { name: "spacer" },
+                    { name: "details" },
+                    { name: "search" }
+                ]
+            },
+            contextMenu: {
+                items: [
+                    { name: "rename" },
+                    { name: "delete" }
+                ]
+            },
+            views: {
+              tree: {
+                template: kendo.template($("#treeview-template").html()),
+              }
+            },
+            draggable: true,
+            resizable: true,
+            open: function(e) {
+              console.log(e.entry);
+              console.log(e.entry.extension.substring(1));
+              if (!e.entry.isDirectory) {
+                let url;
+                if (["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "svg"].includes(e.entry.extension.substring(1))) {
+                  url = e.entry.path;
+                } else if (["doc", "docx", "xls", "xlsx", "ppt", "pptx"].includes(e.entry.extension.substring(1))) {
+                  url = "https://view.officeapps.live.com/op/embed.aspx?src=" + e.entry.path;
+                } else if (e.entry.extension.substring(1) === "pdf") {
+                  url = "https://docs.google.com/viewer?embedded=true&url=" + e.entry.path;
+                } else {
+                  url = e.entry.path;
+                }
+                fileWindow.data("kendoWindow").refresh({
+                  url: url,
+                  iframe: true,
+                });
+                fileWindow.data("kendoWindow").maximize().open();
+              }
+            }
+        });
+
+        // Avatar stuff
+
+        var colors = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"];
+
+        var avatarElement = $('.avatar-initials');
+        avatarElement.each(function(idx, elem) {
+            var avatarWidth = $(elem).attr('width'),
+              avatarHeight = $(elem).attr('height'),
+              
+              name = $(elem).data('name'),
+              initials = name.split(' ')[0].charAt(0).toUpperCase() + name.split(" ")[1].charAt(0).toUpperCase(),
+
+              charIndex = initials.charCodeAt(0) - 65,
+              colorIndex = charIndex % 19;
+
+          $(elem).css({
+            'background-color': colors[colorIndex],
+            'width': avatarWidth,
+            'height': avatarHeight,
+            'font' : avatarWidth / 2 + "px Arial",
+            'color': '#FFF',
+            'textAlign': 'center',
+            'lineHeight': avatarHeight + 'px',
+            'borderRadius': '50%'
+          })
+          .html(initials);
+        });
+            
+
+        // Change "{}" to your options:
+        // https://github.com/sampotts/plyr/#options
+        $('audio').each(function(idx, elem) {
+          const player = new Plyr(elem, {
+            controls: [
+              'play',
+              'progress',
+              'current-time',
+              'duration',
+              // 'download'
+            ]
+          });
+        })
+        
+
+        // // Expose player so it can be used from the console
+        // window.player = player;
+
+    });
+
+  </script>
+  
+  </body>
+</html>

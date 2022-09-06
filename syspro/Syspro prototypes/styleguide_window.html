@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xs-12">
+    <a href="#" class="sys-mg-r-15 btn btn-primary btn-lg" onclick="uploadFileWindow.center().open()">
+      Open modal window
+    </a>
+  </div>
+</div>
+
+<div id="uploadFileWindow">
+  <div class="container-fluid window-container">
+      <div class="row window-content sys-pd-t-15">
+
+          <div class="col-sm-12">
+              <span id="" class="pull-right">
+                  <button type="button" id="" class="btn btn-primary pull-right sys-mg-l-5 disabled" disabled>OK</button>
+              </span>
+              <button type="button" class="btn btn-default pull-right closeWindow">Cancel</button>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+<script>
+  const uploadFileWindow = $("#uploadFileWindow").kendoWindow({ //create a window
+    actions: ["close"],
+    draggable: true,
+    minHeight: "200px",
+    minWidth: "200px",
+    width: "900px",
+    height: "550px",
+    modal: true,
+    position: {
+        top: "50%",
+        left: "50%"
+    },
+    animation: {
+        open: {
+            effects: "fadeIn",
+            duration: 100
+        },
+        close: {
+            effects: "fadeOut",
+            duration: 80
+        }
+    },
+    resizable: true,
+    title: "Add new document",
+    visible: false,
+    open: function() {
+      const windowHolder = $('#uploadFileWindow').data('kendoWindow');
+      windowHolder.wrapper.addClass('compact-window');
+    }
+}).data("kendoWindow");
+</script>

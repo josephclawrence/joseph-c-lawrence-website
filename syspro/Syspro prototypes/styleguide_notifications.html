@@ -1,0 +1,40 @@
+<span id="taskdialognotification" style="display:none;"></span>
+<div class="row sys-mg-t-5">
+
+  <div class="col-sm-12">
+
+    <button type="button" class="btn btn-lg btn-primary sys-mg-b-15" id="notification">Show notification</button>
+    <p>Click multiple times to show multiple notifications</p>
+    
+  </div>
+  
+</div>
+
+<script id="taskDialogTemplate" type="text/x-kendo-template">
+  <div class="#= BackgroundColor # error-template notification-template">
+    <i class="material-icons #= IconColor #">#= Icon #</i>
+    <h3 class="sys-fg-white">#= Title #</h3>
+    <p class="sys-fg-white">#= MainInstruction #</p>
+    <p class="sys-fg-white">#= Content #</p>
+         #if ((typeof Hyperlink !== 'undefined') && Hyperlink) { #
+         <a class="sys-fg-white task-dialog-hyperlink" data-hyperlinkid="#= HyperlinkId #">#= Hyperlink #</a>
+         #}#
+  </div>
+</script>
+
+<script>
+    
+  $.material.init();
+          
+  $("#notification").click(function() {
+    const random = Math.random();
+
+    if (random <= .33) {
+      sysproInterop.showCustomTaskDialog("sys-bg-primary", "sys-fg-white", 'Notification title', 'And the message for the notification', "", "wifi_tethering");
+    } else if (random >= .34 && random <= .66) {
+      sysproInterop.showCustomTaskDialog("sys-bg-danger", "sys-fg-white", "Connection with Avanti server lost", "Please wait while Avanti attempts to reconnect.", "", "portable_wifi_off");
+    } else {
+      sysproInterop.showCustomTaskDialog("sys-bg-success", "sys-fg-white", "Connection successful", "You may continue using Avanti.", "", "wifi");
+    }
+  });
+</script>
