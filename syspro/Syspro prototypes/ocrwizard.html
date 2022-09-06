@@ -11,9 +11,9 @@
 
         <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
         <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
-        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+        <link href="css/kendo.dataviz.min.css" rel="stylesheet" />
 
-        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
         <link href="css/UX_CSS_sysprostyle.css" rel="stylesheet" />
         <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
 
@@ -564,6 +564,17 @@
         }
         .k-file-name-size-wrapper {
             max-width: calc(100% - 35px - 7em);
+        }
+        .k-combobox .k-dropdown-wrap .k-input, .k-dropdown .k-dropdown-wrap .k-input {
+            background: #ecf0f1;
+            height: 25px;
+        }
+        .k-combobox .k-dropdown-wrap .k-select, .k-dropdown .k-dropdown-wrap .k-select {
+            border-bottom-right-radius: 3px;
+        }
+        .k-upload {
+            position: relative;
+            border: none;
         }
         </style>
     </head>
@@ -1123,12 +1134,12 @@
                         $("#ocrHighLightWrapper").height(ocrImageHeight);
                         
 
-                        fetch('https://api.myjson.com/bins/gn33c').then(response => {
+                        fetch('https://api.jsonbin.io/v3/b/630cb931e13e6063dc910278').then(response => {
                             return response.json();
                         }).then(data => {
                             // Work with JSON data here
-                            console.log(data);
-                            data.recognitionResult.lines.forEach(line => {
+                            console.log(data.record);
+                            data.record.recognitionResult.lines.forEach(line => {
                                 const bb = line.boundingBox;   
                                 
                                 const path = new Path({
@@ -1224,7 +1235,6 @@
                     reader.readAsDataURL(raw);
                     }
                 }
-            });
 
                 $.material.init();
                 $('[data-tooltip="tooltip"]').tooltip();
