@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+        <link href="css/UX_CSS_bootstrap.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/postcss.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+        <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
+
+        <style>
+
+
+        /* File dropzone */
+        .k-dropzone {
+            /* margin-bottom: 20px; */
+            background-color: #ecf0f1 !important;
+        }
+
+        .fileUploadDropZone {
+            border: 2px dashed #bdc3c7;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            padding: 0px;
+            /* height: 124px; */
+        }
+        .fileUploadDropZone .k-widget {
+            background-color: transparent;
+        }
+        .k-dropzone-hovered,
+        .k-dropzone.k-dropzone-hovered .k-upload-button.k-button {
+            border-radius: 8px;
+            background-color: #e8f3f9 !important;
+        }
+        .k-dropzone .k-button {
+            width: 100%;
+            height: 100%;
+            background-color: #ecf0f1 !important;
+            height: 120px;
+        }
+        .k-upload.k-header {
+            background: transparent;
+            border: 0px solid transparent;
+        }
+        .k-dropzone .k-upload-button span {
+            font-size: 22px;
+            color: #7f8c8d;
+        }
+        .k-dropzone .material-icons {
+            font-size: 40px;
+        }
+        .docPreview {
+            display: flex;
+            background: #ecf0f1;
+            border-radius: 12px;
+            height: 455px;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;  
+        }
+        .docPreview i {
+            color: #bdc3c7;
+            font-size: 100px;
+            margin-bottom: 30px;
+        }
+
+
+        .form-group.label-floating label.control-label {
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+        .form-group.label-floating:not(.is-empty) label.control-label, .form-group.label-floating.is-focused label.control-label {
+            left: 0px;
+        }
+        .bootstrap-tagsinput {
+            width: 100%;
+            box-shadow: none;
+            border: none;
+            height: 33px;
+        }
+        #uploadFileWindow .form-group {
+            margin-bottom: 30px;
+            margin-top: 15px;
+            
+        }
+
+        .has-tags.form-group.label-floating label.control-label {
+            font-size: 12px;
+            line-height: 1.07142857;
+            top: -18px;
+            left: 0px;
+        }
+        .image-preview {
+            position: relative;
+            vertical-align: middle;
+            max-height: 45px;
+            max-width: 60px;
+        }
+        .k-upload-status .k-i-warning {
+            /* display: none; */
+            color: #d92800;
+            margin-right: 4px;
+            font-size: 20px;
+            
+        }
+        .k-upload-status .k-button {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+        }
+        .k-file .k-icon {
+            font-size: 20px;
+        }
+        .k-file .k-i-retry {
+            color: #27ae60;
+        }
+        .k-file .k-i-close {
+            color: #d92800;
+        }
+        .k-dropzone .k-upload-status.k-upload-status-total {
+            display: none !important;
+        }
+        .k-upload-files .k-upload-status {
+            opacity: 1;
+            margin-left: auto !important;
+        }
+        .k-upload-files .k-file {
+            align-items: center;
+        }
+        .k-upload-action:hover {
+            opacity: 0.8;
+        }
+        .k-file-name {
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .k-file-name-size-wrapper {
+            max-width: calc(100% - 35px - 7em);
+        }
+        .file-upload-details {
+            display: none;
+        }
+        </style>
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <script src="js/UX_JS_velocity.min.js"></script>
+        <script src="js/kendo.all.js"></script>
+        <script src="js/UX_JS_immutable.min.js"></script>
+    </head>
+
+    <body data-column-layout="3col" style="padding-top:0px;">
+        <div id="invisibleNode" style="display: none;"></div>
+        <div id="invisibleToolbarNode" style="display: none;"></div>
+
+        <nav
+            id="fusion-toolbar"
+            class="navbar navbar-default navbar-fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar"
+        >
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right sys-fg-primary">
+                    <li class=" nav-item">
+                        <a
+                            href="#"
+                            class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle"
+                            data-toggle="offcanvas"
+                            data-target="#offcanvas-2"
+                        >
+                            <i class="material-icons">notifications</i> <span class="badge sys-bg-danger">8</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="wrapper" class="toggled">
+            <div class="container-fluid sys-mg-t-15" id="main-container">
+                <div class="row sys-mg-t-15">
+                    <div class="col-4 col-sm-4 col-xs-4 column-parent sys-mg-t-15 offset-4">
+                        <div class="panel sys-bd-off sys-box-shadow-off">
+                            <div class="panel-body main-column ">
+                                <div class="layout-widget sys-pd-10 sys-box-shadow-3">
+                                    <div class="fileUploadDropZone">
+                                        <input name="files" id="files" type="file" />
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Off Canvas menus -->
+
+        <script src="js/UX_JS_bootstrap.js"></script>
+        <script src="js/UX_JS_forms.js"></script>
+        <script src="js/UX_JS_ripples.min.js"></script>
+
+        <script id="fileTemplate" type="text/x-kendo-template">
+            <span class='k-progress'></span>
+            <div class='file-wrapper'>
+                <i class='sys-txt-lg icofont-file-#=addExtensionClass(files[0].extension)#'></i>
+                <h4 class='file-heading file-name-heading'>Name: #=name#</h4>
+                <!-- <h5 class='file-heading file-size-heading'>Size: #=size# bytes</h5> -->
+                <span class="k-file-validation-message k-text-error">#=size#</span>
+                <strong class="k-upload-status">
+                    <button type='button' class='k-upload-action btn-primary'></button>
+                    <button type='button' class='k-upload-action btn-primary'></button>
+                </strong>
+            </div>
+        </script>
+
+        <script>
+            $(document).ready(function() {
+
+                $.material.init();
+                $('[data-tooltip="tooltip"]').tooltip();
+
+
+                $("#files").kendoUpload({
+                    async: {
+                        saveUrl: "save",
+                        removeUrl: "remove",
+                        autoUpload: true,
+                    },
+                    validation: {
+                        allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
+                    },
+                    // template: kendo.template($('#fileTemplate').html()),
+                    success: onSuccess,
+                    showFileList: true,
+                    select: function(e) {
+                        var fileInfo = e.files[0];
+                        var wrapper = this.wrapper;
+
+                        setTimeout(function(){
+                            addPreview(fileInfo, wrapper);
+                        });
+                    }
+                   // dropZone: ".fileUploadDropZone",
+                });
+
+                $(".k-dropzone")
+                    .find("em")
+                    .remove();
+                $(".k-dropzone .k-upload-button")
+                    .find("span")
+                    .text("Drop file here or click to upload");
+                $(".k-dropzone .k-upload-button").prepend(
+                    "<h3 class='sys-mg-t-10 sys-mg-r-10'><i class='material-icons text-muted'>cloud_upload</i></h3>"
+                );
+
+                function onSuccess(e) {
+                    console.log('upload success!');  
+                    $(".file-upload-details").show(300);                  
+                }
+                
+                function addPreview(file, wrapper) {
+                    var raw = file.rawFile;
+                    var reader  = new FileReader();
+
+                    if (raw) {
+                    reader.onloadend = function () {
+                        var preview = $("<img class='image-preview'>").attr("src", this.result);
+
+                        wrapper.find(".k-file[data-uid='" + file.uid + "'] .k-file-extension-wrapper")
+                        .replaceWith(preview);
+                    };
+
+                    reader.readAsDataURL(raw);
+                    }
+                }
+            });
+
+            function addExtensionClass(extension) {
+                switch (extension) {
+                    case '.jpg':
+                    case '.img':
+                    case '.png':
+                    case '.gif':
+                        return "jpg";
+                    case '.doc':
+                    case '.docx':
+                        return "word";
+                    case '.xls':
+                    case '.xlsx':
+                        return "excel";
+                    case '.pdf':
+                        return "pdf";
+                    default:
+                        return "alt";
+                }
+            }
+            // Windows
+
+            
+            </script>
+    </body>
+</html>
