@@ -262,7 +262,7 @@
   <script src="js/UX_JS_cssZZElementQueries.js"></script>
   <script type="text/javascript">
     // $.material.init();
-
+    ElementQueries.listen();
     function adaptLayout(elem, numCharts) {
       console.log(numCharts);
       const classes = `row row-cols-1 row-cols-sm-2 row-cols-md-${numCharts} justify-content-center`;
@@ -594,9 +594,9 @@
         }
     ]];
 
-    $(window).load(function() {
-      ElementQueries.init();
-    })
+    // $(window).load(function() {
+    //   ElementQueries.init();
+    // })
   </script>
   
   </body>
