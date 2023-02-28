@@ -18,19 +18,54 @@
 				<link rel="stylesheet" href="css/gridstack.min.css">
 				<link rel="stylesheet" href="css/gridstack-extra.css">
         <style>
-          .adjust-width-wrapper[min-width~='768px'] .row-cols-md-4 > * {
+          .adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-4 > * {
                 flex: 0 0 auto;
-                width: 25%;
+                width: 100%;
             }
-            .adjust-width-wrapper[min-width~='768px'] .row-cols-md-3 > * {
+            .adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-3 > * {
                 flex: 0 0 auto;
-                width: 33.3333333333%;
+                width: 100%;
             }
-            .adjust-width-wrapper[min-width~='768px'] .row-cols-md-2 > * {
+            .adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+          .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-4 > * {
                 flex: 0 0 auto;
                 width: 50%;
             }
-
+            .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+            .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+          .adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-4 > * {
+                flex: 0 0 auto;
+                width: 33.3333333333%;
+            }
+            .adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 33.3333333333%;
+            }
+            .adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+            .adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-4 > * {
+                flex: 0 0 auto;
+                width: 25%;
+            }
+            .adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 33.3333333333%;
+            }
+            .adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
 
 
         </style>
@@ -301,6 +336,11 @@
           createChart($(`[data-chart-pos=${idx+1}] .multi-chart-item`), ["line", "bar", "radarLine", "donut"][idx], chartSet);
         });
 
+        setTimeout(function() {
+          $(".multi-chart-item").each(function(idx, elem) {
+            $(elem).data("kendoChart").redraw();
+          })
+        }, 350);
     } 
 
     $(document).ready(function() {
@@ -317,6 +357,11 @@
             return (className.match (/(^|\s)col-sm-\S+/g) || []).join(' ');
         });
         $("#datColumn").addClass(`col-sm-${value}`);
+        setTimeout(function() {
+          $(".multi-chart-item").each(function(idx, elem) {
+            $(elem).data("kendoChart").redraw();
+          })
+        }, 350);
       });
       $("#chartTheme").on("change", function(e) {
         const value = $(this).val();
