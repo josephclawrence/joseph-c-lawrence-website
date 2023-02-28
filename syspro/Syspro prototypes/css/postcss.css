@@ -20904,15 +20904,3 @@ div.hopscotch-bubble .hopscotch-actions {
                 flex: 0 0 auto;
                 width: 50%;
             }
-        .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2 > * {
-              flex: 0 0 auto;
-              width: 50%;
-          }
-          .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2 > * {
-            flex: 0 0 auto;
-            width: 50%;
-        }
-        .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2 > * {
-              flex: 0 0 auto;
-              width: 50%;
-          }
