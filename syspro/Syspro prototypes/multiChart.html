@@ -93,8 +93,7 @@
         <script src="js/UX_JS_jquery.min.js"></script>
         <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
         <script src="js/UX_JS_kendo.all.min.js"></script>
-        <script src="js/UX_JS_cssResizeSensor.js"></script>
-  <script src="js/UX_JS_cssZZElementQueries.js"></script>
+        
 
     </head>
 
@@ -259,7 +258,8 @@
   <script src="js/UX_JS_bootstrap.js"></script>
   <script src="js/UX_JS_forms.js"></script>
   <script src="js/fitty.min.js"></script>
-  
+  <script src="js/UX_JS_cssResizeSensor.js"></script>
+  <script src="js/UX_JS_cssZZElementQueries.js"></script>
   <script type="text/javascript">
     // $.material.init();
 
@@ -344,7 +344,7 @@
     } 
 
     $(document).ready(function() {
-      ElementQueries.init();
+      
       initialiseMultiChart($("#s209"), data);
 
       
@@ -594,6 +594,9 @@
         }
     ]];
 
+    $(window).load(function() {
+      ElementQueries.init();
+    })
   </script>
   
   </body>
