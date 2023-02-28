@@ -20892,15 +20892,51 @@ div.hopscotch-bubble .hopscotch-actions {
 }
 /* Theme overrides */
 /* @import 'modules/overrides_dark.css'; */
-/* .adjust-width-wrapper[min-width~='768px'] .row-cols-md-4 > * {
-                flex: 0 0 auto;
-                width: 25%;
-            }
-            .adjust-width-wrapper[min-width~='768px'] .row-cols-md-3 > * {
-                flex: 0 0 auto;
-                width: 33.3333333333%;
-            }
-            .adjust-width-wrapper[min-width~='768px'] .row-cols-md-2 > * {
-                flex: 0 0 auto;
-                width: 50%;
-            } */
+.adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-4 > * {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-3 > * {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-2 > * {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-4 > * {
+    flex: 0 0 auto;
+    width: 50%;
+}
+.adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-3 > * {
+    flex: 0 0 auto;
+    width: 50%;
+}
+.adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+}
+.adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-4 > * {
+    flex: 0 0 auto;
+    width: 33.3333333333%;
+}
+.adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-3 > * {
+    flex: 0 0 auto;
+    width: 33.3333333333%;
+}
+.adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+}
+.adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-4 > * {
+    flex: 0 0 auto;
+    width: 25%;
+}
+.adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-3 > * {
+    flex: 0 0 auto;
+    width: 33.3333333333%;
+}
+.adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-2 > * {
+    flex: 0 0 auto;
+    width: 50%;
+}
