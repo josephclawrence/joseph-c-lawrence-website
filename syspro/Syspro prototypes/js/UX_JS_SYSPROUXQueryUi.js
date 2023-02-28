@@ -4524,6 +4524,12 @@ var SYSPROInteropClass = (function () {
                 console.log("---------------------------------------------------------------------resizeSparklines Tiles");
                 InteropHolder.resizeSparklines($(prefixSelector + " .tile:visible", selectorItem));
                 InteropHolder.sizeTiles(0, null);
+                if ( sysproInterop.gridStackActive && $(selectorItem).closest('.collapse').length ) {
+                    const gridStackId = $(selectorItem).closest('.grid-stack').attr('data-grid-id');
+                    const gridStackWidget = $(selectorItem).closest('.grid-stack-item')[0];
+                    const height = $(selectorItem).closest('.collapse').actual('outerHeight', { includeMargin: true }) + 45;
+                    resizeGridStackItem(gridStackId, gridStackWidget, height, false);
+                  }
             }, function (result) {
                 try {
                     $.each($(prefixSelector + " .tile:visible", selectorItem), function (index) {

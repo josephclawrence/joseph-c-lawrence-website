@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+        <link href="css/UX_CSS_bootstrap.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+				<link href="css/postcss.css" rel="stylesheet" />
+				<link rel="stylesheet" href="css/gridstack.min.css">
+				<link rel="stylesheet" href="css/gridstack-extra.css">
+        <style>
+          .adjust-width-wrapper > div[min-width~='768px'] .row-cols-md-4 > * {
+                flex: 0 0 auto;
+                width: 25%;
+            }
+            .adjust-width-wrapper > div[min-width~='768px'] .row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 33.3333333333%;
+            }
+            .adjust-width-wrapper > div[min-width~='768px'] .row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+        .adjust-width-wrapper > div[min-width~='576px'] .row-cols-sm-2 > * {
+              flex: 0 0 auto;
+              width: 50%;
+          }
+          .adjust-width-wrapper > div[min-width~='576px'] .row-cols-sm-2 > * {
+            flex: 0 0 auto;
+            width: 50%;
+        }
+        .adjust-width-wrapper > div[min-width~='576px'] .row-cols-sm-2 > * {
+              flex: 0 0 auto;
+              width: 50%;
+          }
+
+        </style>
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
+        <script src="js/UX_JS_kendo.all.min.js"></script>
+        <script src="js/UX_JS_cssResizeSensor.js"></script>
+  <script src="js/UX_JS_cssZZElementQueries.js"></script>
+
+    </head>
+
+<body data-theme="" data-column-layout="" class="light-gradient-background body-view-mode">
+  <div id="fusion-wrapper">
+    <div id="harness-container">
+      <div id="wrapper" class="toggled">
+
+        <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
+           
+          <!-- Error Notification empty element -->
+          <span id="errorNotification" style="display:none;"></span>
+          <div class="row sys-mg-t-15">    
+            <div class="col-sm-8 col-12 column-parent" id="datColumn">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  <div id="s209" class=" row widget layout-widget"> 
+                    <div class="container adjust-width-wrapper">
+                      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center">
+                        <div class="col" data-chart-pos="1">
+                          <div class="multi-chart-item"></div>
+                        </div>
+                        <div class="col" data-chart-pos="2">
+                          <div class="multi-chart-item"></div>
+                        </div>
+                        <div class="col" data-chart-pos="3">
+                          <div class="multi-chart-item"></div>
+                        </div>
+                        <div class="col" data-chart-pos="4">
+                          <div class="multi-chart-item"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  <div id="" class=" row widget layout-widget"> 
+                    <h4>Configuration</h4>
+                    <div class="col-12">
+                      <h5 id="" class="sys-mg-off-b">Block width</h5>
+                      <div class="btn-group" role="group" aria-label="Number of charts">
+                        <input type="radio" class="btn-check" name="blockWidth" id="blockWidth1" autocomplete="off" value="4" >
+                        <label class="btn btn-outline-primary" for="blockWidth1">1</label>
+                      
+                        <input type="radio" class="btn-check" name="blockWidth" id="blockWidth2" autocomplete="off" value="8" checked>
+                        <label class="btn btn-outline-primary" for="blockWidth2">2</label>
+                      
+                        <input type="radio" class="btn-check" name="blockWidth" id="blockWidth3" autocomplete="off" value="12" >
+                        <label class="btn btn-outline-primary" for="blockWidth3">3</label>
+
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <h5 class="sys-mg-off-b">Number of charts</h5>
+                      <div class="btn-group" role="group" aria-label="Number of charts">
+                        <input type="radio" class="btn-check" name="numcharts" id="chart1" autocomplete="off" value="1" >
+                        <label class="btn btn-outline-primary" for="chart1">1</label>
+                      
+                        <input type="radio" class="btn-check" name="numcharts" id="chart2" autocomplete="off" value="2">
+                        <label class="btn btn-outline-primary" for="chart2">2</label>
+                      
+                        <input type="radio" class="btn-check" name="numcharts" id="chart3" autocomplete="off" value="3">
+                        <label class="btn btn-outline-primary" for="chart3">3</label>
+                        
+                        <input type="radio" class="btn-check" name="numcharts" id="chart4" autocomplete="off" value="4" checked>
+                        <label class="btn btn-outline-primary" for="chart4">4</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <h5 id="series-options-1" class="sys-mg-off-b">Chart 1 type</h5>
+                      <div class="btn-group" role="group" aria-label="Number of charts">
+                        <input type="radio" class="btn-check" name="chart_1_type" id="chart1line" autocomplete="off" value="line" checked>
+                        <label class="btn btn-outline-primary" for="chart1line">Line</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_1_type" id="chart1bar" autocomplete="off" value="bar" >
+                        <label class="btn btn-outline-primary" for="chart1bar">Bar</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_1_type" id="chart1donut" autocomplete="off" value="donut">
+                        <label class="btn btn-outline-primary" for="chart1donut">Donut</label>
+                        
+                        <input type="radio" class="btn-check" name="chart_1_type" id="chart1radar" autocomplete="off" value="radarLine">
+                        <label class="btn btn-outline-primary" for="chart1radar">Radar</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <h5 id="series-options-2" class="sys-mg-off-b">Chart 2 type</h5>
+                      <div class="btn-group" role="group" aria-label="Number of charts">
+                        <input type="radio" class="btn-check" name="chart_2_type" id="chart2line" autocomplete="off" value="line" >
+                        <label class="btn btn-outline-primary" for="chart2line">Line</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_2_type" id="chart2bar" autocomplete="off" value="bar" checked>
+                        <label class="btn btn-outline-primary" for="chart2bar">Bar</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_2_type" id="chart2donut" autocomplete="off" value="donut" >
+                        <label class="btn btn-outline-primary" for="chart2donut">Donut</label>
+                        
+                        <input type="radio" class="btn-check" name="chart_2_type" id="chart2radar" autocomplete="off" value="radarLine">
+                        <label class="btn btn-outline-primary" for="chart2radar">Radar</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <h5 id="series-options-3" class="sys-mg-off-b">Chart 3 type</h5>
+                      <div class="btn-group" role="group" aria-label="Number of charts">
+                        <input type="radio" class="btn-check" name="chart_3_type" id="chart3line" autocomplete="off" value="line" >
+                        <label class="btn btn-outline-primary" for="chart3line">Line</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_3_type" id="chart3bar" autocomplete="off" value="bar">
+                        <label class="btn btn-outline-primary" for="chart3bar">Bar</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_3_type" id="chart3donut" autocomplete="off" value="donut">
+                        <label class="btn btn-outline-primary" for="chart3donut">Donut</label>
+                        
+                        <input type="radio" class="btn-check" name="chart_3_type" id="chart3radar" autocomplete="off" value="radarLine" checked>
+                        <label class="btn btn-outline-primary" for="chart3radar">Radar</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <h5 id="series-options-4" class="sys-mg-off-b">Chart 4 type</h5>
+                      <div class="btn-group" role="group" aria-label="Number of charts">
+                        <input type="radio" class="btn-check" name="chart_4_type" id="chart4line" autocomplete="off" value="line" >
+                        <label class="btn btn-outline-primary" for="chart4line">Line</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_4_type" id="chart4bar" autocomplete="off" value="bar">
+                        <label class="btn btn-outline-primary" for="chart4bar">Bar</label>
+                      
+                        <input type="radio" class="btn-check" name="chart_4_type" id="chart4donut" autocomplete="off" value="donut" checked>
+                        <label class="btn btn-outline-primary" for="chart4donut">Donut</label>
+                        
+                        <input type="radio" class="btn-check" name="chart_4_type" id="chart4radar" autocomplete="off" value="radarLine">
+                        <label class="btn btn-outline-primary" for="chart4radar">Radar</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <h5>Palette</h5>
+                      <select class="form-select" id="chartTheme">
+                        <option value="nova" selected>Nova</option>
+                        <option value="material">Material</option>
+                        <option value="flat">Flat</option>
+                        <option value="blueOpal">Blue Opal</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="statusBar sys-bg-inverse" style="display: block;">
+        <span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)  Your license expires February 1st           TUESDAY 8   JANUARY 2019</span>
+      </div>
+    </div>
+    <footer id="thefooter" style="background-image: url('Samples/UX_IMG_cloud_erp_light_footer.png');">
+      <span id="copyrightfooter">© SYSPRO All Rights Reserved. All trademarks are recognized.</span><span id="sysprofooter">Powered by SYSPRO ERP</span>
+    </footer>
+
+  </div>
+  <div id="fileWindow"></div>
+  <script src="js/UX_JS_bootstrap.js"></script>
+  <script src="js/UX_JS_forms.js"></script>
+  <script src="js/fitty.min.js"></script>
+  
+  <script type="text/javascript">
+    // $.material.init();
+
+    function adaptLayout(elem, numCharts) {
+      console.log(numCharts);
+      const classes = `row row-cols-1 row-cols-sm-2 row-cols-md-${numCharts} justify-content-center`;
+      console.log(classes);
+      console.log(elem);
+      elem.find(".row-cols-1").removeClass().addClass(classes);
+      $("[data-chart-pos]").hide();
+      for (i = 0; i < numCharts; i++) {
+        $(`[data-chart-pos=${i+1}]`).show();
+      }
+
+    }
+
+    function createChart(elem, type, series) {
+        $(elem).kendoChart({
+            theme: "nova",
+            dataSource: {
+                data: series
+            },
+            title: {
+                text: "A demo chart"
+            },
+            legend: {
+                visible: false
+            },
+            // seriesColors: [
+            //   "#f95d6a", 
+            //   "#003f5c",
+            //   "#2f4b7c",
+            //   "#665191",
+            //   "#a05195",
+            //   "#d45087",
+              
+            //   "#ff7c43",
+            //   "#ffa600",
+            // ],
+            seriesDefaults: {
+                type: type,
+                style: "smooth",
+                overlay: {
+                  gradient: "none"
+                }                
+            },
+            series: [{
+                field: "value",
+                categoryField: "year",
+                name: "United States"
+            }],
+            valueAxis: {
+                labels: {
+                    format: "{0}%"
+                },
+                line: {
+                    visible: false
+                }
+            },
+            categoryAxis: {
+                majorGridLines: {
+                    visible: false
+                }
+            }
+        });
+    }
+
+    function initialiseMultiChart(elem, chartData) {
+        if (!elem || !chartData) return;
+        // Alter layout CSS
+        adaptLayout(elem, chartData.length);
+
+        chartData.forEach((chartSet, idx) => {
+          createChart($(`[data-chart-pos=${idx+1}] .multi-chart-item`), ["line", "bar", "radarLine", "donut"][idx], chartSet);
+        });
+
+    } 
+
+    $(document).ready(function() {
+      ElementQueries.init();
+      initialiseMultiChart($("#s209"), data);
+
+      
+      $("[name=blockWidth]").on("change", function(e) {
+        const value = $(this).val();
+
+        console.log(value);
+        // $("#datColumn").removeClass("col-sm-*");
+        $("#datColumn").removeClass (function (index, className) {
+            return (className.match (/(^|\s)col-sm-\S+/g) || []).join(' ');
+        });
+        $("#datColumn").addClass(`col-sm-${value}`);
+      });
+      $("#chartTheme").on("change", function(e) {
+        const value = $(this).val();
+        $(".multi-chart-item").each(function(idx, elem) {
+          $(elem).data("kendoChart").setOptions({ theme: value })
+        })
+        
+        console.log(value);
+      });
+
+      $("[name=numcharts]").on("change", function(e) {
+        const value = $(this).val();
+        initialiseMultiChart($("#s209"), data.slice(0, value));
+        console.log(value);
+      });
+
+      $("[name=chart_1_type]").on("change", function(e) {
+        const value = $(this).val();
+        $("[data-chart-pos=1] .multi-chart-item").data("kendoChart").setOptions({ seriesDefaults: { type: value } })
+        console.log(value);
+      });
+
+      $("[name=chart_2_type]").on("change", function(e) {
+        const value = $(this).val();
+        $("[data-chart-pos=2] .multi-chart-item").data("kendoChart").setOptions({ seriesDefaults: { type: value } })
+        console.log(value);
+      });
+
+      $("[name=chart_3_type]").on("change", function(e) {
+        const value = $(this).val();
+        $("[data-chart-pos=3] .multi-chart-item").data("kendoChart").setOptions({ seriesDefaults: { type: value } })
+        console.log(value);
+      });
+
+      $("[name=chart_4_type]").on("change", function(e) {
+        const value = $(this).val();
+        $("[data-chart-pos=4] .multi-chart-item").data("kendoChart").setOptions({ seriesDefaults: { type: value } })
+        console.log(value);
+      });
+
+    });
+
+    var data = [[
+        {
+            "year": "1994",
+            "value": 4.9
+        },      
+        {
+            "year": "1999",
+            "value": 35.9
+        },
+        {
+            "year": "2007",
+            "value": 75.3
+        },
+        {
+            "year": "2008",
+            "value": 74.2
+        },
+        {
+            "year": "2009",
+            "value": 71.2
+        },
+        {
+            "year": "2010",
+            "value": 74.2
+        },
+        {
+            "year": "2011",
+            "value": 78.2
+        },
+        {
+            "year": "1996",
+            "value": 16.4
+        },
+        {
+            "year": "1997",
+            "value": 21.6
+        },
+        {
+            "year": "1998",
+            "value": 30.1
+        },
+    ],
+    [
+        {
+            "year": "1994",
+            "value": 4.9
+        },
+        {
+            "year": "1995",
+            "value": 9.2
+        },
+
+        {
+            "year": "1997",
+            "value": 21.6
+        },
+        {
+            "year": "1998",
+            "value": 30.1
+        },
+        {
+            "year": "1999",
+            "value": 35.9
+        },
+        {
+            "year": "2000",
+            "value": 43.1
+        },
+
+        {
+            "year": "2004",
+            "value": 65
+        },
+        {
+            "year": "2005",
+            "value": 68.3
+        },
+        {
+            "year": "2006",
+            "value": 69.2
+        },
+
+        {
+            "year": "2010",
+            "value": 74.2
+        },
+        {
+            "year": "2011",
+            "value": 78.2
+        }
+    ],
+    [
+        {
+            "year": "1994",
+            "value": 4.9
+        },
+        {
+            "year": "1995",
+            "value": 9.2
+        },
+
+        {
+            "year": "1997",
+            "value": 21.6
+        },
+        {
+            "year": "1998",
+            "value": 30.1
+        },
+        {
+            "year": "1999",
+            "value": 35.9
+        },
+        {
+            "year": "2000",
+            "value": 43.1
+        },
+
+        {
+            "year": "2004",
+            "value": 65
+        },
+        {
+            "year": "2005",
+            "value": 68.3
+        },
+        {
+            "year": "2006",
+            "value": 69.2
+        },
+
+        {
+            "year": "2010",
+            "value": 74.2
+        },
+        {
+            "year": "2011",
+            "value": 78.2
+        }
+    ],
+    [
+        {
+            "year": "1994",
+            "value": 4.9
+        },
+        {
+            "year": "1995",
+            "value": 9.2
+        },
+
+        {
+            "year": "1997",
+            "value": 21.6
+        },
+        {
+            "year": "1998",
+            "value": 30.1
+        },
+        {
+            "year": "1999",
+            "value": 35.9
+        },
+        {
+            "year": "2000",
+            "value": 43.1
+        },
+
+        {
+            "year": "2004",
+            "value": 65
+        },
+        {
+            "year": "2005",
+            "value": 68.3
+        },
+        {
+            "year": "2006",
+            "value": 69.2
+        },
+
+        {
+            "year": "2010",
+            "value": 74.2
+        },
+        {
+            "year": "2011",
+            "value": 78.2
+        }
+    ]];
+
+  </script>
+  
+  </body>
+</html>

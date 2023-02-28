@@ -17,7 +17,7 @@
 				<link href="css/postcss.css" rel="stylesheet" />
 				<link rel="stylesheet" href="css/gridstack.min.css">
 				<link rel="stylesheet" href="css/gridstack-extra.css">
-        <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css">
+
         <!-- <link href="css/UX_CSS_ripples.min.css" rel="stylesheet" />
         
         <link href="css/UX_CSS_forms.css" rel="stylesheet" /> -->
@@ -57,236 +57,151 @@
         <script src="js/UX_JS_jquery.min.js"></script>
         <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
         <script src="js/UX_JS_kendo.all.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.min.js"></script>
-        <style>
-          /* Audio player */
 
-          /* Setup
-================================================== */
-
-.audio-container { position:relative; margin:0 auto; max-width:800px; width:100%; }
-.column { width:inherit; }
-
-
-/* Typography / Links
-================================================== */
-
-/* p {  display:block; font-size:.9rem; font-weight:400; margin:0 0 2px; } */
-
-
-
-/* Misc.
-================================================== */
-
-.add-bottom { margin-bottom:2rem !important; }
-.left { float:left; }
-.right { float:right; }
-.center { text-align:center; }
-.hidden { display:none; }
-
-.no-support {
-margin:2rem auto;
-text-align:center;
-width:90%;
-}
-
-
-/* Audio Player Styles
-================================================== */
-
-/* audio {
-display:none;
-} */
-
-#audiowrap,
-#plwrap {
-margin:0 auto;
-}
-
-#tracks {
-font-size:0;
-position:relative;
-text-align:center;
-}
-
-#nowPlay {
-display:block;
-font-size:0;
-}
-
-#nowPlay span {
-display:inline-block;
-font-size:1.05rem;
-vertical-align:top;
-}
-
-#nowPlay span#npAction {
-padding:21px;
-width:30%;
-}
-
-#nowPlay span#npTitle {
-padding:21px;
-text-align:right;
-width:70%;
-}
-
-#plList li {
-cursor:pointer;
-display:block;
-margin:0;
-padding:21px 0;
-}
-
-#plList li:hover {
-background-color:rgba(0, 0, 0, .1);
-}
-
-.plItem {
-position:relative;
-}
-
-.plTitle {
-left:50px;
-overflow:hidden;
-position:absolute;
-right:65px;
-text-overflow:ellipsis;
-top:0;
-white-space:nowrap;
-}
-
-.plNum {
-padding-left:21px;
-width:25px;
-}
-
-.plLength {
-padding-left:21px;
-position:absolute;
-right:21px;
-top:0;
-}
-
-.plSel,
-.plSel:hover {
-background-color:rgba(0, 0, 0, .1);
-/* color:#fff; */
-cursor:default !important;
-}
-
-#tracks a {
-border-radius:3px;
-/* color:#fff; */
-cursor:pointer;
-display:inline-block;
-font-size:2.3rem;
-height:40px;
-line-height:.2;
-margin:0 5px 30px;
-padding:12px;
-text-decoration:none;
-transition:background .3s ease;
-}
-
-#tracks a:hover,
-#tracks a:active {
-background-color:rgba(0, 0, 0, .1);
-/* color:#fff; */
-}
-
-#tracks a::-moz-focus-inner {
-border:0;
-padding:0;
-}
-
-.plyr__control svg {
-    height: 12px;
-    width: 12px;
-}
-.voicenoteslist .list-group-item {
-  background: #fbfbfb;
-  border-bottom: 1px solid #e5e9ea;
-  margin-bottom: 0px;
-}
-.voicenoteslist .k-icon {
-  font-size: 35px;
-}
-
-/* Plyr Overrides
-================================================== */
-
-
-
-          .k-treeview {
-                overflow: hidden;
-            }
-         .k-item, 
-        .k-treeview span.k-in {
+<style>
+  .k-pdf-viewer .k-toolbar, .k-pdf-viewer .k-toolbar .k-button {
+    background-color: var(--color_athens_gray_approx) !important;
+  }
+  
+  .viewFiles, .viewFiles small {
+    position: relative;
+  }
+  .k-dropzone {
+            /* margin-bottom: 20px; */
+            background-color: #ecf0f1 !important;
             cursor: pointer;
+        }
+        .pointerCursor {
+          cursor: pointer !important;
+        }
+        .fileUploadDropZone {
+            border: 1px solid #bdc3c7;
+            background-color: #ecf0f1;
+            border-radius: 2px;
+            padding: 0px;
+            margin-bottom: 5px;
+            /* height: 124px; */
+        }
+        .fileUploadDropZone .k-widget {
+            background-color: transparent;
+        }
+        .k-dropzone-hovered,
+        .k-dropzone.k-dropzone-hovered .k-upload-button.k-button {
+            border-radius: 8px;
+            background-color: #e8f3f9 !important;
+        }
+        .k-dropzone .k-button {
             width: 100%;
+            background-color: #ecf0f1 !important;
+            height: 40px;
         }
-        .k-treeview .k-in {
-            margin: 0px;
-            padding: 4px 7px 4px 4px;
+        .k-upload.k-header {
+            background: transparent;
+            border: 0px solid transparent;
         }
-        .k-treeview .k-in {
-            color: #34495e;
-        }
-        .k-treeview .k-in.k-state-selected {
-            background-color: #e8f3f9;
-            color: #34495e;
-        }
-        .k-treeview .k-in .material-icons {
+        .k-dropzone .k-upload-button span {
+            font-size: 22px;
             color: #7f8c8d;
         }
-        .k-treeview .k-in.k-state-selected .material-icons {
-            color: #34495e;
+        .k-dropzone .k-upload-button span.badge {
+            font-size: 12px;
+            color: var(--white) !important;
+        }
+        .k-dropzone .material-icons {
+            font-size: 40px;
+        }
+        .docPreview {
+            display: flex;
+            background: #ecf0f1;
+            border-radius: 12px;
+            height: 455px;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;  
+        }
+        .docPreview i {
+            color: #bdc3c7;
+            font-size: 100px;
+            margin-bottom: 30px;
         }
 
+
+        .form-group.label-floating label.control-label {
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+        .form-group.label-floating:not(.is-empty) label.control-label, .form-group.label-floating.is-focused label.control-label {
+            left: 0px;
+        }
+        .bootstrap-tagsinput {
+            width: 100%;
+            box-shadow: none;
+            border: none;
+            height: 33px;
+        }
+        #uploadFileWindow .form-group {
+            margin-bottom: 30px;
+            margin-top: 15px;
             
-            .dropZoneElement {
-                position: relative;
-                display: inline-block;
-                background-color: #ffffff;
-                /* border: 1px solid #c7c7c7; */
-                width: 300px;
-                height: 300px;
-                border-radius: 6px;
-            }
-    
-            .textWrapper {
-                /* position: absolute;
-                top: 50%;
-                transform: translateY(-50%); */
-                text-align: center;
+        }
 
-                width: 100%;
-                font-size: 17px;
-                line-height: 1.2em;
-            }
-
-    
-            .product {
-                float: left;
-                position: relative;
-                margin: 0 10px 10px 0;
-                padding: 0;
-            }
-            .product img {
-                width: 110px;
-                height: 110px;
-            }
-/*     
-            .wrapper:after {
-                content: ".";
-                display: block;
-                height: 0;
-                clear: both;
-                visibility: hidden;
-            } */
-        </style>
+        .has-tags.form-group.label-floating label.control-label {
+            font-size: 12px;
+            line-height: 1.07142857;
+            top: -18px;
+            left: 0px;
+        }
+        .image-preview {
+            position: relative;
+            vertical-align: middle;
+            max-height: 45px;
+            max-width: 60px;
+        }
+        .k-upload-status .k-i-warning {
+            /* display: none; */
+            color: #d92800;
+            margin-right: 4px;
+            font-size: 20px;
+            
+        }
+        .k-upload-status .k-button {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+        }
+        .k-file .k-icon {
+            font-size: 20px;
+        }
+        .k-file .k-i-retry {
+            color: #27ae60;
+        }
+        .k-file .k-i-close {
+            color: #d92800;
+        }
+        .k-dropzone .k-upload-status.k-upload-status-total {
+            display: none !important;
+        }
+        .k-upload-files .k-upload-status {
+            opacity: 1;
+            margin-left: auto !important;
+        }
+        .k-upload-files .k-file {
+            align-items: center;
+        }
+        .k-upload-action:hover {
+            opacity: 0.8;
+        }
+        .k-file-name {
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+        }
+        .k-file-name-size-wrapper {
+            max-width: calc(100% - 35px - 7em);
+        }
+        .file-upload-details {
+            display: none;
+        }
+</style>
     </head>
 
 <body data-theme="" data-column-layout="" class="light-gradient-background body-view-mode">
@@ -466,16 +381,13 @@ padding:0;
                 <div class="panel-body main-column">
                   <div id="fileUploadWidget" class=" row widget layout-widget"> 
                     <div class="col-12">
-                      <input name="files2" id="files2" type="file" />
+                      <div class="fileUploadDropZone">
+                        <input name="files" id="files" type="file" />
+                      </div>
                     </div>
                     <div class="col-12">
                       <div 
                         id="inlineViewer" 
-                        data-role="pdfviewer"
-                        data-pdfjs-processing="{file: 'taichi.pdf'}"
-                        data-width="100%"
-                        data-height="700"
-                        data-bind="events: { render: onRender, open: onOpen, error: onError }"
                       ></div>
                     </div>
                   </div>
@@ -486,7 +398,13 @@ padding:0;
             <div class="col-sm-4 col-12 column-parent">
               <div class="panel sys-bd-off sys-box-shadow-off">
                 <div class="panel-body main-column">
-                  
+                  <div id="fileUploadWidget2" class=" row widget layout-widget"> 
+                    <div class="col-12">
+                      <div class="fileUploadDropZone">
+                        <input name="files2" id="files2" type="file" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -530,35 +448,91 @@ padding:0;
 
       $("#files2").kendoUpload({
           async: {
-            withCredentials: false,
-            saveUrl: "https://duffssuitcase.com/upload.php",
-            removeUrl: "https://duffssuitcase.com/remove.php",
-            autoUpload: true
+              saveUrl: "http://127.0.0.1:5500/UXTools/api/UXFileProviderWeb/UploadDocument",
+              removeUrl: "remove",
+              autoUpload: true,
+              withCredentials: false,
           },
-          error: function(e) {
-            console.log(e);
+          validation: {
+              allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
           },
+          // template: kendo.template($('#fileTemplate').html()),
+          success: onSuccessFiles,
+          complete: onComplete,
+          showFileList: true,
+          select: function(e) {
+              var fileInfo = e.files[0];
+              var wrapper = this.wrapper;
+              console.log(fileInfo);
+              // setTimeout(function(){
+              //     addPreview(fileInfo, wrapper);
+              // });
+          }
+          // dropZone: ".fileUploadDropZone",
       });
 
-    $("#files").kendoUpload({
-        async: {
-            withCredentials: false,
-            saveUrl: "https://duffssuitcase.com/upload.php",
-            removeUrl: "https://duffssuitcase.com/remove.php",
-            autoUpload: true
-        },
-        validation: {
-            allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif"]
-        },        
-        upload: onUpload,
-        success: onSuccess,
-        showFileList: false,
-        dropZone: ".dropZoneElement",
-        error: function(e) {
-          console.log(e);
-        },
-    });
-    
+      $("#files").kendoUpload({
+          async: {
+              saveUrl: "http://127.0.0.1:5500/UXTools/api/UXFileProviderWeb/UploadDocument",
+              removeUrl: "remove",
+              autoUpload: true,
+              withCredentials: false,
+          },
+          validation: {
+              allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
+          },
+          // template: kendo.template($('#fileTemplate').html()),
+          success: onSuccessFiles,
+          complete: onComplete,
+          showFileList: true,
+          select: function(e) {
+              var fileInfo = e.files[0];
+              var wrapper = this.wrapper;
+              console.log(fileInfo);
+              // setTimeout(function(){
+              //     addPreview(fileInfo, wrapper);
+              // });
+          }
+          // dropZone: ".fileUploadDropZone",
+      });
+
+      $(".k-dropzone")
+          .find("em")
+          .remove();
+      $(".k-dropzone .k-upload-button")
+          .find("span")
+          .text("Drop file here or click to upload")
+          .addClass('pointerCursor')
+          .append('<p class="viewFiles sys-txt-md"><small class=" sys-fg-primary">View uploaded files<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger sys-fg-white">4</span></small></p>');
+      
+          $(".k-dropzone .k-upload-button").prepend(
+          "<h3 class='sys-mg-t-10 sys-mg-r-10'><i class='material-icons text-muted'>cloud_upload</i></h3>"
+      );
+
+      function onSuccessFiles(e) {
+          console.log('upload success!');  
+          $(".file-upload-details").show(300);                  
+      }
+
+      function onComplete(e) {
+        // TODO: This should only run in cases where the viewer is shown inline below, not in cases where the viewer will be shown in a modal
+        const collapse = new bootstrap.Collapse($('.k-upload-files')[0], {
+          toggle: true,
+        });
+        $(".fileUploadDropZone").mouseenter(function () {
+          collapse.show();
+        });
+        $(".fileUploadDropZone").mouseleave(function(){
+          collapse.hide();
+        });
+        // $(".k-upload-files").mouseenter(function () {
+        //   collapse.show();
+        // });
+        // $(".k-dropzone").mouseleave(function(){
+        //   collapse.hide();
+        // });
+      }
+
     function onUpload(e) {
       console.log(e);
     }
@@ -589,18 +563,51 @@ padding:0;
     .done(function () {
         window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.worker.js';
     }).then(function () {
-        viewModel = kendo.observable({
-            onRender: function (e) {
-                kendoConsole.log("page rendered: " + e.page.pageNumber);
+        $("#inlineViewer").kendoPDFViewer({
+            pdfjsProcessing: {
+                file: "https://josephclawrence.com/syspro/Syspro%20prototypes/taichi.pdf"
             },
-            onOpen: function (e) {
-                kendoConsole.log("file open: " + e.file.name);
-            },
-            onError: function (e) {
-                kendoConsole.log("error message: " + e.message);
+            width: "100%",
+            height: 800,
+            toolbar: {
+              items: [ 
+                "pager", 
+                "spacer", 
+                {
+                  name: 'zoom',
+                  type: 'zoom',
+                  command: 'ZoomCommand',
+                  zoomInOut: true,
+                  combobox: false,
+                  enable: true
+              }, 
+                "print", 
+                "download", 
+                { name: "mailFile",  template: "<a role=\"button\"><span class=\"k-icon k-i-envelop\"></span></a>" }
+              ]
             }
         });
-        kendo.bind($("#fileUploadWidget"), viewModel);
+        // viewModel = kendo.observable({
+        //     onRender: function (e) {
+        //         console.log("page rendered: " + e.page.pageNumber);
+        //     },
+        //     onOpen: function (e) {
+        //         console.log("file open: " + e.file.name);
+        //     },
+        //     onError: function (e) {
+        //         console.log("error message: " + e.message);
+        //     },
+        //     toolbar: {
+        //       items: [   
+        //       "open", "download" ,        
+        //         {
+        //           name: "myCustomTool",
+        //           template: "<button>My custom button </button>"
+        //         }
+        //       ]
+        //     }
+        // });
+        // kendo.bind($("#fileUploadWidget"), viewModel);
 
         // var pdfViewer = $("#inlineViewer").kendoPDFViewer({
         //     pdfjsProcessing: {
