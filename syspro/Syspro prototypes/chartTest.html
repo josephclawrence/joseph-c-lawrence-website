@@ -1,0 +1,3235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+        <link href="css/UX_CSS_bootstrap.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.common-bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.bootstrap.min.css" rel="stylesheet" />
+        <link href="css/UX_CSS_kendo.dataviz.min.css" rel="stylesheet" />
+
+        <link href="css/UX_CSS_kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
+				<link href="css/postcss.css" rel="stylesheet" />
+				<link rel="stylesheet" href="css/gridstack.min.css">
+				<link rel="stylesheet" href="css/gridstack-extra.css">
+        <style>
+          .adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-4 > * {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+            .adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+            .adjust-width-wrapper[min-width~='100px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+          .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-4 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+            .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+            .adjust-width-wrapper[min-width~='576px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+          .adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-4 > * {
+                flex: 0 0 auto;
+                width: 33.3333333333%;
+            }
+            .adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 33.3333333333%;
+            }
+            .adjust-width-wrapper[min-width~='768px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+            .adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-4 > * {
+                flex: 0 0 auto;
+                width: 25%;
+            }
+            .adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-3 > * {
+                flex: 0 0 auto;
+                width: 33.3333333333%;
+            }
+            .adjust-width-wrapper[min-width~='1000px'] .row-cols-sm-2.row-cols-md-2 > * {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+
+
+        </style>
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/UX_JS_jquery.min.js"></script>
+        <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
+        <script src="js/UX_JS_kendo.all.min.js"></script>
+        
+
+    </head>
+
+<body data-theme="" data-column-layout="" class="light-gradient-background body-view-mode">
+  <div id="fusion-wrapper">
+    <div id="harness-container">
+      <div id="wrapper" class="toggled">
+
+        <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
+           
+          <!-- Error Notification empty element -->
+          <span id="errorNotification" style="display:none;"></span>
+          <div class="row sys-mg-t-15">    
+            <div class="col-sm-8 col-12 column-parent" id="datColumn">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  <div id="s209" class=" row widget layout-widget"> 
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="statusBar sys-bg-inverse" style="display: block;">
+        <span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)  Your license expires February 1st           TUESDAY 8   JANUARY 2019</span>
+      </div>
+    </div>
+    <footer id="thefooter" style="background-image: url('Samples/UX_IMG_cloud_erp_light_footer.png');">
+      <span id="copyrightfooter">© SYSPRO All Rights Reserved. All trademarks are recognized.</span><span id="sysprofooter">Powered by SYSPRO ERP</span>
+    </footer>
+
+  </div>
+  <div id="fileWindow"></div>
+  <script src="js/UX_JS_bootstrap.js"></script>
+  <script src="js/UX_JS_forms.js"></script>
+  <script src="js/fitty.min.js"></script>
+  <script src="js/UX_JS_cssResizeSensor.js"></script>
+  <script src="js/UX_JS_cssElementQueries.js"></script>
+  <script type="text/javascript">
+    // $.material.init();
+    ElementQueries.listen();
+
+    const chartTypes = {
+        "CXTPChartStepLineSeriesStyle": "line",
+        "CXTPChartLineSeriesStyle": "line",
+        "CXTPChartAreaSeriesStyle": "area",
+        "CXTPChartBarSeriesStyle": "column",
+        "CXTPChartBubbleSeriesStyle": "bubble",
+        "CXTPChartFunnelSeriesStyle": "funnel",
+        "CXTPChartFunnel3dSeriesStyle": "funnel",
+        "CXTPChartPie3DSeriesStyle": "pie",
+		"CXTPChart3dPieSeriesStyle": "pie",
+        "CXTPChartPieSeriesStyle": "pie",
+        "CXTPChartPointSeriesStyle": "scatter",
+        "CXTPChartPyramid3DSeriesStyle": "",
+        "CXTPChartPyramidSeriesStyle": "",
+        "CXTPChartRangeBarSeriesStyle": "rangeColumn",
+        "CXTPChartSplineSeriesStyle": "line",
+        "CXTPChartStackedBarSeriesStyle": "column",
+        "CXTPChartTorus3DSeriesStyle": "donut",
+    };
+
+    const chartTypeStyles = {
+        "CXTPChartStepLineSeriesStyle": "step",
+        "CXTPChartSplineSeriesStyle": "smooth",
+        "CXTPChartLineSeriesStyle": "normal",
+        "CXTPChartStackedBarSeriesStyle": "stacked",
+    };
+
+    const dashTypes = {
+        "0": null,
+        "2": "dash",
+        "4": "dashDot",
+        "3": "dot",
+        "5": "longDashDotDot",
+        "1": "solid",
+    };
+
+	const catNamesArray = {};
+	
+    function generateUUID() {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+        });
+        if (!isNaN(uuid.substring(0, 1))) {
+            uuid = 'a' + uuid.substring(1);
+        }
+        return uuid;
+    };
+
+	function isNumeric(str) {
+		if (typeof str != "string") return false // we only process strings!  
+		return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+				!isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+	}
+
+    function checkNested(chartJSON, ...properties) {  
+        for (var i = 0; i < properties.length; i++) {
+          if (!chartJSON || !chartJSON.hasOwnProperty(properties[i])) {
+            return null;
+          }
+          chartJSON = chartJSON[properties[i]];
+          if ( i === properties.length - 1 ) {
+            return chartJSON;
+          }
+        }    
+    }
+
+    function convertToBoolean(value) {
+        return value === "1" || value === 1 || value === true || value === "true"
+            ? true
+            : false;
+    }
+
+	function changeXLabels(value, uid) { 
+		var floorValue = Math.floor(value);              
+		return catNamesArray[uid][floorValue] == undefined ? "" : catNamesArray[uid][floorValue];
+	}
+
+    function prepareSeriesData(data, chartType) {
+		const catNamesArray = [];
+		data.forEach((obj, idx) => {
+			for (const key in obj) {
+				if (key.indexOf("@") > -1) {
+					if (obj.hasOwnProperty(key)) {
+						const newPropName = key.replace("@", "");
+						obj[newPropName] = obj[key];
+						// if (chartType === "line" || chartType === "bar" || chartType === "column" ) {
+							
+						// } else if (chartType === "bubble") {
+
+						// }
+
+						if (key === "@Value0" || key === "@Value1" || key === "@Length") {                
+							obj[newPropName] = parseFloat(obj[newPropName]);
+						}
+
+						if (key === "@Value1") {
+							obj[newPropName] = Math.max(obj[newPropName], 2);
+						}
+
+						if (chartType === "bubble") {
+							if (key === "@Argument") {
+								console.log('bam:', isNumeric(obj[newPropName]));
+								if ( !isNumeric(obj[newPropName]) ) catNamesArray.push( obj[newPropName] );
+								obj[newPropName] = isNumeric(obj[newPropName]) ? parseFloat(obj[newPropName]) : idx;
+							}
+						}
+						
+						if (key === "@ArgumentValue") {
+							delete obj[newPropName];
+						}
+
+						delete obj[key];              
+					}
+				}
+			}
+		});
+      	console.log('data', data);
+     	return {
+			data,
+			catNamesArray
+		};
+    }
+
+    function createChartCanvas(numCharts, title) {    
+        const UIDs = new Array(numCharts).fill('replace');
+        UIDs.forEach((item, idx) => UIDs[idx] = generateUUID());
+        console.log('UIDs', UIDs);
+        const classes = `row row-cols-1 row-cols-sm-2 row-cols-md-${numCharts} justify-content-center`;
+        const html = `<div class="multiChartWrapper adjust-width-wrapper"><h3 class="multiChartTitle">${title}</h3><div class="${classes}">
+            ${UIDs.map(uid => `<div class="col"><div id="chart_${uid}" class="multi-chart-item"></div></div>`).join().replace(",", "")}
+        </div></div>`;
+        console.log('html', html);
+
+        return {
+            html, 
+            UIDs,
+        };
+    }
+
+    function generatePlotBands(numCats, axisMajorUnit) {
+      const unit = axisMajorUnit || 1
+      const plotBands = new Array(numCats).fill('replace');
+      return plotBands.map((_val, idx) => { return { from: idx * unit, to: (idx + 1) * unit, color: idx % 2 == 0 ? "#ffffff" : "#ecf0f1", opacity: 0.35 } });
+    }
+
+    function parseSingleChartSeries(singleChartSeries, diagramIdx) {
+		console.log('diagramIdx', diagramIdx);
+        console.log('series', singleChartSeries);
+        // console.log(checkNested(singleChartSeries, "Points", "Point"));
+		const chartSeriesData = [];
+		let catNamesArray;
+		singleChartSeriesArray = Array.isArray(singleChartSeries) ? singleChartSeries : [singleChartSeries];
+		console.log('singleChartSeriesArray', singleChartSeriesArray);
+		for (let idx = 0; idx < singleChartSeriesArray.length; idx++) {
+			const series = singleChartSeriesArray[idx];
+		// singleChartSeriesArray.forEach((series, idx) => {
+			const chartType = series["Style"]["@Class"];
+			const kendoChartType = chartTypes[chartType];
+			const preparedSeriesData = prepareSeriesData(checkNested(series, "Points", "Point"), kendoChartType);
+			if (idx === 0) catNamesArray = preparedSeriesData.catNamesArray;
+			console.log('checkNested(series, "@Diagram"))', checkNested(series, "@Diagram"));
+			console.log(diagramIdx == checkNested(series, "@Diagram"));
+			if (diagramIdx === null || (diagramIdx !== null && diagramIdx == checkNested(series, "@Diagram"))) {
+				chartSeriesData.push({
+					name: checkNested(series, "@Name"),
+					type: kendoChartType,
+					style: chartTypeStyles[chartType] || null,
+					xField: "Argument",
+					yField: "Value0",
+					sizeField: "Value1",
+					field: "Value0",
+					toField: "Value1",
+					fromField: "Value0",
+					categoryField: "Argument",
+					dynamicSlope: false,
+					dynamicHeight : true,
+					data: preparedSeriesData.data,
+					markers: {
+						size: parseInt(checkNested(series, "Style", "Marker", "@Size")),
+					},
+					line: {
+						width: parseInt(checkNested(series, "Style", "LineStyle", "@Thickness")),
+					},
+					dashType: dashTypes[checkNested(series, "Style", "LineStyle", "@DashStyle")],
+					labels: {
+						visible: convertToBoolean(checkNested(series, "Style", "Label", "@Visible") === null ? true : checkNested(series, "Style", "Label", "@Visible")),
+						background: "rgba(255, 255, 255, 0.3)",
+						format: checkNested(series, "Style", "Label", "Format", "@Pattern") === "{A}: {V}"
+						? "{3}: {2}"
+						: checkNested(series, "Style", "Label", "Format", "@Pattern") === "{V}"
+						? "{0}"
+						: checkNested(series, "Style", "Label", "Format", "@Pattern") === "%0.2f %%"
+						?	"{2:0.00 \\%}"
+						: "{0}",
+						border: {
+						color: "#ecf0f1", 
+						width: checkNested(series, "Style", "Label", "Border", "@Visible") === "1" || checkNested(series, "Style", "Label", "Border", "@Visible") === null ? 1 : 0,
+						}
+					}
+				});
+			}
+		};
+		
+        return {
+			chartSeriesData,
+			catNamesArray,
+		};
+    }
+
+    function parseSingleChartProperties(singleChartProps, chartType, legend, catNamesArray, uid) {
+
+        let xAxisTypeName, yAxisTypeName;
+
+        if ( ["line", "bar", "column", "rangeColumn"].includes(chartType) ) {
+            xAxisTypeName = "categoryAxis";
+            yAxisTypeName = "valueAxis";
+        } else {
+            xAxisTypeName = "xAxis";
+            yAxisTypeName = "yAxis";
+        }
+
+        const chartProperties = {
+            theme: "nova",            
+            legend: chartType === "bubble" ? false : legend,        
+            [xAxisTypeName]: [{
+                name: "primaryXAxis",
+				visible: chartType === "bubble" && catNamesArray.length
+					? true
+					: convertToBoolean(checkNested(singleChartProps, "AxisX", "@Visible") === null 
+					? true 
+					: checkNested(singleChartProps, "AxisX", "@Visible")),
+                title: {
+                    visible: convertToBoolean(checkNested(singleChartProps, "AxisX", "Title", "@Visible") === null ? true : checkNested(singleChartProps, "AxisX", "Title", "@Visible")),
+                    text: checkNested(singleChartProps, "AxisX", "Title", "@Text"),
+                    // "Font": {
+                    //     "@Height": "-16"
+                    // }
+                },
+                labels: {
+                    rotation: parseInt(checkNested(singleChartProps, "AxisX", "Label", "@Angle")) || undefined, 
+                    format: checkNested(singleChartProps, "AxisX", "Label", "Format", "@Pattern") === "{V}" ? "{0}" : "{0}",
+					template: chartType === "bubble" && catNamesArray.length ? `#= changeXLabels(value, "${uid}") #` : null,
+                    // singleChartProps["Panels"]["Panel"]["AxisX"]["Label"]["Font"]["@Height"]
+                    // "Font": {
+                    //     "@Height": "-11"
+                    // }
+                },
+                interlaced: convertToBoolean(checkNested(singleChartProps, "AxisX", "@Interlaced")),
+                // max: parseFloat(checkNested(singleChartProps, "AxisX", "Range", "@MaxValue")),
+                narrowRange: !convertToBoolean(checkNested(singleChartProps, "AxisX", "@Range", "@ShowZeroLevel")),
+				reverse: convertToBoolean(checkNested(singleChartProps, "AxisX", "@Reversed") === null ? false : checkNested(singleChartProps, "AxisX", "@Reversed")),
+				// categories: catNamesArray
+				// max: chartType === "bubble" && catNamesArray.length ? catNamesArray.length : null,
+            },
+            {
+                name: "secondaryXAxis",
+                visible: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisX", "@Visible") === null ? true : checkNested(singleChartProps, "SecondaryAxisX", "@Visible")),
+                title: {
+                    visible: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisX", "Title", "@Visible") === null ? true : checkNested(singleChartProps, "SecondaryAxisX", "Title", "@Visible")),
+                    text: checkNested(singleChartProps, "SecondaryAxisX", "Title", "@Text"),
+                    // "Font": {
+                    //     "@Height": "-16"
+                    // }
+                },
+                labels: {
+                    rotation: parseInt(checkNested(singleChartProps, "SecondaryAxisX", "Label", "@Angle")) || undefined, 
+                    format: checkNested(singleChartProps, "SecondaryAxisX", "Label", "Format", "@Pattern") === "{V}" ? "{0}" : "{0}",
+                    // singleChartProps["Panels"]["Panel"]["SecondaryAxisX"]["Label"]["Font"]["@Height"]
+                    // "Font": {
+                    //     "@Height": "-11"
+                    // }
+                },
+                interlaced: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisX", "@Interlaced")),
+                // max: parseFloat(checkNested(singleChartProps, "SecondaryAxisX", "Range", "@MaxValue")),
+                narrowRange: !convertToBoolean(checkNested(singleChartProps, "SecondaryAxisX", "@Range", "@ShowZeroLevel")),
+				reverse: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisX", "@Reversed") === null ? false : checkNested(singleChartProps, "SecondaryAxisX", "@Reversed")),
+            }],
+            [yAxisTypeName]: [{
+                name: "primaryYAxis",
+                majorGridLines: {
+                  visible: true,
+                  width: 1,
+                },
+                title: {
+                    visible: convertToBoolean(checkNested(singleChartProps, "AxisY", "Title", "@Visible") === null ? true : checkNested(singleChartProps, "AxisY", "Title", "@Visible")),
+                    text: checkNested(singleChartProps, "AxisY", "Title", "@Text"),
+                    // "Font": {
+                    //     "@Height": "-16"
+                    // }
+                },
+                labels: {
+                    rotation: parseInt(checkNested(singleChartProps, "AxisY", "Label", "@Angle")) || undefined, 
+                    format: checkNested(singleChartProps, "AxisY", "Label", "Format", "@Pattern") === "{V}" ? "{0}" : "{0}",
+                    // singleChartProps["Panels"]["Panel"]["AxisY"]["Label"]["Font"]["@Height"]
+                    // "Font": {
+                    //     "@Height": "-11"
+                    // }
+                },
+                interlaced: convertToBoolean(checkNested(singleChartProps, "AxisY", "@Interlaced")),
+                majorUnit: parseInt(checkNested(singleChartProps, "AxisY", "@GridSpacing")) || undefined,
+                // max: parseFloat(checkNested(singleChartProps, "AxisY", "Range", "@MaxValue")),
+                narrowRange: !convertToBoolean(checkNested(singleChartProps, "AxisY", "@Range", "@ShowZeroLevel")),
+				reverse: convertToBoolean(checkNested(singleChartProps, "AxisY", "@Reversed") === null ? false : checkNested(singleChartProps, "AxisY", "@Reversed")),
+            },
+            {
+                name: "secondaryYAxis",
+                visible: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisY", "@Visible") === null ? true : checkNested(singleChartProps, "SecondaryAxisY", "@Visible")),
+                title: {
+                    visible: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisY", "Title", "@Visible") === null ? true : checkNested(singleChartProps, "SecondaryAxisY", "Title", "@Visible")),
+                    text: checkNested(singleChartProps, "SecondaryAxisY", "Title", "@Text"),
+                    // "Font": {
+                    //     "@Height": "-16"
+                    // }
+                },
+                labels: {
+                    rotation: parseInt(checkNested(singleChartProps, "SecondaryAxisY", "Label", "@Angle")) || undefined, 
+                    format: checkNested(singleChartProps, "SecondaryAxisY", "Label", "Format", "@Pattern") === "{V}" ? "{0}" : "{0}",
+                    // singleChartProps["Panels"]["Panel"]["SecondaryAxisY"]["Label"]["Font"]["@Height"]
+                    // "Font": {
+                    //     "@Height": "-11"
+                    // }
+                },
+                interlaced: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisY", "@Interlaced")),
+                majorUnit: parseInt(checkNested(singleChartProps, "SecondaryAxisY", "@GridSpacing")) || undefined,
+                // max: parseFloat(checkNested(singleChartProps, "SecondaryAxisY", "Range", "@MaxValue")),
+                narrowRange: !convertToBoolean(checkNested(singleChartProps, "SecondaryAxisY", "@Range", "@ShowZeroLevel")),
+				reverse: convertToBoolean(checkNested(singleChartProps, "SecondaryAxisY", "@Reversed") === null ? false : checkNested(singleChartProps, "SecondaryAxisY", "@Reversed")),
+            }],        
+        };
+
+        return chartProperties;
+    }
+
+    function initMultiChart(chartData, targetElement) {
+        const panelValue = checkNested(chartData, "Content", "Panels", "Panel");
+        if (!panelValue) return; // should throw an error
+
+        const seriesValue = checkNested(chartData, "Content", "Series", "Series");
+        if (!seriesValue) return; // should throw an error
+        
+        const numCharts = Array.isArray(panelValue) ? panelValue.length : 1;
+        console.log('numCharts', numCharts);
+
+		const numSeries = Array.isArray(seriesValue) ? seriesValue.length : 1;
+        console.log('seriesValue', seriesValue);
+
+        const title = convertToBoolean(checkNested(chartData, "Content", "Titles", "Title", "@Visible")) ? checkNested(chartData, "Content", "Titles", "Title", "@Text") : null;
+        console.log('title', title);
+        const { html, UIDs } = createChartCanvas(numCharts, title);
+
+        const legend = {
+            visible: convertToBoolean(checkNested(chartData, "Content", "Legend", "@Visible") === null ? false : checkNested(chartData, "Content", "Legend", "@Visible")),
+            position: checkNested(chartData, "Content", "Legend", "@Position")?.toLowerCase() || "right",
+        };
+
+        const chartProperties = {};
+        const chartSeries = {};
+        const charts = {};
+        let chartType;
+
+        for (let i = 0; i < UIDs.length; i++) {
+            const uid = UIDs[i];
+            if (numCharts === 1) {
+                // the below could error, if there is no seriesValue["Style"] or seriesValue["Style"]["@Class"]
+                chartType = numSeries > 1 ? chartTypes[seriesValue[0]["Style"]["@Class"]] : chartTypes[seriesValue["Style"]["@Class"]];
+				const chartSeriesObject = parseSingleChartSeries(seriesValue, null);
+				catNamesArray[uid] = chartSeriesObject.catNamesArray;
+                chartProperties[uid] = parseSingleChartProperties(panelValue, chartType, legend, chartSeriesObject.catNamesArray, uid);
+                chartSeries[uid] = chartSeriesObject.chartSeriesData;
+            } else {
+                // the below could error if there is no seriesValue[idx]["Style"] etc. as above
+                
+				const chartSeriesObject = parseSingleChartSeries(seriesValue, i);
+				console.log('chartSeriesObject', chartSeriesObject);
+				chartType = chartSeriesObject.chartSeriesData[0].type;
+				catNamesArray[uid] = chartSeriesObject.catNamesArray;
+                chartProperties[uid] = parseSingleChartProperties(panelValue[i], chartType, legend, chartSeriesObject.catNamesArray, uid);
+                chartSeries[uid] = chartSeriesObject.chartSeriesData;
+            }
+        }
+
+        console.log(chartProperties);
+        console.log(chartSeries);
+
+        targetElement.append(html);
+
+        $(".multi-chart-item").each(function(idx, elem) {
+            const uid = $(elem).attr("id")?.replace("chart_", "");
+            console.log('uid', uid);
+            // deal with this error
+            if (!uid) return;
+            console.log({
+              series: [
+                chartSeries[uid],
+              ]
+            });
+            
+            charts[uid] = $(elem).kendoChart({
+              ...chartProperties[uid],
+			  id: uid,
+              series: chartSeries[uid],
+            }).data("kendoChart");
+            
+            if (["line", "bar", "column", "rangeColumn"].includes(chartType)) {
+              if (chartProperties[uid].categoryAxis[0] && chartProperties[uid].categoryAxis[0].interlaced) {
+                const numCats = charts[uid].options.categoryAxis[0]?.categories.length;
+                if (charts[uid].options.categoryAxis.length) {
+                  charts[uid].options.categoryAxis[0].plotBands = generatePlotBands(numCats, null);
+                } else {
+                  charts[uid].options.categoryAxis.plotBands = generatePlotBands(numCats, null);
+                }
+              }
+
+              if (chartProperties[uid].valueAxis[0] && chartProperties[uid].valueAxis[0].interlaced) {
+                const valueAxis = charts[uid].getAxis("primaryYAxis");
+                const axisMax = valueAxis?.options.max;
+                const axisMajorUnit = valueAxis?.options.majorUnit;
+                const numSlices = axisMax / axisMajorUnit;
+                if (charts[uid].options.valueAxis.length) {
+                  charts[uid].options.valueAxis[0].plotBands = generatePlotBands(numSlices, axisMajorUnit);
+                } else {
+                  charts[uid].options.valueAxis.plotBands = generatePlotBands(numSlices, axisMajorUnit);
+                }
+              }
+
+              charts[uid].redraw();
+            }
+            
+        });
+
+        console.log(charts);
+
+    }
+
+const testData = {
+	"Content": {
+		"@CompactMode": "1",
+		"Border": {
+			"@Visible": "0"
+		},
+		"Legend": {
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16",
+			"@ColumnCount": "2",
+			"@VerticalAlignment": "2"
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "Sales for customer: 000000000000001",
+				"Font": {
+					"@FaceName": "Segoe UI",
+					"@Height": "-16"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartDiagram2D",
+				"@AllowScroll": "0",
+				"AxisX": {
+					"@Interlaced": "1",
+					"@MinorCount": "4",
+					"@InterlacedColor": "51, 51, 0",
+					"@GridSpacing": "1",
+					"@GridSpacingAuto": "0",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"Label": {
+						"@Angle": "315",
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Visible": "1",
+						"@Text": "Sales",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.5",
+						"@MaxValue": "1.5",
+						"@ViewMinValue": "-0.5",
+						"@ViewMaxValue": "1.5"
+					}
+				},
+				"AxisY": {
+					"@MinorCount": "2",
+					"@InterlacedColor": "0, 0, 0",
+					"@GridSpacing": "0.2",
+					"GridLines": null,
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Visible": "1",
+						"@Text": "Value",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"SecondaryAxisX": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "0.1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.0666667",
+						"@MaxValue": "1.06667",
+						"@ViewMinValue": "-0.0666667",
+						"@ViewMaxValue": "1.06667"
+					}
+				},
+				"SecondaryAxisY": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "0.2",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"Pane": {
+					"@BackgroundColor": "0, 0, 0",
+					"@BackgroundColor2": "255, 255, 255",
+					"BackgroundFillStyle": {
+						"@FillMode": "Empty"
+					}
+				}
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "Sales By Month",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "Month 1",
+							"@Value0": "923200"
+						},
+						{
+							"@Argument": "2",
+							"@ArgumentValue": "2",
+							"@Value0": "448000"
+						},
+						{
+							"@Argument": "3",
+							"@ArgumentValue": "3",
+							"@Value0": "147440"
+						},
+						{
+							"@Argument": "11",
+							"@ArgumentValue": "11",
+							"@Value0": "3.304e+06"
+						},
+						{
+							"@Argument": "12",
+							"@ArgumentValue": "12",
+							"@Value0": "1.1696e+06"
+						},
+						{
+							"@Argument": "13",
+							"@ArgumentValue": "13",
+							"@Value0": "350880"
+						},
+						{
+							"@Argument": "14",
+							"@ArgumentValue": "14",
+							"@Value0": "175440"
+						},
+						{
+							"@Argument": "15",
+							"@ArgumentValue": "15",
+							"@Value0": "11200"
+						},
+						{
+							"@Argument": "16",
+							"@ArgumentValue": "16",
+							"@Value0": "1.7992e+06"
+						},
+						{
+							"@Argument": "17",
+							"@ArgumentValue": "17",
+							"@Value0": "1.1656e+06"
+						},
+						{
+							"@Argument": "18",
+							"@ArgumentValue": "18",
+							"@Value0": "582000"
+						},
+						{
+							"@Argument": "19",
+							"@ArgumentValue": "19",
+							"@Value0": "886800"
+						},
+						{
+							"@Argument": "20",
+							"@ArgumentValue": "20",
+							"@Value0": "462080"
+						},
+						{
+							"@Argument": "21",
+							"@ArgumentValue": "21",
+							"@Value0": "44800"
+						},
+						{
+							"@Argument": "22",
+							"@ArgumentValue": "22",
+							"@Value0": "530400"
+						},
+						{
+							"@Argument": "23",
+							"@ArgumentValue": "23",
+							"@Value0": "255980"
+						},
+						{
+							"@Argument": "24",
+							"@ArgumentValue": "24",
+							"@Value0": "630800"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChartLineSeriesStyle",
+					"@ColorEach": "1",
+					"@Rotation3D": "0.000000, 0.000000, 90.000000",
+					"@SmoothEdges3D": "1",
+					"Label": {
+						"@Class": "CXTPChartPointSeriesLabel",
+						"@Visible": "0",
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0"
+						},
+						"Font": {
+							"@Height": "-11"
+						},
+						"Border": {
+							"@Visible": "0"
+						}
+					},
+					"Marker": {
+						"@Size": "22",
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "BottomRightToTopLeft"
+						}
+					},
+					"LineStyle": {
+						"@Thickness": "2"
+					}
+				}
+			}
+		}
+	}
+};
+
+const testBubble = {
+	"Content": {
+		"@CompactMode": "1",
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16"
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "My Chart",
+				"Font": {
+					"@Height": "-29"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartDiagram2D",
+				"AxisX": {
+					"@Interlaced": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-1.75",
+						"@MaxValue": "12.75",
+						"@ViewMinValue": "-1.75",
+						"@ViewMaxValue": "12.75"
+					}
+				},
+				"AxisY": {
+					"@MinorCount": "2",
+					"@GridSpacing": "10",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "100.1",
+						"@ViewMaxValue": "100.1"
+					}
+				},
+				"SecondaryAxisX": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.0666667",
+						"@MaxValue": "1.06667",
+						"@ViewMinValue": "-0.0666667",
+						"@ViewMaxValue": "1.06667"
+					}
+				},
+				"SecondaryAxisY": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"Pane": {
+					"BackgroundFillStyle": {
+						"@FillMode": "Empty"
+					}
+				}
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"PointLegendFormat": {
+					"@Pattern": "{A}: {V}"
+				},
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "0",
+							"@Length": "2",
+							"@Value0": "25",
+							"@Value1": "100"
+						},
+						{
+							"@Argument": "1",
+							"@ArgumentValue": "1",
+							"@Length": "2",
+							"@Value0": "85",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "2",
+							"@ArgumentValue": "2",
+							"@Length": "2",
+							"@Value0": "16",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "3",
+							"@ArgumentValue": "3",
+							"@Length": "2",
+							"@Value0": "91",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "4",
+							"@ArgumentValue": "4",
+							"@Length": "2",
+							"@Value0": "86",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "5",
+							"@ArgumentValue": "5",
+							"@Length": "2",
+							"@Value0": "38",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "6",
+							"@ArgumentValue": "6",
+							"@Length": "2",
+							"@Value0": "57",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "7",
+							"@ArgumentValue": "7",
+							"@Length": "2",
+							"@Value0": "3",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "8",
+							"@ArgumentValue": "8",
+							"@Length": "2",
+							"@Value0": "83",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "9",
+							"@ArgumentValue": "9",
+							"@Length": "2",
+							"@Value0": "45",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "10",
+							"@ArgumentValue": "10",
+							"@Length": "2",
+							"@Value0": "81",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "11",
+							"@ArgumentValue": "11",
+							"@Length": "2",
+							"@Value0": "1",
+							"@Value1": "0"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChartBubbleSeriesStyle",
+					"@ColorEach": "1",
+					"@Transparency": "165",
+					"@Rotation3D": "0.000000, 0.000000, 90.000000",
+					"@SmoothEdges3D": "1",
+					"@MinSize": "1.5",
+					"@MaxSize": "3.5",
+					"Label": {
+						"@Class": "CXTPChartBubbleSeriesLabel",
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Marker": {
+						"@Size": "8",
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "BottomRightToTopLeft"
+						}
+					}
+				}
+			}
+		}
+	}
+};
+
+const testMulti = {
+	"Content": {
+		"@CompactMode": "1",
+		"Border": {
+			"@Visible": "0"
+		},
+		"Legend": {
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16",
+			"@ColumnCount": "2",
+			"@VerticalAlignment": "2",
+			"FillStyle": {
+				"@FillMode": "Gradient",
+				"@GradientAngle": "LeftToRight"
+			}
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "Stock code: A100",
+				"Font": {
+					"@FaceName": "Segoe UI",
+					"@Height": "-16"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": [
+				{
+					"@Class": "CXTPChartDiagram2D",
+					"@AllowScroll": "0",
+					"AxisX": {
+						"@MinorCount": "4",
+						"@GridSpacing": "1",
+						"GridLines": {
+							"@Visible": "0"
+						},
+						"Label": {
+							"@Angle": "315",
+							"Font": {
+								"@Height": "-11"
+							}
+						},
+						"TickMarks": {
+							"@MinorVisible": "0"
+						},
+						"Title": {
+							"@Visible": "1",
+							"@Text": "Warehouses",
+							"Font": {
+								"@FaceName": "Segoe UI",
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@MinValue": "-0.5",
+							"@MaxValue": "3.5",
+							"@ViewMinValue": "-0.5",
+							"@ViewMaxValue": "3.5"
+						}
+					},
+					"AxisY": {
+						"@Interlaced": "1",
+						"@MinorCount": "2",
+						"@GridSpacing": "300",
+						"GridLines": null,
+						"Label": {
+							"Font": {
+								"@Height": "-11"
+							},
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							}
+						},
+						"TickMarks": {
+							"@MinorVisible": "0"
+						},
+						"Title": {
+							"@Visible": "1",
+							"@Text": "On hand",
+							"Font": {
+								"@FaceName": "Segoe UI",
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@ShowZeroLevel": "1",
+							"@MaxValue": "1049.4",
+							"@ViewMaxValue": "1049.4"
+						}
+					},
+					"SecondaryAxisX": {
+						"@Visible": "0",
+						"@Alignment": "1",
+						"@MinorCount": "4",
+						"@GridSpacing": "0.3",
+						"@Index": "1",
+						"GridLines": {
+							"@Visible": "0"
+						},
+						"InterlacedFillStyle": {
+							"@FillMode": "Empty"
+						},
+						"Label": {
+							"Font": {
+								"@Height": "-11"
+							}
+						},
+						"Title": {
+							"@Text": "",
+							"Font": {
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@MinValue": "-0.0666667",
+							"@MaxValue": "1.06667",
+							"@ViewMinValue": "-0.0666667",
+							"@ViewMaxValue": "1.06667"
+						}
+					},
+					"SecondaryAxisY": {
+						"@Visible": "0",
+						"@Alignment": "1",
+						"@MinorCount": "2",
+						"@GridSpacing": "0.3",
+						"@Index": "1",
+						"GridLines": {
+							"@Visible": "0"
+						},
+						"InterlacedFillStyle": {
+							"@FillMode": "Empty"
+						},
+						"Label": {
+							"Font": {
+								"@Height": "-11"
+							},
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							}
+						},
+						"TickMarks": {
+							"@MinorVisible": "0"
+						},
+						"Title": {
+							"@Visible": "1",
+							"@Text": "Available Quantity",
+							"Font": {
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@ShowZeroLevel": "1",
+							"@MaxValue": "1.1",
+							"@ViewMaxValue": "1.1"
+						}
+					},
+					"Pane": {
+						"@BackgroundColor": "255, 255, 255",
+						"BackgroundFillStyle": {
+							"@FillMode": "Empty"
+						}
+					}
+				},
+				{
+					"@Class": "CXTPChartDiagram2D",
+					"AxisX": {
+						"@Interlaced": "1",
+						"@MinorCount": "4",
+						"@GridSpacing": "1",
+						"GridLines": null,
+						"InterlacedFillStyle": {
+							"@FillMode": "Empty"
+						},
+						"Label": {
+							"@Angle": "315",
+							"Font": {
+								"@Height": "-11"
+							}
+						},
+						"TickMarks": {
+							"@MinorVisible": "0"
+						},
+						"Title": {
+							"@Text": "",
+							"Font": {
+								"@FaceName": "Segoe UI",
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@MinValue": "-0.5",
+							"@MaxValue": "3.5",
+							"@ViewMinValue": "-0.5",
+							"@ViewMaxValue": "3.5"
+						}
+					},
+					"AxisY": {
+						"@MinorCount": "2",
+						"@GridSpacing": "200",
+						"GridLines": null,
+						"InterlacedFillStyle": {
+							"@FillMode": "Empty"
+						},
+						"Label": {
+							"Font": {
+								"@Height": "-11"
+							},
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							}
+						},
+						"TickMarks": {
+							"@MinorVisible": "0"
+						},
+						"Title": {
+							"@Text": "",
+							"Font": {
+								"@FaceName": "Segoe UI",
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@ShowZeroLevel": "1",
+							"@MaxValue": "482.9",
+							"@ViewMaxValue": "482.9"
+						}
+					},
+					"SecondaryAxisX": {
+						"@Visible": "0",
+						"@Alignment": "1",
+						"@MinorCount": "4",
+						"@GridSpacing": "0.3",
+						"@Index": "1",
+						"GridLines": {
+							"@Visible": "0"
+						},
+						"InterlacedFillStyle": {
+							"@FillMode": "Empty"
+						},
+						"Label": {
+							"Font": {
+								"@Height": "-11"
+							}
+						},
+						"Title": {
+							"@Text": "",
+							"Font": {
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@MinValue": "-0.0666667",
+							"@MaxValue": "1.06667",
+							"@ViewMinValue": "-0.0666667",
+							"@ViewMaxValue": "1.06667"
+						}
+					},
+					"SecondaryAxisY": {
+						"@Visible": "0",
+						"@Alignment": "1",
+						"@MinorCount": "2",
+						"@GridSpacing": "0.3",
+						"@Index": "1",
+						"GridLines": {
+							"@Visible": "0"
+						},
+						"InterlacedFillStyle": {
+							"@FillMode": "Empty"
+						},
+						"Label": {
+							"Font": {
+								"@Height": "-11"
+							},
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							}
+						},
+						"Title": {
+							"@Text": "",
+							"Font": {
+								"@Height": "-16"
+							}
+						},
+						"Range": {
+							"@ShowZeroLevel": "1",
+							"@MaxValue": "1.1",
+							"@ViewMaxValue": "1.1"
+						}
+					},
+					"Pane": {
+						"BackgroundFillStyle": {
+							"@FillMode": "Empty"
+						}
+					}
+				}
+			]
+		},
+		"Series": {
+			"Series": [
+				{
+					"@LegendText": "On Hand Quantity",
+					"@Name": "Series 1",
+					"@Diagram": "0",
+					"PointLegendFormat": {
+						"@Pattern": "{A}: {V}"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "Eastern Warehouse",
+								"@Value0": "954"
+							},
+							{
+								"@Argument": "Finished Goods Warehouse",
+								"@Value0": "3"
+							},
+							{
+								"@Argument": "Northern Warehouse",
+								"@Value0": "909"
+							},
+							{
+								"@Argument": "Southern Warehouse",
+								"@Value0": "430"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartStepLineSeriesStyle",
+						"@ColorEach": "1",
+						"@Transparency": "22",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"Label": {
+							"@Class": "CXTPChartPointSeriesLabel",
+							"@Visible": "0",
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							},
+							"Font": {
+								"@Height": "-11"
+							},
+							"Border": {
+								"@Visible": "0"
+							}
+						},
+						"Marker": {
+							"@Size": "8",
+							"FillStyle": {
+								"@FillMode": "Gradient",
+								"@GradientAngle": "BottomRightToTopLeft"
+							}
+						},
+						"LineStyle": {
+							"@Thickness": "2",
+							"@DashStyle": "3"
+						}
+					}
+				},
+				{
+					"@LegendText": "On Hand Quantity",
+					"@Name": "Series 1",
+					"@Diagram": "0",
+					"PointLegendFormat": {
+						"@Pattern": "{A}: {V}"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "Eastern Warehouse",
+								"@Value0": "854"
+							},
+							{
+								"@Argument": "Finished Goods Warehouse",
+								"@Value0": "320"
+							},
+							{
+								"@Argument": "Northern Warehouse",
+								"@Value0": "709"
+							},
+							{
+								"@Argument": "Southern Warehouse",
+								"@Value0": "230"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartStepLineSeriesStyle",
+						"@ColorEach": "1",
+						"@Transparency": "22",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"Label": {
+							"@Class": "CXTPChartPointSeriesLabel",
+							"@Visible": "0",
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							},
+							"Font": {
+								"@Height": "-11"
+							},
+							"Border": {
+								"@Visible": "0"
+							}
+						},
+						"Marker": {
+							"@Size": "8",
+							"FillStyle": {
+								"@FillMode": "Gradient",
+								"@GradientAngle": "BottomRightToTopLeft"
+							}
+						},
+						"LineStyle": {
+							"@Thickness": "2",
+							"@DashStyle": "3"
+						}
+					}
+				},
+				{
+					"@LegendText": "Available Quantity",
+					"@Name": "Series 2",
+					"@Diagram": "1",
+					"PointLegendFormat": {
+						"@Pattern": "{A}: {V}"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "Eastern Warehouse",
+								"@Value0": "439"
+							},
+							{
+								"@Argument": "Finished Goods Warehouse",
+								"@Value0": "3"
+							},
+							{
+								"@Argument": "Northern Warehouse",
+								"@Value0": "286"
+							},
+							{
+								"@Argument": "Southern Warehouse",
+								"@Value0": "325"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartStepLineSeriesStyle",
+						"@ColorEach": "0",
+						"@Transparency": "22",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"Label": {
+							"@Class": "CXTPChartPointSeriesLabel",
+							"@Visible": "0",
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							},
+							"Font": {
+								"@Height": "-11"
+							},
+							"Border": {
+								"@Visible": "0"
+							}
+						},
+						"Marker": {
+							"@Size": "8",
+							"FillStyle": {
+								"@FillMode": "Gradient",
+								"@GradientAngle": "BottomRightToTopLeft"
+							}
+						},
+						"LineStyle": {
+							"@Thickness": "2",
+							"@DashStyle": "4"
+						}
+					}
+				},
+				{
+					"@LegendText": "Available Quantity",
+					"@Name": "Series 2",
+					"@Diagram": "1",
+					"PointLegendFormat": {
+						"@Pattern": "{A}: {V}"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "Eastern Warehouse",
+								"@Value0": "139"
+							},
+							{
+								"@Argument": "Finished Goods Warehouse",
+								"@Value0": "200"
+							},
+							{
+								"@Argument": "Northern Warehouse",
+								"@Value0": "300"
+							},
+							{
+								"@Argument": "Southern Warehouse",
+								"@Value0": "400"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartBarSeriesStyle",
+						"@ColorEach": "0",
+						"@Transparency": "22",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"Label": {
+							"@Class": "CXTPChartPointSeriesLabel",
+							"@Visible": "0",
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0"
+							},
+							"Font": {
+								"@Height": "-11"
+							},
+							"Border": {
+								"@Visible": "0"
+							}
+						},
+						"Marker": {
+							"@Size": "8",
+							"FillStyle": {
+								"@FillMode": "Gradient",
+								"@GradientAngle": "BottomRightToTopLeft"
+							}
+						},
+						"LineStyle": {
+							"@Thickness": "2",
+							"@DashStyle": "4"
+						}
+					}
+				}
+			
+			]
+		}
+	}
+};
+
+const testPie = {
+	"Content": {
+		"@CompactMode": "1",
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16"
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "My Chart",
+				"Font": {
+					"@Height": "-29"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartPieDiagram"
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"PointLegendFormat": {
+					"@Pattern": "{A}: {V}"
+				},
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "0",
+							"@Length": "2",
+							"@Value0": "25",
+							"@Value1": "100"
+						},
+						{
+							"@Argument": "1",
+							"@ArgumentValue": "1",
+							"@Length": "2",
+							"@Value0": "85",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "2",
+							"@ArgumentValue": "2",
+							"@Length": "2",
+							"@Value0": "16",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "3",
+							"@ArgumentValue": "3",
+							"@Length": "2",
+							"@Value0": "91",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "4",
+							"@ArgumentValue": "4",
+							"@Length": "2",
+							"@Value0": "86",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "5",
+							"@ArgumentValue": "5",
+							"@Length": "2",
+							"@Value0": "38",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "6",
+							"@ArgumentValue": "6",
+							"@Length": "2",
+							"@Value0": "57",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "7",
+							"@ArgumentValue": "7",
+							"@Length": "2",
+							"@Value0": "3",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "8",
+							"@ArgumentValue": "8",
+							"@Length": "2",
+							"@Value0": "83",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "9",
+							"@ArgumentValue": "9",
+							"@Length": "2",
+							"@Value0": "45",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "10",
+							"@ArgumentValue": "10",
+							"@Length": "2",
+							"@Value0": "81",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "11",
+							"@ArgumentValue": "11",
+							"@Length": "2",
+							"@Value0": "1",
+							"@Value1": "0"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChartPieSeriesStyle",
+					"@ColorEach": "1",
+					"@Rotation3D": "0.000000, 0.000000, 90.000000",
+					"@SmoothEdges3D": "1",
+					"Label": {
+						"@Class": "CXTPChartPieSeriesLabel",
+						"Font": {
+							"@Height": "-11"
+						}
+					}
+				}
+			}
+		}
+	}
+};  
+
+const testRangeBar = {
+	"Content": {
+		"@CompactMode": "1",
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16"
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "My Chart",
+				"Font": {
+					"@Height": "-29"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartDiagram2D",
+				"AxisX": {
+					"@Interlaced": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.5",
+						"@MaxValue": "11.5",
+						"@ViewMinValue": "-0.5",
+						"@ViewMaxValue": "11.5"
+					}
+				},
+				"AxisY": {
+					"@MinorCount": "2",
+					"@GridSpacing": "10",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "110",
+						"@ViewMaxValue": "110"
+					}
+				},
+				"SecondaryAxisX": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.0666667",
+						"@MaxValue": "1.06667",
+						"@ViewMinValue": "-0.0666667",
+						"@ViewMaxValue": "1.06667"
+					}
+				},
+				"SecondaryAxisY": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"Pane": {
+					"BackgroundFillStyle": {
+						"@FillMode": "Empty"
+					}
+				}
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"PointLegendFormat": {
+					"@Pattern": "{A}: {V}"
+				},
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "0",
+							"@Length": "2",
+							"@Value0": "25",
+							"@Value1": "100"
+						},
+						{
+							"@Argument": "1",
+							"@ArgumentValue": "1",
+							"@Length": "2",
+							"@Value0": "85",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "2",
+							"@ArgumentValue": "2",
+							"@Length": "2",
+							"@Value0": "16",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "3",
+							"@ArgumentValue": "3",
+							"@Length": "2",
+							"@Value0": "91",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "4",
+							"@ArgumentValue": "4",
+							"@Length": "2",
+							"@Value0": "86",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "5",
+							"@ArgumentValue": "5",
+							"@Length": "2",
+							"@Value0": "38",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "6",
+							"@ArgumentValue": "6",
+							"@Length": "2",
+							"@Value0": "57",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "7",
+							"@ArgumentValue": "7",
+							"@Length": "2",
+							"@Value0": "3",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "8",
+							"@ArgumentValue": "8",
+							"@Length": "2",
+							"@Value0": "83",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "9",
+							"@ArgumentValue": "9",
+							"@Length": "2",
+							"@Value0": "45",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "10",
+							"@ArgumentValue": "10",
+							"@Length": "2",
+							"@Value0": "81",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "11",
+							"@ArgumentValue": "11",
+							"@Length": "2",
+							"@Value0": "1",
+							"@Value1": "0"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChartRangeBarSeriesStyle",
+					"@ColorEach": "0",
+					"@Rotation3D": "0.000000, 0.000000, 90.000000",
+					"@SmoothEdges3D": "1",
+					"@BarWidth": "0.6",
+					"Label": {
+						"@Class": "CXTPChartRangeBarSeriesLabel",
+						"@LineLength": "5",
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"FillStyle": {
+						"@FillMode": "Gradient",
+						"@GradientAngle": "RightToLeft"
+					}
+				}
+			}
+		}
+	}
+};
+
+const testFunnel = {
+	"Content": {
+		"@CompactMode": "1",
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16"
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "My Chart",
+				"Font": {
+					"@Height": "-29"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartFunnelDiagram"
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"PointLegendFormat": {
+					"@Pattern": "{A}: {V}"
+				},
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "0",
+							"@Length": "2",
+							"@Value0": "25",
+							"@Value1": "100"
+						},
+						{
+							"@Argument": "1",
+							"@ArgumentValue": "1",
+							"@Length": "2",
+							"@Value0": "85",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "2",
+							"@ArgumentValue": "2",
+							"@Length": "2",
+							"@Value0": "16",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "3",
+							"@ArgumentValue": "3",
+							"@Length": "2",
+							"@Value0": "91",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "4",
+							"@ArgumentValue": "4",
+							"@Length": "2",
+							"@Value0": "86",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "5",
+							"@ArgumentValue": "5",
+							"@Length": "2",
+							"@Value0": "38",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "6",
+							"@ArgumentValue": "6",
+							"@Length": "2",
+							"@Value0": "57",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "7",
+							"@ArgumentValue": "7",
+							"@Length": "2",
+							"@Value0": "3",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "8",
+							"@ArgumentValue": "8",
+							"@Length": "2",
+							"@Value0": "83",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "9",
+							"@ArgumentValue": "9",
+							"@Length": "2",
+							"@Value0": "45",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "10",
+							"@ArgumentValue": "10",
+							"@Length": "2",
+							"@Value0": "81",
+							"@Value1": "0"
+						},
+						{
+							"@Argument": "11",
+							"@ArgumentValue": "11",
+							"@Length": "2",
+							"@Value0": "1",
+							"@Value1": "0"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChartFunnelSeriesStyle",
+					"@ColorEach": "1",
+					"@Rotation3D": "0.000000, 0.000000, 90.000000",
+					"@SmoothEdges3D": "1",
+					"@PointDistance": "4",
+					"Label": {
+            "@Visible": "1",
+						"@Class": "CXTPChartFunnelSeriesLabel",
+						"@LineLength": "20",
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"FillStyle": {
+						"@FillMode": "Gradient",
+						"@GradientAngle": "LeftToRight"
+					}
+				}
+			}
+		}
+	}
+};
+
+const testBub = {
+	"Content": {
+		"@CompactMode": "1",
+		"Border": {
+			"@Visible": "0"
+		},
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16",
+			"@ColumnCount": "1",
+			"@VerticalAlignment": "2",
+			"FillStyle": {
+				"@FillMode": "Gradient",
+				"@GradientAngle": "LeftToRight"
+			}
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "Top 10 States by Population",
+				"Font": {
+					"@FaceName": "Segoe UI",
+					"@Height": "-19",
+					"@Weight": "700"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartDiagram2D",
+				"AxisX": {
+					"@Visible": "0",
+					"@Interlaced": "1",
+					"@Reversed": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Visible": "1",
+						"@Text": "Population by State",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-1.75",
+						"@MaxValue": "2.75",
+						"@ViewMinValue": "-1.75",
+						"@ViewMaxValue": "2.75"
+					}
+				},
+				"AxisY": {
+					"@MinorCount": "2",
+					"@GridSpacing": "0.05",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"SecondaryAxisX": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.0666667",
+						"@MaxValue": "1.06667",
+						"@ViewMinValue": "-0.0666667",
+						"@ViewMaxValue": "1.06667"
+					}
+				},
+				"SecondaryAxisY": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "0.05",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"Pane": {
+					"BackgroundFillStyle": {
+						"@FillMode": "Empty"
+					}
+				}
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "Population",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"PointLegendFormat": {
+					"@Pattern": "{A}: {V}"
+				},
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "8",
+							"@ArgumentValue": "8",
+							"@Length": "2",
+							"@Value0": "37",
+							"@Value1": "11.95"
+						},
+						{
+							"@Argument": "7",
+							"@ArgumentValue": "7",
+							"@Length": "2",
+							"@Value0": "25",
+							"@Value1": "7.81"
+						},
+						{
+							"@Argument": "6",
+							"@ArgumentValue": "6",
+							"@Length": "2",
+							"@Value0": "20",
+							"@Value1": "6.31"
+						},
+						{
+							"@Argument": "5",
+							"@ArgumentValue": "5",
+							"@Length": "2",
+							"@Value0": "18",
+							"@Value1": "5.97"
+						},
+						{
+							"@Argument": "9",
+							"@ArgumentValue": "9",
+							"@Length": "2",
+							"@Value0": "13",
+							"@Value1": "4.2"
+						},
+						{
+							"@Argument": "10",
+							"@ArgumentValue": "10",
+							"@Length": "2",
+							"@Value0": "12",
+							"@Value1": "4.06"
+						},
+						{
+							"@Argument": "4",
+							"@ArgumentValue": "4",
+							"@Length": "2",
+							"@Value0": "11",
+							"@Value1": "3.75"
+						},
+						{
+							"@Argument": "3",
+							"@ArgumentValue": "3",
+							"@Length": "2",
+							"@Value0": "10",
+							"@Value1": "3.29"
+						},
+						{
+							"@Argument": "2",
+							"@ArgumentValue": "2",
+							"@Length": "2",
+							"@Value0": "9",
+							"@Value1": "3.12"
+						},
+						{
+							"@Argument": "1",
+							"@ArgumentValue": "1",
+							"@Length": "2",
+							"@Value0": "9",
+							"@Value1": "3"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChartBubbleSeriesStyle",
+					"@ColorEach": "1",
+					"@Transparency": "165",
+					"@Rotation3D": "0.000000, 0.000000, 90.000000",
+					"@SmoothEdges3D": "1",
+					"@MinSize": "1.5",
+					"@MaxSize": "3.5",
+					"Label": {
+						"@Class": "CXTPChartBubbleSeriesLabel",
+						"Format": {
+							"@Pattern": "%0.2f %%",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0"
+						},
+						"Font": {
+							"@Height": "-11"
+						},
+						"Border": {
+							"@Visible": "0"
+						}
+					},
+					"Marker": {
+						"@Size": "10",
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "BottomRightToTopLeft"
+						}
+					}
+				}
+			}
+		}
+	}
+};
+
+const testPie3d = {
+	"Content": {
+		"@CompactMode": "1",
+		"Border": {
+			"@Visible": "0"
+		},
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16",
+			"@ColumnCount": "1",
+			"@VerticalAlignment": "2",
+			"FillStyle": {
+				"@FillMode": "Gradient",
+				"@GradientAngle": "LeftToRight"
+			}
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "Top 10 States by Population",
+				"Font": {
+					"@FaceName": "Segoe UI",
+					"@Height": "-16"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChart3dPieDiagram"
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"PointLegendFormat": {
+					"@Pattern": "{A}: {V}"
+				},
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "California",
+							"@Special": "1",
+							"@Value0": "11.95"
+						},
+						{
+							"@Argument": "Texas",
+							"@Value0": "7.81"
+						},
+						{
+							"@Argument": "New York",
+							"@Value0": "6.31"
+						},
+						{
+							"@Argument": "Florida",
+							"@Value0": "5.97"
+						},
+						{
+							"@Argument": "Illinois",
+							"@Value0": "4.2"
+						},
+						{
+							"@Argument": "Pennsylvania",
+							"@Value0": "4.06"
+						},
+						{
+							"@Argument": "Ohio",
+							"@Value0": "3.75"
+						},
+						{
+							"@Argument": "Michigan",
+							"@Value0": "3.29"
+						},
+						{
+							"@Argument": "Georgia",
+							"@Special": "1",
+							"@Value0": "3.12"
+						},
+						{
+							"@Argument": "North Carolina",
+							"@Value0": "3"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChart3dPieSeriesStyle",
+					"@ColorEach": "1",
+					"@Transparency": "45",
+					"@Rotation3D": "75.000000, 40.000000, 30.000000",
+					"@SmoothEdges3D": "1",
+					"@Depth": "22",
+					"@IsTorus": "1",
+					"Label": {
+						"@Class": "CXTPChart3dPieSeriesLabel",
+						"Format": {
+							"@Pattern": "%.02f %%",
+							"@Category": "1",
+							"@DecimalPlaces": "2",
+							"@UseThousandSeparator": "0"
+						},
+						"Font": {
+							"@Height": "-11"
+						},
+						"Border": {
+							"@Visible": "0"
+						}
+					}
+				}
+			}
+		}
+	}
+};
+
+const testBubble2 = {
+	"Content": {
+		"@CompactMode": "1",
+		"Border": {
+			"@Visible": "0"
+		},
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16",
+			"@ColumnCount": "1",
+			"@VerticalAlignment": "2",
+			"FillStyle": {
+				"@FillMode": "Gradient",
+				"@GradientAngle": "LeftToRight"
+			}
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "Top 10 States by Population",
+				"Font": {
+					"@FaceName": "Segoe UI",
+					"@Height": "-19",
+					"@Weight": "700"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartDiagram2D",
+				"AxisX": {
+					"@Visible": "0",
+					"@Interlaced": "1",
+					"@Reversed": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Visible": "1",
+						"@Text": "Population by State",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-1.75",
+						"@MaxValue": "2.75",
+						"@ViewMinValue": "-1.75",
+						"@ViewMaxValue": "2.75"
+					}
+				},
+				"AxisY": {
+					"@MinorCount": "2",
+					"@GridSpacing": "0.1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"SecondaryAxisX": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "0.2",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.0666667",
+						"@MaxValue": "1.06667",
+						"@ViewMinValue": "-0.0666667",
+						"@ViewMaxValue": "1.06667"
+					}
+				},
+				"SecondaryAxisY": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"Pane": {
+					"BackgroundFillStyle": {
+						"@FillMode": "Empty"
+					}
+				}
+			}
+		},
+		"Series": {
+			"Series": {
+				"@LegendText": "Population",
+				"@Name": "Series 1",
+				"@Diagram": "0",
+				"PointLegendFormat": {
+					"@Pattern": "{A}: {V}"
+				},
+				"Points": {
+					"Point": [
+						{
+							"@Argument": "California",
+							"@Length": "2",
+							"@Value0": "37",
+							"@Value1": "11.95"
+						},
+						{
+							"@Argument": "Texas",
+							"@Length": "2",
+							"@Value0": "25",
+							"@Value1": "7.81"
+						},
+						{
+							"@Argument": "New York",
+							"@Length": "2",
+							"@Value0": "20",
+							"@Value1": "6.31"
+						},
+						{
+							"@Argument": "Florida",
+							"@Length": "2",
+							"@Value0": "18",
+							"@Value1": "5.97"
+						},
+						{
+							"@Argument": "Illinois",
+							"@Length": "2",
+							"@Value0": "13",
+							"@Value1": "4.2"
+						},
+						{
+							"@Argument": "Pennsylvania",
+							"@Length": "2",
+							"@Value0": "12",
+							"@Value1": "4.06"
+						},
+						{
+							"@Argument": "Ohio",
+							"@Length": "2",
+							"@Value0": "11",
+							"@Value1": "3.75"
+						},
+						{
+							"@Argument": "Michigan",
+							"@Length": "2",
+							"@Value0": "10",
+							"@Value1": "3.29"
+						},
+						{
+							"@Argument": "Georgia",
+							"@Length": "2",
+							"@Value0": "9",
+							"@Value1": "3.12"
+						},
+						{
+							"@Argument": "North Carolina",
+							"@Length": "2",
+							"@Value0": "9",
+							"@Value1": "3"
+						}
+					]
+				},
+				"Style": {
+					"@Class": "CXTPChartBubbleSeriesStyle",
+					"@ColorEach": "1",
+					"@Transparency": "165",
+					"@Rotation3D": "0.000000, 0.000000, 90.000000",
+					"@SmoothEdges3D": "1",
+					"@MinSize": "1.5",
+					"@MaxSize": "3.5",
+					"Label": {
+						"@Class": "CXTPChartBubbleSeriesLabel",
+						"Format": {
+							"@Pattern": "%0.2f %%",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0"
+						},
+						"Font": {
+							"@Height": "-11"
+						},
+						"Border": {
+							"@Visible": "0"
+						}
+					},
+					"Marker": {
+						"@Size": "10",
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "BottomRightToTopLeft"
+						}
+					}
+				}
+			}
+		}
+	}
+};
+
+const testRB2 = {
+	"Content": {
+		"@CompactMode": "1",
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16"
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "My Chart",
+				"Font": {
+					"@Height": "-29"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartDiagram2D",
+				"AxisX": {
+					"@Interlaced": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.5",
+						"@MaxValue": "11.5",
+						"@ViewMinValue": "-0.5",
+						"@ViewMaxValue": "11.5"
+					}
+				},
+				"AxisY": {
+					"@MinorCount": "2",
+					"@GridSpacing": "10",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "108.9",
+						"@ViewMaxValue": "108.9"
+					}
+				},
+				"SecondaryAxisX": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.0666667",
+						"@MaxValue": "1.06667",
+						"@ViewMinValue": "-0.0666667",
+						"@ViewMaxValue": "1.06667"
+					}
+				},
+				"SecondaryAxisY": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"Pane": {
+					"BackgroundFillStyle": {
+						"@FillMode": "Empty"
+					}
+				}
+			}
+		},
+		"Series": {
+			"Series": [
+				{
+					"@LegendText": "",
+					"@Name": "Series 1",
+					"@Diagram": "0",
+					"PointLegendFormat": {
+						"@Pattern": "{A}: {V}"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "0",
+								"@Value0": "25"
+							},
+							{
+								"@Argument": "1",
+								"@ArgumentValue": "1",
+								"@Value0": "74"
+							},
+							{
+								"@Argument": "2",
+								"@ArgumentValue": "2",
+								"@Value0": "61"
+							},
+							{
+								"@Argument": "3",
+								"@ArgumentValue": "3",
+								"@Value0": "20"
+							},
+							{
+								"@Argument": "4",
+								"@ArgumentValue": "4",
+								"@Value0": "8"
+							},
+							{
+								"@Argument": "5",
+								"@ArgumentValue": "5",
+								"@Value0": "42"
+							},
+							{
+								"@Argument": "6",
+								"@ArgumentValue": "6",
+								"@Value0": "59"
+							},
+							{
+								"@Argument": "7",
+								"@ArgumentValue": "7",
+								"@Value0": "55"
+							},
+							{
+								"@Argument": "8",
+								"@ArgumentValue": "8",
+								"@Value0": "68"
+							},
+							{
+								"@Argument": "9",
+								"@ArgumentValue": "9",
+								"@Value0": "13"
+							},
+							{
+								"@Argument": "10",
+								"@ArgumentValue": "10",
+								"@Value0": "35"
+							},
+							{
+								"@Argument": "11",
+								"@ArgumentValue": "11",
+								"@Value0": "81"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartRangeBarSeriesStyle",
+						"@ColorEach": "0",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"@BarWidth": "0.6",
+						"Label": {
+							"@Class": "CXTPChartRangeBarSeriesLabel",
+							"@LineLength": "5",
+							"Font": {
+								"@Height": "-11"
+							}
+						},
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "RightToLeft"
+						}
+					}
+				},
+				{
+					"@LegendText": "",
+					"@Name": "New Series",
+					"@Diagram": "0",
+					"PointLegendFormat": {
+						"@Pattern": "{A}: {V}"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "0",
+								"@Value0": "5"
+							},
+							{
+								"@Argument": "1",
+								"@ArgumentValue": "1",
+								"@Value0": "38"
+							},
+							{
+								"@Argument": "2",
+								"@ArgumentValue": "2",
+								"@Value0": "21"
+							},
+							{
+								"@Argument": "3",
+								"@ArgumentValue": "3",
+								"@Value0": "88"
+							},
+							{
+								"@Argument": "4",
+								"@ArgumentValue": "4",
+								"@Value0": "25"
+							},
+							{
+								"@Argument": "5",
+								"@ArgumentValue": "5",
+								"@Value0": "21"
+							},
+							{
+								"@Argument": "6",
+								"@ArgumentValue": "6",
+								"@Value0": "26"
+							},
+							{
+								"@Argument": "7",
+								"@ArgumentValue": "7",
+								"@Value0": "7"
+							},
+							{
+								"@Argument": "8",
+								"@ArgumentValue": "8",
+								"@Value0": "94"
+							},
+							{
+								"@Argument": "9",
+								"@ArgumentValue": "9",
+								"@Value0": "88"
+							},
+							{
+								"@Argument": "10",
+								"@ArgumentValue": "10",
+								"@Value0": "11"
+							},
+							{
+								"@Argument": "11",
+								"@ArgumentValue": "11",
+								"@Value0": "99"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartRangeBarSeriesStyle",
+						"@ColorEach": "0",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"@BarWidth": "0.6",
+						"Label": {
+							"@Class": "CXTPChartRangeBarSeriesLabel",
+							"@LineLength": "5",
+							"Font": {
+								"@Height": "-11"
+							}
+						},
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "RightToLeft"
+						}
+					}
+				}
+			]
+		}
+	}
+};
+
+
+$(document).ready(function() {    
+  initMultiChart(testMulti, $("#s209"));
+});
+
+
+  </script>
+  
+  </body>
+</html>
