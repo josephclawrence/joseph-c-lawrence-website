@@ -96,7 +96,7 @@
             .btn.autosearch .autosearch-on {
               display: none;
             }
-            .btn.visibility.active, .btn.autosearch.active {
+            .btn.visibility.active, .btn.autosearch.active, .btn.visibility, .btn.autosearch {
               border: none !important;
             }
             .avanti-text-search-results {
@@ -135,6 +135,26 @@
             .panel-group label.col-md-5 span {
               vertical-align: sub;
             }
+            .input-clear-button {
+               position:absolute;
+               right: 50px;
+            }
+            .k-pager-wrap :is(.k-combobox,.k-dropdown) .k-dropdown-wrap {
+               border: 1px solid var(--color_geyser_approx)
+            }
+            .k-pager-wrap :is(.k-combobox,.k-dropdown) .k-dropdown-wrap .k-input {
+               line-height: 1.22857143;
+            }
+            .k-pager-wrap :is(.k-combobox,.k-dropdown) .k-dropdown-wrap .k-select .k-icon {
+               vertical-align: baseline;
+            }
+            .syspro-search-pagination .btn {
+               padding: 2px;
+            }
+            .syspro-search-pagination .btn .material-icons {
+               font-size: 20px;
+            }
+            
         </style>
     </head>
 
@@ -263,21 +283,21 @@
           <div class="container-fluid container-id-holder" data-containerid="26616345-9f01-4499-8078-e640c8d0c8b3">
              <!-- Error Notification empty element -->
             <span id="errorNotification" style="display:none;"></span>
-            <div class="row sys-mg-t-10">
-              <div class="col-sm-4 col-xs-12 col-12">
+            <div class="d-flex flex-row sys-mg-t-10 sys-mg-b-10">
+              <div class="d-flex flex-row flex-shrink-1 justify-content-start" style="flex-basis: 0;">
                   <button type="button" class="btn visibility sys-bd-off" data-bs-toggle="button" autocomplete="off">
                     <span class="visibility-off">Hide filters</span>
                     <span class="visibility-on">Show filters</span>
                     <i class="material-icons visibility-off text-muted">visibility_off</i>
                     <i class="material-icons visibility-on text-muted">visibility</i>
                   </button>
-                  <button type="button" class="btn autosearch active sys-bd-off" data-bs-toggle="button" autocomplete="off">
+                  <!-- <button type="button" class="btn autosearch active sys-bd-off flex-shrink-1" data-bs-toggle="button" autocomplete="off">
                     <span class="autosearch-off">Autosearch: off</span>
                     <span class="autosearch-on">Autosearch: on</span>
                     <i class="material-icons autosearch-off text-muted">find_replace</i>
                     <i class="material-icons autosearch-on sys-fg-success">find_replace</i>
-                  </button>
-                  <div class="dropdown moremenu">
+                  </button> -->
+                  <!-- <div class="dropdown moremenu flex-shrink-1">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="material-icons autosearch-off text-muted">more_horiz</i>
                     </button>
@@ -286,26 +306,34 @@
                       <li><a class="dropdown-item" href="#">Another action</a></li>
                       <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                  </div>
+                  </div> -->
               </div>
-              <div class="col-sm-8 col-xs-12 col-12">
-                <div class="row">
-                  <div class="col-6">
-                    <input type="search" class="avanti-search-text-input form-control form-control-lg" placeholder="Search...">
+              <div class="d-flex flex-row " style="margin-right: 24px; position: relative">
+                  <div class="form-group sys-mg-r-5 flex-fill sys-mg-off-b fill-and-clear">
+                     <input type="search" type="startAt" class="avanti-search-text-input form-control form-control-lg" placeholder="Start at...">
                   </div>
-                  <div class="col-4">
-                    <button class="btn btn-primary btn-block">Find results</button>
+                  <!-- <button class="btn input-clear-button" style="display: none">
+                     <i class="material-icons sys-fg-danger">close</i>
+                  </button> -->
+                  <button class="btn btn-primary sys-mg-r-5">Go</button>
+                  
+               </div>
+              <div class="d-flex flex-row sys-mg-r-10 flex-shrink-1" style="position: relative">
+                  <div class="form-group sys-mg-r-5 flex-fill sys-mg-off-b fill-and-clear">
+                     <input type="search" class="avanti-search-text-input form-control form-control-lg" placeholder="Search...">
                   </div>
-                  <div class="col-2">
-                    <button class="btn btn-block">
-                      reset <span class="material-icons sys-txt-sm">cached</span>
-                    </button>
-                  </div>
-                </div>
+                  <button class="btn input-clear-button" style="right: 70px; display: none;">
+                     <i class="material-icons sys-fg-danger">close</i>
+                  </button>
+                  <button class="btn btn-primary sys-mg-r-5">Search</button>
+                  
+               </div>
+               <!-- <button class="btn">
+                  reset <span class="material-icons sys-txt-sm">cached</span>
+               </button> -->
               </div>
-            </div>
              <div class="row ">
-                <div class="col-sm-3 col-xs-12 col-12 column-parent filters-column">
+                <div class="col-sm-4 col-xs-12 col-12 column-parent filters-column">
                    <div class="panel card sys-bd-off sys-box-shadow-off">
                       <div class="panel-body card-body main-column sys-pd-off-t" id="main_column_0" data-column="0">
                          <div class=" row widget layout-widget" data-guid="e154783b-d486-4e06-a1fb-577ae26516b2">
@@ -313,8 +341,25 @@
                                <div class="panel card sys-widget card-widget sys-box-shadow-off" data-cardtype="" data-cardtypedetail="Filter" data-parentfieldpath="Fields.SYSPROKeyData.Insights.Value" data-bindfunctionname="BindFiltersToCard" data-afterbindfunctionname="" data-businessobject="">
                                   <!-- Version=006 -->
                                   <div id="e154783b-d486-4e06-a1fb-577ae26516b2" class="card-bindable sys-pd-off sys-rd-t">
-                                     <div class="avanti-base-class" style="height: 444px; overflow-y: auto;">
-                                        
+                                     <div class="avanti-base-class sys-pd-5">
+                                       <div class="d-flex flex-row">
+                                          <button type="button" class="btn btn-default  autosearch active sys-bd-off flex-fill sys-mg-r-5" data-bs-toggle="button" autocomplete="off">
+                                             <span class="autosearch-off">Autosearch: off</span>
+                                             <span class="autosearch-on">Autosearch: on</span>
+                                             <i class="material-icons autosearch-off text-muted">find_replace</i>
+                                             <i class="material-icons autosearch-on sys-fg-success">find_replace</i>
+                                           </button>
+                                          <button class="btn flex-fill btn-default sys-mg-r-5">
+                                             Apply <span class="material-icons sys-txt-sm sys-fg-success">check</span>
+                                          </button>
+                                          <!-- <button class="btn flex-fill btn-default sys-mg-r-5" data-bs-toggle="button">
+                                             Autosearch: on <span class="material-icons sys-txt-sm sys-fg-success">find_replace</span>
+                                          </button> -->
+                                          
+                                          <button class="btn flex-fill btn-default">
+                                             Clear <span class="material-icons sys-txt-sm">cached</span>
+                                          </button>
+                                       </div>
                                         <!-- NO SEARCH FILTERS -->
                                         <div id="nosearchfilters" class="filter-default-text" style="display: none;">
                                            <h4>No filters configured for this search</h4>
@@ -1278,9 +1323,9 @@
                       </div>
                    </div>
                 </div>
-                <div class="col-sm-9 col-xs-12 col-12 column-parent table-column">
+                <div class="col-sm-8 col-xs-12 col-12 column-parent table-column">
                    <div class="panel card sys-bd-off sys-box-shadow-off">
-                      <div class="panel-body card-body main-column" id="main_column_1" data-column="1">
+                      <div class="panel-body card-body main-column sys-pd-5" id="main_column_1" data-column="1">
                          <div class=" row widget layout-widget" data-guid="7560e1af-4cf4-4541-f6c0-43793ce3d006">
                             <div class="col-xs-12 col-12">
                                <div class="panel card sys-widget card-widget  sys-box-shadow-off" data-cardtype="" data-cardtypedetail="Search" data-parentfieldpath="Fields.SYSPROKeyData.Insights.Value" data-bindfunctionname="BindSearchListInCard" data-afterbindfunctionname="" data-businessobject="">
@@ -1305,257 +1350,9 @@
 
                                         </div> -->
                                         <span class="avanti-search-results-text"></span>
-                                        <div id="example">
-                                           <div class="avanti-search-results-grid k-grid k-widget k-grid-display-block" data-role="grid" >
-                                              <div class="k-grid-header" style="padding-right: 1px;">
-                                                 <div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable">
-                                                    <table role="grid">
-                                                       <colgroup>
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:90px">
-                                                       </colgroup>
-                                                       <thead role="rowgroup">
-                                                          <tr role="row">
-                                                             <th scope="col" role="columnheader" data-field="Customer" aria-haspopup="true" rowspan="1" data-title="CUSTOMER" data-index="0" id="413a07e9-5432-42f9-b103-919d0ce7412d" class="k-header k-with-icon k-filterable" data-role="columnsorter"><a class="k-grid-filter" href="#" title="Filter" aria-label="Filter" tabindex="-1"><span class="k-icon k-i-filter"></span></a><a class="k-link" href="#">CUSTOMER</a></th>
-                                                             <th scope="col" role="columnheader" data-field="Name" aria-haspopup="true" rowspan="1" data-title="CUSTOMER NAME" data-index="1" id="7ee38297-7b72-4d03-9e21-49a1ad262aef" class="k-header k-with-icon k-filterable" data-role="columnsorter"><a class="k-grid-filter" href="#" title="Filter" aria-label="Filter" tabindex="-1"><span class="k-icon k-i-filter"></span></a><a class="k-link" href="#">CUSTOMER NAME</a></th>
-                                                             <th scope="col" role="columnheader" data-field="Contact" aria-haspopup="true" rowspan="1" data-title="CONTACT NAME" data-index="2" id="33df745b-30c5-4e56-bf61-cdeed713e361" class="k-header k-with-icon k-filterable" data-role="columnsorter"><a class="k-grid-filter" href="#" title="Filter" aria-label="Filter" tabindex="-1"><span class="k-icon k-i-filter"></span></a><a class="k-link" href="#">CONTACT NAME</a></th>
-                                                             <th scope="col" role="columnheader" data-field="Telephone" aria-haspopup="true" rowspan="1" data-title="TELEPHONE NUMBER" data-index="3" id="84ded2a9-4303-4861-8b4a-b03a2658e7d4" class="k-header k-with-icon k-filterable" data-role="columnsorter"><a class="k-grid-filter" href="#" title="Filter" aria-label="Filter" tabindex="-1"><span class="k-icon k-i-filter"></span></a><a class="k-link" href="#">TELEPHONE NUMBER</a></th>
-                                                             <th scope="col" role="columnheader" data-field="CustomerOnHold" aria-haspopup="true" rowspan="1" data-title="CUSTOMER ON HOLD" data-index="4" id="f9afe101-a59e-4380-a524-a6c9705e9051" class="k-header k-with-icon k-filterable" data-role="columnsorter"><a class="k-grid-filter" href="#" title="Filter" aria-label="Filter" tabindex="-1"><span class="k-icon k-i-filter"></span></a><a class="k-link" href="#">CUSTOMER ON HOLD</a></th>
-                                                             <th scope="col" role="columnheader" data-field="Actions" aria-haspopup="true" rowspan="1" data-index="5" id="23d04e84-c5ba-4839-acce-1333e4e4cde9" class="k-header k-with-icon k-filterable" data-role="columnsorter"><a class="k-grid-filter" href="#" title="Filter" aria-label="Filter" tabindex="-1"><span class="k-icon k-i-filter"></span></a><a class="k-link" href="#">Actions</a></th>
-                                                          </tr>
-                                                       </thead>
-                                                    </table>
-                                                    <div class="k-resize-handle" style="top: 0px; left: 695.5px; height: 27.375px; width: 9px;">
-                                                       <div class="k-resize-handle-inner"></div>
-                                                    </div>
-                                                 </div>
-                                              </div>
-                                              <div class="k-grid-content k-auto-scrollable" data-role="virtualscrollable" style="width: auto; overflow: hidden; padding-right: 1px; height: 387.125px;">
-                                                 <div class="k-virtual-scrollable-wrap">
-                                                    <table role="grid" data-role="selectable" class="k-selectable" style="height: auto;">
-                                                       <colgroup>
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:140px">
-                                                          <col style="width:90px">
-                                                       </colgroup>
-                                                       <tbody role="rowgroup">
-                                                          <tr class="k-master-row" data-uid="9be45201-707a-436c-9f4b-0c53def8c9d6" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000001</td>
-                                                             <td data-field="Name" class="" role="gridcell">Bayside Bikes</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Karen Saunders</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">206-555-4562</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000001"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="90b9c61d-1cf4-468d-83fd-d5f4cfb40e54" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000002</td>
-                                                             <td data-field="Name" class="" role="gridcell">Bikes &amp; Blades - North</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Susan Brown</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">416-555-8256</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000002"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="ba5065bf-3c5d-442d-af92-2b596605b15d" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000003</td>
-                                                             <td data-field="Name" class="" role="gridcell">Bikes &amp; Blades - South</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Helen White</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">011-555-4262</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000003"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="6caa6835-e49f-4e72-a0e7-b18913781a6c" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000004</td>
-                                                             <td data-field="Name" class="" role="gridcell">Bikes &amp; Blades - East</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Judy Davis</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">612-555-5454</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000004"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="825c41ea-67e1-4152-94af-2780042eb7b8" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000005</td>
-                                                             <td data-field="Name" class="" role="gridcell">Cash Sales</td>
-                                                             <td data-field="Contact" class="" role="gridcell"></td>
-                                                             <td data-field="Telephone" class="" role="gridcell"></td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000005"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="6766635c-7793-473b-9d17-3a2cddebb826" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000006</td>
-                                                             <td data-field="Name" class="" role="gridcell">Country Gardens - East</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Philip Smythe</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">612-555-7485</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000006"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="5842132c-9aec-4e48-a4d9-4f08fdcdfe74" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000007</td>
-                                                             <td data-field="Name" class="" role="gridcell">Country Gardens - South</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Justine Munroe</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">021-555-7485</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000007"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="d566b1c6-fc4c-47d7-bea6-c71c173ef543" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000008</td>
-                                                             <td data-field="Name" class="" role="gridcell">Garden and Sports</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Cathrine Davids</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">604-555-1523</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000008"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="f42ef15a-6fe7-4c86-88d9-eba585fa96c3" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000009</td>
-                                                             <td data-field="Name" class="" role="gridcell">Grand Adventures</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Carol Donald</td>
-                                                             <td data-field="Telephone" class="" role="gridcell"></td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000009"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="0d43bb85-ccc4-4d56-844a-be471280fc6c" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000010</td>
-                                                             <td data-field="Name" class="" role="gridcell">Maniac Sports - North</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Jeremy Bright</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">847-555-8756</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000010"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="506d53e4-e973-44c0-b9ff-fb0d4356ece3" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000011</td>
-                                                             <td data-field="Name" class="" role="gridcell">Maniac Sports - South</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Louise Bright</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">334-555-9855</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000011"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="71e0403d-5ef5-4cac-9689-9dfc7fa3ca24" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000012</td>
-                                                             <td data-field="Name" class="" role="gridcell">Maniac Sports - East</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Diane First</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">205-555-1221</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000012"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="dbfd6df8-43e9-40ba-b881-b0ebd8b88440" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000013</td>
-                                                             <td data-field="Name" class="" role="gridcell">Out of Africa</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Thane Green</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">011-555-2123</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000013"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="11ef75a6-6213-4d77-8795-627c95cbde3f" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000014</td>
-                                                             <td data-field="Name" class="" role="gridcell">The Garden of Eden</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Maureen Davis</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">031-555-8723</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000014"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="65f1cd85-0851-4d5b-ae8f-f8421f6590b9" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000015</td>
-                                                             <td data-field="Name" class="" role="gridcell">The Great Adventure  Company</td>
-                                                             <td data-field="Contact" class="" role="gridcell">David Black</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">(161) 888 7913</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell">✔</td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000015"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="544816a6-4a6a-4a80-b93a-e1ffb89f1d78" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000016</td>
-                                                             <td data-field="Name" class="" role="gridcell">The OUTDOORS Company</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Jeff Greensleeve</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">514-555-1123</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000016"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="725c35ef-88fa-45f4-8fe4-d51b2f5535c1" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000017</td>
-                                                             <td data-field="Name" class="" role="gridcell">BMW</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Frank Braun</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">212-555-6214</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000017"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="46cef804-9fc2-4a6c-b203-9006531e3434" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000018</td>
-                                                             <td data-field="Name" class="" role="gridcell">Samcor (Pty) Ltd</td>
-                                                             <td data-field="Contact" class="" role="gridcell">David Stevens</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">161-555-4215</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000018"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="1252a0ed-8bc2-4c26-b6df-ebea8504ae29" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000019</td>
-                                                             <td data-field="Name" class="" role="gridcell">The Garden Executive</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Sheryl Endstep</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">612-555-1092</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000019"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="cd94d793-a23c-4d77-a983-88a50f334851" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000040</td>
-                                                             <td data-field="Name" class="" role="gridcell">The Action Center</td>
-                                                             <td data-field="Contact" class="" role="gridcell"></td>
-                                                             <td data-field="Telephone" class="" role="gridcell">27115559879</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000040"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="ebf64628-ed22-4d26-8faa-91ae1917041f" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000070</td>
-                                                             <td data-field="Name" class="" role="gridcell">Highway Leisure</td>
-                                                             <td data-field="Contact" class="" role="gridcell">John Kreem</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">088 555-8400</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000070"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="4d706b2d-b5f8-4681-8094-1e1a344ae45e" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000071</td>
-                                                             <td data-field="Name" class="" role="gridcell">CC Cycles</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Lilly Jones</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">088 555-9890</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000071"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="912d4241-5786-4e54-bada-8cf13385bba8" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000072</td>
-                                                             <td data-field="Name" class="" role="gridcell">General Motors</td>
-                                                             <td data-field="Contact" class="" role="gridcell"></td>
-                                                             <td data-field="Telephone" class="" role="gridcell"></td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000072"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-alt k-master-row" data-uid="4290c610-ee5e-472f-94f8-26c7ef46e590" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000098</td>
-                                                             <td data-field="Name" class="" role="gridcell">Bicycles Unlimited</td>
-                                                             <td data-field="Contact" class="" role="gridcell"></td>
-                                                             <td data-field="Telephone" class="" role="gridcell">416 555 9865</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000098"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                          <tr class="k-master-row" data-uid="8a4a73e4-a27e-4cef-b7f4-8d08aa7fcc14" role="row">
-                                                             <td data-field="Customer" class="" role="gridcell">0000099</td>
-                                                             <td data-field="Name" class="" role="gridcell">Bikes &amp; Blades - West</td>
-                                                             <td data-field="Contact" class="" role="gridcell">Natalie Elswood</td>
-                                                             <td data-field="Telephone" class="" role="gridcell">555-0165</td>
-                                                             <td data-field="CustomerOnHold" class="" role="gridcell"></td>
-                                                             <td data-field="Actions" class="" role="gridcell"> <a onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="ESPRESSOKEYFIELD:Customer" data-fieldvalue="0000099"><span class="text-primary sys-fg-primary material-icons">more_horiz</span></a></td>
-                                                          </tr>
-                                                       </tbody>
-                                                    </table>
-                                                 </div>
-                                                 <div class="k-scrollbar k-scrollbar-vertical" style="width: 1px;">
-                                                    <div style="width:1px;height:796.688px"></div>
-                                                 </div>
-                                              </div>
-                                              <div class="k-pager-wrap k-grid-pager k-widget k-floatwrap" data-role="pager"><span class="k-pager-info k-label">Showing 25 item(s)</span></div>
+                                           <div class="avanti-search-results-grid k-grid k-widget k-grid-display-block" >
+
                                            </div>
-                                        </div>
                                      </div>
                                   </div>
                                </div>
@@ -1597,6 +1394,208 @@
     </div>
   </script>      
   <script type="text/javascript">
+
+   const customerData = [
+    {
+        "Customer": "1",
+        "Name": "Bayside Bikes",
+        "Contact": "Karen Saunders",
+        "Telephone": "206-555-4562",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "2",
+        "Name": "Bikes &amp; Blades - North",
+        "Contact": "Susan Brown",
+        "Telephone": "416-555-8256",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "3",
+        "Name": "Bikes &amp; Blades - South",
+        "Contact": "Helen White",
+        "Telephone": "011-555-4262",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "4",
+        "Name": "Bikes &amp; Blades - Eastern Services",
+        "Contact": "Judy Davis",
+        "Telephone": "612-555-5454",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "5",
+        "Name": "Cash Sales",
+        "Contact": null,
+        "Telephone": null,
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "6",
+        "Name": "Country Gardens - East",
+        "Contact": "Philip Smythe",
+        "Telephone": "612-555-7485",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "7",
+        "Name": "Country Gardens - South",
+        "Contact": "Justine Munroe",
+        "Telephone": "021-555-7485",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "8",
+        "Name": "Garden and Sports",
+        "Contact": "Cathrine Davids",
+        "Telephone": "604-555-1523",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "9",
+        "Name": "Grand Adventures",
+        "Contact": "Carol Donald",
+        "Telephone": null,
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "10",
+        "Name": "Maniac Sports - North",
+        "Contact": "Jeremy Bright",
+        "Telephone": "847-555-8756",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "11",
+        "Name": "Maniac Sports - South",
+        "Contact": "Louise Bright",
+        "Telephone": "334-555-9855",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "12",
+        "Name": "Maniac Sports - East",
+        "Contact": "Diane First",
+        "Telephone": "205-555-1221",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "13",
+        "Name": "Out of Africa",
+        "Contact": "Thane Green",
+        "Telephone": "011-555-2123",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "14",
+        "Name": "The Garden of Eden",
+        "Contact": "Maureen Davis",
+        "Telephone": "031-555-8723",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "15",
+        "Name": "The Great Adventure  Company",
+        "Contact": "David Black",
+        "Telephone": "(161) 888 7913",
+        "CustomerOnHold": "Y"
+    },
+    {
+        "Customer": "16",
+        "Name": "The OUTDOORS Company",
+        "Contact": "Jeff Greensleeve",
+        "Telephone": "514-555-1123",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "17",
+        "Name": "BMW",
+        "Contact": "Frank Braun",
+        "Telephone": "212-555-6214",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "18",
+        "Name": "Samcor (Pty) Ltd",
+        "Contact": "David Stevens",
+        "Telephone": "161-555-4215",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "19",
+        "Name": "The Garden Executive",
+        "Contact": "Sheryl Endstep",
+        "Telephone": "612-555-1092",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "40",
+        "Name": "The Action Center",
+        "Contact": null,
+        "Telephone": "27115559879",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "70",
+        "Name": "Highway Leisure",
+        "Contact": "John Kreem",
+        "Telephone": "088 555-8400",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "71",
+        "Name": "CC Cycles",
+        "Contact": "Lilly Jones",
+        "Telephone": "088 555-9890",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "72",
+        "Name": "General Motors",
+        "Contact": null,
+        "Telephone": null,
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "98",
+        "Name": "Bicycles Unlimited",
+        "Contact": null,
+        "Telephone": "416 555 9865",
+        "CustomerOnHold": "N"
+    },
+    {
+        "Customer": "99",
+        "Name": "Bikes &amp; Blades - West",
+        "Contact": "Natalie Elswood",
+        "Telephone": "555-0165",
+        "CustomerOnHold": "N"
+    }
+];
+
+const Columns = [
+   {
+      field: "Customer",
+      title: "Customer",
+   },
+   {
+      field: "Name",
+      title: "Name",
+   },
+   {
+      field: "Contact",
+      title: "Contact Name",
+   },
+   {
+      field: "Telephone",
+      title: "Telephone",
+   },
+   {
+      field: "CustomerOnHold",
+      title: "Customer on hold?",
+   }
+];
+
   function upperCaseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -1640,14 +1639,72 @@ function lowerCaseAllWordsExceptFirstLetters(string) {
 
         $('.btn.visibility').on('click', function(e) {
           if ($(this).hasClass('active')) {
-            $('.filters-column').hide(300);
+            // $('.filters-column').hide(300);
+            $('.filters-column').css('opacity', 0);
+            $('.filters-column').css({"width": "0%", "padding": 0});
             $('.table-column').css('width', '100%');
           } else {
-            $('.filters-column').show(300);
+            // $('.filters-column').show(300);
+            $('.filters-column').css({"width": "33%", "padding-right": "7.5px", "padding-left": "7.5px"});
+            $('.filters-column').css('opacity', 1);
+            
             $('.table-column').css('width', '66.6666666667%');
           }
         })
         
+
+        $(".avanti-search-results-grid").kendoGrid({
+            dataSource: {
+                  data: customerData,
+                  batch: true
+            },
+            selectable: "single",
+            height: 400,
+            change: function (arg) {
+            },
+            sortable: true,
+            filterable: true,
+            scrollable: {
+                  virtual: true
+            },
+            resizable: true,
+            pageable: {
+                  messages: {
+                     display: "Showing {2} item(s)"
+                  },
+                  numeric: false,
+                  previousNext: false,
+                  pageSizes: [10, 25, 50],
+            },
+            columns: Columns
+         });
+
+         $(".avanti-search-results-grid .k-pager-wrap").prepend(`
+            <div class="syspro-search-pagination d-flex flex-row" style="flex-basis: 0;">
+               <button class="btn btn-default">
+                  <i class="material-icons">first_page</i>
+               </button>
+               <button class="btn btn-default">
+                  <i class="material-icons">navigate_before</i>
+               </button>
+               <button class="btn btn-default">
+                  <i class="material-icons">navigate_next</i>
+               </button>
+               <button class="btn btn-default">
+                  <i class="material-icons">last_page</i>
+               </button>
+            </div>
+         `);
+
+         $(".fill-and-clear").each(function(idx, elem) {
+            $(elem).find("input").on("input", function() {
+               console.log($(this));
+               $(elem).next(".input-clear-button").toggle($(this).val().length > 0);
+               // if ( $(this).value().length > 0) {
+               //    $(elem).next(".input-clear-button").show();
+               // }
+            })
+         })
     });
 
   </script>
