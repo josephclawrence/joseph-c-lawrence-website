@@ -8801,7 +8801,7 @@ td .btn.btn-delete {
     font-style: normal;
     font-weight: 400;
     /* src: var(--url_1); */
-    src: url('../fonts/UX_FONTS_MaterialIcons-Regular.woff2');
+    src: url('../fonts/MaterialIconsRound-Regular.otf');
     /* src: local('Material Icons'), local('UX_FONTS_MaterialIcons-Regular'), var(--url_1) format('woff2'),
         var(--url_2) format('woff'), var(--url_3) format('truetype'); */
 }
