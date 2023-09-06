@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+        <link href="css/new/UX_CSS_bootstrap.css" rel="stylesheet" />
+        <link href="css/new/UX_CSS_bootstrap-main.css" rel="stylesheet" />
+
+
+				<link href="css/postcss.css" rel="stylesheet" />
+        <link href="css/UX_CSS_sysprofusionstyle.css" rel="stylesheet" />
+
+				<link rel="stylesheet" href="css/gridstack.min.css">
+				<link rel="stylesheet" href="css/gridstack-extra.css">
+        
+
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/new/UX_JS_jquery.min.js"></script>
+        <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
+        <script src="js/new/UX_JS_kendo.all.min.js"></script>
+        <style>
+
+        </style>
+    </head>
+
+<body data-theme="" data-column-layout="" class="light-gradient-background body-view-mode">
+  <nav id="fusion-toolbar" class="navbar navbar-default fixed-top navbar-controlbar fusion-top-toolbar toolbar-loaded">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="nav-item">
+                <a href="#" class="text-primary offcanvas-toggle fusion-main-page-buttons fusion-maininstance-buttons nav-link js-offcanvas-has-events" data-toggle="offcanvas" data-target="#fusion-sidebar-wrapper2" onclick="sysproInterop.bindProgramList($('#fusion-sidebar-wrapper2'));" style=""><i class="material-icons">menu</i></a>
+            </li>
+            <li>
+                <a class="navbar-brand" href="#" onclick="sysproInterop.backToMenu();">
+                    <img alt="Brand" src="img/UX_IMG_SYSPROLogo.png" style="height: 35px">
+                </a>
+            </li>
+            <li class="nav-item back-to-menu">
+                <a href="#" onclick="sysproInterop.backToMenu();" class="text-primary fusion-main-page-buttons fusion-maininstance-buttons nav-link" style=""><span class="hidden-xs">Home</span><i class="material-icons visible-xs">home</i></a>
+            </li>
+            <li class="nav-item breadcrumb-separator fusion-main-page-buttons" style="">
+                <i class="material-icons">chevron_right</i>
+            </li>
+            <li class="nav-item sys-pd-l-10 application-sub-title fusion-main-page-buttons" style="">HOME MENU</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right sys-fg-primary">
+            <li class=" nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle js-offcanvas-has-events" onclick="sysproInterop.bindAvantiNotifications($('#fusion-sidebar-wrapper2'));" style="" data-toggle="offcanvas" data-target="#offcanvas-avanti-notifications">
+                    <i class="material-icons">notifications</i>
+                    <span class="badge sys-bg-danger avanti-notifications-count" style="display: none;"></span>
+                </a>
+            </li>
+
+            <li class="dropdown nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account" data-toggle="dropdown" style=""><i class="material-icons">account_circle</i>
+                    <span class="hidden-xs fusion-current-account-name">SYSPRO Administrator</span></a>
+                <ul class="dropdown-menu multi-level nav sys-pd-t-5" role="menu">
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.callPlugin('SRSMain', 'SRSQUE');"><i class="material-icons">list</i>Report Queue</a>
+                    </li>
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.showHelp();"><i class="material-icons">help</i>Help</a>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Themes</a>
+                        <ul class="dropdown-menu sys-pd-t-5">
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Light</a>
+                            </li>
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="dark" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Dark</a>
+                            </li>
+                            <li>
+                                <a href="#" class="avant-theme-switch" data-themename="syspro-light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>Pastel</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.closeSYSPROFusion(true);"><i class="material-icons">power_settings_new</i> Sign out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+
+  <span id="errorNotification" style="display:none;"></span>
+  <span id="taskdialognotification" style="display:none;"></span>
+  <span id="aiSuggestionNotification" style="display:none;"></span>
+  <div id="dialog"></div>
+  <div id="invisibleNodes"></div>
+
+  <div id="fusion-wrapper">
+    <div id="harness-container">
+      <div id="wrapper" class="toggled">
+        <nav nav="" id="navbar-toolbar" class="navbar navbar-default navbar-static-top navbar-controlbar sys-mg-off-b syspro-toolbar ">
+          <div class="container-fluid">
+
+          </div>
+        </nav>
+        <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
+           
+          <!-- Error Notification empty element -->
+          <span id="errorNotification" style="display:none;"></span>
+          <div class="row sys-mg-t-15">    
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+
+              </div>
+            </div>
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-12 column-parent">
+              <div class="panel sys-bd-off sys-box-shadow-off">
+                <div class="panel-body main-column">
+
+                </div>
+              </div>
+            </div>
+            
+
+        </div>
+      </div>
+      <div class="statusBar sys-bg-inverse" style="display: block;">
+        <span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)  Your license expires February 1st           TUESDAY 8   JANUARY 2019</span>
+      </div>
+    </div>
+
+    <button id="fab"></button>
+    
+
+
+    <footer id="thefooter" style="background-image: url('../../Samples/UX_IMG_cloud_erp_light_footer.png');">
+      <span id="copyrightfooter">© SYSPRO All Rights Reserved. All trademarks are recognized.</span><span id="sysprofooter">Powered by SYSPRO ERP</span>
+    </footer>
+
+  </div>
+
+  <script src="js/new/UX_JS_bootstrap.min.js"></script>
+  <script src="js/UX_JS_forms.js"></script>
+  
+  <script>
+   $("#fab").kendoFloatingActionButton({
+       size: "large"
+   });
+   </script>
+  
+  </body>
+</html>
