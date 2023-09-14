@@ -44,7 +44,118 @@
         <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
         <script src="js/new/UX_JS_kendo.all.min.js"></script>
         <style>
+         @keyframes border-pulsate {
+            0%   { border-color: rgba(255, 255, 255, 1); }
+            50%  { border-color: #7B1FA2; }
+            100% { border-color: rgba(255, 255, 255, 1); }
+         }
+         #davinciButton {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            outline: none;
+            background-color: #7B1FA2;
+            &.pulse {
+               animation: border-pulsate 2s infinite;
+            }
+            & .k-fab-text {
+               display: none;
+            }
+         }
 
+         .k-chat {
+            border-color: transparent;
+            color: #212529;
+            background-color: transparent;
+            max-width: none;
+            & .k-message-box {
+               border-top: 1px solid #eee !important;
+               padding: 15px 15px 15px;
+               justify-content: flex-end;
+               & input {
+                  background: #eee;
+                  border-radius: 20px;
+                  height: 40px;
+                  margin-right: 5px;
+                  max-width: 750px;
+               }
+               & .k-button {
+                  height: 40px;
+                  padding: 0px;
+                  width: 40px;
+                  border-radius: 50%;
+               }
+            }
+            & .k-avatar {
+               background: #7B1FA2;
+               border-radius: 50%;
+               padding: 9px;
+            }
+            & .k-card {
+               & .k-card-actions {
+                  & .k-button {
+                     border-radius: 4px;
+                     &.k-button-sm {
+                        background: transparent !important;
+                        color: var(--color_lochmara_approx) !important;
+                        font-size: 11px;
+                     }
+                     &.sys-bg-very-light-gray {
+                        background-color: #ecf0f1 !important;
+                        color: #2c3e50 !important;
+                     }
+                  }
+               }
+            }
+            & .k-card-list {
+               margin: 2px 0 15px;
+            }
+            & .k-message-group {
+               margin-bottom: 15px;
+            }
+            & .k-quick-replies {
+               align-self: flex-end;
+            }
+         }
+         #daVinciWindow.k-window-content {
+            padding-block: 0;
+            padding-inline: 0;
+         }
+         .k-window[aria-labelledby="daVinciWindow_wnd_title"] {
+            position: fixed !important;
+            & .k-window-titlebar {
+               background-color: #7B1FA2 !important;
+               padding-left: 0.8rem;
+               & .k-window-titlebar-action {
+                  color: white !important;
+               }
+            }
+         }
+         .davinciicon-light {
+            color: rgb(162, 0, 162);
+            opacity: 0.33;
+            transition: opacity 0.25s;
+            &:hover {
+               opacity: 0.6;
+            }
+         }
+         .davinciicon-dark {
+            color: #7B1FA2;
+         }
+         .daVinciPopover {
+            border: none;
+            padding: 0px;
+            & .popover-header {
+               margin-top: 0px;
+               background-color: #7B1FA2;
+               padding: 0.2rem 0.5rem;
+               color: #fff;
+            }
+            & .popover-body, & .popover-footer {
+               padding: 0.5rem;
+            }
+         }
+         .daVinciPopoverTrigger {
+            cursor: pointer;
+         }
         </style>
     </head>
 
@@ -129,26 +240,420 @@
           <!-- Error Notification empty element -->
           <span id="errorNotification" style="display:none;"></span>
           <div class="row sys-mg-t-15">    
-            <div class="col-sm-4 col-12 column-parent">
+            <div class="col-sm-8 col-12 column-parent">
               <div class="panel sys-bd-off sys-box-shadow-off">
-
+                  <div class="row widget layout-widget grid-stack-item-content ps" >
+                     <div class="col-sm-12 ">
+                        <div class="panel card sys-widget sys-box-shadow-off " >               
+                           <div class="panel-body card-body sys-pd-15">
+                              <h2 class="sys-300">Michaelson Cycles usually pays on time, but their most recent invoice is 25 days overdue. Sales to this customer are up 24% year on year. 
+                                 <i 
+                                    class="material-icons davinciicon-light daVinciPopoverTrigger"
+                                    data-bs-toggle="popover" 
+                                    data-bs-custom-class="daVinciPopover"
+                                    data-content-id="summary"
+                                    data-bs-content="This summary was written by DaVinci."
+                                 >auto_awesome</i>
+                              </h2>
+                              <div id="chart"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
               </div>
             </div>
             <div class="col-sm-4 col-12 column-parent">
               <div class="panel sys-bd-off sys-box-shadow-off">
                 <div class="panel-body main-column">
-                  
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4 col-12 column-parent">
-              <div class="panel sys-bd-off sys-box-shadow-off">
-                <div class="panel-body main-column">
+                  <div class="row widget layout-widget grid-stack-item-content ps" data-guid="a67c49bb-8305-4026-9613-3c76c74e2859" data-subtype="" data-border="Internal" data-displaystyle="Tiles" data-collapsible="False" style="" >
+                     <div class="col-sm-12 tile-widget-wrapper">
 
+                              <div class="panel card sys-widget sys-box-shadow-off    tiles-parent" data-role="droptarget" style="margin-bottom: 0px;">               
+                                 <div class="panel-body card-body sys-pd-off">
+
+                     <div class="row sys-tbl" data-row="0">
+                        <div class="col-xs-12 col-12  sys-bg-white">
+                              <div class="row tile-widget" style="position: relative; width: 426px; height: 299px;">
+                                 <div class="tile tile-width-marker col-sm-4 col-xs-6 col-6"></div>
+
+
+                     <div class="col-sm-4 col-xs-6 col-6 tile " data-tiletype="Text" data-tiletypename="ARS014_Ave_Days_to_Pay_By_Customer" data-tiletypedetail="TILE_a340c557b8244efba9cf8e1db4ce25da" data-parentfieldpath="Customer" data-tileparameters="{&quot;Customer&quot;:&quot;&quot;}" data-tiledetailavailable="Y" style="position: absolute; left: 0px; top: 5px;" data-boundonce="true">
+                        
+                              <div class="tile-loading-cover" style="display: none;"><span class="spinner"></span></div>
+                        <div>
+                              <div class="tile-inner sys-fg-white sys-bg-lighter-blue">
+                                 <div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+                     <div class="big-tile row" data-bind="tilecolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Title">Avg. Days to Pay</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.SubTitle">Customer:</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessage, text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half flex-center">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon text-white sys-fg-white main-tile-icon" data-bind="tileicon: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Icon, tileiconcolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.IconColor"></i>
+                                 </div>
+                                 <span class="tile-value-label text-right" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Footer"></span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Value, tileiconcolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ValueColor" style="white-space: nowrap; display: inline-block;">0</span>
+                                 </div>                
+                              </div>
+                        </div>
+                     </div>
+
+                     <div class="wide-tile row" data-bind="tilecolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Title">Avg. Days to Pay</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.SubTitle">Customer:</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessage, text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <i class="material-icons tile-icon text-left main-tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Icon, tileiconcolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.IconColor"></i>
+                                 <div class="valueWrapper text-right">
+                                    <span class="text-right tile-value-label" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Footer"></span>
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Value, tileiconcolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ValueColor" style="white-space: nowrap; display: inline-block;">0</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                     <div class="small-tile row" data-bind="tilecolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <div class="ai-tile-icon-title">
+                                    <span class="text-left tile-title">Avg. Days to Pay</span>
+                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciPopoverTrigger" data-bs-toggle="popover" 
+                                    data-bs-custom-class="daVinciPopover"
+                                    data-content-id="tile"
+                                    data-bs-content="Future data predicted by Da Vinci.">auto_awesome</i>
+                                 </div>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.SubTitle">Customer:</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessage, text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Icon, tileiconcolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.IconColor"></i>
+                                 </div>
+                                 <span class="text-right tile-value-label" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Footer"></span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value text-right" data-bind="text: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.Value, tileiconcolor: Query.TILE_a340c557b8244efba9cf8e1db4ce25da.ValueColor" style="white-space: nowrap; display: inline-block; font-size: 30px;">0</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div>
+
+                              </div>
+                        </div>
+                     </div>
+
+
+                     <div class="col-sm-4 col-xs-6 col-6 tile " data-tiletype="Text" data-tiletypename="WHM007_Missions_completed_today" data-tiletypedetail="TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a" data-parentfieldpath="Mission" data-tileparameters="{}" data-tiledetailavailable="Y" style="position: absolute; left: 142px; top: 5px;" data-boundonce="true">
+                        
+                              <div class="tile-loading-cover" style="display: none;"><span class="spinner"></span></div>
+                        <div>
+                              <div class="tile-inner sys-fg-white sys-bg-lighter-blue">
+                                 <div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+                     <div class="big-tile row" data-bind="tilecolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Title">Missions completed today</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.SubTitle">Mission</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessage, text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half flex-center">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon text-white sys-fg-white main-tile-icon" data-bind="tileicon: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Icon, tileiconcolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.IconColor"></i>
+                                 </div>
+                                 <span class="tile-value-label text-right" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Footer"></span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Value, tileiconcolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ValueColor" style="white-space: nowrap; display: inline-block;">0</span>
+                                 </div>                
+                              </div>
+                        </div>
+                     </div>
+
+                     <div class="wide-tile row" data-bind="tilecolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Title">Missions completed today</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.SubTitle">Mission</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessage, text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <i class="material-icons tile-icon text-left main-tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Icon, tileiconcolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.IconColor"></i>
+                                 <div class="valueWrapper text-right">
+                                    <span class="text-right tile-value-label" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Footer"></span>
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Value, tileiconcolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ValueColor" style="white-space: nowrap; display: inline-block;">0</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                     <div class="small-tile row" data-bind="tilecolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title show-more-icon" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Title" style="height: 32px;">Missions completed today</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.SubTitle">Mission</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessage, text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Icon, tileiconcolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.IconColor"></i>
+                                 </div>
+                                 <span class="text-right tile-value-label" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Footer"></span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value text-right" data-bind="text: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.Value, tileiconcolor: Query.TILE_a3afe1b0226a43a0a7eb78a5c91cdc0a.ValueColor" style="white-space: nowrap; display: inline-block; font-size: 30px;">0</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div>
+
+                              </div>
+                        </div>
+                     </div>
+
+
+                     <div class="col-sm-4 col-xs-6 col-6 tile " data-tiletype="Text" data-tiletypename="SQL003_Table_Sizes" data-tiletypedetail="TILE_a41a4ea9c75b4138859cfd495f465df2" data-parentfieldpath="" data-tileparameters="{&quot;Number_Of_Tables&quot;:&quot;&quot;}" data-tiledetailavailable="Y" style="position: absolute; left: 284px; top: 5px;" data-boundonce="true">
+                        
+                              <div class="tile-loading-cover" style="display: none;"><span class="spinner"></span></div>
+                        <div>
+                              <div class="tile-inner sys-fg-white sys-bg-lighter-blue">
+                                 <div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+                     <div class="big-tile row" data-bind="tilecolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Title">Top Tables by Size</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.SubTitle"></span>
+                                 
+                              </div>
+                              <div class="tile-bottom-half flex-center">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon text-white sys-fg-white main-tile-icon" data-bind="tileicon: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Icon, tileiconcolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.IconColor"></i>
+                                 </div>
+                                 <span class="tile-value-label text-right" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Footer">Top  tables</span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Value, tileiconcolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.ValueColor" style="white-space: nowrap; display: inline-block;">0 MB</span>
+                                 </div>                
+                              </div>
+                        </div>
+                     </div>
+
+                     <div class="wide-tile row" data-bind="tilecolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Title">Top Tables by Size</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.SubTitle"></span>
+                                 
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <i class="material-icons tile-icon text-left main-tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Icon, tileiconcolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.IconColor"></i>
+                                 <div class="valueWrapper text-right">
+                                    <span class="text-right tile-value-label" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Footer">Top  tables</span>
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Value, tileiconcolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.ValueColor" style="white-space: nowrap; display: inline-block;">0 MB</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                     <div class="small-tile row" data-bind="tilecolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title show-more-icon" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Title" style="height: 32px;">Top Tables by Size</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.SubTitle"></span>
+                                 
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Icon, tileiconcolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.IconColor"></i>
+                                 </div>
+                                 <span class="text-right tile-value-label" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Footer">Top  tables</span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value text-right" data-bind="text: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.Value, tileiconcolor: Query.TILE_a41a4ea9c75b4138859cfd495f465df2.ValueColor" style="white-space: nowrap; display: inline-block; font-size: 30px;">0 MB</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div>
+
+                              </div>
+                        </div>
+                     </div>
+
+
+                     <div class="col-sm-4 col-xs-6 col-6 tile " data-tiletype="Text" data-tiletypename="WHM004_Missions_by_Pick" data-tiletypedetail="TILE_aedb098175a04be3803a53be736fca66" data-parentfieldpath="Mission" data-tileparameters="{}" data-tiledetailavailable="Y" style="position: absolute; left: 0px; top: 152px;" data-boundonce="true">
+                        
+                              <div class="tile-loading-cover" style="display: none;"><span class="spinner"></span></div>
+                        <div>
+                              <div class="tile-inner sys-fg-white sys-bg-lighter-red">
+                                 <div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+                     <div class="big-tile row" data-bind="tilecolor: Query.TILE_aedb098175a04be3803a53be736fca66.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Title">Missions by Pick</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.SubTitle">Mission</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessage, text: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half flex-center">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon text-white sys-fg-white main-tile-icon" data-bind="tileicon: Query.TILE_aedb098175a04be3803a53be736fca66.Icon, tileiconcolor: Query.TILE_aedb098175a04be3803a53be736fca66.IconColor"></i>
+                                 </div>
+                                 <span class="tile-value-label text-right" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Footer"></span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Value, tileiconcolor: Query.TILE_aedb098175a04be3803a53be736fca66.ValueColor" style="white-space: nowrap; display: inline-block;">0</span>
+                                 </div>                
+                              </div>
+                        </div>
+                     </div>
+
+                     <div class="wide-tile row" data-bind="tilecolor: Query.TILE_aedb098175a04be3803a53be736fca66.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Title">Missions by Pick</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.SubTitle">Mission</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessage, text: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <i class="material-icons tile-icon text-left main-tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_aedb098175a04be3803a53be736fca66.Icon, tileiconcolor: Query.TILE_aedb098175a04be3803a53be736fca66.IconColor"></i>
+                                 <div class="valueWrapper text-right">
+                                    <span class="text-right tile-value-label" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Footer"></span>
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Value, tileiconcolor: Query.TILE_aedb098175a04be3803a53be736fca66.ValueColor" style="white-space: nowrap; display: inline-block;">0</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                     <div class="small-tile row" data-bind="tilecolor: Query.TILE_aedb098175a04be3803a53be736fca66.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <div class="ai-tile-icon-title">
+                                    <span class="text-left tile-title">Missions by Pick</span>
+                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciPopoverTrigger" data-bs-toggle="popover" 
+                                    data-bs-custom-class="daVinciPopover"
+                                    data-content-id="tile"
+                                    data-bs-content="Future data predicted by Da Vinci.">auto_awesome</i>
+                                 </div>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.SubTitle">Mission</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessage, text: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_aedb098175a04be3803a53be736fca66.Icon, tileiconcolor: Query.TILE_aedb098175a04be3803a53be736fca66.IconColor"></i>
+                                 </div>
+                                 <span class="text-right tile-value-label" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Footer"></span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value text-right" data-bind="text: Query.TILE_aedb098175a04be3803a53be736fca66.Value, tileiconcolor: Query.TILE_aedb098175a04be3803a53be736fca66.ValueColor" style="white-space: nowrap; display: inline-block; font-size: 30px;">0</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div>
+
+                              </div>
+                        </div>
+                     </div>
+
+
+                     <div class="col-sm-4 col-xs-6 col-6 tile " data-tiletype="Text" data-tiletypename="WIP960_Wip_At_A_Glance_Lab_Issued" data-tiletypedetail="TILE_f016bb843942492ca41737f24c86bccb" data-parentfieldpath="" data-tileparameters="{&quot;PeriodCP1P2&quot;:&quot;C&quot;}" data-tiledetailavailable="Y" style="position: absolute; left: 142px; top: 152px;" data-boundonce="true">
+                        
+                              <div class="tile-loading-cover" style="display: none;"><span class="spinner"></span></div>
+                        <div>
+                              <div class="tile-inner sys-fg-white sys-bg-lighter-red">
+                                 <div class="panel-body text-left sys-wrapper sys-pd-off sys-mg-off">
+                     <div class="big-tile row" data-bind="tilecolor: Query.TILE_f016bb843942492ca41737f24c86bccb.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Title">WIP at a glance</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.SubTitle">Labor issued</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessage, text: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half flex-center">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon text-white sys-fg-white main-tile-icon" data-bind="tileicon: Query.TILE_f016bb843942492ca41737f24c86bccb.Icon, tileiconcolor: Query.TILE_f016bb843942492ca41737f24c86bccb.IconColor"></i>
+                                 </div>
+                                 <span class="tile-value-label text-right" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Footer">Period:Current</span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Value, tileiconcolor: Query.TILE_f016bb843942492ca41737f24c86bccb.ValueColor" style="white-space: nowrap; display: inline-block;">38416.05</span>
+                                 </div>                
+                              </div>
+                        </div>
+                     </div>
+
+                     <div class="wide-tile row" data-bind="tilecolor: Query.TILE_f016bb843942492ca41737f24c86bccb.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <span class="text-left tile-title" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Title">WIP at a glance</span>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.SubTitle">Labor issued</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessage, text: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <i class="material-icons tile-icon text-left main-tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_f016bb843942492ca41737f24c86bccb.Icon, tileiconcolor: Query.TILE_f016bb843942492ca41737f24c86bccb.IconColor"></i>
+                                 <div class="valueWrapper text-right">
+                                    <span class="text-right tile-value-label" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Footer">Period:Current</span>
+                                    <span class="tile-main-value" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Value, tileiconcolor: Query.TILE_f016bb843942492ca41737f24c86bccb.ValueColor" style="white-space: nowrap; display: inline-block;">38416.05</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                     <div class="small-tile row" data-bind="tilecolor: Query.TILE_f016bb843942492ca41737f24c86bccb.TileColor">
+                        <div class="col-xs-12 col-12">
+                              <div class="tile-top-half">
+                                 <div class="ai-tile-icon-title">
+                                    <span class="text-left tile-title">WIP at a glance</span>
+                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciPopoverTrigger" data-bs-toggle="popover" 
+                                    data-bs-custom-class="daVinciPopover"
+                                    data-content-id="tile"
+                                    data-bs-content="Future data predicted by Da Vinci.">auto_awesome</i>
+                                 </div>
+                                 <span class="tile-subtitle" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.SubTitle">Labor issued</span>
+                                 <span class="tile-subtitle tile-error tile-error-short sys-fg-danger" data-bind="visible: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessage, text: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessage" style="display: none;"></span>
+                              <span class="tile-subtitle tile-error tile-error-long sys-fg-danger" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.ErrorMessageLong"></span>
+                              </div>
+                              <div class="tile-bottom-half">
+                                 <div class="mainIconWrapper text-center">
+                                    <i class="material-icons text-left tile-icon sys-fg-primary" data-bind="tileicon: Query.TILE_f016bb843942492ca41737f24c86bccb.Icon, tileiconcolor: Query.TILE_f016bb843942492ca41737f24c86bccb.IconColor"></i>
+                                 </div>
+                                 <span class="text-right tile-value-label" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Footer">Period:Current</span>
+                                 <div class="valueWrapper text-right metric-only">
+                                    <span class="tile-main-value text-right" data-bind="text: Query.TILE_f016bb843942492ca41737f24c86bccb.Value, tileiconcolor: Query.TILE_f016bb843942492ca41737f24c86bccb.ValueColor" style="white-space: nowrap; display: inline-block; font-size: 26.25px;">38416.05</span>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                  </div>
+
+                              </div>
+                        </div>
+                     </div>
+
+                              </div>
+                        </div>
+                     </div>
+
+
+                                 </div>
+                              </div>
+                     </div>
+
+                  </div>
+                  <div class="row widget layout-widget grid-stack-item-content ps" data-guid="a67c49bb-8305-4026-9613-3c76c74e2859" data-subtype="" data-border="Internal" data-displaystyle="Tiles" data-collapsible="False" style="" >
+                     <div class="fileUploadDropZone">
+                        <input name="files" id="files" type="file" />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
+            </div>            
 
         </div>
       </div>
@@ -157,7 +662,7 @@
       </div>
     </div>
 
-    <button id="davinciButton"></button>
+    <button id="davinciButton" class="pulse"><i class="material-icons">auto_awesome</i></button>
     
 
 
@@ -167,13 +672,635 @@
 
   </div>
 
+   <div id="daVinciWindow">
+      <div id="daVinciChat" style="width: 100%; height: 100%"></div>
+   </div>
+
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
   <script src="js/UX_JS_forms.js"></script>
-  
+  <script id="davinciresponse-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header">
+         #:title#
+     </div>
+     <div class="k-card-body">
+       <p>#:content#</p>
+     </div>
+     <div class="k-card-actions k-card-actions-end">
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="Please provide more technical information.">Technical info</span>
+         </span>
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="There's something wrong with this.">Something's wrong</span>
+         </span>
+     </div>
+   </div>
+ </script>
+
+ <script id="technicalinfo-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header">
+         Technical info
+     </div>
+     <div class="k-card-body">
+       <p>#:content#</p>
+     </div>
+   </div>
+ </script>
+
+ <script id="davinciconfirm-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header sys-bg-success sys-fg-white">
+         #:title#
+     </div>
+     <div class="k-card-body">
+       <p>#:content#</p>
+     </div>
+     <div class="k-card-actions k-card-actions-end">
+         <span class="k-card-action">
+            <span class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base" data-value="Please provide more technical information.">Go ahead</span>
+         </span>
+         <span class="k-card-action">
+            <span class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base sys-bg-very-light-gray sys-fg-inverse" data-value="There's something wrong with this.">Cancel</span>
+         </span>
+     </div>
+   </div>
+   
+ </script>
+
+
   <script>
+   // TODO: create confirmatin notification for the chat, with links to the program or records that have been created, or some error notification
+   const davinciresponse_template = kendo.template($('#davinciresponse-template').html());
+   kendo.chat.registerTemplate("davinciresponse", davinciresponse_template);
+
+   const technicalinfo_template = kendo.template($('#technicalinfo-template').html());
+   kendo.chat.registerTemplate("technicalinfo", technicalinfo_template);
+
+   const davinciconfirm_template = kendo.template($('#davinciconfirm-template').html());
+   kendo.chat.registerTemplate("davinciconfirm", davinciconfirm_template);
+
+   const daVinciUser = {
+      id: 'daVinci',
+      name: "da Vinci",
+      iconUrl: "img/davinci.png"
+   };
+
+   const responses = {
+      summary: {
+         title: "Da Vinci data summaries",
+         content: "To create summaries from your data, Da Vinci learns about the patterns and regularities in your numerical and other data, directly from your database. From its understanding of trends, anomalies, and other things that seem noteworthy, it is able to produce helpful written descriptions that can save hours of traditional data analysis.",
+      },
+      tile: {
+         title: "Da Vinci predictive tiles",
+         content: "The data displayed in this tile is based on Da Vinci's trend prediction machine learning model. This model learns from your data, identifies trends, and predicts future values.",
+      },
+   };
+
+   const techInfo = {
+      summary: {
+         title: "Da Vinci data summaries",
+         content: "Here is some technical information about the actual model used, perhaps confidence intervals, and the method (algorithm) of learning, etc.",
+      },
+      tile: {
+         title: "Da Vinci predictive tiles",
+         content: "Here is some technical information about the actual model used, perhaps confidence intervals, and the method (algorithm) of learning, etc.",
+      },
+   };
+
    $("#davinciButton").kendoFloatingActionButton({
-       size: "large"
+       size: "small",
+       alignOffset: { x: 20, y: 35 },
+       click: function() {
+         $("#daVinciWindow").data("kendoWindow").open();
+       }
    });
+
+   const daVinciWindow = $("#daVinciWindow").kendoWindow({
+      actions: ["More-Vertical", "Minus", "Plus", "Close"],
+      draggable: false,
+      resizable: false,
+      width: "450px",
+      height: "500px",
+      // maxHeight: "750px",
+      // maxWidth: "1000px",
+      title: "Ask Da Vinci",
+      visible: false,
+      position: {
+         top: window.innerHeight - 515,
+         left: window.innerWidth - 465,
+      },
+      animation: { 
+         open: { 
+            effects: "slideIn:up fadeIn" 
+         },
+         close: { 
+            effects: "slideIn:up fadeIn", 
+            reverse: true
+         } 
+      },
+      close: function(e) {
+         daVinciWindow.setOptions({
+            width: "450px",
+            height: "500px",
+            position: {
+               top: window.innerHeight - 515,
+               left: window.innerWidth - 465,
+            },
+         });
+      },
+      // maximize: function() {
+      //    const daVinciWindow = $("#daVinciWindow").data("kendoWindow");
+      //    console.log(daVinciWindow);
+      //    daVinciWindow.setOptions({
+      //       width: "750px",
+      //       height: "1000px",
+      //       position: {
+      //          top: window.innerHeight - 775,
+      //          left: window.innerWidth - 1025,
+      //       },
+      //    })
+      // },
+      // minimize: function() {
+      //    daVinciWindow.setOptions({
+      //       position: {
+      //          top: window.innerHeight - 525,
+      //          left: window.innerWidth - 475,
+      //       },
+      //    })
+      // },
+      // close: onClose
+   }).data("kendoWindow")
+
+   $(document).on("click", '[aria-labelledby="daVinciWindow_wnd_title"] .k-svg-i-plus', function(e) {
+   // $("#daVinciWindow").siblings(".k-window-titlebar").find(".k-svg-i-plus").parent().click(function (e) {
+   // daVinciWindow.wrapper.find(".k-svg-i-plus").parent().on("click", function (e) {
+      console.log(daVinciWindow);
+      daVinciWindow.setOptions({
+         width: window.innerWidth - 120,
+         height: window.innerHeight - 70,
+         position: {
+            top: 55,
+            left: 105,
+         },
+      });
+      e.preventDefault();
+   });
+
+   $(document).on("click", '[aria-labelledby="daVinciWindow_wnd_title"] .k-svg-i-minus', function(e) {
+   // $("#daVinciWindow").siblings(".k-window-titlebar").find(".k-svg-i-minus").parent().click(function (e) {
+   // daVinciWindow.wrapper.find(".k-svg-i-minus").parent().on("click", function (e) {
+      console.log(daVinciWindow);
+      daVinciWindow.setOptions({
+         width: "450px",
+         height: "500px",
+         position: {
+            top: window.innerHeight - 515,
+            left: window.innerWidth - 465,
+         },
+      });
+      e.preventDefault();
+   });
+
+   var GridComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         // Create a <div> from which the Calendar will be initialized.
+         var gridElement = $('<div>');
+
+         // Initialize the grid component by passing the provided value.
+         gridElement.kendoGrid({
+            dataSource: [ { firstName: "John",
+                  lastName: "Smith",
+                  email: "john.smith@telerik.com" },
+               { firstName: "Jane",
+                  lastName: "Smith",
+                  email: "jane.smith@telerik.com" },
+               { firstName: "Josh",
+                  lastName: "Davis",
+                  email: "josh.davis@telerik.com" },
+               { firstName: "Cindy",
+                  lastName: "Jones",
+                  email: "cindy.jones@telerik.com" }
+            ]
+         });
+
+         // Place the grid within the Chat card.
+         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
+         this.element.addClass("k-card").append(bodyElement);
+      }
+   });
+
+   kendo.chat.registerComponent("GridComponent", GridComponent);
+
+   var chat = $("#daVinciChat").kendoChat({
+        post: function (args) {
+            // React on a user post action.
+        },
+        actionClick: function(e) {
+      /* The result can be observed in the DevTools(F12) console of the browser. */
+            console.log(this);
+            if (e.text === "Please provide more technical information.") {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               technicalInfo();
+            } else if (e.text === "There's something wrong with this.") {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderMessage({
+                     type: "text",
+                     text: "Sorry to hear that, can you describe the problem?"
+                  }, daVinciUser);
+               }, 1500);
+               
+            } else if (e.text === "Who are the top 4 sales staff at Cycle Corp?") {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderAttachments({
+                     attachments: [{
+                        contentType: "GridComponent",
+                        // content: {
+                        // value: new Date()
+                        // }
+                     }]
+                  }, daVinciUser);
+                  chat.renderSuggestedActions([{
+                     title: "Show confirmation",
+                     value: "Confirmation demo"
+                  }]);
+               }, 1500);
+            } else if (e.text === "Confirmation demo") {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderAttachments({
+                     attachments: [{
+                        contentType: "davinciconfirm",
+                        content: {
+                           "title": "Confirm pending updates",
+                           "content": "You have uploaded 16 files, and Da Vinci Vision will create 16 new Sales Orders from these files. Da Vinci will inform you if any new Sales Orders are missing required information. Would you like to proceed?",
+                        }
+                     }]
+                  }, daVinciUser);
+                  chat.renderSuggestedActions([{
+                     title: "Ask for a grid",
+                     value: "Who are the top 4 sales staff at Cycle Corp?"
+                  }]);
+               }, 1500);
+            }
+      }
+   }).data("kendoChat");
+
+   chat.renderSuggestedActions([{
+        title: "Ask for a grid",
+        value: "Who are the top 4 sales staff at Cycle Corp?"
+    }, {
+      title: "Show confirmation",
+      value: "Confirmation demo"
+    }]);
+
+
+   function technicalInfo() {
+      
+      // const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      // const trigger = $(`[aria-describedby="${popoverId}"]`);
+      // const contentId = trigger.attr("data-content-id");
+      setTimeout(function() {
+         chat.clearUserTypingIndicator(daVinciUser);
+         chat.renderAttachments({
+            attachments: [{
+               contentType: "technicalinfo",
+               content: {
+                  "title": techInfo["tile"].title,
+                  "content": techInfo["tile"].content,
+                  // "make": "Opel",
+                  // "model": "Astra",
+                  // "worth": "4000",
+                  // "startDate": "2018-10-10"
+               }
+            }],
+            attachmentLayout: "list"
+         }, daVinciUser);
+      }, 3000);
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      
+   };
+    
+
+   var salesData = [
+            {
+                "country": "United States",
+                "year": "2012",
+                "value": 30.1
+            },
+            {
+                "country": "United States",
+                "year": "2013",
+                "value": 35.9
+            },
+            {
+                "country": "United States",
+                "year": "2014",
+                "value": 43.1
+            },
+            {
+                "country": "United States",
+                "year": "2015",
+                "value": 49.2
+            },
+            {
+                "country": "United States",
+                "year": "2016",
+                "value": 59.0
+            },
+            {
+                "country": "United States",
+                "year": "2017",
+                "value": 61.9
+            },
+            {
+                "country": "United States",
+                "year": "2018",
+                "value": 65
+            },
+            {
+                "country": "United States",
+                "year": "2019",
+                "value": 68.3
+            },
+            {
+                "country": "United States",
+                "year": "2020",
+                "value": 69.2
+            },
+            {
+                "country": "United States",
+                "year": "2021",
+                "value": 75.3
+            },
+            {
+                "country": "United States",
+                "year": "2022",
+                "value": 74.2
+            },
+            
+        ];
+            const futureSales = [
+            {
+                "country": "United States",
+                "year": "2022",
+                "value": 74.2,
+               //  "noteText": "Something"
+            },
+            {
+                "country": "United States",
+                "year": "2023",
+                "value": 71.2
+            },
+            {
+                "country": "United States",
+                "year": "2024",
+                "value": 74.2
+            },
+            {
+                "country": "United States",
+                "year": "2025",
+                "value": 78.2,
+               //  "noteText": "Something"
+            }
+         ];
+            
+      function createChart() {
+            $("#chart").kendoChart({
+               //  dataSource: {
+               //      data: salesData
+               //  },
+               theme: "material",
+                title: {
+                    text: "Sales performance"
+                },
+                legend: {
+                    visible: false
+                },
+                seriesDefaults: {
+                    type: "line",
+                    labels: {
+                        visible: true,
+                        format: "${0}m",
+                        background: "transparent"
+                    }
+                },
+                seriesClick: function(e) {
+                     if (e.series.name === "dvp") {
+                        // Disable browser context menu
+                        daVinciWindow.open();
+
+                        chat.renderAttachments({
+                           attachments: [{
+                              contentType: "davinciresponse",
+                              content: {
+                                 "title": "Da Vinci trend prediction",
+                                 "content": "The data points on the dashed purple line are calculated by Da Vinci's trend prediction model. The model learns from your data, and estimates future values based on identified trends.",
+                                 // "make": "Opel",
+                                 // "model": "Astra",
+                                 // "worth": "4000",
+                                 // "startDate": "2018-10-10"
+                              }
+                           }],
+                           attachmentLayout: "list"
+                        }, daVinciUser);
+                        $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+                     }
+                  },
+                series: [{
+                     data: salesData,
+                    field: "value",
+                    categoryField: "year",
+                    name: "United States",
+                    highlight: {
+                     inactiveOpacity: 0.5
+                     }
+                },
+                {
+                     data: futureSales,
+                     dashType: "dash",
+                    field: "value",
+                    categoryField: "year",
+                    name: "dvp",
+                    color: "#7B1FA2",
+                    highlight: {
+                     inactiveOpacity: 0.5,
+                     visual: function(e) {
+                        var group = new kendo.drawing.Group();
+                        
+                        var center = e.rect.center();
+                        var circleGeometry = new kendo.geometry.Circle(center, 10);
+                        var circle = new kendo.drawing.Circle(circleGeometry, {
+                           fill: {
+                              color: "#7B1FA2"
+                           },
+                           stroke: null,
+                           cursor: "pointer"
+                        });
+
+                        var src = "img/davinci.png";
+                        var image = new kendo.drawing.Image(src, e.rect);
+                        image.options.cursor = "pointer";
+                        group.options.cursor = "pointer";
+
+                        group.append(circle, image);
+                        return group;
+                     }
+                     }
+                  //   noteTextField: "noteText",
+                  //    notes: {
+                  //       label: {
+                  //          // template: "#: value #",
+                        
+                  //       },
+                  //       position: "bottom"
+                  //    },
+                  //    markers: {
+                  //       size: 32,
+                  //       visual: function (e) {
+                  //           var src = "img/davinci.png";
+                  //           var image = new kendo.drawing.Image(src, e.rect);
+                  //           return image;
+                  //       },
+                  //       background: "#000",
+                  //   }
+                }],
+                valueAxis: {
+                    labels: {
+                        format: "${0}m"
+                    },
+                    line: {
+                        visible: false
+                    }
+                },
+                categoryAxis: {
+                    majorGridLines: {
+                        visible: false
+                    }
+                }
+            });
+        }
+        
+         const exampleEl = document.getElementById('example')
+         $(".daVinciPopoverTrigger").each(function(idx, elem) {
+            const popover = new bootstrap.Popover(elem, {
+               html: true,
+               title: "DaVinci insight",
+               trigger: "click focus",
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer"><a class="daVinciTellMore" href="#">Tell me more &rarr;</a></div></div>'
+            });
+         });
+         
+         // $(document).on("click", ".daVinciPopoverTrigger", function(e) {
+
+         // });
+         
+
+         $(document).on("click", ".daVinciTellMore", function(e) {
+            const popoverId = $(this).closest(".daVinciPopover").attr("id");
+            const trigger = $(`[aria-describedby="${popoverId}"]`);
+            const contentId = trigger.attr("data-content-id");
+            const popover = bootstrap.Popover.getInstance(trigger[0]);
+            popover.hide();
+            daVinciWindow.open();
+            // chat.renderMessage({
+            //    type: "text",
+            //    text: popoverId
+            // }, daVinciUser);
+
+            chat.renderAttachments({
+               attachments: [{
+                  contentType: "davinciresponse",
+                  content: {
+                     "title": responses[contentId].title,
+                     "content": responses[contentId].content,
+                     // "make": "Opel",
+                     // "model": "Astra",
+                     // "worth": "4000",
+                     // "startDate": "2018-10-10"
+                  }
+               }],
+               attachmentLayout: "list"
+            }, daVinciUser);
+
+            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+            // chat.renderSuggestedActions([{
+            //    title: "Tell me more",
+            //    value: "more"
+            // }]);
+         });
+
+         $("#files").kendoUpload({
+                    async: {
+                        saveUrl: "http://127.0.0.1:5500/UXTools/api/UXFileProviderWeb/UploadDocument",
+                        removeUrl: "remove",
+                        autoUpload: true,
+                    },
+                    validation: {
+                        allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
+                    },
+                    // template: kendo.template($('#fileTemplate').html()),
+                    success: onSuccess,
+                    showFileList: true,
+                    select: function(e) {
+                        var fileInfo = e.files[0];
+                        var wrapper = this.wrapper;
+
+                        setTimeout(function(){
+                            addPreview(fileInfo, wrapper);
+                        });
+                    }
+                   // dropZone: ".fileUploadDropZone",
+                });
+
+                $(".k-dropzone")
+                    .find("em")
+                    .remove();
+                  $(".k-dropzone")
+                    .find(".k-dropzone-hint")
+                    .remove();
+                $(".k-dropzone .k-upload-button")
+                    .find("span")
+                    .text("Drop file here or click to upload");
+                $(".k-dropzone .k-upload-button").prepend(
+                    "<h3 class='sys-mg-t-10 sys-mg-r-10'><i class='material-icons text-muted'>cloud_upload</i></h3>"
+                );
+
+                function onSuccess(e) {
+                    console.log('upload success!');  
+                    $(".file-upload-details").show(300);                  
+                }
+                
+                function addPreview(file, wrapper) {
+                    var raw = file.rawFile;
+                    var reader  = new FileReader();
+
+                    if (raw) {
+                    reader.onloadend = function () {
+                        var preview = $("<img class='image-preview'>").attr("src", this.result);
+
+                        wrapper.find(".k-file[data-uid='" + file.uid + "'] .k-file-extension-wrapper")
+                        .replaceWith(preview);
+                    };
+
+                    reader.readAsDataURL(raw);
+                    }
+                }
+
+
+        $(document).ready(createChart);
 
    </script>
   
