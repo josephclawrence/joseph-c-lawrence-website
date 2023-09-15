@@ -1103,7 +1103,9 @@ End Function</code></pre>
                "Who are the top 4 sales staff at Cycle Corp?",
                "Confirmation demo",
                "Go ahead",
-               "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
+               "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year.",
+               "List Purchase Orders with issues",
+               "List 16 new Purchase Orders"
             ].includes(args.text)) {
                setTimeout(function() {
                   chat.renderUserTypingIndicator(daVinciUser);
@@ -1182,27 +1184,30 @@ End Function</code></pre>
                         }
                      }]
                   }, daVinciUser);
-                  chat.renderSuggestedActions([{
-                     title: "Ask for a grid",
-                     value: "Who are the top 4 sales staff at Cycle Corp?"
-                  },
-                  {
-                     title: "Produce code",
-                     value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-                  }]);
+                  
+                  // chat.renderSuggestedActions([{
+                  //    title: "Ask for a grid",
+                  //    value: "Who are the top 4 sales staff at Cycle Corp?"
+                  // },
+                  // {
+                  //    title: "Produce code",
+                  //    value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
+                  // }]);
                }, 1500);
             } else if (e.text === "Go ahead") {
                setTimeout(function() {
                   chat.renderUserTypingIndicator(daVinciUser);
                }, 400);
                setTimeout(function() {
-                  chat.renderAttachments({
-                     attachments: [{
-                        contentType: "davinciconfirmed",
-                        content: {
-                           "content": "16 files have been processed, and 16 new Purchase Orders created. 3 have required information missing.",
-                        }
-                     }]
+                  chat.renderMessage({
+                     // attachments: [{
+                     //    contentType: "davinciconfirmed",
+                     //    content: {
+                     //       "content": "16 files have been processed, and 16 new Purchase Orders created. 3 have required information missing.",
+                     //    }
+                     // }]
+                     type: "text",
+                     text: "16 files have been processed, and 16 new Purchase Orders created. 3 have required information missing."
                   }, daVinciUser);  
                   chat.renderSuggestedActions([{
                      title: "List Purchase Orders with issues",
