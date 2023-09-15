@@ -17,7 +17,8 @@
 
 				<link rel="stylesheet" href="css/gridstack.min.css">
 				<link rel="stylesheet" href="css/gridstack-extra.css">
-        
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.min.css">
+            <!-- <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"> -->
 
         <script>
             window.MSPointerEvent = null;
@@ -44,21 +45,78 @@
         <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
         <script src="js/new/UX_JS_kendo.all.min.js"></script>
         <style>
+         :root {
+         --gradient-shadow: linear-gradient(
+            45deg,
+            #7B1FA2,
+            #b90d7e,
+            #ffffff
+
+         );
+         }
+         
+
+         @keyframes animate {
+            0% {
+               background-position: 0 0;
+            }
+            50% {
+               background-position: 300% 0;
+            }
+            100% {
+               background-position: 0 0;
+            }
+         }
          @keyframes border-pulsate {
-            0%   { border-color: rgba(255, 255, 255, 1); }
+            0%   { border-color: #b9086f; }
             50%  { border-color: #7B1FA2; }
-            100% { border-color: rgba(255, 255, 255, 1); }
+            100% { border-color: #b9086f; }
+         }
+         @keyframes pulse-purple {
+            0% {
+               transform: scale(1);
+               box-shadow: 0 0 0 0 rgba(123, 31, 162, 0.7);
+            }
+            
+            70% {
+               transform: scale(1);
+               box-shadow: 0 0 0 8px rgba(123, 31, 162, 0);
+            }
+            
+            100% {
+               transform: scale(1);
+               box-shadow: 0 0 0 0 rgba(123, 31, 162, 0);
+            }
          }
          #davinciButton {
             border: 3px solid rgba(255, 255, 255, 0.3);
             outline: none;
             background-color: #7B1FA2;
+            background-image: linear-gradient(to right top, #7b1fa2, #8f1699, #a00e90, #ae0987, #b90d7e);
+            z-index: 99;
             &.pulse {
-               animation: border-pulsate 2s infinite;
+               /* animation: border-pulsate 3s infinite; */
+               animation: pulse-purple 2.4s infinite;
             }
             & .k-fab-text {
                display: none;
             }
+            /* &:before,
+            &:after {
+               content: "";
+               position: absolute;
+               top: -2px;
+               left: -2px;
+               background: var(--gradient-shadow);
+               background-size: 400%;
+               width: calc(100% + 4px);
+               height: calc(100% + 4px);
+               z-index: -1;
+               animation: animate 20s linear infinite;
+            }
+            &:after  {
+               filter: blur(20px);
+            } */
          }
 
          .k-chat {
@@ -66,6 +124,7 @@
             color: #212529;
             background-color: transparent;
             max-width: none;
+            border-top: none;
             & .k-message-box {
                border-top: 1px solid #eee !important;
                padding: 15px 15px 15px;
@@ -82,14 +141,21 @@
                   padding: 0px;
                   width: 40px;
                   border-radius: 50%;
+                  background-image: linear-gradient(to right top, #7b1fa2, #8f1699, #a00e90, #ae0987, #b90d7e) !important;
                }
             }
             & .k-avatar {
                background: #7B1FA2;
                border-radius: 50%;
                padding: 9px;
+               background-image: linear-gradient(to right top, #7b1fa2, #8f1699, #a00e90, #ae0987, #b90d7e) !important;
             }
             & .k-card {
+               border-color: var(--color_athens_gray_approx) !important;
+               & .k-card-header {
+                  background-color: var(--color_athens_gray_approx);
+                  border-color: var(--color_athens_gray_approx);
+               }
                & .k-card-actions {
                   & .k-button {
                      border-radius: 4px;
@@ -114,6 +180,16 @@
             & .k-quick-replies {
                align-self: flex-end;
             }
+            & .k-typing-indicator-bubble {
+               & .k-bubble {
+                  background-color: transparent;
+                  border: none;
+                  white-space: normal;
+                  & .k-typing-indicator span {
+                     background-color: #7b1fa2;
+                  }
+               }
+            }
          }
          #daVinciWindow.k-window-content {
             padding-block: 0;
@@ -121,9 +197,13 @@
          }
          .k-window[aria-labelledby="daVinciWindow_wnd_title"] {
             position: fixed !important;
+            border-radius: 8px;
             & .k-window-titlebar {
                background-color: #7B1FA2 !important;
+               background-image: linear-gradient(to right top, #7b1fa2, #8f1699, #a00e90, #ae0987, #b90d7e);
                padding-left: 0.8rem;
+               border-top-left-radius: 8px;
+               border-top-right-radius: 8px;
                & .k-window-titlebar-action {
                   color: white !important;
                }
@@ -146,6 +226,7 @@
             & .popover-header {
                margin-top: 0px;
                background-color: #7B1FA2;
+               background-image: linear-gradient(to right top, #7b1fa2, #8f1699, #a00e90, #ae0987, #b90d7e);
                padding: 0.2rem 0.5rem;
                color: #fff;
             }
@@ -155,6 +236,12 @@
          }
          .daVinciPopoverTrigger {
             cursor: pointer;
+         }
+         .fileUploadDropZone {
+            /* border: none; */
+            & .k-upload-button-wrap {
+               width: 100%;
+            }
          }
         </style>
     </head>
@@ -646,10 +733,22 @@
                      </div>
 
                   </div>
+                  <hr class="sys-bd-very-light-gray" />
                   <div class="row widget layout-widget grid-stack-item-content ps" data-guid="a67c49bb-8305-4026-9613-3c76c74e2859" data-subtype="" data-border="Internal" data-displaystyle="Tiles" data-collapsible="False" style="" >
-                     <div class="fileUploadDropZone">
-                        <input name="files" id="files" type="file" />
-                    </div>
+                     <div class="col">
+                        <h4><i class="material-icons">queue</i> Purchase Order bulk creation <i 
+                           class="material-icons davinciicon-light daVinciPopoverTrigger"
+                           data-bs-toggle="popover" 
+                           data-bs-custom-class="daVinciPopover"
+                           data-content-id="automation"
+                           data-bs-content="This is a Da Vinci Vision automated process"
+                           data-bs-title="Da Vinci automated process."
+                        >auto_awesome</i></h4>   
+                        <small>Upload multiple invoices at once, and Da Vinci Vision will automatically create Purchase Orders from them.</small>                  
+                        <div class="fileUploadDropZone sys-mg-t-5">
+                           <input name="files" id="files" type="file" />
+                     </div>
+                     </div>
                   </div>
                 </div>
               </div>
@@ -678,6 +777,7 @@
 
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
   <script src="js/UX_JS_forms.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
   <script id="davinciresponse-template" type="text/x-kendo-template">
    <div class="k-card">
       <div class="k-card-header">
@@ -718,7 +818,7 @@
      </div>
      <div class="k-card-actions k-card-actions-end">
          <span class="k-card-action">
-            <span class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base" data-value="Please provide more technical information.">Go ahead</span>
+            <span class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base" data-value="Go ahead">Go ahead</span>
          </span>
          <span class="k-card-action">
             <span class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base sys-bg-very-light-gray sys-fg-inverse" data-value="There's something wrong with this.">Cancel</span>
@@ -728,6 +828,60 @@
    
  </script>
 
+ <script id="olddavinciconfirmed-template" type="text/x-kendo-template">
+   <div class="k-card sys-bg-success sys-fg-white">
+     <div class="k-card-body">
+       <p>#:content#</p>
+     </div>
+     <div class="k-card-actions k-card-actions-end">
+         <span class="k-card-action">
+            <span class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base" data-value="Please provide more technical information.">Go ahead</span>
+         </span>
+         <span class="k-card-action">
+            <span class="k-button k-button-md k-rounded-md k-button-flat k-button-flat-base sys-bg-very-light-gray sys-fg-inverse" data-value="There's something wrong with this.">Cancel</span>
+         </span>
+     </div>
+   </div>
+   
+ </script>
+ <script id="davinciconfirmed-template" type="text/x-kendo-template">
+   <p>#= content #</p>
+ </script>
+
+ <script id="davincicode-template" type="text/x-kendo-template">
+   <pre><code>Imports System.Drawing
+
+' Get the current year's sales total and the previous year's sales total
+Dim currentYearSales As Decimal = ARSPEN.SalesTotal
+Dim previousYearSales As Decimal = GetPreviousYearSales() ' You should implement this function
+
+' Define your color constants
+Dim greenColor As Color = Color.Green
+Dim redColor As Color = Color.Red
+
+' Check if the current year's sales total is greater than the previous year's
+If currentYearSales > previousYearSales Then
+    ' Set the text color to green
+    ARSPEN.SalesTotal.ForeColor = greenColor
+ElseIf currentYearSales <code previousYearSales Then
+    ' Set the text color to red
+    ARSPEN.SalesTotal.ForeColor = redColor
+Else
+    ' You can set a default color (e.g., black) if they are equal or handle this case differently
+    ARSPEN.SalesTotal.ForeColor = Color.Black
+End If
+
+' Update the text to display the current year's sales total
+ARSPEN.SalesTotal.Text = currentYearSales.ToString()
+
+' Implement a function to get the previous year's sales total (replace with your data retrieval logic)
+Function GetPreviousYearSales() As Decimal
+    ' Replace this with your actual data retrieval logic
+    ' For example, you could query a database or calculate it based on your data
+    ' For demonstration purposes, we'll return a hardcoded value
+    Return 10000.0 ' Replace with your actual value
+End Function</code></pre>
+ </script>
 
   <script>
    // TODO: create confirmatin notification for the chat, with links to the program or records that have been created, or some error notification
@@ -739,6 +893,12 @@
 
    const davinciconfirm_template = kendo.template($('#davinciconfirm-template').html());
    kendo.chat.registerTemplate("davinciconfirm", davinciconfirm_template);
+
+   const davinciconfirmed_template = kendo.template($('#davinciconfirmed-template').html());
+   kendo.chat.registerTemplate("davinciconfirmed", davinciconfirmed_template);
+
+   const davincicode_template = kendo.template($('#davincicode-template').html());
+   kendo.chat.registerTemplate("davincicode", davincicode_template);
 
    const daVinciUser = {
       id: 'daVinci',
@@ -755,6 +915,10 @@
          title: "Da Vinci predictive tiles",
          content: "The data displayed in this tile is based on Da Vinci's trend prediction machine learning model. This model learns from your data, identifies trends, and predicts future values.",
       },
+      automation: {
+         title: "Da Vinci automated process",
+         content: "This process was designed by an admin, and utilises Da Vinci Vision to automatically identify fields and information on invoices, and map them to fields in Syspro.",
+      }
    };
 
    const techInfo = {
@@ -792,11 +956,13 @@
       },
       animation: { 
          open: { 
-            effects: "slideIn:up fadeIn" 
+            effects: "slideIn:up fadeIn",
+            duration: 150
          },
          close: { 
             effects: "slideIn:up fadeIn", 
-            reverse: true
+            reverse: true,
+            duration: 150
          } 
       },
       close: function(e) {
@@ -894,9 +1060,72 @@
 
    kendo.chat.registerComponent("GridComponent", GridComponent);
 
+   var CodeComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         // Create a <div> from which the Calendar will be initialized.
+         var gridElement = $('<div>');
+
+         // Initialize the grid component by passing the provided value.
+         gridElement.kendoGrid({
+            dataSource: [ { firstName: "John",
+                  lastName: "Smith",
+                  email: "john.smith@telerik.com" },
+               { firstName: "Jane",
+                  lastName: "Smith",
+                  email: "jane.smith@telerik.com" },
+               { firstName: "Josh",
+                  lastName: "Davis",
+                  email: "josh.davis@telerik.com" },
+               { firstName: "Cindy",
+                  lastName: "Jones",
+                  email: "cindy.jones@telerik.com" }
+            ]
+         });
+
+         // Place the grid within the Chat card.
+         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
+         this.element.addClass("k-card").append(bodyElement);
+      }
+   });
+
+   kendo.chat.registerComponent("CodeComponent", CodeComponent);
+
    var chat = $("#daVinciChat").kendoChat({
         post: function (args) {
+         console.log(args);
             // React on a user post action.
+            if (![
+               "Please provide more technical information.",
+               "There's something wrong with this.",
+               "Sorry to hear that, can you describe the problem?",
+               "Who are the top 4 sales staff at Cycle Corp?",
+               "Confirmation demo",
+               "Go ahead",
+               "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
+            ].includes(args.text)) {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderMessage({
+                     type: "text",
+                     text: "Sorry I'm not sure what you mean 🤪 did you want to do one of these pre-formulated actions?"
+                  }, daVinciUser);
+                  chat.renderSuggestedActions([{
+                     title: "Ask for a grid",
+                     value: "Who are the top 4 sales staff at Cycle Corp?"
+                  }, {
+                     title: "Show confirmation",
+                     value: "Confirmation demo"
+                  },
+                  {
+                     title: "Produce code",
+                     value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
+                  }]);               
+               }, 1500);
+            }
         },
         actionClick: function(e) {
       /* The result can be observed in the DevTools(F12) console of the browser. */
@@ -933,6 +1162,10 @@
                   chat.renderSuggestedActions([{
                      title: "Show confirmation",
                      value: "Confirmation demo"
+                  },
+                  {
+                     title: "Produce code",
+                     value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
                   }]);
                }, 1500);
             } else if (e.text === "Confirmation demo") {
@@ -945,16 +1178,120 @@
                         contentType: "davinciconfirm",
                         content: {
                            "title": "Confirm pending updates",
-                           "content": "You have uploaded 16 files, and Da Vinci Vision will create 16 new Sales Orders from these files. Da Vinci will inform you if any new Sales Orders are missing required information. Would you like to proceed?",
+                           "content": "You have uploaded 16 files, and Da Vinci Vision will create 16 new Purchase Orders from these files. Da Vinci will inform you if any new Purchase Orders are missing required information. Would you like to proceed?",
                         }
                      }]
                   }, daVinciUser);
                   chat.renderSuggestedActions([{
                      title: "Ask for a grid",
                      value: "Who are the top 4 sales staff at Cycle Corp?"
+                  },
+                  {
+                     title: "Produce code",
+                     value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
                   }]);
                }, 1500);
+            } else if (e.text === "Go ahead") {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderAttachments({
+                     attachments: [{
+                        contentType: "davinciconfirmed",
+                        content: {
+                           "content": "16 files have been processed, and 16 new Purchase Orders created. 3 have required information missing.",
+                        }
+                     }]
+                  }, daVinciUser);  
+                  chat.renderSuggestedActions([{
+                     title: "List Purchase Orders with issues",
+                     value: "List Purchase Orders with issues"
+                  },
+                  {
+                     title: "List 16 new Purchase Orders",
+                     value: "List 16 new Purchase Orders"
+                  },
+                  {
+                     title: "Open PO Query",
+                     value: "Open PO Query"
+                  }]);                
+               }, 1500);
+            } else if (e.text === "List 16 new Purchase Orders" || e.text === "List Purchase Orders with issues") {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderAttachments({
+                     attachments: [{
+                        contentType: "davinciconfirmed",
+                        content: {
+                           "content": "<ul><li><a>PO B332DX</a></li><li><a>PO B332DX</a></li><li><a>PO B332DX</a></li></ul>",
+                        }
+                     }]
+                  }, daVinciUser);  
+                  // chat.renderSuggestedActions([{
+                  //    title: "List Purchase Orders with issues",
+                  //    value: "List Purchase Orders with issues"
+                  // },
+                  // {
+                  //    title: "List 16 new Purchase Orders",
+                  //    value: "List 16 new Purchase Orders"
+                  // },
+                  // {
+                  //    title: "Open PO Query",
+                  //    value: "Open PO Query"
+                  // }]);                
+               }, 1500);
+            } else if (e.text === "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year.") { 
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderAttachments({
+                     attachments: [{
+                        contentType: "davincicode",
+                        // content: {
+                        // value: new Date()
+                        // }
+                     }]
+                  }, daVinciUser);
+                  hljs.highlightAll();
+                  chat.renderSuggestedActions([{
+                     title: "Show confirmation",
+                     value: "Confirmation demo"
+                  },
+                  {
+                     title: "Ask for a grid",
+                     value: "Who are the top 4 sales staff at Cycle Corp?"
+                  }]);
+               }, 1500);
+            
+            } else {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+               }, 400);
+               setTimeout(function() {
+                  chat.renderMessage({
+                     type: "text",
+                     text: "Sorry I'm not sure what you mean 🤪 - did you want to do one of these pre-formulated actions?"
+                  }, daVinciUser);
+                  chat.renderSuggestedActions([{
+                     title: "Ask for a grid",
+                     value: "Who are the top 4 sales staff at Cycle Corp?"
+                  }, {
+                     title: "Show confirmation",
+                     value: "Confirmation demo"
+                  },
+                  {
+                     title: "Produce code",
+                     value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
+                  }]);               
+               }, 1500);
+
+               
             }
+            // e.preventDefault();
       }
    }).data("kendoChat");
 
@@ -964,6 +1301,10 @@
     }, {
       title: "Show confirmation",
       value: "Confirmation demo"
+    },
+    {
+      title: "Produce code",
+      value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
     }]);
 
 
@@ -988,8 +1329,9 @@
             }],
             attachmentLayout: "list"
          }, daVinciUser);
+         $(".k-message-list-content > div:last-child")[0].scrollIntoView();
       }, 3000);
-      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      
       
    };
     
@@ -1195,9 +1537,10 @@
         
          const exampleEl = document.getElementById('example')
          $(".daVinciPopoverTrigger").each(function(idx, elem) {
+            const title = $(elem).attr("data-bs-title") || "DaVinci insight";
             const popover = new bootstrap.Popover(elem, {
                html: true,
-               title: "DaVinci insight",
+               title: title,
                trigger: "click focus",
                template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer"><a class="daVinciTellMore" href="#">Tell me more &rarr;</a></div></div>'
             });
