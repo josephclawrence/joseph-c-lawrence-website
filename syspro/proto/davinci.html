@@ -937,6 +937,10 @@ End Function</code></pre>
        alignOffset: { x: 20, y: 35 },
        click: function() {
          $("#daVinciWindow").data("kendoWindow").open();
+         setTimeout(function(){
+            $("#daVinciChat .k-message-box input").focus();
+         }, 220);
+         
        }
    });
 
@@ -1184,7 +1188,8 @@ End Function</code></pre>
                         }
                      }]
                   }, daVinciUser);
-                  
+
+                  $(".k-message-list-content > div:last-child")[0].scrollIntoView();
                   // chat.renderSuggestedActions([{
                   //    title: "Ask for a grid",
                   //    value: "Who are the top 4 sales staff at Cycle Corp?"
@@ -1296,6 +1301,7 @@ End Function</code></pre>
 
                
             }
+            
             // e.preventDefault();
       }
    }).data("kendoChat");
@@ -1448,7 +1454,9 @@ End Function</code></pre>
                      if (e.series.name === "dvp") {
                         // Disable browser context menu
                         daVinciWindow.open();
-
+                        setTimeout(function(){
+                           $("#daVinciChat .k-message-box input").focus();
+                        }, 220);
                         chat.renderAttachments({
                            attachments: [{
                               contentType: "davinciresponse",
@@ -1563,6 +1571,9 @@ End Function</code></pre>
             const popover = bootstrap.Popover.getInstance(trigger[0]);
             popover.hide();
             daVinciWindow.open();
+            setTimeout(function(){
+               $("#daVinciChat .k-message-box input").focus();
+            }, 220);
             // chat.renderMessage({
             //    type: "text",
             //    text: popoverId
