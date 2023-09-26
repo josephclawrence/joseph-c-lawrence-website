@@ -799,7 +799,7 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray">insights</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10">insights</i>
             <i class="material-icons sys-fg-warning">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">61%</span>
          </div>
@@ -824,9 +824,59 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray">edit_note</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10">edit_note</i>
             <i class="material-icons sys-fg-success">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">84%</span>
+         </div>
+     </div>
+     <div class="k-card-body">
+       <p>#:content#</p>
+     </div>
+     <div class="k-card-actions k-card-actions-end">
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="Please provide more technical information.">Technical info</span>
+         </span>
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="There's something wrong with this.">Something's wrong</span>
+         </span>
+     </div>
+   </div>
+ </script>
+
+ <script id="davincitileresponse-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header d-flex justify-content-between">
+         <div class="">
+            #:title#
+         </div>
+         <div class="">
+            <i class="material-icons sys-fg-gray sys-mg-r-10">insights</i>
+            <i class="material-icons sys-fg-warning">data_usage</i>
+            <span class="sys-txt-sm sys-fg-gray">65%</span>
+         </div>
+     </div>
+     <div class="k-card-body">
+       <p>#:content#</p>
+     </div>
+     <div class="k-card-actions k-card-actions-end">
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="Please provide more technical information.">Technical info</span>
+         </span>
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="There's something wrong with this.">Something's wrong</span>
+         </span>
+     </div>
+   </div>
+ </script>
+
+ <script id="davinciautoresponse-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header d-flex justify-content-between">
+         <div class="">
+            #:title#
+         </div>
+         <div class="">
+            <i class="material-icons sys-fg-gray">smart_toy</i>
          </div>
      </div>
      <div class="k-card-body">
@@ -936,6 +986,12 @@ End Function</code></pre>
 
    const davincisumresponse_template = kendo.template($('#davincisumresponse-template').html());
    kendo.chat.registerTemplate("davincisumresponse", davincisumresponse_template);
+
+   const davincitileresponse_template = kendo.template($('#davincitileresponse-template').html());
+   kendo.chat.registerTemplate("davincitileresponse", davincitileresponse_template);
+
+   const davinciautoresponse_template = kendo.template($('#davinciautoresponse-template').html());
+   kendo.chat.registerTemplate("davinciautoresponse", davinciautoresponse_template);
 
    const technicalinfo_template = kendo.template($('#technicalinfo-template').html());
    kendo.chat.registerTemplate("technicalinfo", technicalinfo_template);
@@ -1614,7 +1670,7 @@ End Function</code></pre>
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="daVinciTellMore" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
 
@@ -1624,7 +1680,7 @@ End Function</code></pre>
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreAuto" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
          
@@ -1668,6 +1724,56 @@ End Function</code></pre>
             //    title: "Tell me more",
             //    value: "more"
             // }]);
+         });
+
+         $(document).on("click", ".daVinciTellMoreData", function(e) {
+            const popoverId = $(this).closest(".daVinciPopover").attr("id");
+            const trigger = $(`[aria-describedby="${popoverId}"]`);
+            const contentId = trigger.attr("data-content-id");
+            const popover = bootstrap.Popover.getInstance(trigger[0]);
+            popover.hide();
+            daVinciWindow.open();
+            setTimeout(function(){
+               $("#daVinciChat .k-message-box input").focus();
+            }, 220);
+
+            chat.renderAttachments({
+               attachments: [{
+                  contentType: "davincitileresponse",
+                  content: {
+                     "title": responses[contentId].title,
+                     "content": responses[contentId].content,
+                  }
+               }],
+               attachmentLayout: "list"
+            }, daVinciUser);
+
+            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+         });
+
+         $(document).on("click", ".daVinciTellMoreAuto", function(e) {
+            const popoverId = $(this).closest(".daVinciPopover").attr("id");
+            const trigger = $(`[aria-describedby="${popoverId}"]`);
+            const contentId = trigger.attr("data-content-id");
+            const popover = bootstrap.Popover.getInstance(trigger[0]);
+            popover.hide();
+            daVinciWindow.open();
+            setTimeout(function(){
+               $("#daVinciChat .k-message-box input").focus();
+            }, 220);
+
+            chat.renderAttachments({
+               attachments: [{
+                  contentType: "davinciautoresponse",
+                  content: {
+                     "title": responses[contentId].title,
+                     "content": responses[contentId].content,
+                  }
+               }],
+               attachmentLayout: "list"
+            }, daVinciUser);
+
+            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
          });
 
          $("#files").kendoUpload({
