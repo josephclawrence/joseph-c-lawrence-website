@@ -230,11 +230,25 @@
                padding: 0.2rem 0.5rem;
                color: #fff;
             }
-            & .popover-body, & .popover-footer {
+            & .popover-body {
                padding: 0.5rem;
             }
+            & .popover-footer {
+               display: flex;
+               justify-content: space-around;
+               border-bottom-left-radius: 6px;
+               border-bottom-right-radius: 6px;
+               padding: 0.3rem 0.5rem;
+               & a {
+                  display: flex;
+                  align-items: center;
+                  &:hover {
+                     text-decoration: none;
+                  }
+               }
+            }
          }
-         .daVinciPopoverTrigger {
+         .daVinciPopoverTrigger, .daVinciDataPopoverTrigger, .daVinciAutoPopoverTrigger {
             cursor: pointer;
          }
          .fileUploadDropZone {
@@ -412,7 +426,7 @@
                               <div class="tile-top-half">
                                  <div class="ai-tile-icon-title">
                                     <span class="text-left tile-title">Avg. Days to Pay</span>
-                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciPopoverTrigger" data-bs-toggle="popover" 
+                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciDataPopoverTrigger" data-bs-toggle="popover" 
                                     data-bs-custom-class="daVinciPopover"
                                     data-content-id="tile"
                                     data-bs-content="Future data predicted by Da Vinci.">auto_awesome</i>
@@ -622,7 +636,7 @@
                               <div class="tile-top-half">
                                  <div class="ai-tile-icon-title">
                                     <span class="text-left tile-title">Missions by Pick</span>
-                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciPopoverTrigger" data-bs-toggle="popover" 
+                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciDataPopoverTrigger" data-bs-toggle="popover" 
                                     data-bs-custom-class="daVinciPopover"
                                     data-content-id="tile"
                                     data-bs-content="Future data predicted by Da Vinci.">auto_awesome</i>
@@ -697,7 +711,7 @@
                               <div class="tile-top-half">
                                  <div class="ai-tile-icon-title">
                                     <span class="text-left tile-title">WIP at a glance</span>
-                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciPopoverTrigger" data-bs-toggle="popover" 
+                                    <i class="material-icons pull-right text-right sys-txt-sm daVinciDataPopoverTrigger" data-bs-toggle="popover" 
                                     data-bs-custom-class="daVinciPopover"
                                     data-content-id="tile"
                                     data-bs-content="Future data predicted by Da Vinci.">auto_awesome</i>
@@ -737,7 +751,7 @@
                   <div class="row widget layout-widget grid-stack-item-content ps" data-guid="a67c49bb-8305-4026-9613-3c76c74e2859" data-subtype="" data-border="Internal" data-displaystyle="Tiles" data-collapsible="False" style="" >
                      <div class="col">
                         <h4><i class="material-icons">queue</i> Purchase Order bulk creation <i 
-                           class="material-icons davinciicon-light daVinciPopoverTrigger"
+                           class="material-icons davinciicon-light daVinciAutoPopoverTrigger"
                            data-bs-toggle="popover" 
                            data-bs-custom-class="daVinciPopover"
                            data-content-id="automation"
@@ -780,8 +794,40 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
   <script id="davinciresponse-template" type="text/x-kendo-template">
    <div class="k-card">
-      <div class="k-card-header">
-         #:title#
+      <div class="k-card-header d-flex justify-content-between">
+         <div class="">
+            #:title#
+         </div>
+         <div class="">
+            <i class="material-icons sys-fg-gray">insights</i>
+            <i class="material-icons sys-fg-warning">data_usage</i>
+            <span class="sys-txt-sm sys-fg-gray">61%</span>
+         </div>
+     </div>
+     <div class="k-card-body">
+       <p>#:content#</p>
+     </div>
+     <div class="k-card-actions k-card-actions-end">
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="Please provide more technical information.">Technical info</span>
+         </span>
+         <span class="k-card-action">
+            <span class="k-button k-button-sm k-rounded-md k-button-flat k-button-flat-base" data-value="There's something wrong with this.">Something's wrong</span>
+         </span>
+     </div>
+   </div>
+ </script>
+ <script id="davincisumresponse-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header d-flex justify-content-between">
+         <div class="">
+            #:title#
+         </div>
+         <div class="">
+            <i class="material-icons sys-fg-gray">edit_note</i>
+            <i class="material-icons sys-fg-success">data_usage</i>
+            <span class="sys-txt-sm sys-fg-gray">84%</span>
+         </div>
      </div>
      <div class="k-card-body">
        <p>#:content#</p>
@@ -887,6 +933,9 @@ End Function</code></pre>
    // TODO: create confirmatin notification for the chat, with links to the program or records that have been created, or some error notification
    const davinciresponse_template = kendo.template($('#davinciresponse-template').html());
    kendo.chat.registerTemplate("davinciresponse", davinciresponse_template);
+
+   const davincisumresponse_template = kendo.template($('#davincisumresponse-template').html());
+   kendo.chat.registerTemplate("davincisumresponse", davincisumresponse_template);
 
    const technicalinfo_template = kendo.template($('#technicalinfo-template').html());
    kendo.chat.registerTemplate("technicalinfo", technicalinfo_template);
@@ -1555,7 +1604,27 @@ End Function</code></pre>
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer"><a class="daVinciTellMore" href="#">Tell me more &rarr;</a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="daVinciTellMore" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+            });
+         });
+
+         $(".daVinciDataPopoverTrigger").each(function(idx, elem) {
+            const title = $(elem).attr("data-bs-title") || "DaVinci insight";
+            const popover = new bootstrap.Popover(elem, {
+               html: true,
+               title: title,
+               trigger: "click focus",
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="daVinciTellMore" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+            });
+         });
+
+         $(".daVinciAutoPopoverTrigger").each(function(idx, elem) {
+            const title = $(elem).attr("data-bs-title") || "DaVinci insight";
+            const popover = new bootstrap.Popover(elem, {
+               html: true,
+               title: title,
+               trigger: "click focus",
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
          
@@ -1581,7 +1650,7 @@ End Function</code></pre>
 
             chat.renderAttachments({
                attachments: [{
-                  contentType: "davinciresponse",
+                  contentType: "davincisumresponse",
                   content: {
                      "title": responses[contentId].title,
                      "content": responses[contentId].content,
