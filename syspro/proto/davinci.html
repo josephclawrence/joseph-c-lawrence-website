@@ -799,8 +799,8 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray sys-mg-r-10">insights</i>
-            <i class="material-icons sys-fg-warning">data_usage</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
+            <i class="material-icons sys-fg-warning" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">61%</span>
          </div>
      </div>
@@ -824,8 +824,8 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray sys-mg-r-10">edit_note</i>
-            <i class="material-icons sys-fg-success">data_usage</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Text Generation">edit_note</i>
+            <i class="material-icons sys-fg-success" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">84%</span>
          </div>
      </div>
@@ -850,8 +850,8 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray sys-mg-r-10">insights</i>
-            <i class="material-icons sys-fg-warning">data_usage</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
+            <i class="material-icons sys-fg-warning" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">65%</span>
          </div>
      </div>
@@ -876,7 +876,7 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray">smart_toy</i>
+            <i class="material-icons sys-fg-gray" data-bs-toggle="tooltip" data-bs-title="Da Vinci Automated Process">smart_toy</i>
          </div>
      </div>
      <div class="k-card-body">
@@ -1278,6 +1278,8 @@ End Function</code></pre>
                      title: "Produce code",
                      value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
                   }]);
+
+                  initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                }, 1500);
             } else if (e.text === "Confirmation demo") {
                setTimeout(function() {
@@ -1295,6 +1297,7 @@ End Function</code></pre>
                   }, daVinciUser);
 
                   $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+                  initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                   // chat.renderSuggestedActions([{
                   //    title: "Ask for a grid",
                   //    value: "Who are the top 4 sales staff at Cycle Corp?"
@@ -1345,6 +1348,7 @@ End Function</code></pre>
                         }
                      }]
                   }, daVinciUser);  
+                  initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                   // chat.renderSuggestedActions([{
                   //    title: "List Purchase Orders with issues",
                   //    value: "List Purchase Orders with issues"
@@ -1380,6 +1384,7 @@ End Function</code></pre>
                      title: "Ask for a grid",
                      value: "Who are the top 4 sales staff at Cycle Corp?"
                   }]);
+                  initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                }, 1500);
             
             } else {
@@ -1446,6 +1451,7 @@ End Function</code></pre>
             attachmentLayout: "list"
          }, daVinciUser);
          $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+         initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
       }, 3000);
       
       
@@ -1577,6 +1583,7 @@ End Function</code></pre>
                            attachmentLayout: "list"
                         }, daVinciUser);
                         $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+                        initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                      }
                   },
                 series: [{
@@ -1655,12 +1662,12 @@ End Function</code></pre>
         
          const exampleEl = document.getElementById('example')
          $(".daVinciPopoverTrigger").each(function(idx, elem) {
-            const title = $(elem).attr("data-bs-title") || "DaVinci insight";
+            const title = $(elem).attr("data-bs-title") || "Da Vinci Generated Text";
             const popover = new bootstrap.Popover(elem, {
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="daVinciTellMore" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Generated Text</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="daVinciTellMore" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
 
@@ -1670,24 +1677,28 @@ End Function</code></pre>
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
 
          $(".daVinciAutoPopoverTrigger").each(function(idx, elem) {
-            const title = $(elem).attr("data-bs-title") || "DaVinci insight";
+            const title = $(elem).attr("data-bs-title") || "Da Vinci Automated Process";
             const popover = new bootstrap.Popover(elem, {
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> DaVinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreAuto" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreAuto" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
          
          // $(document).on("click", ".daVinciPopoverTrigger", function(e) {
 
          // });
-         
+         function initChatCardTooltips(elem) {
+            $('[data-bs-toggle="tooltip"]', elem).each(function(idx, element) {
+               const tooltip = new bootstrap.Tooltip(element);
+            });            
+         }
 
          $(document).on("click", ".daVinciTellMore", function(e) {
             const popoverId = $(this).closest(".daVinciPopover").attr("id");
@@ -1720,6 +1731,7 @@ End Function</code></pre>
             }, daVinciUser);
 
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+            initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
             // chat.renderSuggestedActions([{
             //    title: "Tell me more",
             //    value: "more"
@@ -1749,6 +1761,7 @@ End Function</code></pre>
             }, daVinciUser);
 
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+            initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
 
          $(document).on("click", ".daVinciTellMoreAuto", function(e) {
@@ -1774,6 +1787,7 @@ End Function</code></pre>
             }, daVinciUser);
 
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+            initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
 
          $("#files").kendoUpload({
