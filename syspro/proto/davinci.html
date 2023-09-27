@@ -173,6 +173,7 @@
             }
             & .k-card-list {
                margin: 2px 0 15px;
+               width: 100%;
             }
             & .k-message-group {
                margin-bottom: 15px;
@@ -800,8 +801,10 @@
          </div>
          <div class="">
             <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
+            <span class="conflevel">
             <i class="material-icons sys-fg-warning" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">61%</span>
+            </span>
          </div>
      </div>
      <div class="k-card-body">
@@ -825,8 +828,10 @@
          </div>
          <div class="">
             <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Text Generation">edit_note</i>
+            <span class="conflevel">
             <i class="material-icons sys-fg-success" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">84%</span>
+            </span>
          </div>
      </div>
      <div class="k-card-body">
@@ -851,8 +856,10 @@
          </div>
          <div class="">
             <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
+            <span class="conflevel">
             <i class="material-icons sys-fg-warning" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">65%</span>
+            </span>
          </div>
      </div>
      <div class="k-card-body">
@@ -900,6 +907,31 @@
      </div>
      <div class="k-card-body">
        <p>#:content#</p>
+     </div>
+   </div>
+ </script>
+
+ <script id="confidence-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header">
+         Confidence levels
+     </div>
+     <div class="k-card-body">
+       <p>A description of confidence levels and what they mean.</p>
+       <table class="table">
+         <tr>
+            <td style="width: 5%"><i class="material-icons sys-fg-success">data_usage</i></td>
+            <td><b>Over 75%</b></td>
+         </tr>
+         <tr>
+            <td><i class="material-icons sys-fg-warning">data_usage</i></td>
+            <td><b>55% - 75%</b></td>
+         </tr>
+         <tr>
+            <td><i class="material-icons sys-fg-danger">data_usage</i></td>
+            <td><b>Under 55%</b></td>
+         </tr>
+       </table>
      </div>
    </div>
  </script>
@@ -1004,6 +1036,9 @@ End Function</code></pre>
 
    const davincicode_template = kendo.template($('#davincicode-template').html());
    kendo.chat.registerTemplate("davincicode", davincicode_template);
+
+   const confidence_template = kendo.template($('#confidence-template').html());
+   kendo.chat.registerTemplate("confidence", confidence_template);
 
    const daVinciUser = {
       id: 'daVinci',
@@ -1788,6 +1823,21 @@ End Function</code></pre>
 
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
             initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+         });
+
+         $(document).on("click", ".conflevel", function(e) {            
+            chat.renderAttachments({
+               attachments: [{
+                  contentType: "confidence",
+                  content: {
+                     
+                  }
+               }],
+               attachmentLayout: "list"
+            }, daVinciUser);
+
+            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+            // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
 
          $("#files").kendoUpload({
