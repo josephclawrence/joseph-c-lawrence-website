@@ -258,6 +258,14 @@
                width: 100%;
             }
          }
+
+         .showmodelcard, .conflevel {
+            cursor: pointer;
+         }
+
+         .models-table.table > tbody > tr > td {
+            vertical-align: middle;
+         }
         </style>
     </head>
 
@@ -800,7 +808,7 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10 showmodelcard" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
             <span class="conflevel">
             <i class="material-icons sys-fg-warning" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">61%</span>
@@ -827,7 +835,7 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Text Generation">edit_note</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10 showmodelcard" data-bs-toggle="tooltip" data-bs-title="Da Vinci Text Generation">edit_note</i>
             <span class="conflevel">
             <i class="material-icons sys-fg-success" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">84%</span>
@@ -855,7 +863,7 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray sys-mg-r-10" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
+            <i class="material-icons sys-fg-gray sys-mg-r-10 showmodelcard" data-bs-toggle="tooltip" data-bs-title="Da Vinci Data Prediction">insights</i>
             <span class="conflevel">
             <i class="material-icons sys-fg-warning" data-bs-toggle="tooltip" data-bs-title="Confidence level">data_usage</i>
             <span class="sys-txt-sm sys-fg-gray">65%</span>
@@ -883,7 +891,7 @@
             #:title#
          </div>
          <div class="">
-            <i class="material-icons sys-fg-gray" data-bs-toggle="tooltip" data-bs-title="Da Vinci Automated Process">smart_toy</i>
+            <i class="material-icons sys-fg-gray showmodelcard" data-bs-toggle="tooltip" data-bs-title="Da Vinci Automated Process">smart_toy</i>
          </div>
      </div>
      <div class="k-card-body">
@@ -930,6 +938,40 @@
          <tr>
             <td><i class="material-icons sys-fg-danger">data_usage</i></td>
             <td><b>Under 55%</b></td>
+         </tr>
+       </table>
+     </div>
+   </div>
+ </script>
+
+ <script id="models-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header">
+         Confidence levels
+     </div>
+     <div class="k-card-body">
+       <p>Da Vinci has three main tools it uses to help you understand your data, increase efficiency, and to run your operations more easily and speedily. Each type of tool is indicated by an icon that you might see when using SYSPRO.</p>
+       <table class="table table-borderless models-table">
+         <tr>
+            <td><i class="material-icons sys-txt-lg sys-fg-gray">edit_note</i></td>
+            <td>
+               <h4 class="sys-mg-b-5"><b>Text Generation</b></h4>
+               <p>A description of the LLM and natural languange processing capabilities of SYSPRO AI.</p>
+            </td>
+         </tr>
+         <tr>
+            <td><i class="material-icons sys-txt-lg sys-fg-gray">insights</i></td>
+            <td>
+               <h4 class="sys-mg-b-5"><b>Data Insights</b></h4>
+               <p>A description of the data prediction and anomaly detection capabilities.</p>
+            </td>
+         </tr>
+         <tr>
+            <td><i class="material-icons sys-txt-lg sys-fg-gray">smart_toy</i></td>
+            <td>
+               <h4 class="sys-mg-b-5"><b>Task Automation</b></h4>
+               <p>A description of automation, including OCR capabilities of Da Vinci.</p>
+            </td>
          </tr>
        </table>
      </div>
@@ -1039,6 +1081,9 @@ End Function</code></pre>
 
    const confidence_template = kendo.template($('#confidence-template').html());
    kendo.chat.registerTemplate("confidence", confidence_template);
+
+   const models_template = kendo.template($('#models-template').html());
+   kendo.chat.registerTemplate("models", models_template);
 
    const daVinciUser = {
       id: 'daVinci',
@@ -1702,7 +1747,7 @@ End Function</code></pre>
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Generated Text</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMore" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="daVinciTellMore" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Generated Text</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
 
@@ -1712,7 +1757,7 @@ End Function</code></pre>
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="daVinciTellMoreData" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
 
@@ -1722,7 +1767,7 @@ End Function</code></pre>
                html: true,
                title: title,
                trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="daVinciTellMoreAuto" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
          
@@ -1825,10 +1870,37 @@ End Function</code></pre>
             initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
 
-         $(document).on("click", ".conflevel", function(e) {            
+         $(document).on("click", ".conflevel", function(e) {      
+            const popoverId = $(this).closest(".daVinciPopover").attr("id");
+            const trigger = $(`[aria-describedby="${popoverId}"]`);
+            const contentId = trigger.attr("data-content-id");
+            const popover = bootstrap.Popover.getInstance(trigger[0]);
+            popover?.hide();
+            daVinciWindow.open();      
             chat.renderAttachments({
                attachments: [{
                   contentType: "confidence",
+                  content: {
+                     
+                  }
+               }],
+               attachmentLayout: "list"
+            }, daVinciUser);
+
+            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+            // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+         });
+
+         $(document).on("click", ".showmodelcard", function(e) {      
+            const popoverId = $(this).closest(".daVinciPopover").attr("id");
+            const trigger = $(`[aria-describedby="${popoverId}"]`);
+            const contentId = trigger.attr("data-content-id");
+            const popover = bootstrap.Popover.getInstance(trigger[0]);
+            popover?.hide();
+            daVinciWindow.open();      
+            chat.renderAttachments({
+               attachments: [{
+                  contentType: "models",
                   content: {
                      
                   }
