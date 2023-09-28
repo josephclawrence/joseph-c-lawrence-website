@@ -266,6 +266,9 @@
          .models-table.table > tbody > tr > td {
             vertical-align: middle;
          }
+         .davincifield {
+            background-color: #e4b3e2 !important;
+         }
         </style>
     </head>
 
@@ -370,6 +373,106 @@
                         </div>
                      </div>
                   </div>
+              </div>
+
+              <div class="panel sys-bd-off sys-box-shadow-off">
+               <div class="row widget layout-widget grid-stack-item-content" >
+           
+               <div class="col-sm-12">
+           
+                   <div class="panel card sys-widget sys-box-shadow-off    ">                      
+           
+                       <div class="panel-body card-body sys-pd-10">
+                           <form class="form-horizontal" max-width="539px" style="position: relative;">
+                                            
+                               <div class="row" data-row="0">
+                                   <div class="col-xs-12 col-6 data-section" data-section="0">
+           
+                                       <div class="form-group row is-empty sys-mg-b-10" data-guid="6d63aa1b-0f74-4513-dcbf-52c580965d39"
+                                           data-bind="hidden: Fields.IMP040L3CustomerPurchaseOrder.Hidden">
+           
+           
+           
+                                           <label for="  Customer purchase order"
+                                               class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">
+                                               <span
+                                                   data-bind="htmltextnonull: Fields.IMP040L3CustomerPurchaseOrder.Caption">Customer
+                                                   purchase order</span>
+                                               <span class="text-warning mandatory-indication">*</span>
+                                           </label>
+                                           <div class="col-md-6 col-xs-11 col-11 syspro-entry-content">
+                                               <input type="text"
+                                               value="AI generated value"
+                                                   class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask davincifield"
+                                                   id="Fields.IMP040L3CustomerPurchaseOrder">
+           
+           
+           
+                                           </div>
+           
+           
+                                       </div>
+                      
+                                       <div class="form-group row is-empty" data-guid="3c8bfbc4-6f28-4733-b2fc-2b3a8ff2ef38"
+                                           data-bind="hidden: Fields.IMP040L3OrderDate.Hidden">
+           
+           
+           
+                                           <label for="  Order date"
+                                               class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">
+                                               <span data-bind="htmltextnonull: Fields.IMP040L3OrderDate.Caption">Order date</span>
+                                           </label>
+                                           <div class="col-md-6 col-xs-11 col-11 syspro-entry-content">
+                                               <div class="input-group date">
+                                                   <input type="text"
+                                                       class="form-control date-input syspro-focusable syspro-trackfield-change"
+                                                       placeholder="Enter date" id="Fields.IMP040L3OrderDate">
+                                                   <span class="input-group-addon input-group-prepend input-group-append">
+                                                       <i class="material-icons text-primary">date_range</i>
+                                                   </span>
+                                               </div>
+           
+           
+                                           </div>
+           
+                                       </div>
+                                                             
+                                   </div>
+                                   <div class="col-xs-12 col-6 data-section" data-section="0">
+                                    <div class="form-group row is-empty" data-guid="3deea910-592f-4a58-eaa6-c3d9b82c2302"
+                                    data-bind="hidden: Fields.IMP040L3ShipDate.Hidden">                      
+    
+                                       <label for="  Ship date"
+                                          class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">
+                                          <span data-bind="htmltextnonull: Fields.IMP040L3ShipDate.Caption">Ship date</span>
+                                       </label>
+                                       <div class="col-md-6 col-xs-11 col-11 syspro-entry-content">
+                                          <div class="input-group date">
+                                             <input type="text"
+                                                   class="form-control date-input syspro-focusable syspro-trackfield-change davincifield"
+                                                   placeholder="Enter date" id="Fields.IMP040L3ShipDate" value="10/10/2023">
+                                                   
+                                             <span class="input-group-addon input-group-prepend input-group-append">
+                                                   <i class="material-icons text-primary">date_range</i>
+                                             </span>
+                                          </div>
+      
+      
+                                       </div>
+        
+                                </div>
+
+                                   </div>
+                               </div>
+           
+                           </form>
+           
+           
+                       </div>
+                   </div>
+               </div>
+           
+           </div>
               </div>
             </div>
             <div class="col-sm-4 col-12 column-parent">
@@ -1768,6 +1871,17 @@ End Function</code></pre>
                title: title,
                trigger: "click focus",
                template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+            });
+         });
+
+         $(".davincifield").each(function(idx, elem) {
+            const popover = new bootstrap.Popover(elem, {
+               html: true,
+               title: "Da Vinci Generated Data",
+               trigger: "hover",
+               content: "Field value generated by Da Vinci",
+               customClass: "daVinciPopover",
+               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body">Field value generated by Da Vinci</div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
             });
          });
          
