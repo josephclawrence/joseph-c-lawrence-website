@@ -386,6 +386,7 @@
                            <div class="card-body sys-pd-l-15 sys-pd-r-15 d-flex justify-content-between">
                               <span><b>Standard Bank</b> / Current account 797666434</span>
                               <span>05/10/2023 - 31/10/2023</span>
+                              <a href="#">Upload file <i class="material-icons sys-txt-sm">upload_file</i></a>
                            </div>
                         </div>
                      </div>
@@ -396,11 +397,11 @@
                            <div class="card-body sys-pd-l-15 sys-pd-r-15 sys-pd-off-t sys-pd-off-b">
                               <button class="btn btn-default sys-bg-white">
                                  Auto match
-                                 <i class="material-icons sys-fg-primary">auto_awesome</i>
+                                 <i class="material-icons davinciicon-dark">auto_awesome</i>
                               </button>
                               <button class="btn btn-default sys-bg-white">
-                                 Upload file
-                                 <!-- <i class="material-icons sys-fg-primary">settings_suggest</i> -->
+                                 Manage rules
+                                 <i class="material-icons">checklist_rtl</i>
                               </button>
                               <button class="btn btn-default sys-bg-white">
                                  <i class="material-icons sys-fg-primary">settings_suggest</i>
@@ -443,7 +444,31 @@
                         
                               <div class="tab-content">
                                  <div id="match" class="tab-pane fade in show active sys-pd-t-5" role="tabpanel">
-
+                                    <p><b>Jim's Auto</b></p>
+                                    <p><small>00HG54</small></p>
+                                    <table class="table table-noborder table-condensed table-sm">
+                                       <thead>
+                                          <tr>
+                                             <th>Date</th>
+                                             <th>Debit</th>
+                                             <th>Credit</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr>
+                                             <td>21/10/2023</td>
+                                             <td>$0.00</td>
+                                             <td>$1589.00</td>
+                                          </tr>
+                                       </tbody>
+                                       <tfoot>
+                                          <tr>
+                                             <td></td>
+                                             <td></td>
+                                             <td><b>$1589.00</b></td>
+                                          </tr>
+                                       </tfoot>
+                                    </table>
                                  </div>
 
                                  <div id="create" class="tab-pane fade sys-pd-t-5" role="tabpanel">
@@ -471,42 +496,49 @@
                                           </tr>
                                        </tfoot>
                                     </table>
-                                    <div class="form-group row is-empty" >
+                                    <div class="row">
+                                       <div class="col-6">
+                                          <div class="form-group row is-empty" >
 
-                                       <label for="  Customer purchase order" class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">
-                                           <span>  Title</span>
-                                       </label>
-                                          <div class="col-md-6 col-xs-11 col-11 syspro-entry-content">
-                                             <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask" id="Fields.IMP040L3CustomerPurchaseOrder" autocomplete="off" maxlength="">
-                                           
-                                             <p class="help-block form-text text-muted syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.IMP040L3CustomerPurchaseOrder.Description"></p>
-                       
+                                             <label for="  Customer purchase order" class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">
+                                                 <span>  Title</span>
+                                             </label>
+                                                <div class="col-md-6 col-xs-11 col-11 syspro-entry-content">
+                                                   <input type="text" class="form-control syspro-trackfield-input syspro-trackfield-keydown syspro-trackfield-change syspro-focusable syspro-supports-mask" id="Fields.IMP040L3CustomerPurchaseOrder" autocomplete="off" maxlength="">
+                                                 
+                                                   <p class="help-block form-text text-muted syspro-entryfield-description syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.IMP040L3CustomerPurchaseOrder.Description"></p>
+                             
+                                                </div>
+                             
                                           </div>
-                       
-                                    </div>
-
-                                    <div class="form-group row is-empty" data-guid="6b794c94-8276-4320-e814-7f96de78d3b4" data-bind="hidden: Fields.IMP040L3TaxStatus.Hidden">
+                                       </div>
+                                       <div class="col-6">
+                                          <div class="form-group row is-empty" data-guid="6b794c94-8276-4320-e814-7f96de78d3b4" data-bind="hidden: Fields.IMP040L3TaxStatus.Hidden">
             
 
-                                       <label for="  Tax status" class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">
-                                           <span data-bind="htmltextnonull: Fields.IMP040L3TaxStatus.Caption">  Account</span>
-                                       </label>
-                                          <div class="col-md-6 col-xs-11 col-11 syspro-entry-content">
-                                                      <span title="" class="k-picker k-dropdownlist form-control dropdown-select syspro-dropdown-trackfield-change k-picker-solid k-picker-sm k-rounded-md" unselectable="on" role="combobox" >
-                                                         <span id="ad7ccbe1-b5f7-4b21-bc3f-83e1ec2038be" unselectable="on" class="k-input-inner">
-                                                            <span class="k-input-value-text"></span>
-                                                         </span>
-                                                         <span role="button" class="k-input-button k-button k-button-sm k-button-solid k-button-solid-base k-icon-button" aria-label="select" type="button">
-                                                            <span class="k-svg-icon k-svg-i-caret-alt-down k-button-icon" aria-hidden="true">
-                                                               <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256L256 352z"></path></svg>
+                                             <label for="  Tax status" class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">
+                                                 <span data-bind="htmltextnonull: Fields.IMP040L3TaxStatus.Caption">  Account</span>
+                                             </label>
+                                                <div class="col-md-6 col-xs-11 col-11 syspro-entry-content">
+                                                            <span title="" class="k-picker k-dropdownlist form-control dropdown-select syspro-dropdown-trackfield-change k-picker-solid k-picker-sm k-rounded-md" unselectable="on" role="combobox" >
+                                                               <span id="ad7ccbe1-b5f7-4b21-bc3f-83e1ec2038be" unselectable="on" class="k-input-inner">
+                                                                  <span class="k-input-value-text"></span>
+                                                               </span>
+                                                               <span role="button" class="k-input-button k-button k-button-sm k-button-solid k-button-solid-base k-icon-button" aria-label="select" type="button">
+                                                                  <span class="k-svg-icon k-svg-i-caret-alt-down k-button-icon" aria-hidden="true">
+                                                                     <svg viewBox="0 0 512 512" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M256 352 128 160h256L256 352z"></path></svg>
+                                                                  </span>
+                                                               </span>
+                                                               <input id="Fields.IMP040L3TaxStatus" data-role="dropdownlist" class="form-control dropdown-select syspro-dropdown-trackfield-change"  data-size="small" style="display: none;">
                                                             </span>
-                                                         </span>
-                                                         <input id="Fields.IMP040L3TaxStatus" data-role="dropdownlist" class="form-control dropdown-select syspro-dropdown-trackfield-change" data-text-field="Description" data-value-field="Value" data-bind="source: Fields.IMP040L3TaxStatus.Items.Item, value: Fields.IMP040L3TaxStatus.Value" data-size="small" style="display: none;">
-                                                      </span>
-                                                      <p class="help-block text-muted syspro-help-block disabled-help-block" data-bind="htmltext:  Fields.IMP040L3TaxStatus.Description"></p>
-                                                </div>                                             
-                                 
-                                          </div>
+                                                      </div>                                             
+                                       
+                                                </div>
+                                       </div>
+                                    </div>
+                                    
+
+                                    
                                  </div>
 
                                  <div id="transfer" class="tab-pane fade sys-pd-t-5" role="tabpanel">
@@ -541,6 +573,9 @@
 
    <div id="daVinciWindow">
       <div id="daVinciChat" style="width: 100%; height: 100%"></div>
+   </div>
+
+   <div id="rulesWindow">
    </div>
 
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
@@ -1765,9 +1800,7 @@ End Function</code></pre>
                   }
                },
                selectable: "multiple",
-               pageable: {
-                  buttonCount: 5
-               },
+               pageable: false,
                sortable: true,
                scrollable: true,
                persistSelection: true,
@@ -1807,8 +1840,15 @@ End Function</code></pre>
                      field: "confidence",
                      title: "Match confidence",
                      format: "{0:p}",
-                     template: "<span id='chart_#= id#' class='sparkline-chart'></span>",
-                     width: 160
+                     // template: "<span id='chart_#= id#' class='sparkline-chart'></span>",
+                     // width: 160,
+                     template: function({confidence, id}) {
+
+                        const pcent = confidence * 100;
+                        return `<span id='chart_${id}' class='sparkline-chart'></span><span>${pcent}%</span>`;
+                     },
+                     width: 150,
+                     headerTemplate: 'Match confidence <i class="material-icons pull-right align-right davinciicon-light sys-txt-sm">auto_awesome</i>'
                   },
                ]
          });
@@ -1826,47 +1866,97 @@ End Function</code></pre>
                     legend: {
                         visible: false
                     },
-                    data: [dataItem.confidence] * 100,
-                    type: "bar",
+                    series: [{
+                        data: [{
+                           value: dataItem.confidence * 100,
+                           color: dataItem.confidence > 0.84 
+                              ? "green"
+                              : dataItem.confidence > 0.61 && dataItem.confidence < 0.85
+                              ? "orange"
+                              : "red",
+                           
+                        },
+                        {
+                           value: (1 - dataItem.confidence) * 100,
+                           color: "#ccc",
+                           
+                        }                           
+                           
+                        ],
+                        tooltip: {
+                           visible: true,
+                           background: "#444",
+                           color: "#fff",
+                           border: {
+                              width: 0
+                           },
+                           template: function() {
+                              var adjustConf = Math.round(dataItem.confidence * 100);
+                              return adjustConf + "% chance";
+                           }
+                        }
+                     }],
+                    
+                    type: "donut",
                     chartArea: {
                         margin: 0,
-                        width: 110,
+                        width: 30,
                         background: "transparent"
                     },
                     seriesDefaults: {
-                        bar: {
-                           size: 2,
-                           color: dataItem.confidence > .8 ? "green" : "orange",
-                        },
-                        labels: {
-                            visible: true,
-                            format: '{0}%',
-                            background: 'none'
-                        }
-                    },
-                    categoryAxis: {
-                        majorGridLines: {
-                            visible: false
-                        },
-                        majorTicks: {
-                            visible: false
-                        }
-                    },
-                    valueAxis: {
-                        type: "numeric",
-                        min: 0,
-                        max: 150,
-                        visible: false,
-                        labels: {
-                            visible: false
-                        },
-                        minorTicks: { visible: false },
-                        majorGridLines: { visible: false }
-                    },
-                    tooltip: {
-                        visible: false
+                     size: 3,
+                     tooltip: {
+                     visible: false
                     }
+                    },
+                    
                 });
+
+               //  $(this).find(".sparkline-chart").kendoSparkline({
+               //      legend: {
+               //          visible: false
+               //      },
+               //      data: [dataItem.confidence] * 100,
+               //      type: "bar",
+               //      chartArea: {
+               //          margin: 0,
+               //          width: 110,
+               //          background: "transparent"
+               //      },
+               //      seriesDefaults: {
+               //          bar: {
+               //             size: 2,
+               //             color: dataItem.confidence > .8 ? "green" : "orange",
+               //          },
+               //          labels: {
+               //              visible: true,
+               //              format: '{0}%',
+               //              background: 'none'
+               //          }
+               //      },
+               //      categoryAxis: {
+               //          majorGridLines: {
+               //              visible: false
+               //          },
+               //          majorTicks: {
+               //              visible: false
+               //          }
+               //      },
+               //      valueAxis: {
+               //          type: "numeric",
+               //          min: 0,
+               //          max: 150,
+               //          visible: false,
+               //          labels: {
+               //              visible: false
+               //          },
+               //          minorTicks: { visible: false },
+               //          majorGridLines: { visible: false }
+               //      },
+               //      tooltip: {
+               //          visible: false
+               //      }
+               //  });
 
                 kendo.bind($(this), dataItem);
             });
