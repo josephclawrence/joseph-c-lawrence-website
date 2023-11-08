@@ -542,7 +542,39 @@
                                  </div>
 
                                  <div id="transfer" class="tab-pane fade sys-pd-t-5" role="tabpanel">
+                                    <div class="col-xs-12 col-12">
+                                       <div class="form-group">
+                                          <div class="row">
+                                             <label for="fromAccount" class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">From account</label>
+                                             <div class="col-md-7 col-xs-11 col-11 syspro-entry-content">
+                                                <input id="fromAccount" name="fromAccount" class="form-control" />
+                                                <!-- <select class="form-control dropdown-select" name="fromAccount" autocomplete="off">'
+                                                   <option value="nothing">Account name</option>
+                                                   <option value="anotherthing" selected>Account Name 2</option>
+                                                   <option value="anotherthing">Account Name 3</option>
+                                                </select> -->
+                                             </div>
+                                          </div>
+                                          
+                                       </div>
+                                    </div>
 
+                                    <div class="col-xs-12 col-12">
+                                       <div class="form-group">
+                                          <div class="row">
+                                             <label for="toAccount" class="col-md-5 control-label col-form-label sys-mg-t-5 sys-pd-t-5">To account</label>
+                                             <div class="col-md-7 col-xs-11 col-11 syspro-entry-content">
+                                                <input id="toAccount" name="toAccount" class="form-control" />
+                                                <!-- <select class="form-control dropdown-select" name="fromAccount" autocomplete="off">'
+                                                   <option value="nothing">Account name</option>
+                                                   <option value="anotherthing" selected>Account Name 2</option>
+                                                   <option value="anotherthing">Account Name 3</option>
+                                                </select> -->
+                                             </div>
+                                          </div>
+                                          
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
                            </div>
@@ -1961,6 +1993,35 @@ End Function</code></pre>
                 kendo.bind($(this), dataItem);
             });
         }
+
+        var data = [
+            { text: "Account 1", value: "1" },
+            { text: "Account 2", value: "2" },
+            { text: "Account 3", value: "3" }
+         ];
+
+         // create DropDownList from input HTML element
+         $("#fromAccount").kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: data,
+            index: 0,
+         });
+
+         var data1 = [
+            { text: "Account 4", value: "1" },
+            { text: "Account 5", value: "2" },
+            { text: "Account 6", value: "3" }
+         ];
+
+         // create DropDownList from input HTML element
+         $("#toAccount").kendoDropDownList({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: data1,
+            index: 0,
+         });
+
 
    </script>
   
