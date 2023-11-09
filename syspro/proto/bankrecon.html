@@ -269,13 +269,13 @@
          .davincifield {
             background-color: #e4b3e2 !important;
          }
-         tr.matchedItem {
+         tr.matchedItem.matched {
             background-color: #ade7ca;
             &:hover {
                background-color: #c7eeda;
             }
          }
-         .k-grid .k-table-alt-row.matchedItem {
+         .k-grid .k-table-alt-row.matchedItem.matched {
             background-color: #a6dcc1;
             &:hover {
                background-color: #bfe7d3;
@@ -285,14 +285,26 @@
             background-color: #bfe7d3;
          }
 
-         .k-grid tr.k-table-row.k-selected.matchedItem > td, .k-grid tr.k-table-row.k-selected.matchedItem > .k-table-td {
+         .k-grid tr.k-table-row.k-selected.matchedItem.matched > td, .k-grid tr.k-table-row.k-selected.matchedItem.matched > .k-table-td {
             background-color: #62d096;
             color: var(--color_pickled_bluewood_approx);
          }
          .sys-bg-matched {
             background-color: #ade7ca;
          }
-         
+         .match-background.matchy {
+            background: #ade7ca;
+            & th, & td {
+               background: #ade7ca;
+            }
+            
+         }
+         .nav-tabs.card-tabs > li > a.match-background.matchy{
+            background: transparent;
+            &.active {
+               background: #ade7ca !important;
+            }
+         }
          /* match colour #ade7ca */
         </style>
     </head>
@@ -358,7 +370,12 @@
     </div>
   </nav>
 
+  <div id="loading-cover" style="display: none;" aria-hidden="true">
+   <div class="loader-wrapper">
+      <img class="loadinggif" src="img/UX_IMG_SYSPRO-ANIMATION.gif" alt="">
 
+   </div>
+</div>
   <span id="errorNotification" style="display:none;"></span>
   <span id="taskdialognotification" style="display:none;"></span>
   <span id="aiSuggestionNotification" style="display:none;"></span>
@@ -370,7 +387,7 @@
       <div id="wrapper" class="toggled">
         <nav nav="" id="navbar-toolbar" class="navbar navbar-default navbar-static-top navbar-controlbar sys-mg-off-b syspro-toolbar ">
           <div class="container-fluid">
-
+            
           </div>
         </nav>
         <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
@@ -395,7 +412,7 @@
                      <div class="col-sm-12 ">
                         <div class="panel card sys-widget sys-box-shadow-off sys-mg-off-b" >               
                            <div class="card-body sys-pd-l-15 sys-pd-r-15 sys-pd-off-t sys-pd-off-b">
-                              <button class="btn btn-default sys-bg-white">
+                              <button class="btn btn-default sys-bg-white" id="autoMatch">
                                  Auto match
                                  <i class="material-icons davinciicon-dark">auto_awesome</i>
                               </button>
@@ -403,7 +420,7 @@
                                  Manage rules
                                  <i class="material-icons">checklist_rtl</i>
                               </button>
-                              <button class="btn btn-default sys-bg-white">
+                              <button class="btn btn-default sys-bg-white" id="openRulesWindow">
                                  <i class="material-icons sys-fg-primary">settings_suggest</i>
                               </button>
                            </div>
@@ -432,40 +449,40 @@
 
                               <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs {backgroundcoloralternate}" role="tablist">
                                  <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="#match">Match</a>
+                                    <a class="nav-link active sys-mg-off-b  match-background" data-toggle="tab" data-bs-toggle="tab" href="#match">Match</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link " data-toggle="tab" data-bs-toggle="tab" href="#create">Create</a>
+                                    <a class="nav-link sys-mg-off-b" data-toggle="tab" data-bs-toggle="tab" href="#create">Create</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link " data-toggle="tab" data-bs-toggle="tab" href="#transfer">Transfer</a>
+                                    <a class="nav-link sys-mg-off-b" data-toggle="tab" data-bs-toggle="tab" href="#transfer">Transfer</a>
                                  </li>
                               </ul>
                         
                               <div class="tab-content">
-                                 <div id="match" class="tab-pane fade in show active sys-pd-t-5" role="tabpanel">
+                                 <div id="match" class="tab-pane fade in show active sys-pd-5 match-background" role="tabpanel">
                                     <p><b>Jim's Auto</b></p>
                                     <p><small>00HG54</small></p>
                                     <table class="table table-noborder table-condensed table-sm">
                                        <thead>
                                           <tr>
                                              <th>Date</th>
-                                             <th>Debit</th>
-                                             <th>Credit</th>
+                                             <th class="text-right">Debit</th>
+                                             <th class="text-right">Credit</th>
                                           </tr>
                                        </thead>
                                        <tbody>
                                           <tr>
                                              <td>21/10/2023</td>
-                                             <td>$0.00</td>
-                                             <td>$1589.00</td>
+                                             <td class="text-right">$0.00</td>
+                                             <td class="text-right">$1589.00</td>
                                           </tr>
                                        </tbody>
                                        <tfoot>
                                           <tr>
                                              <td></td>
-                                             <td></td>
-                                             <td><b>$1589.00</b></td>
+                                             <td class="text-right"></td>
+                                             <td class="text-right"><b>$1589.00</b></td>
                                           </tr>
                                        </tfoot>
                                     </table>
@@ -477,22 +494,22 @@
                                        <thead>
                                           <tr>
                                              <th>Date</th>
-                                             <th>Debit</th>
-                                             <th>Credit</th>
+                                             <th class="text-right">Debit</th>
+                                             <th class="text-right">Credit</th>
                                           </tr>
                                        </thead>
                                        <tbody>
                                           <tr>
                                              <td>21/10/2023</td>
-                                             <td>$0.00</td>
-                                             <td>$1589.00</td>
+                                             <td class="text-right">$0.00</td>
+                                             <td class="text-right">$1589.00</td>
                                           </tr>
                                        </tbody>
                                        <tfoot>
                                           <tr>
                                              <td></td>
-                                             <td></td>
-                                             <td><b>$1589.00</b></td>
+                                             <td class="text-right"></td>
+                                             <td class="text-right"><b>$1589.00</b></td>
                                           </tr>
                                        </tfoot>
                                     </table>
@@ -608,6 +625,76 @@
    </div>
 
    <div id="rulesWindow">
+      <div class="container-fluid window-container">
+         <div class="row window-content">
+            <div class="col-12">
+               <p>Manage the weighting of the different bits of transaction data for matching bank transactions to GL entries.</p>
+               <!-- <div class="row">
+                  <div class="col-8 offset-2"> -->
+                     <div class="form-group row sys-mg-t-10">
+                        <div class="col-7">
+                           <b>Transaction data</b>
+                        </div>
+                        <div class="col-5">
+                           <b>Proportion</b>
+                        </div>
+                     </div>
+                     <hr class="sys-mg-b-5 sys-mg-t-5">
+                     <div class="form-group row is-empty sys-mg-b-10" >
+   
+                        <label for="  Customer purchase order" class="col-7 control-label col-form-label sys-mg-off-t sys-pd-off-t">
+                            <span>Title</span>
+                        </label>
+                        <div class="col-4 col-xs-11 syspro-entry-content">
+                           <input type="number" class="form-control text-right" maxlength="">   
+                        </div>   
+                        <div class="col-1">
+                           %
+                        </div>     
+                     </div>
+                     <div class="form-group row is-empty sys-mg-b-10" >
+   
+                        <label for="  Customer purchase order" class="col-7 control-label col-form-label sys-mg-off-t sys-pd-off-t">
+                            <span>Date</span>
+                        </label>
+                        <div class="col-4 col-xs-11 syspro-entry-content">
+                           <input type="number" class="form-control text-right" maxlength="">   
+                        </div>   
+                        <div class="col-1">
+                           %
+                        </div>     
+                     </div>
+                     <div class="form-group row is-empty sys-mg-b-10" >
+   
+                        <label for="  Customer purchase order" class="col-7 control-label col-form-label sys-mg-off-t sys-pd-off-t">
+                            <span>Amount</span>
+                        </label>
+                        <div class="col-4 col-xs-11 syspro-entry-content">
+                           <input type="number" class="form-control text-right" maxlength="">   
+                        </div>   
+                        <div class="col-1">
+                           %
+                        </div>     
+                     </div>
+                     <hr class="sys-mg-b-5 sys-mg-t-5">
+                     <div class="form-group row sys-mg-t-5">
+                        <div class="col-7">
+                           <b>Total</b>
+                        </div>
+                        <div class="col-4 text-right">
+                           <b>80</b>
+                           <br>
+                           <small>20% remaining</small>
+                        </div>
+                        <div class="col-1">
+                           <b>%</b>
+                        </div>
+                     </div>
+                  <!-- </div>
+               </div> -->
+            </div>
+         </div>
+      </div>
    </div>
 
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
@@ -998,6 +1085,85 @@ End Function</code></pre>
       // },
       // close: onClose
    }).data("kendoWindow")
+
+   $("#openRulesWindow").on("click", function() {
+      $("#rulesWindow").data("kendoWindow").center().open();
+   });
+
+   const rulesWindow = $("#rulesWindow").kendoWindow({
+      actions: ["Close"],
+      draggable: true,
+      resizable: false,
+      width: "350px",
+      height: "400px",
+      // maxHeight: "750px",
+      // maxWidth: "1000px",
+      title: "Match weightings",
+      visible: false,
+      // position: {
+      //    top: window.innerHeight - 515,
+      //    left: window.innerWidth - 465,
+      // },
+      // animation: { 
+      //    open: { 
+      //       effects: "slideIn:up fadeIn",
+      //       duration: 150
+      //    },
+      //    close: { 
+      //       effects: "slideIn:up fadeIn", 
+      //       reverse: true,
+      //       duration: 150
+      //    } 
+      // },
+      // close: function(e) {
+      //    daVinciWindow.setOptions({
+      //       width: "450px",
+      //       height: "500px",
+      //       position: {
+      //          top: window.innerHeight - 515,
+      //          left: window.innerWidth - 465,
+      //       },
+      //    });
+      // },
+      // maximize: function() {
+      //    const daVinciWindow = $("#daVinciWindow").data("kendoWindow");
+      //    console.log(daVinciWindow);
+      //    daVinciWindow.setOptions({
+      //       width: "750px",
+      //       height: "1000px",
+      //       position: {
+      //          top: window.innerHeight - 775,
+      //          left: window.innerWidth - 1025,
+      //       },
+      //    })
+      // },
+      // minimize: function() {
+      //    daVinciWindow.setOptions({
+      //       position: {
+      //          top: window.innerHeight - 525,
+      //          left: window.innerWidth - 475,
+      //       },
+      //    })
+      // },
+      // close: onClose
+   }).data("kendoWindow")
+
+   $("#autoMatch").on("click", function() {
+      $("#loading-cover").show();
+      setTimeout(function() {
+         $(".matchedItem").each(function(idx, elem) {
+            $(elem).addClass("matched");
+         });
+         $(".match-background").each(function(idx, elem) {
+            $(elem).addClass("matchy");
+         });
+         var grid = $("#bankGrid").data("kendoGrid");
+         grid.select("tr:eq(0)");
+      }, 1500);
+      setTimeout(function() {
+         $("#loading-cover").hide();
+      }, 1600);
+   });
 
    $(document).on("click", '[aria-labelledby="daVinciWindow_wnd_title"] .k-svg-i-plus', function(e) {
    // $("#daVinciWindow").siblings(".k-window-titlebar").find(".k-svg-i-plus").parent().click(function (e) {
