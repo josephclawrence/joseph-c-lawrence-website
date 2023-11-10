@@ -400,7 +400,7 @@
                <div class="row widget layout-widget grid-stack-item-content ps" >
                      <div class="col-sm-12 ">
                         <div class="panel card sys-widget sys-box-shadow-off sys-mg-off-b " >               
-                           <div class="card-body sys-pd-l-15 sys-pd-r-15 d-flex justify-content-between">
+                           <div class="card-body sys-pd-l-15 sys-pd-r-15 d-flex justify-content-between sys-pd-b-5">
                               <span><b>Standard Bank</b> / Current account 797666434</span>
                               <span>05/10/2023 - 31/10/2023</span>
                               <a href="#">Upload file <i class="material-icons sys-txt-sm">upload_file</i></a>
@@ -408,7 +408,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="row widget layout-widget grid-stack-item-content ps" >
+                  <!-- <div class="row widget layout-widget grid-stack-item-content ps" >
                      <div class="col-sm-12 ">
                         <div class="panel card sys-widget sys-box-shadow-off sys-mg-off-b" >               
                            <div class="card-body sys-pd-l-15 sys-pd-r-15 sys-pd-off-t sys-pd-off-b">
@@ -426,12 +426,44 @@
                            </div>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
+                  <!-- <hr> -->
                   <div class="row widget layout-widget grid-stack-item-content ps" >
                      <div class="col-sm-12 ">
                         <div class="panel card sys-widget sys-box-shadow-off " >               
-                           <div class="panel-body card-body sys-pd-15">
-                              <div id="bankGrid"></div>
+                           <div class="panel-body card-body sys-pd-15 sys-pd-t-5">
+                              <hr class="sys-mg-t-5 sys-mg-b-10 sys-fg-light-gray">
+                              <div class="d-flex align-items-center">
+                                 <div class="btn-group btn-group-md sys-mg-off" role="group" aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check" name="filterGrid" id="filterGrid1" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="filterGrid1">All</label>
+                                  
+                                    <input type="radio" class="btn-check" name="filterGrid" id="filterGrid2" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="filterGrid2">Unresolved</label>
+                                  
+                                    <input type="radio" class="btn-check" name="filterGrid" id="filterGrid3" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="filterGrid3">Matched</label>
+                                  </div>
+                                 <span class="ms-auto">
+                                    <button class="btn btn-default sys-bg-white" id="autoMatch">
+                                       Auto match
+                                       <i class="material-icons davinciicon-dark">auto_awesome</i>
+                                    </button>
+                                    <button class="btn btn-default sys-bg-white">
+                                       Manage rules
+                                       <i class="material-icons">checklist_rtl</i>
+                                    </button>
+                                    <button class="btn btn-default sys-bg-white k-justify-self-end" id="openRulesWindow">
+                                       <i class="material-icons sys-fg-primary">settings_suggest</i>
+                                    </button>
+                                 </span>
+                              </div>
+                        
+                              <div class="tab-content">
+                                 <div id="unmatched" class="tab-pane fade in show active sys-pd-5" role="tabpanel">
+                                    <div id="bankGrid"></div>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -447,7 +479,7 @@
                         <div class="panel card sys-widget sys-box-shadow-off " >               
                            <div class="panel-body card-body sys-pd-5">
 
-                              <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs {backgroundcoloralternate}" role="tablist">
+                              <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs " role="tablist">
                                  <li class="nav-item">
                                     <a class="nav-link active sys-mg-off-b  match-background" data-toggle="tab" data-bs-toggle="tab" href="#match">Match</a>
                                  </li>
@@ -646,7 +678,7 @@
                             <span>Title</span>
                         </label>
                         <div class="col-4 col-xs-11 syspro-entry-content">
-                           <input type="number" class="form-control text-right" maxlength="">   
+                           <input type="number" class="form-control text-right" maxlength="" value="10">   
                         </div>   
                         <div class="col-1">
                            %
@@ -658,7 +690,7 @@
                             <span>Date</span>
                         </label>
                         <div class="col-4 col-xs-11 syspro-entry-content">
-                           <input type="number" class="form-control text-right" maxlength="">   
+                           <input type="number" class="form-control text-right" maxlength="" value="30">   
                         </div>   
                         <div class="col-1">
                            %
@@ -670,7 +702,7 @@
                             <span>Amount</span>
                         </label>
                         <div class="col-4 col-xs-11 syspro-entry-content">
-                           <input type="number" class="form-control text-right" maxlength="">   
+                           <input type="number" class="form-control text-right" maxlength="" value="40">   
                         </div>   
                         <div class="col-1">
                            %
@@ -1783,6 +1815,20 @@ End Function</code></pre>
             // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
 
+         $(document).on("click", "#filterGrid1", function() {
+            const grid = $("#bankGrid").data("kendoGrid");
+            grid.dataSource.filter( {});
+         });
+
+         $(document).on("click", "#filterGrid2", function() {
+            const grid = $("#bankGrid").data("kendoGrid");
+            grid.dataSource.filter( { field: "autoMatch", operator: "equals", value: false });
+         });
+
+         $(document).on("click", "#filterGrid3", function() {
+            const grid = $("#bankGrid").data("kendoGrid");
+            grid.dataSource.filter( { field: "autoMatch", operator: "equals", value: true });
+         });
 
          const bankData = [
             {
@@ -2158,6 +2204,8 @@ End Function</code></pre>
 
                 kendo.bind($(this), dataItem);
             });
+
+            grid.hideColumn("confidence");
         }
 
         var data = [
