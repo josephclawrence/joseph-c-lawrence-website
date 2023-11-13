@@ -281,7 +281,7 @@
                background-color: #bfe7d3;
             }
          }
-         .k-grid tbody > tr:not(.k-detail-row):hover {
+         .k-grid tbody > tr:not(.k-detail-row).matchedItem.matched:hover {
             background-color: #bfe7d3;
          }
 
@@ -449,7 +449,7 @@
                                        Auto match
                                        <i class="material-icons davinciicon-dark">auto_awesome</i>
                                     </button>
-                                    <button class="btn btn-default sys-bg-white">
+                                    <button class="btn btn-default sys-bg-white" id="openMatchRulesWindow">
                                        Manage rules
                                        <i class="material-icons">checklist_rtl</i>
                                     </button>
@@ -479,12 +479,12 @@
                         <div class="panel card sys-widget sys-box-shadow-off " >               
                            <div class="panel-body card-body sys-pd-5">
 
-                              <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs " role="tablist">
+                              <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs " role="tablist" id="matchTabs">
                                  <li class="nav-item">
-                                    <a class="nav-link active sys-mg-off-b  match-background" data-toggle="tab" data-bs-toggle="tab" href="#match">Match</a>
+                                    <a class="nav-link active sys-mg-off-b  match-background" data-toggle="tab" id="matchTab" data-bs-toggle="tab" href="#match">Match</a>
                                  </li>
                                  <li class="nav-item">
-                                    <a class="nav-link sys-mg-off-b" data-toggle="tab" data-bs-toggle="tab" href="#create">Create</a>
+                                    <a class="nav-link sys-mg-off-b" data-toggle="tab" data-bs-toggle="tab" id="createTab" href="#create">Create</a>
                                  </li>
                                  <li class="nav-item">
                                     <a class="nav-link sys-mg-off-b" data-toggle="tab" data-bs-toggle="tab" href="#transfer">Transfer</a>
@@ -493,31 +493,36 @@
                         
                               <div class="tab-content">
                                  <div id="match" class="tab-pane fade in show active sys-pd-5 match-background" role="tabpanel">
-                                    <p><b>Jim's Auto</b></p>
-                                    <p><small>00HG54</small></p>
-                                    <table class="table table-noborder table-condensed table-sm">
-                                       <thead>
-                                          <tr>
-                                             <th>Date</th>
-                                             <th class="text-right">Debit</th>
-                                             <th class="text-right">Credit</th>
-                                          </tr>
-                                       </thead>
-                                       <tbody>
-                                          <tr>
-                                             <td>21/10/2023</td>
-                                             <td class="text-right">$0.00</td>
-                                             <td class="text-right">$1589.00</td>
-                                          </tr>
-                                       </tbody>
-                                       <tfoot>
-                                          <tr>
-                                             <td></td>
-                                             <td class="text-right"></td>
-                                             <td class="text-right"><b>$1589.00</b></td>
-                                          </tr>
-                                       </tfoot>
-                                    </table>
+                                    <div id="noMatch" class=" sys-pd-t-15">
+                                       <p class="lead text-center">Select a transaction</p>
+                                    </div>
+                                    <div id="matchFound" style="display: none">
+                                       <p><b>Jim's Auto</b></p>
+                                       <p><small>00HG54</small></p>
+                                       <table class="table table-noborder table-condensed table-sm">
+                                          <thead>
+                                             <tr>
+                                                <th>Date</th>
+                                                <th class="text-right">Debit</th>
+                                                <th class="text-right">Credit</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td>21/10/2023</td>
+                                                <td class="text-right">$0.00</td>
+                                                <td class="text-right">$1589.00</td>
+                                             </tr>
+                                          </tbody>
+                                          <tfoot>
+                                             <tr>
+                                                <td></td>
+                                                <td class="text-right"></td>
+                                                <td class="text-right"><b>$1589.00</b></td>
+                                             </tr>
+                                          </tfoot>
+                                       </table>
+                                    </div>
                                  </div>
 
                                  <div id="create" class="tab-pane fade sys-pd-t-5" role="tabpanel">
@@ -654,6 +659,16 @@
 
    <div id="daVinciWindow">
       <div id="daVinciChat" style="width: 100%; height: 100%"></div>
+   </div>
+
+   <div id="matchRulesWindow">
+      <div class="container-fluid window-container">
+         <div class="row window-content">
+            <div class="col-12">
+               <p>Here would be UI to manage a list of match templates, e.g. 'Software and IT costs', or 'Sales revenue'. These can be used by the matching algorithm to correctly configure the GL entry, when matched to some specific transaction. </p>
+            </div>
+         </div>
+      </div>
    </div>
 
    <div id="rulesWindow">
@@ -1048,6 +1063,8 @@ End Function</code></pre>
       },
    };
 
+   let alreadyMatched = false;
+
    $("#davinciButton").kendoFloatingActionButton({
        size: "small",
        alignOffset: { x: 20, y: 35 },
@@ -1122,79 +1139,63 @@ End Function</code></pre>
       $("#rulesWindow").data("kendoWindow").center().open();
    });
 
+   $("#openMatchRulesWindow").on("click", function() {
+      $("#matchRulesWindow").data("kendoWindow").center().open();
+   });
+
+   // const rulesWindow2 = SYSPRO_VB.createKendoWindow(
+   //    "#rulesWindow",
+   //    "Match weightings",
+   //    null,
+   //    null,
+   //    ["Close"],
+   //    "350px",
+   //    "400px",
+   //    true,
+   //    true,
+   //    false,
+   //    null,
+   //    null,
+   //    true,
+   //    true,
+   //    false
+   // );
    const rulesWindow = $("#rulesWindow").kendoWindow({
       actions: ["Close"],
       draggable: true,
       resizable: false,
       width: "350px",
       height: "400px",
-      // maxHeight: "750px",
-      // maxWidth: "1000px",
       title: "Match weightings",
       visible: false,
-      // position: {
-      //    top: window.innerHeight - 515,
-      //    left: window.innerWidth - 465,
-      // },
-      // animation: { 
-      //    open: { 
-      //       effects: "slideIn:up fadeIn",
-      //       duration: 150
-      //    },
-      //    close: { 
-      //       effects: "slideIn:up fadeIn", 
-      //       reverse: true,
-      //       duration: 150
-      //    } 
-      // },
-      // close: function(e) {
-      //    daVinciWindow.setOptions({
-      //       width: "450px",
-      //       height: "500px",
-      //       position: {
-      //          top: window.innerHeight - 515,
-      //          left: window.innerWidth - 465,
-      //       },
-      //    });
-      // },
-      // maximize: function() {
-      //    const daVinciWindow = $("#daVinciWindow").data("kendoWindow");
-      //    console.log(daVinciWindow);
-      //    daVinciWindow.setOptions({
-      //       width: "750px",
-      //       height: "1000px",
-      //       position: {
-      //          top: window.innerHeight - 775,
-      //          left: window.innerWidth - 1025,
-      //       },
-      //    })
-      // },
-      // minimize: function() {
-      //    daVinciWindow.setOptions({
-      //       position: {
-      //          top: window.innerHeight - 525,
-      //          left: window.innerWidth - 475,
-      //       },
-      //    })
-      // },
-      // close: onClose
-   }).data("kendoWindow")
+
+   }).data("kendoWindow");
+
+   rulesWindow.wrapper.addClass('compact-window');
+
+   const matchRulesWindow = $("#matchRulesWindow").kendoWindow({
+      actions: ["Close"],
+      draggable: true,
+      resizable: false,
+      width: "650px",
+      height: "400px",
+      title: "Match rules",
+      visible: false,
+
+   }).data("kendoWindow");
+
+   matchRulesWindow.wrapper.addClass('compact-window');
+
 
    $("#autoMatch").on("click", function() {
       $("#loading-cover").show();
       setTimeout(function() {
-         $(".matchedItem").each(function(idx, elem) {
-            $(elem).addClass("matched");
-         });
-         $(".match-background").each(function(idx, elem) {
-            $(elem).addClass("matchy");
-         });
-         var grid = $("#bankGrid").data("kendoGrid");
-         grid.select("tr:eq(0)");
+         setMatchUI();
       }, 1500);
       setTimeout(function() {
          $("#loading-cover").hide();
       }, 1600);
+      alreadyMatched = true;
    });
 
    $(document).on("click", '[aria-labelledby="daVinciWindow_wnd_title"] .k-svg-i-plus', function(e) {
@@ -1815,19 +1816,57 @@ End Function</code></pre>
             // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
 
+         function setMatchUI() {
+            const grid = $("#bankGrid").data("kendoGrid");
+            $(".matchedItem").each(function(idx, elem) {
+               $(elem).addClass("matched");
+            });
+            $(".match-background").each(function(idx, elem) {
+               $(elem).addClass("matchy");
+            });
+            grid.showColumn("confidence");
+            grid.select("tr:eq(0)");
+            $("#noMatch").hide();
+            $("#matchFound").show();
+            const tab = bootstrap.Tab.getInstance(document.querySelector('#matchTab'));
+            tab.show();
+         }
+
          $(document).on("click", "#filterGrid1", function() {
             const grid = $("#bankGrid").data("kendoGrid");
             grid.dataSource.filter( {});
+            if (alreadyMatched) {
+               setMatchUI();
+               
+            } else {
+               grid.hideColumn("confidence");
+            }
+            
          });
 
          $(document).on("click", "#filterGrid2", function() {
             const grid = $("#bankGrid").data("kendoGrid");
-            grid.dataSource.filter( { field: "autoMatch", operator: "equals", value: false });
+            grid.hideColumn("confidence");
+            if (alreadyMatched) {
+               grid.dataSource.filter( { field: "autoMatch", operator: "equals", value: false });
+            } else {
+               grid.dataSource.filter( {});
+            }
+                        
          });
 
          $(document).on("click", "#filterGrid3", function() {
             const grid = $("#bankGrid").data("kendoGrid");
-            grid.dataSource.filter( { field: "autoMatch", operator: "equals", value: true });
+            if (alreadyMatched) {
+               
+               grid.dataSource.filter( { field: "autoMatch", operator: "equals", value: true });
+               setMatchUI();
+               
+            } else {
+               
+               grid.dataSource.filter( { field: "name", operator: "startswith", value: "zz" });
+               grid.hideColumn("confidence");
+            }
          });
 
          const bankData = [
@@ -2032,6 +2071,10 @@ End Function</code></pre>
                autoMatch: true,
             },
          ];
+         
+         // const tabby = bootstrap.Tab.getInstance(document.querySelector('#createTab'));
+         const tabby = new bootstrap.Tab(document.querySelector('#createTab'));
+        // console.log(tabby);
 
          $("#bankGrid").kendoGrid({
                dataSource: {
@@ -2043,7 +2086,33 @@ End Function</code></pre>
                      }
                   }
                },
-               selectable: "multiple",
+               change: function onChange(arg) {
+                  console.log(arg);
+                  // const tabs = bootstrap.Tab.getInstance($("#matchTabs")[0]);
+                  var selected = $.map(this.select(), function(item) {
+                     console.log(item);
+                     if (alreadyMatched) {
+                        if ($(item).hasClass("matchedItem")) {
+                           const tab = bootstrap.Tab.getInstance(document.querySelector('#matchTab'));
+                           console.log(tab);
+                           tab.show();
+                           $("#noMatch").hide();
+                           $("#matchFound").show();
+                        } else {
+                           const tabby = bootstrap.Tab.getInstance(document.querySelector('#createTab'));
+                           console.log(tabby);
+                           tabby.show();
+                        }
+                     } else {
+                        const tabby = bootstrap.Tab.getInstance(document.querySelector('#createTab'));
+                        console.log(tabby);
+                        tabby.show();
+                     }
+                     return $(item).text();
+                  });
+                  
+               },
+               selectable: "row",
                pageable: false,
                sortable: true,
                scrollable: true,
@@ -2145,6 +2214,7 @@ End Function</code></pre>
                     chartArea: {
                         margin: 0,
                         width: 30,
+                        height: 22,
                         background: "transparent"
                     },
                     seriesDefaults: {
