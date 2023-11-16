@@ -160,6 +160,7 @@
         "CXTPChartSplineSeriesStyle": "line",
         "CXTPChartStackedBarSeriesStyle": "column",
         "CXTPChartTorus3DSeriesStyle": "donut",
+		"CXTPChartGanttSeriesStyle": "rangeBar",
     };
 
     const chartTypeStyles = {
@@ -180,6 +181,9 @@
 
 	const catNamesArray = {};
 	
+	let minValue = null;
+	let maxValue = null;
+
     function generateUUID() {
         var d = new Date().getTime();
         var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -222,8 +226,15 @@
 		return catNamesArray[uid][floorValue] == undefined ? "" : catNamesArray[uid][floorValue];
 	}
 
+	function ganttYLabels(value, uid) { 
+		const baseDate = new Date("12/31/1899");  
+		const labelDate = new Date(baseDate.setDate(baseDate.getDate() + parseInt(value)));  
+		return kendo.toString(labelDate, "d/MM/yyyy");
+	}
+
     function prepareSeriesData(data, chartType) {
 		const catNamesArray = [];
+		let minValue, maxValue;
 		data.forEach((obj, idx) => {
 			for (const key in obj) {
 				if (key.indexOf("@") > -1) {
@@ -240,8 +251,13 @@
 							obj[newPropName] = parseFloat(obj[newPropName]);
 						}
 
+						if (key === "@Value0") {                
+							minValue = minValue !== undefined ? Math.min(minValue, obj[newPropName]) : obj[newPropName];
+						}
+
 						if (key === "@Value1") {
 							obj[newPropName] = Math.max(obj[newPropName], 2);
+							maxValue = maxValue !== undefined ? Math.max(maxValue, obj[newPropName]) : obj[newPropName];
 						}
 
 						if (chartType === "bubble") {
@@ -264,7 +280,9 @@
       	console.log('data', data);
      	return {
 			data,
-			catNamesArray
+			catNamesArray,
+			minValue,
+			maxValue
 		};
     }
 
@@ -295,7 +313,7 @@
         console.log('series', singleChartSeries);
         // console.log(checkNested(singleChartSeries, "Points", "Point"));
 		const chartSeriesData = [];
-		let catNamesArray;
+		let catNamesArray, minValue, maxValue, ValueScaleType;		
 		singleChartSeriesArray = Array.isArray(singleChartSeries) ? singleChartSeries : [singleChartSeries];
 		console.log('singleChartSeriesArray', singleChartSeriesArray);
 		for (let idx = 0; idx < singleChartSeriesArray.length; idx++) {
@@ -304,12 +322,18 @@
 			const chartType = series["Style"]["@Class"];
 			const kendoChartType = chartTypes[chartType];
 			const preparedSeriesData = prepareSeriesData(checkNested(series, "Points", "Point"), kendoChartType);
-			if (idx === 0) catNamesArray = preparedSeriesData.catNamesArray;
-			console.log('checkNested(series, "@Diagram"))', checkNested(series, "@Diagram"));
+			if (idx === 0) {
+				catNamesArray = preparedSeriesData.catNamesArray;
+				ValueScaleType = checkNested(series, "@ValueScaleType");
+			}
+			minValue = minValue !== undefined ? Math.min(minValue, preparedSeriesData.minValue) : preparedSeriesData.minValue;
+			maxValue = maxValue !== undefined ? Math.max(maxValue, preparedSeriesData.maxValue) : preparedSeriesData.maxValue;
+			console.log('minValue', minValue);
+			console.log('maxValue', maxValue);
 			console.log(diagramIdx == checkNested(series, "@Diagram"));
 			if (diagramIdx === null || (diagramIdx !== null && diagramIdx == checkNested(series, "@Diagram"))) {
 				chartSeriesData.push({
-					name: checkNested(series, "@Name"),
+					name: checkNested(series, "@LegendText") || checkNested(series, "@Name"),
 					type: kendoChartType,
 					style: chartTypeStyles[chartType] || null,
 					xField: "Argument",
@@ -351,14 +375,17 @@
         return {
 			chartSeriesData,
 			catNamesArray,
+			minValue,
+			maxValue,
+			ValueScaleType,
 		};
     }
 
-    function parseSingleChartProperties(singleChartProps, chartType, legend, catNamesArray, uid) {
-
+    function parseSingleChartProperties(singleChartProps, chartType, legend, catNamesArray, uid, minValue, maxValue, ValueScaleType) {
+		console.log("*******************************", chartType);
         let xAxisTypeName, yAxisTypeName;
 
-        if ( ["line", "bar", "column", "rangeColumn"].includes(chartType) ) {
+        if ( ["line", "bar", "column", "rangeColumn", "rangeBar"].includes(chartType) ) {
             xAxisTypeName = "categoryAxis";
             yAxisTypeName = "valueAxis";
         } else {
@@ -368,7 +395,20 @@
 
         const chartProperties = {
             theme: "nova",            
-            legend: chartType === "bubble" ? false : legend,        
+            legend: chartType === "bubble" ? false : legend, 
+			tooltip: {
+				visible: true,
+				background: "#333333",
+				color: "#ffffff",
+				border: {
+					width: 0
+				},
+				template: chartType === "rangeColumn" || (chartType === "rangeBar" && ValueScaleType !== "2")
+					? "#: category # <br> #: value.from # - #: value.to #"
+					: chartType === "rangeBar" && ValueScaleType === "2"
+					? "#: category # <br> #= ganttYLabels(value.from) # - #= ganttYLabels(value.to) #"
+					: "#: category # <br> #: value #"
+			},          
             [xAxisTypeName]: [{
                 name: "primaryXAxis",
 				visible: chartType === "bubble" && catNamesArray.length
@@ -386,7 +426,11 @@
                 labels: {
                     rotation: parseInt(checkNested(singleChartProps, "AxisX", "Label", "@Angle")) || undefined, 
                     format: checkNested(singleChartProps, "AxisX", "Label", "Format", "@Pattern") === "{V}" ? "{0}" : "{0}",
-					template: chartType === "bubble" && catNamesArray.length ? `#= changeXLabels(value, "${uid}") #` : null,
+					template: chartType === "bubble" && catNamesArray.length 
+						? `#= changeXLabels(value, "${uid}") #` 
+						// : chartType === "rangeBar"
+						// ? `#= ganttYLabels(value, "${uid}") #`
+						: null,
                     // singleChartProps["Panels"]["Panel"]["AxisX"]["Label"]["Font"]["@Height"]
                     // "Font": {
                     //     "@Height": "-11"
@@ -438,6 +482,7 @@
                 labels: {
                     rotation: parseInt(checkNested(singleChartProps, "AxisY", "Label", "@Angle")) || undefined, 
                     format: checkNested(singleChartProps, "AxisY", "Label", "Format", "@Pattern") === "{V}" ? "{0}" : "{0}",
+					template: chartType === "rangeBar" && ValueScaleType === "2" ? `#= ganttYLabels(value, "${uid}") #` : null,
                     // singleChartProps["Panels"]["Panel"]["AxisY"]["Label"]["Font"]["@Height"]
                     // "Font": {
                     //     "@Height": "-11"
@@ -448,6 +493,8 @@
                 // max: parseFloat(checkNested(singleChartProps, "AxisY", "Range", "@MaxValue")),
                 narrowRange: !convertToBoolean(checkNested(singleChartProps, "AxisY", "@Range", "@ShowZeroLevel")),
 				reverse: convertToBoolean(checkNested(singleChartProps, "AxisY", "@Reversed") === null ? false : checkNested(singleChartProps, "AxisY", "@Reversed")),
+				min: minValue,
+				max: maxValue,
             },
             {
                 name: "secondaryYAxis",
@@ -512,7 +559,7 @@
                 chartType = numSeries > 1 ? chartTypes[seriesValue[0]["Style"]["@Class"]] : chartTypes[seriesValue["Style"]["@Class"]];
 				const chartSeriesObject = parseSingleChartSeries(seriesValue, null);
 				catNamesArray[uid] = chartSeriesObject.catNamesArray;
-                chartProperties[uid] = parseSingleChartProperties(panelValue, chartType, legend, chartSeriesObject.catNamesArray, uid);
+                chartProperties[uid] = parseSingleChartProperties(panelValue, chartType, legend, chartSeriesObject.catNamesArray, uid, chartSeriesObject.minValue, chartSeriesObject.maxValue, chartSeriesObject.ValueScaleType);
                 chartSeries[uid] = chartSeriesObject.chartSeriesData;
             } else {
                 // the below could error if there is no seriesValue[idx]["Style"] etc. as above
@@ -521,7 +568,7 @@
 				console.log('chartSeriesObject', chartSeriesObject);
 				chartType = chartSeriesObject.chartSeriesData[0].type;
 				catNamesArray[uid] = chartSeriesObject.catNamesArray;
-                chartProperties[uid] = parseSingleChartProperties(panelValue[i], chartType, legend, chartSeriesObject.catNamesArray, uid);
+                chartProperties[uid] = parseSingleChartProperties(panelValue[i], chartType, legend, chartSeriesObject.catNamesArray, uid, chartSeriesObject.minValue, chartSeriesObject.maxValue, chartSeriesObject.ValueScaleType);
                 chartSeries[uid] = chartSeriesObject.chartSeriesData;
             }
         }
@@ -3223,9 +3270,370 @@ const testRB2 = {
 	}
 };
 
-
+const testGannt = {
+	"Content": {
+		"@CompactMode": "1",
+		"Border": {
+			"@Visible": "0"
+		},
+		"Legend": {
+			"@Visible": "1",
+			"@MarkerVisible": "1",
+			"@MarkerSize": "20, 16",
+			"@ColumnCount": "1",
+			"@VerticalAlignment": "2",
+			"FillStyle": {
+				"@FillMode": "Gradient",
+				"@GradientAngle": "LeftToRight"
+			}
+		},
+		"Titles": {
+			"Title": {
+				"@Visible": "1",
+				"@Text": "Sample Gantt Template",
+				"Font": {
+					"@FaceName": "Segoe UI",
+					"@Height": "-16"
+				}
+			}
+		},
+		"Panels": {
+			"Panel": {
+				"@Class": "CXTPChartDiagram2D",
+				"@Rotated": "1",
+				"AxisX": {
+					"@Interlaced": "1",
+					"@Reversed": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.5",
+						"@MaxValue": "1.5",
+						"@ViewMinValue": "-0.5",
+						"@ViewMaxValue": "1.5"
+					}
+				},
+				"AxisY": {
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "1",
+					"GridLines": null,
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"@Angle": "315",
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0",
+							"@DateTimeCategory": "7",
+							"@DateTimeFormat": "d/MM/yyyy"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@FaceName": "Segoe UI",
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.5",
+						"@MaxValue": "1.5",
+						"@ViewMinValue": "-0.5",
+						"@ViewMaxValue": "1.5"
+					}
+				},
+				"SecondaryAxisX": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "4",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						}
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@MinValue": "-0.0666667",
+						"@MaxValue": "1.06667",
+						"@ViewMinValue": "-0.0666667",
+						"@ViewMaxValue": "1.06667"
+					}
+				},
+				"SecondaryAxisY": {
+					"@Visible": "0",
+					"@Alignment": "1",
+					"@MinorCount": "2",
+					"@GridSpacing": "0.1",
+					"@Index": "1",
+					"GridLines": {
+						"@Visible": "0"
+					},
+					"InterlacedFillStyle": {
+						"@FillMode": "Empty"
+					},
+					"Label": {
+						"Font": {
+							"@Height": "-11"
+						},
+						"Format": {
+							"@Pattern": "{V}",
+							"@Category": "1",
+							"@DecimalPlaces": "0",
+							"@UseThousandSeparator": "0"
+						}
+					},
+					"TickMarks": {
+						"@MinorVisible": "0"
+					},
+					"Title": {
+						"@Text": "",
+						"Font": {
+							"@Height": "-16"
+						}
+					},
+					"Range": {
+						"@ShowZeroLevel": "1",
+						"@MaxValue": "1.1",
+						"@ViewMaxValue": "1.1"
+					}
+				},
+				"Pane": {
+					"BackgroundFillStyle": {
+						"@FillMode": "Empty"
+					}
+				}
+			}
+		},
+		"Series": {
+			"Series": [
+				{
+					"@LegendText": "Planned Jobs",
+					"@Name": "Series 1",
+					"@ValueScaleType": "2",
+					"@Diagram": "0",
+					"PointLegendFormat": {
+						"@Pattern": "{A}:{V}",
+						"@Category": "1",
+						"@DecimalPlaces": "0",
+						"@UseThousandSeparator": "0"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "Job 1",
+								"@Length": "2",
+								"@Value0": "45108",
+								"@Value1": "45112"
+							},
+							{
+								"@Argument": "Job 2",
+								"@Length": "2",
+								"@Value0": "45108",
+								"@Value1": "45112"
+							},
+							{
+								"@Argument": "Job 3",
+								"@Length": "2",
+								"@Value0": "45117",
+								"@Value1": "45119"
+							},
+							{
+								"@Argument": "Job 4",
+								"@Length": "2",
+								"@Value0": "45127",
+								"@Value1": "45134"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartGanttSeriesStyle",
+						"@ColorEach": "0",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"@BarWidth": "1",
+						"Label": {
+							"@Class": "CXTPChartRangeBarSeriesLabel",
+							"@Visible": "0",
+							"@LineLength": "5",
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0",
+								"@UseThousandSeparator": "0"
+							},
+							"Font": {
+								"@Height": "-11"
+							},
+							"Border": {
+								"@Visible": "0"
+							}
+						},
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "RightToLeft"
+						}
+					}
+				},
+				{
+					"@LegendText": "Overdue",
+					"@Name": "Series 2",
+					"@ValueScaleType": "2",
+					"@Diagram": "0",
+					"PointLegendFormat": {
+						"@Pattern": "{A}:{V}",
+						"@Category": "1",
+						"@DecimalPlaces": "0",
+						"@UseThousandSeparator": "0"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "Job 1",
+								"@Length": "2",
+								"@Value0": "45113",
+								"@Value1": "45115"
+							},
+							{
+								"@Argument": "Job 4",
+								"@Length": "2",
+								"@Value0": "45129",
+								"@Value1": "45132"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartGanttSeriesStyle",
+						"@ColorEach": "0",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"@BarWidth": "1",
+						"Label": {
+							"@Class": "CXTPChartRangeBarSeriesLabel",
+							"@Visible": "0",
+							"@LineLength": "5",
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0",
+								"@UseThousandSeparator": "0"
+							},
+							"Font": {
+								"@Height": "-11"
+							},
+							"Border": {
+								"@Visible": "0"
+							}
+						},
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "RightToLeft"
+						}
+					}
+				},
+				{
+					"@LegendText": "Completed",
+					"@Name": "Series 3",
+					"@ValueScaleType": "2",
+					"@Diagram": "0",
+					"PointLegendFormat": {
+						"@Pattern": "{A}:{V}",
+						"@Category": "1",
+						"@DecimalPlaces": "0",
+						"@UseThousandSeparator": "0"
+					},
+					"Points": {
+						"Point": [
+							{
+								"@Argument": "Job 1",
+								"@Length": "2",
+								"@Value0": "45116",
+								"@Value1": "45120"
+							},
+							{
+								"@Argument": "Job 4",
+								"@Length": "2",
+								"@Value0": "45133",
+								"@Value1": "45134"
+							}
+						]
+					},
+					"Style": {
+						"@Class": "CXTPChartGanttSeriesStyle",
+						"@ColorEach": "0",
+						"@Rotation3D": "0.000000, 0.000000, 90.000000",
+						"@SmoothEdges3D": "1",
+						"@BarWidth": "1",
+						"Label": {
+							"@Class": "CXTPChartRangeBarSeriesLabel",
+							"@Visible": "0",
+							"@LineLength": "5",
+							"Format": {
+								"@Pattern": "{V}",
+								"@Category": "1",
+								"@DecimalPlaces": "0",
+								"@UseThousandSeparator": "0"
+							},
+							"Font": {
+								"@Height": "-11"
+							},
+							"Border": {
+								"@Visible": "0"
+							}
+						},
+						"FillStyle": {
+							"@FillMode": "Gradient",
+							"@GradientAngle": "RightToLeft"
+						}
+					}
+				}
+			]
+		}
+	}
+}
 $(document).ready(function() {    
-  initMultiChart(testMulti, $("#s209"));
+  initMultiChart(testGannt, $("#s209"));
 });
 
 
