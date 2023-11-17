@@ -381,8 +381,8 @@
 		};
     }
 
-    function parseSingleChartProperties(singleChartProps, chartType, legend, catNamesArray, uid, minValue, maxValue, ValueScaleType) {
-		console.log("*******************************", chartType);
+    function parseSingleChartProperties(singleChartProps, chartType, legend, catNamesArray, uid, minValue, maxValue, ValueScaleType, isGantt) {
+		console.log("*******************************", chartType, catNamesArray);
         let xAxisTypeName, yAxisTypeName;
 
         if ( ["line", "bar", "column", "rangeColumn", "rangeBar"].includes(chartType) ) {
@@ -439,7 +439,12 @@
                 interlaced: convertToBoolean(checkNested(singleChartProps, "AxisX", "@Interlaced")),
                 // max: parseFloat(checkNested(singleChartProps, "AxisX", "Range", "@MaxValue")),
                 narrowRange: !convertToBoolean(checkNested(singleChartProps, "AxisX", "@Range", "@ShowZeroLevel")),
-				reverse: convertToBoolean(checkNested(singleChartProps, "AxisX", "@Reversed") === null ? false : checkNested(singleChartProps, "AxisX", "@Reversed")),
+				reverse: isGantt 
+					? false
+					: convertToBoolean(checkNested(singleChartProps, "AxisX", "@Reversed") === null 
+					? false 
+					: checkNested(singleChartProps, "AxisX", "@Reversed")),
+				axisCrossingValue: isGantt ? 0 : null,
 				// categories: catNamesArray
 				// max: chartType === "bubble" && catNamesArray.length ? catNamesArray.length : null,
             },
@@ -557,18 +562,22 @@
             if (numCharts === 1) {
                 // the below could error, if there is no seriesValue["Style"] or seriesValue["Style"]["@Class"]
                 chartType = numSeries > 1 ? chartTypes[seriesValue[0]["Style"]["@Class"]] : chartTypes[seriesValue["Style"]["@Class"]];
+				const isGantt = numSeries > 1 
+					? seriesValue[0]["Style"]["@Class"] === "CXTPChartGanttSeriesStyle"
+					: seriesValue["Style"]["@Class"] === "CXTPChartGanttSeriesStyle";
+
 				const chartSeriesObject = parseSingleChartSeries(seriesValue, null);
 				catNamesArray[uid] = chartSeriesObject.catNamesArray;
-                chartProperties[uid] = parseSingleChartProperties(panelValue, chartType, legend, chartSeriesObject.catNamesArray, uid, chartSeriesObject.minValue, chartSeriesObject.maxValue, chartSeriesObject.ValueScaleType);
+                chartProperties[uid] = parseSingleChartProperties(panelValue, chartType, legend, chartSeriesObject.catNamesArray, uid, chartSeriesObject.minValue, chartSeriesObject.maxValue, chartSeriesObject.ValueScaleType, isGantt);
                 chartSeries[uid] = chartSeriesObject.chartSeriesData;
             } else {
-                // the below could error if there is no seriesValue[idx]["Style"] etc. as above
-                
+                // the below could error if there is no seriesValue[idx]["Style"] etc. as above                
 				const chartSeriesObject = parseSingleChartSeries(seriesValue, i);
 				console.log('chartSeriesObject', chartSeriesObject);
 				chartType = chartSeriesObject.chartSeriesData[0].type;
+				const isGantt = chartSeriesObject.chartSeriesData[0].type === "CXTPChartGanttSeriesStyle";
 				catNamesArray[uid] = chartSeriesObject.catNamesArray;
-                chartProperties[uid] = parseSingleChartProperties(panelValue[i], chartType, legend, chartSeriesObject.catNamesArray, uid, chartSeriesObject.minValue, chartSeriesObject.maxValue, chartSeriesObject.ValueScaleType);
+                chartProperties[uid] = parseSingleChartProperties(panelValue[i], chartType, legend, chartSeriesObject.catNamesArray, uid, chartSeriesObject.minValue, chartSeriesObject.maxValue, chartSeriesObject.ValueScaleType, isGantt);
                 chartSeries[uid] = chartSeriesObject.chartSeriesData;
             }
         }
@@ -595,7 +604,7 @@
               series: chartSeries[uid],
             }).data("kendoChart");
             
-            if (["line", "bar", "column", "rangeColumn"].includes(chartType)) {
+            if (["line", "bar", "column", "rangeColumn", "rangeBar"].includes(chartType)) {
               if (chartProperties[uid].categoryAxis[0] && chartProperties[uid].categoryAxis[0].interlaced) {
                 const numCats = charts[uid].options.categoryAxis[0]?.categories.length;
                 if (charts[uid].options.categoryAxis.length) {
