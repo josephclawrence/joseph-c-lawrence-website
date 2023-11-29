@@ -1895,6 +1895,11 @@ End Function</code></pre>
                
                setMatchUI();
                grid.select(grid.tbody.find("tr.matchedItem").first());
+
+               const template = kendo.template($("#match-template").html());
+               const selectedData = grid.getSelectedData();
+               var newHTML = template(selectedData[0]);
+               $("#matchFound").html(newHTML);
                 // grid.trigger("change");
             });
             // grid.select(grid.tbody.find("tr.matchedItem:first-child"))
