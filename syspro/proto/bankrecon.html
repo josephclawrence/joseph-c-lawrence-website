@@ -1887,6 +1887,14 @@ End Function</code></pre>
             } else {
                grid.dataSource.filter( {});
             }
+            
+            $("#matchFound").hide();
+            $("#noMatch").show();
+            $(".match-background").each(function(idx, elem) {
+               $(elem).removeClass("matchy");
+            });
+            const tab = bootstrap.Tab.getInstance(document.querySelector('#createTab'));
+            tab.show();
                         
          });
 
