@@ -54,7 +54,10 @@
 
          );
          }
-         
+         .nav-tabs.nav-justified > li.nav-item > a.nav-link.sys-rd-t {
+            border-top-right-radius: calc(var(--base-border-radius) + 1px);
+            border-top-left-radius: calc(var(--base-border-radius) + 1px);
+         }
 
          @keyframes animate {
             0% {
@@ -481,7 +484,7 @@
 
                               <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs " role="tablist" id="matchTabs">
                                  <li class="nav-item">
-                                    <a class="nav-link active sys-mg-off-b  match-background" data-toggle="tab" id="matchTab" data-bs-toggle="tab" href="#match">Match</a>
+                                    <a class="nav-link active sys-mg-off-b  match-background sys-rd-t" data-toggle="tab" id="matchTab" data-bs-toggle="tab" href="#match">Match</a>
                                  </li>
                                  <li class="nav-item">
                                     <a class="nav-link sys-mg-off-b" data-toggle="tab" data-bs-toggle="tab" id="createTab" href="#create">Create</a>
@@ -492,7 +495,7 @@
                               </ul>
                         
                               <div class="tab-content">
-                                 <div id="match" class="tab-pane fade in show active sys-pd-5 match-background" role="tabpanel">
+                                 <div id="match" class="tab-pane fade in show active sys-pd-5 match-background sys-rd-b" role="tabpanel">
                                     <div id="noMatch" class=" sys-pd-t-15">
                                        <p class="lead text-center">Select a transaction</p>
                                     </div>
@@ -522,6 +525,19 @@
                                              </tr>
                                           </tfoot>
                                        </table>
+                                       <table class="table table-noborder table-condensed table-sm">
+                                          <tbody>
+                                             <tr>
+                                                <td><b>Account</b></td>
+                                                <td class="text-right">21 - Plant & Machinery</td>
+                                             </tr>
+                                          </tbody>                                          
+                                       </table>
+                                       <div class="row">
+                                          <div class="col-12 d-flex justify-content-center sys-pd-b-15 sys-pd-t-5">
+                                             <button id="approveMatch" class="btn btn-success">Approve</button>
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
 
@@ -1815,6 +1831,25 @@ End Function</code></pre>
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
             // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
+
+         $(document).on('click', '#approveMatch', function(e){
+            e.preventDefault();
+            const grid = $("#bankGrid").data("kendoGrid");
+            const rowData = grid.getSelectedData();
+            console.log(rowData);
+            grid.clearSelection();
+            const row = $(`tr[data-uid="${rowData[0].uid}"]`);
+            console.log(row);
+            row.addClass("sys-bg-primary");
+            row.hide(800, function(){
+               grid.removeRow(row);                 
+               
+               setMatchUI();
+               grid.select(grid.tbody.find("tr.matchedItem").first());
+                // grid.trigger("change");
+            });
+            // grid.select(grid.tbody.find("tr.matchedItem:first-child"))
+        });
 
          function setMatchUI() {
             const grid = $("#bankGrid").data("kendoGrid");
