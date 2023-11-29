@@ -763,6 +763,49 @@
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
   <script src="js/UX_JS_forms.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+
+  <script id="match-template" type="text/x-kendo-template">
+   <p><b>#: name #</b></p>
+   <p><small>#: id #</small></p>
+   <table class="table table-noborder table-condensed table-sm">
+      <thead>
+         <tr>
+            <th>Date</th>
+            <th class="text-right">Debit</th>
+            <th class="text-right">Credit</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>#: date #</td>
+            <td class="text-right">#: kendo.toString(debit, 'c') #</td>
+            <td class="text-right">#: kendo.toString(credit, 'c') #</td>
+         </tr>
+      </tbody>
+      <tfoot>
+         <tr>
+            <td></td>
+            <td class="text-right"></td>
+            <td class="text-right"><b>#: debit > credit ? '-' : '' # #: kendo.toString(Math.max(debit, credit), 'c') #</b></td>
+         </tr>
+      </tfoot>
+   </table>
+   <table class="table table-noborder table-condensed table-sm">
+      <tbody>
+         <tr>
+            <td><b>Account</b></td>
+            <td class="text-right">21 - Plant & Machinery</td>
+         </tr>
+      </tbody>                                          
+   </table>
+   <div class="row">
+      <div class="col-12 d-flex justify-content-center sys-pd-b-15 sys-pd-t-5">
+         <button id="approveMatch" class="btn btn-success">Approve</button>
+      </div>
+   </div>
+ </script>
+
+
   <script id="davinciresponse-template" type="text/x-kendo-template">
    <div class="k-card">
       <div class="k-card-header d-flex justify-content-between">
@@ -1209,9 +1252,15 @@ End Function</code></pre>
          setMatchUI();
       }, 1500);
       setTimeout(function() {
+         var template = kendo.template($("#match-template").html());
+         const grid = $("#bankGrid").data("kendoGrid");
+         const selectedData = grid.getSelectedData();
+         var newHTML = template(selectedData[0]);
+         $("#matchFound").html(newHTML);
          $("#loading-cover").hide();
       }, 1600);
       alreadyMatched = true;
+      
    });
 
    $(document).on("click", '[aria-labelledby="daVinciWindow_wnd_title"] .k-svg-i-plus', function(e) {
@@ -2132,6 +2181,10 @@ End Function</code></pre>
                change: function onChange(arg) {
                   console.log(arg);
                   // const tabs = bootstrap.Tab.getInstance($("#matchTabs")[0]);
+                  var template = kendo.template($("#match-template").html());
+                  const selectedData = this.getSelectedData();
+                  console.log(selectedData);
+                  
                   var selected = $.map(this.select(), function(item) {
                      console.log(item);
                      if (alreadyMatched) {
@@ -2141,6 +2194,8 @@ End Function</code></pre>
                            tab.show();
                            $("#noMatch").hide();
                            $("#matchFound").show();
+                           var newHTML = template(selectedData[0]);
+                           $("#matchFound").html(newHTML);
                         } else {
                            const tabby = bootstrap.Tab.getInstance(document.querySelector('#createTab'));
                            console.log(tabby);
