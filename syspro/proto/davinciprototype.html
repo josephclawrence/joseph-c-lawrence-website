@@ -1166,6 +1166,24 @@ End Function</code></pre>
  </script>
 
   <script>
+
+
+   fetch("https://syspro-gpt-web-api.vercel.app/api.conversation_chain_with_tools.conversation/run", {
+      method: "POST",
+      body: JSON.stringify({
+         "input": "Hello",
+         "memory": [
+            {}
+         ]
+      }),
+      headers: {
+         "Content-type": "application/json; charset=UTF-8",
+         "accept": "application/json"
+      }
+   })
+   .then((response) => response.json())
+   .then((json) => console.log(json));
+
    // TODO: create confirmatin notification for the chat, with links to the program or records that have been created, or some error notification
    const davinciresponse_template = kendo.template($('#davinciresponse-template').html());
    kendo.chat.registerTemplate("davinciresponse", davinciresponse_template);
