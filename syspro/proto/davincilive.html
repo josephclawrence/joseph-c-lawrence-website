@@ -269,6 +269,12 @@
          .davincifield {
             background-color: #e4b3e2 !important;
          }
+         span.clickable {
+            color: blue;
+            text-decoration: underline;
+            font-weight:bold;
+            cursor: pointer
+         }
         </style>
     </head>
 
@@ -357,45 +363,6 @@
               <div class="panel sys-bd-off sys-box-shadow-off">
                   <div class="row widget layout-widget grid-stack-item-content ps" >
                      <div class="col-sm-12 ">
-                        <div id="chart1"></div>
-<script>
-  $(document).ready(function() {
-    $("#chart1").kendoChart({
-      title: {
-        text: "Top 6 Customers by Current Balance"
-      },
-      legend: {
-        position: "top"
-      },
-      seriesDefaults: {
-        type: "line"
-      },
-      series: [{
-        name: "Current Balance",
-        data: [12000, 11000, 10000, 9500, 9000, 8500]
-      }],
-      categoryAxis: {
-        categories: ["Customer A", "Customer B", "Customer C", "Customer D", "Customer E", "Customer F"],
-        majorGridLines: {
-          visible: false
-        }
-      },
-      valueAxis: {
-        labels: {
-          format: "c0"
-        },
-        line: {
-          visible: false
-        },
-        axisCrossingValue: 0
-      },
-      tooltip: {
-        visible: true,
-        format: "c0"
-      }
-    });
-  });
-</script>
                         <div class="panel card sys-widget sys-box-shadow-off " >               
                            <div class="panel-body card-body sys-pd-15">
                               <h2 class="sys-300">Michaelson Cycles usually pays on time, but their most recent invoice is 25 days overdue. Sales to this customer are up 24% year on year. 
@@ -1070,6 +1037,17 @@
    </div>
  </script>
 
+ <script id="sysprolearn-template" type="text/x-kendo-template">
+   <div class="k-card">
+      <div class="k-card-header">
+         Help on using SYSPRO
+     </div>
+     <div class="k-card-body">
+       <p>#=content#</p>
+     </div>
+   </div>
+ </script>
+
  <script id="confidence-template" type="text/x-kendo-template">
    <div class="k-card">
       <div class="k-card-header">
@@ -1206,22 +1184,100 @@ End Function</code></pre>
 
   <script>
 
-
-   fetch("https://syspro-gpt-web-api.vercel.app/api.conversation_chain_with_tools.conversation/run", {
-      method: "POST",
-      body: JSON.stringify({
-         "input": "Hello",
-         "memory": [
-            {}
-         ]
-      }),
+fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
+      method: "GET",      
       headers: {
-         "Content-type": "application/json; charset=UTF-8",
+         // "Content-type": "application/json",
          "accept": "application/json"
-      }
+      },      
    })
    .then((response) => response.json())
-   .then((json) => console.log(json));
+   .then((json) => {
+      if (json.length) {
+         json.forEach((item) => {
+            console.log(`active session: ${item.session_id}`);
+            // fetch(`https://syspro-gpt-web-api.vercel.app/delete_session?session_id=${item.session_id}`, {
+            //    method: "DELETE",      
+            //    headers: {
+            //       "accept": "application/json"
+            //    },      
+            // })
+         })
+      }
+
+   });
+
+   let session_id, chatActive = false;
+
+   const systemPrompt = `Never forget that your name is 'Da Vinci', and you are the 'Syspro AI helper'. That is who you should intriduce yourself as, and If someone asks you who you are, then that is what you should answer. You should always use a friendly but professional tone.         
+
+Your main responsibilities are to help people retrieve data from Syspro, to make tasks easier for them, to help them find out how to use Syspro, and to make data easier to digest by summarising it and visualising it in helpful ways.
+
+Often you will have to perform a SQL query in order to respond to a query. Whenever you have to do this, don't mention you are executing a SQL query to me. If you have some problems matching what I ask to SQL table and column names, just make the best match you can, execute a query that will work, and return the results. Don't tell me about what you have changed, and don't tell me if you have having difficulties or misunderstandings, that's not a problem. Just execute the query without me knowing any of the details, and return the best results you can.
+
+Whenever you return HTML or JavaScript as part of an answer, include 'Here starts code:' immediately before the code, and nothing at all after the code.
+
+If you are asked to provide a chart or graph, or to graph or chart or plot some data, then return a JSON object of all the options for a Kendo UI for JQuery chart. You must remove all comments from this JSON object! Set the type of chart to whatever type of chart is specified, and if no type is specified, then return a line chart. Make sure to include all the relevant data in the series data part of the JSON object - do not leave dummy data in there. You must remove all comments (lines with '//' at the start) from this data. Set the 'theme' property to 'material' in the top level of the JSON object - do not nest this option inside a 'chart' property. Always set the 'categoryField' option in the series data to the approriate value (usually "category"). ALso always set the 'field' option in the series data to the approriate value. Wrap the whole thing in square brackets, so that it is valid JSON. I repeat, You must remove all text in this code preceeded by '//'. If you are asked for a range bar chart, then do not include any 'valueAxis' settings in the code you return, and do not add any comment about this. Just before the code for the JSON object, include the text 'Here starts chart data:', and then nothing at all after the code. 
+
+If your response will include multiple items, each of which has the same two or more fields of data, then return a bit of JSON with the data. Right before the JSON, include the text 'KendoGrid: Here starts JSON:', and then include no further text after the JSON. For column titles, always replace underscores (_) witpace.
+
+If the user requests any kind of contact details (for example a person's contact details, or a company's contact details, or address), then return the following HTML, where '$name', '$address', '$phone' and '$email', '$city', '$postal_code' should be replaced with the data you are returning. '$name' can be for 'name' or 'customer_name'.  if you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you will not return an email address, then exclude from the HTML the element with data-cdetail='email', and any inner HTML of that element. always preceed this code with 'Here starts code:', and then include no text after the end of the provided code. Here is the HTML template to use:
+
+   <div class="k-card-body">
+      <div data-cdetail="name">
+         <b>Name: </b>
+         <span>$name</span>
+      </div>
+      <div data-cdetail="phone">
+         <b>Phone: </b>
+         <span>$phone</span>
+      </div>
+      <div data-cdetail="address">
+         <b>Address: </b>
+         <span>$address</span>, 
+         <span>$city</span>, 
+         <span>$postal_code</span>
+      </div>
+      <div data-cdetail="email">
+         <b>Email: </b>
+         <span>$email</span>
+      </div>
+   </div>  
+   
+   If I ask 'Is Kevin busy?' then respond: 'He might be sleeping in, I saw him and Nino out late last night wearing their fishnet stockings.'. After I resond to that, you can make a humerous comment.
+
+   If I ask for the GPS location of a customer, then look up the customer and get the 'location' column for this customer, and return an embeddable google map set to this location.
+
+   When I ask information about products, or a product, then this can be identified in the SQL databases as 'product_code' as the unique identifier, and is in both the 'warehouses' view and the 'products' view. If I ask about the product description, long decription or category, then you can look up by product_code in the 'products' view. If I ask about quantity on hand, quatity sold, warehouse or cost, then you can look that up by product_code in the 'warehouses' view. If I ask for a combination of those things then you will need to get some data from the 'products' view, and some from the 'warehouses' view. For example if I ask for the product code, description, warehouse and quantity on hand, you will need to use the prodiuct_code as the unique identifier to look up that information from both the 'products' view, and the 'warehouses' view.
+`;
+
+   fetch("https://syspro-gpt-web-api.vercel.app/initialize_conversation", {
+      method: "POST",      
+      headers: {
+         "Content-type": "application/json",
+         "accept": "application/json"
+      },
+      body: JSON.stringify({
+         "session_description": "prototype",
+         "system_prompt": systemPrompt,    
+         "chat_history": [
+            // {
+            //    "content": "hello, I'm Joe",
+            //    "additional_kwargs": {},
+            //    "type": "human"
+            // }
+         ]     
+      })
+   })
+   .then((response) => response.json())
+   .then((json) => {
+      console.log(json);
+      session_id = json.session_id;
+      // chat.renderMessage({
+      //    type: "text",
+      //    text: json.output
+      // }, daVinciUser);
+   });
 
    // TODO: create confirmatin notification for the chat, with links to the program or records that have been created, or some error notification
    const davinciresponse_template = kendo.template($('#davinciresponse-template').html());
@@ -1238,6 +1294,9 @@ End Function</code></pre>
 
    const technicalinfo_template = kendo.template($('#technicalinfo-template').html());
    kendo.chat.registerTemplate("technicalinfo", technicalinfo_template);
+
+   const sysprolearn_template = kendo.template($('#sysprolearn-template').html());
+   kendo.chat.registerTemplate("sysprolearn", sysprolearn_template);
 
    const davinciconfirm_template = kendo.template($('#davinciconfirm-template').html());
    kendo.chat.registerTemplate("davinciconfirm", davinciconfirm_template);
@@ -1291,6 +1350,31 @@ End Function</code></pre>
        alignOffset: { x: 20, y: 35 },
        click: function() {
          $("#daVinciWindow").data("kendoWindow").open();
+         setTimeout(function() {
+               chat.renderUserTypingIndicator(daVinciUser);
+            }, 250);
+         if (!chatActive) {
+            fetch("https://syspro-gpt-web-api.vercel.app/run_conversation", {
+               method: "POST",      
+               headers: {
+                  "Content-type": "application/json",
+                  "accept": "application/json"
+               },
+               body: JSON.stringify({
+                  "session_id": session_id,
+                  "input": "Hello, I'm Joe",         
+               })
+            })
+            .then((response) => response.json())
+            .then((json) => {
+               console.log(json);
+               chat.renderMessage({
+                  type: "text",
+                  text: json.output
+               }, daVinciUser);
+            });
+            chatActive = true
+         }
          setTimeout(function(){
             $("#daVinciChat .k-message-box input").focus();
          }, 220);
@@ -1302,7 +1386,7 @@ End Function</code></pre>
       actions: ["More-Vertical", "Minus", "Plus", "Close"],
       draggable: false,
       resizable: false,
-      width: "450px",
+      width: "500px",
       height: "500px",
       // maxHeight: "750px",
       // maxWidth: "1000px",
@@ -1310,7 +1394,7 @@ End Function</code></pre>
       visible: false,
       position: {
          top: window.innerHeight - 515,
-         left: window.innerWidth - 465,
+         left: window.innerWidth - 515,
       },
       animation: { 
          open: { 
@@ -1325,11 +1409,11 @@ End Function</code></pre>
       },
       close: function(e) {
          daVinciWindow.setOptions({
-            width: "450px",
+            width: "500px",
             height: "500px",
             position: {
                top: window.innerHeight - 515,
-               left: window.innerWidth - 465,
+               left: window.innerWidth - 515,
             },
          });
       },
@@ -1361,11 +1445,11 @@ End Function</code></pre>
    // daVinciWindow.wrapper.find(".k-svg-i-plus").parent().on("click", function (e) {
       console.log(daVinciWindow);
       daVinciWindow.setOptions({
-         width: window.innerWidth - 120,
+         width: window.innerWidth - 320,
          height: window.innerHeight - 70,
          position: {
             top: 55,
-            left: 105,
+            left: 305,
          },
       });
       e.preventDefault();
@@ -1376,18 +1460,30 @@ End Function</code></pre>
    // daVinciWindow.wrapper.find(".k-svg-i-minus").parent().on("click", function (e) {
       console.log(daVinciWindow);
       daVinciWindow.setOptions({
-         width: "450px",
+         width: "500px",
          height: "500px",
          position: {
             top: window.innerHeight - 515,
-            left: window.innerWidth - 465,
+            left: window.innerWidth - 515,
          },
       });
       e.preventDefault();
    });
 
+   var ContactCardComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         this.element.addClass("k-card").append(options.html);
+      }
+   });
+
+   kendo.chat.registerComponent("ContactCardComponent", ContactCardComponent);
+
    var GridComponent = kendo.chat.Component.extend({
       init: function (options, view) {
+         console.log(options);
          kendo.chat.Component.fn.init.call(this, options, view);
 
          // Create a <div> from which the Calendar will be initialized.
@@ -1395,19 +1491,7 @@ End Function</code></pre>
 
          // Initialize the grid component by passing the provided value.
          gridElement.kendoGrid({
-            dataSource: [ { firstName: "John",
-                  lastName: "Smith",
-                  email: "john.smith@telerik.com" },
-               { firstName: "Jane",
-                  lastName: "Smith",
-                  email: "jane.smith@telerik.com" },
-               { firstName: "Josh",
-                  lastName: "Davis",
-                  email: "josh.davis@telerik.com" },
-               { firstName: "Cindy",
-                  lastName: "Jones",
-                  email: "cindy.jones@telerik.com" }
-            ]
+            dataSource: options.dataSource,
          });
 
          // Place the grid within the Chat card.
@@ -1417,6 +1501,25 @@ End Function</code></pre>
    });
 
    kendo.chat.registerComponent("GridComponent", GridComponent);
+
+   var ChartComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         // Create a <div> from which the Calendar will be initialized.
+         var gridElement = $('<div>');
+
+         // Initialize the grid component by passing the provided value.
+         gridElement.kendoChart(options.chartData);
+
+         // Place the grid within the Chat card.
+         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
+         this.element.addClass("k-card").append(bodyElement);
+      }
+   });
+
+   kendo.chat.registerComponent("ChartComponent", ChartComponent);
 
    var CodeComponent = kendo.chat.Component.extend({
       init: function (options, view) {
@@ -1450,10 +1553,16 @@ End Function</code></pre>
 
    kendo.chat.registerComponent("CodeComponent", CodeComponent);
 
+   const codeCheck = 'Here starts code:';
+   const chartCheck = 'Here starts chart data:';
+
    var chat = $("#daVinciChat").kendoChat({
         post: function (args) {
          console.log(args);
+
             // React on a user post action.
+            
+
             if (![
                "Please provide more technical information.",
                "There's something wrong with this.",
@@ -1465,14 +1574,183 @@ End Function</code></pre>
                "List Purchase Orders with issues",
                "List 16 new Purchase Orders"
             ].includes(args.text)) {
+
                setTimeout(function() {
                   chat.renderUserTypingIndicator(daVinciUser);
-               }, 400);
-               setTimeout(function() {
-                  chat.renderMessage({
-                     type: "text",
-                     text: "Sorry I'm not sure what you mean 🤪 did you want to do one of these pre-formulated actions?"
-                  }, daVinciUser);
+               }, 300);
+
+               // fetch("https://syspro-gpt-web-api.vercel.app/chains.conversation_chain_with_tools.conversation/run", {
+               //    method: "POST",
+               //    body: JSON.stringify({
+               //       "input": args.text,
+               //       "memory": chatMemory
+               //    }),
+               //    headers: {
+               //       "Content-type": "application/json; charset=UTF-8",
+               //       "accept": "application/json"
+               //    }
+               // })
+               // .then((response) => response.json())
+               // .then((json) => {
+                  
+
+               fetch("https://syspro-gpt-web-api.vercel.app/run_conversation", {
+                  method: "POST",      
+                  headers: {
+                     "Content-type": "application/json",
+                     "accept": "application/json"
+                  },
+                  body: JSON.stringify({
+                     "session_id": session_id,
+                     "input": args.text,         
+                  })
+               })
+               .then((response) => response.json())
+               .then((json) => {
+                  console.log(json);
+                  
+                  if (json.output.includes(codeCheck) || json.output.includes("```html")) {
+                     console.log('peep');
+                     console.log(json.output);
+                     let code;
+                     if (json.output.includes("```html")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```html") + 7, 
+                           json.output.lastIndexOf("```")
+                        );
+                     } else if (json.output.includes("```")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```") + 3, 
+                           json.output.lastIndexOf("```")
+                        );
+                     } else {
+                        console.log(json.output.indexOf(codeCheck));
+                        console.log(codeCheck.length);
+                        code = json.output.slice(json.output.indexOf(codeCheck) + codeCheck.length);
+                     }
+                                          
+                     console.log(code);
+
+                     chat.renderAttachments({
+                        attachments: [{
+                           contentType: "ContactCardComponent",
+                           content: {
+                              html: code
+                           }
+                           // content: {
+                           // value: new Date()
+                           // }
+                        }]
+                     }, daVinciUser);
+                  } else if (json.output.includes('KendoGrid')) {
+                     console.log('kendo grid');
+                     console.log(json.output);
+                     let code;
+                     if (json.output.includes("```json")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```json") + 7, 
+                           json.output.lastIndexOf("```")
+                        );
+                     } else {
+                        code = json.output.slice(json.output.indexOf('Here starts JSON:') + 'Here starts JSON:'.length);
+                     }
+                     
+                     chat.renderAttachments({
+                        attachments: [{
+                           contentType: "GridComponent",
+                           content: {
+                              dataSource: JSON.parse(code)
+                           }
+                           // content: {
+                           // value: new Date()
+                           // }
+                        }]
+                     }, daVinciUser);
+
+                     console.log(code);
+                  } else if (json.output.includes(chartCheck)) {
+                     console.log('kendo chart');
+                     console.log(json.output);
+                     // const code = json.output.slice(json.output.indexOf(chartCheck) + chartCheck.length);
+                     
+                     let code;
+                     if (json.output.includes("```javascript")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```javascript") + 13, 
+                           json.output.lastIndexOf("```")
+                        );
+                     } else if (json.output.includes("```json")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```json") + 7, 
+                           json.output.lastIndexOf("```")
+                        );
+                     } else if (json.output.includes("```")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```") + 3, 
+                           json.output.lastIndexOf("```")
+                        );
+                     } else {
+                        console.log(json.output.indexOf(chartCheck));
+                        console.log(chartCheck.length);
+                        code = json.output.slice(json.output.indexOf(chartCheck) + chartCheck.length);
+                     }
+                     console.log(code);
+                     console.log(JSON.parse(code));
+                     chat.renderAttachments({
+                        attachments: [{
+                           contentType: "ChartComponent",
+                           content: {
+                              chartData: JSON.parse(code)[0]
+                           }
+                           // content: {
+                           // value: new Date()
+                           // }
+                        }]
+                     }, daVinciUser);
+
+                  } else if ( json.intermediate_steps.length ) {  
+                     if ( json.intermediate_steps[0].length && json.intermediate_steps[0][0].tool) {
+                        if (json.intermediate_steps[0][0].tool === "search_syspro_learning" || json.intermediate_steps[0][0].tool === "search_syspro_web") {
+                           console.log('learning used');
+                           chat.renderAttachments({
+                              attachments: [{
+                                 contentType: "sysprolearn",
+                                 content: {
+                                    // "title": techInfo["tile"].title,
+                                    "content": json.output
+                                       .replace("Inventory Query", "<span class='clickable'>Inventory Query</span>")
+                                       .replace("Inventory ATP Query", "<span class='clickable'>Inventory ATP Query</span>")
+                                       .replace("Inventory at a Glance", "<span class='clickable'>Inventory at a Glance</span>")
+                                       .replace("Inventory Forecasting", "<span class='clickable'>Inventory Forecasting</span>")
+                                       .replace("Inventory Optimization", "<span class='clickable'>Inventory Optimization</span>"),
+
+                                       
+                                    // "content": json.output.replace(/"(.*?)"/|/'(.*?)'/g, function myFunction(x){
+                                    //    x = "<span class='clickable'>"+ x +"</span>"
+                                    //    return x;
+                                    // }),
+                                    // "make": "Opel",
+                                    // "model": "Astra",
+                                    // "worth": "4000",
+                                    // "startDate": "2018-10-10"
+                                 }
+                              }],
+                              attachmentLayout: "list"
+                           }, daVinciUser);
+                        } else {
+                           chat.renderMessage({
+                              type: "text",
+                              text: json.output
+                           }, daVinciUser);
+                        }
+                     }
+                  } else {
+                     chat.renderMessage({
+                        type: "text",
+                        text: json.output
+                     }, daVinciUser);
+                  }
+
                   chat.renderSuggestedActions([{
                      title: "Ask for a grid",
                      value: "Who are the top 4 sales staff at Cycle Corp?"
@@ -1483,8 +1761,18 @@ End Function</code></pre>
                   {
                      title: "Produce code",
                      value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-                  }]);               
-               }, 1500);
+                  }]); 
+               });
+               // setTimeout(function() {
+               //    chat.renderUserTypingIndicator(daVinciUser);
+               // }, 400);
+               // setTimeout(function() {
+               //    chat.renderMessage({
+               //       type: "text",
+               //       text: "Sorry I'm not sure what you mean 🤪 did you want to do one of these pre-formulated actions?"
+               //    }, daVinciUser);
+                                
+               // }, 1500);
             }
         },
         actionClick: function(e) {
@@ -1514,6 +1802,21 @@ End Function</code></pre>
                   chat.renderAttachments({
                      attachments: [{
                         contentType: "GridComponent",
+                        content: {
+                           dataSource: [ { firstName: "John",
+                              lastName: "Smith",
+                              email: "john.smith@telerik.com" },
+                           { firstName: "Jane",
+                              lastName: "Smith",
+                              email: "jane.smith@telerik.com" },
+                           { firstName: "Josh",
+                              lastName: "Davis",
+                              email: "josh.davis@telerik.com" },
+                           { firstName: "Cindy",
+                              lastName: "Jones",
+                              email: "cindy.jones@telerik.com" }
+                        ]
+                        }
                         // content: {
                         // value: new Date()
                         // }
@@ -1665,17 +1968,17 @@ End Function</code></pre>
       }
    }).data("kendoChat");
 
-   chat.renderSuggestedActions([{
-        title: "Ask for a grid",
-        value: "Who are the top 4 sales staff at Cycle Corp?"
-    }, {
-      title: "Show confirmation",
-      value: "Confirmation demo"
-    },
-    {
-      title: "Produce code",
-      value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-    }]);
+   // chat.renderSuggestedActions([{
+   //      title: "Ask for a grid",
+   //      value: "Who are the top 4 sales staff at Cycle Corp?"
+   //  }, {
+   //    title: "Show confirmation",
+   //    value: "Confirmation demo"
+   //  },
+   //  {
+   //    title: "Produce code",
+   //    value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
+   //  }]);
 
 
    function technicalInfo() {
@@ -2280,6 +2583,9 @@ End Function</code></pre>
                 kendo.bind($(this), dataItem);
             });
         }
+        $(document).on("click", ".clickable", function() {
+         alert("Take the user to the relevant program in Avanti");
+        })
    </script>
   
   </body>
