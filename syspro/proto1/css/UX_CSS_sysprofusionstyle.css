@@ -1,0 +1,453 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+ body {
+    overflow-x: hidden;
+    background-image: url('./../Samples/UX_IMG_home.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 49px;
+}
+
+.dev-mode-body {
+    background-image: url('./../Samples/UX_IMG_home_devmode.png') !important;
+}
+
+/* Toggle Styles */
+
+#fusion-wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.13s ease;
+    -moz-transition: all 0.13s ease;
+    -o-transition: all 0.13s ease;
+    transition: all 0.13s ease;
+}
+
+#fusion-wrapper.toggled {
+    padding-left: 450px;
+}
+
+#fusion-sidebar-wrapper {
+    max-height: 100%;
+    z-index: 1000;
+    position: fixed;
+    left: 450px;
+    width: 0;
+    height: 100%;
+    margin-left: -450px;
+    overflow-y: auto;
+    background: #ffffff;
+    -webkit-transition: all 0.13s ease;
+    -moz-transition: all 0.13s ease;
+    -o-transition: all 0.13s ease;
+    transition: all 0.13s ease;
+    box-shadow: inset -6px -9px 25px -12px #2c3e50;
+    -webkit-box-shadow: inset -6px -9px 25px -12px #2c3e50;
+    -moz-box-shadow: inset -6px -9px 25px -12px #2c3e50;
+
+    -ms-overflow-style: none;
+}
+
+#fusion-wrapper.toggled #fusion-sidebar-wrapper {
+    width: 450px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#fusion-wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -450px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 450px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media (min-width: 768px) {
+    #fusion-wrapper {
+        padding-left: 0;
+    }
+
+    #fusion-wrapper.toggled {
+        padding-left: 450px;
+    }
+
+    #fusion-sidebar-wrapper {
+        width: 0;
+    }
+
+    #fusion-wrapper.toggled #fusion-sidebar-wrapper {
+        width: 450px;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #fusion-wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+.syspro-help-block {
+    color: #0da1d2 !important;
+}
+
+.btn-warning-important {
+    color: #ffffff !important;
+    background-color: #ff6600 !important;
+    border-color: #ff6600 !important;
+}
+
+.btn-danger-important {
+    color: #ffffff !important;
+    background-color: #e74c3c !important;
+    border-color: #e74c3c !important;
+}
+/*Set the cursor for the search gird so items are clickable. TODO: when we get to search actions we'll need to investigate this.*/
+.avanti-search-results-grid tr {
+    cursor: pointer;
+}
+#taskdialognotification,
+#errorNotification {
+    z-index: 99999 !important;
+}
+
+.syspro-browse-button-container {
+    display: none;
+    cursor: pointer;
+}
+
+/*AVANTI FILTER STYLING*/
+
+.avanti-base-class {
+    padding: 20px;
+}
+
+.AVANTI-CHART-BG {
+    background: white;
+}
+
+.AVANTI-COLLAPSIBLE {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.AVANTI-RANGE-BUTTON-STYLE {
+    /*width: 80px;*/
+    border-radius: 3px;
+    /*background-color: #f9f9f9 !important;*/
+    /*background-color: #0078d7 !important;*/
+    /*border: solid 1px #e3e3e3;*/
+    font-size: 12px;
+    /*color: #ffffff !important;*/
+    text-align: center !important;
+    /*color: #aeaeae !important;*/
+}
+
+.AVANTI-FILTER-BUTTON {
+    width: 70%;
+    height: 45px !important;
+    border-radius: 5px !important;
+    background-color: #0078d7 !important;
+    font-size: 15px;
+    position: center !important;
+    justify-content: center !important;
+    color: #ffffff;
+    text-align: center !important;
+}
+
+.AVANTI-BUTTON-FLOAT {
+    float: right;
+}
+
+.AVANTI-RANGE-SLIDER {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.filter-default-text {
+    text-align: center;
+    color: #2c3e50;
+}
+/* styling to overwrite on focus styling*/
+.Filter-Data-Item.form-group.is-focused .checkbox label {
+    color: #2c3e50 !important;
+}
+
+.avanti-search-button {
+    float: right;
+    margin-top: -45px;
+    cursor: pointer;
+    z-index: 10;
+}
+.filter-main-button {
+    opacity: 0.4;
+}
+
+.filter-main-button:hover {
+    opacity: 1;
+}
+
+.avanti-search-count-slider {
+    margin-left: 25px;
+    width: 200px;
+}
+
+.hyperlink-button-adjacent {
+    float: right;
+    width: auto;
+    cursor: pointer;
+}
+
+/* styling for floating button */
+
+/* Component styles - this is what you need to grab */
+.absolute-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.floaty {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    /*right: 15px;*/
+}
+
+.floaty-list {
+    margin: 0 0 20px;
+    padding: 0 0 0 6px;
+    list-style: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.floaty:hover .floaty-list {
+    opacity: 1;
+}
+
+.floaty-list-item {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 15px 0;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+}
+
+.floaty-list-item > img {
+    border-radius: 50%;
+}
+
+.floaty-list-item--gray {
+    background-color: lightslategray;
+}
+
+.floaty-list-item--white {
+    background-color: lightgrey;
+}
+
+.floaty-list-item--yellow > svg {
+    fill: #fff;
+}
+
+.floaty-list-item--blue {
+    background-color: #0078d7;
+}
+
+.floaty-list-item--blue > svg {
+    fill: #fff;
+}
+
+.floaty-list-item-label {
+    position: relative;
+    /* top: 8px; */
+    /* right: 0%; */
+    left: 150%;
+    padding: 4px 8px;
+    font-size: 11px;
+    color: #fff;
+    background-color: #777777;
+    border-radius: 3px;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+}
+
+.floaty-list-item:hover > .floaty-list-item-label {
+    opacity: 1;
+}
+
+.floaty-btn {
+    line-height: 55px;
+    position: relative;
+    width: 56px;
+    height: 56px;
+    float: right;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background-color: #0078d7;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    color: white;
+    text-align: center;
+    opacity: 0.5;
+}
+.floaty-btn:hover {
+    opacity: 1;
+}
+
+.floaty-btn:hover .floaty-btn-label {
+    opacity: 1;
+}
+
+.floaty-btn-label {
+    position: static;
+    top: 10px;
+    right: 115%;
+    padding: 4px 8px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #777777;
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity 0.2s ease-out;
+}
+
+.floaty-btn-icon {
+    transition: all 0.2s;
+}
+
+.floaty-btn-icon-plus {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.floaty.is-active .floaty-btn-icon-plus {
+    opacity: 0;
+    -webkit-transform: rotate(13deg);
+    transform: rotate(130deg);
+}
+
+.floaty-btn-icon-create {
+    opacity: 0;
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}
+
+.floaty.is-active .floaty-btn-icon-create {
+    opacity: 1;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+/**/
+.zoom-btn-large {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.zoom-fab {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #0078d7;
+    vertical-align: middle;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.2s ease-out;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: #fff;
+}
+
+.k-drag-clue {
+    z-index: 100004 !important;
+}
+
+.k-window.k-editor-widget {
+    padding-top: 0px !important;
+}
+
+.program-list-search-wrapper {
+    margin-bottom: 0px;
+}
+
+.statusBar {
+    display: none;
+}

@@ -1,0 +1,267 @@
+﻿/*  This  contains any additional styling over and above  Joe's standard styles that should be applied  to all web views  builds.Thisis built  into the main SYSPROUXTools.min.css file that is ported. */
+
+.form-group.is-focused:not(.has-error) i.control-label {
+  color: #016699;
+}
+.logon-button{
+    margin-top:30px;
+      margin-bottom:30px;
+}
+
+.syspro-grid-row-hyperlink {
+  color: #0078d7;
+  text-decoration: underline;
+}
+
+.noUi-tooltip {
+    margin-top: -20px;
+    margin-left: -7px;
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+.avanti-date-slider .noUi-tooltip {
+    margin-left: -25px;
+}
+
+/*.logon-spacing-row{
+    height: 50px;
+}
+
+.logon-button button{
+    width: 200px;
+}
+
+.logon-first-item{
+    margin-top:30px;
+}
+
+.logon-hint-image{
+    margin-top:30px;
+}
+
+        .fusion-top-toolbar, .fusion-bottom-toolbar
+        {
+            height:50px;
+        }
+        .fusion-logon-page-buttons
+        {
+            padding-right: 30px !important;
+            padding-left: 30px !important;
+        }*/
+
+.syspro-field-search-dropdown{
+    overflow-y: scroll;
+}
+
+.notification-template
+{
+    
+}
+
+.current-application-recent{
+    display: none !important;
+}
+
+.navbar-offcanvas-left
+{
+     max-width: 340px !important;
+            left: -340px;
+            top: 49px;
+}
+
+
+.syspro-browse-button-container {
+	display: none;
+    cursor: pointer;
+}
+
+/* styling for floating button */
+
+/* Component styles - this is what you need to grab */
+.absolute-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.floaty {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    /*right: 15px;*/
+}
+
+.floaty-list {
+    margin: 0 0 20px;
+    padding: 0 0 0 6px;
+    list-style: none;
+    opacity: 0;
+    transition: opacity .2s ease-out;
+}
+
+.floaty:hover .floaty-list {
+    opacity: 1;
+}
+
+.floaty-list-item {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 15px 0;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,.25);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+}
+
+    .floaty-list-item > img {
+        border-radius: 50%;
+    }
+
+.floaty-list-item--gray {
+    background-color: lightslategray;
+}
+
+.floaty-list-item--white {
+    background-color: lightgrey;
+}
+
+    .floaty-list-item--yellow > svg {
+        fill: #fff;
+    }
+
+.floaty-list-item--blue {
+    background-color: #0078d7;
+}
+
+    .floaty-list-item--blue > svg {
+        fill: #fff;
+    }
+
+.floaty-list-item-label {
+    position: relative;
+    /* top: 8px; */
+    /* right: 0%; */
+    left: 150%;
+    padding: 4px 8px;
+    font-size: 11px;
+    color: #fff;
+    background-color: #777777;
+    border-radius: 3px;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity .2s ease-out;
+}
+
+.floaty-list-item:hover > .floaty-list-item-label {
+    opacity: 1;
+}
+
+.floaty-btn {
+    line-height: 55px;
+    position: relative;
+    width: 56px;
+    height: 56px;
+    float: right;
+    margin-right: 15px;
+    margin-bottom:15px;
+    cursor: pointer;
+    background-color: #0078d7;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,.25);
+    color: white;
+    text-align: center;
+    opacity:0.5;
+}
+    .floaty-btn:hover {
+        opacity: 1;
+    }
+
+    .floaty-btn:hover .floaty-btn-label {
+        opacity: 1;
+    }
+
+.floaty-btn-label {
+    position: static;
+    top: 10px;
+    right: 115%;
+    padding: 4px 8px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #777777;
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity .2s ease-out;
+}
+
+.floaty-btn-icon {
+    transition: all .2s;
+}
+
+.floaty-btn-icon-plus {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.floaty.is-active .floaty-btn-icon-plus {
+    opacity: 0;
+    -webkit-transform: rotate(13deg);
+    transform: rotate(130deg);
+}
+
+.floaty-btn-icon-create {
+    opacity: 0;
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}
+
+.floaty.is-active .floaty-btn-icon-create {
+    opacity: 1;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+
+/**/
+.zoom-btn-large {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.zoom-fab {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #0078d7;
+    vertical-align: middle;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.2s ease-out;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: #FFF;
+}
+
+.noUi-tooltip {
+    margin-top: -20px;
+    margin-left: -7px;
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+.avanti-date-slider .noUi-tooltip {
+    margin-left: -25px;
+}

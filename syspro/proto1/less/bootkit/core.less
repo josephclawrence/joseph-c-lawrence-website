@@ -1,0 +1,87 @@
+// Contains imports from other locations and defines global rules which can be edited or removed
+
+//== LESS imports
+/* ------------------------------------------------------------------------------------------------------------- */
+@import "core-classes"; // global classes that can be used anywhere - comment individual lines to fine-tune to your needs
+@import "mixins";
+@import "widget"; // creates default environment for widgets; imports
+
+// IMPORTING EACH STYLE TYPE SEPARATELY
+/*@panel-border-radius: 4px; // used for minimum compilation
+@import "../bootstrap/mixins"; // used for minimum compilation
+@import "../bootstrap/variables";*/ // used for minimum compilation
+.fa-2x { font-size: 2em; }
+.fa-3x { font-size: 3em; }
+.fa-4x { font-size: 4em; }
+.fa-5x { font-size: 5em; }  //also used for minimum compilation
+@import "borders";
+@import "backgrounds";
+@import "foreground";
+@import "icons"; // only work with Font Awesome font sizing -> it uses the fa-2x, fa-3x, etc classes
+@import "opacity";
+@import "avatars";
+@import "hr"; // hr classes using core colors
+@import "alignment";
+@import "social";
+@import "gradients";
+/*@import "weather";
+
+@import "pointers";*/
+
+
+// *** NOT MISSION CRITICAL ***
+// ----------------------------------------------------------------------------------------------------------------
+
+// 7 columns as seen in the weather widget example
+/*@import "7cols"; 
+
+// TODO: extra colors
+@import "extra-colors";*/
+
+// Bootstrap stuff
+@import "bootstrap/list-groups";
+@import "bootstrap/table";
+@import "bootstrap/carousel";
+@import "bootstrap/dropdowns";
+@import "bootstrap/forms";
+@import "bootstrap/progress-bars";
+//@import "bootstrap/variables";
+
+// Weather icons
+/*@import "../vendor/weather-icons/weather-icons"; */
+
+// Font awesome
+@import "../vendor/fa/font-awesome";
+
+// VENDOR
+//@import "../vendor/jquery.mCustomScrollbar-custom.less";
+@import "../vendor/sparklines";
+@import "../vendor/slimscroll";
+
+
+//== New variables
+/* ------------------------------------------------------------------------------------------------------------- */
+@bootkit-prefix:                 bk;
+@bk-white:                       #fff;
+@bk-inverse:                     #222;
+@bk-light-gray:                  #dfdfdf;
+@bk-gray:                        #999;
+@bk-very-light-gray:             #f6f6f6;
+@bk-link-darken-percentage:      10%;
+@bk-link-lighten-percentage:     10%;
+@bk-link-white-percentage:       4%;
+@bk-transition:                  .3s ease;
+@bk-opacity:                     .8;
+@bk-gradient-percentage:         20%;
+@bk-gradient-striped-percentage: 10%;
+@bk-pt-width:                    12px;
+@bk-pt-height:                   12px;
+
+@bk-primary:                     #016699;
+@bk-success:                     #009933;
+@bk-info:                        #33cccc;
+@bk-warning:                     #ff6600;
+@bk-danger:                      #cc0000;
+
+
+// BootKit specific CSS

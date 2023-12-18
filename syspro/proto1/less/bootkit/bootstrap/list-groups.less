@@ -1,0 +1,12 @@
+.list-group-item-heading {
+  //transition: all @bk-transition;
+}
+
+// remove border radius for lists inside panel bodies
+.@{bootkit-prefix}-rd-off {
+  > .list-group:last-child .list-group-item:last-child {
+    border-bottom: 0;
+    border-b-r-radius: 0;
+    border-b-l-radius: 0;
+  }
+}

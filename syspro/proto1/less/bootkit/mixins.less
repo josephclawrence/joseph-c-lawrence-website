@@ -1,0 +1,105 @@
+//== Backgrounds
+/* ------------------------------------------------------------------------------------------------------------- */
+.bk-bg-variant(@bg-color; @link-darken-pct: @bk-link-darken-percentage; @link-lighten-pct: @bk-link-lighten-percentage;) {
+
+  background-color: @bg-color !important;
+
+  &.@{bootkit-prefix}-bg-darken {
+    a:not(.btn)&:hover {
+      background-color: darken(@bg-color, @link-darken-pct) !important;
+      text-decoration: none;
+    }
+  }
+
+  &.@{bootkit-prefix}-bg-lighten {
+    a:not(.btn)&:hover {
+      background-color: lighten(@bg-color, @link-lighten-pct) !important;
+      text-decoration: none;
+    }
+  }
+}
+
+
+//== Foregrounds
+/* ------------------------------------------------------------------------------------------------------------- */
+.bk-fg-variant(@color) {
+
+  color: @color !important;
+
+  &.@{bootkit-prefix}-fg-darken {
+    a:not(.btn)&:hover {
+      text-decoration: none;
+      color: darken(@color, @bk-link-darken-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-fg-lighten {
+    a:not(.btn)&:hover {
+      text-decoration: none;
+      color: lighten(@color, @bk-link-lighten-percentage) !important;
+    }
+  }
+}
+
+
+//== Borders
+/* ------------------------------------------------------------------------------------------------------------- */
+.bk-border-variant(@border-color) {
+
+  border: 1px solid @border-color !important;
+
+  &-right {
+    border-right: 1px solid @border-color !important;
+  }
+
+  &.@{bootkit-prefix}-bd-darken {
+    a:not(.btn)&:hover {
+      border-color: darken(@border-color, @bk-link-darken-percentage) !important;
+    }
+  }
+
+  &.@{bootkit-prefix}-bd-lighten {
+    a:not(.btn)&:hover {
+      border-color: lighten(@border-color, @bk-link-lighten-percentage) !important;
+    }
+  }
+}
+
+
+//== Pointers
+/* ------------------------------------------------------------------------------------------------------------- */
+.bk-pointer-right-variant(@color; @width: @bk-pt-width; @height: @bk-pt-height) {
+  left: 99.5%; // 100% seems to leave a gap sometimes (resize in Webkit to reproduce)
+  top: 50%;
+  border-color: rgba(136, 183, 213, 0);
+  border-left-color: @color;
+  border-width: @width;
+  margin-top: -@height;
+}
+
+.bk-pointer-left-variant(@color; @width: @bk-pt-width; @height: @bk-pt-height) {
+  right: 99.5%;
+  top: 50%;
+  border-color: rgba(136, 183, 213, 0);
+  border-right-color: @color;
+  border-width: @width;
+  margin-top: -@height;
+}
+
+.bk-pointer-bottom-variant(@color; @width: @bk-pt-width; @height: @bk-pt-height) {
+  top: 100%;
+  left: 50%;
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: @color;
+  border-width: @width;
+  margin-left: -@height;
+}
+
+.bk-pointer-top-variant(@color; @width: @bk-pt-width; @height: @bk-pt-height) {
+  bottom: 100%;
+  left: 50%;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: @color;
+  border-width: @width;
+  margin-left: -@height;
+}

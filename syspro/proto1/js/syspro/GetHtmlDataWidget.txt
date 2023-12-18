@@ -1,0 +1,10 @@
+console.log("getHtmlFromModel started...");
+
+var modelIn =;
+
+console.log("getHtmlFromModel completed");
+sysproInterop.getHtmlFromModel("Widget", modelIn, function(result) {
+console.log("getHtmlFromModel completed");
+console.log(result);
+//SubType, ParentDisplayStyle, ParentBorderClass
+}, "Joined", 0, 1);

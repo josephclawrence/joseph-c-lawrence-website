@@ -1,0 +1,5 @@
+This folder contains some Bootstrap overrides which you might or might not want to use.
+Review them individually just to be sure nothing is colliding with your own Bootstrap style rules.
+
+Some classes use the LESS prefix (by default bk-) but not all. Progress bars and carousels are the only
+files that actually create new, usable BootKit variables.

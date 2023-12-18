@@ -1,0 +1,61 @@
+// ALIGNMENT
+// ---------------------------------------------------------------------------------------------------------------------
+// used on panel body to make it a left-to-right component
+.@{bootkit-prefix}-ltr {
+  padding: 0;
+
+  > .row { // remove margins on inner rows because the columns inside them are floated
+    margin-left: 0;
+    margin-right: 0;
+
+    .@{bootkit-prefix}-col-100pct { // 100% height cols for when we define fixed height on row
+      height: 100%;
+    }
+  }
+}
+
+
+// VERTICAL CENTERING
+// ---------------------------------------------------------------------------------------------------------------------
+//-> vertical centering with inline-block
+.@{bootkit-prefix}-vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+  height: 100%;
+  &:not(:last-child) {
+    margin-right: -4px; // fix inline-block bug
+  }
+}
+
+// -> lists and vertical alignment
+.@{bootkit-prefix}-list-vcenter {
+  display:table-cell;
+  vertical-align: middle;
+}
+
+//-> vertical centering with tables
+.@{bootkit-prefix}-tbl {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  > [class^="col-"],
+  > .@{bootkit-prefix}-tbl-cell {
+    display: table-cell;
+    table-layout: fixed;
+    vertical-align: middle;
+    float: none;
+  }
+}
+
+
+.@{bootkit-prefix}-bottom {
+  vertical-align: bottom !important;
+}
+
+.@{bootkit-prefix}-top {
+  vertical-align: top !important;
+}

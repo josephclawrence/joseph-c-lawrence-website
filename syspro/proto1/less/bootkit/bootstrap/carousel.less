@@ -1,0 +1,108 @@
+.@{bootkit-prefix}-carousel-ctrl {
+
+  width: initial; // reset width: 15%;
+  transition: @bk-transition;
+
+  // override left and right styles
+  &.left,
+  &.right {
+    background-image: none;
+    text-shadow: none;
+    outline: none;
+    z-index: 2;
+  }
+
+  // style icons inside prev and next navigation
+  > span[class*='icon-'] {
+    line-height: 26px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    color: @text-color;
+  }
+
+
+  // style nav icons
+  .icon-prev,
+  .icon-next {
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  .icon-prev {
+    margin-left: 5px;
+
+    &:before {
+      font-family: "fontawesome";
+      content: "\f104";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
+    }
+  }
+  .icon-next {
+    margin-right: 5px;
+
+    &:before {
+      font-family: "fontawesome";
+      content: "\f105";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
+    }
+  }
+}
+
+
+// classes to hide prev/next nav on initial load
+.carousel .carousel-control.@{bootkit-prefix}-carousel-hide-init { visibility: hidden; }
+.carousel:hover .carousel-control.@{bootkit-prefix}-carousel-hide-init { visibility: visible; }
+
+
+// custom controls for outside carousel
+.@{bootkit-prefix}-custom-ctrl {
+  display: block;
+  width: 28px;
+  height: 28px;
+  background: #eee;
+  text-align: center;
+  font-size: 20px;
+  color: @text-color;
+  .opacity(.5);
+
+  &:hover {
+    .opacity(.9);
+  }
+}
+
+// FADE CAROUSEL (remove "slide" class!! only use bk-fade)
+// http://stackoverflow.com/questions/9526970/can-the-twitter-bootstrap-carousel-plugin-fade-in-and-out-on-slide-transition
+.carousel.@{bootkit-prefix}-fade
+{
+  opacity: 1;
+
+  .item
+  {
+    -moz-transition: opacity ease-in-out .7s;
+    -o-transition: opacity ease-in-out .7s;
+    -webkit-transition: opacity ease-in-out .7s;
+    transition: opacity ease-in-out .7s;
+    left: 0 !important;
+    opacity: 0;
+    top:0;
+    position:absolute;
+    width: 100%;
+    display:block !important;
+    z-index:1;
+
+    &:first-child{
+      top:auto;
+      position:relative;
+    }
+
+    &.active
+    {
+      opacity: 1;
+      -moz-transition: opacity ease-in-out .7s;
+      -o-transition: opacity ease-in-out .7s;
+      -webkit-transition: opacity ease-in-out .7s;
+      transition: opacity ease-in-out .7s;
+      z-index:2;
+    }
+  }
+}

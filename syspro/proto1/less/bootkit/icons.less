@@ -1,0 +1,179 @@
+.@{bootkit-prefix}-icon { // give the icon some default behavior
+  display: block;
+  text-align: center;
+  border-radius: @border-radius-base;
+  border-width: 0;
+  height: 34px;
+  width: 34px;
+  line-height: 32px;
+
+  // sizing adjustments
+  &.@{bootkit-prefix}-icon-default {
+    font-size: 14px;
+
+    // border thickness
+    &.@{bootkit-prefix}-bd-2x {
+      line-height: 30px;
+    }
+
+    &.@{bootkit-prefix}-bd-3x {
+      line-height: 28px;
+    }
+
+    &.@{bootkit-prefix}-bd-4x {
+      line-height: 26px;
+    }
+
+    &.@{bootkit-prefix}-bd-5x {
+      line-height: 24px;
+    }
+
+    &.@{bootkit-prefix}-bd-off { // when we don't add this class to the bk-icon element the icons are too high up
+      line-height: 34px;
+    }
+  }
+
+  // sizing adjustments
+  &.@{bootkit-prefix}-icon-24 {
+    height: 46px;
+    width: 46px;
+    line-height: 42px;
+
+    font-size: 24px;
+
+    // border thickness
+    &.@{bootkit-prefix}-bd-2x {
+      line-height: 40px;
+    }
+
+    &.@{bootkit-prefix}-bd-3x {
+      line-height: 38px;
+    }
+
+    &.@{bootkit-prefix}-bd-4x {
+      line-height: 36px;
+    }
+
+    &.@{bootkit-prefix}-bd-5x {
+      line-height: 34px;
+    }
+
+    &.@{bootkit-prefix}-bd-off { // when we don't add this class to the bk-icon element the icons are too high up
+      line-height: 44px;
+    }
+  }
+
+  &.@{bootkit-prefix}-icon-2x {
+    height: 56px;
+    width: 56px;
+    line-height: 64px;
+
+    // border thickness
+    &.@{bootkit-prefix}-bd-2x {
+      line-height: 62px;
+    }
+
+    &.@{bootkit-prefix}-bd-3x {
+      line-height: 60px;
+    }
+
+    &.@{bootkit-prefix}-bd-4x {
+      line-height: 58px;
+    }
+
+    &.@{bootkit-prefix}-bd-5x {
+      line-height: 56px;
+    }
+
+    &.@{bootkit-prefix}-bd-off { // when we don't add this class to the bk-icon element the icons are too high up
+      line-height: 66px;
+    }
+  }
+
+  &.@{bootkit-prefix}-icon-3x {
+    height: 80px;
+    width: 80px;
+    line-height: 98px;
+
+    // border thickness
+    &.@{bootkit-prefix}-bd-2x {
+      line-height: 96px;
+    }
+
+    &.@{bootkit-prefix}-bd-3x {
+      line-height: 94px;
+    }
+
+    &.@{bootkit-prefix}-bd-4x {
+      line-height: 92px;
+    }
+
+    &.@{bootkit-prefix}-bd-5x {
+      line-height: 90px;
+    }
+
+    &.@{bootkit-prefix}-bd-off { // when we don't add this class to the bk-icon element the icons are too high up
+      line-height: 100px;
+    }
+  }
+
+  &.@{bootkit-prefix}-icon-4x {
+    height: 100px;
+    width: 100px;
+    line-height: 128px;
+
+    // border thickness
+    &.@{bootkit-prefix}-bd-2x {
+      line-height: 126px;
+    }
+
+    &.@{bootkit-prefix}-bd-3x {
+      line-height: 124px;
+    }
+
+    &.@{bootkit-prefix}-bd-4x {
+      line-height: 122px;
+    }
+
+    &.@{bootkit-prefix}-bd-5x {
+      line-height: 120px;
+    }
+
+    &.@{bootkit-prefix}-bd-off { // when we don't add this class to the bk-icon element the icons are too high up
+      line-height: 130px;
+    }
+  }
+
+  &.@{bootkit-prefix}-icon-5x {
+    height: 130px;
+    width: 130px;
+    line-height: 168px;
+
+    // border thickness
+    &.@{bootkit-prefix}-bd-2x {
+      line-height: 166px;
+    }
+
+    &.@{bootkit-prefix}-bd-3x {
+      line-height: 164px;
+    }
+
+    &.@{bootkit-prefix}-bd-4x {
+      line-height: 162px;
+    }
+
+    &.@{bootkit-prefix}-bd-5x {
+      line-height: 160px;
+    }
+
+    &.@{bootkit-prefix}-bd-off { // when we don't add this class to the bk-icon element the icons are too high up
+      line-height: 170px;
+    }
+  }
+}
+
+// make sure the default transition is working
+a.@{bootkit-prefix}-icon,
+a .@{bootkit-prefix}-icon {
+  transition: all @bk-transition !important;
+}

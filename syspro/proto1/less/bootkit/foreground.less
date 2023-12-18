@@ -1,0 +1,135 @@
+//-> Foreground colors
+.@{bootkit-prefix}-fg-primary {
+  .bk-fg-variant(@bk-primary);
+}
+.@{bootkit-prefix}-fg-success {
+  .bk-fg-variant(@bk-success);
+}
+.@{bootkit-prefix}-fg-info {
+  .bk-fg-variant(@bk-info);
+}
+.@{bootkit-prefix}-fg-warning {
+  .bk-fg-variant(@bk-warning);
+}
+.@{bootkit-prefix}-fg-danger {
+  .bk-fg-variant(@bk-danger);
+}
+.@{bootkit-prefix}-fg-inverse {
+  .bk-fg-variant(@bk-inverse);
+}
+.@{bootkit-prefix}-fg-white {
+  .bk-fg-variant(@bk-white);
+}
+.@{bootkit-prefix}-fg-gray {
+  .bk-fg-variant(@bk-gray);
+}
+.@{bootkit-prefix}-fg-light-gray {
+  .bk-fg-variant(@bk-light-gray);
+}
+.@{bootkit-prefix}-fg-very-light-gray {
+  .bk-fg-variant(@bk-very-light-gray);
+}
+.@{bootkit-prefix}-fg-textcolor {
+  .bk-fg-variant(@text-color);
+}
+
+
+
+// set transition on backgrounds for child elements
+a .bk-fg-lighten,
+a .bk-fg-darken {
+  transition: color @bk-transition;
+}
+
+//-> Foreground colors -----------------------------------------------------------------------------------------------
+// coloring text for children when hovering over link
+a:hover {
+  .@{bootkit-prefix}-fg-primary {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-primary, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-primary, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-success {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-success, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-success, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-info {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-info, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-info, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-warning {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-warning, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-warning, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-danger {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-danger, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-danger, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-inverse {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-inverse, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-inverse, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-white {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-white, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-white, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-gray {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-gray, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-gray, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-light-gray {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-light-gray, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-light-gray, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-very-light-gray {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@bk-very-light-gray, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@bk-very-light-gray, @bk-link-lighten-percentage) !important;
+    }
+  }
+  .@{bootkit-prefix}-fg-textcolor {
+    &.@{bootkit-prefix}-fg-darken {
+      color: darken(@text-color, @bk-link-darken-percentage) !important;
+    }
+    &.@{bootkit-prefix}-fg-lighten {
+      color: lighten(@text-color, @bk-link-lighten-percentage) !important;
+    }
+  }
+}
