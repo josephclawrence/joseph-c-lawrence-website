@@ -1326,6 +1326,78 @@ If I request any kind of contact details (for example a person's contact details
    </div>  
 
 If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_learning" tool, and if you do not find something there, then use the "search_syspro_web" tool to find an answer.
+
+If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or prodcut card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_code' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'Description' and 'category' from the 'products' table or view; 'warehouse_name', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_code' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here comes card HTML:' directly before the HTML, and then return no text at all after the HTML:
+
+<div class="panel card sys-widget card-widget glyphicon-credit-card" data-cardtype="">
+    <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
+        <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t">
+            <div class="row" data-bind="source: InvQuery.StockItem" data-template="UX_CARD_StockCode_Header_template">
+
+                <div class="sys-mg-t-11 col-sm-10 col-xs-10 col-10 sys-fg-white">
+                    <a class="card-header-link sys-fg-white" onclick="sysproInterop.showSmartTag(this)">
+                        <span
+                            class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">$product_code</span>
+                    </a>
+                    <small class="text-left sys-fg-white sys-txt-md">$Description</small>
+                    <small class="text-left sys-fg-white sys-txt-sm sys-mg-b-15 ">$category</small>
+                </div>
+                <div class="col-xs-2 col-2 col-sm-2 sys-mg-t-10 sys-mg-b-10">
+                    <div class="sys-avatar">
+                        <img src="http://10.211.55.4/UXTools//api/UXInteropWeb/GetImage?FileName=YzpcUk5EODAwXG1tZWRpYVxBMTAwLkJNUA==.png&amp;t=630772092140000000.638385089022966902.637744850491616784&amp;placeHolder=Rob"
+                            alt=""
+                            class="img-rounded rounded sys-bd-light-gray sys-bd-darken sys-bd-3x text-center img-responsive img-fluid card-header-image"
+                            onerror="this.style.display = 'none'">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-body card-body text-left sys-wrapper sys-bg-white sys-fg-inverse">
+            <h4><i class="material-icons">local_offer</i>Pricing</h4>
+            <div class="row sys-pd-t-10 sys-pd-b-10 text-left">
+                <div class="col-xs-4 col-4">
+                    <span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md">
+                        <span>$</span><span>$price</span>
+                    </span>
+                    <small class="text-muted">Selling price</small>
+                </div>
+                <div class="col-xs-4 col-4 ">
+                    <span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md">
+                        <span>$</span><span>$cost</span>
+                    </span>
+                    <small class="text-muted">Cost price</small>
+                </div>
+                <div class="col-xs-4 col-4">
+                    <span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md">$GP</span>%
+                    <small class="text-muted">GP %</small>
+                </div>
+            </div>
+            <hr class="sys-hr-light-gray sys-mg-t-10 sys-mg-b-5">
+            <h4><i class="material-icons">store</i>Stock level</h4>
+            <div class="row">
+                <div class="col-xs-4 col-4 sys-pd-t-15 text-left sys-vcenter">
+                    <span class="sys-mg-off sys-txt-md">
+                        <span>$quantity_on_hand</span>
+                    </span>
+                    <small class="text-muted">On hand quantity</small>
+                </div>
+                <div class="col-xs-4 col-4 sys-pd-t-5 text-left sys-vcenter">
+                    <span class="sys-mg-off sys-txt-md">
+                        <span>$quantity_sold</span>
+                    </span>
+                    <small class="text-muted">Quantity sold</small>
+                </div>
+                <div class="col-xs-4 col-4 sys-pd-t-5 text-left sys-vcenter">
+                    <span class="sys-mg-off sys-txt-md">
+                        <span>$warehouse_name</span>
+                    </span>
+                    <small class="text-muted">Warehouse</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 `;
 
 let session_id, chatActive = false;
