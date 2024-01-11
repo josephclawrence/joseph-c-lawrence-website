@@ -1479,6 +1479,8 @@ If I ask for all the information about a single particular job or job code or jo
     </div>
 </div>
 
+If I ask to: create a quote, say that I want to create a quote, create a purchase order, create a sales order, start a new purchase order, or any rephrasing of these requests, then respond with just the text 'Use the wizard'.
+
 Don't forget, when you are responding with code of any type (e.g. JSON, JavaScript, HTML etc.), you must always include the extra code detailed in my previous instructions.
 `;
 
@@ -1736,6 +1738,20 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
       e.preventDefault();
    });
 
+   var WizardCardComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         this.element.addClass("k-card").append('<form id="wizard" style="width:100%; margin: 0 auto;" novalidate></form>');
+         setTimeout(function() {
+            initWizard();
+         }, 300);
+      }
+   });
+
+   kendo.chat.registerComponent("WizardCardComponent", WizardCardComponent);
+
    var ContactCardComponent = kendo.chat.Component.extend({
       init: function (options, view) {
          console.log(options);
@@ -1906,6 +1922,19 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                      chat.renderMessage({
                         type: "text",
                         text: "Sorry, I couldn't find any data in response to that query. Please check the detail of the query to make sure there isn't a mistake, or maybe reformulate your question."
+                     }, daVinciUser);
+                  } else if (json.output.includes("Use the wizard")) {
+                     console.log(json.output);
+                     chat.renderAttachments({
+                        attachments: [{
+                           contentType: "WizardCardComponent",
+                           // content: {
+                           //    html: code
+                           // }
+                           // content: {
+                           // value: new Date()
+                           // }
+                        }]
                      }, daVinciUser);
                   } else if (json.output.includes(codeCheck) || json.output.includes("```html")) {
                      console.log('peep');
@@ -2315,6 +2344,54 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
       
    };
     
+   function initWizard() {
+      $("#wizard").kendoWizard({
+         pager: true,
+         done: function (e) {
+            e.originalEvent.preventDefault();
+         },
+         steps: [
+            {
+                  title: "Account Details",
+                  buttons: ["next"],
+                  form: {
+                     orientation: "vertical",
+                     formData: {
+                        Username: "johny",
+                        Email: "john.doe@email.com",
+                        Password: "pass123",
+                     },
+                     items: [
+                        { field: "Username", label: "Username:", validation: { required: true } },
+                        { field: "Email", label: "Email:", validation: { required: true, email: true } },
+                        { field: "Password", label: "Password:", validation: { required: true }, hint: "Hint: enter alphanumeric characters only.", attributes: { type: "password" } }
+                     ]
+                  }
+            },
+            {
+                  title: "Personal Details",
+                  buttons: ["previous", "done"],
+                  form: {
+                     orientation: "vertical",
+                     items: [
+                        { field: "FullName", label: "Full Name:", validation: { required: true } },
+                        {
+                              field: "Gender",
+                              label: "Gender:",
+                              validation: { required: true },
+                              editor: "RadioGroup",
+                              editorOptions: {
+                                 items: ["Female", "Male", "Other"],
+                                 layout: "horizontal",
+                                 labelPosition: "before"
+                              }
+                        },
+                        { field: "About", label: { text: "About:", optional: true } }
+                     ]
+                  }
+            }]
+      });
+   }
 
    var salesData = [
             {
