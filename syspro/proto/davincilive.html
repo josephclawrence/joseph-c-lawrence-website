@@ -2349,6 +2349,10 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
          pager: true,
          done: function (e) {
             e.originalEvent.preventDefault();
+            chat.renderMessage({
+               type: "text",
+               text: 'Great, the new XXX is now saved and accessible here.'
+            }, daVinciUser);
          },
          steps: [
             {
