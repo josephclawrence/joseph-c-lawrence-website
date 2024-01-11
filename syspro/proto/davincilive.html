@@ -91,8 +91,11 @@
          #davinciButton {
             border: 3px solid rgba(255, 255, 255, 0.3);
             outline: none;
-            background-color: #7B1FA2;
-            background-image: linear-gradient(to right top, #7b1fa2, #8f1699, #a00e90, #ae0987, #b90d7e);
+            background-color: #8e8e8e;
+            &.alive {
+               background-color: #7B1FA2;
+               background-image: linear-gradient(to right top, #7b1fa2, #8f1699, #a00e90, #ae0987, #b90d7e);
+            }            
             z-index: 99;
             &.pulse {
                /* animation: border-pulsate 3s infinite; */
@@ -296,6 +299,16 @@
             &:hover .chat-user-msg-actions {
                visibility: visible;
             }
+         }
+
+         .k-chat .k-message-group.k-alt {
+            text-align: start;
+         }
+
+         :not(#context-menu-list) #faves-menu.k-menu-vertical > .k-menu-item > .k-menu-link {
+            padding-top: 0.35rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid #f0f0f0;
          }
         </style>
     </head>
@@ -1432,6 +1445,40 @@ If I ask for all the information about a single particular stock code, or produc
     </div>
 </div>
 
+If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here comes card HTML:' directly before the HTML, and then return no text at all after the HTML:
+
+<div class="card-bindable panel-body card-body sys-pd-off sys-rd">
+    <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t d-flex flex-column">
+        <a tabindex="0" onclick="sysproInterop.showSmartTag(this)" class="text-left sys-fg-white" data-fieldcaption="job">
+            <span class="sys-mg-t-off sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left" >$job_id</span>
+        </a>
+        <small class="sys-txt-md">$description</small>
+    </div>
+    <div class="panel-body card-body text-left sys-wrapper sys-bg-white sys-fg-inverse">
+        <h4><i class="material-icons">info_outline</i>Details</h4>
+        <div class="row ">
+            <div class="col-12 sys-pd-t-15 text-left d-flex flex-column">
+                <a tabindex="0" onclick="sysproInterop.showSmartTag(this)">
+                    <span class="sys-mg-off sys-500 sys-txt-md">$product_id</span>
+                </a>
+                <small class="text-muted" data-bind="htmltext: WipQuery.JobHeader.StockDescription">$product_name</small>
+            </div>            
+        </div>
+        <hr class="sys-hr-light-gray sys-mg-t-15 sys-mg-b-15">
+        <h4><i class="material-icons">date_range</i>Dates</h4>
+        <div class="row ">
+            <div class="col-6 sys-pd-t-5 text-left d-flex flex-column">
+                <span class="sys-mg-off sys-500 sys-txt-md"><span>$start_date</span></span>
+                <small class="text-muted">Start</small>
+            </div>
+            <div class="col-6 sys-pd-t-5  text-left d-flex flex-column">
+                <span class="sys-mg-off sys-500 sys-txt-md"><span>$end_date</span></span>
+                <small class="text-muted">End</small>
+            </div>
+        </div>
+    </div>
+</div>
+
 Don't forget, when you are responding with code of any type (e.g. JSON, JavaScript, HTML etc.), you must always include the extra code detailed in my previous instructions.
 `;
 
@@ -1485,7 +1532,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
       const button = $("#davinciButton").getKendoFloatingActionButton();
       
       button.enable();
-      $("#davinciButton").addClass("pulse");
+      $("#davinciButton").addClass("pulse alive");
    });
 
 });
