@@ -954,6 +954,8 @@
       <div id="daVinciChat" style="width: 100%; height: 100%"></div>
    </div>
    <ul id="faves-menu">
+      <li>I want to create a new quote</li>
+      <li>show me the job card for the "15 Speed Mountain Bike Mens" job</li>
       <li>get me the top 4 customers, ranked by current balance and show it as a pie chart, and format the values as currency ($) not percentage</li>
       <li>which salesperson has the most orders?</li>
       <li>show me the card for product A100</li>
@@ -2360,36 +2362,36 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
          },
          steps: [
             {
-                  title: "Account Details",
+                  title: "Step 1",
                   buttons: ["next"],
                   form: {
                      orientation: "vertical",
                      formData: {
-                        Username: "johny",
-                        Email: "john.doe@email.com",
-                        Password: "pass123",
+                        One: "Some value",
+                        Two: "Another value",
+                        Three: "And more value",
                      },
                      items: [
-                        { field: "Username", label: "Username:", validation: { required: true } },
-                        { field: "Email", label: "Email:", validation: { required: true, email: true } },
-                        { field: "Password", label: "Password:", validation: { required: true }, hint: "Hint: enter alphanumeric characters only.", attributes: { type: "password" } }
+                        { field: "One", label: "Some field:", validation: { required: true } },
+                        { field: "Two", label: "Another field:", validation: { required: true } },
+                        { field: "Three", label: "And another:", validation: { required: true }, hint: "Hint: enter alphanumeric characters only." }
                      ]
                   }
             },
             {
-                  title: "Personal Details",
+                  title: "Step 2",
                   buttons: ["previous", "done"],
                   form: {
                      orientation: "vertical",
                      items: [
-                        { field: "FullName", label: "Full Name:", validation: { required: true } },
+                        { field: "ConfigName", label: "Config name", validation: { required: true } },
                         {
-                              field: "Gender",
-                              label: "Gender:",
+                              field: "ConfigOptions",
+                              label: "Config options:",
                               validation: { required: true },
                               editor: "RadioGroup",
                               editorOptions: {
-                                 items: ["Female", "Male", "Other"],
+                                 items: ["One", "Two", "Three"],
                                  layout: "horizontal",
                                  labelPosition: "before"
                               }
