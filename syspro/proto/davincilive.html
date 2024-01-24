@@ -954,6 +954,8 @@
       <div id="daVinciChat" style="width: 100%; height: 100%"></div>
    </div>
    <ul id="faves-menu">
+      <li>What is the total lost sales value and quantity for A100 in 2018</li>
+      <li>Analyse the number of orders for each month in 2016, and the number of orders in each month in 2017.</li>
       <li>I want to create a new quote</li>
       <li>show me the job card for the "15 Speed Mountain Bike Mens" job</li>
       <li>get me the top 4 customers, ranked by current balance and show it as a pie chart, and format the values as currency ($) not percentage</li>
@@ -1243,11 +1245,17 @@ Your main responsibilities are to help people retrieve data from Syspro, to make
 Often you will have to perform a SQL query in order to respond to a query. Whenever you have to do this, don't mention you are executing a SQL query to me. If you have some problems matching what I ask to SQL table and column names, just make the best match you can, execute a query that will work, and return the results. Don't tell me about what you have changed, and don't tell me if you have having difficulties or misunderstandings, that's not a problem. Just execute the query without me knowing any of the details, and return the best results you can.
 
 When I ask questions which you need to make a SQL query to answer, sometimes I will ask for things that are not the exact name of a table or column. Here are some words I might use, and the tabel or column name you should use:
-If I ask to search 'warehouses' then that is the 'warehouses' table or view. But if I ask for the warehouse for a specific product or product code, then you can use the column name 'warehouse_name'. If I ask for 'product', then you can use the column name 'Product_code' which is in both the 'products' table or view, and the 'warehouses' table or view. If I ask for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' view or table.
+If I ask to search 'warehouses' then that is the 'warehouses' table or view. But if I ask for the warehouse for a specific product or product code, then you can use the column name 'warehouse_name'. If I ask for 'product', then you can use the column name 'product_id' which is in both the 'products' table or view, and the 'warehouses' table or view. If I ask for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' view or table.
 
-When I ask information about products, or a product, then this can be identified in the SQL databases as 'product_code' as the unique identifier, and is in both the 'warehouses' view and the 'products' view. If I ask about the product description, long decription or category, then you can look up by "product_code" in the "products" table or view. If I ask about quantity on hand, quantity sold, warehouse or cost, then you can look that up by "product_code" in the "warehouses" table or view. If I ask for a combination of those things then you will need to get some data from the 'products' table or view, and some from the 'warehouses' table or view. For example if I ask for the product code, description, warehouse and quantity on hand, you will need to use the "product_code" as the unique identifier to look up that information from both the "products" table or view, and the "warehouses" table or view. To be specific, you should only ever query these following column names from the "products" table or view: "product_code", "Description", "LongDesc", "warehouse_name" and "category" - NEVER query any other column names from the "products" table or view. And you should only ever query these following column names from the "warehouses" table or view: "product_code", "quantity_on_hand", "quantity_sold", "warehouse_name" and "cost" - NEVER query any other column names (e.g. "Description") from the "warehouses" table or view. If you need data from both the "products" table or view, and from the "warehouses" table or view for the same "product_code" then you need to do a SQL JOIN query, or similar.
+If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order_details' table to get the data.
 
-If I ask about "sales people", "salespeople", "salesmen", "sales staff", "sales person" or "salesperson" then you should query the "Orders" table or view, and the column "Salesperson". In the "Orders" table or view the customer is identified by the "customer_id" column. The only columns in the "Orders" table or view are "order_id", "status", "customer_id", "Salesperson", "order_date", "order_year" and "order_type" - do not aatempt to query any other column names on the "Orders" table or view.
+When I ask information about products, or a product, then this can be identified in the SQL databases as 'product_id' as the unique identifier, and is in both the 'warehouses' table and the 'products' table. If I ask about the product description, long decription or category, then you can look up by "product_id" in the "products" table or view. If I ask about quantity on hand, quantity sold, warehouse or cost, then you can look that up by "product_id" in the "warehouses" table or view. If I ask for a combination of those things then you will need to get some data from the 'products' table or view, and some from the 'warehouses' table or view. For example if I ask for the product code, description, warehouse and quantity on hand, you will need to use the "product_id" as the unique identifier to look up that information from both the "products" table or view, and the "warehouses" table or view. To be specific, you should only ever query these following column names from the "products" table or view: "product_id", "LongDesc", "warehouse_name" and "category" - NEVER query any other column names from the "products" table or view. "LongDesc" is the column for the description. And you should only ever query these following column names from the "warehouses" table or view: "product_id", "quantity_on_hand", "quantity_sold", "warehouse_name" and "cost" - NEVER query any other column names (e.g. "Description") from the "warehouses" table or view. If you need data from both the "products" table or view, and from the "warehouses" table or view for the same "product_id" then you need to do a SQL JOIN query, or similar.
+
+If I ask about an order, or orders, then you should query the 'order_details' table, and you can query any of the following columns: 'order_id', 'order_line_number', 'order_date', 'order_year', 'product_id', 'product_name', 'product_type', 'warehouse_id', 'quantity', 'back_order_quantity', 'invoice_quanity', 'cost', 'uom' and 'unit_price'. Do NOT attempt to query any other columns from the 'order_details' table. An individual order is identified by the 'order_id'. Do not query the 'orders' table unless I ask you about salespeople or a sales person etc., as explained in the next paragraph.
+
+If I ask about "sales people", "salespeople", "salesmen", "sales staff", "sales person" or "salesperson" then you should query the "orders" table or view, and the column "Salesperson". In the "orders" table or view the customer is identified by the "customer_id" column. The only columns in the "orders" table or view are "order_id", "status", "customer_id", "Salesperson", "order_date", "order_year" and "order_type" - do not attempt to query any other column names on the "orders" table or view.
+
+If I ask you about 'lost sales', 'lost sales value' or 'lost sales quuantity', then you should query the 'lost_sales' table or view. In this table or view you can query the following columns: 'sale_date', 'lost_sale_value', 'lost_cost_value', 'customer_id', 'customer_name', 'product_id', 'product_name', 'warehouse_id', 'quantity_lost', 'quantity_requested', 'Price' - do NOT attempt to query any other columns on this 'lost_sales' table or view. If I give you a query with a specific year, then you need to extract that from the 'sale_date' column using the function strftime('%Y', <given_year>), where <given_year> is the year I ask for in my query. Do not return the code for a chart unless you are specifically requested to do so.
 
 If I ask about jobs, then query the "jobs" table or view. The only columns in the "jobs" table or view are "job_id", "description", "product_id", "product_name", "start_date" and "end_date" - do not aatempt to query any other column names on the "jobs" table or view.
 
@@ -1358,6 +1366,8 @@ If I ask for a Gantt chart, then do exacty the same as above but use the followi
 
 Replace $fromField with the appropriate field from the data (likely to be "start_date", or similar). Replace $toField with the appropriate field from the data (likely to be "end_date", or similar). Replace $cetegoryField with the appropriate field from the data (likely to be "description", or "job_id" or similar). If you are asked for a Gantt or rangebar chart of jobs, then query the "jobs" table to get the jobs requested in my query, and make sure to get the "description", "start_date" and "end_date" columns.
 
+Do not return the code for a chart unless you are specifically requested to do so.
+
 That is the end of instructions for returning charts and graphs.
 
 If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting.
@@ -1380,7 +1390,7 @@ If I request any kind of contact or address details (for example a person's cont
 
 If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_learning" tool, and if you do not find something there, then use the "search_syspro_web" tool to find an answer.
 
-If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or prodcut card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_code' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'Description' and 'category' from the 'products' table or view; 'warehouse_name', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_code' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here comes card HTML:' directly before the HTML, and then return no text at all after the HTML:
+If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or prodcut card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'Description' and 'category' from the 'products' table or view; 'warehouse_name', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here comes card HTML:' directly before the HTML, and then return no text at all after the HTML:
 
 <div class="panel card sys-widget card-widget">
     <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
@@ -1390,7 +1400,7 @@ If I ask for all the information about a single particular stock code, or produc
                 <div class="sys-mg-t-11 col-sm-10 col-xs-10 col-10 sys-fg-white">
                     <a class="card-header-link sys-fg-white" onclick="sysproInterop.showSmartTag(this)">
                         <span
-                            class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">$product_code</span>
+                            class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">$product_id</span>
                     </a>
                     <small class="text-left sys-fg-white sys-txt-md">$Description</small>
                     <small class="text-left sys-fg-white sys-txt-sm sys-mg-b-15 ">$category</small>
@@ -1485,7 +1495,9 @@ If I ask for all the information about a single particular job or job code or jo
     </div>
 </div>
 
-If I ask to: create a quote, say that I want to create a quote, create a purchase order, create a sales order, start a new purchase order, or any rephrasing of these requests, then respond with just the text 'Use the wizard'.
+If I ask to: create a quote, say that I want to create a quote, create a purchase order, create a sales order, start a new purchase order, make a quote, make a sales order, make a purchase order, or any rephrasing of these requests, then respond with just the text 'Use the wizard'. Do not use this response in any other situation.
+
+If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order_details' table to get the data.
 
 Don't forget, when you are responding with code of any type (e.g. JSON, JavaScript, HTML etc.), you must always include the extra code detailed in my previous instructions.
 `;
@@ -1942,6 +1954,16 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                            // }
                         }]
                      }, daVinciUser);
+
+                     daVinciWindow.setOptions({width: 900, height: 600});
+                     setTimeout(function() {
+                        daVinciWindow.center();
+                     }, 150);
+                     
+                     setTimeout(function() {
+                        $("#daVinciChat .k-wizard:last-child").find("input").first().focus();
+                     }, 250);
+
                   } else if (json.output.includes(codeCheck) || json.output.includes("```html")) {
                      console.log('peep');
                      console.log(json.output);
@@ -2001,7 +2023,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                      }, daVinciUser);
 
                      console.log(code);
-                  } else if (json.output.includes(chartCheck)) {
+                  } else if (json.output.includes(chartCheck) || (json.output.includes("chart") && json.output.includes("Here is"))) {
                      console.log('kendo chart');
                      console.log(json.output);
                      // const code = json.output.slice(json.output.indexOf(chartCheck) + chartCheck.length);
@@ -2011,17 +2033,17 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                         code = json.output.substring(
                            json.output.indexOf("```javascript") + 13, 
                            json.output.lastIndexOf("```")
-                        );
+                        ).replace("Here starts chart data:", "");
                      } else if (json.output.includes("```json")) {
                         code = json.output.substring(
                            json.output.indexOf("```json") + 7, 
-                           json.output.lastIndexOf("```")
-                        );
+                           json.output.lastIndexOf("```")                           
+                        ).replace("Here starts chart data:", "");
                      } else if (json.output.includes("```")) {
                         code = json.output.substring(
                            json.output.indexOf("```") + 3, 
                            json.output.lastIndexOf("```")
-                        );
+                        ).replace("Here starts chart data:", "");
                      } else {
                         console.log(json.output.indexOf(chartCheck));
                         console.log(chartCheck.length);
