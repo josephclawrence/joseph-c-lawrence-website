@@ -182,6 +182,22 @@
             & .k-card-list {
                margin: 2px 0 15px;
                width: 100%;
+               & .chat-user-msg-actions {
+                  visibility: hidden;
+                  content: "";
+                  width: 90px;
+                  height: 0px;
+                  align-self: end;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  & .material-icons {
+                     font-size: 20px;
+                  }
+               }
+               &:hover .chat-user-msg-actions {
+                  visibility: visible;
+               }
             }
             & .k-message-group {
                margin-bottom: 15px;
@@ -958,7 +974,7 @@
       <li>Analyse the number of orders for each month in 2016, and the number of orders in each month in 2017.</li>
       <li>I want to create a new quote</li>
       <li>show me the job card for the "15 Speed Mountain Bike Mens" job</li>
-      <li>get me the top 4 customers, ranked by current balance and show it as a pie chart, and format the values as currency ($) not percentage</li>
+      <li>get me the top 4 customers, ranked by current balance and show it as a pie chart</li>
       <li>which salesperson has the most orders?</li>
       <li>show me the card for product A100</li>
       <li>Can you give me the product code, description, category and warehouse for product codes A100, A200, B100 and B200</li>
@@ -973,6 +989,10 @@
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
   <script src="js/UX_JS_forms.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script src="js/html2canvas.min.js"></script>
+  <script src="js/jspdf.umd.min.js"></script>
+  <script src="js/MaterialIcons-Regular-normal.js"></script>
+  
   <script id="davinciresponse-template" type="text/x-kendo-template">
    <div class="k-card">
       <div class="k-card-header d-flex justify-content-between">
@@ -1238,18 +1258,31 @@ End Function</code></pre>
 
   <script>
 
+   const generateUUID = function () {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+        });
+        if (!isNaN(uuid.substring(0, 1))) {
+            uuid = 'a' + uuid.substring(1);
+        }
+        return uuid;
+    };
+
    const systemPrompt = `Never forget that your name is 'Da Vinci', and you are the 'Syspro AI helper'. That is who you should intriduce yourself as, and If someone asks you who you are, then that is what you should answer. You should always use a friendly but professional tone.         
 
 Your main responsibilities are to help people retrieve data from Syspro, to make tasks easier for them, to help them find out how to use Syspro, and to make data easier to digest by summarising it and visualising it in helpful ways.
 
 Often you will have to perform a SQL query in order to respond to a query. Whenever you have to do this, don't mention you are executing a SQL query to me. If you have some problems matching what I ask to SQL table and column names, just make the best match you can, execute a query that will work, and return the results. Don't tell me about what you have changed, and don't tell me if you have having difficulties or misunderstandings, that's not a problem. Just execute the query without me knowing any of the details, and return the best results you can.
 
-When I ask questions which you need to make a SQL query to answer, sometimes I will ask for things that are not the exact name of a table or column. Here are some words I might use, and the tabel or column name you should use:
-If I ask to search 'warehouses' then that is the 'warehouses' table or view. But if I ask for the warehouse for a specific product or product code, then you can use the column name 'warehouse_name'. If I ask for 'product', then you can use the column name 'product_id' which is in both the 'products' table or view, and the 'warehouses' table or view. If I ask for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' view or table.
+When I ask questions which you need to make a SQL query to answer, sometimes I will ask for things that are not the exact name of a table or column. Here are some words I might use, and the table or column name you should use:
+If I ask to search 'warehouses' then that is the 'warehouses' table or view. But if I ask for the warehouse for a specific product or product code, then you can use the column name 'warehouse_id'. If I ask for 'product', then you can use the column name 'product_id' which is in both the 'products' table or view, and the 'warehouses' table or view. If I ask for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' view or table.
 
 If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order_details' table to get the data.
 
-When I ask information about products, or a product, then this can be identified in the SQL databases as 'product_id' as the unique identifier, and is in both the 'warehouses' table and the 'products' table. If I ask about the product description, long decription or category, then you can look up by "product_id" in the "products" table or view. If I ask about quantity on hand, quantity sold, warehouse or cost, then you can look that up by "product_id" in the "warehouses" table or view. If I ask for a combination of those things then you will need to get some data from the 'products' table or view, and some from the 'warehouses' table or view. For example if I ask for the product code, description, warehouse and quantity on hand, you will need to use the "product_id" as the unique identifier to look up that information from both the "products" table or view, and the "warehouses" table or view. To be specific, you should only ever query these following column names from the "products" table or view: "product_id", "LongDesc", "warehouse_name" and "category" - NEVER query any other column names from the "products" table or view. "LongDesc" is the column for the description. And you should only ever query these following column names from the "warehouses" table or view: "product_id", "quantity_on_hand", "quantity_sold", "warehouse_name" and "cost" - NEVER query any other column names (e.g. "Description") from the "warehouses" table or view. If you need data from both the "products" table or view, and from the "warehouses" table or view for the same "product_id" then you need to do a SQL JOIN query, or similar.
+When I ask information about products, or a product, then this can be identified in the SQL databases as 'product_id' as the unique identifier, and is in both the 'warehouses' table and the 'products' table. If I ask about the product description, long decription or category, then you can look up by "product_id" in the "products" table or view. If I ask about quantity on hand, quantity sold, warehouse or cost, then you can look that up by "product_id" in the "warehouses" table or view. If I ask for a combination of those things then you will need to get some data from the 'products' table or view, and some from the 'warehouses' table or view. For example if I ask for the product code, description, warehouse and quantity on hand, you will need to use the "product_id" as the unique identifier to look up that information from both the "products" table or view, and the "warehouses" table or view. To be specific, you should only ever query these following column names from the "products" table or view: "product_id", "LongDesc", "warehouse_id" and "category" - NEVER query any other column names from the "products" table or view. "LongDesc" is the column for the description. And you should only ever query these following column names from the "warehouses" table or view: "product_id", "quantity_on_hand", "quantity_sold", "warehouse_id" and "cost" - NEVER query any other column names (e.g. "Description") from the "warehouses" table or view. If you need data from both the "products" table or view, and from the "warehouses" table or view for the same "product_id" then you need to do a SQL JOIN query, or similar.
 
 If I ask about an order, or orders, then you should query the 'order_details' table, and you can query any of the following columns: 'order_id', 'order_line_number', 'order_date', 'order_year', 'product_id', 'product_name', 'product_type', 'warehouse_id', 'quantity', 'back_order_quantity', 'invoice_quanity', 'cost', 'uom' and 'unit_price'. Do NOT attempt to query any other columns from the 'order_details' table. An individual order is identified by the 'order_id'. Do not query the 'orders' table unless I ask you about salespeople or a sales person etc., as explained in the next paragraph.
 
@@ -1320,7 +1353,7 @@ Replace the following placeholders with the relevant values: Replace $title with
    }}
 ]
         
-Make sure to only include the real data from your response in there. Don't ever add demo or dummy data, or any data that you did not find from a SQL query. You must remove all comments (lines with '//' at the start) from this data and do not add any. Make sure to keep the square brackets which wrap all the code, so that it is valid JSON. 
+Make sure to only include the real data from your response in there. Don't ever add demo or dummy data, or any data that you did not find from a SQL query. You must remove all comments (lines with '//' at the start) from this data and do not add any. Make sure to keep the square brackets which wrap all the code, so that it is valid JSON. If I ask you to format a value as a currency, then just do this for the labels, don't include a currency symbol along with numberical values in $fieldValue or $categoryValue.
 
 If I ask for a Gantt chart, then do exacty the same as above but use the following code template:
 
@@ -1390,7 +1423,7 @@ If I request any kind of contact or address details (for example a person's cont
 
 If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_learning" tool, and if you do not find something there, then use the "search_syspro_web" tool to find an answer.
 
-If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or prodcut card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'Description' and 'category' from the 'products' table or view; 'warehouse_name', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here comes card HTML:' directly before the HTML, and then return no text at all after the HTML:
+If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or prodcut card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'LongDesc' and 'category' from the 'products' table or view; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML:
 
 <div class="panel card sys-widget card-widget">
     <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
@@ -1402,7 +1435,7 @@ If I ask for all the information about a single particular stock code, or produc
                         <span
                             class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">$product_id</span>
                     </a>
-                    <small class="text-left sys-fg-white sys-txt-md">$Description</small>
+                    <small class="text-left sys-fg-white sys-txt-md">$LongDesc</small>
                     <small class="text-left sys-fg-white sys-txt-sm sys-mg-b-15 ">$category</small>
                 </div>
                 <div class="col-xs-2 col-2 col-sm-2 sys-mg-t-10 sys-mg-b-10">
@@ -1452,7 +1485,7 @@ If I ask for all the information about a single particular stock code, or produc
                 </div>
                 <div class="col-xs-4 col-4 sys-pd-t-5 text-left sys-vcenter">
                     <span class="sys-mg-off sys-txt-md">
-                        <span>$warehouse_name</span>
+                        <span>$warehouse_id</span>
                     </span>
                     <small class="text-muted">Warehouse</small>
                 </div>
@@ -1461,7 +1494,7 @@ If I ask for all the information about a single particular stock code, or produc
     </div>
 </div>
 
-If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here comes card HTML:' directly before the HTML, and then return no text at all after the HTML:
+If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML:
 
 <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
     <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t d-flex flex-column">
@@ -1504,6 +1537,9 @@ Don't forget, when you are responding with code of any type (e.g. JSON, JavaScri
 
 let session_id, chatActive = false;
 
+
+
+
 fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
    method: "GET",      
    headers: {
@@ -1534,9 +1570,9 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
       body: JSON.stringify({
          "session_description": "prototype",
          "system_prompt": systemPrompt,    
-         "model_to_use": "gpt-3.5-turbo-1106",
-         "temperature": 0.2,
-         "max_iterations": 1,
+         "model_to_use": "gpt-4-1106-preview",
+         "temperature": 0.3,
+         "max_iterations": 2,
          "agent_type": "chat-conversational-react-description",
          // "agent_type": "structured-chat-zero-shot-react-description",         
          "chat_history": [
@@ -1627,18 +1663,26 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
       },
    };
 
+   const pdfGen = new jspdf.jsPDF({
+      unit: 'px',
+
+   });
+   // pdfGen.addFileToVFS('css/UX_FONTS_MaterialIcons-Regular.woff', '');
+   // pdfGen.addFont('css/UX_FONTS_MaterialIcons-Regular.woff', 'Material Icons', 'normal');
+   // pdfGen.setFont('Material Icons', 'normal');
+
    $("#davinciButton").kendoFloatingActionButton({
          enabled: false,
        size: "small",
        alignOffset: { x: 20, y: 35 },
        click: function() {
-         $("#daVinciWindow").data("kendoWindow").open();
-         setTimeout(function() {
+         $("#daVinciWindow").data("kendoWindow").open();         
+         if (!chatActive) {
+            console.log('session_id ', session_id);
+            setTimeout(function() {
                chat.renderUserTypingIndicator(daVinciUser);
                $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
             }, 250);
-         if (!chatActive) {
-            console.log('session_id ', session_id);
             fetch("https://syspro-gpt-web-api.vercel.app/run_conversation", {
                method: "POST",      
                headers: {
@@ -1703,6 +1747,18 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
             },
          });
       },
+      open: function() {
+         $('#faves-menu').kendoContextMenu({
+            target: '[aria-labelledby="daVinciWindow_wnd_title"] .k-window-titlebar-action[aria-label="Heart"]',
+            alignToAnchor: true,
+            showOn: "click",
+            select: function(e) {
+               console.log(e.item);
+               const query = $(e.item).find(".k-menu-link-text").text();
+               chat.postMessage(query);
+            }
+         });
+      },
       // maximize: function() {
       //    const daVinciWindow = $("#daVinciWindow").data("kendoWindow");
       //    console.log(daVinciWindow);
@@ -1760,8 +1816,8 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
       init: function (options, view) {
          console.log(options);
          kendo.chat.Component.fn.init.call(this, options, view);
-
-         this.element.addClass("k-card").append('<form id="wizard" style="width:100%; margin: 0 auto;" novalidate></form>');
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append('<form id="wizard" style="width:100%; margin: 0 auto;" novalidate></form>');
          setTimeout(function() {
             initWizard();
          }, 300);
@@ -1774,8 +1830,8 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
       init: function (options, view) {
          console.log(options);
          kendo.chat.Component.fn.init.call(this, options, view);
-
-         this.element.addClass("k-card").append(options.html);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(options.html);
       }
    });
 
@@ -1796,7 +1852,8 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
 
          // Place the grid within the Chat card.
          var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
-         this.element.addClass("k-card").append(bodyElement);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(bodyElement);
       }
    });
 
@@ -1832,7 +1889,8 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
 
          // Place the grid within the Chat card.
          var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
-         this.element.addClass("k-card").append(bodyElement);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(bodyElement);
       }
    });
 
@@ -1864,11 +1922,79 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
 
          // Place the grid within the Chat card.
          var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
-         this.element.addClass("k-card").append(bodyElement);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(bodyElement);
       }
    });
 
    kendo.chat.registerComponent("CodeComponent", CodeComponent);
+
+
+   //Creating dynamic link that automatically click
+   function downloadURI(uri, name) {
+      var link = document.createElement("a");
+      // var createAText = document.createTextNode("HEHEHEHEHEHEHEHEHEHE");
+      link.download = name;
+      link.href = uri;
+      // link.appendChild(createAText);
+      console.log(link);
+      document.body.appendChild(link);
+      link.click();
+      //after creating link you should delete dynamic link
+      //clearDynamicLink(link); 
+   }
+
+   //Your modified code.
+   function printToFile(div) {
+      console.log('printToFile', div);
+      html2canvas(div).then(canvas => {
+         console.log(canvas);
+         var myImage = canvas.toDataURL("image/png");
+         downloadURI("data:" + myImage, "yourImage.png");
+      });
+   }
+
+
+   function renderMsgActions() {
+      setTimeout(function() {
+            $(".k-card-list").last().prepend("<span class='chat-user-msg-actions sys-pd-r-10 sys-mg-t-15'><a class='flag-query'><i class='material-icons text-muted'>flag</i></a><a class='flag-query'><i class='material-icons text-muted'>send</i></a><a class='export-response'><i class='material-icons text-muted'>file_download</i></a></span>");
+
+            $(".k-card-list").last().find('.export-response').on('click', function() {
+               const exportElement = $(this).closest('.chat-user-msg-actions').siblings('.chat-msg-card');
+               printToFile(exportElement[0]);
+               // pdfGen.html(exportElement[0], {
+               //    callback: function (doc) {
+               //       console.log('here is the PDF!', doc);
+
+               //       doc.save();
+               //    },
+               //    // fontFaces: [
+               //    //    {
+               //    //    family: 'Material Icons',
+               //    //    src: [
+               //    //          {
+               //    //             url: 'css/UX_FONTS_MaterialIcons-Regular.woff',
+               //    //             format: 'woff'
+               //    //          }
+               //    //    ]
+               //    // }
+               //    // ],
+               //    x: 0,
+               //    y: 0,
+               //    Html2CanvasOptions: {
+               //       scale: 0.75,
+               //       width: exportElement.width() + 200,
+               //       height: exportElement.height() + 200
+               //    },
+               //    // width: exportElement.width() + 200,
+               //    // height: exportElement.height() + 200
+               //    // windowWidth
+               // });
+            });
+
+            
+      }, 500);
+   }
 
    const codeCheck = 'Here starts code:';
    const chartCheck = 'Here starts chart data:';
@@ -1954,7 +2080,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                            // }
                         }]
                      }, daVinciUser);
-
+                     renderMsgActions();
                      daVinciWindow.setOptions({width: 900, height: 600});
                      setTimeout(function() {
                         daVinciWindow.center();
@@ -1997,6 +2123,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                            // }
                         }]
                      }, daVinciUser);
+                     renderMsgActions();
                   } else if (json.output.includes('KendoGrid')) {
                      console.log('kendo grid');
                      console.log(json.output);
@@ -2021,7 +2148,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                            // }
                         }]
                      }, daVinciUser);
-
+                     renderMsgActions();
                      console.log(code);
                   } else if (json.output.includes(chartCheck) || (json.output.includes("chart") && json.output.includes("Here is"))) {
                      console.log('kendo chart');
@@ -2062,7 +2189,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                            // }
                         }]
                      }, daVinciUser);
-
+                     renderMsgActions();
                   } else if ( json.intermediate_steps.length ) {  
                      if ( json.intermediate_steps[0].length && json.intermediate_steps[0][0].tool) {
                         if (json.intermediate_steps[0][0].tool === "search_syspro_learning" || json.intermediate_steps[0][0].tool === "search_syspro_web") {
@@ -2092,6 +2219,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                               }],
                               attachmentLayout: "list"
                            }, daVinciUser);
+                           renderMsgActions();
                         } else {
                            chat.renderMessage({
                               type: "text",
@@ -2129,6 +2257,10 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                                 
                // }, 1500);
             }
+        },
+        sendMessage: function(e) {
+            console.log(e);
+            
         },
         actionClick: function(e) {
       /* The result can be observed in the DevTools(F12) console of the browser. */
@@ -2180,6 +2312,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                         // }
                      }]
                   }, daVinciUser);
+                  renderMsgActions();
                   chat.renderSuggestedActions([{
                      title: "Show confirmation",
                      value: "Confirmation demo"
@@ -2206,7 +2339,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                         }
                      }]
                   }, daVinciUser);
-
+                  renderMsgActions();
                   $(".k-message-list-content > div:last-child")[0].scrollIntoView();
                   initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                   // chat.renderSuggestedActions([{
@@ -2261,6 +2394,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                         }
                      }]
                   }, daVinciUser);  
+                  renderMsgActions();
                   initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                   // chat.renderSuggestedActions([{
                   //    title: "List Purchase Orders with issues",
@@ -2289,6 +2423,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                         // }
                      }]
                   }, daVinciUser);
+                  renderMsgActions();
                   hljs.highlightAll();
                   chat.renderSuggestedActions([{
                      title: "Show confirmation",
@@ -2365,6 +2500,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
             }],
             attachmentLayout: "list"
          }, daVinciUser);
+         renderMsgActions();
          $(".k-message-list-content > div:last-child")[0].scrollIntoView();
          initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
       }, 3000);
@@ -2549,6 +2685,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                            }],
                            attachmentLayout: "list"
                         }, daVinciUser);
+                        renderMsgActions();
                         $(".k-message-list-content > div:last-child")[0].scrollIntoView();
                         initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
                      }
@@ -2707,7 +2844,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                }],
                attachmentLayout: "list"
             }, daVinciUser);
-
+            renderMsgActions();
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
             initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
             // chat.renderSuggestedActions([{
@@ -2737,7 +2874,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                }],
                attachmentLayout: "list"
             }, daVinciUser);
-
+            renderMsgActions();
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
             initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
@@ -2784,7 +2921,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                }],
                attachmentLayout: "list"
             }, daVinciUser);
-
+            renderMsgActions();
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
             // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
@@ -2805,7 +2942,7 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
                }],
                attachmentLayout: "list"
             }, daVinciUser);
-
+            renderMsgActions();
             $(".k-message-list-content > div:last-child")[0].scrollIntoView();
             // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
          });
@@ -2999,16 +3136,16 @@ fetch("https://syspro-gpt-web-api.vercel.app/get_active_conversation_list", {
             });
         }
 
-        $('#faves-menu').kendoContextMenu({
-            target: '[aria-labelledby="daVinciWindow_wnd_title"] .k-window-titlebar-action[aria-label="Heart"]',
-            alignToAnchor: true,
-            showOn: "click",
-            select: function(e) {
-               console.log(e.item);
-               const query = $(e.item).find(".k-menu-link-text").text();
-               chat.postMessage(query);
-            }
-         });
+      //   $('#faves-menu').kendoContextMenu({
+      //       target: '[aria-labelledby="daVinciWindow_wnd_title"] .k-window-titlebar-action[aria-label="Heart"]',
+      //       alignToAnchor: true,
+      //       showOn: "click",
+      //       select: function(e) {
+      //          console.log(e.item);
+      //          const query = $(e.item).find(".k-menu-link-text").text();
+      //          chat.postMessage(query);
+      //       }
+      //    });
 
 
         $(document).on("click", ".clickable", function() {
