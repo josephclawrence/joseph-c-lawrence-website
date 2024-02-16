@@ -1275,18 +1275,16 @@ End Function</code></pre>
 
 Your main responsibilities are to help people retrieve data from Syspro, to make tasks easier for them, to help them find out how to use Syspro, and to make data easier to digest by summarising it and visualising it in helpful ways.
 
-Often you will have to perform a SQL query in order to respond to a query. Firstly, ALWAYS use SQL Server syntax, NOT MySQL syntax. Whenever you have to do this, don't mention you are executing a SQL query to me. If you have some problems matching what I ask to SQL table and column names, just make the best match you can, execute a query that will work, and return the results. Don't tell me about what you have changed, and don't tell me if you have having difficulties or misunderstandings, that's not a problem. Just execute the query without me knowing any of the details, and return the best results you can.
+Often you will have to perform a SQL query in order to respond to a query. Whenever you have to do this, don't mention you are executing a SQL query to me. If you have some problems matching what I ask to SQL table and column names, just make the best match you can, execute a query that will work, and return the results. Don't tell me about what you have changed, and don't tell me if you have having difficulties or misunderstandings, that's not a problem. Just execute the query without me knowing any of the details, and return the best results you can.
 
 When I ask questions which you need to make a SQL query to answer, sometimes I will ask for things that are not the exact name of a table or column. Here are some words I might use, and the table or column name you should use:
 If I ask to search 'warehouses' then that is the 'warehouses' table or view. But if I ask for the warehouse for a specific product or product code, then you can use the column name 'warehouse_id'. If I ask for 'product', then you can use the column name 'product_id' which is in both the 'products' table or view, and the 'warehouses' table or view. If I ask for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' view or table.
-
-Sometimes I will ask you for JSON code, based on some SQL query you have done, but there will be too many rows for you to provide JSON for. In this case, do not ever insert comments into the JSON. DO not ever insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows.
 
 If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order_details' table to get the data.
 
 When I ask information about products, or a product, then this can be identified in the SQL databases as 'product_id' as the unique identifier, and is in both the 'warehouses' table and the 'products' table. If I ask about the product description, long decription or category, then you can look up by "product_id" in the "products" table or view. If I ask about quantity on hand, quantity sold, warehouse or cost, then you can look that up by "product_id" in the "warehouses" table or view. If I ask for a combination of those things then you will need to get some data from the 'products' table or view, and some from the 'warehouses' table or view. For example if I ask for the product code, description, warehouse and quantity on hand, you will need to use the "product_id" as the unique identifier to look up that information from both the "products" table or view, and the "warehouses" table or view. To be specific, you should only ever query these following column names from the "products" table or view: "product_id", "LongDesc", "warehouse_id" and "category" - NEVER query any other column names from the "products" table or view. "LongDesc" is the column for the description. And you should only ever query these following column names from the "warehouses" table or view: "product_id", "quantity_on_hand", "quantity_sold", "warehouse_id" and "cost" - NEVER query any other column names (e.g. "Description") from the "warehouses" table or view. If you need data from both the "products" table or view, and from the "warehouses" table or view for the same "product_id" then you need to do a SQL JOIN query, or similar.
 
-If I ask about an order, or orders, then you should query the 'orders' and/or the 'order_details' table In the 'orders' table you should ONLY query the following columns: 'order_id', 'status', 'customer_id', 'customer_name', 'Salesperson', 'ship_address', 'ship_city', 'ship_region', 'ship_country', 'ship_postal_code', 'order_date', 'order_year', 'order_type', 'purchase_order_number', 'Email'. DO NOT EVER attempt to query any other columns in the 'orders' table. in the 'order_details' table you should ONLY query the following columns: 'order_id', 'order_line_number', 'order_date', 'order_year', 'product_id', 'product_name', 'product_type', 'warehouse_id', 'quantity', 'back_order_quantity', 'invoice_quantity', 'cost', 'uom' and 'unit_price'. Do NOT attempt to query any other columns from the 'order_details' table. An individual order is identified by the 'order_id'. Query the 'orders' table if I ask you about salespeople or a sales person etc., as explained in the next paragraph.
+If I ask about an order, or orders, then you should query the 'order_details' table, and you can query any of the following columns: 'order_id', 'order_line_number', 'order_date', 'order_year', 'product_id', 'product_name', 'product_type', 'warehouse_id', 'quantity', 'back_order_quantity', 'invoice_quanity', 'cost', 'uom' and 'unit_price'. Do NOT attempt to query any other columns from the 'order_details' table. An individual order is identified by the 'order_id'. Do not query the 'orders' table unless I ask you about salespeople or a sales person etc., as explained in the next paragraph.
 
 If I ask about "sales people", "salespeople", "salesmen", "sales staff", "sales person" or "salesperson" then you should query the "orders" table or view, and the column "Salesperson". In the "orders" table or view the customer is identified by the "customer_id" column. The only columns in the "orders" table or view are "order_id", "status", "customer_id", "Salesperson", "order_date", "order_year" and "order_type" - do not attempt to query any other column names on the "orders" table or view.
 
@@ -1407,7 +1405,7 @@ That is the end of instructions for returning charts and graphs.
 
 If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting. Don't forget to always remove all comments (lines with '//' at the start) from any JSON, and do not add in any comments. DO not remove any rows 'for brevity', or include any comment about that in the JSON.
 
-If I request any kind of contact or address details (for example a person's contact details, or a company's contact details, or a customer address or customer contact or name and address of a customer, or the contact details from an invoice) then use the "sql_db_query" tool, and the "sql_db_query_checker" tool. Do NOT use the "search_syspro_web" tool, or the "search_syspro_learning" tool. When you have the contact and address data, return HTML using the following template below, where '$name', '$address', '$city', '$postal_code' should be replaced with the data you are returning (these are examples - you can also use the same pattern with other bits of contact information). '$name' can be for 'name' or 'customer_name' for example. if you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you could not find the name from column 'customer_name', then exclude from the HTML the element with data-cdetail='name', and any inner HTML of that element. IMMEDIATELY BEFORE the HTML, ALWAYS include the text 'Here starts code:', and then include NO TEXT after the end of the provided HTML (unless it is 'suggested queries' as described below). Here is the HTML template to use:
+If I request any kind of contact or address details (for example a person's contact details, or a company's contact details, or a customer address or customer contact or name and address of a customer) then use the "sql_db_query" tool, and the "sql_db_query_checker" tool. Do NOT use the "search_syspro_web" tool, or the "search_syspro_learning" tool. Use SQL to get this data from the 'customers' table or view. When creating a SQL query, you can try finding the columns 'address', 'city', 'postal_code' and 'customer_name'. DO NOT QUERY OTHER TABLES OR COLUMNS! When you have the contact and address data, return HTML using the following template below, where '$name', '$address', '$city', '$postal_code' should be replaced with the data you are returning. '$name' can be for 'name' or 'customer_name'. if you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you could not find the name from column 'customer_name', then exclude from the HTML the element with data-cdetail='name', and any inner HTML of that element. IMMEDIATELY BEFORE the HTML, ALWAYS include the text 'Here starts code:', and then include NO TEXT after the end of the provided HTML (unless it is 'suggested queries' as described below). Here is the HTML template to use:
 
    Here starts code:
    <div class="k-card-body">
@@ -1425,7 +1423,7 @@ If I request any kind of contact or address details (for example a person's cont
 
 If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_learning" tool, and if you do not find something there, then use the "search_syspro_web" tool to find an answer.
 
-If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or product card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'LongDesc' and 'category' from the 'products' table or view; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below):
+If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or prodcut card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'LongDesc' and 'category' from the 'products' table or view; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below):
 
 <div class="panel card sys-widget card-widget">
     <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
@@ -1496,7 +1494,7 @@ If I ask for all the information about a single particular stock code, or produc
     </div>
 </div>
 
-If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below). Also always wrap the code in three bckticks as per usual:
+If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below):
 
 <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
     <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t d-flex flex-column">
@@ -1530,8 +1528,6 @@ If I ask for all the information about a single particular job or job code or jo
     </div>
 </div>
 
-If I ask for details about a invoices, then you should use SQL to query the 'invoices' and the 'invoice_details' tables. In the 'invoices' table, ONLY EVER query the following columns: 'invoice_id', 'order_id', 'status', 'customer_id', 'customer_name', 'Salesperson', 'order_date', 'order_year', 'order_type', 'purchase_order_number', 'email', 'ship_instructions', 'ship_address', 'ship_city', 'ship_region', 'ship_country', 'ship_postal_code'. Do not ever attempt to query any other columns from the 'invoices' table. In the 'invoice_details' table, ONLY EVER query the following columns: 'invoice_id', 'invoice_line_number', 'invoice_date', 'invoice_year', 'product_id', 'product_name', 'product_type', 'warehouse_id', 'quantity', 'back_order_quantity', 'invoice_quantity', 'cost', 'uom', 'unit_price'. Do not ever attempt to query any other columns from the 'invoice_details' table. If you need information about one invoice from both tables, then use the 'invoice_id' column to query both tables.
-
 If I ask to: create a quote, say that I want to create a quote, create a purchase order, create a sales order, start a new purchase order, make a quote, make a sales order, make a purchase order, or any rephrasing of these requests, then respond with just the text 'Use the wizard'. Do not use this response in any other situation.
 
 If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order_details' table to get the data.
@@ -1554,8 +1550,6 @@ Based on what I ask you, you can provide some 'suggested queries' in a specific 
 where <Short version> should be a brief 3 or 4 word description of the suggested query written as a 'call to action' with a command as the first word such as 'View', 'Get' etc., and <Long version> should be a well formulated prompt for the same 'suggested query'. Don't forget to always remove all comments (lines with '//' at the start) from any JSON.
 
 So based on what I have asked you, you might think there are one or two further interesting things I should ask you. Some examples you might provide as 'suggested queries' are 'What are the past 12 monthly sales for <Customer name>' if I ask for any information about a customer, 'Stock codes commonly ordered with <Stock code>' if I ask any query about one or more stock codes, or 'Which customer orders <Stock code> most frequently' if I ask about either a customer, or a stock code, or a salesperson. In the 'Long version' you should always include a placeholder like I have in the examples, either <Customer ID>, <Customer name>, <Stock Codes>, <Salesperson ID> or <Order ID>. You should provide these 'suggested queries' at the end of most of your responses to me.
-
-If you are asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' with 'Short version' = 'Get all details for <record ID/Name' and 'Long version' = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to my previous query.
 `;
 
 let session_id, chatActive = false;
@@ -2114,8 +2108,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                })
                .then((response) => response.json())
                .then((json) => {
-                  console.log(json);    
-                  let responseString = `${json.output}`;              
+                  console.log(json);                  
                   if ( 
                      (json.intermediate_steps.length  === 1 && json.intermediate_steps[0].length && json.intermediate_steps[0][0].tool && json.intermediate_steps[0][0].tool === "sql_db_query" && json.intermediate_steps[0][1] === "")
                      ||
@@ -2125,9 +2118,8 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         type: "text",
                         text: "Sorry, I couldn't find any data in response to that query. Please check the detail of the query to make sure there isn't a mistake, or maybe reformulate your question."
                      }, daVinciUser);
-                     responseString = "";
-                  } else if (responseString.includes("Use the wizard")) {
-                     console.log(responseString);
+                  } else if (json.output.includes("Use the wizard")) {
+                     console.log(json.output);
                      chat.renderAttachments({
                         attachments: [{
                            contentType: "WizardCardComponent",
@@ -2148,28 +2140,25 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                      setTimeout(function() {
                         $("#daVinciChat .k-wizard:last-child").find("input").first().focus();
                      }, 250);
-                     responseString = "";
-                  } else if (responseString.includes(codeCheck) || responseString.includes("```html")) {
+
+                  } else if (json.output.includes(codeCheck) || json.output.includes("```html")) {
                      console.log('peep');
-                     console.log(responseString);
-                     let code, codeToRemove;
-                     if (responseString.includes("```html")) {
-                        code = responseString.substring(
-                           responseString.indexOf("```html") + 7, 
-                           responseString.indexOf("```", responseString.indexOf("```html") + 8)
+                     console.log(json.output);
+                     let code;
+                     if (json.output.includes("```html")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```html") + 7, 
+                           json.output.lastIndexOf("```")
                         ).replace("Here starts code:", "");
-                        codeToRemove = "```html" + code + "```";
-                     } else if (responseString.includes("```")) {
-                        code = responseString.substring(
-                           responseString.indexOf("```") + 3, 
-                           responseString.indexOf("```", responseString.indexOf("```") + 4)
+                     } else if (json.output.includes("```")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```") + 3, 
+                           json.output.lastIndexOf("```")
                         );
-                        codeToRemove = "```" + code + "```";
                      } else {
-                        console.log(responseString.indexOf(codeCheck));
+                        console.log(json.output.indexOf(codeCheck));
                         console.log(codeCheck.length);
-                        code = responseString.slice(responseString.indexOf(codeCheck) + codeCheck.length);
-                        codeToRemove = code;
+                        code = json.output.slice(json.output.indexOf(codeCheck) + codeCheck.length);
                      }
                                           
                      console.log(code);
@@ -2186,26 +2175,17 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         }]
                      }, daVinciUser);
                      renderMsgActions();
-                     responseString = responseString.replace(codeToRemove, "").replace("Here starts code:", "");
-                  } else if (responseString.includes('KendoGrid')) {
+                  } else if (json.output.includes('KendoGrid')) {
                      console.log('kendo grid');
-                     console.log(responseString);
-                     let code, codeToRemove;
-                     if (responseString.includes("```json")) {
-                        code = responseString.substring(
-                           responseString.indexOf("```json") + 7, 
-                           responseString.indexOf("```", responseString.indexOf("```json") + 8)
+                     console.log(json.output);
+                     let code;
+                     if (json.output.includes("```json")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```json") + 7, 
+                           json.output.lastIndexOf("```")
                         ).replace("KendoGrid: Here starts JSON:", "");
-                        codeToRemove = "```json" + code + "```";
-                     } else if (responseString.includes("```")) {
-                        code = responseString.substring(
-                           responseString.indexOf("```") + 3, 
-                           responseString.indexOf("```", responseString.indexOf("```") + 4)
-                        );
-                        codeToRemove = "```" + code + "```";
                      } else {
-                        code = responseString.slice(responseString.indexOf('Here starts JSON:') + 'Here starts JSON:'.length);
-                        codeToRemove = code;
+                        code = json.output.slice(json.output.indexOf('Here starts JSON:') + 'Here starts JSON:'.length);
                      }
                      
                      chat.renderAttachments({
@@ -2221,36 +2201,31 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                      }, daVinciUser);
                      renderMsgActions();
                      console.log(code);
-                     responseString = responseString.replace(codeToRemove, "").replace("KendoGrid: Here starts JSON:", "");
-                  } else if (responseString.includes(chartCheck) || (responseString.includes("chart") && responseString.includes("Here is"))) {
+                  } else if (json.output.includes(chartCheck) || (json.output.includes("chart") && json.output.includes("Here is"))) {
                      console.log('kendo chart');
-                     console.log(responseString);
-                     // const code = responseString.slice(responseString.indexOf(chartCheck) + chartCheck.length);
+                     console.log(json.output);
+                     // const code = json.output.slice(json.output.indexOf(chartCheck) + chartCheck.length);
                      
-                     let code, codeToRemove;
-                     if (responseString.includes("```javascript")) {
-                        code = responseString.substring(
-                           responseString.indexOf("```javascript") + 13, 
-                           responseString.indexOf("```", responseString.indexOf("```javascript") + 14)
+                     let code;
+                     if (json.output.includes("```javascript")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```javascript") + 13, 
+                           json.output.lastIndexOf("```")
                         ).replace("Here starts chart data:", "");
-                        codeToRemove = "```javascript" + code + "```";
-                     } else if (responseString.includes("```json")) {
-                        code = responseString.substring(
-                           responseString.indexOf("```json") + 7, 
-                           responseString.indexOf("```", responseString.indexOf("```json") + 8)                           
+                     } else if (json.output.includes("```json")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```json") + 7, 
+                           json.output.lastIndexOf("```")                           
                         ).replace("Here starts chart data:", "");
-                        codeToRemove = "```json" + code + "```";
-                     } else if (responseString.includes("```")) {
-                        code = responseString.substring(
-                           responseString.indexOf("```") + 3, 
-                           responseString.indexOf("```", responseString.indexOf("```") + 4)
+                     } else if (json.output.includes("```")) {
+                        code = json.output.substring(
+                           json.output.indexOf("```") + 3, 
+                           json.output.lastIndexOf("```")
                         ).replace("Here starts chart data:", "");
-                        codeToRemove = "```" + code + "```";
                      } else {
-                        console.log(responseString.indexOf(chartCheck));
+                        console.log(json.output.indexOf(chartCheck));
                         console.log(chartCheck.length);
-                        code = responseString.slice(responseString.indexOf(chartCheck) + chartCheck.length);
-                        codeToRemove = code
+                        code = json.output.slice(json.output.indexOf(chartCheck) + chartCheck.length);
                      }
                      console.log(code);
                      console.log(JSON.parse(code));
@@ -2266,59 +2241,59 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         }]
                      }, daVinciUser);
                      renderMsgActions();
-                     responseString = responseString.replace(codeToRemove, "").replace("Here starts chart data:", "");
-                  } else if ( 
-                     json.intermediate_steps.length 
-                     && json.intermediate_steps[0].length 
-                     && json.intermediate_steps[0][0].tool
-                     && (json.intermediate_steps[0][0].tool === "search_syspro_learning" || json.intermediate_steps[0][0].tool === "search_syspro_web")
-                     ) {  
-                        console.log('learning used');
-                        chat.renderAttachments({
-                           attachments: [{
-                              contentType: "sysprolearn",
-                              content: {
-                                 // "title": techInfo["tile"].title,
-                                 "content": responseString
-                                    .replace("Inventory Query", "<span class='clickable'>Inventory Query</span>")
-                                    .replace("Inventory ATP Query", "<span class='clickable'>Inventory ATP Query</span>")
-                                    .replace("Inventory at a Glance", "<span class='clickable'>Inventory at a Glance</span>")
-                                    .replace("Inventory Forecasting", "<span class='clickable'>Inventory Forecasting</span>")
-                                    .replace("Inventory Optimization", "<span class='clickable'>Inventory Optimization</span>"),
+                  } else if ( json.intermediate_steps.length ) {  
+                     if ( json.intermediate_steps[0].length && json.intermediate_steps[0][0].tool) {
+                        if (json.intermediate_steps[0][0].tool === "search_syspro_learning" || json.intermediate_steps[0][0].tool === "search_syspro_web") {
+                           console.log('learning used');
+                           chat.renderAttachments({
+                              attachments: [{
+                                 contentType: "sysprolearn",
+                                 content: {
+                                    // "title": techInfo["tile"].title,
+                                    "content": json.output
+                                       .replace("Inventory Query", "<span class='clickable'>Inventory Query</span>")
+                                       .replace("Inventory ATP Query", "<span class='clickable'>Inventory ATP Query</span>")
+                                       .replace("Inventory at a Glance", "<span class='clickable'>Inventory at a Glance</span>")
+                                       .replace("Inventory Forecasting", "<span class='clickable'>Inventory Forecasting</span>")
+                                       .replace("Inventory Optimization", "<span class='clickable'>Inventory Optimization</span>"),
 
-                                    
-                                 // "content": responseString.replace(/"(.*?)"/|/'(.*?)'/g, function myFunction(x){
-                                 //    x = "<span class='clickable'>"+ x +"</span>"
-                                 //    return x;
-                                 // }),
-                                 // "make": "Opel",
-                                 // "model": "Astra",
-                                 // "worth": "4000",
-                                 // "startDate": "2018-10-10"
-                              }
-                           }],
-                           attachmentLayout: "list"
-                        }, daVinciUser);
-                        renderMsgActions();
-                        // TODO: Need to deal with this section getting rid of suggested actions
-                  } else if (!responseString.includes('Here are suggested queries')) {
+                                       
+                                    // "content": json.output.replace(/"(.*?)"/|/'(.*?)'/g, function myFunction(x){
+                                    //    x = "<span class='clickable'>"+ x +"</span>"
+                                    //    return x;
+                                    // }),
+                                    // "make": "Opel",
+                                    // "model": "Astra",
+                                    // "worth": "4000",
+                                    // "startDate": "2018-10-10"
+                                 }
+                              }],
+                              attachmentLayout: "list"
+                           }, daVinciUser);
+                           renderMsgActions();
+                        } else {
+                           chat.renderMessage({
+                              type: "text",
+                              text: json.output
+                           }, daVinciUser);
+                        }
+                     }
+                  } else if (!json.output.includes('Here are suggested queries')) {
                      console.log('about to render straight up response');
                      chat.renderMessage({
                         type: "text",
-                        text: responseString
+                        text: json.output
                      }, daVinciUser);
                   }
 
                   console.log('here is the pre suggested actions bit');
-                  console.log(responseString);
-                  if (responseString.includes('Here are suggested queries')) {
+                  console.log(json.output);
+                  if (json.output.includes('Here are suggested queries')) {
                      console.log('yes there are suggested querues');
-                     const sqText = responseString.substring(
-                        responseString.indexOf('Here are suggested queries'), 
-                        responseString.lastIndexOf("```") + 3);
-                     const otherText = responseString.substring(0, responseString.lastIndexOf('Here are suggested queries'));
-                     console.log('sqText', sqText);
-                     console.log('otherText', otherText);
+                     const sqText = json.output.substring(
+                        json.output.indexOf('Here are suggested queries'), 
+                        json.output.lastIndexOf("```") + 3);
+                     console.log(sqText);
                      const sqJSONraw = sqText.includes("```json") 
                         ? sqText.substring(
                            sqText.indexOf("```json") + 7, 
@@ -2333,11 +2308,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                            .split("<Stock Codes>").join(`Stock code ${contextVariables["Stock Codes"]}`)
                            .split("<Order ID>").join(`Order ${contextVariables["Order ID"]}`)                              
                            .split("<Salesperson ID>").join(`Salesperson ${contextVariables["Salesperson ID"]}`);
-                     console.log('sqJSON', sqJSON);
-                     chat.renderMessage({
-                        type: "text",
-                        text: otherText
-                     }, daVinciUser);
+                     console.log(sqJSON);
                      chat.renderMessage({
                         type: "text",
                         text: "Here are some suggested further queries:"
