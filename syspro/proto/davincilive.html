@@ -1298,7 +1298,7 @@ If you have to do more than one step of SQL queries to respond to my question, t
 
 If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting.
 
-Whenever you return HTML or JavaScript as part of an answer, include 'Here starts code:' immediately before the code, and nothing at all after the code.
+Whenever you return HTML or JavaScript as part of an answer, include 'Here starts code:' immediately before the code, and nothing at all after the code. Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.
 
 Here are instructions for returning a chart or graph: 
 If you are asked to provide a chart or graph, or to graph or chart or plot some data, then return a JSON object of all the options for a Kendo UI for JQuery chart using the template below. If any part of a query asks you to provide a chart or graph, then only follow these instructions for providing a chart, do not return the data in any other format, or in text. Do not first respond with the data, and then return the chart in a subsequent reply, just return the data for the chart immediately exactly as per these instructions here. Use the following code template below, and ALWAYS include the text "Here starts chart data:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below):
@@ -1496,7 +1496,7 @@ If I ask for all the information about a single particular stock code, or produc
     </div>
 </div>
 
-If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below). Also always wrap the code in three bckticks as per usual:
+If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below). Also always wrap the code in three backticks as per usual:
 
 <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
     <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t d-flex flex-column">
@@ -1555,7 +1555,7 @@ where <Short version> should be a brief 3 or 4 word description of the suggested
 
 So based on what I have asked you, you might think there are one or two further interesting things I should ask you. Some examples you might provide as 'suggested queries' are 'What are the past 12 monthly sales for <Customer name>' if I ask for any information about a customer, 'Stock codes commonly ordered with <Stock code>' if I ask any query about one or more stock codes, or 'Which customer orders <Stock code> most frequently' if I ask about either a customer, or a stock code, or a salesperson. In the 'Long version' you should always include a placeholder like I have in the examples, either <Customer ID>, <Customer name>, <Stock Codes>, <Salesperson ID> or <Order ID>. You should provide these 'suggested queries' at the end of most of your responses to me.
 
-If you are asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' with 'Short version' = 'Get all details for <record ID/Name' and 'Long version' = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to my previous query.
+If you are asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' with 'Short version' = 'Get all details for <record ID/Name' and 'Long version' = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to my previous query. Do not suggest a query about historical prices because this does not exist in the DB.
 `;
 
 let session_id, chatActive = false;
@@ -2334,10 +2334,14 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                            .split("<Order ID>").join(`Order ${contextVariables["Order ID"]}`)                              
                            .split("<Salesperson ID>").join(`Salesperson ${contextVariables["Salesperson ID"]}`);
                      console.log('sqJSON', sqJSON);
-                     chat.renderMessage({
-                        type: "text",
-                        text: otherText
-                     }, daVinciUser);
+                     // Check if 'otherText' is just whitespace...
+                     if (otherText.replace(/\s/g, '').length) {
+                        chat.renderMessage({
+                           type: "text",
+                           text: otherText
+                        }, daVinciUser);
+                     }
+                     
                      chat.renderMessage({
                         type: "text",
                         text: "Here are some suggested further queries:"
