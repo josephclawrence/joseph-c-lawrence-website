@@ -970,20 +970,19 @@
       <div id="daVinciChat" style="width: 100%; height: 100%"></div>
    </div>
    <ul id="faves-menu">
-      <li>What is the total lost sales value and quantity for A100 in 2018</li>
       <li>Analyse the number of orders for each month in 2016, and the number of orders in each month in 2017.</li>
       <li>I want to create a new quote</li>
-      <li>show me the job card for the "15 Speed Mountain Bike Mens" job</li>
+      <li>Can you analyze any trends in sales to Brian Zurich over the past 5 years?</li>
+      <li>show me the job card for the "ROYAL GALA FANCY 12 x 3 LB (R)" job</li>
       <li>get me the top 4 customers, ranked by current balance and show it as a pie chart</li>
       <li>which salesperson has the most orders?</li>
-      <li>show me the card for product A100</li>
-      <li>Can you give me the product code, description, category and warehouse for product codes A100, A200, B100 and B200</li>
+      <li>show me the card for product 06-01-52-2-9910</li>
+      <li>Can you give me the product code, description, category and warehouse for product codes 06-01-10-2-9910, 06-01-52-2-9910, 06-01-51-2-9910 and 06-01-60-2-9910</li>
       <li>from the warehouses table get the top 5 product codes ranked by quantity sold, and show this as a column chart</li>
-      <li>what are the contact details and address (including city and postal code) for customer Bayside Bikes</li>
+      <li>what are the contact details and address (including city and postal code) for customer Brian Zurich</li>
       <li>what program should I use to look up information about inventory?</li>
       <li>find the top four products by quantity on hand, and then list the product code, description, warehouse and quantity on hand </li>
-      <li>find the top four products by quantity on hand, and then list the product code, description, warehouse and quantity on hand for those same four products</li>
-      <li>What is A100</li>
+      <li>What is 06-01-60-2-9910</li>
   </ul>
 
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
@@ -1280,7 +1279,7 @@ Often you will have to perform a SQL query in order to respond to a query. First
 When I ask questions which you need to make a SQL query to answer, sometimes I will ask for things that are not the exact name of a table or column. Here are some words I might use, and the table or column name you should use:
 If I ask to search 'warehouses' then that is the 'warehouses' table or view. But if I ask for the warehouse for a specific product or product code, then you can use the column name 'warehouse_id'. If I ask for 'product', then you can use the column name 'product_id' which is in both the 'products' table or view, and the 'warehouses' table or view. If I ask for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' view or table.
 
-Sometimes I will ask you for JSON code, based on some SQL query you have done, but there will be too many rows for you to provide JSON for. In this case, do not ever insert comments into the JSON. DO not ever insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows.
+Sometimes I will ask you for JSON code, based on some SQL query you have done, but there will be too many rows for you to provide JSON for. In this case, do not ever insert comments into the JSON. This is very important! - DO NOT EVER insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows.
 
 If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order_details' table to get the data.
 
@@ -1296,7 +1295,7 @@ If I ask about jobs, then query the "jobs" table or view. The only columns in th
 
 If you have to do more than one step of SQL queries to respond to my question, then do all the steps you need before responding, then just respond to my final question. DO NOT respond with your response to each step.
 
-If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting.
+If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting. Very importantly (!), DO NOT EVER insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows. NB: Always follow this rule when returning JSON for anything.
 
 Whenever you return HTML or JavaScript as part of an answer, include 'Here starts code:' immediately before the code, and nothing at all after the code. Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.
 
@@ -1405,7 +1404,7 @@ Do not return the code for a chart unless you are specifically requested to do s
 
 That is the end of instructions for returning charts and graphs.
 
-If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting. Don't forget to always remove all comments (lines with '//' at the start) from any JSON, and do not add in any comments. DO not remove any rows 'for brevity', or include any comment about that in the JSON.
+If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting. Don't forget to ALWAYS remove all comments (lines with '//' at the start) from any JSON, and DO NOT add in any comments! NEVER remove any rows 'for brevity', or include any comment about that in the JSON such as '// Additional rows have been omitted for brevity', because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows. NB: Always follow this rule when returning JSON for anything.
 
 If I request any kind of contact or address details (for example a person's contact details, or a company's contact details, or a customer address or customer contact or name and address of a customer, or the contact details from an invoice) then use the "sql_db_query" tool, and the "sql_db_query_checker" tool. Do NOT use the "search_syspro_web" tool, or the "search_syspro_learning" tool. When you have the contact and address data, return HTML using the following template below, where '$name', '$address', '$city', '$postal_code' should be replaced with the data you are returning (these are examples - you can also use the same pattern with other bits of contact information). '$name' can be for 'name' or 'customer_name' for example. if you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you could not find the name from column 'customer_name', then exclude from the HTML the element with data-cdetail='name', and any inner HTML of that element. IMMEDIATELY BEFORE the HTML, ALWAYS include the text 'Here starts code:', and then include NO TEXT after the end of the provided HTML (unless it is 'suggested queries' as described below). Here is the HTML template to use:
 
@@ -2033,6 +2032,15 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
       }, 500);
    }
 
+   function isJsonString(str) {
+      try {
+         JSON.parse(str);
+      } catch (e) {
+         return false;
+      }
+      return true;
+   }
+
    const suggestedActions = {
       IMP040: {
 
@@ -2051,6 +2059,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
 
    const codeCheck = 'Here starts code:';
    const chartCheck = 'Here starts chart data:';
+   const commentRegex = /\/\/.+$/m;
 
    var chat = $("#daVinciChat").kendoChat({
          user: {
@@ -2115,7 +2124,10 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                .then((response) => response.json())
                .then((json) => {
                   console.log(json);    
-                  let responseString = `${json.output}`;              
+                  let responseString = `${json.output}`;   
+                  const brevityDisclaimer = responseString.includes('//') && responseString.includes('brevity') ? true : false;
+                  const brevityDisclaimerText = "Please note that there are many more results for your query, and I have included only the first few. To investigate the full set of results use the appropriate Syspro program.";
+                  const malformedResponse = "Sorry, I was not able to  create a good response for this, can you perhaps try and rephrase your question?";
                   if ( 
                      (json.intermediate_steps.length  === 1 && json.intermediate_steps[0].length && json.intermediate_steps[0][0].tool && json.intermediate_steps[0][0].tool === "sql_db_query" && json.intermediate_steps[0][1] === "")
                      ||
@@ -2173,6 +2185,16 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                      }
                                           
                      console.log(code);
+                     // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
+                     responseString = responseString.replace(codeToRemove, "").replace("Here starts code:", "");
+
+                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                        console.log('about to render straight up response');
+                        chat.renderMessage({
+                           type: "text",
+                           text: responseString.trim()
+                        }, daVinciUser);
+                     }
 
                      chat.renderAttachments({
                         attachments: [{
@@ -2186,11 +2208,12 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         }]
                      }, daVinciUser);
                      renderMsgActions();
-                     responseString = responseString.replace(codeToRemove, "").replace("Here starts code:", "");
+                     
                   } else if (responseString.includes('KendoGrid')) {
                      console.log('kendo grid');
                      console.log(responseString);
-                     let code, codeToRemove;
+                     let code, codeToRemove;                                          
+
                      if (responseString.includes("```json")) {
                         code = responseString.substring(
                            responseString.indexOf("```json") + 7, 
@@ -2207,21 +2230,50 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         code = responseString.slice(responseString.indexOf('Here starts JSON:') + 'Here starts JSON:'.length);
                         codeToRemove = code;
                      }
-                     
-                     chat.renderAttachments({
-                        attachments: [{
-                           contentType: "GridComponent",
-                           content: {
-                              dataSource: JSON.parse(code)
-                           }
-                           // content: {
-                           // value: new Date()
-                           // }
-                        }]
-                     }, daVinciUser);
-                     renderMsgActions();
+                     console.log(code.match(commentRegex));
+                     code.replace(commentRegex, '');
                      console.log(code);
+                     // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
                      responseString = responseString.replace(codeToRemove, "").replace("KendoGrid: Here starts JSON:", "");
+
+                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                        console.log('about to render straight up response');
+                        chat.renderMessage({
+                           type: "text",
+                           text: responseString.trim()
+                        }, daVinciUser);
+                     }
+
+                     if (brevityDisclaimer) {
+                        console.log('inserting brevity disclaimer');
+                        chat.renderMessage({
+                           type: "text",
+                           text: brevityDisclaimerText
+                        }, daVinciUser);
+                     }
+
+                     if (isJsonString(code)) {
+                        chat.renderAttachments({
+                           attachments: [{
+                              contentType: "GridComponent",
+                              content: {
+                                 dataSource: JSON.parse(code)
+                              }
+                              // content: {
+                              // value: new Date()
+                              // }
+                           }]
+                        }, daVinciUser);
+                        renderMsgActions();
+                     } else {
+                        chat.renderMessage({
+                           type: "text",
+                           text: malformedResponse
+                        }, daVinciUser);
+                     }
+                     
+                     console.log(code);
+                     
                   } else if (responseString.includes(chartCheck) || (responseString.includes("chart") && responseString.includes("Here is"))) {
                      console.log('kendo chart');
                      console.log(responseString);
@@ -2252,21 +2304,49 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         code = responseString.slice(responseString.indexOf(chartCheck) + chartCheck.length);
                         codeToRemove = code
                      }
+                     console.log(code.match(commentRegex));
+                     code.replace(commentRegex, '');
                      console.log(code);
                      console.log(JSON.parse(code));
-                     chat.renderAttachments({
-                        attachments: [{
-                           contentType: "ChartComponent",
-                           content: {
-                              chartData: JSON.parse(code)[0]
-                           }
-                           // content: {
-                           // value: new Date()
-                           // }
-                        }]
-                     }, daVinciUser);
-                     renderMsgActions();
+
+                     // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
                      responseString = responseString.replace(codeToRemove, "").replace("Here starts chart data:", "");
+
+                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                        console.log('about to render straight up response');
+                        chat.renderMessage({
+                           type: "text",
+                           text: responseString.trim()
+                        }, daVinciUser);
+                     }
+
+                     if (brevityDisclaimer) {
+                        console.log('inserting brevity disclaimer');
+                        chat.renderMessage({
+                           type: "text",
+                           text: brevityDisclaimerText
+                        }, daVinciUser);
+                     }
+                     if (isJsonString(code)) {
+                        chat.renderAttachments({
+                           attachments: [{
+                              contentType: "ChartComponent",
+                              content: {
+                                 chartData: JSON.parse(code)[0]
+                              }
+                              // content: {
+                              // value: new Date()
+                              // }
+                           }]
+                        }, daVinciUser);
+                        renderMsgActions();
+                     } else {
+                        chat.renderMessage({
+                           type: "text",
+                           text: malformedResponse
+                        }, daVinciUser);
+                     }
+                     
                   } else if ( 
                      json.intermediate_steps.length 
                      && json.intermediate_steps[0].length 
@@ -2305,14 +2385,16 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                      console.log('about to render straight up response');
                      chat.renderMessage({
                         type: "text",
-                        text: responseString
+                        text: responseString.trim()
                      }, daVinciUser);
                   }
 
                   console.log('here is the pre suggested actions bit');
                   console.log(responseString);
+
+                  // extract and correctly prepare the 'suggested queries' as suggested actions for the Kendo Chat API
                   if (responseString.includes('Here are suggested queries')) {
-                     console.log('yes there are suggested querues');
+                     console.log('yes there are suggested queries');
                      const sqText = responseString.substring(
                         responseString.indexOf('Here are suggested queries'), 
                         responseString.lastIndexOf("```") + 3);
@@ -2336,6 +2418,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                      console.log('sqJSON', sqJSON);
                      // Check if 'otherText' is just whitespace...
                      if (otherText.replace(/\s/g, '').length) {
+                        console.log('posting "otherText" message:', otherText);
                         chat.renderMessage({
                            type: "text",
                            text: otherText
