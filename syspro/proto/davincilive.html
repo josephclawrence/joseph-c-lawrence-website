@@ -2041,6 +2041,10 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
       return true;
    }
 
+   function removeTrailingComma(string) {
+      return string.replace(/\,(?!\s*?[\{\[\"\'\w])/g, '');
+   }
+
    const suggestedActions = {
       IMP040: {
 
@@ -2059,7 +2063,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
 
    const codeCheck = 'Here starts code:';
    const chartCheck = 'Here starts chart data:';
-   const commentRegex = /\/\/.+$/m;
+   const commentRegex = /\/\/.+\n/;
 
    var chat = $("#daVinciChat").kendoChat({
          user: {
@@ -2230,9 +2234,16 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         code = responseString.slice(responseString.indexOf('Here starts JSON:') + 'Here starts JSON:'.length);
                         codeToRemove = code;
                      }
-                     console.log(code.match(commentRegex));
-                     code.replace(commentRegex, '');
-                     console.log(code);
+                     
+                     if (code.match(commentRegex) && code.match(commentRegex).length) {
+                        console.log('yes i found a regex');
+                        console.log(code.match(/\/\/.+\n/)[0]);
+                        code = code.replace(commentRegex, '');
+                        code = removeTrailingComma(code);
+                        console.log(code);
+                     }
+                     
+                     
                      // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
                      responseString = responseString.replace(codeToRemove, "").replace("KendoGrid: Here starts JSON:", "");
 
@@ -2304,9 +2315,13 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                         code = responseString.slice(responseString.indexOf(chartCheck) + chartCheck.length);
                         codeToRemove = code
                      }
-                     console.log(code.match(commentRegex));
-                     code.replace(commentRegex, '');
-                     console.log(code);
+                     if (code.match(commentRegex) && code.match(commentRegex).length) {
+                        console.log('yes i found a regex');
+                        console.log(code.match(commentRegex));
+                        code = code.replace(commentRegex, '');
+                        code = removeTrailingComma(code);
+                        console.log(code);
+                     }
                      console.log(JSON.parse(code));
 
                      // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
