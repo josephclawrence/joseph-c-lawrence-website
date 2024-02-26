@@ -982,14 +982,19 @@
       <li>what are the contact details and address (including city and postal code) for customer Brian Zurich</li>
       <li>what program should I use to look up information about inventory?</li>
       <li>find the top four products by quantity on hand, and then list the product code, description, warehouse and quantity on hand </li>
-      <li>What is 06-01-60-2-9910</li>
+      <li>What is product 06-01-60-2-9910</li>
       <li>which other products are commonly ordered with 06-01-60-2-9910?</li>
       <li>What are the orders with 06-01-99-2-9999 and 06-01-60-2-9910?</li>
       <li>can you analyse sales to Marko Smith over the past 3 years</li>
       <li>can you show the sales to this customer monthly for the past 2 years as a line chart</li>
 
   </ul>
-
+   <div style="display: none">
+      <ul id="record-view-menu">
+         <li>View card in chat</li>
+         <li>Go to record</li>
+      </ul>
+   </div>
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
   <script src="js/UX_JS_forms.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
@@ -1733,7 +1738,7 @@ const contextVariables = {
    "Salesperson ID": contextVariablesOptions["Salesperson ID"][Math.floor(Math.random() * 3)],
 };
 
-fetch("http://4.149.169.198/get_active_conversation_list", {
+fetch("https://4.149.169.198/get_active_conversation_list", {
    method: "GET",      
    headers: {
       // "Content-type": "application/json",
@@ -1745,7 +1750,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
    if (json.length) {
       json.forEach((item) => {
          console.log(`active session: ${item.session_id}`);
-         fetch(`http://4.149.169.198/delete_session?session_id=${item.session_id}`, {
+         fetch(`https://4.149.169.198/delete_session?session_id=${item.session_id}`, {
             method: "DELETE",      
             headers: {
                "accept": "application/json"
@@ -1754,7 +1759,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
       });
    }
 
-   fetch("http://4.149.169.198/initialize_conversation", {
+   fetch("https://4.149.169.198/initialize_conversation", {
       method: "POST",      
       headers: {
          "Content-type": "application/json",
@@ -1876,7 +1881,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                chat.renderUserTypingIndicator(daVinciUser);
                $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
             }, 250);
-            fetch("http://4.149.169.198/run_conversation", {
+            fetch("https://4.149.169.198/run_conversation", {
                method: "POST",      
                headers: {
                   "Content-type": "application/json",
@@ -2043,6 +2048,24 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
             dataSource: options.dataSource,
          });
 
+         // create a context menu just if there is a column with an ID
+         const possibleIDCols = ["order id", "order_id", "customer id", "customer_id", "product id", "product_id", "job id", "job_id",];
+         Object.keys(options.dataSource[0]).forEach((item, idx) => {
+            if (possibleIDCols.includes(item.toLowerCase())) {
+               $("#record-view-menu").kendoContextMenu({
+                  target: gridElement,
+                  filter: "td",
+                  select: function(e) {
+                     var grid = gridElement.data("kendoGrid");
+                     console.log(grid);
+                     var model = grid.dataItem(e.target);
+                     console.log(model);
+                     alert( JSON.stringify(model) );
+                  }
+               });
+            }
+         });
+         
          // Place the grid within the Chat card.
          var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
          this.element.attr("data-msg-id", generateUUID());
@@ -2271,7 +2294,7 @@ fetch("http://4.149.169.198/get_active_conversation_list", {
                // .then((json) => {
                   
 
-               fetch("http://4.149.169.198/run_conversation", {
+               fetch("https://4.149.169.198/run_conversation", {
                   method: "POST",      
                   headers: {
                      "Content-type": "application/json",
