@@ -329,6 +329,9 @@
          .k-wizard .k-input-solid.k-focus {
             border: 1px solid #0d6efd;
          }
+         .k-popup {
+            font-family: inherit !important;
+         }
         </style>
     </head>
 
@@ -991,7 +994,7 @@
   </ul>
    <div style="display: none">
       <ul id="record-view-menu">
-         <li>View card in chat</li>
+         <li class="view-record-card">View card in chat</li>
          <li>Go to record</li>
       </ul>
    </div>
@@ -1291,7 +1294,7 @@ If I ask to search 'warehouses' then that is the 'warehouses' table or view. But
 
 Sometimes I will ask you for JSON code, based on some SQL query you have done, but there will be too many rows for you to provide JSON for. In this case, do not ever insert comments into the JSON. This is very important! - DO NOT EVER insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows.
 
-If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order' and 'order_details' tables to get the data.
+If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order' and 'order_details' tables to get the data. Inlcude actual numbers and dates from the database as examples, where relevant.
 
 When I ask information about products, or a product, then this can be identified in the SQL databases as 'product_id' as the unique identifier, and is in both the 'warehouses' table and the 'products' table. If I ask about the product description, long decription or category, then you can look up by "product_id" in the "products" table or view. If I ask about quantity on hand, quantity sold, warehouse or cost, then you can look that up by "product_id" in the "warehouses" table or view. If I ask for a combination of those things then you will need to get some data from the 'products' table or view, and some from the 'warehouses' table or view. For example if I ask for the product code, description, warehouse and quantity on hand, you will need to use the "product_id" as the unique identifier to look up that information from both the "products" table or view, and the "warehouses" table or view. To be specific, you should only ever query these following column names from the "products" table or view: "product_id", "LongDesc", "warehouse_id" and "category" - NEVER query any other column names from the "products" table or view. "LongDesc" is the column for the description. And you should only ever query these following column names from the "warehouses" table or view: "product_id", "quantity_on_hand", "quantity_sold", "warehouse_id" and "cost" - NEVER query any other column names (e.g. "Description") from the "warehouses" table or view. If you need data from both the "products" table or view, and from the "warehouses" table or view for the same "product_id" then you need to do a SQL JOIN query, or similar.
 
@@ -1712,11 +1715,11 @@ Based on what I ask you, you can provide some 'suggested queries' in a specific 
    }}
 ]
 
-where <Short version> should be a brief 3 or 4 word description of the suggested query written as a 'call to action' with a command as the first word such as 'View', 'Get' etc., and <Long version> should be a well formulated prompt for the same 'suggested query'. If the 'suggested query' is about one record (one salesperson, product, stock code, warehouse, invoice, order, job etc.) in particular, then you must include the ID or name of that record in the 'short version'.
+where <Short version> should be a brief 3 or 4 word description of the suggested query written as a 'call to action' with a command as the first word such as 'View', 'Get' etc., and <Long version> should be a well formulated prompt for the same 'suggested query'. If the 'suggested query' is about one record (one salesperson, product, stock code, warehouse, invoice, order, job etc.) in particular, then you MUST include the ID or name of that record in the 'short version' as well.
 
-So based on what I ask you in future, you might suggest one or two further interesting things I should ask you. Some examples you might provide as 'suggested queries' are 'What are the past 12 monthly sales for <Customer name>' if I ask for any information about a customer; 'Stock codes commonly ordered with <Stock code>' if I ask any query about one or more stock codes; or 'Which customer orders <Stock code> most frequently' if I ask about either a customer, or a stock code, or a salesperson. In the 'Long version' you should always include a placeholder like I have in the examples, either <Customer ID>, <Customer name>, <Stock Codes>, <Salesperson ID> or <Order ID>. You should provide these 'suggested queries' at the end of most of your responses to me.
+So based on what I ask you, you should often suggest one or two further interesting things I should ask you. Some examples you might provide as 'suggested queries' are 'What are the past 12 monthly sales for <Customer name>' if I ask for any information about a customer; 'Stock codes commonly ordered with <Stock code>' if I ask any query about one or more stock codes; or 'Which customer orders <Stock code> most frequently' if I ask about either a customer, or a stock code, or a salesperson. In the 'Long version' you should always include a placeholder like I have in the examples, either <Customer ID>, <Customer name>, <Stock Codes>, <Salesperson ID> or <Order ID>. You should provide these 'suggested queries' at the end of most of your responses to me.
 
-If you are asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' with 'Short version' = 'Get all details for <record ID/Name' and 'Long version' = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to my previous query. Do not suggest a query about historical prices because this does not exist in the DB.
+If you are asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' which has <Short version> = 'Get all details for <record ID/Name' and <Long version> = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to my previous query. Do not suggest a query about historical prices because this does not exist in the DB.
 `;
 
 let session_id, chatActive = false;
@@ -1909,6 +1912,19 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
        }
    });
 
+   function initFavesMenu() {
+      $('#faves-menu').kendoContextMenu({
+         target: '[aria-labelledby="daVinciWindow_wnd_title"] .k-window-titlebar-action[aria-label="Heart"]',
+         alignToAnchor: true,
+         showOn: "click",
+         select: function(e) {
+            console.log(e.item);
+            const query = $(e.item).find(".k-menu-link-text").text();
+            chat.postMessage(query);
+         }
+      });
+   };
+
    const daVinciWindow = $("#daVinciWindow").kendoWindow({
       actions: ["Heart", "More-Vertical", "Minus", "Plus", "Close"],
       draggable: false,
@@ -1945,16 +1961,7 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
          });
       },
       open: function() {
-         $('#faves-menu').kendoContextMenu({
-            target: '[aria-labelledby="daVinciWindow_wnd_title"] .k-window-titlebar-action[aria-label="Heart"]',
-            alignToAnchor: true,
-            showOn: "click",
-            select: function(e) {
-               console.log(e.item);
-               const query = $(e.item).find(".k-menu-link-text").text();
-               chat.postMessage(query);
-            }
-         });
+         initFavesMenu()
       },
       // maximize: function() {
       //    const daVinciWindow = $("#daVinciWindow").data("kendoWindow");
@@ -1997,6 +2004,7 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
             chart.redraw();
          }
       });
+      initFavesMenu()
       e.preventDefault();
    });
 
@@ -2018,6 +2026,7 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
             chart.redraw();
          }
       });
+      initFavesMenu()
       e.preventDefault();
    });
 
@@ -2066,18 +2075,23 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                const recordTHead = $(`[data-field="${item}"]`, gridElement);
                const recordColIdx = $(".k-table-thead th", gridElement).index(recordTHead);
                console.log('recordTHead', recordTHead, 'recordColIdx', recordColIdx);
+               gridElement.find(`td:nth-child(${recordColIdx + 1})`).append("<i class='material-icons sys-fg-primary view-record'>more_horiz</i>");
                $("#record-view-menu").kendoContextMenu({
                   target: gridElement,
-                  filter: `td:nth-child(${recordColIdx})`,
+                  filter: '.view-record',
                   showOn: "click",
                   select: function(e) {
+                     console.log(e);
                      var grid = gridElement.data("kendoGrid");
-                     console.log(grid);
                      var model = grid.dataItem($(e.target).closest("tr"));
                      console.log(model);
-                     alert( JSON.stringify(model) );
+                     const recordID = model[item];
+                     console.log(recordID);
+                     if ($(e.item).hasClass("view-record-card")) {
+                        chat.postMessage(`Show me the card for ${item} ${recordID}`);
+                     }
                   }
-               });
+               });               
             }
          });
          
