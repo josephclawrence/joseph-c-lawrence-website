@@ -332,6 +332,9 @@
          .k-popup {
             font-family: inherit !important;
          }
+         .view-record {
+            cursor: pointer;
+         }
         </style>
     </head>
 
@@ -992,11 +995,8 @@
       <li>can you show the sales to this customer monthly for the past 2 years as a line chart</li>
 
   </ul>
-   <div style="display: none">
-      <ul id="record-view-menu">
-         <li class="view-record-card">View card in chat</li>
-         <li>Go to record</li>
-      </ul>
+   <div style="display: none" id="recordViewMenus">
+      
    </div>
   <script src="js/new/UX_JS_bootstrap.min.js"></script>
   <script src="js/UX_JS_forms.js"></script>
@@ -1589,6 +1589,8 @@ If I request any kind of contact or address details (for example a person's cont
       </div>
    </div>  
 
+NB: You can also use the above 'card' HTML template for cases where I have not specifically provided HTML for a different card. For example if I ask for a card for a particular warehouse, you can just use this template and return it with all the details you have on the specific warehouse. SO if I ask for a Warehouse card, then use the above template.
+
 If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_learning" tool, and if you do not find something there, then use the "search_syspro_web" tool to find an answer.
 
 If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or product card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. the stock code or product code you are given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables or views. You need to get the following columns, from the following tables or views: 'LongDesc' and 'category' from the 'products' table or view; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table or view; 'price' from the 'price' table or view. In each case you should use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below):
@@ -2071,16 +2073,19 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
          });
 
          // create a context menu just if there is a column with an ID
-         const possibleIDCols = ["order id", "order_id", "customer id", "customer_id", "product id", "product_id", "product code", "job id", "job_id",];
+         const possibleIDCols = ["Order","order id", "order_id", "customer id", "customer_id", "product id", "product_id", "product code", "job id", "job_id", "warehouse", "warehouse_id", "warehouse id"];
          Object.keys(options.dataSource[0]).forEach((item, idx) => {
             if (possibleIDCols.includes(item.toLowerCase())) {
                const recordTHead = $(`[data-field="${item}"]`, gridElement);
                const recordColIdx = $(".k-table-thead th", gridElement).index(recordTHead);
                console.log('recordTHead', recordTHead, 'recordColIdx', recordColIdx);
                gridElement.find(`td:nth-child(${recordColIdx + 1})`).append("<i class='material-icons sys-fg-primary view-record'>more_horiz</i>");
-               $("#record-view-menu").kendoContextMenu({
+               $(`<ul id="record-view-menu-${idx}">
+                  <li class="view-record-card">View card in chat</li>
+                  <li>Go to record</li>
+               </ul>`).appendTo("#recordViewMenus").kendoContextMenu({
                   target: gridElement,
-                  filter: '.view-record',
+                  filter: `td:nth-child(${recordColIdx + 1}) .view-record`,
                   showOn: "click",
                   select: function(e) {
                      console.log(e);
