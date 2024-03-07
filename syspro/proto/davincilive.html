@@ -1738,7 +1738,7 @@ const contextVariables = {
    "Salesperson ID": contextVariablesOptions["Salesperson ID"][Math.floor(Math.random() * 3)],
 };
 
-fetch("http://52.149.57.81/get_active_conversation_list", {
+fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_active_conversation_list", {
    method: "GET",      
    headers: {
       // "Content-type": "application/json",
@@ -1750,7 +1750,7 @@ fetch("http://52.149.57.81/get_active_conversation_list", {
    if (json.length) {
       json.forEach((item) => {
          console.log(`active session: ${item.session_id}`);
-         fetch(`http://52.149.57.81/delete_session?session_id=${item.session_id}`, {
+         fetch(`https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/delete_session?session_id=${item.session_id}`, {
             method: "DELETE",      
             headers: {
                "accept": "application/json"
@@ -1759,7 +1759,7 @@ fetch("http://52.149.57.81/get_active_conversation_list", {
       });
    }
 
-   fetch("http://52.149.57.81/initialize_conversation", {
+   fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/initialize_conversation", {
       method: "POST",      
       headers: {
          "Content-type": "application/json",
@@ -1863,7 +1863,6 @@ fetch("http://52.149.57.81/get_active_conversation_list", {
 
    const pdfGen = new jspdf.jsPDF({
       unit: 'px',
-
    });
    // pdfGen.addFileToVFS('css/UX_FONTS_MaterialIcons-Regular.woff', '');
    // pdfGen.addFont('css/UX_FONTS_MaterialIcons-Regular.woff', 'Material Icons', 'normal');
@@ -1881,7 +1880,7 @@ fetch("http://52.149.57.81/get_active_conversation_list", {
                chat.renderUserTypingIndicator(daVinciUser);
                $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
             }, 250);
-            fetch("http://52.149.57.81/run_conversation", {
+            fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/run_conversation", {
                method: "POST",      
                headers: {
                   "Content-type": "application/json",
@@ -2064,13 +2063,17 @@ fetch("http://52.149.57.81/get_active_conversation_list", {
          const possibleIDCols = ["order id", "order_id", "customer id", "customer_id", "product id", "product_id", "job id", "job_id",];
          Object.keys(options.dataSource[0]).forEach((item, idx) => {
             if (possibleIDCols.includes(item.toLowerCase())) {
+               const recordTHead = $(`[data-field="${item}"]`, gridElement);
+               const recordColIdx = $(".k-table-thead th", gridElement).index(recordTHead);
+               console.log('recordTHead', recordTHead, 'recordColIdx', recordColIdx);
                $("#record-view-menu").kendoContextMenu({
                   target: gridElement,
-                  filter: "td",
+                  filter: `td:nth-child(${recordColIdx})`,
+                  showOn: "click",
                   select: function(e) {
                      var grid = gridElement.data("kendoGrid");
                      console.log(grid);
-                     var model = grid.dataItem(e.target);
+                     var model = grid.dataItem($(e.target).closest("tr"));
                      console.log(model);
                      alert( JSON.stringify(model) );
                   }
@@ -2291,7 +2294,7 @@ fetch("http://52.149.57.81/get_active_conversation_list", {
                   $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
                }, 300);
 
-               // fetch("http://52.149.57.81/chains.conversation_chain_with_tools.conversation/run", {
+               // fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/chains.conversation_chain_with_tools.conversation/run", {
                //    method: "POST",
                //    body: JSON.stringify({
                //       "input": args.text,
@@ -2306,7 +2309,7 @@ fetch("http://52.149.57.81/get_active_conversation_list", {
                // .then((json) => {
                   
 
-               fetch("http://52.149.57.81/run_conversation", {
+               fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/run_conversation", {
                   method: "POST",      
                   headers: {
                      "Content-type": "application/json",
