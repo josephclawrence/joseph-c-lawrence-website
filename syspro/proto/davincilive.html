@@ -976,7 +976,7 @@
       <div id="daVinciChat" style="width: 100%; height: 100%"></div>
    </div>
    <ul id="faves-menu">
-      <li>Analyse the number of orders for each month in 2016, and the number of orders in each month in 2017.</li>
+      <li>Analyse the number of orders for each month in 2022, and the number of orders in each month in 2023.</li>
       <li>I want to create a new quote</li>
       <li>Can you analyze any trends in sales to Brian Zurich over the past 5 years?</li>
       <li>show me the job card for the "ROYAL GALA FANCY 12 x 3 LB (R)" job</li>
@@ -1268,20 +1268,7 @@ Function GetPreviousYearSales() As Decimal
 End Function</code></pre>
  </script>
 
-  <script>
-
-   const generateUUID = function () {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
-        });
-        if (!isNaN(uuid.substring(0, 1))) {
-            uuid = 'a' + uuid.substring(1);
-        }
-        return uuid;
-    };
+<script>   
 
    const systemPrompt = `Never forget that your name is 'Da Vinci', and you are the 'Syspro AI helper'. That is who you should intriduce yourself as, and If someone asks you who you are, then that is what you should answer. You should always use a friendly but professional tone.         
 
@@ -1292,7 +1279,9 @@ Often you will have to perform a SQL query in order to respond to a query. First
 When I ask questions which you need to make a SQL query to answer, sometimes I will ask for things that are not the exact name of a table or column. Here are some words I might use, and the table or column name you should use:
 If I ask to search 'warehouses' then that is the 'warehouses' table or view. But if I ask for the warehouse for a specific product or product code, then you can use the column name 'warehouse_id'. If I ask for 'product', then you can use the column name 'product_id' which is in both the 'products' table or view, and the 'warehouses' table or view. If I ask for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' view or table.
 
-Sometimes I will ask you for JSON code, based on some SQL query you have done, but there will be too many rows for you to provide JSON for. In this case, do not ever insert comments into the JSON. This is very important! - DO NOT EVER insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows.
+Sometimes I will ask you for JSON code, based on some SQL query you have done, but there will be too many rows for you to provide JSON for. In this case, do not ever insert comments into the JSON. This is very important! - DO NOT EVER insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead provide some text before the JSON saying that you have only included the first X number of rows.
+
+If your response will include multiple rows from a SQL query, each of which having two or more columns of data, then return the data as JSON. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting. Very importantly (!), DO NOT EVER insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead try to return all the rows, even if there are many, or provide some text before the JSON saying that you have only included the first X number of rows. NB: Always follow this rule when returning JSON for anything. You should follow these instructions if your answer includes multiple orders, products, customers, invoices, jobs, or multiple of any other record.
 
 If I ask you to 'tell me about', or 'analyse', or 'explain' some data, then do so by making the relevant queries to get the data, and then writing a paragraph in a professional, business report style. Explain any trends in the data over time, any anomalies, and compare similar time periods if relevant (for example the same month in differnt years, if that is in the requested data). Above all answer any specific questions in the request. If I ask you to analyse some 'order' data, then query the 'order' and 'order_details' tables to get the data. Inlcude actual numbers and dates from the database as examples, where relevant.
 
@@ -1664,6 +1653,8 @@ If I ask for all the information about a single particular stock code, or produc
     </div>
 </div>
 
+NB: If your response to a query is a few different products, then please always ignore any product that has no product ID, product_id or product code. This means that if for example I ask you for the top 5 products, and one of those five has no product ID (meaning, that column just has an empty string, or is empty), then remove this from your response, and include another one.
+
 If I ask for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and HTML template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table or view: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other column names from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$product_name' with the value you get for 'product_name' from the 'jobs' table or view. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below). Also always wrap the code in three backticks as per usual:
 
 <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
@@ -1726,83 +1717,80 @@ So based on what I ask you, you should often suggest one or two further interest
 If you are asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' which has <Short version> = 'Get all details for <record ID/Name' and <Long version> = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to my previous query. Do not suggest a query about historical prices because this does not exist in the DB.
 `;
 
-let session_id, chatActive = false;
+   let session_id, chatActive = false;
 
+   const contextVariablesOptions = {
+      "Customer name": ["Bayside Bikes", "Bikes & Blades - North", "Country Gardens - East"],
+      "Customer ID": ["000000000000001", "000000000000002", "000000000000003"],
+      "Stock Codes": ["A100", "A200", "B200"],
+      "Order ID": ["000000000800136", "000000000800137", "000000000800138"],
+      "Salesperson ID": ["100", "200", "101"]
+   };
 
-const contextVariablesOptions = {
-   "Customer name": ["Bayside Bikes", "Bikes & Blades - North", "Country Gardens - East"],
-   "Customer ID": ["000000000000001", "000000000000002", "000000000000003"],
-   "Stock Codes": ["A100", "A200", "B200"],
-   "Order ID": ["000000000800136", "000000000800137", "000000000800138"],
-   "Salesperson ID": ["100", "200", "101"]
-};
+   const contextVariables = {
+      "Customer name": contextVariablesOptions["Customer name"][Math.floor(Math.random() * 3)],
+      "Customer ID": contextVariablesOptions["Customer ID"][Math.floor(Math.random() * 3)],
+      "Stock Codes": contextVariablesOptions["Stock Codes"][Math.floor(Math.random() * 3)],
+      "Order ID": contextVariablesOptions["Order ID"][Math.floor(Math.random() * 3)],
+      "Salesperson ID": contextVariablesOptions["Salesperson ID"][Math.floor(Math.random() * 3)],
+   };
 
-const contextVariables = {
-   "Customer name": contextVariablesOptions["Customer name"][Math.floor(Math.random() * 3)],
-   "Customer ID": contextVariablesOptions["Customer ID"][Math.floor(Math.random() * 3)],
-   "Stock Codes": contextVariablesOptions["Stock Codes"][Math.floor(Math.random() * 3)],
-   "Order ID": contextVariablesOptions["Order ID"][Math.floor(Math.random() * 3)],
-   "Salesperson ID": contextVariablesOptions["Salesperson ID"][Math.floor(Math.random() * 3)],
-};
+   const smartLinkReplaceStrings = ["Inventory Query", "Inventory ATP Query", "Inventory at a Glance", "Inventory Forecasting", "Inventory Optimization"];
 
-fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_active_conversation_list", {
-   method: "GET",      
-   headers: {
-      // "Content-type": "application/json",
+   const apiURL = "https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io";
+   const headers = {
+      "Content-type": "application/json",
       "accept": "application/json"
-   },      
-})
-.then((response) => response.json())
-.then((json) => {
-   if (json.length) {
-      json.forEach((item) => {
-         console.log(`active session: ${item.session_id}`);
-         fetch(`https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/delete_session?session_id=${item.session_id}`, {
-            method: "DELETE",      
-            headers: {
-               "accept": "application/json"
-            },      
-         });
-      });
-   }
+   };
 
-   fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/initialize_conversation", {
-      method: "POST",      
-      headers: {
-         "Content-type": "application/json",
-         "accept": "application/json"
-      },
-      body: JSON.stringify({
-         "session_description": "prototype",
-         "system_prompt": systemPrompt,    
-         "model_to_use": "gpt-4-1106-preview",
-         "temperature": 0.3,
-         "max_iterations": 2,
-         "agent_type": "chat-conversational-react-description",
-         // "agent_type": "structured-chat-zero-shot-react-description",         
-         "chat_history": [
+   const gptModel = "gpt-4-turbo-preview";
+   const agentType = "chat-conversational-react-description";
+   // const agentType = structured-chat-zero-shot-react-description;
 
-         ]     
-      })
+   fetch(`${apiURL}/get_active_conversation_list`, {
+      method: "GET",      
+      headers,      
    })
-   .then((initResponse) => initResponse.json())
-   .then((initJson) => {
-      console.log(initJson);
-      session_id = initJson.session_id;
+   .then((response) => response.json())
+   .then((json) => {
+      if (json.length) {
+         json.forEach((item) => {
+            console.log(`active session: ${item.session_id}`);
+            fetch(`${apiURL}/delete_session?session_id=${item.session_id}`, {
+               method: "DELETE",      
+               headers,      
+            });
+         });
+      }
 
-      const button = $("#davinciButton").getKendoFloatingActionButton();
-      
-      button.enable();
-      $("#davinciButton").addClass("pulse alive");
+      fetch(`${apiURL}/initialize_conversation`, {
+         method: "POST",      
+         headers,
+         body: JSON.stringify({
+            "session_description": "prototype",
+            "system_prompt": systemPrompt,    
+            "model_to_use": gptModel,
+            "temperature": 0.25,
+            "max_iterations": 2,
+            "agent_type": agentType,
+            "chat_history": []     
+         })
+      })
+      .then((initResponse) => initResponse.json())
+      .then((initJson) => {
+         console.log(initJson);
+         session_id = initJson.session_id;
+
+         const button = $("#davinciButton").getKendoFloatingActionButton();
+         
+         button.enable();
+         $("#davinciButton").addClass("pulse alive");
+      });
+
    });
 
-});
 
-  
-
-   
-
-   // TODO: create confirmatin notification for the chat, with links to the program or records that have been created, or some error notification
+   // Set up various templates for use in the chat
    const davinciresponse_template = kendo.template($('#davinciresponse-template').html());
    kendo.chat.registerTemplate("davinciresponse", davinciresponse_template);
 
@@ -1835,6 +1823,148 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
 
    const models_template = kendo.template($('#models-template').html());
    kendo.chat.registerTemplate("models", models_template);
+
+   var WizardCardComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append('<form id="wizard" style="width:100%; margin: 0 auto;" novalidate></form>');
+         setTimeout(function() {
+            initWizard();
+         }, 300);
+      }
+   });
+   kendo.chat.registerComponent("WizardCardComponent", WizardCardComponent);
+
+   var ContactCardComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(options.html);
+      }
+   });
+   kendo.chat.registerComponent("ContactCardComponent", ContactCardComponent);
+
+   var GridComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         // Create a <div> from which the Calendar will be initialized.
+         var gridElement = $('<div>');
+
+         // Initialize the grid component by passing the provided value.
+         gridElement.kendoGrid({
+            dataSource: options.dataSource,
+         });
+
+         // create a context menu just if there is a column with an ID
+         const possibleIDCols = ["Order","order id", "order_id", "customer id", "customer_id", "product id", "product_id", "product code", "job id", "job_id", "warehouse", "warehouse_id", "warehouse id"];
+         Object.keys(options.dataSource[0]).forEach((item, idx) => {
+            if (possibleIDCols.includes(item.toLowerCase())) {
+               const recordTHead = $(`[data-field="${item}"]`, gridElement);
+               const recordColIdx = $(".k-table-thead th", gridElement).index(recordTHead);
+               console.log('recordTHead', recordTHead, 'recordColIdx', recordColIdx);
+               gridElement.find(`td:nth-child(${recordColIdx + 1})`).append("<i class='material-icons sys-fg-primary view-record'>more_horiz</i>");
+               $(`<ul id="record-view-menu-${idx}">
+                  <li class="view-record-card">View card in chat</li>
+                  <li>Go to record</li>
+               </ul>`).appendTo("#recordViewMenus").kendoContextMenu({
+                  target: gridElement,
+                  filter: `td:nth-child(${recordColIdx + 1}) .view-record`,
+                  showOn: "click",
+                  select: function(e) {
+                     console.log(e);
+                     var grid = gridElement.data("kendoGrid");
+                     var model = grid.dataItem($(e.target).closest("tr"));
+                     console.log(model);
+                     const recordID = model[item];
+                     console.log(recordID);
+                     if ($(e.item).hasClass("view-record-card")) {
+                        chat.postMessage(`Show me the card for ${item} ${recordID}`);
+                     }
+                  }
+               });               
+            }
+         });
+         
+         // Place the grid within the Chat card.
+         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(bodyElement);
+      }
+   });
+   kendo.chat.registerComponent("GridComponent", GridComponent);
+
+   var ChartComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         // Create a <div> from which the Calendar will be initialized.
+         var gridElement = $('<div>');
+         
+         // if ( options.chartData.seriesDefaults && options.chartData.seriesDefaults.type && options.chartData.seriesDefaults.type === "rangeBar" ) {
+         //    if ( options.chartData.dataSource?.data && options.chartData.dataSource?.data.length ) {
+         //       for (let i = 0; i < options.chartData.dataSource?.data.length; i++) {
+         //          console.log(options.chartData.dataSource.data[i]);
+         //          if (options.chartData.dataSource.data[i].start_date) {
+         //             options.chartData.dataSource.data[i].start_date = new Date(options.chartData.dataSource.data[i].start_date);
+         //          }
+         //          if (options.chartData.dataSource.data[i].end_date) {
+         //             options.chartData.dataSource.data[i].end_date = new Date(options.chartData.dataSource.data[i].end_date);
+         //          }
+         //       }
+
+         //    }
+         // }
+
+         // console.log(options);
+         
+         // Initialize the grid component by passing the provided value.
+         gridElement.kendoChart(options.chartData);
+
+         // Place the grid within the Chat card.
+         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(bodyElement);
+      }
+   });
+   kendo.chat.registerComponent("ChartComponent", ChartComponent);
+
+   var CodeComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         // Create a <div> from which the Calendar will be initialized.
+         var gridElement = $('<div>');
+
+         // Initialize the grid component by passing the provided value.
+         gridElement.kendoGrid({
+            dataSource: [ { firstName: "John",
+                  lastName: "Smith",
+                  email: "john.smith@telerik.com" },
+               { firstName: "Jane",
+                  lastName: "Smith",
+                  email: "jane.smith@telerik.com" },
+               { firstName: "Josh",
+                  lastName: "Davis",
+                  email: "josh.davis@telerik.com" },
+               { firstName: "Cindy",
+                  lastName: "Jones",
+                  email: "cindy.jones@telerik.com" }
+            ]
+         });
+
+         // Place the grid within the Chat card.
+         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("k-card chat-msg-card").append(bodyElement);
+      }
+   });
+   kendo.chat.registerComponent("CodeComponent", CodeComponent);
 
    const daVinciUser = {
       id: 'daVinci',
@@ -1887,12 +2017,9 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                chat.renderUserTypingIndicator(daVinciUser);
                $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
             }, 250);
-            fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/run_conversation", {
+            fetch(`${apiURL}/run_conversation`, {
                method: "POST",      
-               headers: {
-                  "Content-type": "application/json",
-                  "accept": "application/json"
-               },
+               headers,
                body: JSON.stringify({
                   "session_id": session_id,
                   "input": "Hello, I'm Joe",  
@@ -2034,169 +2161,16 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
       e.preventDefault();
    });
 
-   var WizardCardComponent = kendo.chat.Component.extend({
-      init: function (options, view) {
-         console.log(options);
-         kendo.chat.Component.fn.init.call(this, options, view);
-         this.element.attr("data-msg-id", generateUUID());
-         this.element.addClass("k-card chat-msg-card").append('<form id="wizard" style="width:100%; margin: 0 auto;" novalidate></form>');
-         setTimeout(function() {
-            initWizard();
-         }, 300);
-      }
-   });
-
-   kendo.chat.registerComponent("WizardCardComponent", WizardCardComponent);
-
-   var ContactCardComponent = kendo.chat.Component.extend({
-      init: function (options, view) {
-         console.log(options);
-         kendo.chat.Component.fn.init.call(this, options, view);
-         this.element.attr("data-msg-id", generateUUID());
-         this.element.addClass("k-card chat-msg-card").append(options.html);
-      }
-   });
-
-   kendo.chat.registerComponent("ContactCardComponent", ContactCardComponent);
-
-   var GridComponent = kendo.chat.Component.extend({
-      init: function (options, view) {
-         console.log(options);
-         kendo.chat.Component.fn.init.call(this, options, view);
-
-         // Create a <div> from which the Calendar will be initialized.
-         var gridElement = $('<div>');
-
-         // Initialize the grid component by passing the provided value.
-         gridElement.kendoGrid({
-            dataSource: options.dataSource,
-         });
-
-         // create a context menu just if there is a column with an ID
-         const possibleIDCols = ["Order","order id", "order_id", "customer id", "customer_id", "product id", "product_id", "product code", "job id", "job_id", "warehouse", "warehouse_id", "warehouse id"];
-         Object.keys(options.dataSource[0]).forEach((item, idx) => {
-            if (possibleIDCols.includes(item.toLowerCase())) {
-               const recordTHead = $(`[data-field="${item}"]`, gridElement);
-               const recordColIdx = $(".k-table-thead th", gridElement).index(recordTHead);
-               console.log('recordTHead', recordTHead, 'recordColIdx', recordColIdx);
-               gridElement.find(`td:nth-child(${recordColIdx + 1})`).append("<i class='material-icons sys-fg-primary view-record'>more_horiz</i>");
-               $(`<ul id="record-view-menu-${idx}">
-                  <li class="view-record-card">View card in chat</li>
-                  <li>Go to record</li>
-               </ul>`).appendTo("#recordViewMenus").kendoContextMenu({
-                  target: gridElement,
-                  filter: `td:nth-child(${recordColIdx + 1}) .view-record`,
-                  showOn: "click",
-                  select: function(e) {
-                     console.log(e);
-                     var grid = gridElement.data("kendoGrid");
-                     var model = grid.dataItem($(e.target).closest("tr"));
-                     console.log(model);
-                     const recordID = model[item];
-                     console.log(recordID);
-                     if ($(e.item).hasClass("view-record-card")) {
-                        chat.postMessage(`Show me the card for ${item} ${recordID}`);
-                     }
-                  }
-               });               
-            }
-         });
-         
-         // Place the grid within the Chat card.
-         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
-         this.element.attr("data-msg-id", generateUUID());
-         this.element.addClass("k-card chat-msg-card").append(bodyElement);
-      }
-   });
-
-   kendo.chat.registerComponent("GridComponent", GridComponent);
-
-   var ChartComponent = kendo.chat.Component.extend({
-      init: function (options, view) {
-         console.log(options);
-         kendo.chat.Component.fn.init.call(this, options, view);
-
-         // Create a <div> from which the Calendar will be initialized.
-         var gridElement = $('<div>');
-         
-         // if ( options.chartData.seriesDefaults && options.chartData.seriesDefaults.type && options.chartData.seriesDefaults.type === "rangeBar" ) {
-         //    if ( options.chartData.dataSource?.data && options.chartData.dataSource?.data.length ) {
-         //       for (let i = 0; i < options.chartData.dataSource?.data.length; i++) {
-         //          console.log(options.chartData.dataSource.data[i]);
-         //          if (options.chartData.dataSource.data[i].start_date) {
-         //             options.chartData.dataSource.data[i].start_date = new Date(options.chartData.dataSource.data[i].start_date);
-         //          }
-         //          if (options.chartData.dataSource.data[i].end_date) {
-         //             options.chartData.dataSource.data[i].end_date = new Date(options.chartData.dataSource.data[i].end_date);
-         //          }
-         //       }
-
-         //    }
-         // }
-
-         // console.log(options);
-         
-         // Initialize the grid component by passing the provided value.
-         gridElement.kendoChart(options.chartData);
-
-         // Place the grid within the Chat card.
-         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
-         this.element.attr("data-msg-id", generateUUID());
-         this.element.addClass("k-card chat-msg-card").append(bodyElement);
-      }
-   });
-
-   kendo.chat.registerComponent("ChartComponent", ChartComponent);
-
-   var CodeComponent = kendo.chat.Component.extend({
-      init: function (options, view) {
-         kendo.chat.Component.fn.init.call(this, options, view);
-
-         // Create a <div> from which the Calendar will be initialized.
-         var gridElement = $('<div>');
-
-         // Initialize the grid component by passing the provided value.
-         gridElement.kendoGrid({
-            dataSource: [ { firstName: "John",
-                  lastName: "Smith",
-                  email: "john.smith@telerik.com" },
-               { firstName: "Jane",
-                  lastName: "Smith",
-                  email: "jane.smith@telerik.com" },
-               { firstName: "Josh",
-                  lastName: "Davis",
-                  email: "josh.davis@telerik.com" },
-               { firstName: "Cindy",
-                  lastName: "Jones",
-                  email: "cindy.jones@telerik.com" }
-            ]
-         });
-
-         // Place the grid within the Chat card.
-         var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
-         this.element.attr("data-msg-id", generateUUID());
-         this.element.addClass("k-card chat-msg-card").append(bodyElement);
-      }
-   });
-
-   kendo.chat.registerComponent("CodeComponent", CodeComponent);
-
-
    //Creating dynamic link that automatically click
    function downloadURI(uri, name) {
       var link = document.createElement("a");
-      // var createAText = document.createTextNode("HEHEHEHEHEHEHEHEHEHE");
       link.download = name;
       link.href = uri;
-      // link.appendChild(createAText);
       console.log(link);
       document.body.appendChild(link);
       link.click();
-      //after creating link you should delete dynamic link
-      //clearDynamicLink(link); 
    }
 
-   //Your modified code.
    function printToFile(div) {
       console.log('printToFile', div);
       html2canvas(div).then(canvas => {
@@ -2206,7 +2180,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
       });
    }
 
-
    function renderMsgActions() {
       setTimeout(function() {
             $(".k-card-list").last().prepend("<span class='chat-user-msg-actions sys-pd-r-10 sys-mg-t-15'><a class='flag-query'><i class='material-icons text-muted'>flag</i></a><a class='flag-query'><i class='material-icons text-muted'>send</i></a><a class='export-response'><i class='material-icons text-muted'>file_download</i></a></span>");
@@ -2214,37 +2187,7 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
             $(".k-card-list").last().find('.export-response').on('click', function() {
                const exportElement = $(this).closest('.chat-user-msg-actions').siblings('.chat-msg-card');
                printToFile(exportElement[0]);
-               // pdfGen.html(exportElement[0], {
-               //    callback: function (doc) {
-               //       console.log('here is the PDF!', doc);
-
-               //       doc.save();
-               //    },
-               //    // fontFaces: [
-               //    //    {
-               //    //    family: 'Material Icons',
-               //    //    src: [
-               //    //          {
-               //    //             url: 'css/UX_FONTS_MaterialIcons-Regular.woff',
-               //    //             format: 'woff'
-               //    //          }
-               //    //    ]
-               //    // }
-               //    // ],
-               //    x: 0,
-               //    y: 0,
-               //    Html2CanvasOptions: {
-               //       scale: 0.75,
-               //       width: exportElement.width() + 200,
-               //       height: exportElement.height() + 200
-               //    },
-               //    // width: exportElement.width() + 200,
-               //    // height: exportElement.height() + 200
-               //    // windowWidth
-               // });
-            });
-
-            
+            });            
       }, 500);
    }
 
@@ -2261,33 +2204,30 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
       return string.replace(/\,(?!\s*?[\{\[\"\'\w])/g, '');
    }
 
-   const suggestedActions = {
-      IMP040: {
-
-      },
-      SORPEN: {
-
-      },
-      ARSPEN: {
-
-      },
-      INVPEN: {
-
-      }
-   };
-   suggestedActions["SORPOE"] = suggestedActions["IMP040"];
-
+   function generateUUID() {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+        });
+        if (!isNaN(uuid.substring(0, 1))) {
+            uuid = 'a' + uuid.substring(1);
+        }
+        return uuid;
+    };
+    
    const codeCheck = 'Here starts code:';
    const chartCheck = 'Here starts chart data:';
    const commentRegex = /\/\/.+\n/;
 
    var chat = $("#daVinciChat").kendoChat({
-         user: {
-            id: "sysproUser",
-            name: "sysproUser",
-            iconUrl: "https://ui-avatars.com/api/?background=027f02&color=fff&name=Joe&length=1"
-         },
-        post: function (args) {
+      user: {
+         id: "sysproUser",
+         name: "sysproUser",
+         iconUrl: "https://ui-avatars.com/api/?background=027f02&color=fff&name=Joe&length=1"
+      },
+      post: function (args) {
          console.log(args);
 
             // React on a user post action.
@@ -2301,13 +2241,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
             if (![
                "Please provide more technical information.",
                "There's something wrong with this.",
-               "Sorry to hear that, can you describe the problem?",
-               "Who are the top 4 sales staff at Cycle Corp?",
-               "Confirmation demo",
-               "Go ahead",
-               "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year.",
-               "List Purchase Orders with issues",
-               "List 16 new Purchase Orders"
             ].includes(args.text)) {
 
                setTimeout(function() {
@@ -2315,27 +2248,10 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                   $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
                }, 300);
 
-               // fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/chains.conversation_chain_with_tools.conversation/run", {
-               //    method: "POST",
-               //    body: JSON.stringify({
-               //       "input": args.text,
-               //       "memory": chatMemory
-               //    }),
-               //    headers: {
-               //       "Content-type": "application/json; charset=UTF-8",
-               //       "accept": "application/json"
-               //    }
-               // })
-               // .then((response) => response.json())
-               // .then((json) => {
-                  
 
-               fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/run_conversation", {
+               fetch(`${apiURL}/run_conversation`, {
                   method: "POST",      
-                  headers: {
-                     "Content-type": "application/json",
-                     "accept": "application/json"
-                  },
+                  headers,
                   body: JSON.stringify({
                      "session_id": session_id,
                      "input": args.text,         
@@ -2359,16 +2275,10 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                      }, daVinciUser);
                      responseString = "";
                   } else if (responseString.includes("Use the wizard")) {
-                     console.log(responseString);
+                     console.log('wizard', responseString);
                      chat.renderAttachments({
                         attachments: [{
                            contentType: "WizardCardComponent",
-                           // content: {
-                           //    html: code
-                           // }
-                           // content: {
-                           // value: new Date()
-                           // }
                         }]
                      }, daVinciUser);
                      renderMsgActions();
@@ -2382,7 +2292,7 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                      }, 250);
                      responseString = "";
                   } else if (responseString.includes(codeCheck) || responseString.includes("```html")) {
-                     console.log('peep');
+                     console.log('html response');
                      console.log(responseString);
                      let code, codeToRemove;
                      if (responseString.includes("```html")) {
@@ -2399,7 +2309,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                         codeToRemove = "```" + code + "```";
                      } else {
                         console.log(responseString.indexOf(codeCheck));
-                        console.log(codeCheck.length);
                         code = responseString.slice(responseString.indexOf(codeCheck) + codeCheck.length);
                         codeToRemove = code;
                      }
@@ -2422,9 +2331,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                            content: {
                               html: code
                            }
-                           // content: {
-                           // value: new Date()
-                           // }
                         }]
                      }, daVinciUser);
                      renderMsgActions();
@@ -2486,9 +2392,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                               content: {
                                  dataSource: JSON.parse(code)
                               }
-                              // content: {
-                              // value: new Date()
-                              // }
                            }]
                         }, daVinciUser);
                         renderMsgActions();
@@ -2504,7 +2407,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                   } else if (responseString.includes(chartCheck) || (responseString.includes("chart") && responseString.includes("Here is"))) {
                      console.log('kendo chart');
                      console.log(responseString);
-                     // const code = responseString.slice(responseString.indexOf(chartCheck) + chartCheck.length);
                      
                      let code, codeToRemove;
                      if (responseString.includes("```javascript")) {
@@ -2565,9 +2467,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                               content: {
                                  chartData: JSON.parse(code)[0]
                               }
-                              // content: {
-                              // value: new Date()
-                              // }
                            }]
                         }, daVinciUser);
                         renderMsgActions();
@@ -2584,28 +2483,15 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                      && json.intermediate_steps[0][0].tool
                      && (json.intermediate_steps[0][0].tool === "search_syspro_learning" || json.intermediate_steps[0][0].tool === "search_syspro_web")
                      ) {  
-                        console.log('learning used');
+                        console.log('learning used');   
+                        for (const prog of smartLinkReplaceStrings) {
+                           responseString = responseString.replace(prog, `<span class='clickable'>${prog}</span>`);
+                        }
                         chat.renderAttachments({
                            attachments: [{
                               contentType: "sysprolearn",
                               content: {
-                                 // "title": techInfo["tile"].title,
-                                 "content": responseString
-                                    .replace("Inventory Query", "<span class='clickable'>Inventory Query</span>")
-                                    .replace("Inventory ATP Query", "<span class='clickable'>Inventory ATP Query</span>")
-                                    .replace("Inventory at a Glance", "<span class='clickable'>Inventory at a Glance</span>")
-                                    .replace("Inventory Forecasting", "<span class='clickable'>Inventory Forecasting</span>")
-                                    .replace("Inventory Optimization", "<span class='clickable'>Inventory Optimization</span>"),
-
-                                    
-                                 // "content": responseString.replace(/"(.*?)"/|/'(.*?)'/g, function myFunction(x){
-                                 //    x = "<span class='clickable'>"+ x +"</span>"
-                                 //    return x;
-                                 // }),
-                                 // "make": "Opel",
-                                 // "model": "Astra",
-                                 // "worth": "4000",
-                                 // "startDate": "2018-10-10"
+                                 "content": responseString                                    
                               }
                            }],
                            attachmentLayout: "list"
@@ -2642,10 +2528,10 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                      console.log(sqText.includes("```json"));
                      console.log('sqJSONraw:', sqJSONraw);
                      const sqJSON = sqJSONraw.split("<Customer name>").join(`Customer ${contextVariables["Customer name"]}`)
-                           .split("<Customer ID>").join(`Customer ${contextVariables["Customer ID"]}`)
-                           .split("<Stock Codes>").join(`Stock code ${contextVariables["Stock Codes"]}`)
-                           .split("<Order ID>").join(`Order ${contextVariables["Order ID"]}`)                              
-                           .split("<Salesperson ID>").join(`Salesperson ${contextVariables["Salesperson ID"]}`);
+                        .split("<Customer ID>").join(`Customer ${contextVariables["Customer ID"]}`)
+                        .split("<Stock Codes>").join(`Stock code ${contextVariables["Stock Codes"]}`)
+                        .split("<Order ID>").join(`Order ${contextVariables["Order ID"]}`)                              
+                        .split("<Salesperson ID>").join(`Salesperson ${contextVariables["Salesperson ID"]}`);
                      console.log('sqJSON', sqJSON);
                      // Check if 'otherText' is just whitespace...
                      if (otherText.replace(/\s/g, '').length) {
@@ -2663,29 +2549,8 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                      chat.renderSuggestedActions(JSON.parse(sqJSON));
                   }
 
-
-                  // chat.renderSuggestedActions([{
-                  //    title: "Ask for a grid",
-                  //    value: "Who are the top 4 sales staff at Cycle Corp?"
-                  // }, {
-                  //    title: "Show confirmation",
-                  //    value: "Confirmation demo"
-                  // },
-                  // {
-                  //    title: "Produce code",
-                  //    value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-                  // }]); 
                });
-               // setTimeout(function() {
-               //    chat.renderUserTypingIndicator(daVinciUser);
-               // }, 400);
-               // setTimeout(function() {
-               //    chat.renderMessage({
-               //       type: "text",
-               //       text: "Sorry I'm not sure what you mean 🤪 did you want to do one of these pre-formulated actions?"
-               //    }, daVinciUser);
-                                
-               // }, 1500);
+
             }
         },
         sendMessage: function(e) {
@@ -2695,229 +2560,14 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
         actionClick: function(e) {
             console.log(this);
             setTimeout(function() {
-                  chat.renderUserTypingIndicator(daVinciUser);
-                  $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-               }, 400);
-            
-            // if (e.text === "Please provide more technical information.") {
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    technicalInfo();
-            // } else if (e.text === "There's something wrong with this.") {
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    setTimeout(function() {
-            //       chat.renderMessage({
-            //          type: "text",
-            //          text: "Sorry to hear that, can you describe the problem?"
-            //       }, daVinciUser);
-            //    }, 1500);
-               
-            // } else if (e.text === "Who are the top 4 sales staff at Cycle Corp?") {
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    setTimeout(function() {
-            //       chat.renderAttachments({
-            //          attachments: [{
-            //             contentType: "GridComponent",
-            //             content: {
-            //                dataSource: [ { firstName: "John",
-            //                   lastName: "Smith",
-            //                   email: "john.smith@telerik.com" },
-            //                { firstName: "Jane",
-            //                   lastName: "Smith",
-            //                   email: "jane.smith@telerik.com" },
-            //                { firstName: "Josh",
-            //                   lastName: "Davis",
-            //                   email: "josh.davis@telerik.com" },
-            //                { firstName: "Cindy",
-            //                   lastName: "Jones",
-            //                   email: "cindy.jones@telerik.com" }
-            //             ]
-            //             }
-            //             // content: {
-            //             // value: new Date()
-            //             // }
-            //          }]
-            //       }, daVinciUser);
-            //       renderMsgActions();
-            //       // chat.renderSuggestedActions([{
-            //       //    title: "Show confirmation",
-            //       //    value: "Confirmation demo"
-            //       // },
-            //       // {
-            //       //    title: "Produce code",
-            //       //    value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-            //       // }]);
-
-            //       initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-            //    }, 1500);
-            // } else if (e.text === "Confirmation demo") {
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    setTimeout(function() {
-            //       chat.renderAttachments({
-            //          attachments: [{
-            //             contentType: "davinciconfirm",
-            //             content: {
-            //                "title": "Confirm pending updates",
-            //                "content": "You have uploaded 16 files, and Da Vinci Vision will create 16 new Purchase Orders from these files. Da Vinci will inform you if any new Purchase Orders are missing required information. Would you like to proceed?",
-            //             }
-            //          }]
-            //       }, daVinciUser);
-            //       renderMsgActions();
-            //       $(".k-message-list-content > div:last-child")[0].scrollIntoView();
-            //       initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-            //       // chat.renderSuggestedActions([{
-            //       //    title: "Ask for a grid",
-            //       //    value: "Who are the top 4 sales staff at Cycle Corp?"
-            //       // },
-            //       // {
-            //       //    title: "Produce code",
-            //       //    value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-            //       // }]);
-            //    }, 1500);
-            // } else if (e.text === "Go ahead") {
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    setTimeout(function() {
-            //       chat.renderMessage({
-            //          // attachments: [{
-            //          //    contentType: "davinciconfirmed",
-            //          //    content: {
-            //          //       "content": "16 files have been processed, and 16 new Purchase Orders created. 3 have required information missing.",
-            //          //    }
-            //          // }]
-            //          type: "text",
-            //          text: "16 files have been processed, and 16 new Purchase Orders created. 3 have required information missing."
-            //       }, daVinciUser);  
-            //       // chat.renderSuggestedActions([{
-            //       //    title: "List Purchase Orders with issues",
-            //       //    value: "List Purchase Orders with issues"
-            //       // },
-            //       // {
-            //       //    title: "List 16 new Purchase Orders",
-            //       //    value: "List 16 new Purchase Orders"
-            //       // },
-            //       // {
-            //       //    title: "Open PO Query",
-            //       //    value: "Open PO Query"
-            //       // }]);                
-            //    }, 1500);
-            // } else if (e.text === "List 16 new Purchase Orders" || e.text === "List Purchase Orders with issues") {
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    setTimeout(function() {
-            //       chat.renderAttachments({
-            //          attachments: [{
-            //             contentType: "davinciconfirmed",
-            //             content: {
-            //                "content": "<ul><li><a>PO B332DX</a></li><li><a>PO B332DX</a></li><li><a>PO B332DX</a></li></ul>",
-            //             }
-            //          }]
-            //       }, daVinciUser);  
-            //       renderMsgActions();
-            //       initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-            //       // chat.renderSuggestedActions([{
-            //       //    title: "List Purchase Orders with issues",
-            //       //    value: "List Purchase Orders with issues"
-            //       // },
-            //       // {
-            //       //    title: "List 16 new Purchase Orders",
-            //       //    value: "List 16 new Purchase Orders"
-            //       // },
-            //       // {
-            //       //    title: "Open PO Query",
-            //       //    value: "Open PO Query"
-            //       // }]);                
-            //    }, 1500);
-            // } else if (e.text === "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year.") { 
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    setTimeout(function() {
-            //       chat.renderAttachments({
-            //          attachments: [{
-            //             contentType: "davincicode",
-            //             // content: {
-            //             // value: new Date()
-            //             // }
-            //          }]
-            //       }, daVinciUser);
-            //       renderMsgActions();
-            //       hljs.highlightAll();
-            //       // chat.renderSuggestedActions([{
-            //       //    title: "Show confirmation",
-            //       //    value: "Confirmation demo"
-            //       // },
-            //       // {
-            //       //    title: "Ask for a grid",
-            //       //    value: "Who are the top 4 sales staff at Cycle Corp?"
-            //       // }]);
-            //       initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-            //    }, 1500);
-            
-            // } else {
-            //    setTimeout(function() {
-            //       chat.renderUserTypingIndicator(daVinciUser);
-            //       $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            //    }, 400);
-            //    setTimeout(function() {
-            //       chat.renderMessage({
-            //          type: "text",
-            //          text: "Sorry I'm not sure what you mean 🤪 - did you want to do one of these pre-formulated actions?"
-            //       }, daVinciUser);
-            //       // chat.renderSuggestedActions([{
-            //       //    title: "Ask for a grid",
-            //       //    value: "Who are the top 4 sales staff at Cycle Corp?"
-            //       // }, {
-            //       //    title: "Show confirmation",
-            //       //    value: "Confirmation demo"
-            //       // },
-            //       // {
-            //       //    title: "Produce code",
-            //       //    value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-            //       // }]);               
-            //    }, 1500);
-
-               
-            // }
-            
-            // e.preventDefault();
+               chat.renderUserTypingIndicator(daVinciUser);
+               $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
+            }, 400);                        
       }
    }).data("kendoChat");
 
-   // chat.renderSuggestedActions([{
-   //      title: "Ask for a grid",
-   //      value: "Who are the top 4 sales staff at Cycle Corp?"
-   //  }, {
-   //    title: "Show confirmation",
-   //    value: "Confirmation demo"
-   //  },
-   //  {
-   //    title: "Produce code",
-   //    value: "Write me some script to make the text in field ARSPEN.SalesTotal green if the value is greater than for the same period, previous year, and red if the value is smaller than for the same period, previous year."
-   //  }]);
-
 
    function technicalInfo() {
-      
-      // const popoverId = $(this).closest(".daVinciPopover").attr("id");
-      // const trigger = $(`[aria-describedby="${popoverId}"]`);
-      // const contentId = trigger.attr("data-content-id");
       setTimeout(function() {
          chat.clearUserTypingIndicator(daVinciUser);
          chat.renderAttachments({
@@ -2926,10 +2576,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
                content: {
                   "title": techInfo["tile"].title,
                   "content": techInfo["tile"].content,
-                  // "make": "Opel",
-                  // "model": "Astra",
-                  // "worth": "4000",
-                  // "startDate": "2018-10-10"
                }
             }],
             attachmentLayout: "list"
@@ -2938,7 +2584,6 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
          $(".k-message-list-content > div:last-child")[0].scrollIntoView();
          initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
       }, 3000);
-      
       
    };
     
@@ -2995,7 +2640,7 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
       });
    }
 
-   var salesData = [
+   const salesData = [
             {
                 "country": "United States",
                 "year": "2012",
@@ -3053,539 +2698,475 @@ fetch("https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io/get_ac
             },
             
         ];
-            const futureSales = [
-            {
-                "country": "United States",
-                "year": "2022",
-                "value": 74.2,
-               //  "noteText": "Something"
-            },
-            {
-                "country": "United States",
-                "year": "2023",
-                "value": 71.2
-            },
-            {
-                "country": "United States",
-                "year": "2024",
-                "value": 74.2
-            },
-            {
-                "country": "United States",
-                "year": "2025",
-                "value": 78.2,
-               //  "noteText": "Something"
-            }
-         ];
+   const futureSales = [
+      {
+            "country": "United States",
+            "year": "2022",
+            "value": 74.2,
+         //  "noteText": "Something"
+      },
+      {
+            "country": "United States",
+            "year": "2023",
+            "value": 71.2
+      },
+      {
+            "country": "United States",
+            "year": "2024",
+            "value": 74.2
+      },
+      {
+            "country": "United States",
+            "year": "2025",
+            "value": 78.2,
+         //  "noteText": "Something"
+      }
+   ];
             
-      function createChart() {
-            $("#chart").kendoChart({
-               //  dataSource: {
-               //      data: salesData
-               //  },
-               theme: "material",
-                title: {
-                    text: "Sales performance"
-                },
-                legend: {
-                    visible: false
-                },
-                seriesDefaults: {
-                    type: "line",
-                    labels: {
-                        visible: true,
-                        format: "${0}m",
-                        background: "transparent"
-                    }
-                },
-                seriesClick: function(e) {
-                     if (e.series.name === "dvp") {
-                        // Disable browser context menu
-                        daVinciWindow.open();
-                        setTimeout(function(){
-                           $("#daVinciChat .k-message-box input").focus();
-                        }, 220);
-                        chat.renderAttachments({
-                           attachments: [{
-                              contentType: "davinciresponse",
-                              content: {
-                                 "title": "Da Vinci trend prediction",
-                                 "content": "The data points on the dashed purple line are calculated by Da Vinci's trend prediction model. The model learns from your data, and estimates future values based on identified trends.",
-                                 // "make": "Opel",
-                                 // "model": "Astra",
-                                 // "worth": "4000",
-                                 // "startDate": "2018-10-10"
-                              }
-                           }],
-                           attachmentLayout: "list"
-                        }, daVinciUser);
-                        renderMsgActions();
-                        $(".k-message-list-content > div:last-child")[0].scrollIntoView();
-                        initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-                     }
-                  },
-                series: [{
-                     data: salesData,
-                    field: "value",
-                    categoryField: "year",
-                    name: "United States",
-                    highlight: {
-                     inactiveOpacity: 0.5
-                     }
-                },
-                {
-                     data: futureSales,
-                     dashType: "dash",
-                    field: "value",
-                    categoryField: "year",
-                    name: "dvp",
-                    color: "#7B1FA2",
-                    highlight: {
-                     inactiveOpacity: 0.5,
-                     visual: function(e) {
-                        var group = new kendo.drawing.Group();
-                        
-                        var center = e.rect.center();
-                        var circleGeometry = new kendo.geometry.Circle(center, 10);
-                        var circle = new kendo.drawing.Circle(circleGeometry, {
-                           fill: {
-                              color: "#7B1FA2"
-                           },
-                           stroke: null,
-                           cursor: "pointer"
-                        });
-
-                        var src = "img/davinci.png";
-                        var image = new kendo.drawing.Image(src, e.rect);
-                        image.options.cursor = "pointer";
-                        group.options.cursor = "pointer";
-
-                        group.append(circle, image);
-                        return group;
-                     }
-                     }
-                  //   noteTextField: "noteText",
-                  //    notes: {
-                  //       label: {
-                  //          // template: "#: value #",
-                        
-                  //       },
-                  //       position: "bottom"
-                  //    },
-                  //    markers: {
-                  //       size: 32,
-                  //       visual: function (e) {
-                  //           var src = "img/davinci.png";
-                  //           var image = new kendo.drawing.Image(src, e.rect);
-                  //           return image;
-                  //       },
-                  //       background: "#000",
-                  //   }
-                }],
-                valueAxis: {
-                    labels: {
-                        format: "${0}m"
-                    },
-                    line: {
-                        visible: false
-                    }
-                },
-                categoryAxis: {
-                    majorGridLines: {
-                        visible: false
-                    }
-                }
-            });
-        }
-        
-         const exampleEl = document.getElementById('example')
-         $(".daVinciPopoverTrigger").each(function(idx, elem) {
-            const title = $(elem).attr("data-bs-title") || "Da Vinci Generated Text";
-            const popover = new bootstrap.Popover(elem, {
-               html: true,
-               title: title,
-               trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Generated Text</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
-            });
-         });
-
-         $(".daVinciDataPopoverTrigger").each(function(idx, elem) {
-            const title = $(elem).attr("data-bs-title") || "DaVinci insight";
-            const popover = new bootstrap.Popover(elem, {
-               html: true,
-               title: title,
-               trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
-            });
-         });
-
-         $(".daVinciAutoPopoverTrigger").each(function(idx, elem) {
-            const title = $(elem).attr("data-bs-title") || "Da Vinci Automated Process";
-            const popover = new bootstrap.Popover(elem, {
-               html: true,
-               title: title,
-               trigger: "click focus",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
-            });
-         });
-
-         $(".davincifield").each(function(idx, elem) {
-            const popover = new bootstrap.Popover(elem, {
-               html: true,
-               title: "Da Vinci Generated Data",
-               trigger: "hover",
-               content: "Field value generated by Da Vinci",
-               customClass: "daVinciPopover",
-               template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body">Field value generated by Da Vinci</div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
-            });
-         });
-         
-         // $(document).on("click", ".daVinciPopoverTrigger", function(e) {
-
-         // });
-         function initChatCardTooltips(elem) {
-            $('[data-bs-toggle="tooltip"]', elem).each(function(idx, element) {
-               const tooltip = new bootstrap.Tooltip(element);
-            });            
-         }
-
-         $(document).on("click", ".daVinciTellMore", function(e) {
-            const popoverId = $(this).closest(".daVinciPopover").attr("id");
-            const trigger = $(`[aria-describedby="${popoverId}"]`);
-            const contentId = trigger.attr("data-content-id");
-            const popover = bootstrap.Popover.getInstance(trigger[0]);
-            popover.hide();
-            daVinciWindow.open();
-            setTimeout(function(){
-               $("#daVinciChat .k-message-box input").focus();
-            }, 220);
-            // chat.renderMessage({
-            //    type: "text",
-            //    text: popoverId
-            // }, daVinciUser);
-
-            chat.renderAttachments({
-               attachments: [{
-                  contentType: "davincisumresponse",
-                  content: {
-                     "title": responses[contentId].title,
-                     "content": responses[contentId].content,
-                     // "make": "Opel",
-                     // "model": "Astra",
-                     // "worth": "4000",
-                     // "startDate": "2018-10-10"
-                  }
-               }],
-               attachmentLayout: "list"
-            }, daVinciUser);
-            renderMsgActions();
-            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
-            initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-            // chat.renderSuggestedActions([{
-            //    title: "Tell me more",
-            //    value: "more"
-            // }]);
-         });
-
-         $(document).on("click", ".daVinciTellMoreData", function(e) {
-            const popoverId = $(this).closest(".daVinciPopover").attr("id");
-            const trigger = $(`[aria-describedby="${popoverId}"]`);
-            const contentId = trigger.attr("data-content-id");
-            const popover = bootstrap.Popover.getInstance(trigger[0]);
-            popover.hide();
-            daVinciWindow.open();
-            setTimeout(function(){
-               $("#daVinciChat .k-message-box input").focus();
-            }, 220);
-
-            chat.renderAttachments({
-               attachments: [{
-                  contentType: "davincitileresponse",
-                  content: {
-                     "title": responses[contentId].title,
-                     "content": responses[contentId].content,
-                  }
-               }],
-               attachmentLayout: "list"
-            }, daVinciUser);
-            renderMsgActions();
-            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
-            initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-         });
-
-         $(document).on("click", ".daVinciTellMoreAuto", function(e) {
-            const popoverId = $(this).closest(".daVinciPopover").attr("id");
-            const trigger = $(`[aria-describedby="${popoverId}"]`);
-            const contentId = trigger.attr("data-content-id");
-            const popover = bootstrap.Popover.getInstance(trigger[0]);
-            popover.hide();
-            daVinciWindow.open();
-            setTimeout(function(){
-               $("#daVinciChat .k-message-box input").focus();
-            }, 220);
-
-            chat.renderAttachments({
-               attachments: [{
-                  contentType: "davinciautoresponse",
-                  content: {
-                     "title": responses[contentId].title,
-                     "content": responses[contentId].content,
-                  }
-               }],
-               attachmentLayout: "list"
-            }, daVinciUser);
-
-            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
-            initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-         });
-
-         $(document).on("click", ".conflevel", function(e) {      
-            const popoverId = $(this).closest(".daVinciPopover").attr("id");
-            const trigger = $(`[aria-describedby="${popoverId}"]`);
-            const contentId = trigger.attr("data-content-id");
-            const popover = bootstrap.Popover.getInstance(trigger[0]);
-            popover?.hide();
-            daVinciWindow.open();      
-            chat.renderAttachments({
-               attachments: [{
-                  contentType: "confidence",
-                  content: {
-                     
-                  }
-               }],
-               attachmentLayout: "list"
-            }, daVinciUser);
-            renderMsgActions();
-            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
-            // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-         });
-
-         $(document).on("click", ".showmodelcard", function(e) {      
-            const popoverId = $(this).closest(".daVinciPopover").attr("id");
-            const trigger = $(`[aria-describedby="${popoverId}"]`);
-            const contentId = trigger.attr("data-content-id");
-            const popover = bootstrap.Popover.getInstance(trigger[0]);
-            popover?.hide();
-            daVinciWindow.open();      
-            chat.renderAttachments({
-               attachments: [{
-                  contentType: "models",
-                  content: {
-                     
-                  }
-               }],
-               attachmentLayout: "list"
-            }, daVinciUser);
-            renderMsgActions();
-            $(".k-message-list-content > div:last-child")[0].scrollIntoView();
-            // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
-         });
-
-         $("#files").kendoUpload({
-                    async: {
-                        saveUrl: "http://127.0.0.1:5500/UXTools/api/UXFileProviderWeb/UploadDocument",
-                        removeUrl: "remove",
-                        autoUpload: true,
-                    },
-                    validation: {
-                        allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
-                    },
-                    // template: kendo.template($('#fileTemplate').html()),
-                    success: onSuccess,
-                    showFileList: true,
-                    select: function(e) {
-                        var fileInfo = e.files[0];
-                        var wrapper = this.wrapper;
-
-                        setTimeout(function(){
-                            addPreview(fileInfo, wrapper);
-                        });
-                    }
-                   // dropZone: ".fileUploadDropZone",
-                });
-
-                $(".k-dropzone")
-                    .find("em")
-                    .remove();
-                  $(".k-dropzone")
-                    .find(".k-dropzone-hint")
-                    .remove();
-                $(".k-dropzone .k-upload-button")
-                    .find("span")
-                    .text("Drop file here or click to upload");
-                $(".k-dropzone .k-upload-button").prepend(
-                    "<h3 class='sys-mg-t-10 sys-mg-r-10'><i class='material-icons text-muted'>cloud_upload</i></h3>"
-                );
-
-                function onSuccess(e) {
-                    console.log('upload success!');  
-                    $(".file-upload-details").show(300);                  
-                }
-                
-                function addPreview(file, wrapper) {
-                    var raw = file.rawFile;
-                    var reader  = new FileReader();
-
-                    if (raw) {
-                    reader.onloadend = function () {
-                        var preview = $("<img class='image-preview'>").attr("src", this.result);
-
-                        wrapper.find(".k-file[data-uid='" + file.uid + "'] .k-file-extension-wrapper")
-                        .replaceWith(preview);
-                    };
-
-                    reader.readAsDataURL(raw);
-                    }
-                }
-
-
-        $(document).ready(createChart);
-
-      const confGridData = [
-         {
-            name: "Bicycle Spokes",
-            id: "00HG54",
-            date: "09/10/2023",
-            daysLate: 7,
-            confidence: 0.55,
+   function createChart() {
+      $("#chart").kendoChart({
+         //  dataSource: {
+         //      data: salesData
+         //  },
+         theme: "material",
+         title: {
+            text: "Sales performance"
          },
-         {
-            name: "Racing Seat",
-            id: "00HG52",
-            date: "08/10/2023",
-            daysLate: 5,
-            confidence: 0.23,
+         legend: {
+            visible: false
          },
-         {
-            name: "ABS Brakes",
-            id: "00TTG54",
-            date: "07/10/2023",
-            daysLate: 3,
-            confidence: 1,
+         seriesDefaults: {
+            type: "line",
+            labels: {
+               visible: true,
+               format: "${0}m",
+               background: "transparent"
+            }
          },
-         {
-            name: "Racing Handlebar",
-            id: "00JG89",
-            date: "06/10/2023",
-            daysLate: 8,
-            confidence: 0.78,
-         },
-      ];
-
-        $("#confGrid").kendoGrid({
-            dataSource: {
-               data: confGridData,
-               pageSize: 20,
-               schema: {
-                  model: {
-                        id: "id"
-                  }
-               }
-            },
-            dataBound: onDataBound,
-               columns: [
-                  {
-                     field: "id",
-                     title: "StockCode",
-                     // width: 300
-                  },
-                  {
-                     field: "name",
-                     title: "Name",
-                     // width: 300
-                  },
-                  {
-                     field: "date",
-                     title: "Date due",
-                     // format: "{dd/MM/yyyy}"
-                  },
-                  {
-                     field: "daysLate",
-                     title: "Days late",
-                     template: "<span><b>Expected #= daysLate# days late</b></span><span id='chart_#= id#' class='sparkline-chart pull-right'></span>",
-                     width: 170,
-                     headerTemplate: 'Expected Days Late <i class="material-icons pull-right align-right davinciicon-light sys-txt-sm">auto_awesome</i>'
-                     // format: "{0:c}",
-                  },
-
-               ]
-        });
-
-        function onDataBound(e) {
-            var grid = this;
-            grid.table.find("tr").each(function () {
-                var dataItem = grid.dataItem(this);
-               
-                $(this).find(".sparkline-chart").kendoSparkline({
-                    legend: {
-                        visible: false
-                    },
-                    series: [{
-                        data: [{
-                           value: dataItem.confidence * 100,
-                           color: dataItem.confidence > 0.74 
-                              ? "green"
-                              : dataItem.confidence > 0.49 && dataItem.confidence < 0.75
-                              ? "orange"
-                              : "red",
-                           
-                        },
-                        {
-                           value: (1 - dataItem.confidence) * 100,
-                           color: "#ccc",
-                           
-                        }                           
-                           
-                        ],
-                        tooltip: {
-                           visible: true,
-                           background: "#444",
-                           color: "#fff",
-                           border: {
-                              width: 0
-                           },
-                           template: function() {
-                              var adjustConf = Math.round(dataItem.confidence * 100);
-                              return adjustConf + "% chance";
-                           }
+         seriesClick: function(e) {
+               if (e.series.name === "dvp") {
+                  // Disable browser context menu
+                  daVinciWindow.open();
+                  setTimeout(function(){
+                     $("#daVinciChat .k-message-box input").focus();
+                  }, 220);
+                  chat.renderAttachments({
+                     attachments: [{
+                        contentType: "davinciresponse",
+                        content: {
+                           "title": "Da Vinci trend prediction",
+                           "content": "The data points on the dashed purple line are calculated by Da Vinci's trend prediction model. The model learns from your data, and estimates future values based on identified trends.",
                         }
                      }],
-                    
-                    type: "donut",
-                    chartArea: {
-                        margin: 0,
-                        width: 30,
-                        background: "transparent"
-                    },
-                    seriesDefaults: {
-                     size: 4,
-                     tooltip: {
-                     visible: false
-                    }
-                    },
-                    
-                });
+                     attachmentLayout: "list"
+                  }, daVinciUser);
+                  renderMsgActions();
+                  $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+                  initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+               }
+            },
+         series: [{
+            data: salesData,
+            field: "value",
+            categoryField: "year",
+            name: "United States",
+            highlight: {
+               inactiveOpacity: 0.5
+            }
+         },
+         {
+            data: futureSales,
+            dashType: "dash",
+            field: "value",
+            categoryField: "year",
+            name: "dvp",
+            color: "#7B1FA2",
+            highlight: {
+               inactiveOpacity: 0.5,
+               visual: function(e) {
+                  var group = new kendo.drawing.Group();
+                  
+                  var center = e.rect.center();
+                  var circleGeometry = new kendo.geometry.Circle(center, 10);
+                  var circle = new kendo.drawing.Circle(circleGeometry, {
+                     fill: {
+                        color: "#7B1FA2"
+                     },
+                     stroke: null,
+                     cursor: "pointer"
+                  });
 
-                kendo.bind($(this), dataItem);
-            });
-        }
+                  var src = "img/davinci.png";
+                  var image = new kendo.drawing.Image(src, e.rect);
+                  image.options.cursor = "pointer";
+                  group.options.cursor = "pointer";
 
-      //   $('#faves-menu').kendoContextMenu({
-      //       target: '[aria-labelledby="daVinciWindow_wnd_title"] .k-window-titlebar-action[aria-label="Heart"]',
-      //       alignToAnchor: true,
-      //       showOn: "click",
-      //       select: function(e) {
-      //          console.log(e.item);
-      //          const query = $(e.item).find(".k-menu-link-text").text();
-      //          chat.postMessage(query);
-      //       }
-      //    });
+                  group.append(circle, image);
+                  return group;
+               }
+            }
+         }],
+         valueAxis: {
+            labels: {
+               format: "${0}m"
+            },
+            line: {
+               visible: false
+            }
+         },
+         categoryAxis: {
+            majorGridLines: {
+               visible: false
+            }
+         }
+      });
+   }
+      
+   $(".daVinciPopoverTrigger").each(function(idx, elem) {
+      const title = $(elem).attr("data-bs-title") || "Da Vinci Generated Text";
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: title,
+         trigger: "click focus",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Generated Text</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
 
+   $(".daVinciDataPopoverTrigger").each(function(idx, elem) {
+      const title = $(elem).attr("data-bs-title") || "DaVinci insight";
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: title,
+         trigger: "click focus",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
 
-        $(document).on("click", ".clickable", function() {
-         alert("Take the user to the relevant program in Avanti");
-        });
-   </script>
+   $(".daVinciAutoPopoverTrigger").each(function(idx, elem) {
+      const title = $(elem).attr("data-bs-title") || "Da Vinci Automated Process";
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: title,
+         trigger: "click focus",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
+
+   $(".davincifield").each(function(idx, elem) {
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: "Da Vinci Generated Data",
+         trigger: "hover",
+         content: "Field value generated by Da Vinci",
+         customClass: "daVinciPopover",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body">Field value generated by Da Vinci</div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
+   
+
+   function initChatCardTooltips(elem) {
+      $('[data-bs-toggle="tooltip"]', elem).each(function(idx, element) {
+         const tooltip = new bootstrap.Tooltip(element);
+      });            
+   }
+
+   $(document).on("click", ".daVinciTellMore", function(e) {
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover.hide();
+      daVinciWindow.open();
+      setTimeout(function(){
+         $("#daVinciChat .k-message-box input").focus();
+      }, 220);
+
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "davincisumresponse",
+            content: {
+               "title": responses[contentId].title,
+               "content": responses[contentId].content,
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".daVinciTellMoreData", function(e) {
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover.hide();
+      daVinciWindow.open();
+      setTimeout(function(){
+         $("#daVinciChat .k-message-box input").focus();
+      }, 220);
+
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "davincitileresponse",
+            content: {
+               "title": responses[contentId].title,
+               "content": responses[contentId].content,
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".daVinciTellMoreAuto", function(e) {
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover.hide();
+      daVinciWindow.open();
+      setTimeout(function(){
+         $("#daVinciChat .k-message-box input").focus();
+      }, 220);
+
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "davinciautoresponse",
+            content: {
+               "title": responses[contentId].title,
+               "content": responses[contentId].content,
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".conflevel", function(e) {      
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover?.hide();
+      daVinciWindow.open();      
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "confidence",
+            content: {
+               
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".showmodelcard", function(e) {      
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover?.hide();
+      daVinciWindow.open();      
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "models",
+            content: {
+               
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".clickable", function() {
+      alert("Take the user to the relevant program in Avanti");
+   });
+
+   function onSuccess(e) {
+      console.log('upload success!');  
+      $(".file-upload-details").show(300);                  
+   }
+   
+   function addPreview(file, wrapper) {
+      var raw = file.rawFile;
+      var reader  = new FileReader();
+      if (raw) {
+      reader.onloadend = function () {
+         var preview = $("<img class='image-preview'>").attr("src", this.result);
+         wrapper.find(".k-file[data-uid='" + file.uid + "'] .k-file-extension-wrapper")
+         .replaceWith(preview);
+      };
+
+      reader.readAsDataURL(raw);
+      }
+   }
+
+   $("#files").kendoUpload({
+      async: {
+         saveUrl: "http://127.0.0.1:5500/UXTools/api/UXFileProviderWeb/UploadDocument",
+         removeUrl: "remove",
+         autoUpload: true,
+      },
+      validation: {
+         allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
+      },
+      // template: kendo.template($('#fileTemplate').html()),
+      success: onSuccess,
+      showFileList: true,
+      select: function(e) {
+         var fileInfo = e.files[0];
+         var wrapper = this.wrapper;
+
+         setTimeout(function(){
+               addPreview(fileInfo, wrapper);
+         });
+      }
+   });
+
+   $(".k-dropzone")
+      .find("em")
+      .remove();
+   $(".k-dropzone")
+      .find(".k-dropzone-hint")
+      .remove();
+   $(".k-dropzone .k-upload-button")
+      .find("span")
+      .text("Drop file here or click to upload");
+   $(".k-dropzone .k-upload-button").prepend(
+      "<h3 class='sys-mg-t-10 sys-mg-r-10'><i class='material-icons text-muted'>cloud_upload</i></h3>"
+   );
+   
+   $(document).ready(createChart);
+
+   const confGridData = [
+      {
+         name: "Bicycle Spokes",
+         id: "00HG54",
+         date: "09/10/2023",
+         daysLate: 7,
+         confidence: 0.55,
+      },
+      {
+         name: "Racing Seat",
+         id: "00HG52",
+         date: "08/10/2023",
+         daysLate: 5,
+         confidence: 0.23,
+      },
+      {
+         name: "ABS Brakes",
+         id: "00TTG54",
+         date: "07/10/2023",
+         daysLate: 3,
+         confidence: 1,
+      },
+      {
+         name: "Racing Handlebar",
+         id: "00JG89",
+         date: "06/10/2023",
+         daysLate: 8,
+         confidence: 0.78,
+      },
+   ];
+
+   $("#confGrid").kendoGrid({
+      dataSource: {
+         data: confGridData,
+         pageSize: 20,
+         schema: {
+            model: {
+                  id: "id"
+            }
+         }
+      },
+      dataBound: onDataBound,
+      columns: [
+         {
+            field: "id",
+            title: "StockCode",
+         },
+         {
+            field: "name",
+            title: "Name",
+         },
+         {
+            field: "date",
+            title: "Date due",
+         },
+         {
+            field: "daysLate",
+            title: "Days late",
+            template: "<span><b>Expected #= daysLate# days late</b></span><span id='chart_#= id#' class='sparkline-chart pull-right'></span>",
+            width: 170,
+            headerTemplate: 'Expected Days Late <i class="material-icons pull-right align-right davinciicon-light sys-txt-sm">auto_awesome</i>'
+         },
+      ]
+   });
+
+   function onDataBound(e) {
+      var grid = this;
+      grid.table.find("tr").each(function () {
+         var dataItem = grid.dataItem(this);      
+         $(this).find(".sparkline-chart").kendoSparkline({
+            legend: {
+               visible: false
+            },
+            series: [{
+               data: [{
+                  value: dataItem.confidence * 100,
+                  color: dataItem.confidence > 0.74 
+                     ? "green"
+                     : dataItem.confidence > 0.49 && dataItem.confidence < 0.75
+                     ? "orange"
+                     : "red",               
+               },
+               {
+                  value: (1 - dataItem.confidence) * 100,
+                  color: "#ccc",               
+               }],
+               tooltip: {
+                  visible: true,
+                  background: "#444",
+                  color: "#fff",
+                  border: {
+                     width: 0
+                  },
+                  template: function() {
+                     var adjustConf = Math.round(dataItem.confidence * 100);
+                     return adjustConf + "% chance";
+                  }
+               }
+            }],               
+            type: "donut",
+            chartArea: {
+               margin: 0,
+               width: 30,
+               background: "transparent"
+            },
+            seriesDefaults: {
+               size: 4,
+               tooltip: {
+                  visible: false
+               }
+            },         
+         });
+         kendo.bind($(this), dataItem);
+      });
+   }
+
+</script>
   
   </body>
 </html>
