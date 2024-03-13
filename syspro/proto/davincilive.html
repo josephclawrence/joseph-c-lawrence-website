@@ -1864,33 +1864,35 @@ If you are asked some query, and your response is to find the ID or name of one 
 
          // create a context menu just if there is a column with an ID
          const possibleIDCols = ["Order","order id", "order_id", "customer id", "customer_id", "product id", "product_id", "product code", "job id", "job_id", "warehouse", "warehouse_id", "warehouse id"];
-         Object.keys(options.dataSource[0]).forEach((item, idx) => {
-            if (possibleIDCols.includes(item.toLowerCase())) {
-               const recordTHead = $(`[data-field="${item}"]`, gridElement);
-               const recordColIdx = $(".k-table-thead th", gridElement).index(recordTHead);
-               console.log('recordTHead', recordTHead, 'recordColIdx', recordColIdx);
-               gridElement.find(`td:nth-child(${recordColIdx + 1})`).append("<i class='material-icons sys-fg-primary view-record'>more_horiz</i>");
-               $(`<ul id="record-view-menu-${idx}">
-                  <li class="view-record-card">View card in chat</li>
-                  <li>Go to record</li>
-               </ul>`).appendTo("#recordViewMenus").kendoContextMenu({
-                  target: gridElement,
-                  filter: `td:nth-child(${recordColIdx + 1}) .view-record`,
-                  showOn: "click",
-                  select: function(e) {
-                     console.log(e);
-                     var grid = gridElement.data("kendoGrid");
-                     var model = grid.dataItem($(e.target).closest("tr"));
-                     console.log(model);
-                     const recordID = model[item];
-                     console.log(recordID);
-                     if ($(e.item).hasClass("view-record-card")) {
-                        chat.postMessage(`Show me the card for ${item} ${recordID}`);
+         if (options.dataSource.length) {
+            Object.keys(options.dataSource[0]).forEach((item, idx) => {
+               if (possibleIDCols.includes(item.toLowerCase())) {
+                  const recordTHead = $(`[data-field="${item}"]`, gridElement);
+                  const recordColIdx = $(".k-table-thead th", gridElement).index(recordTHead);
+                  console.log('recordTHead', recordTHead, 'recordColIdx', recordColIdx);
+                  gridElement.find(`td:nth-child(${recordColIdx + 1})`).append("<i class='material-icons sys-fg-primary view-record'>more_horiz</i>");
+                  $(`<ul id="record-view-menu-${idx}">
+                     <li class="view-record-card">View card in chat</li>
+                     <li>Go to record</li>
+                  </ul>`).appendTo("#recordViewMenus").kendoContextMenu({
+                     target: gridElement,
+                     filter: `td:nth-child(${recordColIdx + 1}) .view-record`,
+                     showOn: "click",
+                     select: function(e) {
+                        console.log(e);
+                        var grid = gridElement.data("kendoGrid");
+                        var model = grid.dataItem($(e.target).closest("tr"));
+                        console.log(model);
+                        const recordID = model[item];
+                        console.log(recordID);
+                        if ($(e.item).hasClass("view-record-card")) {
+                           chat.postMessage(`Show me the card for ${item} ${recordID}`);
+                        }
                      }
-                  }
-               });               
-            }
-         });
+                  });               
+               }
+            });
+         }
          
          // Place the grid within the Chat card.
          var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
