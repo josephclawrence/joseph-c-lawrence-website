@@ -1268,6 +1268,122 @@ Function GetPreviousYearSales() As Decimal
 End Function</code></pre>
  </script>
 
+ <script id="davinciorderCard-template" type="text/x-kendo-template">
+   <div class="panel card sys-widget card-widget">
+      <div class="card-bindable panel-body card-body sys-pd-off  sys-rd">
+         <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white">
+            <div class="col-xs-12 col-12">
+                  <a class="card-header-link sys-fg-white" tabindex="0" onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="sales order"><h3 class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">#: order_id #</h3></a>
+                  <small class="text-left sys-fg-white sys-txt-md"><span>#: order_type #</span> - <span>Type</span></small>
+            </div>
+         </div>
+         <div class="panel-body card-body text-left sys-wrapper sys-bg-white sys-fg-inverse"></div>
+         <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="\\#tabSalesOrderInfo">Info</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="\\#tabSalesOrderAddress">Address</a></li>
+         </ul>
+         <div class="tab-content">
+            <div id="tabSalesOrderInfo" class="tab-pane fade in show active sys-pd-t-5" role="tabpanel">
+   
+                  <div class="sys-pd-r-7 sys-pd-l-7 sys-pd-t-5 sys-pd-b-5 sys-bg-white sys-fg-inverse sys-mg-b-5">
+                     <div class="row">
+                        <div class="col-xs-4 col-4">
+                              <div class="sys-rd  ">
+                                 <div class="row sys-tbl sys-pd-l-15 ">
+                                    <div class="col-xs-3 col-3"><i class="material-icons sys-txt-md">print</i></div>
+                                    <div class="col-xs-9 col-9"><span class="sys-fg-gray">#: status #</span> - <span class="sys-fg-gray">Status</span></div>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-xs-6 col-6 sys-pd-t-15 text-left sys-vcenter">
+                              <span class="sys-mg-off sys-txt-md">
+                                 <span data-bind="source: SorDetail" ><a class="card-header-link" tabindex="0" onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="customer"><span class="sys-500" data-bind="htmltext: Customer">#: customer_name #</span> - <span class="sys-500" >#: customer_id #</span></a><small class="text-muted">Customer name</small></span>
+                              </span>
+                        </div>
+                        <div class="col-xs-6 col-6 sys-pd-t-5 text-left sys-vcenter">
+                              <span class="sys-mg-off sys-txt-md"><span data-bind="source: SorDetail"><span class="text-left sys-500">#: purchase_order_number #</span><small class="text-muted">Customer PO number</small></span></span>
+                        </div>
+                        <div class="col-xs-6 col-6 sys-pd-t-15 sys-pd-b-15 text-left sys-vcenter">
+                           <span class="sys-mg-off sys-txt-md sys-500"><a class="card-header-link" tabindex="0" onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="salesperson"><span>#: Salesperson #</span></a></span>
+                           <small class="text-muted">Salesperson</small>
+                        </div>
+                     </div>
+                     <hr class="sys-hr-light-gray sys-mg-t-15 sys-mg-b-15">
+                     <h4><i class="material-icons">date_range</i>Dates</h4>
+                     <div class="row">
+                        <div class="col-xs-6 col-6 sys-pd-t-5 text-left sys-vcenter">
+                           <span class="sys-mg-off sys-500"><span class="sys-txt-md">#: order_date #</span></span>
+                           <small class="text-muted">Sales order</small>
+                        </div>                    
+                     </div>
+                     <hr class="sys-hr-light-gray sys-mg-off">
+                  </div>
+            </div>
+            <div id="tabSalesOrderAddress" class="tab-pane fade in show sys-pd-t-5" role="tabpanel">
+               <div id="salesOrderAddresses" class="carousel slide" data-ride="false" data-bs-ride="false" data-interval="4000" data-bs-interval="4000">
+                  <div class="carousel-inner">
+                     <div class="item carousel-item active">
+                           <div class="panel-body card-body sys-rd-t">
+                              <h4 class="sys-mg-b-10 "><i class="material-icons">explore</i>Sold to address</h4>
+                              <div class="sys-pd-l-20 text-left">
+                                 <address class="sys-mg-off"><span>#: ship_address #</span><br><span>#: ship_city #</span><br><span>#: ship_region #</span><br><span>#: ship_country #</span><br><span>#: ship_postal_code #</span></address>
+                              </div>                            
+                           </div>
+                        </div>
+                        <div class="item carousel-item">
+                              <div class="panel-body card-body sys-rd-t">
+                                 <h4 class="sys-mg-b-10 "><i class="material-icons">local_shipping</i>Ship to address</h4>
+                                 <div class="sys-pd-l-20 text-left">
+                                    <address class="sys-mg-off"><span>#: ship_address #</span><br><span>#: ship_city #</span><br><span>#: ship_region #</span><br><span>#: ship_country #</span><br><span>#: ship_postal_code #</span></address>
+                                 </div> 
+                              </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr class="sys-mg-off">
+                  <div class="panel-body card-body sys-pd-off sys-rd-b" style="overflow: hidden;">
+                     <div class="row"><a href="\\#salesOrderAddresses" class="col-xs-6 col-6 pull-left float-left sys-bg-lighten sys-fg-textcolor sys-pd-t-10 sys-pd-b-10 text-center" data-slide="prev" data-bs-slide="prev"><small><i class="material-icons">keyboard_arrow_left</i>PREVIOUS</small></a><a href="\\#salesOrderAddresses" class="col-xs-6 col-6 pull-left float-left sys-bg-lighten sys-fg-textcolor sys-pd-t-10 sys-pd-b-10 text-center" data-slide="next" data-bs-slide="next"><small>NEXT <i class="material-icons">keyboard_arrow_right</i></small></a></div>
+                  </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</script>
+
+<script id="davincistockCodeCard-template" type="text/x-kendo-template">
+   <div class="panel card sys-widget card-widget">
+      <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
+         <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t">
+               <div class="row">
+                  <div class="sys-mg-t-11 col-sm-10 col-xs-10 col-10 sys-fg-white">
+                     <a class="card-header-link sys-fg-white" onclick="sysproInterop.showSmartTag(this)"><span class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">#: product_id #</span></a><small class="text-left sys-fg-white sys-txt-md">#: LongDesc #</small><small class="text-left sys-fg-white sys-txt-sm sys-mg-b-15 ">#: category #</small>
+                  </div>
+                  <div class="col-xs-2 col-2 col-sm-2 sys-mg-t-10 sys-mg-b-10">
+                     <div class="sys-avatar"><img src="http://10.211.55.4/UXTools//api/UXInteropWeb/GetImage?FileName=YzpcUk5EODAwXG1tZWRpYVxBMTAwLkJNUA==.png&amp;t=630772092140000000.638385089022966902.637744850491616784&amp;placeHolder=Rob" alt="" class="img-rounded rounded sys-bd-light-gray sys-bd-darken sys-bd-3x text-center img-responsive img-fluid card-header-image"></div>
+                  </div>
+               </div>
+         </div>
+         <div class="panel-body card-body text-left sys-wrapper sys-bg-white sys-fg-inverse">
+               <h4><i class="material-icons">local_offer</i>Pricing</h4>
+               <div class="row sys-pd-t-10 sys-pd-b-10 text-left">
+                  <div class="col-xs-4 col-4"><span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md"><span>$</span><span>#: price #</span></span><small class="text-muted">Selling price</small></div>
+                  <div class="col-xs-4 col-4 "><span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md"><span>$</span><span>#: cost #</span></span><small class="text-muted">Cost price</small></div>
+                  <div class="col-xs-4 col-4"><span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md">#: GP #</span>%<small class="text-muted">GP %</small></div>
+               </div>
+               <hr class="sys-hr-light-gray sys-mg-t-10 sys-mg-b-5">
+               <h4><i class="material-icons">store</i>Stock level</h4>
+               <div class="row">
+                  <div class="col-xs-4 col-4 sys-pd-t-15 text-left sys-vcenter"><span class="sys-mg-off sys-txt-md"><span>#: quantity_on_hand #</span></span><small class="text-muted">On hand quantity</small></div>
+                  <div class="col-xs-4 col-4 sys-pd-t-5 text-left sys-vcenter"><span class="sys-mg-off sys-txt-md"><span>#: quantity_sold #</span></span><small class="text-muted">Quantity sold</small></div>
+                  <div class="col-xs-4 col-4 sys-pd-t-5 text-left sys-vcenter"><span class="sys-mg-off sys-txt-md"><span>#: warehouse_id #</span></span><small class="text-muted">Warehouse</small></div>
+               </div>
+         </div>
+      </div>
+   </div>
+</script>
+
 <script>   
 
    const systemPrompt = `Your name is 'Da Vinci', you are the 'Syspro AI helper'. Introduce yourself as such, and answer as such if asked. Always use a friendly but professional tone.         
@@ -1291,89 +1407,26 @@ When asked for information about products, or a product, they can be identified 
 
 If asked about an order, or orders, then query the 'orders' and/or the 'order_details' table. In the 'orders' table ONLY query the following columns: 'order_id', 'status', 'customer_id', 'customer_name', 'Salesperson', 'ship_address', 'ship_city', 'ship_region', 'ship_country', 'ship_postal_code', 'order_date', 'order_year', 'order_type', 'purchase_order_number', 'Email'. NEVER attempt to query any other columns in the 'orders' table. in the 'order_details' table ONLY query the following columns: 'order_id', 'order_line_number', 'order_date', 'order_year', 'product_id', 'product_name', 'product_type', 'warehouse_id', 'quantity', 'back_order_quantity', 'invoice_quantity', 'cost', 'uom' and 'unit_price'. Do NOT attempt to query any other columns from the 'order_details' table. An individual order is identified by the 'order_id'. Query the 'orders' table if asked about salespeople or a sales person etc., as explained in the next paragraph. NB: if your answer will include multiple rows of order data, then also follow the previous instructions about responding with JSON.
 
-If asked about a single specific order, or if your response to a query is one specific order, then use the following instructions and HTML template below. You will need to perform a SQL query on the 'orders' table to get all the data, probably using the 'order_id' as the unique identifier. When you have all that data, then return the following HTML template, but with the placeholders shown by the column preceded by a '$' replaced by the relevant value. For example replace '$order_type' with the value you get for 'order_type' from the 'orders' table. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below):
+If asked about a single specific order, or if your response to a query is one specific order, then use the following instructions to return JSON. You will need to perform a SQL query on the 'orders' table to get all the data, probably using the 'order_id' as the unique identifier. When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<order_type>' with the value you get for 'order_type' from the 'orders' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.:
 
-<div class="panel card sys-widget card-widget">
-   <div class="card-bindable panel-body card-body sys-pd-off  sys-rd">
-      <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white">
-         <div class="col-xs-12 col-12">
-               <a class="card-header-link sys-fg-white" tabindex="0" onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="sales order"><h3 class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">$order_id</h3></a>
-               <small class="text-left sys-fg-white sys-txt-md"><span>$order_type</span> - <span>Type</span></small>
-         </div>
-      </div>
-      <div class="panel-body card-body text-left sys-wrapper sys-bg-white sys-fg-inverse"></div>
-      <ul class="nav nav-tabs nav-justified sys-bg-white card-tabs" role="tablist">
-         <li class="nav-item"><a class="nav-link active" data-toggle="tab" data-bs-toggle="tab" href="#tabSalesOrderInfo">Info</a></li>
-         <li class="nav-item"><a class="nav-link" data-toggle="tab" data-bs-toggle="tab" href="#tabSalesOrderAddress">Address</a></li>
-      </ul>
-      <div class="tab-content">
-         <div id="tabSalesOrderInfo" class="tab-pane fade in show active sys-pd-t-5" role="tabpanel">
-
-               <div class="sys-pd-r-7 sys-pd-l-7 sys-pd-t-5 sys-pd-b-5 sys-bg-white sys-fg-inverse sys-mg-b-5">
-                  <div class="row">
-                     <div class="col-xs-4 col-4">
-                           <div class="sys-rd  ">
-                              <div class="row sys-tbl sys-pd-l-15 ">
-                                 <div class="col-xs-3 col-3"><i class="material-icons sys-txt-md">print</i></div>
-                                 <div class="col-xs-9 col-9"><span class="sys-fg-gray">$status</span> - <span class="sys-fg-gray">Status</span></div>
-                              </div>
-                           </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-xs-6 col-6 sys-pd-t-15 text-left sys-vcenter">
-                           <span class="sys-mg-off sys-txt-md">
-                              <span data-bind="source: SorDetail" ><a class="card-header-link" tabindex="0" onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="customer"><span class="sys-500" data-bind="htmltext: Customer">$customer_name</span> - <span class="sys-500" >$customer_id</span></a><small class="text-muted">Customer name</small></span>
-                           </span>
-                     </div>
-                     <div class="col-xs-6 col-6 sys-pd-t-5 text-left sys-vcenter">
-                           <span class="sys-mg-off sys-txt-md"><span data-bind="source: SorDetail"><span class="text-left sys-500">$purchase_order_number</span><small class="text-muted">Customer PO number</small></span></span>
-                     </div>
-                     <div class="col-xs-6 col-6 sys-pd-t-15 sys-pd-b-15 text-left sys-vcenter">
-                        <span class="sys-mg-off sys-txt-md sys-500"><a class="card-header-link" tabindex="0" onclick="sysproInterop.showSmartTag(this)" data-fieldcaption="salesperson"><span>$Salesperson</span></a></span>
-                        <small class="text-muted">Salesperson</small>
-                     </div>
-                  </div>
-                  <hr class="sys-hr-light-gray sys-mg-t-15 sys-mg-b-15">
-                  <h4><i class="material-icons">date_range</i>Dates</h4>
-                  <div class="row">
-                     <div class="col-xs-6 col-6 sys-pd-t-5 text-left sys-vcenter">
-                        <span class="sys-mg-off sys-500"><span class="sys-txt-md">$order_date</span></span>
-                        <small class="text-muted">Sales order</small>
-                     </div>                    
-                  </div>
-                  <hr class="sys-hr-light-gray sys-mg-off">
-               </div>
-         </div>
-         <div id="tabSalesOrderAddress" class="tab-pane fade in show sys-pd-t-5" role="tabpanel">
-            <div id="salesOrderAddresses" class="carousel slide" data-ride="false" data-bs-ride="false" data-interval="4000" data-bs-interval="4000">
-               <div class="carousel-inner">
-                  <div class="item carousel-item active">
-                        <div class="panel-body card-body sys-rd-t">
-                           <h4 class="sys-mg-b-10 "><i class="material-icons">explore</i>Sold to address</h4>
-                           <div class="sys-pd-l-20 text-left">
-                              <address class="sys-mg-off"><span>$ship_address</span><br><span>$ship_city</span><br><span>$ship_region</span><br><span>$ship_country</span><br><span>$ship_postal_code</span></address>
-                           </div>                            
-                        </div>
-                     </div>
-                     <div class="item carousel-item">
-                           <div class="panel-body card-body sys-rd-t">
-                              <h4 class="sys-mg-b-10 "><i class="material-icons">local_shipping</i>Ship to address</h4>
-                              <div class="sys-pd-l-20 text-left">
-                                 <address class="sys-mg-off"><span>$ship_address</span><br><span>$ship_city</span><br><span>$ship_region</span><br><span>$ship_country</span><br><span>$ship_postal_code</span></address>
-                              </div> 
-                           </div>
-                     </div>
-                  </div>
-               </div>
-               <hr class="sys-mg-off">
-               <div class="panel-body card-body sys-pd-off sys-rd-b" style="overflow: hidden;">
-                  <div class="row"><a href="#salesOrderAddresses" class="col-xs-6 col-6 pull-left float-left sys-bg-lighten sys-fg-textcolor sys-pd-t-10 sys-pd-b-10 text-center" data-slide="prev" data-bs-slide="prev"><small><i class="material-icons">keyboard_arrow_left</i>PREVIOUS</small></a><a href="#salesOrderAddresses" class="col-xs-6 col-6 pull-left float-left sys-bg-lighten sys-fg-textcolor sys-pd-t-10 sys-pd-b-10 text-center" data-slide="next" data-bs-slide="next"><small>NEXT <i class="material-icons">keyboard_arrow_right</i></small></a></div>
-               </div>
-         </div>
-      </div>
-   </div>
-</div>
+[
+   {{
+      "templateName": "orderCard",
+      "order_id": <order_id>,
+      "order_type": <order_type>,
+      "status": <status>,
+      "customer_id": <customer_id>,
+      "customer_name": <customer_name>,
+      "purchase_order_number": <purchase_order_number>,
+      "Salesperson": <Salesperson>,
+      "order_date": <order_date>,
+      "ship_address": <ship_address>,
+      "ship_city": <ship_city>,
+      "ship_country": <ship_country>,
+      "ship_postal_code": <ship_postal_code>,
+      "ship_region": <ship_region>
+   }}
+]
 
 With any response, at the end, provide some 'suggested queries' by following the instructions given later. Please remember this. If your response is about a single order, a suggested query could be if there is an invoice associated with this order. Another suggested query could be to get more details and view the card for the customer from the order.
 
@@ -1525,37 +1578,22 @@ NB: You can also use the above 'card' HTML template for cases where I have not s
 
 If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_learning" tool, and if you do not find something there, then use the "search_syspro_web" tool to find an answer.
 
-If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or product card, for a single particular stock code, product code, or product, then use the following instructions and HTML template below: You will need to use the supplied code to do some SQL queries. The stock code or product code given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables. Get the following columns, from the following tables: 'LongDesc' and 'category' from the 'products' table; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table; 'price' from the 'price' table. In each case use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other columns from other tables, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, return the following HTML template, but with the placeholders shown by the column name preceded by a '$' replaced by the relevant value. For example replace '$quantity_on_hand' with the value you get for 'quantity_on_hand' from the 'warehouses' table. Here is the HTML template to use, and when you return it, ALWAYS first include the string 'Here starts code:' directly before the HTML, and then return no text at all after the HTML (unless it is 'suggested queries' as described below):
+If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or product card, for a single particular stock code, product code, or product, then use the following instructions and JSON template below: You will need to use the supplied code to do some SQL queries. The stock code or product code given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables. Get the following columns, from the following tables: 'LongDesc' and 'category' from the 'products' table; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table; 'price' from the 'price' table. In each case use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other columns from other tables, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<quantity_on_hand>' with the value you get for 'quantity_on_hand' from the 'warehouses' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.:
 
-<div class="panel card sys-widget card-widget">
-    <div class="card-bindable panel-body card-body sys-pd-off sys-rd">
-        <div class="panel-body card-body text-left sys-wrapper sys-bg-primary sys-fg-white sys-rd-t">
-            <div class="row">
-                <div class="sys-mg-t-11 col-sm-10 col-xs-10 col-10 sys-fg-white">
-                    <a class="card-header-link sys-fg-white" onclick="sysproInterop.showSmartTag(this)"><span class="sys-mg-t-3 sys-txt-lg sys-mg-b-5 text-white sys-fg-white pull-left float-left">$product_id</span></a><small class="text-left sys-fg-white sys-txt-md">$LongDesc</small><small class="text-left sys-fg-white sys-txt-sm sys-mg-b-15 ">$category</small>
-                </div>
-                <div class="col-xs-2 col-2 col-sm-2 sys-mg-t-10 sys-mg-b-10">
-                    <div class="sys-avatar"><img src="http://10.211.55.4/UXTools//api/UXInteropWeb/GetImage?FileName=YzpcUk5EODAwXG1tZWRpYVxBMTAwLkJNUA==.png&amp;t=630772092140000000.638385089022966902.637744850491616784&amp;placeHolder=Rob" alt="" class="img-rounded rounded sys-bd-light-gray sys-bd-darken sys-bd-3x text-center img-responsive img-fluid card-header-image"></div>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body card-body text-left sys-wrapper sys-bg-white sys-fg-inverse">
-            <h4><i class="material-icons">local_offer</i>Pricing</h4>
-            <div class="row sys-pd-t-10 sys-pd-b-10 text-left">
-                <div class="col-xs-4 col-4"><span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md"><span>$</span><span>$price</span></span><small class="text-muted">Selling price</small></div>
-                <div class="col-xs-4 col-4 "><span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md"><span>$</span><span>$cost</span></span><small class="text-muted">Cost price</small></div>
-                <div class="col-xs-4 col-4"><span class="sys-500 sys-pd-b-5 sys-mg-off text-left sys-txt-md">$GP</span>%<small class="text-muted">GP %</small></div>
-            </div>
-            <hr class="sys-hr-light-gray sys-mg-t-10 sys-mg-b-5">
-            <h4><i class="material-icons">store</i>Stock level</h4>
-            <div class="row">
-                <div class="col-xs-4 col-4 sys-pd-t-15 text-left sys-vcenter"><span class="sys-mg-off sys-txt-md"><span>$quantity_on_hand</span></span><small class="text-muted">On hand quantity</small></div>
-                <div class="col-xs-4 col-4 sys-pd-t-5 text-left sys-vcenter"><span class="sys-mg-off sys-txt-md"><span>$quantity_sold</span></span><small class="text-muted">Quantity sold</small></div>
-                <div class="col-xs-4 col-4 sys-pd-t-5 text-left sys-vcenter"><span class="sys-mg-off sys-txt-md"><span>$warehouse_id</span></span><small class="text-muted">Warehouse</small></div>
-            </div>
-        </div>
-    </div>
-</div>
+[
+   {{
+      "templateName": "stockCodeCard",
+      "product_id": <product_id>,
+      "LongDesc": <LongDesc>,
+      "category": <category>,
+      "price": <price>,
+      "cost": <cost>,
+      "quantity_on_hand": <quantity_on_hand>,
+      "quantity_sold": <quantity_sold>,
+      "warehouse_id": <warehouse_id>,
+      "GP": <GP>
+   }}
+]
 
 NB: If your response to a query is a few different products, then please always ignore any product that has no product ID, product_id or product code. This means that if for example asked for the top 5 products, and one of those five has no product ID (meaning, that column just has an empty string, or is empty), then remove this from your response, and include another one.
 
@@ -1628,6 +1666,32 @@ If asked some query, and your response is to find the ID or name of one record (
    };
 
    const smartLinkReplaceStrings = ["Inventory Control Manager", "Inventory Management - Maintenance", "Inventory Query", "Inventory ATP Query", "Inventory at a Glance", "Inventory Forecasting", "Inventory Optimization"];
+
+   const baseViewModel = {
+      templateName: '',
+      order_id: '',
+      order_type: '',
+      status: '',
+      customer_id: '',
+      customer_name: '',
+      purchase_order_number: '',
+      Salesperson: '',
+      order_date: '',
+      ship_address: '',
+      ship_city: '',
+      ship_country: '',
+      ship_postal_code: '',
+      ship_region: '',
+      product_id: '',
+      LongDesc: '',
+      category: '',
+      price: '',
+      cost: '',
+      quantity_on_hand: '',
+      quantity_sold: '',
+      warehouse_id: '',
+      GP: ''
+   };
 
    const apiURL = "https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io";
    const headers = {
@@ -1791,6 +1855,25 @@ If asked some query, and your response is to find the ID or name of one record (
       }
    });
    kendo.chat.registerComponent("GridComponent", GridComponent);
+
+   var CardComponent = kendo.chat.Component.extend({
+      init: function (options, view) {
+         console.log(options);
+         kendo.chat.Component.fn.init.call(this, options, view);
+
+         const templateName = options.templateName;
+         console.log('templateName', templateName, `#davinci${templateName}-template`);
+         console.log($(`#davinci${templateName}-template`));
+         const template = kendo.template($(`#davinci${templateName}-template`).html());
+
+         const boundTemplate = template(options.data); //Execute the template
+         
+         // var bodyElement = $('<div>').addClass("k-card-body").append(gridElement);
+         this.element.attr("data-msg-id", generateUUID());
+         this.element.addClass("chat-msg-card").append(boundTemplate);
+      }
+   });
+   kendo.chat.registerComponent("CardComponent", CardComponent);
 
    var ChartComponent = kendo.chat.Component.extend({
       init: function (options, view) {
@@ -2254,6 +2337,76 @@ If asked some query, and your response is to find the ID or name of one record (
                         }]
                      }, daVinciUser);
                      renderMsgActions();
+                     
+                  } else if (responseString.includes('avantiCard')) {
+                     console.log('avanti card');
+                     console.log(responseString);
+                     let code, codeToRemove;                                          
+
+                     if (responseString.includes("```json")) {
+                        code = responseString.substring(
+                           responseString.indexOf("```json") + 7, 
+                           responseString.indexOf("```", responseString.indexOf("```json") + 8)
+                        ).replace("Here starts avantiCard:", "");
+                        codeToRemove = "```json" + code + "```";
+                     } else if (responseString.includes("```")) {
+                        code = responseString.substring(
+                           responseString.indexOf("```") + 3, 
+                           responseString.indexOf("```", responseString.indexOf("```") + 4)
+                        );
+                        codeToRemove = "```" + code + "```";
+                     } else {
+                        code = responseString.slice(responseString.indexOf('Here starts avantiCard:') + 'Here starts avantiCard:'.length);
+                        codeToRemove = code;
+                     }
+                     
+                     if (code.match(commentRegex) && code.match(commentRegex).length) {
+                        code = code.replace(commentRegex, '');
+                        code = removeTrailingComma(code);
+                     }
+                     
+                     
+                     // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
+                     responseString = responseString.replace(codeToRemove, "").replace("Here starts avantiCard:", "");
+
+                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                        console.log('about to render straight up response');
+                        chat.renderMessage({
+                           type: "text",
+                           text: responseString.trim()
+                        }, daVinciUser);
+                     }
+
+                     if (brevityDisclaimer) {
+                        chat.renderMessage({
+                           type: "text",
+                           text: brevityDisclaimerText
+                        }, daVinciUser);
+                     }
+
+                     const fixedCode = fixJSON(code);
+                     const data = Array.isArray(JSON.parse(fixedCode)) ? JSON.parse(fixedCode)[0] : JSON.parse(fixedCode);
+                     console.log('data', data, data.templateName);
+
+                     if (isJsonString(fixedCode)) {
+                        chat.renderAttachments({
+                           attachments: [{
+                              contentType: "CardComponent",
+                              content: {
+                                 templateName: data.templateName,
+                                 data: {...baseViewModel, ...data}
+                              }
+                           }]
+                        }, daVinciUser);
+                        renderMsgActions();
+                     } else {
+                        chat.renderMessage({
+                           type: "text",
+                           text: malformedResponse
+                        }, daVinciUser);
+                     }
+                     
+                     console.log(fixedCode);
                      
                   } else if (responseString.includes('KendoGrid')) {
                      console.log('kendo grid');
