@@ -179,6 +179,9 @@
                   }
                }
             }
+            & .chat-user-msg-actions {
+               display: flex;
+            }
             & .k-card-list {
                margin: 2px 0 15px;
                width: 100%;
@@ -201,6 +204,46 @@
             }
             & .k-message-group {
                margin-bottom: 15px;
+               align-items: center;
+               &.k-alt {
+                  align-items: center;
+                  text-align: start;
+               }               
+               & .k-message {
+                  display: flex;
+                  align-items: center;
+                  flex-direction: row !important;
+                  &.k-selected {
+                     margin-bottom: 0px;
+                  }
+                  & .chat-user-msg-actions {
+                     visibility: hidden;
+                     content: "";
+                     height: 30px;
+                     
+                  }
+                  &:hover .chat-user-msg-actions {
+                     visibility: visible;
+                  }
+               }
+               &[vinci] {
+                  max-width: 100%;
+                  & .k-message {
+                     & .chat-user-msg-actions {
+                        width: 90px;                     
+                     }
+                  }                  
+               }
+               &[me] {
+                  & .k-message {
+                     & .chat-user-msg-actions {
+                        width: 30px;          
+                     }
+                     & .k-bubble {
+                        order: 0;
+                     }
+                  }                  
+               }
             }
             & .k-quick-replies {
                align-self: flex-end;
@@ -214,6 +257,9 @@
                      background-color: #7b1fa2;
                   }
                }
+            }
+            & .k-message-time {
+               display: none;
             }
          }
          #daVinciWindow.k-window-content {
@@ -298,27 +344,6 @@
             text-decoration: underline;
             font-weight:bold;
             cursor: pointer
-         }
-         .k-chat .k-message-group, .k-chat .k-message-group.k-alt {
-            align-items: center;
-         }
-         .k-message-group[me] {
-            /* background: red; */
-            flex-direction: row !important;
-            & .chat-user-msg-actions {
-               visibility: hidden;
-               content: "";
-               width: 30px;
-               height: 30px;
-               
-            }
-            &:hover .chat-user-msg-actions {
-               visibility: visible;
-            }
-         }
-
-         .k-chat .k-message-group.k-alt {
-            text-align: start;
          }
 
          :not(#context-menu-list) #faves-menu.k-menu-vertical > .k-menu-item > .k-menu-link {
@@ -2031,6 +2056,7 @@ If asked some query, and your response is to find the ID or name of one record (
                   type: "text",
                   text: json.output
                }, daVinciUser);
+               renderEmptyActions();
             });
             chatActive = true
          }
@@ -2185,8 +2211,53 @@ If asked some query, and your response is to find the ID or name of one record (
             $(".k-card-list").last().find('.export-response').on('click', function() {
                const exportElement = $(this).closest('.chat-user-msg-actions').siblings('.chat-msg-card');
                printToFile(exportElement[0]);
-            });            
+            });   
+                        
       }, 500);
+   }
+
+   function renderResponseActions() {
+      setTimeout(function(){
+         $(".k-message-group[vinci]").last().find(".k-message").last().append("<span class='chat-user-msg-actions sys-pd-r-10'><a class='flag-query'><i class='material-icons text-muted'>flag</i></a><a class='flag-query'><i class='material-icons text-muted'>send</i></a><a class='export-response'><i class='material-icons text-muted'>file_download</i></a></span>");
+      }, 300);
+
+      setTimeout(function(){
+         console.log('here it is:', $(".k-message-group[vinci]").last().find(".k-message").last().find('.flag-query'));
+
+         $(".k-message-group[vinci]").last().find(".k-message").last().find('.flag-query').on('click', function() {
+            console.log('hello there'); 
+            chat.renderUserTypingIndicator(daVinciUser);
+            $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
+            
+            chat.renderMessage({
+               type: "text",
+               text: "You have indicated there's something wrong with this response - please help me understand more so I can improve. How could my last response be better?"
+            }, daVinciUser);
+
+            renderEmptyActions();
+
+            chat.renderSuggestedActions([
+               {
+                  title: "Formatted differently",
+                  value: "Formatted differently"
+               },
+               {
+                  title: "More correct data",
+                  value: "More correct data"
+               },
+               ,
+               {
+                  title: "Something else",
+                  value: "Something else"
+               }
+            ]);
+         }); 
+
+      }, 500);
+   }
+
+   function renderEmptyActions() {
+      $(".k-message-group[vinci]").last().find(".k-message").last().append("<span class='chat-user-msg-actions sys-pd-r-10'></span>");
    }
 
    function isJsonString(str) {
@@ -2257,21 +2328,63 @@ If asked some query, and your response is to find the ID or name of one record (
             // React on a user post action.
             setTimeout(function(){
                if (args.from && args.from.name && args.from.name === "sysproUser") {
-                  console.log($(".k-message-group[me]").last());
-                  $(".k-message-group[me]").last().prepend("<span class='chat-user-msg-actions sys-pd-r-10'><a class='fave-query'><i class='material-icons text-muted'>favorite</i></a></span>");
+                  $(".k-message-group[me]").last().find(".k-message").last().prepend("<span class='chat-user-msg-actions sys-pd-r-10'><a class='fave-query'><i class='material-icons text-muted'>favorite</i></a></span>");
                }
             }, 500);
             
+            if (args.text.includes("More correct data")) {
+               // chat.renderUserTypingIndicator(daVinciUser);
+               // $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
+                              
+               setTimeout(function(){
+                  chat.renderMessage({
+                     type: "text",
+                     text: "Have not yet fleshed out this branch of the tree..."
+                  }, daVinciUser);
+                  renderEmptyActions();
+               }, 250);
+            }
+
+            if (args.text.includes("Formatted differently")) {
+               // chat.renderUserTypingIndicator(daVinciUser);
+               // $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
+               setTimeout(function(){
+                  chat.renderMessage({
+                     type: "text",
+                     text: "Please enter a clear, specific instruction of what format you would like this type of response to be in, and I will remember this in future. For example you could say something like 'when you give me information about sales data, please show me a chart, not a grid'."
+                  }, daVinciUser);
+                  renderEmptyActions();
+               }, 250);
+               
+            }
+
+            if (args.text.includes("Something else")) {
+               // chat.renderUserTypingIndicator(daVinciUser);
+               // $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
+               
+               setTimeout(function(){
+                  chat.renderMessage({
+                     type: "text",
+                     text: "Have not yet fleshed out this branch of the tree..."
+                  }, daVinciUser);
+                  renderEmptyActions();
+               }, 250);
+               
+            }
+
             if (![
                "Please provide more technical information.",
                "There's something wrong with this.",
+               "Formatted differently",
+               "Something else",
+               "More correct data"
+
             ].includes(args.text)) {
 
                setTimeout(function() {
                   chat.renderUserTypingIndicator(daVinciUser);
                   $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
                }, 300);
-
 
                fetch(`${apiURL}/run_conversation`, {
                   method: "POST",      
@@ -2297,6 +2410,7 @@ If asked some query, and your response is to find the ID or name of one record (
                         type: "text",
                         text: "Sorry, I couldn't find any data in response to that query. Please check the detail of the query to make sure there isn't a mistake, or maybe reformulate your question."
                      }, daVinciUser);
+                     renderEmptyActions();
                      responseString = "";
                   } else if (responseString.includes("Use the wizard")) {
                      console.log('wizard', responseString);
@@ -2347,6 +2461,8 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: responseString.trim()
                         }, daVinciUser);
+
+                        renderResponseActions();
                      }
 
                      chat.renderAttachments({
@@ -2396,6 +2512,8 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: responseString.trim()
                         }, daVinciUser);
+
+                        renderResponseActions();
                      }
 
                      if (brevityDisclaimer) {
@@ -2403,6 +2521,7 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: brevityDisclaimerText
                         }, daVinciUser);
+                        renderEmptyActions();
                      }
 
                      const fixedCode = fixJSON(code);
@@ -2425,6 +2544,7 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: malformedResponse
                         }, daVinciUser);
+                        renderEmptyActions();
                      }
                      
                      console.log(fixedCode);
@@ -2469,6 +2589,8 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: responseString.trim()
                         }, daVinciUser);
+
+                        renderResponseActions();
                      }
 
                      if (brevityDisclaimer) {
@@ -2477,6 +2599,7 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: brevityDisclaimerText
                         }, daVinciUser);
+                        renderEmptyActions();
                      }
 
                      const fixedCode = fixJSON(code);
@@ -2495,6 +2618,7 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: malformedResponse
                         }, daVinciUser);
+                        renderEmptyActions();
                      }
                      
                      console.log(fixedCode);
@@ -2545,6 +2669,8 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: responseString.trim()
                         }, daVinciUser);
+
+                        renderResponseActions();
                      }
 
                      if (brevityDisclaimer) {
@@ -2553,6 +2679,7 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: brevityDisclaimerText
                         }, daVinciUser);
+                        renderEmptyActions();
                      }
 
                      const fixedCode = fixJSON(code);
@@ -2572,6 +2699,7 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: malformedResponse
                         }, daVinciUser);
+                        renderEmptyActions();
                      }
                      
                   } else if ( 
@@ -2601,6 +2729,8 @@ If asked some query, and your response is to find the ID or name of one record (
                         type: "text",
                         text: responseString.trim()
                      }, daVinciUser);
+
+                     renderResponseActions();
                   }
 
                   console.log('here is the pre suggested actions bit');
@@ -2637,12 +2767,14 @@ If asked some query, and your response is to find the ID or name of one record (
                            type: "text",
                            text: otherText
                         }, daVinciUser);
+                        renderEmptyActions();
                      }
                      
                      chat.renderMessage({
                         type: "text",
                         text: "Here are some suggested further queries:"
                      }, daVinciUser);
+                     renderEmptyActions();
                      chat.renderSuggestedActions(JSON.parse(sqJSON));
                   }
 
@@ -2656,10 +2788,19 @@ If asked some query, and your response is to find the ID or name of one record (
         },
         actionClick: function(e) {
             console.log(this);
-            setTimeout(function() {
-               chat.renderUserTypingIndicator(daVinciUser);
-               $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
-            }, 400);                        
+            console.log(e);
+            if (![
+               "Please provide more technical information.",
+               "There's something wrong with this.",
+               "Formatted differently",
+               "Something else",
+               "More correct data"
+            ].includes(e.text)) {
+               setTimeout(function() {
+                  chat.renderUserTypingIndicator(daVinciUser);
+                  $(".k-typing-indicator-bubble .k-author").text("Da Vinci is thinking");
+               }, 400);   
+            }                                 
       }
    }).data("kendoChat");
 
@@ -2693,6 +2834,7 @@ If asked some query, and your response is to find the ID or name of one record (
                type: "text",
                text: 'Great, the new XXX is now saved and accessible here.'
             }, daVinciUser);
+            renderEmptyActions();
          },
          steps: [
             {
