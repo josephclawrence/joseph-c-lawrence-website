@@ -219,8 +219,14 @@
                   & .chat-user-msg-actions {
                      visibility: hidden;
                      content: "";
-                     height: 30px;
-                     
+                     /* height: 30px; */    
+                     & a {
+                        min-width: 24px;
+                        & .material-icons {
+                           font-size: 20px;
+                        }  
+                     }   
+                                
                   }
                   &:hover .chat-user-msg-actions {
                      visibility: visible;
