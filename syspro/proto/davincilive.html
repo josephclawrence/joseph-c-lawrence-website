@@ -138,7 +138,7 @@
                padding: 15px 15px 15px;
                justify-content: flex-end;
                & input {
-                  background: #eee;
+                  background-color: var(--color_athens_gray_approx);
                   border-radius: 20px;
                   height: 40px;
                   margin-right: 5px;
@@ -208,6 +208,13 @@
                &.k-alt {
                   align-items: center;
                   text-align: start;
+                  & .k-message {
+                     & .k-bubble {
+                        border-color: var(--color_lochmara_approx);
+                        background-color: var(--color_lochmara_approx);
+                        color: var(--white);
+                     }
+                  }
                }               
                & .k-message {
                   display: flex;
@@ -230,6 +237,11 @@
                   }
                   &:hover .chat-user-msg-actions {
                      visibility: visible;
+                  }
+                  & .k-bubble {
+                     border-color: var(--color_athens_gray_approx);
+                     background-color: var(--color_athens_gray_approx);
+                     color: var(--color_pickled_bluewood_approx);
                   }
                }
                &[vinci] {
@@ -1006,6 +1018,7 @@
    <div id="daVinciWindow">
       <div id="daVinciChat" style="width: 100%; height: 100%"></div>
    </div>
+   <div  style="display: none;">
    <ul id="faves-menu">
       <li>Analyse the number of orders for each month in 2022, and the number of orders in each month in 2023.</li>
       <li>I want to create a new quote</li>
@@ -1026,6 +1039,7 @@
       <li>can you show the sales to this customer monthly for the past 2 years as a line chart</li>
 
   </ul>
+</div>
    <div style="display: none" id="recordViewMenus">
       
    </div>
@@ -3324,6 +3338,34 @@ If asked some query, and your response is to find the ID or name of one record (
          daysLate: 8,
          confidence: 0.78,
       },
+      {
+         name: "Bicycle Spokes",
+         id: "00HG54",
+         date: "09/10/2023",
+         daysLate: 7,
+         confidence: 0.55,
+      },
+      {
+         name: "Racing Seat",
+         id: "00HG52",
+         date: "08/10/2023",
+         daysLate: 5,
+         confidence: 0.23,
+      },
+      {
+         name: "ABS Brakes",
+         id: "00TTG54",
+         date: "07/10/2023",
+         daysLate: 3,
+         confidence: 1,
+      },
+      {
+         name: "Racing Handlebar",
+         id: "00JG89",
+         date: "06/10/2023",
+         daysLate: 8,
+         confidence: 0.78,
+      },
    ];
 
    $("#confGrid").kendoGrid({
@@ -3337,6 +3379,10 @@ If asked some query, and your response is to find the ID or name of one record (
          }
       },
       dataBound: onDataBound,
+      pageable: {
+         pageSize: 5,
+         pageSizes: true,
+      },
       columns: [
          {
             field: "id",
