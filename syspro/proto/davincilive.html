@@ -2475,7 +2475,7 @@ If asked some query, and your response is to find the ID or name of one record (
                      // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
                      responseString = responseString.replace(codeToRemove, "").replace("Here starts code:", "");
 
-                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                     if (!responseString.includes('Here are suggested queries') && !responseString.toLowerCase().includes('suggested queries:') && responseString.replace(/\s/g, '').length) {
                         console.log('about to render straight up response');
                         chat.renderMessage({
                            type: "text",
@@ -2526,7 +2526,7 @@ If asked some query, and your response is to find the ID or name of one record (
                      // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
                      responseString = responseString.replace(codeToRemove, "").replace("Here starts avantiCard:", "");
 
-                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                     if (!responseString.includes('Here are suggested queries') && !responseString.toLowerCase().includes('suggested queries:') && responseString.replace(/\s/g, '').length) {
                         console.log('about to render straight up response');
                         chat.renderMessage({
                            type: "text",
@@ -2603,7 +2603,7 @@ If asked some query, and your response is to find the ID or name of one record (
                      // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
                      responseString = responseString.replace(codeToRemove, "").replace("KendoGrid: Here starts JSON:", "");
 
-                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                     if (!responseString.includes('Here are suggested queries') && !responseString.toLowerCase().includes('suggested queries:') && responseString.replace(/\s/g, '').length) {
                         console.log('about to render straight up response');
                         chat.renderMessage({
                            type: "text",
@@ -2683,7 +2683,7 @@ If asked some query, and your response is to find the ID or name of one record (
                      // Get any text in the response that is not the returned code, e.g. some caveats about the content of the code, or a description of what it is that is returned by GPT outside of the actual code
                      responseString = responseString.replace(codeToRemove, "").replace("Here starts chart data:", "");
 
-                     if (!responseString.includes('Here are suggested queries') && responseString.replace(/\s/g, '').length) {
+                     if (!responseString.includes('Here are suggested queries') && !responseString.toLowerCase().includes('suggested queries:') && responseString.replace(/\s/g, '').length) {
                         console.log('about to render straight up response');
                         chat.renderMessage({
                            type: "text",
@@ -2743,7 +2743,7 @@ If asked some query, and your response is to find the ID or name of one record (
                         }, daVinciUser);
                         renderMsgActions();
                         // TODO: Need to deal with this section getting rid of suggested actions
-                  } else if (!responseString.includes('Here are suggested queries')) {
+                  } else if (!responseString.includes('Here are suggested queries') && !responseString.toLowerCase().includes('suggested queries:')) {
                      console.log('about to render straight up response');
                      chat.renderMessage({
                         type: "text",
@@ -2757,12 +2757,17 @@ If asked some query, and your response is to find the ID or name of one record (
                   console.log(responseString);
 
                   // extract and correctly prepare the 'suggested queries' as suggested actions for the Kendo Chat API
-                  if (responseString.includes('Here are suggested queries')) {
+                  if (responseString.includes('Here are suggested queries') || responseString.toLowerCase().includes('suggested queries:')) {
                      console.log('yes there are suggested queries');
                      const sqText = responseString.substring(
                         responseString.indexOf('Here are suggested queries'), 
                         responseString.lastIndexOf("```") + 3);
-                     const otherText = responseString.substring(0, responseString.lastIndexOf('Here are suggested queries'));
+                     let otherText;
+                     if ( responseString.includes('Here are suggested queries') ) {
+                        otherText = responseString.substring(0, responseString.lastIndexOf('Here are suggested queries'));
+                     } else if ( responseString.toLowerCase().includes('suggested queries:') ) {
+                        otherText = responseString.substring(0, responseString.toLowerCase().lastIndexOf('suggested queries:'));
+                     }                     
                      console.log('sqText', sqText);
                      console.log('otherText', otherText);
                      const sqJSONraw = sqText.includes("```json") 
