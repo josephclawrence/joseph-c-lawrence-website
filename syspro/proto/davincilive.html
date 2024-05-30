@@ -1168,16 +1168,24 @@
    </div>
  </script>
 
- <script id="sysprolearn-template" type="text/x-kendo-template">
+<script id="sysprolearn-template" type="text/x-kendo-template">
    <div class="k-card">
       <div class="k-card-header">
          Help on using SYSPRO
-     </div>
-     <div class="k-card-body">
-       <p>#=content#</p>
-     </div>
+      </div>
+      <div class="k-card-body">
+         <p>#=content#</p>
+         # if (references && references.length) { #
+            <hr class="sys-hr-light-gray sys-mg-t-10 sys-mg-b-10">
+            <ul>
+            # for (var i = 0; i < references.length; i++) { #
+               <li><a href="#= references[i].link #">#= references[i].title #</a></li>
+            # } #
+            </ul>
+         # } #         
+      </div>
    </div>
- </script>
+</script>
 
  <script id="confidence-template" type="text/x-kendo-template">
    <div class="k-card">
@@ -1622,7 +1630,7 @@ If your response will include multiple rows from a SQL query, each of which havi
 
 As part of any response, at the end, provide some 'suggested queries' by following the instructions given later.
 
-If asked for any kind of contact or address details (for example a person's contact details, or a company's contact details, or a customer address or customer contact or name and address of a customer, or the contact details from an invoice) then use the "sql_db_query" tool, and the "sql_db_query_checker" tool. Do NOT use the "search_syspro_web" tool, or the "search_syspro_learning" tool. Only query columns that are in a table. I have already told you, or will tell you shortly, which columns you can query in the 'customers', 'invoices', 'invoice_details', 'orders' and 'order_details' tables; these are the only tables with contact and address details. Make sure that you only query the columns I have told you that you can query for the table that you choose to query. NEVER query columns that I have not explicitly listed for you. When you have the contact and address data, return HTML using the following template below, where '$name', '$address', '$city', '$postal_code' should be replaced with the data you are returning (these are examples - you can also use the same pattern with other bits of contact information). '$name' can be for 'name' or 'customer_name' for example. If you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you could not find the name from column 'customer_name', exclude from the HTML the element with data-cdetail='name', and any inner HTML of that element. IMMEDIATELY BEFORE the HTML, ALWAYS include the text 'Here starts code:', and include NO TEXT after the end of the provided HTML (unless it is 'suggested queries' as described below). Here is the HTML template to use:
+If asked for any kind of contact or address details (for example a person's contact details, or a company's contact details, or a customer address or customer contact or name and address of a customer, or the contact details from an invoice) then use the "sql_db_query" tool, and the "sql_db_query_checker" tool. Do NOT use the "search_syspro_help_dot_com" tool. Only query columns that are in a table. I have already told you, or will tell you shortly, which columns you can query in the 'customers', 'invoices', 'invoice_details', 'orders' and 'order_details' tables; these are the only tables with contact and address details. Make sure that you only query the columns I have told you that you can query for the table that you choose to query. NEVER query columns that I have not explicitly listed for you. When you have the contact and address data, return HTML using the following template below, where '$name', '$address', '$city', '$postal_code' should be replaced with the data you are returning (these are examples - you can also use the same pattern with other bits of contact information). '$name' can be for 'name' or 'customer_name' for example. If you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you could not find the name from column 'customer_name', exclude from the HTML the element with data-cdetail='name', and any inner HTML of that element. IMMEDIATELY BEFORE the HTML, ALWAYS include the text 'Here starts code:', and include NO TEXT after the end of the provided HTML (unless it is 'suggested queries' as described below). Here is the HTML template to use:
 
    Here starts code:
    <div class="k-card-body">
@@ -1640,7 +1648,7 @@ If asked for any kind of contact or address details (for example a person's cont
 
 NB: You can also use the above 'card' HTML template for cases where I have not specifically provided HTML for a different card. For example if I ask for a card for a particular warehouse, you can just use this template and return it with all the details you have on the specific warehouse.
 
-If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_learning" tool, and if you do not find something there, then use the "search_syspro_web" tool to find an answer.
+If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_help_dot_com" tool to find an answer. If you use the 'search_syspro_help_dot_com' tool then DO NOT provide any 'suggested queries'.
 
 If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or product card, for a single particular stock code, product code, or product, then use the following instructions and JSON template below: You will need to use the supplied code to do some SQL queries. The stock code or product code given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables. Get the following columns, from the following tables: 'LongDesc' and 'category' from the 'products' table; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table; 'price' from the 'price' table. In each case use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other columns from other tables, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<quantity_on_hand>' with the value you get for 'quantity_on_hand' from the 'warehouses' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.:
 
@@ -1700,7 +1708,7 @@ Based on what is asked, provide some 'suggested queries' in the specific format 
 
 where <Short version> should be a brief 3 or 4 word description of the suggested query written as a 'call to action' with a command as the first word such as 'View', 'Get' etc., and <Long version> should be a well formulated prompt for the same 'suggested query'. If the 'suggested query' is about one record (one salesperson, product, stock code, warehouse, invoice, order, job etc.) in particular, ALWAYS include the ID or name of that record in the 'short version' as well.
 
-Don't give suggested queries in normal text, only JSON.
+Don't give suggested queries in normal text, only JSON. Don't give suggested queries ff you use the 'search_syspro_help_dot_com' tool.
 
 Always try suggest 1 to 4 further interesting things I should ask you. Examples of 'suggested queries' are 'What are the past 12 monthly sales for <Customer name>' if asked for any information about a customer; 'Stock codes commonly ordered with <Stock code>' if asked any query about one or more stock codes; or 'Which customer orders <Stock code> most frequently' if asked about either a customer, or a stock code, or a salesperson. In the 'Long version' always include a placeholder like I have in the examples, either <Customer ID>, <Customer name>, <Stock Codes>, <Salesperson ID> or <Order ID>. provide these 'suggested queries' at the end of most of your responses.
 
@@ -1754,7 +1762,6 @@ If asked some query, and your response is to find the ID or name of one record (
       job_id: '',
       description: '',
       product_name: '',
-      product_id: '',
       start_date: '',
       end_date: ''
    };
@@ -1765,7 +1772,7 @@ If asked some query, and your response is to find the ID or name of one record (
       "accept": "application/json"
    };
 
-   const gptModel = "gpt-4-turbo-preview";
+   const gptModel = "gpt-4o";
    const agentType = "chat-conversational-react-description";
    // const agentType = structured-chat-zero-shot-react-description;
 
@@ -2323,7 +2330,7 @@ If asked some query, and your response is to find the ID or name of one record (
    const codeCheck = 'Here starts code:';
    const chartCheck = 'Here starts chart data:';
    const commentRegex = /\/\/.+\n/;
-   
+   let awaitTrainingInput = false;
 
    // Overwrite Kendo clearing of suggested actions
    if (kendo.chat && kendo.chat.ChatView && kendo.chat.ChatView.fn._removeSuggestedActions) {
@@ -2338,7 +2345,7 @@ If asked some query, and your response is to find the ID or name of one record (
 
    var chat = $("#daVinciChat").kendoChat({
       user: {
-         id: "sysproUser",
+         // id: "sysproUser",
          name: "sysproUser",
          iconUrl: "https://ui-avatars.com/api/?background=027f02&color=fff&name=Joe&length=1"
       },
@@ -2374,6 +2381,7 @@ If asked some query, and your response is to find the ID or name of one record (
                      text: "Please enter a clear, specific instruction of what format you would like this type of response to be in, and I will remember this in future. For example you could say something like 'when you give me information about sales data, please show me a chart, not a grid'."
                   }, daVinciUser);
                   renderEmptyActions();
+                  awaitTrainingInput = true;
                }, 250);
                
             }
@@ -2398,8 +2406,7 @@ If asked some query, and your response is to find the ID or name of one record (
                "Formatted differently",
                "Something else",
                "More correct data"
-
-            ].includes(args.text)) {
+            ].includes(args.text) && !awaitTrainingInput) {
 
                setTimeout(function() {
                   chat.renderUserTypingIndicator(daVinciUser);
@@ -2726,23 +2733,44 @@ If asked some query, and your response is to find the ID or name of one record (
                      json.intermediate_steps.length 
                      && json.intermediate_steps[0].length 
                      && json.intermediate_steps[0][0].tool
-                     && (json.intermediate_steps[0][0].tool === "search_syspro_learning" || json.intermediate_steps[0][0].tool === "search_syspro_web")
+                     && json.intermediate_steps[0][0].tool === "search_syspro_help_dot_com"
                      ) {  
                         console.log('learning used');   
                         for (const prog of smartLinkReplaceStrings) {
                            responseString = responseString.replace(prog, `<span class='clickable'>${prog}</span>`);
                         }
+
+                        if (responseString.includes('Here are suggested queries')) {
+                           responseString = responseString.substring(0, responseString.indexOf('Here are suggested queries'));
+                        } else if (responseString.toLowerCase().includes('suggested queries:')) {
+                           responseString = responseString.substring(0, responseString.indexOf('suggested queries:'));
+                        }
+
+                        const references = json.intermediate_steps[0][1] && json.intermediate_steps[0][1].source_documents && json.intermediate_steps[0][1].source_documents.length
+                           ? json.intermediate_steps[0][1].source_documents.map((ref) => {
+                              return {
+                                 title: ref.metadata?.title,
+                                 link: ref.metadata?.source,
+                              }
+                           })
+                           : null;
+                        console.log(json.intermediate_steps[0][1].source_documents);
+                        console.log(json.intermediate_steps[0][1].source_documents[0].metadata);
+                        console.log(json.intermediate_steps[0][1].source_documents[0].metadata.title);
+                        console.log(references);
+
                         chat.renderAttachments({
                            attachments: [{
                               contentType: "sysprolearn",
                               content: {
-                                 "content": responseString                                    
+                                 "content": responseString,
+                                 "references": references,                                  
                               }
                            }],
                            attachmentLayout: "list"
                         }, daVinciUser);
                         renderMsgActions();
-                        // TODO: Need to deal with this section getting rid of suggested actions
+                        
                   } else if (!responseString.includes('Here are suggested queries') && !responseString.toLowerCase().includes('suggested queries:')) {
                      console.log('about to render straight up response');
                      chat.renderMessage({
@@ -2805,6 +2833,16 @@ If asked some query, and your response is to find the ID or name of one record (
 
                });
 
+            } else if (awaitTrainingInput) {
+               awaitTrainingInput = false;
+               setTimeout(function(){
+                  chat.renderMessage({
+                     type: "text",
+                     text: 'Thank you, I will use this instruction in future responses, pending adminstrator approval. How else can I help you?'
+                  }, daVinciUser);
+                  alert(`This will be added as a customer specific prompt: ${args.text}`);
+               }, 300);     
+               
             }
         },
         sendMessage: function(e) {
