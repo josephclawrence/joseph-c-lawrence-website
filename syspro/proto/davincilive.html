@@ -378,11 +378,14 @@
          .view-record {
             cursor: pointer;
          }
+         .navbar-expand .navbar-nav .dropdown-menu {
+            position: absolute;
+         }
         </style>
     </head>
 
 <body data-theme="" data-column-layout="" class="light-gradient-background body-view-mode">
-  <nav id="fusion-toolbar" class="navbar navbar-default fixed-top navbar-controlbar fusion-top-toolbar toolbar-loaded">
+  <nav id="fusion-toolbar" class="navbar navbar-expand navbar-default navbar-light navbar-fixed-top fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar toolbar-loaded">
     <div class="container-fluid">
         <ul class="nav navbar-nav navbar-left">
             <li class="nav-item">
@@ -410,32 +413,27 @@
             </li>
 
             <li class="dropdown nav-item">
-                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account" data-toggle="dropdown" style=""><i class="material-icons">account_circle</i>
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account dropdown-toggle" data-bs-toggle="dropdown"><i class="material-icons">account_circle</i>
                     <span class="hidden-xs fusion-current-account-name">SYSPRO Administrator</span></a>
                 <ul class="dropdown-menu multi-level nav sys-pd-t-5" role="menu">
                     <li>
-                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.callPlugin('SRSMain', 'SRSQUE');"><i class="material-icons">list</i>Report Queue</a>
+                        <a href="#" class="syspro-toolbar-widget  dropdown-item" onclick="sysproInterop.callPlugin('SRSMain', 'SRSQUE');"><i class="material-icons">list</i>Report Queue</a>
                     </li>
                     <li>
-                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.showHelp();"><i class="material-icons">help</i>Help</a>
+                        <a href="#" class="syspro-toolbar-widget  dropdown-item" onclick="sysproInterop.showHelp();"><i class="material-icons">help</i>Help</a>
                     </li>
                     <li class="dropdown-submenu">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Themes</a>
+                        <a class="dropdown-toggle  dropdown-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Model</a>
                         <ul class="dropdown-menu sys-pd-t-5">
                             <li>
-                                <a href="#" class="avant-theme-switch" data-themename="light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Light</a>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4o" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>GPT-4o</a>
                             </li>
                             <li>
-                                <a href="#" class="avant-theme-switch" data-themename="dark" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>Dark</a>
-                            </li>
-                            <li>
-                                <a href="#" class="avant-theme-switch" data-themename="syspro-light" onclick="sysproInterop.setTheme(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>Pastel</a>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4-turbo-preview" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>GPT-4-turbo</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#" class="syspro-toolbar-widget" onclick="sysproInterop.closeSYSPROFusion(true);"><i class="material-icons">power_settings_new</i> Sign out</a>
-                    </li>
+
                 </ul>
             </li>
         </ul>
@@ -1716,6 +1714,33 @@ Always try suggest 1 to 4 further interesting things I should ask you. Examples 
 If asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' which has <Short version> = 'Get all details for <record ID/Name' and <Long version> = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to the previous query. Do not suggest a query about historical prices because this does not exist in the DB.
 `;
 
+   // gpt-4-turbo-preview
+   let gptModel = "gpt-4-turbo-preview";
+   const agentType = "chat-conversational-react-description";
+
+   function setModel(e) {
+      if (e && $(e).data("modelname") && !$(e).hasClass("sys-fg-success")) {
+         var modelName = $(e).data("modelname");
+         selectedModelChecked(modelName);
+         activateModel(modelName)
+      }
+   };
+
+   function selectedModelChecked(modelName) {
+      var itemNode = $(".avanti-model-switch[data-modelname='" + modelName + "']");
+      $("i", itemNode).removeClass("sys-fg-white");
+      $("i", itemNode).addClass("sys-fg-success");
+      $.each($(itemNode).closest("li").siblings(), function (index) {
+         $("i", this).removeClass("sys-fg-success");
+         $("i", this).removeClass("sys-fg-white").addClass("sys-fg-white");
+      });
+   };
+
+   function activateModel(modelName) {
+      gptModel = modelName;
+      initialiseDaVinci();
+   };
+
    let session_id, chatActive = false;
 
    const contextVariablesOptions = {
@@ -1773,52 +1798,53 @@ If asked some query, and your response is to find the ID or name of one record (
       "accept": "application/json"
    };
 
-   // gpt-4-turbo-preview
-   const gptModel = "gpt-4-turbo-preview";
-   const agentType = "chat-conversational-react-description";
+   
    // const agentType = structured-chat-zero-shot-react-description;
-
-   fetch(`${apiURL}/get_active_conversation_list`, {
-      method: "GET",      
-      headers,      
-   })
-   .then((response) => response.json())
-   .then((json) => {
-      if (json.length) {
-         json.forEach((item) => {
-            console.log(`active session: ${item.session_id}`);
-            fetch(`${apiURL}/delete_session?session_id=${item.session_id}`, {
-               method: "DELETE",      
-               headers,      
-            });
-         });
-      }
-
-      fetch(`${apiURL}/initialize_conversation`, {
-         method: "POST",      
-         headers,
-         body: JSON.stringify({
-            "session_description": "prototype",
-            "system_prompt": systemPrompt,    
-            "model_to_use": gptModel,
-            "temperature": 0.25,
-            "max_iterations": 2,
-            "agent_type": agentType,
-            "chat_history": []     
-         })
+   function initialiseDaVinci() {
+      fetch(`${apiURL}/get_active_conversation_list`, {
+         method: "GET",      
+         headers,      
       })
-      .then((initResponse) => initResponse.json())
-      .then((initJson) => {
-         console.log(initJson);
-         session_id = initJson.session_id;
+      .then((response) => response.json())
+      .then((json) => {
+         if (json.length) {
+            json.forEach((item) => {
+               console.log(`active session: ${item.session_id}`);
+               fetch(`${apiURL}/delete_session?session_id=${item.session_id}`, {
+                  method: "DELETE",      
+                  headers,      
+               });
+            });
+         }
 
-         const button = $("#davinciButton").getKendoFloatingActionButton();
-         
-         button.enable();
-         $("#davinciButton").addClass("pulse alive");
+         fetch(`${apiURL}/initialize_conversation`, {
+            method: "POST",      
+            headers,
+            body: JSON.stringify({
+               "session_description": "prototype",
+               "system_prompt": systemPrompt,    
+               "model_to_use": gptModel,
+               "temperature": 0.25,
+               "max_iterations": 2,
+               "agent_type": agentType,
+               "chat_history": []     
+            })
+         })
+         .then((initResponse) => initResponse.json())
+         .then((initJson) => {
+            console.log(initJson);
+            session_id = initJson.session_id;
+
+            const button = $("#davinciButton").getKendoFloatingActionButton();
+            
+            button.enable();
+            $("#davinciButton").addClass("pulse alive");
+         });
+
       });
+   }
 
-   });
+   initialiseDaVinci();
 
 
    // Set up various templates for use in the chat
