@@ -426,10 +426,10 @@
                         <a class="dropdown-toggle  dropdown-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Model</a>
                         <ul class="dropdown-menu sys-pd-t-5">
                             <li>
-                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4o" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>GPT-4o</a>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4o" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>GPT-4o</a>
                             </li>
                             <li>
-                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4-turbo-preview" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>GPT-4-turbo</a>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4-turbo-preview" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>GPT-4-turbo</a>
                             </li>
                         </ul>
                     </li>
@@ -1478,7 +1478,7 @@ When asked for information about products, or a product, they can be identified 
 
 If asked about an order, or orders, then query the 'orders' and/or the 'order_details' table. In the 'orders' table ONLY query the following columns: 'order_id', 'status', 'customer_id', 'customer_name', 'Salesperson', 'ship_address', 'ship_city', 'ship_region', 'ship_country', 'ship_postal_code', 'order_date', 'order_year', 'order_type', 'purchase_order_number', 'Email'. NEVER attempt to query any other columns in the 'orders' table. in the 'order_details' table ONLY query the following columns: 'order_id', 'order_line_number', 'order_date', 'order_year', 'product_id', 'product_name', 'product_type', 'warehouse_id', 'quantity', 'back_order_quantity', 'invoice_quantity', 'cost', 'uom' and 'unit_price'. Do NOT attempt to query any other columns from the 'order_details' table. An individual order is identified by the 'order_id'. Query the 'orders' table if asked about salespeople or a sales person etc., as explained in the next paragraph. NB: if your answer will include multiple rows of order data, then also follow the previous instructions about responding with JSON.
 
-If asked about a single specific order, or if your response to a query is one specific order, then use the following instructions to return JSON. You will need to perform a SQL query on the 'orders' table to get all the data, probably using the 'order_id' as the unique identifier. When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<order_type>' with the value you get for 'order_type' from the 'orders' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.:
+If asked about a single specific order, or if your response to a query is one specific order, then use the following instructions to return JSON. You will need to perform a SQL query on the 'orders' table to get all the data, probably using the 'order_id' as the unique identifier. When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<order_type>' with the value you get for 'order_type' from the 'orders' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks (\`\`\`), which is your expected way of presenting code, along with the type of code in your response.:
 
 [
    {{
@@ -1515,7 +1515,7 @@ Complete all require SQL queries before responding. DO NOT respond between steps
 
 Use these following instructions if your answer includes multiple orders, products, customers, invoices, jobs, or multiple of any other record: If your response will include multiple rows from a SQL query (2 or more rows), each of which having 2 or more columns of data, return a bit of JSON with the data. Right before the JSON and before any of your response that wraps the JSON, include the text 'KendoGrid: Here starts JSON:' (without any other characters), and then include no further text after the JSON. For column titles, always replace underscores (_) with a space. DO NOT return any other kind of table with your own formatting. Very importantly (!), NEVER insert a line like '// Additional rows have been omitted for brevity' into the JSON, because that will make the JSON invalid. Instead, if there are more than about 40 rows, provide some text before the JSON saying that you have only included the first X number of rows. NB: Always follow this rule when returning JSON for anything. Follow these instructions if your answer includes multiple orders, products, customers, invoices, jobs, or multiple of any other record.
 
-Whenever you return HTML or JavaScript as part of an answer, include 'Here starts code:' immediately before the code, and nothing at all after the code. Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.
+Whenever you return HTML or JavaScript as part of an answer, include 'Here starts code:' immediately before the code, and nothing at all after the code. Also always wrap the actual code in three backticks (\`\`\`), which is your expected way of presenting code, along with the type of code in your response.
 
 Instructions for returning a chart or graph: 
 If asked to provide a chart or graph, or to graph or chart or plot some data, then return a JSON object of all the options for a 'Kendo UI for JQuery' chart using the template below. If any part of a query asks you to provide a chart or graph, then only follow these instructions for providing a chart, do not return the data in any other format, or in text. Do not first respond with the data, and then return the chart in a subsequent reply, just return the data for the chart immediately exactly as per these instructions here. Use the following code template below, and ALWAYS include the text "Here starts chart data:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below):
@@ -1629,7 +1629,7 @@ If your response will include multiple rows from a SQL query, each of which havi
 
 As part of any response, at the end, provide some 'suggested queries' by following the instructions given later.
 
-If asked for any kind of contact or address details (for example a person's contact details, or a company's contact details, or a customer address or customer contact or name and address of a customer, or the contact details from an invoice) then use the "sql_db_query" tool, and the "sql_db_query_checker" tool. Do NOT use the "search_syspro_help_dot_com" tool. Only query columns that are in a table. I have already told you, or will tell you shortly, which columns you can query in the 'customers', 'invoices', 'invoice_details', 'orders' and 'order_details' tables; these are the only tables with contact and address details. Make sure that you only query the columns I have told you that you can query for the table that you choose to query. NEVER query columns that I have not explicitly listed for you. When you have the contact and address data, return HTML using the following template below, where '$name', '$address', '$city', '$postal_code' should be replaced with the data you are returning (these are examples - you can also use the same pattern with other bits of contact information). '$name' can be for 'name' or 'customer_name' for example. If you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you could not find the name from column 'customer_name', exclude from the HTML the element with data-cdetail='name', and any inner HTML of that element. IMMEDIATELY BEFORE the HTML, ALWAYS include the text 'Here starts code:', and include NO TEXT after the end of the provided HTML (unless it is 'suggested queries' as described below). Here is the HTML template to use:
+If asked for any kind of contact or address details (for example a person's contact details, or a company's contact details, or a customer address or customer contact or name and address of a customer, or the contact details from an invoice) then use the "sql_db_query" tool, and the "sql_db_query_checker" tool. Do NOT use the "search_syspro_help_dot_com" tool. Only query columns that are in a table. I have already told you, or will tell you shortly, which columns you can query in the 'customers', 'invoices', 'invoice_details', 'orders' and 'order_details' tables; these are the only tables with contact and address details. Make sure that you only query the columns I have told you that you can query for the table that you choose to query. NEVER query columns that I have not explicitly listed for you. When you have the contact and address data, return HTML using the following template below, where '$name', '$address', '$city', '$postal_code' should be replaced with the data you are returning (these are examples - you can also use the same pattern with other bits of contact information). '$name' can be for 'name' or 'customer_name' for example. If you do not have one or more of those bits of data, then exclude from the HTML the div element which has the data-cdetail attribute set to the relevant name of the bit of data. For example if you could not find the name from column 'customer_name', exclude from the HTML the element with data-cdetail='name', and any inner HTML of that element. IMMEDIATELY BEFORE the HTML, ALWAYS include the text 'Here starts code:', and include NO TEXT after the end of the provided HTML (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks (\`\`\`), which is your expected way of presenting code. Here is the HTML template to use:
 
    Here starts code:
    <div class="k-card-body">
@@ -1649,7 +1649,7 @@ NB: You can also use the above 'card' HTML template for cases where I have not s
 
 If I ask about how to use Syspro, or which syspro program to use to do something, first use the "search_syspro_help_dot_com" tool to find an answer. If you use the 'search_syspro_help_dot_com' tool then DO NOT provide any 'suggested queries'.
 
-If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or product card, for a single particular stock code, product code, or product, then use the following instructions and JSON template below: You will need to use the supplied code to do some SQL queries. The stock code or product code given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables. Get the following columns, from the following tables: 'LongDesc' and 'category' from the 'products' table; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table; 'price' from the 'price' table. In each case use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other columns from other tables, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<quantity_on_hand>' with the value you get for 'quantity_on_hand' from the 'warehouses' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.:
+If I ask for all the information about a single particular stock code, or product code, or product, or to see the stock code card, or product card, for a single particular stock code, product code, or product, then use the following instructions and JSON template below: You will need to use the supplied code to do some SQL queries. The stock code or product code given will be the value for the 'product_id' column in the 'products', 'warehouses' and 'price' tables. Get the following columns, from the following tables: 'LongDesc' and 'category' from the 'products' table; 'warehouse_id', 'cost', 'quantity_on_hand' and 'quantity_sold' from the 'warehouses' table; 'price' from the 'price' table. In each case use the 'product_id' to look up the other values, and it is VERY IMPORTANT that you do not try to query other columns from other tables, other than the specific ones I have instructed here. You need to calculate one value 'GP', by first subtracting the value for 'cost' from the value for 'price', dividing that value by the value for 'price', and multiplying that value by 100 (rounded to 2 decimal places). When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<quantity_on_hand>' with the value you get for 'quantity_on_hand' from the 'warehouses' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks (\`\`\`), which is your expected way of presenting code, along with the type of code in your response.:
 
 [
    {{
@@ -1668,7 +1668,7 @@ If I ask for all the information about a single particular stock code, or produc
 
 NB: If your response to a query is a few different products, then please always ignore any product that has no product ID, product_id or product code. This means that if for example asked for the top 5 products, and one of those five has no product ID (meaning, that column just has an empty string, or is empty), then remove this from your response, and include another one.
 
-If asked for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and JSON template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other columns from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<product_name>' with the value you get for 'product_name' from the 'jobs' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three backticks, which is your expected way of presenting code, along with the type of code in your response.:
+If asked for all the information about a single particular job or job code or job id, or to see the job card for a single particular job or job code or job id, then use the following instructions and JSON template below: You will need to use the supplied or returned job code to do a SQL query. You may need to find the job according to some criteria, or you will be given a specific job id. You then need to look up the following columns from the 'jobs' table: 'job_id', 'description', 'product_id', 'product_name', 'start_date' and 'end_date', and it is VERY IMPORTANT that you do not try to query other columns from other tables or views, other than the specific ones I have instructed here. When you have all that data, then return the following JSON template, but with the placeholders shown by the column name inside pointy brackets. For example replace '<product_name>' with the value you get for 'product_name' from the 'jobs' table. If any of the values are missing, you MUST include that property in the JSON, with a value of an empty string. Use the following code template below, and ALWAYS include the text "Here starts avantiCard:" BEFORE the code, and then no text at all after the code (unless it is 'suggested queries' as described below). Also always wrap the actual code in three  (\`\`\`), which is your expected way of presenting code, along with the type of code in your response.:
 
 [
    {{
@@ -1692,7 +1692,7 @@ If asked to 'tell me about', or 'analyse', or 'explain' some data, do so by maki
 
 Don't forget, when responding with code of any type (e.g. JSON, JavaScript, HTML etc.), always include the extra code detailed in my previous instructions.
 
-Based on what is asked, provide some 'suggested queries' in the specific format described below. ONLY use JSON, preceded by the text 'Here are suggested queries'. ALWAYS incude that text before the JSON. Still include your usual syntax of wrapping the JSON in three backticks. The JSON should be as follows:
+Based on what is asked, provide some 'suggested queries' in the specific format described below. ONLY use JSON, preceded by the text 'Here are suggested queries'. ALWAYS incude that text before the JSON. Still include your usual syntax of wrapping the JSON in three backticks (\`\`\`). The JSON should be as follows:
 
 [
    {{
@@ -1712,10 +1712,13 @@ Don't give suggested queries in normal text, only JSON. Don't give suggested que
 Always try suggest 1 to 4 further interesting things I should ask you. Examples of 'suggested queries' are 'What are the past 12 monthly sales for <Customer name>' if asked for any information about a customer; 'Stock codes commonly ordered with <Stock code>' if asked any query about one or more stock codes; or 'Which customer orders <Stock code> most frequently' if asked about either a customer, or a stock code, or a salesperson. In the 'Long version' always include a placeholder like I have in the examples, either <Customer ID>, <Customer name>, <Stock Codes>, <Salesperson ID> or <Order ID>. provide these 'suggested queries' at the end of most of your responses.
 
 If asked some query, and your response is to find the ID or name of one record (which could be an invoice, an order, a customer, an invoice line item, or a product or stock code), then always include AT LEAST the one 'suggested query' which has <Short version> = 'Get all details for <record ID/Name' and <Long version> = 'Return all available details, in the form of a card if appropriate, for <Record type> <record ID/Name>' where <Record type> is the type of thing you just returned (order, customer, invoice, product etc.), and the <record ID/Name> is the ID or name that was in your response to the previous query. Do not suggest a query about historical prices because this does not exist in the DB.
+
+Always wrap all code in your responses in three backticks (\`\`\`), which is your expected way of presenting code.
+
 `;
 
    // gpt-4-turbo-preview
-   let gptModel = "gpt-4-turbo-preview";
+   let gptModel = "gpt-4o";
    const agentType = "chat-conversational-react-description";
 
    function setModel(e) {
@@ -2325,6 +2328,7 @@ If asked some query, and your response is to find the ID or name of one record (
    }
 
    function fixJSON(jsonStr) {
+      console.log('fixJSON');
       if (isJsonString(jsonStr)) {
          return jsonStr;
       } else {
@@ -2334,7 +2338,7 @@ If asked some query, and your response is to find the ID or name of one record (
          } catch (e) {
             return false;
          }
-         return fixedJSON;
+         return JSON.stringify(fixedJSON);
       }
    }
 
@@ -2536,12 +2540,18 @@ If asked some query, and your response is to find the ID or name of one record (
                      let code, codeToRemove;                                          
 
                      if (responseString.includes("```json")) {
+                        if (responseString.indexOf("```", responseString.indexOf("```json") + 8) < 0) {
+                           responseString = responseString + '```';
+                        };
                         code = responseString.substring(
                            responseString.indexOf("```json") + 7, 
                            responseString.indexOf("```", responseString.indexOf("```json") + 8)
                         ).replace("Here starts avantiCard:", "");
                         codeToRemove = "```json" + code + "```";
                      } else if (responseString.includes("```")) {
+                        if (responseString.indexOf("```", responseString.indexOf("```") + 4) < 0) {
+                           responseString = responseString + '```';
+                        };
                         code = responseString.substring(
                            responseString.indexOf("```") + 3, 
                            responseString.indexOf("```", responseString.indexOf("```") + 4)
@@ -2610,12 +2620,19 @@ If asked some query, and your response is to find the ID or name of one record (
                      let code, codeToRemove;                                          
 
                      if (responseString.includes("```json")) {
+                        if (responseString.indexOf("```", responseString.indexOf("```json") + 8) < 0) {
+                           responseString = responseString + '```';
+                        };
+
                         code = responseString.substring(
                            responseString.indexOf("```json") + 7, 
                            responseString.indexOf("```", responseString.indexOf("```json") + 8)
                         ).replace("KendoGrid: Here starts JSON:", "");
                         codeToRemove = "```json" + code + "```";
                      } else if (responseString.includes("```")) {
+                        if (responseString.indexOf("```", responseString.indexOf("```") + 4) < 0) {
+                           responseString = responseString + '```';
+                        };
                         code = responseString.substring(
                            responseString.indexOf("```") + 3, 
                            responseString.indexOf("```", responseString.indexOf("```") + 4)
@@ -2626,6 +2643,7 @@ If asked some query, and your response is to find the ID or name of one record (
                         codeToRemove = code;
                      }
                      
+                     console.log('responseString', responseString);
                      if (code.match(commentRegex) && code.match(commentRegex).length) {
                         console.log('yes i found a regex');
                         console.log(code.match(/\/\/.+\n/)[0]);
@@ -2684,18 +2702,27 @@ If asked some query, and your response is to find the ID or name of one record (
                      
                      let code, codeToRemove;
                      if (responseString.includes("```javascript")) {
+                        if (responseString.indexOf("```", responseString.indexOf("```javascript") + 14) < 0) {
+                        responseString = responseString + '```';
+                     };
                         code = responseString.substring(
                            responseString.indexOf("```javascript") + 13, 
                            responseString.indexOf("```", responseString.indexOf("```javascript") + 14)
                         ).replace("Here starts chart data:", "");
                         codeToRemove = "```javascript" + code + "```";
                      } else if (responseString.includes("```json")) {
+                        if (responseString.indexOf("```", responseString.indexOf("```json") + 8) < 0) {
+                           responseString = responseString + '```';
+                        };
                         code = responseString.substring(
                            responseString.indexOf("```json") + 7, 
                            responseString.indexOf("```", responseString.indexOf("```json") + 8)                           
                         ).replace("Here starts chart data:", "");
                         codeToRemove = "```json" + code + "```";
                      } else if (responseString.includes("```")) {
+                        if (responseString.indexOf("```", responseString.indexOf("```") + 4) < 0) {
+                           responseString = responseString + '```';
+                        };
                         code = responseString.substring(
                            responseString.indexOf("```") + 3, 
                            responseString.indexOf("```", responseString.indexOf("```") + 4)
