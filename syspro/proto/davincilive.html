@@ -2968,6 +2968,567 @@ function partialParse(input) {
 }
 ;
 
+// START OF UI code
+const salesData = [
+            {
+                "country": "United States",
+                "year": "2012",
+                "value": 30.1
+            },
+            {
+                "country": "United States",
+                "year": "2013",
+                "value": 35.9
+            },
+            {
+                "country": "United States",
+                "year": "2014",
+                "value": 43.1
+            },
+            {
+                "country": "United States",
+                "year": "2015",
+                "value": 49.2
+            },
+            {
+                "country": "United States",
+                "year": "2016",
+                "value": 59.0
+            },
+            {
+                "country": "United States",
+                "year": "2017",
+                "value": 61.9
+            },
+            {
+                "country": "United States",
+                "year": "2018",
+                "value": 65
+            },
+            {
+                "country": "United States",
+                "year": "2019",
+                "value": 68.3
+            },
+            {
+                "country": "United States",
+                "year": "2020",
+                "value": 69.2
+            },
+            {
+                "country": "United States",
+                "year": "2021",
+                "value": 75.3
+            },
+            {
+                "country": "United States",
+                "year": "2022",
+                "value": 74.2
+            },
+            
+        ];
+   const futureSales = [
+      {
+            "country": "United States",
+            "year": "2022",
+            "value": 74.2,
+         //  "noteText": "Something"
+      },
+      {
+            "country": "United States",
+            "year": "2023",
+            "value": 71.2
+      },
+      {
+            "country": "United States",
+            "year": "2024",
+            "value": 74.2
+      },
+      {
+            "country": "United States",
+            "year": "2025",
+            "value": 78.2,
+         //  "noteText": "Something"
+      }
+   ];
+            
+   function createChart() {
+      $("#chart").kendoChart({
+         //  dataSource: {
+         //      data: salesData
+         //  },
+         theme: "material",
+         title: {
+            text: "Sales performance"
+         },
+         legend: {
+            visible: false
+         },
+         seriesDefaults: {
+            type: "line",
+            labels: {
+               visible: true,
+               format: "${0}m",
+               background: "transparent"
+            }
+         },
+         seriesClick: function(e) {
+               if (e.series.name === "dvp") {
+                  // Disable browser context menu
+                  daVinciWindow.open();
+                  setTimeout(function(){
+                     $("#daVinciChat .k-message-box input").focus();
+                  }, 220);
+                  chat.renderAttachments({
+                     attachments: [{
+                        contentType: "davinciresponse",
+                        content: {
+                           "title": "Da Vinci trend prediction",
+                           "content": "The data points on the dashed purple line are calculated by Da Vinci's trend prediction model. The model learns from your data, and estimates future values based on identified trends.",
+                        }
+                     }],
+                     attachmentLayout: "list"
+                  }, daVinciUser);
+                  renderMsgActions();
+                  $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+                  initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+               }
+            },
+         series: [{
+            data: salesData,
+            field: "value",
+            categoryField: "year",
+            name: "United States",
+            highlight: {
+               inactiveOpacity: 0.5
+            }
+         },
+         {
+            data: futureSales,
+            dashType: "dash",
+            field: "value",
+            categoryField: "year",
+            name: "dvp",
+            color: "#7B1FA2",
+            highlight: {
+               inactiveOpacity: 0.5,
+               visual: function(e) {
+                  var group = new kendo.drawing.Group();
+                  
+                  var center = e.rect.center();
+                  var circleGeometry = new kendo.geometry.Circle(center, 10);
+                  var circle = new kendo.drawing.Circle(circleGeometry, {
+                     fill: {
+                        color: "#7B1FA2"
+                     },
+                     stroke: null,
+                     cursor: "pointer"
+                  });
+
+                  var src = "img/davinci.png";
+                  var image = new kendo.drawing.Image(src, e.rect);
+                  image.options.cursor = "pointer";
+                  group.options.cursor = "pointer";
+
+                  group.append(circle, image);
+                  return group;
+               }
+            }
+         }],
+         valueAxis: {
+            labels: {
+               format: "${0}m"
+            },
+            line: {
+               visible: false
+            }
+         },
+         categoryAxis: {
+            majorGridLines: {
+               visible: false
+            }
+         }
+      });
+   }
+      
+   $(".daVinciPopoverTrigger").each(function(idx, elem) {
+      const title = $(elem).attr("data-bs-title") || "Da Vinci Generated Text";
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: title,
+         trigger: "click focus",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Generated Text</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
+
+   $(".daVinciDataPopoverTrigger").each(function(idx, elem) {
+      const title = $(elem).attr("data-bs-title") || "DaVinci insight";
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: title,
+         trigger: "click focus",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Insight</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">insights</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-warning sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">65%</span></a><a class="daVinciTellMoreData" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
+
+   $(".daVinciAutoPopoverTrigger").each(function(idx, elem) {
+      const title = $(elem).attr("data-bs-title") || "Da Vinci Automated Process";
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: title,
+         trigger: "click focus",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body"></div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">smart_toy</i></a><a class="daVinciTellMoreAuto" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
+
+   $(".davincifield").each(function(idx, elem) {
+      const popover = new bootstrap.Popover(elem, {
+         html: true,
+         title: "Da Vinci Generated Data",
+         trigger: "hover",
+         content: "Field value generated by Da Vinci",
+         customClass: "daVinciPopover",
+         template: '<div class="popover" role="popover"><div class="popover-arrow"></div><h3 class="popover-header"><i class="material-icons">auto_awesome</i> Da Vinci Automated Process</h3><div class="popover-body">Field value generated by Da Vinci</div><div class="popover-footer sys-bg-very-light-gray"><a data-bs-toggle="tooltip" data-bs-title="Ping" class="showmodelcard" href="#"><i class="material-icons sys-fg-gray sys-txt-sm">edit_note</i></a><a class="conflevel" href="#"><i class="material-icons sys-fg-success sys-txt-sm">data_usage</i><span class="sys-fg-gray sys-txt-sm sys-mg-l-5">84%</span></a><a class="daVinciTellMore" href="#"><i class="sys-txt-sm material-icons sys-fg-primary">question_mark</i></a></div></div>'
+      });
+   });
+   
+
+   function initChatCardTooltips(elem) {
+      $('[data-bs-toggle="tooltip"]', elem).each(function(idx, element) {
+         const tooltip = new bootstrap.Tooltip(element);
+      });            
+   }
+
+   $(document).on("click", ".daVinciTellMore", function(e) {
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover.hide();
+      daVinciWindow.open();
+      setTimeout(function(){
+         $("#daVinciChat .k-message-box input").focus();
+      }, 220);
+
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "davincisumresponse",
+            content: {
+               "title": responses[contentId].title,
+               "content": responses[contentId].content,
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".daVinciTellMoreData", function(e) {
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover.hide();
+      daVinciWindow.open();
+      setTimeout(function(){
+         $("#daVinciChat .k-message-box input").focus();
+      }, 220);
+
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "davincitileresponse",
+            content: {
+               "title": responses[contentId].title,
+               "content": responses[contentId].content,
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".daVinciTellMoreAuto", function(e) {
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover.hide();
+      daVinciWindow.open();
+      setTimeout(function(){
+         $("#daVinciChat .k-message-box input").focus();
+      }, 220);
+
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "davinciautoresponse",
+            content: {
+               "title": responses[contentId].title,
+               "content": responses[contentId].content,
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".conflevel", function(e) {      
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover?.hide();
+      daVinciWindow.open();      
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "confidence",
+            content: {
+               
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".showmodelcard", function(e) {      
+      const popoverId = $(this).closest(".daVinciPopover").attr("id");
+      const trigger = $(`[aria-describedby="${popoverId}"]`);
+      const contentId = trigger.attr("data-content-id");
+      const popover = bootstrap.Popover.getInstance(trigger[0]);
+      popover?.hide();
+      daVinciWindow.open();      
+      chat.renderAttachments({
+         attachments: [{
+            contentType: "models",
+            content: {
+               
+            }
+         }],
+         attachmentLayout: "list"
+      }, daVinciUser);
+      renderMsgActions();
+      $(".k-message-list-content > div:last-child")[0].scrollIntoView();
+      // initChatCardTooltips($(".k-message-list-content > div:last-child")[0]);
+   });
+
+   $(document).on("click", ".clickable", function() {
+      alert("Take the user to the relevant program in Avanti");
+   });
+
+   function onSuccess(e) {
+      console.log('upload success!');  
+      $(".file-upload-details").show(300);                  
+   }
+   
+   function addPreview(file, wrapper) {
+      var raw = file.rawFile;
+      var reader  = new FileReader();
+      if (raw) {
+      reader.onloadend = function () {
+         var preview = $("<img class='image-preview'>").attr("src", this.result);
+         wrapper.find(".k-file[data-uid='" + file.uid + "'] .k-file-extension-wrapper")
+         .replaceWith(preview);
+      };
+
+      reader.readAsDataURL(raw);
+      }
+   }
+
+   $("#files").kendoUpload({
+      async: {
+         saveUrl: "http://127.0.0.1:5500/UXTools/api/UXFileProviderWeb/UploadDocument",
+         removeUrl: "remove",
+         autoUpload: true,
+      },
+      validation: {
+         allowedExtensions: [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".pdf", ".doc", ".docx", ".xls"],
+      },
+      // template: kendo.template($('#fileTemplate').html()),
+      success: onSuccess,
+      showFileList: true,
+      select: function(e) {
+         var fileInfo = e.files[0];
+         var wrapper = this.wrapper;
+
+         setTimeout(function(){
+               addPreview(fileInfo, wrapper);
+         });
+      }
+   });
+
+   $(".k-dropzone")
+      .find("em")
+      .remove();
+   $(".k-dropzone")
+      .find(".k-dropzone-hint")
+      .remove();
+   $(".k-dropzone .k-upload-button")
+      .find("span")
+      .text("Drop file here or click to upload");
+   $(".k-dropzone .k-upload-button").prepend(
+      "<h3 class='sys-mg-t-10 sys-mg-r-10'><i class='material-icons text-muted'>cloud_upload</i></h3>"
+   );
+   
+   $(document).ready(createChart);
+
+   const confGridData = [
+      {
+         name: "Bicycle Spokes",
+         id: "00HG54",
+         date: "09/10/2023",
+         daysLate: 7,
+         confidence: 0.55,
+      },
+      {
+         name: "Racing Seat",
+         id: "00HG52",
+         date: "08/10/2023",
+         daysLate: 5,
+         confidence: 0.23,
+      },
+      {
+         name: "ABS Brakes",
+         id: "00TTG54",
+         date: "07/10/2023",
+         daysLate: 3,
+         confidence: 1,
+      },
+      {
+         name: "Racing Handlebar",
+         id: "00JG89",
+         date: "06/10/2023",
+         daysLate: 8,
+         confidence: 0.78,
+      },
+      {
+         name: "Bicycle Spokes",
+         id: "00HG54",
+         date: "09/10/2023",
+         daysLate: 7,
+         confidence: 0.55,
+      },
+      {
+         name: "Racing Seat",
+         id: "00HG52",
+         date: "08/10/2023",
+         daysLate: 5,
+         confidence: 0.23,
+      },
+      {
+         name: "ABS Brakes",
+         id: "00TTG54",
+         date: "07/10/2023",
+         daysLate: 3,
+         confidence: 1,
+      },
+      {
+         name: "Racing Handlebar",
+         id: "00JG89",
+         date: "06/10/2023",
+         daysLate: 8,
+         confidence: 0.78,
+      },
+   ];
+
+   $("#confGrid").kendoGrid({
+      dataSource: {
+         data: confGridData,
+         pageSize: 20,
+         schema: {
+            model: {
+                  id: "id"
+            }
+         }
+      },
+      dataBound: onDataBound,
+      pageable: {
+         pageSize: 5,
+         pageSizes: true,
+      },
+      columns: [
+         {
+            field: "id",
+            title: "StockCode",
+         },
+         {
+            field: "name",
+            title: "Name",
+         },
+         {
+            field: "date",
+            title: "Date due",
+         },
+         {
+            field: "daysLate",
+            title: "Days late",
+            template: "<span><b>Expected #= daysLate# days late</b></span><span id='chart_#= id#' class='sparkline-chart pull-right'></span>",
+            width: 170,
+            headerTemplate: 'Expected Days Late <i class="material-icons pull-right align-right davinciicon-light sys-txt-sm">auto_awesome</i>'
+         },
+      ]
+   });
+
+   function onDataBound(e) {
+      var grid = this;
+      grid.table.find("tr").each(function () {
+         var dataItem = grid.dataItem(this);      
+         $(this).find(".sparkline-chart").kendoSparkline({
+            legend: {
+               visible: false
+            },
+            series: [{
+               data: [{
+                  value: dataItem.confidence * 100,
+                  color: dataItem.confidence > 0.74 
+                     ? "green"
+                     : dataItem.confidence > 0.49 && dataItem.confidence < 0.75
+                     ? "orange"
+                     : "red",               
+               },
+               {
+                  value: (1 - dataItem.confidence) * 100,
+                  color: "#ccc",               
+               }],
+               tooltip: {
+                  visible: true,
+                  background: "#444",
+                  color: "#fff",
+                  border: {
+                     width: 0
+                  },
+                  template: function() {
+                     var adjustConf = Math.round(dataItem.confidence * 100);
+                     return adjustConf + "% chance";
+                  }
+               }
+            }],               
+            type: "donut",
+            chartArea: {
+               margin: 0,
+               width: 30,
+               background: "transparent"
+            },
+            seriesDefaults: {
+               size: 4,
+               tooltip: {
+                  visible: false
+               }
+            },         
+         });
+         kendo.bind($(this), dataItem);
+      });
+   }
+
+
+
 initialiseDaVinci();
 </script>
 
