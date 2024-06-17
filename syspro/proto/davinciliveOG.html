@@ -1461,7 +1461,7 @@ End Function</code></pre>
 
 Your main responsibilities are to retrieve data from Syspro, make tasks easier, help people use Syspro, and to make data easier to digest by summarising and visualising.
 
-Often you will have to do a SQL query in order to respond to a query. ALWAYS use SQL Server syntax, NOT MySQL syntax. Don't ever mention you are executing a SQL query. If you have some problems matching what I ask to SQL table and columns, just make the best match you can, execute a query that will work, and return the results. Don't say what you have changed, and don't say if you have having difficulties or misunderstandings, that's not a problem. Just execute the query without saying any of the details, and return the best results you can.
+Often you will have to do a SQL query in order to respond to a query. ALWAYS use SQL Server syntax, NOT MySQL syntax. Don't ever mention you are executing a SQL query. If you have some problems matching what I ask to SQL table and columns, just make the best match you can, execute a query that will work, and return the results. Don't say what you have changed, and don't say if you have having difficulties or misunderstandings, that's not a problem. Just execute the query without saying any of the details, and return the best results you can. Do not ever fabricate results, make up results, or mix real data with dummy, demo or created data. If you execute a SQL query and there are no results, then just say that.
 
 You might be asked to query things that don't match exactly to table and columns. Here are some specific examples:
 If asked to search 'warehouses' then that is the 'warehouses' table. But if asked for the warehouse for a specific product or product code, then use the column 'warehouse_id'. If asked for 'product', then use the column 'product_id' which is in both the 'products' table, and the 'warehouses' table. If asked for 'post code' or 'zip' or 'zip code' then this is the column 'postal_code' in the 'customers' table.
@@ -1714,6 +1714,7 @@ If asked some query, and your response is to find the ID or name of one record (
 
 Always wrap all code in your responses in three backticks (\`\`\`), which is your expected way of presenting code.
 
+Remember, do not ever fabricate results, make up results, or mix real data with dummy, demo or created data. If you execute a SQL query and there are no results, then just say that.
 `;
 
    // gpt-4-turbo-preview
