@@ -1813,10 +1813,12 @@ Remember, do not ever fabricate results, make up results, or mix real data with 
          if (json.length) {
             json.forEach((item) => {
                console.log(`active session: ${item.session_id}`);
-               fetch(`${apiURL}/delete_session?session_id=${item.session_id}`, {
-                  method: "DELETE",      
-                  headers,      
-               });
+               if (item.session_description === "prototype") {
+                    fetch(apiURL + "/delete_session?session_id=" + item.session_id, {
+                        method: "DELETE",
+                        headers: headers,
+                    });
+                }
             });
          }
 
