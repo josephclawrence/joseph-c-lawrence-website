@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>SYSPRO Product Visual Builder</title>
+
+        <!-- Bootstrap -->
+        <link href="css/new/UX_CSS_bootstrap.css" rel="stylesheet" />
+        <link href="css/new/UX_CSS_bootstrap-main.css" rel="stylesheet" />
+
+
+				<link href="css/postcss.css" rel="stylesheet" />
+        <link href="css/UX_CSS_sysprofusionstyle.css" rel="stylesheet" />
+
+				<link rel="stylesheet" href="css/gridstack.min.css">
+				<link rel="stylesheet" href="css/gridstack-extra.css">
+            <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.min.css"> -->
+            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"> -->
+            <!-- <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"> -->
+            
+        <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.36.2/css/ace.min.css" rel="stylesheet">
+        <script>
+            window.MSPointerEvent = null;
+            window.PointerEvent = null;
+        </script>
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: {
+                    families: [
+                        "Source+Sans+Pro:400,200,300,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic:latin",
+                    ],
+                },
+            };
+            (function() {
+                var wf = document.createElement("script");
+                wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+                wf.type = "text/javascript";
+                wf.async = "true";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <script src="js/new/UX_JS_jquery.min.js"></script>
+        <!-- <script src="js/UX_JS_velocity.min.js"></script> -->
+        <script src="js/new/UX_JS_kendo.all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/mode-vbscript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/mode-csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.36.2/theme-dracula.min.js"></script>
+
+        
+        <style>
+         #vbeditor, #cseditor {
+    /* position: relative; */
+    /* width: 500px; */
+            height: 350px;
+        }
+        #conversion-notes pre {
+            word-break: normal;
+            white-space: break-spaces;
+        }
+        </style>
+    </head>
+
+<body data-theme="" data-column-layout="" class="light-gradient-background body-view-mode">
+  <nav id="fusion-toolbar" class="navbar navbar-expand navbar-default navbar-light navbar-fixed-top fixed-top navbar-controlbar sys-mg-b-5 fusion-top-toolbar toolbar-loaded">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="nav-item">
+                <a href="#" class="text-primary offcanvas-toggle fusion-main-page-buttons fusion-maininstance-buttons nav-link js-offcanvas-has-events" data-toggle="offcanvas" data-target="#fusion-sidebar-wrapper2" onclick="sysproInterop.bindProgramList($('#fusion-sidebar-wrapper2'));" style=""><i class="material-icons">menu</i></a>
+            </li>
+            <li>
+                <a class="navbar-brand" href="#" onclick="sysproInterop.backToMenu();">
+                    <img alt="Brand" src="img/UX_IMG_SYSPROLogo.png" style="height: 35px">
+                </a>
+            </li>
+            <li class="nav-item back-to-menu">
+                <a href="#" onclick="sysproInterop.backToMenu();" class="text-primary fusion-main-page-buttons fusion-maininstance-buttons nav-link" style=""><span class="hidden-xs">Home</span><i class="material-icons visible-xs">home</i></a>
+            </li>
+            <li class="nav-item breadcrumb-separator fusion-main-page-buttons" style="">
+                <i class="material-icons">chevron_right</i>
+            </li>
+            <li class="nav-item sys-pd-l-10 application-sub-title fusion-main-page-buttons" style="">HOME MENU</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right sys-fg-primary">
+            <li class=" nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account offcanvas-toggle js-offcanvas-has-events" onclick="sysproInterop.bindAvantiNotifications($('#fusion-sidebar-wrapper2'));" style="" data-toggle="offcanvas" data-target="#offcanvas-avanti-notifications">
+                    <i class="material-icons">notifications</i>
+                    <span class="badge sys-bg-danger avanti-notifications-count" style="display: none;"></span>
+                </a>
+            </li>
+
+            <li class="dropdown nav-item">
+                <a href="#" class="text-primary fusion-main-page-buttons nav-link fusion-current-account dropdown-toggle" data-bs-toggle="dropdown"><i class="material-icons">account_circle</i>
+                    <span class="hidden-xs fusion-current-account-name">SYSPRO Administrator</span></a>
+                <ul class="dropdown-menu multi-level nav sys-pd-t-5" role="menu">
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget  dropdown-item" onclick="sysproInterop.callPlugin('SRSMain', 'SRSQUE');"><i class="material-icons">list</i>Report Queue</a>
+                    </li>
+                    <li>
+                        <a href="#" class="syspro-toolbar-widget  dropdown-item" onclick="sysproInterop.showHelp();"><i class="material-icons">help</i>Help</a>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-toggle  dropdown-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Model</a>
+                        <ul class="dropdown-menu sys-pd-t-5">
+                            <li>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4o" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>GPT-4o</a>
+                            </li>
+                            <li>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4-turbo-preview" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>GPT-4-turbo</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+
+  <div id="fusion-wrapper">
+    <div id="harness-container">
+      <div id="wrapper" class="toggled">
+        <nav nav="" id="navbar-toolbar" class="navbar navbar-default navbar-static-top navbar-controlbar sys-mg-off-b syspro-toolbar ">
+          <div class="container-fluid">
+
+          </div>
+        </nav>
+        <div class="container-fluid container-id-holder" id="main-container" style="padding-top: 40px;">
+           
+          <!-- Error Notification empty element -->
+          <div class="row sys-mg-t-15">    
+            <div class="col-sm-12 col-12 column-parent">
+                <div class="panel sys-bd-off sys-box-shadow-off">
+                    <div class="row widget layout-widget grid-stack-item-content" >
+                       <div class="col-sm-6 ">
+                          <div class="panel card sys-widget sys-box-shadow-off " >               
+                             <div class="panel-body card-body sys-pd-15">
+                                <div class="row sys-pd-b-5">
+                                    <div class="col-12 d-flex justify-content-between align-items-center">
+                                        <span class="fw-semibold sys-txt-lg">VBScript to convert</span>
+                                        <button id="click2convert" onclick="convertCode()" class="btn btn-primary">
+                                            Convert to C#
+                                            <i class="material-icons convert-icon" style="display: inline-block;">playlist_play</i>
+                                            <span class="spinner-border spinner-border-sm" aria-hidden="true" style="display: none;"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="vbeditor">'Copy project files to %ProgramFiles%.
+'Use /DeleteTarget to delete the target folder before copying.
+'Notes
+'1) User interactive.
+'2) Does not require Setup.vbs to have been run.
+'3) This script should remain in the project root folder.
+
+Option Explicit
+Dim fso 'Scripting.FileSystemObject
+Dim sa 'Shell.Application object
+Dim sourceFolder, targetFolder 'folder paths
+Dim scr 'this file's filespec
+Dim failedToDeleteTarget, failedToCreateTarget 'booleans
+Dim msg, i, caption 'for MsgBox
+Dim errNumber, errDescription 'integer, string
+Const Force = True 'for DeleteFolder
+
+targetFolder = "%ProgramFiles%\VBScripting"
+Set fso = CreateObject("Scripting.FileSystemObject")
+scr = WScript.ScriptFullName
+sourceFolder = fso.GetParentFolderName( scr ) 'see Note 3
+Set sa = CreateObject("Shell.Application")
+
+With CreateObject( "WScript.Shell" )
+    .CurrentDirectory = sourceFolder
+    targetFolder = .ExpandEnvironmentStrings( _
+        targetFolder )
+End With
+
+'Delete the target folder if requested, and if not already deleted
+
+With WScript.Arguments.Named
+    failedToDeleteTarget = False
+    If .Exists( "DeleteTarget" ) _
+    And fso.FolderExists( targetFolder ) Then
+        On Error Resume Next
+        fso.DeleteFolder targetFolder, Force
+        If Err Then 
+            failedToDeleteTarget = True
+            errNumber = Err.Number
+            errDescription = Err.Description
+        End If
+        On Error Goto 0
+    End If
+End With
+If failedToDeleteTarget Then
+    msg = "Error attempting to delete the target folder" & _
+        vbLf & targetFolder & vbLf & vbLf & _
+        "Err.Description: " & vbTab & errDescription & vbLf & _
+        "Err.Number:      " & vbTab & errNumber & vbLf & _
+        "Hex(Err.Number): " & vbTab & Hex(errNumber) & vbLf & vbLf & _
+        "Retry with elevated privileges?" & vbLf & vbLf & _
+        "If this message appears repeatedly, " & _
+        "stop any scripts using the VBScripting .NET libraries, and try again."
+    i = vbOkCancel + vbSystemModal + vbInformation 
+    caption = WScript.ScriptName
+    If vbCancel = MsgBox( msg, i, caption) Then
+        Quit
+    End If
+    sa.ShellExecute "wscript", _
+        """" & scr & """ /DeleteTarget",, "runas"
+    Quit
+End If
+
+'Create the target folder if not already created
+
+failedToCreateTarget = false
+If Not fso.FolderExists(targetFolder) Then
+    On Error Resume Next
+    fso.CreateFolder targetFolder
+    If Err Then
+        failedToCreateTarget = True
+        errNumber = Err.Number
+        errDescription = Err.Description
+    End If
+    On Error Goto 0
+End If
+If failedToCreateTarget Then
+    msg = "Error attempting to create the target folder" & _
+        vbLf & targetFolder & vbLf & vbLf & _
+        "Err.Description: " & vbTab & errDescription & vbLf & _
+        "Err.Number:      " & vbTab & errNumber & vbLf & _
+        "Hex(Err.Number): " & vbTab & Hex(errNumber) & vbLf & vbLf & _
+        "Retry with elevated privileges?"
+    i = vbOKCancel + vbSystemModal + vbInformation
+    caption = WScript.ScriptName
+    If vbCancel = MsgBox( msg, i, caption) Then
+        Quit
+    End If
+    sa.ShellExecute "wscript", _
+        """" & scr & """",, "runas"
+    Quit
+End If
+
+'Invoke the CopyHere method
+
+sa.Namespace(targetFolder).CopyHere sourceFolder
+
+Call Quit
+
+Sub Quit
+    Set fso = Nothing
+    Set sa = Nothing
+    WScript.Quit 
+End Sub</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 ">
+                        <div class="panel card sys-widget sys-box-shadow-off " >               
+                           <div class="panel-body card-body sys-pd-15">
+                                <div class="row sys-pd-b-5">                                    
+                                    <div class="col-12 d-flex justify-content-between align-items-center">
+                                        <span class="fw-semibold sys-txt-lg flex-grow-1">C# script</span>
+                                        <button id="copyCStoCB" onclick="copyCStoCB()" class="btn btn-default sys-mg-r-5"><i class="material-icons">content_copy</i></button>
+                                        <button class="btn btn-default"><i class="material-icons">save</i></button>
+                                    </div>
+                                </div>
+                                <div id="cseditor"></div>
+                                <div class="row sys-pd-b-5">                                    
+                                    <div class="col-12" id="conversion-notes">
+                                        <p class="fw-semibold sys-txt-lg sys-mg-t-15 sys-mg-b-5">Conversion notes</p>
+                                        <pre><em>Conversion notes will display here after code conversion</em></pre>
+                                    </div>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+              <!-- <div class="panel sys-bd-off sys-box-shadow-off">
+                  <div class="row widget layout-widget grid-stack-item-content ps" >
+                     <div class="col-sm-6 ">
+                        <div class="panel card sys-widget sys-box-shadow-off " >               
+                           <div class="panel-body card-body sys-pd-15" id="editor_vbin_wrapper">
+
+                                <textarea id="editor_vbin" rows="30" cols="30" style="width:100%; height:560px" aria-label="editor">
+
+                                    <pre><code>
+                                        
+                                    </code></pre>
+                                </textarea>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-6 ">
+                        <div class="panel card sys-widget sys-box-shadow-off " >               
+                           <div class="panel-body card-body sys-pd-15">
+
+                                <textarea id="editor_csout" rows="30" cols="30" style="width:100%; height:560px" aria-label="editor"></textarea>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+              </div> -->
+
+            </div>
+
+        </div>
+      </div>
+      <div class="statusBar sys-bg-inverse" style="display: block;">
+        <span class="status-message sys-fg-very-light-gray">The OUTDOORS Company (EDU1)  Your license expires February 1st           TUESDAY 8   JANUARY 2019</span>
+      </div>
+    </div>    
+
+
+    <footer id="thefooter" style="background-image: url('../../Samples/UX_IMG_cloud_erp_light_footer.png');">
+      <span id="copyrightfooter">© SYSPRO All Rights Reserved. All trademarks are recognized.</span><span id="sysprofooter">Powered by SYSPRO ERP</span>
+    </footer>
+
+  </div>
+
+
+
+  <script src="js/new/UX_JS_bootstrap.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script> -->
+
+  
+
+
+<script>
+var vbeditor = ace.edit("vbeditor");
+var VBScriptMode = ace.require("ace/mode/vbscript").Mode;
+vbeditor.setShowPrintMargin(false);
+vbeditor.session.setMode(new VBScriptMode());
+vbeditor.setTheme("ace/theme/dracula");
+
+var cseditor = ace.edit("cseditor");
+var CSScriptMode = ace.require("ace/mode/csharp").Mode;
+cseditor.setShowPrintMargin(false);
+cseditor.session.setMode(new CSScriptMode());
+cseditor.setTheme("ace/theme/dracula");
+
+
+var apiURL = "https://sysprogptwebapi.ahcah9exgugedfd5.westus2.azurecontainer.io";
+var headers = {
+    "Content-type": "application/json",
+    "accept": "application/json"
+};
+function copyCStoCB() {
+    // const sel = cseditor.selection.toJSON(); // save selection
+    cseditor.selectAll();
+    cseditor.getCopyText();
+    document.execCommand('copy');
+    cseditor.clearSelection();
+    // document.execCommand('copy');
+    // cseditor.selection.fromJSON(sel); // restore selection
+}
+
+function convertCode() {
+    const button = $("#click2convert");
+    // button.find(".spinner-border").css("visibility", "visible");
+    button.find(".convert-icon").hide();
+    button.find(".spinner-border").show();
+    button.attr("disabled", true);
+    button.addClass("disabled");
+    const inputCode = vbeditor.getValue();
+    // stringifedInput = JSON.stringify(inputCode);
+
+    fetch(apiURL + "/convert_langauge", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+            "input_language": "vbscript",
+            "target_language": "csharp",
+            "code_to_convert": inputCode
+        })
+    })
+    .then(function (response) { return response.json(); })
+    .then(function (responseString) {
+        console.log(responseString);
+        if (responseString.includes("```csharp")) {
+            const code = responseString.substring(responseString.indexOf("```csharp") + 9, responseString.indexOf("```", responseString.indexOf("```csharp") + 9));
+            let notes;
+            if (responseString.includes("### Explanation:")) {
+                notes = responseString.substring(responseString.indexOf("### Explanation:") + 16);
+            } else if (responseString.includes("### Explanations:")) {
+                notes = responseString.substring(responseString.indexOf("### Explanations:") + 17);
+            } else {
+                notes = responseString.substring(responseString.indexOf("```", responseString.indexOf("```csharp") + 9)).replace('```', '');
+            }            
+            console.log(code);
+            cseditor.setValue(code);
+            $("#conversion-notes pre").html(notes);
+            button.find(".spinner-border").hide();
+            button.find(".convert-icon").show();
+            button.attr("disabled", false);
+            button.removeClass("disabled");
+        }
+    });
+}
+
+// let vbcode = `Option Explicit
+// Dim fso 'Scripting.FileSystemObject
+// Dim sa 'Shell.Application object
+// Dim sourceFolder, targetFolder 'folder paths
+// Dim scr 'this file's filespec
+// Dim failedToDeleteTarget, failedToCreateTarget 'booleans
+// Dim msg, i, caption 'for MsgBox
+// Dim errNumber, errDescription 'integer, string
+// Const Force = True 'for DeleteFolder
+
+// targetFolder = "%ProgramFiles%\VBScripting"
+// Set fso = CreateObject("Scripting.FileSystemObject")
+// scr = WScript.ScriptFullName
+// sourceFolder = fso.GetParentFolderName( scr ) 'see Note 3
+// Set sa = CreateObject("Shell.Application")
+
+// With CreateObject( "WScript.Shell" )
+//     .CurrentDirectory = sourceFolder
+//     targetFolder = .ExpandEnvironmentStrings( _
+//         targetFolder )
+// End With`;
+
+// $("#editor_vbin").kendoEditor({
+//     encoded: true,
+//     stylesheets: [
+//         "https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.min.css",
+//     ],
+//     pasteCleanup: {
+//         all: true,
+//         css: true,
+//         custom: function(pastedCode) {
+//             vbcode = pastedCode;
+//             const highlightedCode = hljs.highlightAuto(
+//                 pastedCode,
+//                 // { language: 'xml' }
+//             ).value;
+//             return `<pre><code class="hljs language-vbnet">${highlightedCode}</pre></code>`;
+//         }
+//     },
+//     tools: [
+//         {
+//             name: "convert",
+//             tooltip: "Convert code",
+//             exec: function (e) {
+//                 var editor = $("#editor_vbin").data("kendoEditor");
+//                 console.log(editor);
+//                 console.log(editor.value());
+//                 console.log(JSON.stringify(vbcode));
+//                 // editor.exec("inserthtml", { value: "<hr />" });
+//             }
+//         }
+//     ],
+//     value: `<pre><code>${vbcode}</code></pre>`,
+// });
+// $("#editor_csout").kendoEditor({
+//     tools: [
+//         {
+//             name: "custom",
+//             tooltip: "Insert a horizontal rule",
+//             exec: function (e) {
+//                 var editor = $("#editor_csout").data("kendoEditor");
+//                 editor.exec("inserthtml", { value: "<hr />" });
+//             }
+//         }
+//     ]
+// });
+
+// function highlightVB() {
+
+//     const iframe = document.querySelector('#editor_vbin_wrapper iframe');
+//     const iframeContentWindow = iframe.contentWindow;
+//     console.log(iframeContentWindow);
+// // Execute JavaScript code within the iframe
+//     iframeContentWindow.document.querySelectorAll('body pre code').forEach(el => {
+//         console.log(el);
+//     // then highlight each
+//         hljs.highlightElement(el);
+//     });
+
+// }
+
+// function styleEditors() {
+//     const iframe = document.querySelector('#editor_vbin_wrapper iframe');
+//     const iframeContentWindow = iframe.contentWindow;
+//     console.log(iframeContentWindow);
+//     // Execute JavaScript code within the iframe
+//     iframeContentWindow.document.querySelectorAll('body').forEach(el => {
+//         $(el).addClass('hljs language-vbnet');
+//     });
+//     iframeContentWindow.document.querySelectorAll('body pre code').forEach(el => {
+//         console.log(el);
+//         // then highlight each
+//         hljs.highlightElement(el);
+//     });
+// }
+
+// styleEditors();
+// hljs language-vbnet
+
+</script>
+  </body>
+</html>
