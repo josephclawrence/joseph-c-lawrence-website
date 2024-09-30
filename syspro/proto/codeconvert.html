@@ -390,12 +390,14 @@ function convertCode() {
                 notes = responseString.substring(responseString.indexOf("### Explanation:") + 16);
             } else if (responseString.includes("### Explanations:")) {
                 notes = responseString.substring(responseString.indexOf("### Explanations:") + 17);
+            } else if (responseString.includes("### Key Points:")) {
+                notes = responseString.substring(responseString.indexOf("### Key Points:") + 15);
             } else {
                 notes = responseString.substring(responseString.indexOf("```", responseString.indexOf("```csharp") + 9)).replace('```', '');
             }            
             console.log(code);
             cseditor.setValue(code);
-            $("#conversion-notes pre").html(notes);
+            $("#conversion-notes pre").html(notes.trim());
             button.find(".spinner-border").hide();
             button.find(".convert-icon").show();
             button.attr("disabled", false);
