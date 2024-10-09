@@ -62,6 +62,9 @@
             word-break: normal;
             white-space: break-spaces;
         }
+        .show-with-cs {
+            display: none;
+        }
         </style>
     </head>
 
@@ -263,18 +266,58 @@ End Sub</div>
                         <div class="panel card sys-widget sys-box-shadow-off " >               
                            <div class="panel-body card-body sys-pd-15">
                                 <div class="row sys-pd-b-5">                                    
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
+                                    <div class="col-12 d-flex justify-content-between align-items-center" style="min-height: 38.35px;">
                                         <span class="fw-semibold sys-txt-lg flex-grow-1">C# script</span>
-                                        <button id="copyCStoCB" onclick="copyCStoCB()" class="btn btn-default sys-mg-r-5"><i class="material-icons">content_copy</i></button>
-                                        <button class="btn btn-default"><i class="material-icons">save</i></button>
+                                        <button id="optimiseCS" onclick="optimiseCS()" class="btn btn-default sys-mg-r-5 show-with-cs">
+                                            Optimise C#
+                                            <i class="material-icons convert-icon" style="display: inline-block;">auto_fix_high</i>
+                                            <span class="spinner-border spinner-border-sm" aria-hidden="true" style="display: none;"></span>
+                                        </button>
+                                        <button id="explainCS" onclick="explainCS()" class="btn btn-default sys-mg-r-5 show-with-cs">
+                                            Explain code
+                                            <i class="material-icons convert-icon" style="display: inline-block;">school</i>
+                                            <span class="spinner-border spinner-border-sm" aria-hidden="true" style="display: none;"></span>
+                                        </button>
+                                        <button id="copyCStoCB" onclick="copyCStoCB()" class="btn btn-default sys-mg-r-5 show-with-cs"><i class="material-icons">content_copy</i></button>
+                                        <button class="btn btn-default show-with-cs"><i class="material-icons">save</i></button>
                                     </div>
                                 </div>
                                 <div id="cseditor"></div>
-                                <div class="row sys-pd-b-5">                                    
-                                    <div class="col-12" id="conversion-notes">
-                                        <p class="fw-semibold sys-txt-lg sys-mg-t-15 sys-mg-b-5">Conversion notes</p>
-                                        <pre><em>Conversion notes will display here after code conversion</em></pre>
-                                    </div>
+                                <div class="row sys-pd-b-5">     
+                                    <div class="col-12">
+                                        <div id="tabstrip" class="sys-mg-t-10">
+                                            <ul>
+                                                <li class="k-active" id="conversionNotesTab">
+                                                    Conversion notes
+                                                </li>
+                                                <li id="optimisationNotesTab">
+                                                    Optimisation notes
+                                                </li>
+                                                <li id="explanationTab">
+                                                    Explanation
+                                                </li>
+                                            </ul>
+                                            <div>
+                                                <div id="conversion-notes">
+                                                    <!-- <p class="fw-semibold sys-txt-lg sys-mg-t-15 sys-mg-b-5">Conversion notes</p> -->
+                                                    <pre><em>Conversion notes will display here after code conversion</em></pre>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div id="optimisation-notes">
+                                                    <!-- <p class="fw-semibold sys-txt-lg sys-mg-t-15 sys-mg-b-5">Conversion notes</p> -->
+                                                    <pre><em>Optimisation notes will display here after code optimisation</em></pre>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div id="explanation">
+                                                    <!-- <p class="fw-semibold sys-txt-lg sys-mg-t-15 sys-mg-b-5">Conversion notes</p> -->
+                                                    <pre><em>Explanation will display here after code explanation</em></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                               
+                                    
                                 </div>
                           </div>
                       </div>
@@ -333,6 +376,17 @@ End Sub</div>
 
 
 <script>
+
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+        animation:  {
+            open: {
+                effects: "fadeIn"
+            }
+        }
+    });
+});
+
 var vbeditor = ace.edit("vbeditor");
 var VBScriptMode = ace.require("ace/mode/vbscript").Mode;
 vbeditor.setShowPrintMargin(false);
@@ -351,6 +405,16 @@ var headers = {
     "Content-type": "application/json",
     "accept": "application/json"
 };
+
+
+function scrollToNotes() {
+    window.scrollTo({
+        top: $("#tabstrip").closest(".row")[0].offsetTop,
+        left: 0,
+        behavior: "smooth",
+    });
+}
+
 function copyCStoCB() {
     // const sel = cseditor.selection.toJSON(); // save selection
     cseditor.selectAll();
@@ -397,12 +461,114 @@ function convertCode() {
             }            
             console.log(code);
             cseditor.setValue(code);
+            $(".show-with-cs").show();
             $("#conversion-notes pre").html(notes.trim());
             button.find(".spinner-border").hide();
             button.find(".convert-icon").show();
             button.attr("disabled", false);
             button.removeClass("disabled");
         }
+    });
+}
+
+function optimiseCS() {
+    const button = $("#optimiseCS");
+    // button.find(".spinner-border").css("visibility", "visible");
+    button.find(".convert-icon").hide();
+    button.find(".spinner-border").show();
+    button.attr("disabled", true);
+    button.addClass("disabled");
+    const inputCode = cseditor.getValue();
+    // stringifedInput = JSON.stringify(inputCode);
+
+    fetch(apiURL + "/optimize_code", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+            "input_language": "csharp",
+            "code_to_optimize": inputCode
+        })
+    })
+    .then(function (response) { return response.json(); })
+    .then(function (responseString) {
+        console.log(responseString);
+        if (responseString.includes("```csharp")) {
+            const code = responseString.substring(responseString.indexOf("```csharp") + 9, responseString.indexOf("```", responseString.indexOf("```csharp") + 9));
+            let notes;
+            if (responseString.includes("### Explanation:")) {
+                notes = responseString.substring(responseString.indexOf("### Explanation:") + 16);
+            } else if (responseString.includes("### Explanations:")) {
+                notes = responseString.substring(responseString.indexOf("### Explanations:") + 17);
+            } else if (responseString.includes("### Key Points:")) {
+                notes = responseString.substring(responseString.indexOf("### Key Points:") + 15);
+            } else {
+                notes = responseString.substring(responseString.indexOf("```", responseString.indexOf("```csharp") + 9)).replace('```', '');
+            }            
+            console.log(code);
+            cseditor.setValue(code);
+            // $(".show-with-cs").show();
+            $("#optimisation-notes pre").html(notes.trim());
+            var tabToActivate = $("#optimisationNotesTab");
+            $("#tabstrip").data("kendoTabStrip").activateTab(tabToActivate);
+            scrollToNotes();
+            button.find(".spinner-border").hide();
+            button.find(".convert-icon").show();
+            button.attr("disabled", false);
+            button.removeClass("disabled");
+        }
+    });
+}
+
+function explainCS() {
+    const button = $("#explainCS");
+    // button.find(".spinner-border").css("visibility", "visible");
+    button.find(".convert-icon").hide();
+    button.find(".spinner-border").show();
+    button.attr("disabled", true);
+    button.addClass("disabled");
+    const inputCode = cseditor.getValue();
+    // stringifedInput = JSON.stringify(inputCode);
+
+    fetch(apiURL + "/explain_code", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+            // "input_language": "csharp",
+            "code_to_explain": inputCode
+        })
+    })
+    .then(function (response) { return response.json(); })
+    .then(function (responseString) {
+        console.log(responseString);
+        $("#explanation pre").html(responseString.trim());
+        var tabToActivate = $("#explanationTab");
+        $("#tabstrip").data("kendoTabStrip").activateTab(tabToActivate);
+        scrollToNotes();
+        button.find(".spinner-border").hide();
+        button.find(".convert-icon").show();
+        button.attr("disabled", false);
+        button.removeClass("disabled");
+        // if (responseString.includes("```csharp")) {
+        //     const code = responseString.substring(responseString.indexOf("```csharp") + 9, responseString.indexOf("```", responseString.indexOf("```csharp") + 9));
+        //     let notes;
+        //     if (responseString.includes("### Explanation:")) {
+        //         notes = responseString.substring(responseString.indexOf("### Explanation:") + 16);
+        //     } else if (responseString.includes("### Explanations:")) {
+        //         notes = responseString.substring(responseString.indexOf("### Explanations:") + 17);
+        //     } else if (responseString.includes("### Key Points:")) {
+        //         notes = responseString.substring(responseString.indexOf("### Key Points:") + 15);
+        //     } else {
+        //         notes = responseString.substring(responseString.indexOf("```", responseString.indexOf("```csharp") + 9)).replace('```', '');
+        //     }            
+        //     console.log(code);
+        //     cseditor.setValue(code);
+        //     // $(".show-with-cs").show();
+        //     $("#optimisation-notes pre").html(notes.trim());
+        //     button.find(".spinner-border").hide();
+        //     button.find(".convert-icon").show();
+        //     button.attr("disabled", false);
+        //     button.removeClass("disabled");
+        // }
     });
 }
 
