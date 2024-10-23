@@ -205,7 +205,7 @@ End With
 If failedToDeleteTarget Then
     msg = "Error attempting to delete the target folder" & _
         vbLf & targetFolder & vbLf & vbLf & _
-        "Err.Description: " & vbTab & errDescription & vbLf & _
+        "Err.CodeObject.Description: " & vbTab & errDescription & vbLf & _
         "Err.Number:      " & vbTab & errNumber & vbLf & _
         "Hex(Err.Number): " & vbTab & Hex(errNumber) & vbLf & vbLf & _
         "Retry with elevated privileges?" & vbLf & vbLf & _
@@ -445,7 +445,8 @@ function convertCode() {
         body: JSON.stringify({
             "input_language": "vbscript",
             "target_language": "csharp",
-            "code_to_convert": inputCode
+            "code_to_convert": inputCode,
+            "additional_prompt": "When converting VBScript to C#, if you see an object property 'CodeObject' then always just remove this."
         })
     })
     .then(function (response) { return response.json(); })

@@ -426,10 +426,10 @@
                         <a class="dropdown-toggle  dropdown-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><i class="material-icons">palette</i>Model</a>
                         <ul class="dropdown-menu sys-pd-t-5">
                             <li>
-                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4o" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>GPT-4o</a>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4o" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>GPT-4o</a>
                             </li>
                             <li>
-                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4-turbo-preview" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-white">check</i>GPT-4-turbo</a>
+                                <a href="#" class="avanti-model-switch" data-modelname="gpt-4-1106-preview" onclick="setModel(this);"><i class="material-icons sys-mg-r-5 sys-fg-success">check</i>GPT-4-1106-preview</a>
                             </li>
                         </ul>
                     </li>
@@ -1845,6 +1845,27 @@ function setVMFieldsUpdated(updated) {
         return;
     }
 }
+function setModel(e) {
+    if (e && $(e).data("modelname") && !$(e).hasClass("sys-fg-success")) {
+        var modelName = $(e).data("modelname");
+        selectedModelChecked(modelName);
+        activateModel(modelName)
+    }
+};
+function selectedModelChecked(modelName) {
+      var itemNode = $(".avanti-model-switch[data-modelname='" + modelName + "']");
+      $("i", itemNode).removeClass("sys-fg-white");
+      $("i", itemNode).addClass("sys-fg-success");
+      $.each($(itemNode).closest("li").siblings(), function (index) {
+         $("i", this).removeClass("sys-fg-success");
+         $("i", this).removeClass("sys-fg-white").addClass("sys-fg-white");
+      });
+};
+
+function activateModel(modelName) {
+    gptModel = modelName;
+    initialiseDaVinci();
+};
 function initialiseDaVinci() {
     // Set up various templates for use in the chat
     var davinciresponse_template = kendo.template($('#davinciresponse-template').html());
