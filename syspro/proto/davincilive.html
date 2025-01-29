@@ -2434,6 +2434,8 @@ var chat = $("#daVinciChat").kendoChat({
                                     //    }
                                     brevityCheck(brevityDisclaimer);
                                     var fixedCode = fixJSON(code);
+                                    console.log(fixedCode);
+                                    console.log(Array.isArray(JSON.parse(fixedCode)));
                                     var data = Array.isArray(JSON.parse(fixedCode)) ? JSON.parse(fixedCode)[0] : JSON.parse(fixedCode);
                                     console.log('data', data, data.templateName);
                                     if (isJsonString(fixedCode)) {
